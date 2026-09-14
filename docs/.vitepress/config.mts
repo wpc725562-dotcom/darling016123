@@ -621,6 +621,10 @@ export default defineConfig({
                               "link": "/posts/computer/notes/1.3a-变量与赋值-零基础"
                     },
                     {
+                              "text": "1.3b 格式化输入输出·零基础 ⭐",
+                              "link": "/posts/computer/notes/1.3b-格式化输入输出-零基础"
+                    },
+                    {
                               "text": "1.6 数组",
                               "link": "/posts/computer/notes/1.6-数组"
                     },
