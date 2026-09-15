@@ -625,6 +625,10 @@ export default defineConfig({
                               "link": "/posts/computer/notes/1.3b-格式化输入输出-零基础"
                     },
                     {
+                              "text": "1.4a 选择结构 if·零基础 ⭐",
+                              "link": "/posts/computer/notes/1.4a-选择结构-if语句-零基础"
+                    },
+                    {
                               "text": "1.6 数组",
                               "link": "/posts/computer/notes/1.6-数组"
                     },
