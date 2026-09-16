@@ -225,6 +225,7 @@ npm run docs:dev       # 本地预览（热更新）
 npm run docs:build     # 构建站点（约 177 秒）
 npm run health:check   # 仓库健康检查（断链/BOM/索引/文件大小）
 python scripts/repo_stats.py   # 笔记数与真题页数统计
+bash scripts/test-patrol-logic.sh   # 巡逻脚本自检（改动 auto-patrol.yml 后必跑）
 ```
 
 > ⚠️ **不要运行 `npm run docs:sync`**（即 `scripts/sync-obsidian-to-blog.mjs`）。
@@ -232,6 +233,46 @@ python scripts/repo_stats.py   # 笔记数与真题页数统计
 > 直接运行会删掉 `config.mts` 的 PWA 配置、日语板块、四科导航等约 290 行。
 > 需要把 Obsidian 侧新文件同步到站点时，用定向脚本，例如
 > `python scripts/sync-专项题库.py`（只处理专项题库，不动其他配置）。
+
+---
+
+## 🚨 CI 质量门（自动巡逻）
+
+`.github/workflows/auto-patrol.yml` 每天凌晨 3:00 + 每次推送到 `main` 时自动巡检，
+共 13 个步骤：
+
+| 级别 | 检查项 | 说明 |
+|:---|:---|:---|
+| P0 | 🧪 巡逻脚本自检 | 跑 `scripts/test-patrol-logic.sh`，脚本自身有问题立刻红灯 |
+| P0 | 🔨 站点构建 | `npm run docs:build` |
+| P0 | 🔗 断链检查 | wiki 双链 + markdown 链接 |
+| P1 | 📋 质量体检 | 标题跳级 / BOM / 乱码字符 |
+| P1 | 📑 索引一致性 | Obsidian 侧 vs 站点侧文件数对照 |
+| P2 | 📊 覆盖率分析 | 基线锚定指标，见下方说明 |
+
+```bash
+bash scripts/test-patrol-logic.sh   # 本地跑巡逻脚本自检（8 项功能 + 7 项防回归扫描）
+```
+
+**覆盖率指标的口径**：统计的是「笔记文件数 ÷ 基线期望值」，用于发现
+**文件被误删 / 同步失败导致数量回退**，**不是**考纲覆盖百分比。
+基线配置在 `scripts/coverage-expectations.json`，笔记数增长后需更新；
+报告出现「⚠️超预期」即表示基线过期。
+
+**报告文件**（均在 `knowledge/`）：
+
+| 文件 | 性质 |
+|:---|:---|
+| `patrol-report-YYYYMMDD.md` | 每日综合报告，自动轮转只保留最近 30 份 |
+| `link-report.md` / `quality-report.md` / `index-report.md` | 机器生成，每次覆盖 |
+| `coverage-report-auto.md` | 机器生成，每次覆盖 |
+| `coverage-report.md` | **人工复核版，不会被脚本覆写**，人工结论写这里 |
+
+> ⚠️ **为什么机器产物与人工产物要分文件**：2026-09-17 审核发现，覆盖率脚本原本
+> 直接覆写 `coverage-report.md`，而该文件是 2026-08-18 的人工复核修正版
+> （纠正了「按文件大小误判空占位」并如实标注真题来源类型）。只要手动触发一次
+> 全量巡逻，那份内容就会被机器统计悄悄替换掉。现已分离，并由自检脚本 7 项
+> 防回归扫描守住这条线。
 
 ---
 
@@ -251,6 +292,7 @@ python scripts/repo_stats.py   # 笔记数与真题页数统计
 
 | 日期 | 更新内容 |
 |:---|:---|
+| **2026-09-17** | **巡逻工作流全面审核修复（8 项）**：① 覆盖率脚本不再覆写人工复核版报告（拆出 `coverage-report-auto.md`）；② 覆盖率期望值从硬编码改为配置化，修正 `194%/220%/111%` 的荒谬数字为 `100%`；③ 报告轮转，`patrol-report-*.md` 只保留最近 30 份（原已堆积 30 份且无限增长）；④ Issue 去重，此前每天新建重复 Issue（已堆积 13 个未关闭）改为追加评论；⑤ 新增「全绿时自动关闭遗留 Issue」步骤；⑥ `rebase` 冲突后自动回滚，不再残留冲突标记；⑦ 报告「总检查项」不再写死为 4；⑧ 新增 `scripts/test-patrol-logic.sh` 巡逻脚本自检（8 项功能 + 7 项防回归扫描），并接入 CI 作为 P0 门禁 |
 | **2026-09-17** | **真题考频矩阵实测落地**：对 2023+2024 两年 90 道计算机真题逐题标注，得出 C 语言 **64.5%** / 数据结构 **35.5%** 的实测分布，推翻网传 45-50% / 50-55%。新增 [考频矩阵页](https://wpc725562-dotcom.github.io/darling016123/guide/真题考频矩阵)、**6 篇分章专项题库**（100+ 题）、**172 张 Anki 卡片**；`考点主清单-计算机.json` 的 `score_weight` 由估算值（`~10分`）改为实测值 + `占卷比` / `题型分布` / `数据来源` 字段 |
 | **2026-09-17** | **仓库审核修复**：`health-check` 修复 `[[toc]]` 被误判为断链；修复 3 处死链（高频考点 2 篇）；33 个文件剥离 BOM 头；`.gitattributes` 补充 20 种二进制类型声明 + linguist 统计排除规则；`.gitignore` 补 VitePress 构建产物；`docs/guide/index.md` 清除过期外部路径并加入 `docs:sync` 危险警告。健康检查 **6 通过 / 0 警告** |
 | **2026-09-17** | **README 账实对齐**：修正笔记数（213→219，含 6 篇专项题库）、真题页数；**修正失真的「6 模块统一模板」描述** —— 实际分三套结构（计算机 6 模块 / 高数 6 段 / 政治 3 段），并说明 2026-09-12 摘除星级与预估分值的原因与替代方案 |

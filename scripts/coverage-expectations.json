@@ -1,0 +1,35 @@
+{
+  "_readme": [
+    "覆盖率期望值配置 —— 供 .github/workflows/auto-patrol.yml 的 [P2] 覆盖率分析读取。",
+    "",
+    "【这个指标到底是什么】",
+    "它统计的是「各科目站点侧笔记文件数」对比一个基线值，本质是**基线锚定指标**：",
+    "用来发现『文件被误删 / 同步失败导致数量回退』这类事故，",
+    "**不是**『考纲知识点覆盖百分比』—— 一个考点可以拆成多篇笔记，也可以合并成一篇，",
+    "文件数与考纲覆盖度之间没有严格换算关系。",
+    "",
+    "【为什么要显式说明】",
+    "此前工作流里硬编码 math_expected=36 / cs_expected=20 / po_expected=18，",
+    "而实际文件数早已是 70 / 44 / 20，脚本照旧算出 194% / 220% 的荒谬数字，",
+    "且长期无人发现 —— 因为没有人会认真看一个明显没意义的百分比。",
+    "数字一旦失真，检查就等于不存在。",
+    "",
+    "【怎么维护】",
+    "笔记数量正常增长后，把对应数字更新为新的实测值。",
+    "若报告出现「⚠️超预期」，说明该科目已超过基线，应更新此处，否则告警会持续刷屏而失去信号价值。",
+    "更新后请同时在 knowledge/coverage-report.md（人工复核版）里记录变更原因。",
+    "",
+    "基线校准日期：2026-09-17"
+  ],
+  "math": 70,
+  "cs": 44,
+  "po": 20,
+  "english": 10,
+  "_measured_at": "2026-09-17",
+  "_counted_paths": {
+    "math": "docs/posts/math/notes/*.md (排除 index.md / syllabus.md)",
+    "cs": "docs/posts/computer/notes/*.md (排除 index.md / syllabus.md)",
+    "po": "docs/posts/politics/notes/*.md (排除 index.md)",
+    "english": "docs/posts/english/notes/*.md (仅排除 index.md，不排除 syllabus.md)"
+  }
+}

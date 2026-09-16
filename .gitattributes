@@ -1,6 +1,18 @@
 # 统一换行符：所有文本文件入库规范化为 LF，杜绝 CRLF/LF 幻影修改
 * text=auto
 
+# 脚本必须强制 LF：在 Windows 上被检出成 CRLF 时，
+# `set -euo pipefail` 会变成 `set -euo pipefail\r`，bash 报错或行为异常；
+# 而 GitHub Actions 的 Linux runner 又要求 LF。
+# 显式锁定 eol=lf，避免依赖各平台 core.autocrlf 的默认值。（2026-09-17 补）
+*.sh      text eol=lf
+*.bash    text eol=lf
+*.py      text eol=lf
+*.mjs     text eol=lf
+*.json    text eol=lf
+*.yml     text eol=lf
+*.yaml    text eol=lf
+
 # 明确的二进制类型（防止误规范化）
 *.png binary
 *.jpg binary
