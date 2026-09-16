@@ -107,8 +107,19 @@ jobs:
             while IFS= read -r line; do
               if [[ $line =~ \[\[([^]]+)\]\] ]]; then
                 link="${BASH_REMATCH[1]}"
+                # 去掉 |显示名，只留路径部分（Obsidian 语法 [[路径|显示文字]]）
+                link="${link%%|*}"
                 # 提取链接目标（去掉 # 锚点部分）
                 target="${link%%#*}"
+                # 去掉首尾空白 —— 必需：文档里举例写的 [[ ]] 会得到空格，
+                # 不 trim 就会被当成文件名去 find，从而误报断链（2026-09-17 修）
+                target="$(printf '%s' "$target" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')"
+                # 空目标不是链接，跳过
+                if [[ -z "$target" ]]; then continue; fi
+                # 跳过 Markdown 扩展指令：[[toc]] 由插件渲染成目录，没有对应文件。
+                # 此前 4 个日语页面因此被持续误报（2026-09-17 修，
+                # 与 scripts/health-check.mjs、scripts/check-links.mjs 的 SKIP_WIKI 一致）
+                if [[ "${target,,}" == "toc" || "${target,,}" == "tableofcontents" ]]; then continue; fi
                 # 尝试匹配文件（Obsidian 按 basename 匹配）
                 found=$(find docs/ -name "${target}.md" 2>/dev/null | head -1)
                 if [[ -z "$found" ]]; then
