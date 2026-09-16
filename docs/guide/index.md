@@ -21,7 +21,8 @@ title: 站点说明
 | Anki 卡片包 | `docs/public/downloads/anki-computer.txt` | `/downloads/anki-computer.txt` |
 
 > 站点侧 `docs/posts/` 与 Obsidian 侧顶层目录是**同一份内容的两套视图**：
-> 顶层目录用 `[[wiki 双链]]`（Obsidian 导航），`docs/posts/` 用 `/绝对路径`（VitePress 路由）。
+> 顶层目录用 Obsidian 双链语法（`[[ ]]` 形式，供 Obsidian 内跳转），
+> `docs/posts/` 用 `/绝对路径`（VitePress 路由）。
 > 但计算机知识点与考频矩阵只在站点侧维护，没有 Obsidian 副本。
 
 ## 本地构建

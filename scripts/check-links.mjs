@@ -87,6 +87,10 @@ for (const f of files) {
 // 语义：目标相对仓库根解析；带 | 时取 | 前为路径；路径优先，再按 basename 全库匹配
 // 检查全库（docs + 源库）中的所有 [[双链]]
 const WIKI_RE = /\[\[([^\]]+?)\]\]/g
+// 这些 [[...]] 是 Markdown 扩展指令，不是文件双链，必须跳过
+// （[[toc]] 由 markdown-it 的 table-of-contents 插件渲染成目录，无对应文件；
+//   2026-09-17 修复：此前会误报为死链，与 scripts/health-check.mjs 的 SKIP_WIKI 保持一致）
+const SKIP_WIKI = new Set(['toc', 'tableofcontents'])
 const allMd = walk(ROOT).filter((p) => !p.includes('node_modules') && !p.includes('.obsidian'))
 const wikiBroken = []
 let wikiTotal = 0
@@ -98,6 +102,8 @@ for (const f of allMd) {
     // 拆显示名：| 或 \| 都是「路径|显示名」分隔，取第一段为路径
     const target = raw.replace(/\\\|/g, '|').split('|')[0].trim()
     if (!target) continue
+    // 跳过 Markdown 扩展指令，不是文件链接
+    if (SKIP_WIKI.has(target.toLowerCase())) continue
     const rel = target.replace(/\\/g, '/').replace(/^\/+/, '')
     // 路径优先：先去掉尾部转义 \ 再匹配
     const relClean = rel.replace(/\\+$/, '')

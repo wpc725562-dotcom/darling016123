@@ -107,10 +107,13 @@ function checkBrokenLinks() {
         // 检查 wiki 双链 [[...]]
         const wikiLinks = content.match(/\[\[([^\]]+)\]\]/g) || [];
         for (const link of wikiLinks) {
-          const target = link.slice(2, -2).replace(/\|.+$/, '').split('#')[0]; // 去掉 [[ 和 ]]，去掉 |显示文字 和 #锚点
+          // 去掉 [[ 和 ]]，去掉 |显示文字 和 #锚点；末尾 trim 是必需的 ——
+          // 否则 `[[ ]]`（文档里举例说明双链语法时写的空链）会得到 ' '，
+          // `!target` 判不出空，被当成文件名去查表从而误报断链（2026-09-17 修）
+          const target = link.slice(2, -2).replace(/\|.+$/, '').split('#')[0].trim();
           if (!target) continue;
           // 跳过 Markdown 扩展指令，不是文件链接
-          if (SKIP_WIKI.has(target.trim().toLowerCase())) continue;
+          if (SKIP_WIKI.has(target.toLowerCase())) continue;
           // 尝试按 basename 匹配
           const found = findFileByBasename(target, docsDir);
           if (!found) {

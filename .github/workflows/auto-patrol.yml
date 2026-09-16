@@ -118,7 +118,8 @@ jobs:
                 fi
                 if [[ -z "$found" ]]; then
                   echo "- ❌ $file → [[$link]]" >> "$REPORT_FILE"
-                  ((BROKEN_COUNT++))
+                  # 同上：不可用 ((VAR++))，set -e 下 0→1 会中断 step
+                  BROKEN_COUNT=$((BROKEN_COUNT + 1))
                 fi
               fi
             done < <(grep -oP '\[\[[^\]]+\]\]' "$file" 2>/dev/null || true)
@@ -157,7 +158,10 @@ jobs:
                 level=${#BASH_REMATCH[1]}
                 if [[ $prev_level -gt 0 && $((level - prev_level)) -gt 1 ]]; then
                   echo "- ⚠️ $file: 标题跳级 '#$(printf '#%.0s' $(seq 1 $prev_level))' → '$line'" >> "$REPORT_FILE"
-                  ((ISSUES++))
+                  # 注意：不要写 ((VAR++))。在 GitHub Actions 默认的 `bash -e` 下，
+                  # ((VAR++)) 当 VAR 从 0 变 1 时返回退出码 1，会导致整个 step 静默中断，
+                  # 后续检查全部不执行、报告只留第一条。必须用 VAR=$((VAR + 1))。（2026-09-17 修）
+                  ISSUES=$((ISSUES + 1))
                 fi
                 prev_level=$level
               fi
@@ -170,11 +174,11 @@ jobs:
           for file in $(find docs/ -name "*.md"); do
             if file "$file" | grep -q "BOM"; then
               echo "- ⚠️ $file: 包含 BOM 头" >> "$REPORT_FILE"
-              ((ISSUES++))
+              ISSUES=$((ISSUES + 1))
             fi
             if grep -qP '\x{FFFD}' "$file" 2>/dev/null; then
               echo "- ❌ $file: 包含乱码字符" >> "$REPORT_FILE"
-              ((ISSUES++))
+              ISSUES=$((ISSUES + 1))
             fi
           done
           
@@ -206,7 +210,7 @@ jobs:
             if [[ -d "$dir" ]]; then
               if [[ ! -f "${dir}index.md" ]]; then
                 echo "- ❌ $dir: 缺少 index.md" >> "$REPORT_FILE"
-                ((MISSING_INDEX++))
+                MISSING_INDEX=$((MISSING_INDEX + 1))
               fi
             fi
           done
@@ -222,11 +226,20 @@ jobs:
           for src in "${!SOURCE_MAP[@]}"; do
             dst="${SOURCE_MAP[$src]}"
             if [[ -d "$src" && -d "$dst" ]]; then
-              src_count=$(find "$src" -name "*.md" | wc -l)
-              dst_count=$(find "$dst" -name "*.md" | wc -l)
-              if [[ $src_count -ne $dst_count ]]; then
-                echo "- ⚠️ $src ($src_count) → $dst ($dst_count): 文件数不匹配" >> "$REPORT_FILE"
-                ((MISSING_INDEX++))
+              # 排除站点侧自动生成的 index.md，它不是源文件的对应物
+              src_count=$(find "$src" -name "*.md" ! -name "index.md" | wc -l)
+              dst_count=$(find "$dst" -name "*.md" ! -name "index.md" | wc -l)
+              # 2026-09-17 修正口径：
+              # 原逻辑「数量不等即告警」会把「站点侧多出独立维护的页面」误报为问题
+              # （例：编程技能/专升本英语/笔记 7 篇 ↔ docs/posts/english/notes 10 篇，
+              #   实为 7 篇一一对应 + 3 篇站点独有的 cloze/matching/agreement-exercises，
+              #   并非同步丢失）。这导致每天一条噪音告警，最终会让人忽略真告警。
+              # 现改为：只在「站点侧少于源侧」时告警（那才可能是同步丢了内容）。
+              if [[ $dst_count -lt $src_count ]]; then
+                echo "- ⚠️ $src ($src_count) → $dst ($dst_count): 站点侧少 $((src_count - dst_count)) 篇，疑似同步丢失" >> "$REPORT_FILE"
+                MISSING_INDEX=$((MISSING_INDEX + 1))
+              elif [[ $dst_count -gt $src_count ]]; then
+                echo "- ✅ $src ($src_count) → $dst ($dst_count): 站点侧多 $((dst_count - src_count)) 篇（独立维护，非丢失）" >> "$REPORT_FILE"
               else
                 echo "- ✅ $src → $dst: 一致 ($src_count 文件)" >> "$REPORT_FILE"
               fi
