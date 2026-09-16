@@ -11,6 +11,12 @@ on:
       - 'knowledge/**'
       - 'package.json'
       - 'package-lock.json'
+      # 2026-09-17 补充：巡逻脚本自身的改动也必须触发巡逻，
+      # 否则脚本写坏了没有任何 CI 反馈 —— 这正是此前
+      # 「((VAR++)) 中断导致报告静默截断」潜伏多日没人发现的原因。
+      - '.github/workflows/**'
+      - 'scripts/health-check.mjs'
+      - 'scripts/check-links.mjs'
 
   # 每天凌晨 3:00 全量检查
   schedule:
