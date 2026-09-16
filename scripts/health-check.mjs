@@ -85,7 +85,10 @@ function checkDirectoryIntegrity() {
 function checkBrokenLinks() {
   let brokenCount = 0;
   const brokenLinks = [];
-  
+
+  // 这些 [[...]] 是 Markdown 扩展指令，不是文件双链，需跳过
+  const SKIP_WIKI = new Set(['toc', 'tableofcontents']);
+
   // 只检查 docs/ 目录下的 .md 文件
   const docsDir = join(ROOT, 'docs');
   if (!existsSync(docsDir)) {
@@ -106,6 +109,8 @@ function checkBrokenLinks() {
         for (const link of wikiLinks) {
           const target = link.slice(2, -2).replace(/\|.+$/, '').split('#')[0]; // 去掉 [[ 和 ]]，去掉 |显示文字 和 #锚点
           if (!target) continue;
+          // 跳过 Markdown 扩展指令，不是文件链接
+          if (SKIP_WIKI.has(target.trim().toLowerCase())) continue;
           // 尝试按 basename 匹配
           const found = findFileByBasename(target, docsDir);
           if (!found) {

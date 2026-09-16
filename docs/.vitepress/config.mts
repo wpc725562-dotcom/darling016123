@@ -72,6 +72,8 @@ export default defineConfig({
         items: [
           { text: '📖 学习手册 ⭐', link: '/posts/computer/学习手册' },
           { text: '2027 备考指南 ⭐', link: '/posts/computer/2027-备考指南' },
+          { text: '📊 真题考频矩阵 ⭐', link: '/guide/真题考频矩阵' },
+          { text: '✍️ 专项题库', link: '/posts/computer/专项题库/' },
           { text: '知识点', link: '/posts/computer/notes/' },
           { text: '2024 全卷', link: '/posts/computer/2024' },
           { text: '考点拆分', link: '/posts/computer/topics/' },
@@ -523,6 +525,14 @@ export default defineConfig({
                               "link": "/posts/computer/"
                     },
                     {
+                              "text": "📊 真题考频矩阵 ⭐",
+                              "link": "/guide/真题考频矩阵"
+                    },
+                    {
+                              "text": "✍️ 专项题库（按考频排序）",
+                              "link": "/posts/computer/专项题库/"
+                    },
+                    {
                               "text": "真题章节对照表 🎯",
                               "link": "/posts/computer/真题章节对照表"
                     },
@@ -838,6 +848,7 @@ export default defineConfig({
           text: '考情速查',
           items: [
             { text: '🎓 0基础学习路线', link: '/guide/零基础学习路线' },
+            { text: '📊 真题考频矩阵 ⭐', link: '/guide/真题考频矩阵' },
             { text: '💻 计算机专业报考', link: '/guide/计算机专业-报考指南' },
             { text: '📊 投档与招生数据', link: '/guide/投档与招生数据' },
             { text: '🎯 公办院校与录取', link: '/guide/公办院校与录取' },

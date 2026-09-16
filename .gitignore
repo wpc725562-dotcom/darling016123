@@ -34,6 +34,8 @@ desktop.ini
 node_modules/
 docs/.vitepress/dist/
 docs/.vitepress/cache/
+docs/.vitepress/*.timestamp-*.mjs
+docs/.vitepress/config.mts.timestamp-*.mjs
 package-lock.json.bak
 *.log
 .npm/

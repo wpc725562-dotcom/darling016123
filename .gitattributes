@@ -15,3 +15,34 @@
 *.zip binary
 *.gz binary
 *.db binary
+
+# 2026-09-17 补充：其余二进制类型（此前未声明，存在被误当文本规范化的风险）
+*.bmp binary
+*.tif binary
+*.tiff binary
+*.otf binary
+*.eot binary
+*.doc binary
+*.docx binary
+*.xls binary
+*.xlsx binary
+*.ppt binary
+*.pptx binary
+*.epub binary
+*.rar binary
+*.7z binary
+*.tar binary
+*.mp4 binary
+*.mov binary
+*.mkv binary
+*.avi binary
+*.mp3 binary
+*.wav binary
+
+# 2026-09-17 补充：GitHub 语言统计排除生成物与第三方副本
+# （否则 dist / node_modules / ForestDeer 副本会把 HTML/JS 占比刷上去，
+#   掩盖本仓库真正的主体——Markdown 笔记）
+docs/.vitepress/dist/**  linguist-generated
+docs/.vitepress/cache/** linguist-generated
+node_modules/**          linguist-vendored
+guangdong-zhuanshengben-resources/** linguist-vendored
