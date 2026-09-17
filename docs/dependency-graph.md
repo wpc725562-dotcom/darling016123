@@ -48,41 +48,6 @@
 ### `sync-obsidian-to-blog.mjs`
 - 依赖: node:fs, node:path, vitepress
 
-## bencetong/ · Electron + Vue 应用
-
-### `bencetong/src/App.vue`
-- 导入 ← `./components/Sidebar.vue`
-### `bencetong/src/components/Sidebar.vue`
-- 导入 `ref` ← `vue`
-- 导入 ← `vue`
-### `bencetong/src/views/AITutor.vue`
-- 导入 `ref, onMounted, onUnmounted, nextTick, computed` ← `vue`
-- 导入 ← `vue`
-### `bencetong/src/views/Dashboard.vue`
-- 导入 `ref, reactive, computed, onMounted, onUnmounted` ← `vue`
-- 导入 `CHAPTERS, getChapterProgress, saveChapterProgress, getTodayStudyTime, saveTodayStudyTime` ← `../data/chapters-data.js`
-- 导入 ← `vue`
-- 导入 ← `../data/chapters-data.js`
-### `bencetong/src/views/Learn.vue`
-- 导入 `ref, reactive, onMounted` ← `vue`
-- 导入 `CHAPTERS, getChapterProgress, saveChapterProgress` ← `../data/chapters-data.js`
-- 导入 ← `vue`
-- 导入 ← `../data/chapters-data.js`
-### `bencetong/src/views/Quiz.vue`
-- 导入 `ref, reactive, computed` ← `vue`
-- 导入 ← `vue`
-### `bencetong/src/views/Reader.vue`
-- 导入 `ref, computed, onMounted` ← `vue`
-- 导入 `marked` ← `marked`
-- 导入 ← `vue`
-- 导入 ← `marked`
-### `bencetong/src/views/ScienceGuide.vue`
-- 导入 `ref, computed` ← `vue`
-- 导入 ← `vue`
-### `bencetong/src/views/Settings.vue`
-- 导入 `ref, onMounted` ← `vue`
-- 导入 ← `vue`
-
 ## 外部依赖清单（package.json）
 
 ### `darling016123/package.json`
@@ -90,21 +55,6 @@
 - devDependencies:
   - `markdown-it-mathjax3@^4.3.2`
   - `vitepress@^1.6.3`
-### `bencetong/package.json`
-- dependencies:
-  - `vue@^3.5.13`
-  - `vue-router@^4.5.0`
-  - `pinia@^2.3.0`
-  - `marked@^15.0.0`
-  - `highlight.js@^11.11.0`
-- devDependencies:
-  - `@vitejs/plugin-vue@^5.2.0`
-  - `vite@^6.1.0`
-  - `electron@^33.0.0`
-  - `electron-builder@^25.1.0`
-  - `concurrently@^9.1.0`
-  - `wait-on@^8.0.0`
-  - `cross-env@^7.0.3`
 
 ## 数据流 · Obsidian → 网站
 
