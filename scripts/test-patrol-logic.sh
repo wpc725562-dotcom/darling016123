@@ -109,7 +109,7 @@ TMP="$TMPDIR_T/report.md"
   echo ""
   echo "| 检查项 | 状态 | 详情 |"
   echo "|:---|:---:|:---|"
-  echo "| 🧪 巡逻脚本自检 | ✅ 通过 | 8 项功能 + 7 项防回归扫描 |"
+  echo "| 🧪 巡逻脚本自检 | ✅ 通过 | 功能测试 + 防回归扫描全部通过 |"
   echo "| 🔨 站点构建 | ✅ 通过 | 构建成功 |"
   echo "| 🔗 链接检查 | ✅ 通过 | 无断链 |"
   echo "| 📋 质量体检 | ✅ 通过 | 无问题 |"
@@ -161,6 +161,25 @@ grep -q 'source scripts/lib/patrol-lib.sh' "$WF_FILE" \
 # 8c+. 改了共用库必须能触发巡逻，否则自检永远跑不到新实现
 grep -q "scripts/lib/\*\*" "$WF_FILE" \
   && pass "触发路径含 scripts/lib/**" || fail "触发路径缺 scripts/lib/**（改库不触发自检）"
+
+# 8c++. 三套链接检查器的 [[toc]] 跳过集合必须一致
+#   仓库里存在三套独立的 wiki 双链检查器（health-check.mjs / check-links.mjs /
+#   workflow 内联 bash），它们各自维护一份 SKIP_WIKI。2026-09-17 就是因为只修了
+#   前两套、漏了第三套，导致 [[toc]] 误报持续存在。这条扫描守住一致性。
+extract_skip() {
+  grep -oE "[\"'](toc|tableofcontents)[\"']" "$1" 2>/dev/null | tr -d "\"'" | sort -u | tr '\n' ','
+}
+hc_skip="$(extract_skip scripts/health-check.mjs)"
+cl_skip="$(extract_skip scripts/check-links.mjs)"
+wf_skip="$(extract_skip "$WF_FILE")"
+echo "  health-check.mjs: $hc_skip"
+echo "  check-links.mjs:  $cl_skip"
+echo "  workflow 内联:     $wf_skip"
+if [[ -n "$hc_skip" && "$hc_skip" == "$cl_skip" && "$cl_skip" == "$wf_skip" ]]; then
+  pass "三套链接检查器 SKIP_WIKI 一致"
+else
+  fail "三套链接检查器 SKIP_WIKI 不一致（漏改某一套会导致误报）"
+fi
 
 # 8d. 工作流内不得再内联这些函数定义（否则又与库漂移）
 for fn in count_md pct_of read_expect rotate_reports; do
