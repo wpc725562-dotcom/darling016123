@@ -158,6 +158,10 @@ grep -q 'git rebase --abort' "$WF_FILE" && pass "存在 rebase 冲突回滚" || 
 grep -q 'source scripts/lib/patrol-lib.sh' "$WF_FILE" \
   && pass "工作流引用共用库（未内联副本）" || fail "工作流未 source 共用库"
 
+# 8c+. 改了共用库必须能触发巡逻，否则自检永远跑不到新实现
+grep -q "scripts/lib/\*\*" "$WF_FILE" \
+  && pass "触发路径含 scripts/lib/**" || fail "触发路径缺 scripts/lib/**（改库不触发自检）"
+
 # 8d. 工作流内不得再内联这些函数定义（否则又与库漂移）
 for fn in count_md pct_of read_expect rotate_reports; do
   if grep -qE "^[[:space:]]*${fn}\(\)[[:space:]]*\{" "$WF_FILE"; then

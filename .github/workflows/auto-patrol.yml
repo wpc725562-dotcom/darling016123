@@ -21,6 +21,9 @@ on:
       # 否则改了配置/测试却没有 CI 反馈（2026-09-17 补）
       - 'scripts/test-patrol-logic.sh'
       - 'scripts/coverage-expectations.json'
+      # 共用库是巡逻逻辑的**实现本体**，改了它必须跑自检。
+      # 只写具体文件名会漏掉未来的新库文件，故用目录通配。（2026-09-17 补）
+      - 'scripts/lib/**'
 
   # 每天凌晨 3:00 全量检查
   schedule:
