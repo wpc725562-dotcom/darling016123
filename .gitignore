@@ -40,6 +40,10 @@ package-lock.json.bak
 *.log
 .npm/
 
+# 巡逻自检脚本的临时目录（scripts/test-patrol-logic.sh）。
+# 本机沙箱会拦截批量删除，该目录可能残留，故必须忽略。
+.tmp-patrol-test/
+
 # Large local study materials (keep on disk, don't push)
 *.pdf
 *.png

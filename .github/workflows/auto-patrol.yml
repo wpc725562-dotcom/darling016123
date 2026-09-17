@@ -308,43 +308,19 @@ jobs:
           # 就会永久抹掉那份内容。机器产物与人工产物必须分文件。（2026-09-17 修）
           REPORT_FILE="knowledge/coverage-report-auto.md"
 
+          # 共用函数从库里 source，**不要在这里内联副本**：
+          # 内联副本会与 scripts/test-patrol-logic.sh 漂移，导致测试对着旧副本
+          # 报「通过」而实际工作流已坏 —— 假信心测试。同源引用才让测试有效。
+          # shellcheck source=scripts/lib/patrol-lib.sh
+          source scripts/lib/patrol-lib.sh
+
           # 期望值外置到配置文件，避免硬编码失真：原先 math_expected=36 而实际
           # 已有 70 篇，算出来 194%、cs 220%，数字荒谬却长期无人发现。
           EXPECT_FILE="scripts/coverage-expectations.json"
-          # 三级回退读取：jq → node → 内置默认值。
-          # 只用 jq 不够稳（本机开发环境就没有 jq），而 node 是本 workflow
-          # 必然存在的（前面 setup-node + npm ci 已保证），所以作为第二选择，
-          # 避免配置读不到时又退回硬编码的荒谬百分比。
-          read_expect() { # $1=key $2=default
-            local v=""
-            if [[ -f "$EXPECT_FILE" ]]; then
-              if command -v jq >/dev/null 2>&1; then
-                v="$(jq -r --arg k "$1" '.[$k] // empty' "$EXPECT_FILE" 2>/dev/null || true)"
-              fi
-              if [[ -z "$v" || "$v" == "null" ]] && command -v node >/dev/null 2>&1; then
-                v="$(node -e "try{const c=JSON.parse(require('fs').readFileSync('$EXPECT_FILE','utf8'));process.stdout.write(c['$1']!=null?String(c['$1']):'')}catch(e){}" 2>/dev/null || true)"
-              fi
-            fi
-            if [[ -n "$v" && "$v" != "null" ]]; then echo "$v"; else echo "$2"; fi
-          }
-          math_expected="$(read_expect math 36)"
-          cs_expected="$(read_expect cs 20)"
-          po_expected="$(read_expect po 18)"
-
-          # 目录缺失时必须报警，不能让 find 的报错被 wc -l 吞成 0
-          count_md() {
-            local d="$1"; shift
-            if [[ ! -d "$d" ]]; then echo "MISSING"; return; fi
-            find "$d" -name "*.md" "$@" 2>/dev/null | wc -l | tr -d ' '
-          }
-          # >100% 说明期望值过期，必须显式提示而不是输出荒谬百分比
-          pct_of() {
-            if [[ "$2" == "MISSING" || "$2" -le 0 ]]; then echo "N/A"; return; fi
-            if [[ "$1" == "MISSING" ]]; then echo "N/A"; return; fi
-            local p=$(( $1 * 100 / $2 ))
-            if [[ $p -gt 100 ]]; then echo "${p}% ⚠️超预期"; else echo "${p}%"; fi
-          }
-          cell() { [[ "$1" == "MISSING" ]] && echo "⚠️ 目录缺失" || echo "$1"; }
+          math_expected="$(read_expect "$EXPECT_FILE" math 70)"
+          cs_expected="$(read_expect "$EXPECT_FILE" cs 44)"
+          po_expected="$(read_expect "$EXPECT_FILE" po 20)"
+          echo "📐 期望值: math=$math_expected cs=$cs_expected po=$po_expected"
 
           {
             echo "# 知识点覆盖率分析报告（机器生成版）"
@@ -496,20 +472,19 @@ jobs:
           # 报告轮转：每天新增一个 patrol-report-YYYYMMDD.md，此前从不清理，
           # 已堆积 30 份（2026-08-18 起）且会无限增长到 365 份/年，
           # 让 knowledge/ 目录被噪声淹没。保留最近 30 份，更早的删除。
-          # （2026-09-17 修）
+          # 轮转逻辑在 scripts/lib/patrol-lib.sh，与测试同源。（2026-09-17 修）
           # ------------------------------------------------------------
+          source scripts/lib/patrol-lib.sh
           KEEP=30
-          mapfile -t ALL_REPORTS < <(ls -1 knowledge/patrol-report-*.md 2>/dev/null | sort)
-          TOTAL=${#ALL_REPORTS[@]}
-          if [[ $TOTAL -gt $KEEP ]]; then
-            REMOVE=$((TOTAL - KEEP))
-            echo "🧹 报告轮转：共 $TOTAL 份，保留最近 $KEEP 份，清理 $REMOVE 份"
-            for ((i = 0; i < REMOVE; i++)); do
-              echo "  - 删除 ${ALL_REPORTS[$i]}"
-              rm -f "${ALL_REPORTS[$i]}"
+          mapfile -t TO_DELETE < <(rotate_reports "$KEEP" "knowledge/patrol-report-")
+          if [[ ${#TO_DELETE[@]} -gt 0 ]]; then
+            echo "🧹 报告轮转：清理 ${#TO_DELETE[@]} 份（保留最近 $KEEP 份）"
+            for f in "${TO_DELETE[@]}"; do
+              echo "  - 删除 $f"
+              rm -f "$f"
             done
           else
-            echo "ℹ️ 报告轮转：共 $TOTAL 份，未超过上限 $KEEP，无需清理"
+            echo "ℹ️ 报告轮转：未超过上限 $KEEP，无需清理"
           fi
 
           # 注意：knowledge/coverage-report.md 是人工复核版，**不加入**自动提交，

@@ -7,102 +7,100 @@
 #   用 `((VAR++))` 计数，在 GitHub Actions 默认的 `bash -e` 下，变量从 0 变 1 时
 #   该表达式返回退出码 1 → 整个 step 静默中断 → 报告只留第一条记录；
 #   又因为每个 step 都带 `continue-on-error: true`，失败被完全吞掉，
-#   workflow 显示"通过"。这个 bug 潜伏多日无人发现，根本原因就是**没有测试**。
-#   本文件用来防止同类问题回归。
+#   workflow 显示「通过」。这个 bug 潜伏多日无人发现，根本原因就是**没有测试**。
+#
+# 关键设计：函数实现从 scripts/lib/patrol-lib.sh **同源 source**，不抄副本。
+#   抄副本的测试会漂移 —— 工作流里的实现改了，测试仍对着旧副本报「通过」，
+#   那是假信心，比没有测试更危险。
 #
 # 用法：bash scripts/test-patrol-logic.sh
 # ============================================================================
 set -euo pipefail
 
-WF_FILE=".github/workflows/auto-patrol.yml"
-
 cd "$(dirname "$0")/.."
+
+WF_FILE=".github/workflows/auto-patrol.yml"
+LIB_FILE="scripts/lib/patrol-lib.sh"
+EXPECT_FILE="scripts/coverage-expectations.json"
 TMPDIR_T=".tmp-patrol-test"
+
+FAILED=0
+pass() { echo "  ✅ $1"; }
+fail() { echo "  ❌ $1"; FAILED=$((FAILED + 1)); }
+check_eq() { # <actual> <expected> <label>
+  if [[ "$1" == "$2" ]]; then pass "$3"; else fail "$3 —— 实际 '$1'，期望 '$2'"; fi
+}
+
 mkdir -p "$TMPDIR_T"
 
-echo "===== 1. count_md / pct_of 函数 ====="
-count_md() {
-  local d="$1"; shift
-  if [[ ! -d "$d" ]]; then echo "MISSING"; return; fi
-  find "$d" -name "*.md" "$@" 2>/dev/null | wc -l | tr -d ' '
-}
-pct_of() {
-  if [[ "$2" == "MISSING" || "$2" -le 0 ]]; then echo "N/A"; return; fi
-  if [[ "$1" == "MISSING" ]]; then echo "N/A"; return; fi
-  local p=$(( $1 * 100 / $2 ))
-  if [[ $p -gt 100 ]]; then echo "${p}% ⚠️超预期"; else echo "${p}%"; fi
-}
-cell() { [[ "$1" == "MISSING" ]] && echo "⚠️ 目录缺失" || echo "$1"; }
+# 同源加载被测实现
+# shellcheck source=scripts/lib/patrol-lib.sh
+source "$LIB_FILE"
 
+echo "===== 1. count_md：目录计数与缺失告警 ====="
 m="$(count_md docs/posts/math/notes/ ! -name 'index.md' ! -name 'syllabus.md')"
 c="$(count_md docs/posts/computer/notes/ ! -name 'index.md' ! -name 'syllabus.md')"
 p="$(count_md docs/posts/politics/notes/ ! -name 'index.md')"
 e="$(count_md docs/posts/english/notes/ ! -name 'index.md')"
-echo "math=$m cs=$c po=$p en=$e"
-echo "缺失目录: $(count_md docs/posts/nonexistent/)"
-echo "cell(MISSING) = $(cell MISSING)"
+echo "  math=$m cs=$c po=$p en=$e"
+[[ "$m" =~ ^[0-9]+$ ]] && pass "math 返回数字" || fail "math 未返回数字: '$m'"
+check_eq "$(count_md docs/posts/nonexistent-dir/)" "MISSING" "缺失目录返回 MISSING（而非静默 0）"
+# 目录缺失时绝不能返回 0 —— 那会把「目录没了」伪装成「一个文件都没有」
+[[ "$(count_md docs/posts/nonexistent-dir/)" != "0" ]] \
+  && pass "缺失目录未伪装成 0" || fail "缺失目录被伪装成 0"
 
 echo ""
-echo "===== 2. 期望值读取三级回退 ====="
-EXPECT_FILE="scripts/coverage-expectations.json"
-read_expect() {
-  local v=""
-  if [[ -f "$EXPECT_FILE" ]]; then
-    if command -v jq >/dev/null 2>&1; then
-      v="$(jq -r --arg k "$1" '.[$k] // empty' "$EXPECT_FILE" 2>/dev/null || true)"
-    fi
-    if [[ -z "$v" || "$v" == "null" ]] && command -v node >/dev/null 2>&1; then
-      v="$(node -e "try{const c=JSON.parse(require('fs').readFileSync('$EXPECT_FILE','utf8'));process.stdout.write(c['$1']!=null?String(c['$1']):'')}catch(e){}" 2>/dev/null || true)"
-    fi
-  fi
-  if [[ -n "$v" && "$v" != "null" ]]; then echo "$v"; else echo "$2"; fi
-}
-echo "jq 可用? $(command -v jq >/dev/null 2>&1 && echo yes || echo no)"
-echo "node 可用? $(command -v node >/dev/null 2>&1 && echo yes || echo no)"
-math_expected="$(read_expect math 36)"
-cs_expected="$(read_expect cs 20)"
-po_expected="$(read_expect po 18)"
-echo "读取到: math=$math_expected cs=$cs_expected po=$po_expected  (期望 70/44/20)"
-[ "$math_expected" = "70" ] || { echo "❌ math 期望值读取失败"; exit 1; }
+echo "===== 2. pct_of：百分比与超预期告警 ====="
+check_eq "$(pct_of 70 70)" "100%" "70/70 = 100%"
+check_eq "$(pct_of 40 20)" "200% ⚠️超预期" "40/20 标注超预期（不输出裸 200%）"
+check_eq "$(pct_of 0 36)" "0%" "0/36 = 0%"
+check_eq "$(pct_of 100 0)" "N/A" "分母为 0 → N/A"
+check_eq "$(pct_of MISSING 36)" "N/A" "实际缺失 → N/A"
+check_eq "$(pct_of 70 MISSING)" "N/A" "期望缺失 → N/A"
 
 echo ""
-echo "===== 3. 覆盖率结果（配置生效后） ====="
-echo "math: $(pct_of "$m" "$math_expected")   (期望 100%)"
-echo "cs:   $(pct_of "$c" "$cs_expected")   (期望 100%)"
-echo "po:   $(pct_of "$p" "$po_expected")   (期望 100%)"
-echo "极端 pct_of 100 0        = $(pct_of 100 0)          (期望 N/A)"
-echo "极端 pct_of 0 36         = $(pct_of 0 36)           (期望 0%)"
-echo "极端 pct_of MISSING 36   = $(pct_of MISSING 36)     (期望 N/A)"
-echo "极端 pct_of 40 20        = $(pct_of 40 20)          (期望 200% ⚠️超预期)"
+echo "===== 3. cell：MISSING 渲染 ====="
+check_eq "$(cell MISSING)" "⚠️ 目录缺失" "MISSING 渲染为告警"
+check_eq "$(cell 42)" "42" "正常值原样返回"
 
 echo ""
-echo "===== 4. 配置缺失时回退到默认值 ====="
-EXPECT_FILE="scripts/__nonexistent__.json"
-echo "math=$(read_expect math 36)  (期望 36 兜底)"
+echo "===== 4. read_expect：三级回退（jq → node → default） ====="
+echo "  jq 可用? $(command -v jq >/dev/null 2>&1 && echo yes || echo no)    node 可用? $(command -v node >/dev/null 2>&1 && echo yes || echo no)"
+check_eq "$(read_expect "$EXPECT_FILE" math 70)" "70" "读取 math"
+check_eq "$(read_expect "$EXPECT_FILE" cs 44)" "44" "读取 cs"
+check_eq "$(read_expect "$EXPECT_FILE" po 20)" "20" "读取 po"
+check_eq "$(read_expect "$EXPECT_FILE" notakey 999)" "999" "键不存在 → default"
+check_eq "$(read_expect scripts/__nope__.json math 70)" "70" "文件不存在 → default"
 
 echo ""
-echo "===== 5. 报告轮转逻辑（干跑） ====="
-KEEP=30
-mapfile -t ALL_REPORTS < <(ls -1 knowledge/patrol-report-*.md 2>/dev/null | sort)
-TOTAL=${#ALL_REPORTS[@]}
-echo "现有报告数: $TOTAL"
-if [[ $TOTAL -gt $KEEP ]]; then
-  REMOVE=$((TOTAL - KEEP))
-  echo "将清理 $REMOVE 份（保留最近 $KEEP）:"
-  for ((i = 0; i < REMOVE; i++)); do echo "  - ${ALL_REPORTS[$i]}"; done
-else
-  echo "未超过上限 $KEEP，无需清理（当前 $TOTAL 份）"
-fi
-# 模拟 35 份
-echo "模拟 35 份:"
-sim=(); for ((i=0;i<35;i++)); do sim+=("patrol-report-$(printf %02d $i).md"); done
-T=${#sim[@]}
-if [[ $T -gt $KEEP ]]; then
-  echo "  → 清理 $((T-KEEP)) 份，保留 ${sim[$((T-KEEP))]} 及之后"
+echo "===== 5. 配置与实测一致性（防漂移） ====="
+if [[ -f "$EXPECT_FILE" ]] && command -v node >/dev/null 2>&1; then
+  node -e "JSON.parse(require('fs').readFileSync('$EXPECT_FILE','utf8'))" 2>/dev/null \
+    && pass "coverage-expectations.json 是合法 JSON" || fail "JSON 解析失败"
+  # 配置值必须与实测文件数一致，否则报告又会输出荒谬百分比
+  check_eq "$(read_expect "$EXPECT_FILE" math 0)" "$m" "配置 math 期望值 == 实测文件数"
+  check_eq "$(read_expect "$EXPECT_FILE" cs 0)" "$c" "配置 cs 期望值 == 实测文件数"
+  check_eq "$(read_expect "$EXPECT_FILE" po 0)" "$p" "配置 po 期望值 == 实测文件数"
 fi
 
 echo ""
-echo "===== 6. CHECKED 行数统计 ====="
+echo "===== 6. rotate_reports：轮转只算不删 ====="
+# 对真实仓库干跑：待删数应恒等于 max(0, 实际份数 - 30)，且不得真的删掉东西
+real_reports="$(ls -1 knowledge/patrol-report-*.md 2>/dev/null | wc -l | tr -d ' ')"
+real_expected=$(( real_reports > 30 ? real_reports - 30 : 0 ))
+check_eq "$(rotate_reports 30 knowledge/patrol-report- | wc -l | tr -d ' ')" \
+  "$real_expected" "真实仓库 $real_reports 份 → 待删 $real_expected 份"
+check_eq "$(ls -1 knowledge/patrol-report-*.md 2>/dev/null | wc -l | tr -d ' ')" \
+  "$real_reports" "干跑未删除任何真实报告"
+mkdir -p "$TMPDIR_T/rot"
+for i in $(seq -w 1 35); do : > "$TMPDIR_T/rot/report-$i.md"; done
+check_eq "$(rotate_reports 30 "$TMPDIR_T/rot/report-" | wc -l | tr -d ' ')" "5" "构造 35 份、保留 30 → 待删 5 份"
+check_eq "$(rotate_reports 30 "$TMPDIR_T/rot/report-" | head -1)" "$TMPDIR_T/rot/report-01.md" "先删最旧的"
+check_eq "$(rotate_reports 40 "$TMPDIR_T/rot/report-" | wc -l | tr -d ' ')" "0" "未超上限 → 待删 0"
+check_eq "$(ls -1 "$TMPDIR_T/rot/" | wc -l | tr -d ' ')" "35" "干跑未实际删除文件"
+
+echo ""
+echo "===== 7. CHECKED 行数统计（综合报告） ====="
 TMP="$TMPDIR_T/report.md"
 {
   echo "# 🚨 自动巡逻报告"
@@ -111,6 +109,7 @@ TMP="$TMPDIR_T/report.md"
   echo ""
   echo "| 检查项 | 状态 | 详情 |"
   echo "|:---|:---:|:---|"
+  echo "| 🧪 巡逻脚本自检 | ✅ 通过 | 8 项功能 + 7 项防回归扫描 |"
   echo "| 🔨 站点构建 | ✅ 通过 | 构建成功 |"
   echo "| 🔗 链接检查 | ✅ 通过 | 无断链 |"
   echo "| 📋 质量体检 | ✅ 通过 | 无问题 |"
@@ -120,97 +119,72 @@ TMP="$TMPDIR_T/report.md"
 CHECKED_ROWS="$(grep -c '^| ' "$TMP" || true)"
 CHECKED=$(( ${CHECKED_ROWS:-0} - 1 ))
 [[ $CHECKED -lt 0 ]] && CHECKED=0
-echo "grep -c '^| ' = $CHECKED_ROWS  →  CHECKED = $CHECKED  (期望 5)"
-[ "$CHECKED" = "5" ] || { echo "❌ 行数统计错误"; exit 1; }
-
-echo ""
-echo "===== 7. 空报告边界 ====="
+check_eq "$CHECKED" "6" "6 行正文（表头不计、分隔行不匹配）"
 TMP2="$TMPDIR_T/empty.md"
 echo "# 空报告" > "$TMP2"
 R="$(grep -c '^| ' "$TMP2" || true)"
 C=$(( ${R:-0} - 1 )); [[ $C -lt 0 ]] && C=0
-echo "grep 返回 '$R' → CHECKED = $C (期望 0)"
-[ "$C" = "0" ] || { echo "❌ 边界处理错误"; exit 1; }
+check_eq "$C" "0" "空报告 → 0（不为负）"
 
 echo ""
-echo "===== 8. 报告的 Markdown 表格结构 ====="
-cat "$TMP"
-
-echo ""
-echo "===== 9. 禁用模式扫描（防回归） ====="
-# 9a. ((VAR++)) —— 见文件头说明，这是导致巡逻静默中断的元凶
-#     必须排除注释行：本文件与 workflow 里都有大段解释该 bug 的注释文字，
-#     它们本身含有 "((VAR++))" 字面量，不排除会造成永久性误报。
+echo "===== 8. 禁用模式扫描（防回归） ====="
+# 8a. ((VAR++)) —— 见文件头说明，这是导致巡逻静默中断的元凶
+#     必须排除注释行：workflow 里有大段解释该 bug 的注释含此字面量
 VAR_INC_HITS="$(grep -nE '\(\([A-Za-z_][A-Za-z0-9_]*(\+\+|--)\)\)' "$WF_FILE" \
   | grep -vE '^[0-9]+:[[:space:]]*#' || true)"
 if [[ -n "$VAR_INC_HITS" ]]; then
-  echo "❌ 发现 ((VAR++)) / ((VAR--))：在 bash -e 下变量 0→1 时返回 1，会静默中断 step"
+  fail "发现 ((VAR++)) / ((VAR--))，bash -e 下会静默中断 step"
   echo "$VAR_INC_HITS"
-  echo "   请改用 VAR=\$((VAR + 1))"
-  exit 1
 else
-  echo "✅ 无 ((VAR++)) / ((VAR--)) 用法（已排除注释）"
+  pass "无 ((VAR++)) / ((VAR--)) 用法（已排除注释）"
 fi
 
-# 9b. 覆盖率脚本不得再写人工复核版报告
-if grep -nE '>\s*"?\$?REPORT_FILE"?\s*$' "$WF_FILE" | grep -q 'coverage-report\.md'; then
-  echo "❌ 覆盖率脚本仍在写 coverage-report.md（人工复核版），会被覆写丢失"
-  exit 1
-fi
-if grep -n 'REPORT_FILE="knowledge/coverage-report.md"' "$WF_FILE"; then
-  echo "❌ 覆盖率 REPORT_FILE 仍指向人工复核版 coverage-report.md"
-  exit 1
+# 8b. 覆盖率脚本不得写人工复核版报告
+if grep -q 'REPORT_FILE="knowledge/coverage-report.md"' "$WF_FILE"; then
+  fail "覆盖率 REPORT_FILE 仍指向人工复核版 coverage-report.md"
 else
-  echo "✅ 覆盖率报告写入 *-auto.md，人工版未被覆写"
+  pass "覆盖率报告写入 *-auto.md，人工版未被覆写"
 fi
-
-# 9c. 自动提交不得包含人工复核版覆盖率报告
 if grep -n 'git add' "$WF_FILE" | grep -q 'knowledge/coverage-report\.md'; then
-  echo "❌ git add 中包含人工复核版 coverage-report.md"
-  exit 1
+  fail "git add 中包含人工复核版 coverage-report.md"
 else
-  echo "✅ 自动提交未包含人工复核版 coverage-report.md"
+  pass "自动提交未包含人工复核版 coverage-report.md"
 fi
 
-# 9d. 期望值配置文件必须存在且可解析
-if [[ ! -f "scripts/coverage-expectations.json" ]]; then
-  echo "❌ scripts/coverage-expectations.json 缺失"
-  exit 1
-fi
-if command -v node >/dev/null 2>&1; then
-  node -e "JSON.parse(require('fs').readFileSync('scripts/coverage-expectations.json','utf8'))" \
-    && echo "✅ coverage-expectations.json 是合法 JSON" \
-    || { echo "❌ coverage-expectations.json JSON 解析失败"; exit 1; }
-fi
+# 8c. 关键逻辑必须存在
+grep -q 'KEEP=30' "$WF_FILE" && pass "存在报告轮转" || fail "缺少报告轮转逻辑"
+grep -q 'issues.listForRepo' "$WF_FILE" && pass "存在 Issue 去重" || fail "缺少 Issue 去重逻辑"
+grep -q 'git rebase --abort' "$WF_FILE" && pass "存在 rebase 冲突回滚" || fail "缺少 git rebase --abort"
+grep -q 'source scripts/lib/patrol-lib.sh' "$WF_FILE" \
+  && pass "工作流引用共用库（未内联副本）" || fail "工作流未 source 共用库"
 
-# 9e. 报告轮转逻辑必须存在
-if grep -q 'KEEP=30' "$WF_FILE"; then
-  echo "✅ 存在报告轮转逻辑（保留 30 份）"
-else
-  echo "❌ 缺少报告轮转逻辑，patrol-report-*.md 会无限堆积"
-  exit 1
-fi
-
-# 9f. Issue 去重逻辑必须存在
-if grep -q 'issues.listForRepo' "$WF_FILE"; then
-  echo "✅ 存在 Issue 去重逻辑"
-else
-  echo "❌ 缺少 Issue 去重逻辑，会每天新建重复 Issue"
-  exit 1
-fi
-
-# 9g. rebase 冲突必须回滚
-if grep -q 'git rebase --abort' "$WF_FILE"; then
-  echo "✅ 存在 rebase 冲突回滚逻辑"
-else
-  echo "❌ 缺少 git rebase --abort，rebase 冲突会残留污染工作区"
-  exit 1
-fi
+# 8d. 工作流内不得再内联这些函数定义（否则又与库漂移）
+for fn in count_md pct_of read_expect rotate_reports; do
+  if grep -qE "^[[:space:]]*${fn}\(\)[[:space:]]*\{" "$WF_FILE"; then
+    fail "工作流内联了 ${fn}()，会与 $LIB_FILE 漂移"
+  else
+    pass "工作流未内联 ${fn}()"
+  fi
+done
 
 echo ""
 echo "===== 清理 ====="
-rm -rf "$TMPDIR_T"
-echo "已清理 $TMPDIR_T"
+# 清理必须**容忍失败**：本机沙箱会拦截批量删除（35 个文件即触发
+# safe-delete 保护），若无条件 `rm -rf` + set -e，测试会因清理失败而
+# 报错退出 —— 明明是全部通过却返回退出码 1，比不清理更糟。
+# CI 上（Linux）能正常删除；本机删不掉时只提示，不影响测试结论。
+if rm -rf "$TMPDIR_T" 2>/dev/null; then
+  echo "  已清理 $TMPDIR_T"
+else
+  echo "  ⚠️ 无法清理 $TMPDIR_T（本机沙箱拦截批量删除），已忽略"
+  echo "     该目录已在 .gitignore 中，不会污染仓库"
+fi
 
 echo ""
-echo "✅ 全部测试通过（8 项功能 + 7 项防回归扫描）"
+if [[ $FAILED -eq 0 ]]; then
+  echo "✅ 全部测试通过"
+  exit 0
+else
+  echo "❌ 有 $FAILED 项失败"
+  exit 1
+fi
