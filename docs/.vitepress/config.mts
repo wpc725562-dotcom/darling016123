@@ -877,6 +877,43 @@ export default defineConfig({
           ],
         },
       ],
+      // 题库自成一段：这 7 页此前不属于任何 sidebar 键 ⇒ 打开后没有侧栏，只能在页内互相跳。
+      // 加了这个键，6 个题库之间可以随时切换。
+      '/posts/题库/': [
+        {
+          text: '📚 题库总入口',
+          items: [
+            { text: '全部题库一览（398 题）', link: '/posts/题库/' },
+          ],
+        },
+        {
+          text: '计算机',
+          items: [
+            { text: '🖥️ 真题刷题 133 题 · 可交互', link: '/posts/题库/计算机真题刷题' },
+            { text: '✍️ 手写题 30 题 · 填空/简答/计算/应用', link: '/posts/题库/计算机手写题' },
+            { text: '📝 高频简答题 45 题', link: '/posts/题库/高频简答题库' },
+          ],
+        },
+        {
+          text: '数学',
+          items: [
+            { text: '🔢 计算题专项训练 50 题', link: '/posts/题库/高数计算题专项训练' },
+            { text: '🌱 零基础扫盲 40 题 · 符号读法', link: '/posts/题库/零基础扫盲题库' },
+          ],
+        },
+        {
+          text: '政治',
+          items: [
+            { text: '🏛️ 选择题 100 题', link: '/posts/题库/政治选择题题库' },
+          ],
+        },
+        {
+          text: '使用方式',
+          items: [
+            { text: '🗺️ 计算机考点资源图谱', link: '/posts/resources/考点资源图谱-计算机' },
+          ],
+        },
+      ],
     },
     socialLinks: [
       {

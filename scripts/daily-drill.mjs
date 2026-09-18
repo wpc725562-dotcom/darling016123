@@ -24,6 +24,14 @@ import { join, dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..')
+
+/* ★ 本文件是「顶层执行」脚本：`import()` 它会直接跑主流程，**静默覆盖当天的
+   计划文件**（题序会变，且原文件不在 git 里、无法还原）。
+   2026-09-18 调试时踩过一次。这里加守卫：非直接执行（被 import）时不写文件。
+   调试要引用本文件的函数：复制成 scripts/_dd-debug.mjs（ROOT 靠脚本位置推，
+   所以必须放仓库内），并在末尾加 `export { ... }` 后 import。 */
+const IS_MAIN = !!process.argv[1] &&
+  resolve(process.argv[1]) === fileURLToPath(import.meta.url)
 const args = process.argv.slice(2)
 const getArg = (name) => { const i = args.indexOf('--' + name); return i >= 0 ? args[i + 1] : undefined }
 const hasFlag = (name) => args.includes('--' + name)
@@ -53,6 +61,19 @@ const BANKS = {
   'C语言改错': { file: 'docs/posts/computer/notes/3.0-改错题专项训练.md', type: 'fixErr', subject: 'C语言' },
   '计算机同型': { file: 'docs/posts/computer/notes/3.2-更多同型练习题.md', type: 'numChoice', subject: '计算机' },
   '简答': { file: '资料/高频简答题库.md', type: 'short', subject: '计算机' },
+  /* —— 真题：2018–2026 计算机真题（单选 + 判断），带考点 ——
+     这是**唯一覆盖数据结构 2.x 全章**的题源（树/图/查找/排序），别删。 */
+  '计算机真题': {
+    files: [
+      '历年真题/计算机程序设计/2021.md',
+      '历年真题/计算机程序设计/2022.md',
+      '历年真题/计算机程序设计/2024.md',
+      'docs/posts/computer/2025-真题回忆版.md',
+      'docs/posts/computer/2026-回忆版详解.md',
+    ],
+    type: 'examChoice',
+    subject: '计算机',
+  },
   /* —— 记忆类 —— */
   '政治': { file: '资料/政治选择题题库.md', type: 'choice', subject: '政治' },
 }
@@ -83,6 +104,22 @@ function csLevel(text, subjectName) {
 // ============ 通用工具 ============
 const norm = (c) => c.replace(/\r\n/g, '\n')
 const clean = (s) => String(s || '').replace(/\n{3,}/g, '\n\n').trim()
+
+/** 判断一段是不是「只有考点、没有解析」。
+    ★ 判断题的答案行尾常跟一个考点链接，**真解析在它下面一段**：
+        **答案：√** · [[2.2 线性表]]
+        <空行>
+        线性表基本特性（首元无前驱，末元无后继）。
+    只取「答案行后的第一段」→ 解析变成考点名（实测 2024 判断题 10/10 中招）。 */
+function isPointNoise(p) {
+  const s = String(p || '')
+    .replace(/\[\[[^\]]*\]\]/g, '')
+    .replace(/\[[^\]]*\]\([^)]*\)/g, '')
+    .replace(/考点\s*\*\*[^*]*\*\*/g, '')
+    .replace(/考点/g, '')
+    .replace(/[·|>#*\s:：]/g, '')
+  return s.length === 0
+}
 
 /* 从 block 里抽 `> **xxx**：yyy` 引用行（题库里解析/错误/易错都是这个格式） */
 function quotes(block) {
@@ -244,6 +281,78 @@ function parseNumChoice(content) {
 }
 
 /**
+ * 计算机真题（`历年真题/计算机程序设计/*.md`、`docs/posts/computer/*.md`）：
+ *   `### N. 题干（ ）`
+ *   `A. x  B. y  C. z  D. w`（也可能每行一个）
+ *   `**答案：B** · 考点 [[1.2 数据的存储与运算]]`
+ *   `**解析**：…`
+ * 判断题长这样：`**答案：√**`（无 A/B/C/D）。
+ *
+ * ⚠️ 这个格式跟其它题库不同 —— 别的题库答案是引用行 `> **答案**：C`，
+ *    真题是**行内加粗** `**答案：B**`，所以必须单独一个解析器。
+ */
+function parseExamChoice(content) {
+  const text = norm(content)
+  const items = []
+  for (const c of text.split(/(?=###\s*\d+\.\s)/)) {
+    if (!/^###\s*\d+\.\s/.test(c)) continue
+    const blk = c.split(/\n##(?!#)/)[0]          // 不跨 ## 小节
+    const am = blk.match(/\*\*答案[：:]\s*(.+?)\*\*/)
+    if (!am) continue
+    const raw = am[1].trim()
+    const isTF = /^[√×对错]$/.test(raw)
+    if (!isTF && !/^[A-Da-d]$/.test(raw)) continue
+
+    const qm = blk.match(/^###\s*\d+\.\s*([^\n]+)/)
+    if (!qm) continue
+    const head = blk.slice(blk.indexOf('\n') + 1, am.index)
+
+    let optText = ''
+    const inline = head.match(
+      /A\s*[\.、:：]\s*(.+?)\s+B\s*[\.、:：]\s*(.+?)\s+C\s*[\.、:：]\s*(.+?)\s+D\s*[\.、:：]\s*(.+?)\s*$/m)
+    if (inline) {
+      optText = ['A', 'B', 'C', 'D'].map((L, i) => `${L}. ${inline[i + 1].trim()}`).join('　')
+    } else {
+      optText = head.split('\n').filter(l => /^\s*[A-D]\s*[\.、:：]/.test(l)).map(l => l.trim()).join('\n')
+    }
+
+    const pm = blk.match(/\[\[([^\]|]+)/) || blk.match(/\[([^\]]+)\]\([^)]*\)/)
+    const topic = pm ? pm[1].trim() : ''
+    /* ★ 解析标记有两种写法：`**解析**：` 和 `**解析**（下标 0…6，已升序）：`
+       —— 括号可能在冒号前面，只认冒号会漏掉一大批。
+       终止条件用 `---` / 下一个 `###`，并**保留换行**（解析常有编号步骤）。 */
+    const em = blk.match(/\*\*解析\*\*\s*(?:（[^）]*）)?\s*[：:]?\s*([\s\S]*?)(?=\n---|\n#{2,4}\s|$)/)
+    /* 判断题常没有 `**解析**` 标记，解析就是答案行之后的正文。
+       ★ 但答案行里带 `· 考点 [[1.2 …]]`（站点副本用的是 `[1.2 …](url)`），
+         必须先把这段剥掉，否则它会跑进解析里变成第一段。 */
+    /* 判断题常没有 `**解析**` 标记，解析就是答案行之后的正文。
+       ★ 但答案行里带 `· 考点 [[1.2 …]]`（站点副本用的是 `[1.2 …](url)`），
+         而且**它自成一段，真解析在下一段** —— 逐段跳过「纯考点/纯链接」段，
+         取第一段有实质内容的。只取第一段会让解析变成考点名。 */
+    let explain = em ? clean(em[1]) : ''
+    if (!explain) {
+      const tail = blk.slice(am.index + am[0].length)
+      for (const p of tail.split(/\n\s*\n/)) {
+        if (isPointNoise(p)) continue
+        const cand = clean(p)
+        if (cand.length > 3) { explain = cand; break }
+      }
+    }
+
+    const stem = clean(qm[1])
+    items.push({
+      q: clean(stem + (optText ? '\n\n' + optText : '')),
+      sub: topic,
+      topic,
+      ans: isTF ? (raw === '√' || raw === '对' ? '对' : '错') : raw.toUpperCase(),
+      explain,
+      level: csLevel(stem + ' ' + topic, '计算机'),
+    })
+  }
+  return items.filter(it => it.q && it.q.length < 400)
+}
+
+/**
  * 3.4 循环与数组综合编程专项：`## ② 基础层` / `③ 数组核心层` / `④ 真题同型层` + `### T1 标题`
  *   + 代码 + `> **答案：2550**` / `> **答案**：…` + `> **解析**：` + `> **易错**：`
  * 分层标题直接就是难度，不需要猜。
@@ -315,19 +424,35 @@ const PARSERS = {
   numChoice: parseNumChoice,
   tProg: parseTProg,
   fixErr: parseFixErr,
+  examChoice: parseExamChoice,
 }
 
 function loadBank(key) {
   const bank = BANKS[key]
-  const file = join(ROOT, bank.file)
-  if (!existsSync(file)) return { key, items: [], missing: true }
-  const content = readFileSync(file, 'utf-8')
-  const items = PARSERS[bank.type](content, { part: bank.part })
-  for (const it of items) {
-    it.bank = key
-    it.subject = bank.subject || key
+  /* 一个题库可以由多个文件拼成（真题按年份分文件） */
+  const fileList = bank.files || [bank.file]
+  const items = []
+  let found = 0
+  for (const rel of fileList) {
+    const file = join(ROOT, rel)
+    if (!existsSync(file)) continue
+    found++
+    const content = readFileSync(file, 'utf-8')
+    for (const it of PARSERS[bank.type](content, { part: bank.part })) {
+      it.bank = key
+      it.subject = bank.subject || key
+      items.push(it)
+    }
   }
-  return { key, items, file: bank.file }
+  /* 同年真题在两个目录各有一份，按题干去重 */
+  const seen = new Set()
+  const uniq = items.filter(it => {
+    const k = it.q.replace(/\s/g, '').slice(0, 60)
+    if (seen.has(k)) return false
+    seen.add(k)
+    return true
+  })
+  return { key, items: uniq, missing: found === 0, file: fileList.join(' + ') }
 }
 
 // ============ 抽题（随机分布的核心） ============
@@ -358,6 +483,55 @@ function pickByRatio(items, n, ratio) {
   for (let lvl = 1; lvl <= 3 && deficit > 0; lvl++)
     while (deficit > 0 && buckets[lvl].length) { out.push(buckets[lvl].pop()); deficit-- }
   return out
+}
+
+/** ★ 轨道（考试科目）判定。
+    为什么要它：`计算机真题` 是唯一覆盖数据结构 2.x 全章的题源，但它只占
+    113 题里的 34，且多为中档/拔高 —— 在 6:3:1 配比下几乎抽不到。
+    实测（15 次 × 15 题 = 225 题）：数据结构只出现 **1 次 = 0.4%**，
+    而它是整整一门考试科目（看板进度 0%）。按源分配权重解决不了这个问题 ——
+    必须按「科目轨道」兜底，否则源再多也轮不到它。 */
+function trackOf(it) {
+  const t = it.topic || ''
+  if (/^2\./.test(t)) return '数据结构'
+  if (it.subject === '高等数学') return '高数'
+  if (it.subject === '政治') return '政治'
+  if (/^1\./.test(t)) return 'C语言'
+  if (it.subject === 'C语言') return 'C语言'
+  if (/数据结构|线性表|栈|队列|串|二叉树|树|图|查找|排序|算法/.test(t)) return '数据结构'
+  return '综合'
+}
+
+/** 轨道下限：**只做「替换」，不改总题数**。
+    某轨道不足下限时，从该轨道取还没被选的题，替换掉「当前题量最多的源」里的一张。
+    牺牲者排除两处：本轨道已有的题、以及新题所在源（否则会把刚补进去的又换出来）。 */
+function applyTrackFloor(picked, usable, total) {
+  const floor = Math.max(1, Math.round(total * 0.15))
+  for (const [track, min] of Object.entries({ 数据结构: floor })) {
+    let got = picked.filter(it => trackOf(it) === track).length
+    if (got >= min) continue
+    const chosen = new Set(picked)
+    const cands = []
+    for (const l of usable) for (const it of l.items)
+      if (trackOf(it) === track && !chosen.has(it)) cands.push(it)
+    if (!cands.length) continue
+    shuffle(cands)
+    while (got < min && cands.length) {
+      const next = cands.pop()
+      const cnt = {}
+      for (const it of picked) cnt[it.bank] = (cnt[it.bank] || 0) + 1
+      let victim = null, best = -1
+      for (const it of picked) {
+        if (trackOf(it) === track) continue
+        if (it.bank === next.bank) continue
+        if (cnt[it.bank] > best) { best = cnt[it.bank]; victim = it }
+      }
+      if (!victim) break
+      picked.splice(picked.indexOf(victim), 1, next)
+      got++
+    }
+  }
+  return picked
 }
 
 /** 源权重：广东专升本计算机类 = 高数 + C 语言 + 数据结构 是主战场，政治/简答是记忆类副科。
@@ -492,6 +666,10 @@ if (countArg) {
     if (n > 0) picked.push(...pickByRatio(l.items, n, ratio))
   }
 }
+/* ★ 轨道兜底：保证数据结构这类「真题里有题、但按配比抽不到」的科目每天必出。
+   放在交错之前，且只替换不改数量。 */
+applyTrackFloor(picked, usable, countArg ? picked.length : totalArg)
+
 /* 科目交错：默认打散（除非 --grouped 按源分块） */
 if (!grouped) picked = shuffle(picked)
 
@@ -528,6 +706,11 @@ lines.push('', `共 ${picked.length} 题。错题登记：docs/checklists/错题
   `重抽一次（换题）：node scripts/daily-drill.mjs --total ${picked.length}`)
 
 const out = output ? join(ROOT, output) : join(ROOT, 'plan', `每日刷题-${dateStr}.md`)
-writeFileSync(out, lines.join('\n'), 'utf-8')
-console.log(`✅ 已生成：${out}`)
-console.log(`   ${picked.length} 题（基础${d[1]}/中档${d[2]}/拔高${d[3]}）｜ ${Object.entries(subjCount).map(([k, v]) => k + v).join(' ')}｜ 缺解答 ${picked.filter(i => !i.solution && !i.explain && (!i.ans || i.ans === '?')).length} 题`)
+if (!IS_MAIN) {
+  /* 被 import（调试）：只算不写，绝不碰当天的计划文件 */
+  console.error('[import 模式] 未写文件。要生成计划请直接执行本脚本。')
+} else {
+  writeFileSync(out, lines.join('\n'), 'utf-8')
+  console.log(`✅ 已生成：${out}`)
+  console.log(`   ${picked.length} 题（基础${d[1]}/中档${d[2]}/拔高${d[3]}）｜ ${Object.entries(subjCount).map(([k, v]) => k + v).join(' ')}｜ 缺解答 ${picked.filter(i => !i.solution && !i.explain && (!i.ans || i.ans === '?')).length} 题`)
+}
