@@ -12,7 +12,6 @@
 | 学习库本体 | `历年真题/` `政治理论/` `高等数学/` `编程技能/` `资料/` | Obsidian 笔记源 | Markdown |
 | 知识库流水线 | `knowledge/` `skills/` | PDF→标准试卷→知识库 | YAML + Markdown |
 | 网页站 | `docs/` | VitePress 站点（GitHub Pages） | TS + Vue + MD |
-| 桌面应用 | `bencetong/` | Electron 学习助手 | Vue 3 + Electron |
 | 脚本 | `scripts/` | 数据抓取/同步/填充 | Python + Node |
 | 运维 | `.github/workflows/` | CI 自动部署 | YAML |
 | 排障库 | `agent-troubleshoot/` | Agent 报错排查 | Markdown |
@@ -79,23 +78,14 @@ PDF试卷 → pdf-to-knowledge 技能 → knowledge/exam_papers/*.md（标准排
 
 ---
 
-## 4. bencetong/ — Electron 学习助手
-
-- 技术栈：Vue 3 + Vite + Pinia + vue-router + Electron
-- 视图：Dashboard / Learn / Quiz / Reader / AITutor / ScienceGuide / Settings
-- 数据：`src/data/chapters-data.js`（章节进度、学习时长存储）
-- AITutor 支持多会话历史（本次更新）
-
----
-
-## 5. .github/workflows/ — CI/CD
+## 4. .github/workflows/ — CI/CD
 
 - `deploy.yml`：push 到 main → `npm ci` + `docs:build` → 上传 Pages artifact → 部署
 - ⚠️ 最近 run 61-69 失败（build job），lockfile registry 已修复推送（见排障库 E-01）
 
 ---
 
-## 6. computer-kb/ + agent-troubleshoot/ + tests/（本次新增）
+## 5. computer-kb/ + agent-troubleshoot/ + tests/（本次新增）
 
 - `computer-kb/`：计算机考点速查（易错点对照表 / 知识图谱 / 题型速览）
 - `agent-troubleshoot/`：Agent 真实报错排查库（8 个 E-0x 条目）

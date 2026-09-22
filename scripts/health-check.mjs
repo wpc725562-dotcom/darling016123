@@ -85,7 +85,10 @@ function checkDirectoryIntegrity() {
 function checkBrokenLinks() {
   let brokenCount = 0;
   const brokenLinks = [];
-  
+
+  // 这些 [[...]] 是 Markdown 扩展指令，不是文件双链，需跳过
+  const SKIP_WIKI = new Set(['toc', 'tableofcontents']);
+
   // 只检查 docs/ 目录下的 .md 文件
   const docsDir = join(ROOT, 'docs');
   if (!existsSync(docsDir)) {
@@ -100,12 +103,31 @@ function checkBrokenLinks() {
       if (entry.isDirectory() && !entry.name.startsWith('.') && entry.name !== 'node_modules' && entry.name !== 'dist') {
         walkDir(fullPath);
       } else if (entry.isFile() && entry.name.endsWith('.md')) {
-        const content = readFileSync(fullPath, 'utf-8');
+        const raw = readFileSync(fullPath, 'utf-8');
+        // ★ 先剥离围栏代码块与行内代码，再匹配双链（2026-09-23 修）。
+        //   为什么：文档里经常**用反引号举例说明**双链写法，例如
+        //   `docs/posts/computer/notes/1.1-C语言概述与基本概念.md:24` 写的是
+        //   「只统计真题原文里带标签 `[[1.1 …]]` 的题」——
+        //   那是**标签格式的示例**，不是真链接。旧版不剥离，于是每篇这类笔记
+        //   都稳定报 1 处断链（实测 20 处全是这一类假阳性）。
+        //   `scripts/check-links.mjs` 已用同样的 stripCode 处理，这里对齐。
+        const content = raw
+          .replace(/```[\s\S]*?```/g, '')
+          .replace(/~~~[\s\S]*?~~~/g, '')
+          .replace(/`[^`\n]*`/g, '');
         // 检查 wiki 双链 [[...]]
         const wikiLinks = content.match(/\[\[([^\]]+)\]\]/g) || [];
         for (const link of wikiLinks) {
-          const target = link.slice(2, -2).replace(/\|.+$/, '').split('#')[0]; // 去掉 [[ 和 ]]，去掉 |显示文字 和 #锚点
+          // 去掉 [[ 和 ]]，去掉 |显示文字 和 #锚点；末尾 trim 是必需的 ——
+          // 否则 `[[ ]]`（文档里举例说明双链语法时写的空链）会得到 ' '，
+          // `!target` 判不出空，被当成文件名去查表从而误报断链（2026-09-17 修）
+          const target = link.slice(2, -2).replace(/\|.+$/, '').split('#')[0].trim();
           if (!target) continue;
+          // 跳过 Markdown 扩展指令，不是文件链接
+          if (SKIP_WIKI.has(target.toLowerCase())) continue;
+          // 跳过「省略号占位」：`[[1.1 …]]`、`[[...]]` 是文档在描述格式，
+          // 不可能是真实笔记名（真实文件名里不会有 … 或 ...）
+          if (/[…]$|\.{2,}$/.test(target)) continue;
           // 尝试按 basename 匹配
           const found = findFileByBasename(target, docsDir);
           if (!found) {

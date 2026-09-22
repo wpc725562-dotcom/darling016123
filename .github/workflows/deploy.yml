@@ -53,19 +53,35 @@ jobs:
       # 跨项目联动：构建成功后通知 ai-learning-assistant 重建 RAG 知识库
       # 前提：仓库配置 PAT（Actions secrets → RAG_TRIGGER_TOKEN，需 repo 权限）
       # 未配置时该步骤静默跳过，ai-learning-assistant 每天凌晨 4:00 仍有兜底重建
+      #
+      # ⚠️ 2026-09-17 修：原写法 `if: success() && env.RAG_TRIGGER_TOKEN != ''`
+      # 是**死代码** —— RAG_TRIGGER_TOKEN 定义在本 step 自己的 env 里，
+      # 而 step 级 `if` 在 env 生效**之前**求值，因此该条件恒为假，
+      # 这步从未真正执行过。改为在 run 内部判断（run 里 env 一定已注入）。
+      #
+      # 同时给 curl 加 -f：原写法 curl 对 HTTP 4xx/5xx 仍返回 0，
+      # 于是无论成功失败都打印「✅ 已通知」，属于假成功。
       - name: 🔄 通知 ai-learning-assistant 重建 RAG
-        if: success() && env.RAG_TRIGGER_TOKEN != ''
+        if: success()
         env:
           RAG_TRIGGER_TOKEN: ${{ secrets.RAG_TRIGGER_TOKEN }}
         run: |
-          curl -s -X POST \
+          if [[ -z "$RAG_TRIGGER_TOKEN" ]]; then
+            echo "ℹ️ 未配置 RAG_TRIGGER_TOKEN，跳过（依赖 ai-learning-assistant 每日 04:00 兜底重建）"
+            exit 0
+          fi
+          HTTP_CODE=$(curl -s -f -o /tmp/rag_resp.txt -w '%{http_code}' -X POST \
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: Bearer $RAG_TRIGGER_TOKEN" \
             -H "X-GitHub-Api-Version: 2022-11-28" \
             https://api.github.com/repos/wpc725562-dotcom/ai-learning-assistant/dispatches \
-            -d '{"event_type":"rag-rebuild"}' \
-            && echo "✅ 已通知 ai-learning-assistant 重建 RAG" \
-            || echo "ℹ️ 通知失败（忽略，依赖 ai-learning-assistant 每日兜底）"
+            -d '{"event_type":"rag-rebuild"}')
+          if [[ "$HTTP_CODE" == "204" ]]; then
+            echo "✅ 已通知 ai-learning-assistant 重建 RAG (HTTP $HTTP_CODE)"
+          else
+            echo "::warning title=RAG 通知失败::HTTP $HTTP_CODE，依赖每日兜底重建"
+            echo "响应体: $(cat /tmp/rag_resp.txt 2>/dev/null | head -c 300)"
+          fi
 
   deploy:
     needs: build

@@ -11,6 +11,19 @@ on:
       - 'knowledge/**'
       - 'package.json'
       - 'package-lock.json'
+      # 2026-09-17 补充：巡逻脚本自身的改动也必须触发巡逻，
+      # 否则脚本写坏了没有任何 CI 反馈 —— 这正是此前
+      # 「((VAR++)) 中断导致报告静默截断」潜伏多日没人发现的原因。
+      - '.github/workflows/**'
+      - 'scripts/health-check.mjs'
+      - 'scripts/check-links.mjs'
+      # 巡逻脚本自检 + 覆盖率期望值配置的改动同样必须触发巡逻，
+      # 否则改了配置/测试却没有 CI 反馈（2026-09-17 补）
+      - 'scripts/test-patrol-logic.sh'
+      - 'scripts/coverage-expectations.json'
+      # 共用库是巡逻逻辑的**实现本体**，改了它必须跑自检。
+      # 只写具体文件名会漏掉未来的新库文件，故用目录通配。（2026-09-17 补）
+      - 'scripts/lib/**'
 
   # 每天凌晨 3:00 全量检查
   schedule:
@@ -68,6 +81,20 @@ jobs:
         run: npm ci
 
       # ============================================================
+      # P0: 巡逻脚本自检
+      # 为什么放在最前面：巡逻脚本本身出错时会**静默**产出残缺报告
+      # （step 有 continue-on-error，失败被吞、workflow 仍显示通过），
+      # 2026-09-17 的 ((VAR++)) 事故就是这样潜伏多日的。
+      # 先跑自检，脚本有问题立刻红灯，而不是等几天后发现报告少了一半。
+      # 注意：本步**故意不加** continue-on-error —— 自检失败必须让 job 失败。
+      # ============================================================
+      - name: '🧪 [P0] 巡逻脚本自检'
+        id: self_test
+        run: |
+          echo "🧪 开始巡逻脚本自检..."
+          bash scripts/test-patrol-logic.sh
+
+      # ============================================================
       # P0: 站点构建检查
       # ============================================================
       - name: '🔨 [P0] 站点构建检查'
@@ -107,8 +134,19 @@ jobs:
             while IFS= read -r line; do
               if [[ $line =~ \[\[([^]]+)\]\] ]]; then
                 link="${BASH_REMATCH[1]}"
+                # 去掉 |显示名，只留路径部分（Obsidian 语法 [[路径|显示文字]]）
+                link="${link%%|*}"
                 # 提取链接目标（去掉 # 锚点部分）
                 target="${link%%#*}"
+                # 去掉首尾空白 —— 必需：文档里举例写的 [[ ]] 会得到空格，
+                # 不 trim 就会被当成文件名去 find，从而误报断链（2026-09-17 修）
+                target="$(printf '%s' "$target" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')"
+                # 空目标不是链接，跳过
+                if [[ -z "$target" ]]; then continue; fi
+                # 跳过 Markdown 扩展指令：[[toc]] 由插件渲染成目录，没有对应文件。
+                # 此前 4 个日语页面因此被持续误报（2026-09-17 修，
+                # 与 scripts/health-check.mjs、scripts/check-links.mjs 的 SKIP_WIKI 一致）
+                if [[ "${target,,}" == "toc" || "${target,,}" == "tableofcontents" ]]; then continue; fi
                 # 尝试匹配文件（Obsidian 按 basename 匹配）
                 found=$(find docs/ -name "${target}.md" 2>/dev/null | head -1)
                 if [[ -z "$found" ]]; then
@@ -118,7 +156,8 @@ jobs:
                 fi
                 if [[ -z "$found" ]]; then
                   echo "- ❌ $file → [[$link]]" >> "$REPORT_FILE"
-                  ((BROKEN_COUNT++))
+                  # 同上：不可用 ((VAR++))，set -e 下 0→1 会中断 step
+                  BROKEN_COUNT=$((BROKEN_COUNT + 1))
                 fi
               fi
             done < <(grep -oP '\[\[[^\]]+\]\]' "$file" 2>/dev/null || true)
@@ -157,7 +196,10 @@ jobs:
                 level=${#BASH_REMATCH[1]}
                 if [[ $prev_level -gt 0 && $((level - prev_level)) -gt 1 ]]; then
                   echo "- ⚠️ $file: 标题跳级 '#$(printf '#%.0s' $(seq 1 $prev_level))' → '$line'" >> "$REPORT_FILE"
-                  ((ISSUES++))
+                  # 注意：不要写 ((VAR++))。在 GitHub Actions 默认的 `bash -e` 下，
+                  # ((VAR++)) 当 VAR 从 0 变 1 时返回退出码 1，会导致整个 step 静默中断，
+                  # 后续检查全部不执行、报告只留第一条。必须用 VAR=$((VAR + 1))。（2026-09-17 修）
+                  ISSUES=$((ISSUES + 1))
                 fi
                 prev_level=$level
               fi
@@ -170,11 +212,11 @@ jobs:
           for file in $(find docs/ -name "*.md"); do
             if file "$file" | grep -q "BOM"; then
               echo "- ⚠️ $file: 包含 BOM 头" >> "$REPORT_FILE"
-              ((ISSUES++))
+              ISSUES=$((ISSUES + 1))
             fi
             if grep -qP '\x{FFFD}' "$file" 2>/dev/null; then
               echo "- ❌ $file: 包含乱码字符" >> "$REPORT_FILE"
-              ((ISSUES++))
+              ISSUES=$((ISSUES + 1))
             fi
           done
           
@@ -206,7 +248,7 @@ jobs:
             if [[ -d "$dir" ]]; then
               if [[ ! -f "${dir}index.md" ]]; then
                 echo "- ❌ $dir: 缺少 index.md" >> "$REPORT_FILE"
-                ((MISSING_INDEX++))
+                MISSING_INDEX=$((MISSING_INDEX + 1))
               fi
             fi
           done
@@ -222,11 +264,20 @@ jobs:
           for src in "${!SOURCE_MAP[@]}"; do
             dst="${SOURCE_MAP[$src]}"
             if [[ -d "$src" && -d "$dst" ]]; then
-              src_count=$(find "$src" -name "*.md" | wc -l)
-              dst_count=$(find "$dst" -name "*.md" | wc -l)
-              if [[ $src_count -ne $dst_count ]]; then
-                echo "- ⚠️ $src ($src_count) → $dst ($dst_count): 文件数不匹配" >> "$REPORT_FILE"
-                ((MISSING_INDEX++))
+              # 排除站点侧自动生成的 index.md，它不是源文件的对应物
+              src_count=$(find "$src" -name "*.md" ! -name "index.md" | wc -l)
+              dst_count=$(find "$dst" -name "*.md" ! -name "index.md" | wc -l)
+              # 2026-09-17 修正口径：
+              # 原逻辑「数量不等即告警」会把「站点侧多出独立维护的页面」误报为问题
+              # （例：编程技能/专升本英语/笔记 7 篇 ↔ docs/posts/english/notes 10 篇，
+              #   实为 7 篇一一对应 + 3 篇站点独有的 cloze/matching/agreement-exercises，
+              #   并非同步丢失）。这导致每天一条噪音告警，最终会让人忽略真告警。
+              # 现改为：只在「站点侧少于源侧」时告警（那才可能是同步丢了内容）。
+              if [[ $dst_count -lt $src_count ]]; then
+                echo "- ⚠️ $src ($src_count) → $dst ($dst_count): 站点侧少 $((src_count - dst_count)) 篇，疑似同步丢失" >> "$REPORT_FILE"
+                MISSING_INDEX=$((MISSING_INDEX + 1))
+              elif [[ $dst_count -gt $src_count ]]; then
+                echo "- ✅ $src ($src_count) → $dst ($dst_count): 站点侧多 $((dst_count - src_count)) 篇（独立维护，非丢失）" >> "$REPORT_FILE"
               else
                 echo "- ✅ $src → $dst: 一致 ($src_count 文件)" >> "$REPORT_FILE"
               fi
@@ -244,61 +295,78 @@ jobs:
       # P2: 知识点覆盖率分析
       # ============================================================
       - name: '📊 [P2] 知识点覆盖率分析'
-        if: inputs.patrol_level == 'full' || inputs.patrol_level == 'coverage'
+        # 定时巡逻也要跑。此前条件只有 inputs.patrol_level，而 schedule 触发时
+        # inputs.* 为空串 → 条件恒假 → 覆盖率报告长期不更新（2026-09-17 修）。
+        if: >-
+          github.event_name == 'schedule' ||
+          github.event_name == 'push' ||
+          inputs.patrol_level == 'full' ||
+          inputs.patrol_level == 'coverage'
         continue-on-error: true
         run: |
           echo "🛠 开始覆盖分析..."
-          REPORT_FILE="knowledge/coverage-report.md"
-          
-          echo "# 知识点覆盖率分析报告" > "$REPORT_FILE"
-          echo "- 分析时间: $(date '+%Y-%m-%d %H:%M')" >> "$REPORT_FILE"
-          echo "" >> "$REPORT_FILE"
-          
-          # 数学覆盖率
-          echo "## 高等数学" >> "$REPORT_FILE"
-          math_expected=36
-          math_actual=$(find docs/posts/math/notes/ -name "*.md" ! -name "index.md" ! -name "syllabus.md" | wc -l)
-          math_pct=$(( math_actual * 100 / math_expected ))
-          echo "- 应覆盖: $math_expected 章节" >> "$REPORT_FILE"
-          echo "- 已覆盖: $math_actual 文件" >> "$REPORT_FILE"
-          echo "- 覆盖率: ${math_pct}%" >> "$REPORT_FILE"
-          
-          # 计算机覆盖率
-          echo "" >> "$REPORT_FILE"
-          echo "## 计算机基础与程序设计" >> "$REPORT_FILE"
-          cs_expected=20
-          cs_actual=$(find docs/posts/computer/notes/ -name "*.md" ! -name "index.md" ! -name "syllabus.md" | wc -l)
-          cs_pct=$(( cs_actual * 100 / cs_expected ))
-          echo "- 应覆盖: $cs_expected 考点" >> "$REPORT_FILE"
-          echo "- 已覆盖: $cs_actual 文件" >> "$REPORT_FILE"
-          echo "- 覆盖率: ${cs_pct}%" >> "$REPORT_FILE"
-          
-          # 英语覆盖率
-          echo "" >> "$REPORT_FILE"
-          echo "## 英语" >> "$REPORT_FILE"
-          en_actual=$(find docs/posts/english/notes/ -name "*.md" ! -name "index.md" | wc -l)
-          echo "- 笔记模块: $en_actual 个" >> "$REPORT_FILE"
-          en_years=$(find docs/posts/english/ -maxdepth 1 -name "*.md" ! -name "index.md" | wc -l)
-          echo "- 真题年份: $en_years 年" >> "$REPORT_FILE"
-          
-          # 政治覆盖率
-          echo "" >> "$REPORT_FILE"
-          echo "## 政治理论" >> "$REPORT_FILE"
-          po_expected=18
-          po_actual=$(find docs/posts/politics/notes/ -name "*.md" ! -name "index.md" | wc -l)
-          po_pct=$(( po_actual * 100 / po_expected ))
-          echo "- 应覆盖: $po_expected 模块" >> "$REPORT_FILE"
-          echo "- 已覆盖: $po_actual 文件" >> "$REPORT_FILE"
-          echo "- 覆盖率: ${po_pct}%" >> "$REPORT_FILE"
-          
-          # 总体
-          echo "" >> "$REPORT_FILE"
-          echo "## 总体概览" >> "$REPORT_FILE"
-          echo "| 科目 | 覆盖率 |" >> "$REPORT_FILE"
-          echo "|:---|:---:|" >> "$REPORT_FILE"
-          echo "| 高等数学 | ${math_pct}% |" >> "$REPORT_FILE"
-          echo "| 计算机 | ${cs_pct}% |" >> "$REPORT_FILE"
-          echo "| 政治 | ${po_pct}% |" >> "$REPORT_FILE"
+          # ⚠️ 只写 *-auto.md。knowledge/coverage-report.md 是 2026-08-18 的
+          # 人工复核修正版（纠正「按文件大小误判空占位」、说明真题来源类型），
+          # 脚本此前直接 `> coverage-report.md` 覆写它，一次手动 full 巡逻
+          # 就会永久抹掉那份内容。机器产物与人工产物必须分文件。（2026-09-17 修）
+          REPORT_FILE="knowledge/coverage-report-auto.md"
+
+          # 共用函数从库里 source，**不要在这里内联副本**：
+          # 内联副本会与 scripts/test-patrol-logic.sh 漂移，导致测试对着旧副本
+          # 报「通过」而实际工作流已坏 —— 假信心测试。同源引用才让测试有效。
+          # shellcheck source=scripts/lib/patrol-lib.sh
+          source scripts/lib/patrol-lib.sh
+
+          # 期望值外置到配置文件，避免硬编码失真：原先 math_expected=36 而实际
+          # 已有 70 篇，算出来 194%、cs 220%，数字荒谬却长期无人发现。
+          EXPECT_FILE="scripts/coverage-expectations.json"
+          math_expected="$(read_expect "$EXPECT_FILE" math 70)"
+          cs_expected="$(read_expect "$EXPECT_FILE" cs 44)"
+          po_expected="$(read_expect "$EXPECT_FILE" po 20)"
+          echo "📐 期望值: math=$math_expected cs=$cs_expected po=$po_expected"
+
+          {
+            echo "# 知识点覆盖率分析报告（机器生成版）"
+            echo "- 分析时间: $(date '+%Y-%m-%d %H:%M')"
+            echo "- ⚠️ 本文件由巡逻脚本自动生成，**不要手工编辑**，每次巡逻都会被覆写。"
+            echo "  人工复核结论请写在 [coverage-report.md](./coverage-report.md)。"
+            echo ""
+            echo "## 高等数学"
+            math_actual="$(count_md docs/posts/math/notes/ ! -name 'index.md' ! -name 'syllabus.md')"
+            echo "- 期望: $math_expected 章节"
+            echo "- 实际: $(cell "$math_actual") 文件"
+            echo "- 覆盖率: $(pct_of "$math_actual" "$math_expected")"
+            echo ""
+            echo "## 计算机基础与程序设计"
+            cs_actual="$(count_md docs/posts/computer/notes/ ! -name 'index.md' ! -name 'syllabus.md')"
+            echo "- 期望: $cs_expected 考点"
+            echo "- 实际: $(cell "$cs_actual") 文件"
+            echo "- 覆盖率: $(pct_of "$cs_actual" "$cs_expected")"
+            echo ""
+            echo "## 英语"
+            en_actual="$(count_md docs/posts/english/notes/ ! -name 'index.md')"
+            echo "- 笔记模块: $(cell "$en_actual") 个"
+            en_years="$(count_md docs/posts/english/ ! -name 'index.md' -maxdepth 1)"
+            echo "- 真题年份: $(cell "$en_years") 年"
+            echo ""
+            echo "## 政治理论"
+            po_actual="$(count_md docs/posts/politics/notes/ ! -name 'index.md')"
+            echo "- 期望: $po_expected 模块"
+            echo "- 实际: $(cell "$po_actual") 文件"
+            echo "- 覆盖率: $(pct_of "$po_actual" "$po_expected")"
+            echo ""
+            echo "## 总体概览"
+            echo "| 科目 | 覆盖率 |"
+            echo "|:---|:---:|"
+            echo "| 高等数学 | $(pct_of "$math_actual" "$math_expected") |"
+            echo "| 计算机 | $(pct_of "$cs_actual" "$cs_expected") |"
+            echo "| 政治 | $(pct_of "$po_actual" "$po_expected") |"
+            echo ""
+            echo "> 期望值来自 \`$EXPECT_FILE\`；出现「⚠️超预期」表示该科目笔记数已超过期望值，"
+            echo "> 应更新配置里的期望值，否则覆盖率失去参考意义。"
+          } > "$REPORT_FILE"
+
+          echo "✅ 覆盖率报告已生成: $REPORT_FILE"
 
       # ============================================================
       # 生成综合报告
@@ -319,6 +387,16 @@ jobs:
             echo "| 检查项 | 状态 | 详情 |"
             echo "|:---|:---:|:---|"
             
+            # 巡逻脚本自检（无 continue-on-error，能跑到这里即代表通过）
+            # 不写死「N 项」：测试项增减后数字会与实际脱钩，让报告自己说谎
+            # （此处原写「8 项功能 + 7 项防回归扫描」，加了扫描项后就成了假描述）。
+            # 具体项数与明细见该 step 的日志。（2026-09-17 修）
+            if [[ "${{ steps.self_test.outcome }}" == "success" ]]; then
+              echo "| 🧪 巡逻脚本自检 | ✅ 通过 | 功能测试 + 防回归扫描全部通过 |"
+            else
+              echo "| 🧪 巡逻脚本自检 | ❌ 失败 | 脚本逻辑有问题，报告可能不可信 |"
+            fi
+
             # 构建检查
             BUILD_STATUS="${{ steps.build_check.outputs.status }}"
             if [[ "$BUILD_STATUS" == "passed" ]]; then
@@ -353,19 +431,37 @@ jobs:
               echo "| 📑 索引一致性 | ⚠️ 警告 | 存在不一致 |"
             fi
             
+            # 覆盖率（仅 full/coverage/定时巡逻会生成）
+            if [[ -f knowledge/coverage-report-auto.md ]]; then
+              echo "| 📊 覆盖率分析 | ℹ️ 参考 | 见 coverage-report-auto.md |"
+            fi
+          } > "$REPORT_FILE"
+
+          # 统计项数不再写死「4」：步骤增减后写死的数字会与实际脱钩，
+          # 让报告自己说谎。改为数表格正文行数（表头是 `| 检查项 | ...`，
+          # 分隔行是 `|:---|...` 不匹配 `^| `，故减 1 即得正文行数）。（2026-09-17 修）
+          # 注意：必须等上面的重定向关闭后再读文件，否则读到的是写入中的缓冲内容。
+          CHECKED_ROWS="$(grep -c '^| ' "$REPORT_FILE" || true)"
+          CHECKED=$(( ${CHECKED_ROWS:-0} - 1 ))
+          [[ $CHECKED -lt 0 ]] && CHECKED=0
+
+          {
             echo ""
             echo "## 📊 统计摘要"
-            echo "- 总检查项: 4"
+            echo "- 总检查项: $CHECKED"
             echo "- 详细报告:"
             echo "  - 断链报告: knowledge/link-report.md"
             echo "  - 质量报告: knowledge/quality-report.md"
             echo "  - 索引报告: knowledge/index-report.md"
-            echo "  - 覆盖报告: knowledge/coverage-report.md"
+            echo "  - 覆盖报告（机器版）: knowledge/coverage-report-auto.md"
+            echo "  - 覆盖报告（人工复核版）: knowledge/coverage-report.md"
+            echo ""
+            echo "> 报告仅保留最近 30 份，更早的由巡逻脚本自动轮转清理。"
             echo ""
             echo "---"
             echo "*由 Auto Patrol Workflow 自动生成*"
-          } > "$REPORT_FILE"
-          
+          } >> "$REPORT_FILE"
+
           echo "report_file=$REPORT_FILE" >> $GITHUB_OUTPUT
           echo "✅ 综合报告已生成: $REPORT_FILE"
 
@@ -377,18 +473,57 @@ jobs:
         run: |
           git config user.name "Auto Patrol Bot"
           git config user.email "auto-patrol@darling016123"
-          git add knowledge/patrol-report-*.md knowledge/link-report.md knowledge/quality-report.md knowledge/index-report.md knowledge/coverage-report.md 2>/dev/null || true
+
+          # ------------------------------------------------------------
+          # 报告轮转：每天新增一个 patrol-report-YYYYMMDD.md，此前从不清理，
+          # 已堆积 30 份（2026-08-18 起）且会无限增长到 365 份/年，
+          # 让 knowledge/ 目录被噪声淹没。保留最近 30 份，更早的删除。
+          # 轮转逻辑在 scripts/lib/patrol-lib.sh，与测试同源。（2026-09-17 修）
+          # ------------------------------------------------------------
+          source scripts/lib/patrol-lib.sh
+          KEEP=30
+          mapfile -t TO_DELETE < <(rotate_reports "$KEEP" "knowledge/patrol-report-")
+          if [[ ${#TO_DELETE[@]} -gt 0 ]]; then
+            echo "🧹 报告轮转：清理 ${#TO_DELETE[@]} 份（保留最近 $KEEP 份）"
+            for f in "${TO_DELETE[@]}"; do
+              echo "  - 删除 $f"
+              rm -f "$f"
+            done
+          else
+            echo "ℹ️ 报告轮转：未超过上限 $KEEP，无需清理"
+          fi
+
+          # 注意：knowledge/coverage-report.md 是人工复核版，**不加入**自动提交，
+          # 防止脚本产物覆盖人工结论。脚本只写 coverage-report-auto.md。
+          git add knowledge/patrol-report-*.md knowledge/link-report.md \
+                  knowledge/quality-report.md knowledge/index-report.md \
+                  knowledge/coverage-report-auto.md 2>/dev/null || true
+          # 记录被轮转删除的文件
+          git add -u knowledge/ 2>/dev/null || true
+
           if ! git diff --cached --quiet; then
             git commit -m "🚨 auto-patrol: $(date '+%Y-%m-%d') 巡检报告自动提交"
             # push 失败时自动 rebase 重试（最多 3 次），避免并发冲突
             for i in 1 2 3; do
               if git push; then
+                echo "✅ 报告已提交"
                 break
               fi
               echo "⚠️ push 冲突，第 $i 次 rebase 重试..."
-              git pull --rebase origin main || true
+              # rebase 若因冲突中断，必须 abort 回到干净状态，
+              # 否则会残留冲突标记（<<<<<<<）并让后续每次 push 都失败，
+              # 3 次循环结束后静默退出、报告丢失。（2026-09-17 修）
+              if ! git pull --rebase origin main; then
+                echo "❌ rebase 冲突，回滚本次 rebase 以避免污染工作区"
+                git rebase --abort 2>/dev/null || true
+                git reset --hard HEAD
+                echo "::warning title=巡逻报告推送失败::rebase 冲突已回滚，报告未能推送，请人工检查"
+                break
+              fi
+              if [[ $i -eq 3 ]]; then
+                echo "::warning title=巡逻报告推送失败::重试 3 次仍失败，报告未能推送"
+              fi
             done
-            echo "✅ 报告已提交"
           else
             echo "ℹ️ 无新报告需要提交"
           fi
@@ -396,38 +531,105 @@ jobs:
       # ============================================================
       # 严重问题自动创建 Issue
       # ============================================================
+      # ============================================================
+      # 严重问题自动创建 / 更新 Issue（带去重）
+      # ============================================================
       - name: '🐛 严重问题自动创建 Issue'
         if: >
-          always() && 
-          (steps.build_check.outputs.status == 'failed' || 
+          always() &&
+          (steps.build_check.outputs.status == 'failed' ||
            steps.link_check.outputs.broken_count > '0') &&
-          (github.event_name == 'schedule' || inputs.create_issue == true)
+          (github.event_name == 'schedule' || github.event_name == 'push' || inputs.create_issue == true)
         uses: actions/github-script@v7
         with:
           script: |
             const buildStatus = '${{ steps.build_check.outputs.status }}';
-            const brokenCount = parseInt('${{ steps.link_check.outputs.broken_count }}' || '0');
-            
+            const brokenCount = parseInt('${{ steps.link_check.outputs.broken_count }}' || '0', 10) || 0;
+
             let issueBody = '## 🚨 自动巡逻发现严重问题\n\n';
             issueBody += `- 巡逻时间: ${new Date().toISOString()}\n`;
             issueBody += `- 触发方式: ${{ github.event_name }}\n\n`;
-            
+
             if (buildStatus === 'failed') {
               issueBody += '### ❌ P0: 站点构建失败\n';
               issueBody += '请检查构建日志，修复构建错误。\n\n';
             }
-            
+
             if (brokenCount > 0) {
               issueBody += `### ⚠️ P1: 发现 ${brokenCount} 处断链\n`;
               issueBody += '请查看 knowledge/link-report.md 了解详情。\n\n';
             }
-            
+
             issueBody += '---\n*由 Auto Patrol Workflow 自动创建*';
-            
-            await github.rest.issues.create({
+
+            // ------------------------------------------------------------
+            // 去重：此前每次定时巡逻都无条件新建 Issue，导致同一天起
+            // 每天一个「[自动巡逻] YYYY-MM-DD 质量报告」，到 2026-09-17
+            // 已堆积 13 个未关闭 Issue，且没有任何自动关闭逻辑。
+            // 改为：已有未关闭的巡逻 Issue → 追加评论；否则才新建。（2026-09-17 修）
+            // ------------------------------------------------------------
+            const LABEL = 'auto-patrol';
+            const existing = await github.rest.issues.listForRepo({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              title: `[自动巡逻] ${new Date().toISOString().split('T')[0]} 质量报告`,
-              body: issueBody,
-              labels: ['auto-patrol', 'quality-report']
+              state: 'open',
+              labels: LABEL,
+              per_page: 5,
+              sort: 'created',
+              direction: 'desc'
             });
+
+            if (existing.data.length > 0) {
+              const issue = existing.data[0];
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                body: `### 🔁 巡逻复现（${new Date().toISOString().split('T')[0]}）\n\n${issueBody}`
+              });
+              console.log(`已存在未关闭的巡逻 Issue #${issue.number}，改为追加评论，未新建。`);
+            } else {
+              const created = await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: `[自动巡逻] ${new Date().toISOString().split('T')[0]} 质量报告`,
+                body: issueBody,
+                labels: [LABEL, 'quality-report']
+              });
+              console.log(`已新建巡逻 Issue #${created.data.number}`);
+            }
+
+      # ============================================================
+      # 全部检查通过时自动关闭遗留的巡逻 Issue
+      # ============================================================
+      - name: '✅ 全绿时自动关闭巡逻 Issue'
+        if: >
+          always() &&
+          steps.build_check.outputs.status == 'passed' &&
+          steps.link_check.outputs.status == 'passed' &&
+          (github.event_name == 'schedule' || github.event_name == 'push')
+        uses: actions/github-script@v7
+        with:
+          script: |
+            // 检查全绿时，把历史遗留的巡逻 Issue 关闭，避免「已修复但仍挂着
+            // 十几个红色 Issue」的假警报状态。这是上一步只做去重、不做收敛的补充。
+            const { owner, repo } = context.repo;
+            const open = await github.rest.issues.listForRepo({
+              owner, repo, state: 'open', labels: 'auto-patrol', per_page: 100
+            });
+
+            if (open.data.length === 0) {
+              console.log('无遗留巡逻 Issue，无需处理。');
+              return;
+            }
+
+            for (const issue of open.data) {
+              await github.rest.issues.createComment({
+                owner, repo, issue_number: issue.number,
+                body: '✅ 本次巡逻全部检查通过（构建 / 断链 / 质量 / 索引），自动关闭此 Issue。\n\n*由 Auto Patrol Workflow 自动关闭*'
+              });
+              await github.rest.issues.update({
+                owner, repo, issue_number: issue.number, state: 'closed'
+              });
+            }
+            console.log(`已自动关闭 ${open.data.length} 个遗留巡逻 Issue。`);

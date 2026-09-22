@@ -6,26 +6,7 @@
 
 ## 你的现有项目
 
-### ✅ 项目 1：本科通（Bencetong）——学习助手
-
-> 你之前做的，已经可以展示。
-
-| 项目 | 说明 |
-|---|---|
-| 名称 | Bencetong - 专升本计算机学习助手 |
-| 技术栈 | Python（打包 exe） |
-| 功能 | 刷题、错题本、Anki 推送、学习进度追踪 |
-| 展示方式 | 截图（运行界面） + 功能列表 |
-
-**英文描述放进 Profile：**
-
-```
-Bencetong - A study assistant for computer science exams.
-Built with Python. Features: quiz practice, wrong answer review,
-flashcard sync, progress tracking. Downloaded by 100+ students.
-```
-
-### ✅ 项目 2：GitHub 笔记仓库（darling016123）
+### ✅ 项目 1：GitHub 笔记仓库（darling016123）
 
 你的笔记仓库本身展示了你的学习能力、文档能力、Git 使用能力。
 
@@ -111,5 +92,5 @@ A simple description of what this project does.
 
 ## 如果你啥都不想补，现在也能做的
 
-最少方案：只放 GitHub 笔记仓库 + 本科通截图，也能接单。
+最少方案：只放 GitHub 笔记仓库，也能接单。
 第一个客户更看重你的报价和回复速度，不是你的作品集。

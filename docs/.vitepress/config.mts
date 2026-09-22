@@ -90,6 +90,8 @@ export default defineConfig({
         items: [
           { text: '📖 学习手册 ⭐', link: '/posts/computer/学习手册' },
           { text: '2027 备考指南 ⭐', link: '/posts/computer/2027-备考指南' },
+          { text: '📊 真题考频矩阵 ⭐', link: '/guide/真题考频矩阵' },
+          { text: '✍️ 专项题库', link: '/posts/computer/专项题库/' },
           { text: '知识点', link: '/posts/computer/notes/' },
           { text: '2024 全卷', link: '/posts/computer/2024' },
           { text: '考点拆分', link: '/posts/computer/topics/' },
@@ -681,6 +683,14 @@ export default defineConfig({
                               "link": "/posts/computer/"
                     },
                     {
+                              "text": "📊 真题考频矩阵 ⭐",
+                              "link": "/guide/真题考频矩阵"
+                    },
+                    {
+                              "text": "✍️ 专项题库（按考频排序）",
+                              "link": "/posts/computer/专项题库/"
+                    },
+                    {
                               "text": "真题章节对照表 🎯",
                               "link": "/posts/computer/真题章节对照表"
                     },
@@ -763,6 +773,40 @@ export default defineConfig({
                     {
                               "text": "2018 演练",
                               "link": "/posts/computer/2018"
+                    }
+          ],
+        },
+        {
+          text: '✍️ 专项题库（按实测考频排序）',
+          collapsed: false,
+          items: [
+                    {
+                              "text": "总览 · 实测考频总表",
+                              "link": "/posts/computer/专项题库/"
+                    },
+                    {
+                              "text": "01 数组与字符串专项（35.5 分）",
+                              "link": "/posts/computer/专项题库/01-数组与字符串专项"
+                    },
+                    {
+                              "text": "02 循环结构专项（29.0 分）",
+                              "link": "/posts/computer/专项题库/02-循环结构专项"
+                    },
+                    {
+                              "text": "03 线性表专项（17.5 分）",
+                              "link": "/posts/computer/专项题库/03-线性表专项"
+                    },
+                    {
+                              "text": "04 数据结构基本概念专项（15.0 分）",
+                              "link": "/posts/computer/专项题库/04-数据结构基本概念专项"
+                    },
+                    {
+                              "text": "05 中权重模块合集（13.5–11.0 分）",
+                              "link": "/posts/computer/专项题库/05-中权重模块合集"
+                    },
+                    {
+                              "text": "06 低频模块速查（9.0 分及以下）",
+                              "link": "/posts/computer/专项题库/06-低频模块速查"
                     }
           ],
         },
@@ -1082,6 +1126,7 @@ export default defineConfig({
             { text: '🎯 四科备考总纲（500 分全景）', link: '/guide/四科备考总纲' },
             { text: '🎯 0 基础总入口', link: '/guide/零基础总入口' },
             { text: '🎓 0基础学习路线', link: '/guide/零基础学习路线' },
+            { text: '📊 真题考频矩阵 ⭐', link: '/guide/真题考频矩阵' },
             { text: '📋 考纲覆盖 × 练习对照表', link: '/guide/考纲覆盖与练习对照表' },
             { text: '📖 2026 考纲全解', link: '/guide/2026考纲全解' },
             { text: '📗 官方教材对照教程', link: '/guide/官方教材对照教程' },

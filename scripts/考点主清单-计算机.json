@@ -1,97 +1,169 @@
 [
   {
-    "id": "C01", "module": "C语言基础", "name": "C语言基础（数据类型/运算符/输入输出）",
-    "priority": "CORE", "freq": "5/5", "freq_top": false, "kaogang": "模块1",
-    "score_weight": "~10分", "difficulty": "easy"
+    "id": "C01", "module": "C语言基础与数据运算", "name": "C语言基础（基本概念/数据类型/运算符/输入输出）",
+    "priority": "CORE", "freq": "2/2年", "freq_top": true, "freq_rank": 5, "kaogang": "模块(一)(二)",
+    "score_weight": "13.5分", "score_weight_旧估": "~10分", "score_pct": "6.8%",
+    "difficulty": "easy", "题型": "单选为主·填空偶现",
+    "高频": "运算符求值·整数除法·逗号表达式·自增自减·标识符规则",
+    "数据来源": "2023+2024真题逐题标注"
   },
   {
-    "id": "C02", "module": "顺序程序设计", "name": "顺序程序设计（基本语句/顺序结构）",
-    "priority": "NORMAL", "freq": "3/5", "freq_top": false, "kaogang": "模块2",
-    "score_weight": "~5分", "difficulty": "easy"
+    "id": "C02", "module": "顺序结构程序设计", "name": "顺序结构程序设计（基本语句/输入输出）",
+    "priority": "NORMAL", "freq": "2/2年", "freq_top": false, "kaogang": "模块(三)",
+    "score_weight": "4.5分", "score_weight_旧估": "~5分", "score_pct": "2.3%",
+    "difficulty": "easy", "题型": "单选",
+    "高频": "scanf 格式符与取地址符·printf 格式控制",
+    "数据来源": "2023+2024真题逐题标注"
   },
   {
     "id": "C03", "module": "选择结构", "name": "选择结构（if/switch/逻辑运算）",
-    "priority": "CORE", "freq": "4/5", "freq_top": false, "kaogang": "模块3",
-    "score_weight": "~10分", "difficulty": "easy"
+    "priority": "CORE", "freq": "2/2年", "freq_top": true, "freq_rank": 7, "kaogang": "模块(四)",
+    "score_weight": "11.0分", "score_weight_旧估": "~10分", "score_pct": "5.5%",
+    "difficulty": "easy", "题型": "单选 + 计算题（switch 程序阅读）",
+    "高频": "switch 的 case 穿透·悬空 else·逻辑短路求值",
+    "数据来源": "2023+2024真题逐题标注"
   },
   {
     "id": "C04", "module": "循环结构", "name": "循环结构（for/while/do-while/break/continue）",
-    "priority": "CORE", "freq": "5/5", "freq_top": true, "freq_rank": 1,
-    "score_weight": "~15分", "difficulty": "medium", "高频": "TOP1·4年连考"
+    "priority": "CORE", "freq": "2/2年", "freq_top": true, "freq_rank": 2, "kaogang": "模块(五)",
+    "score_weight": "29.0分", "score_weight_旧估": "~15分", "score_pct": "14.5%",
+    "difficulty": "medium", "题型": "单选+判断+计算题+应用题（六题型全覆盖）",
+    "高频": "循环次数边界·continue 与 break 区别·循环累加·自增自减",
+    "数据来源": "2023+2024真题逐题标注",
+    "备注": "旧估算严重偏低 1.9 倍"
   },
   {
     "id": "C05", "module": "数组", "name": "数组（一维/二维/字符数组/字符串函数）",
-    "priority": "CORE", "freq": "5/5", "freq_top": true, "freq_rank": 4,
-    "score_weight": "~15分", "difficulty": "medium", "高频": "TOP4·4年连考"
+    "priority": "CORE", "freq": "2/2年", "freq_top": true, "freq_rank": 1, "kaogang": "模块(六)",
+    "score_weight": "35.5分", "score_weight_旧估": "~15分", "score_pct": "17.8%",
+    "difficulty": "medium", "题型": "单选+判断+填空+计算题+应用题（全卷最高权重）",
+    "高频": "二维数组地址·下标从0开始·strlen与sizeof区别·字符串函数辨析",
+    "数据来源": "2023+2024真题逐题标注",
+    "备注": "全卷第一权重模块；旧估算严重偏低 2.4 倍"
   },
   {
     "id": "C06", "module": "函数", "name": "函数（定义/调用/参数传递/作用域/递归）",
-    "priority": "CORE", "freq": "5/5", "freq_top": true, "freq_rank": 3,
-    "score_weight": "~15分", "difficulty": "medium", "高频": "TOP3·4年连考"
+    "priority": "CORE", "freq": "2/2年", "freq_top": true, "freq_rank": 6, "kaogang": "模块(七)",
+    "score_weight": "13.0分", "score_weight_旧估": "~15分", "score_pct": "6.5%",
+    "difficulty": "medium", "题型": "单选+判断+简答+计算题（递归）",
+    "高频": "递归调用栈·变量作用域·值传递与地址传递",
+    "数据来源": "2023+2024真题逐题标注",
+    "备注": "年际波动极大（2023 考 22 分，2024 仅 4 分）"
   },
   {
     "id": "C07", "module": "指针", "name": "指针（指针变量/指针与数组/函数/字符串）",
-    "priority": "CORE", "freq": "5/5", "freq_top": true, "freq_rank": 2,
-    "score_weight": "~10分", "difficulty": "hard", "高频": "TOP2·4年连考"
+    "priority": "NORMAL", "freq": "2/2年", "freq_top": false, "kaogang": "模块(八)",
+    "score_weight": "3.5分", "score_weight_旧估": "~10分", "score_pct": "1.8%",
+    "difficulty": "hard", "题型": "单选 + 填空（多作为解题工具而非独立考点）",
+    "高频": "指针算术·&与*·指针作形参",
+    "数据来源": "2023+2024真题逐题标注",
+    "备注": "独立分值低（旧估算高估 2.9 倍），但能力嵌在线性表/结构体/数组题中，不可跳过"
   },
   {
     "id": "C08", "module": "结构体与共用体", "name": "结构体/共用体/枚举/typedef",
-    "priority": "NORMAL", "freq": "3/5", "freq_top": true, "freq_rank": 9,
-    "score_weight": "~5分", "difficulty": "medium", "高频": "TOP9·3年"
+    "priority": "CORE", "freq": "2/2年", "freq_top": true, "freq_rank": 4, "kaogang": "模块(九)",
+    "score_weight": "11.5分", "score_weight_旧估": "~5分", "score_pct": "5.8%",
+    "difficulty": "medium", "题型": "单选+判断+计算题（结构体数组与指针）",
+    "高频": "成员驻留内存·成员访问方式·结构体数组",
+    "数据来源": "2023+2024真题逐题标注",
+    "备注": "旧估算偏低 2.3 倍"
   },
   {
-    "id": "C09", "module": "文件操作", "name": "文件操作（打开/关闭/读写）",
-    "priority": "LOW", "freq": "2/5", "freq_top": true, "freq_rank": 15,
-    "score_weight": "~5分", "difficulty": "medium", "高频": "TOP15"
+    "id": "C09", "module": "文件", "name": "文件操作（打开/关闭/读写/按组织形式分类）",
+    "priority": "NORMAL", "freq": "1/2年", "freq_top": false, "kaogang": "模块(十)",
+    "score_weight": "7.5分", "score_weight_旧估": "~5分", "score_pct": "3.8%",
+    "difficulty": "easy", "题型": "单选+判断+简答",
+    "高频": "fopen 失败返回 NULL·fclose 返回 0·文本文件与二进制文件",
+    "数据来源": "2023+2024真题逐题标注",
+    "备注": "年际波动极大（2023 考 15 分，2024 为 0）；纯背诵，性价比高"
   },
   {
     "id": "C10", "module": "程序运行环境与调试", "name": "编译/链接/运行错误区别",
-    "priority": "LOW", "freq": "1/5", "freq_top": false, "kaogang": "模块10·2026新增",
-    "score_weight": "~5分", "difficulty": "easy"
+    "priority": "LOW", "freq": "0/2年", "freq_top": false, "kaogang": "模块(十一)·2026新增",
+    "score_weight": "0分", "score_weight_旧估": "~5分", "score_pct": "0%",
+    "difficulty": "easy", "题型": "2023/2024 真题未出现",
+    "高频": "—",
+    "数据来源": "2023+2024真题逐题标注",
+    "备注": "2026 考纲新增模块，两年真题中无对应题目。2027 需留意首次命题可能"
   },
   {
-    "id": "D01", "module": "数据结构基本概念", "name": "逻辑结构/存储结构/ADT",
-    "priority": "NORMAL", "freq": "3/5", "freq_top": false, "kaogang": "模块11",
-    "score_weight": "~5分", "difficulty": "easy"
+    "id": "D01", "module": "数据结构基本概念", "name": "逻辑结构/存储结构/数据与数据对象/ADT",
+    "priority": "CORE", "freq": "2/2年", "freq_top": true, "freq_rank": 3, "kaogang": "模块(十二)",
+    "score_weight": "15.0分", "score_weight_旧估": "~5分", "score_pct": "7.5%",
+    "difficulty": "easy", "题型": "单选+填空+简答（简答高频）",
+    "高频": "线性与非线性分类·数据项与数据对象·抽象数据类型",
+    "数据来源": "2023+2024真题逐题标注",
+    "备注": "性价比最高的模块——纯背诵、题型固定；旧估算严重偏低 3 倍"
   },
   {
-    "id": "D02", "module": "线性表", "name": "顺序表/链表/插入删除/复杂度",
-    "priority": "CORE", "freq": "4/5", "freq_top": true, "freq_rank": 10,
-    "score_weight": "~15分", "difficulty": "medium", "高频": "TOP10·3年"
+    "id": "D02", "module": "线性表", "name": "顺序表/链表/插入删除/时间复杂度",
+    "priority": "CORE", "freq": "2/2年", "freq_top": true, "freq_rank": 2, "kaogang": "模块(十三)",
+    "score_weight": "17.5分", "score_weight_旧估": "~15分", "score_pct": "8.8%",
+    "difficulty": "medium", "题型": "单选为主（两年共 7 题）+ 简答",
+    "高频": "插入删除复杂度·带头结点判空·链表指针操作·顺序表优缺点",
+    "数据来源": "2023+2024真题逐题标注",
+    "备注": "数据结构部分第一权重模块"
   },
   {
     "id": "D03", "module": "栈和队列", "name": "LIFO/FIFO/循环队列/应用",
-    "priority": "CORE", "freq": "4/5", "freq_top": true, "freq_rank": 6,
-    "score_weight": "~10分", "difficulty": "medium", "高频": "TOP6·4年连考"
+    "priority": "NORMAL", "freq": "2/2年", "freq_top": false, "kaogang": "模块(十四)",
+    "score_weight": "6.0分", "score_weight_旧估": "~10分", "score_pct": "3.0%",
+    "difficulty": "easy", "题型": "单选+判断",
+    "高频": "后进先出·出栈序列推理·两者都是线性表",
+    "数据来源": "2023+2024真题逐题标注",
+    "备注": "旧估算高估 1.7 倍"
   },
   {
-    "id": "D04", "module": "串、数组和广义表", "name": "串存储/KMP/广义表",
-    "priority": "NORMAL", "freq": "3/5", "freq_top": false, "kaogang": "模块14",
-    "score_weight": "~5分", "difficulty": "hard"
+    "id": "D04", "module": "串、数组和广义表", "name": "串存储/模式匹配/广义表长度与深度",
+    "priority": "NORMAL", "freq": "1/2年", "freq_top": false, "kaogang": "模块(十五)",
+    "score_weight": "6.5分", "score_weight_旧估": "~5分", "score_pct": "3.3%",
+    "difficulty": "medium", "题型": "单选+判断+填空",
+    "高频": "串长·串是特殊线性表·广义表长度与深度区别",
+    "数据来源": "2023+2024真题逐题标注",
+    "备注": "2024 集中命题（13 分），2023 为 0"
   },
   {
-    "id": "D05", "module": "树和二叉树", "name": "二叉树性质/遍历/哈夫曼树",
-    "priority": "CORE", "freq": "5/5", "freq_top": true, "freq_rank": 5,
-    "score_weight": "~15分", "difficulty": "hard", "高频": "TOP5·4年连考"
+    "id": "D05", "module": "树和二叉树", "name": "二叉树性质/遍历/完全二叉树/哈夫曼树",
+    "priority": "NORMAL", "freq": "2/2年", "freq_top": false, "kaogang": "模块(十六)",
+    "score_weight": "5.5分", "score_weight_旧估": "~15分", "score_pct": "2.8%",
+    "difficulty": "medium", "题型": "单选+判断",
+    "高频": "第n层最多结点数·完全二叉树叶子数·满二叉树关系·树的深度",
+    "数据来源": "2023+2024真题逐题标注",
+    "备注": "旧估算严重高估 2.7 倍；只考基础性质，不考算法实现"
   },
   {
-    "id": "D06", "module": "图", "name": "存储/遍历/最小生成树/最短路径",
-    "priority": "CORE", "freq": "4/5", "freq_top": true, "freq_rank": 14,
-    "score_weight": "~10分", "difficulty": "hard", "高频": "TOP14"
+    "id": "D06", "module": "图", "name": "存储结构/遍历/连通性",
+    "priority": "NORMAL", "freq": "2/2年", "freq_top": false, "kaogang": "模块(十七)",
+    "score_weight": "9.0分", "score_weight_旧估": "~10分", "score_pct": "4.5%",
+    "difficulty": "medium", "题型": "单选+填空+简答",
+    "高频": "DFS与BFS名称·有向图的度·连通图最少边数·一对多与多对多",
+    "数据来源": "2023+2024真题逐题标注",
+    "备注": "考概念与名称，不考最小生成树/最短路径算法细节"
   },
   {
-    "id": "D07", "module": "查找", "name": "顺序查找/折半查找/哈希表",
-    "priority": "CORE", "freq": "4/5", "freq_top": true, "freq_rank": 8,
-    "score_weight": "~10分", "difficulty": "medium", "高频": "TOP8·3年"
+    "id": "D07", "module": "查找", "name": "顺序查找/折半查找/查找长度",
+    "priority": "LOW", "freq": "2/2年", "freq_top": false, "kaogang": "模块(十八)",
+    "score_weight": "3.0分", "score_weight_旧估": "~10分", "score_pct": "1.5%",
+    "difficulty": "easy", "题型": "单选",
+    "高频": "折半查找要求键值有序的顺序表·查找次数计算",
+    "数据来源": "2023+2024真题逐题标注",
+    "备注": "旧估算严重高估 3.3 倍"
   },
   {
-    "id": "D08", "module": "排序", "name": "插入/交换/选择/归并排序/稳定性",
-    "priority": "CORE", "freq": "4/5", "freq_top": true, "freq_rank": 7,
-    "score_weight": "~10分", "difficulty": "medium", "高频": "TOP7·4年连考"
+    "id": "D08", "module": "排序", "name": "各类排序算法/时间复杂度/稳定性",
+    "priority": "LOW", "freq": "1/2年", "freq_top": false, "kaogang": "模块(十九)",
+    "score_weight": "2.0分", "score_weight_旧估": "~10分", "score_pct": "1.0%",
+    "difficulty": "easy", "题型": "填空（归并比较次数）",
+    "高频": "各排序时间复杂度对比·稳定性",
+    "数据来源": "2023+2024真题逐题标注",
+    "备注": "全卷最低权重模块（旧估算高估 5 倍），只需背对比表"
   },
   {
     "id": "D09", "module": "算法概念与分析", "name": "算法特性/时间复杂度/空间复杂度",
-    "priority": "NORMAL", "freq": "3/5", "freq_top": true, "freq_rank": 13,
-    "score_weight": "~5分", "difficulty": "medium", "高频": "TOP13"
+    "priority": "NORMAL", "freq": "2/2年", "freq_top": false, "kaogang": "模块(二十)(二十一)",
+    "score_weight": "6.5分", "score_weight_旧估": "~5分", "score_pct": "3.3%",
+    "difficulty": "easy", "题型": "单选+判断",
+    "高频": "算法五特性·程序与算法的区别·双重循环复杂度·时空复杂度无必然关系",
+    "数据来源": "2023+2024真题逐题标注"
   }
 ]
