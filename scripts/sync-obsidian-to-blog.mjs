@@ -13,6 +13,12 @@
  * 或先 `git stash`/提交再跑。新增的 guardSource() 只防「源目录缺失→写空
  * 索引」这一类，防不住模板过时导致的覆盖。
  *
+ * 🛑 2026-09-22 已加 guardDeprecated() 运行时守卫：检测到「docs 侧已分叉」
+ * 或「config.mts 含 sync 不产出的人工内容」时直接 exit 1，不再默认放行。
+ * 确实要跑就显式 `--force`；先用 `--dry-run --force` 看影响面（不落盘）。
+ * 起因：2026-09-22 完成 33 个文件的导航/编号修复，这些成果全在 docs/ 侧，
+ * 一次误跑会全部回退。
+ *
  * ⚠️ 2025 例外（2026-08-30 补记）：docs/posts/math/2025.md 是人工聚合页
  * （3 张 gif 回忆版），顶层 历年真题/高等数学/ 无 2025.md 源（_索引.md 已
  * 声明该缺口），syncYearPapers 不会覆盖它，但 writeConfig 重建侧边栏时
@@ -27,14 +33,21 @@ const DOCS = path.join(ROOT, 'docs')
 
 const stats = { written: 0, skipped: 0, files: [] }
 
+/**
+ * --dry-run：只走一遍逻辑、打印将要写哪些文件，一个字节都不落盘。
+ * 用途：在 `--force` 真正同步之前先看影响面（配合 guardDeprecated 使用）。
+ */
+const DRY_RUN = process.argv.includes('--dry-run') || process.env.SYNC_DRY === '1'
+
 function ensureDir(p) {
+  if (DRY_RUN) return
   fs.mkdirSync(p, { recursive: true })
 }
 
 function writeFile(rel, content) {
   const abs = path.join(DOCS, rel)
   ensureDir(path.dirname(abs))
-  fs.writeFileSync(abs, content, 'utf8')
+  if (!DRY_RUN) fs.writeFileSync(abs, content, 'utf8')
   stats.written++
   stats.files.push(rel)
 }
@@ -1112,7 +1125,7 @@ ${polYears.map((y) => `            { text: '${y.year}', link: '/posts/politics/$
   },
 })
 `
-  fs.writeFileSync(path.join(DOCS, '.vitepress/config.mts'), config, 'utf8')
+  if (!DRY_RUN) fs.writeFileSync(path.join(DOCS, '.vitepress/config.mts'), config, 'utf8')
   stats.written++
   stats.files.push('.vitepress/config.mts')
 }
@@ -1164,9 +1177,70 @@ npm run docs:build
   )
 }
 
+// ─────────── 废弃守卫（2026-09-22 新增）───────────
+/**
+ * 本脚本的模板已落后于 docs/ 的人工精修内容，直接跑会静默覆盖（见文件头注释）。
+ * 守卫在下列任一条件成立时中止，避免「辛苦修完被一次同步回退」：
+ *   ① docs/posts/math/notes/ 的 md 数 > 源 高等数学/ 的 md 数（docs 侧已有人工新增）
+ *   ② docs/.vitepress/config.mts 含 sync 模板不产出的人工内容标志（日语 / 学习手册 / manifest）
+ *
+ * 逃生舱（确实要同步时）：
+ *   node scripts/sync-obsidian-to-blog.mjs --dry-run --force   # 先看影响面，不落盘
+ *   node scripts/sync-obsidian-to-blog.mjs --force             # 真写
+ * 跑前务必 git stash 或提交；跑后 git diff --stat 逐文件核对。
+ */
+function guardDeprecated() {
+  if (process.argv.includes('--force') || process.env.SYNC_FORCE === '1') {
+    console.warn('⚠️  --force：跳过废弃守卫，后果自负。建议先 git stash，跑完 git diff --stat 核对。')
+    return
+  }
+
+  const reasons = []
+
+  const srcMath = listMd(path.join(ROOT, '高等数学'))
+  const docsMath = listMd(path.join(DOCS, 'posts/math/notes'))
+  if (docsMath.length > srcMath.length) {
+    reasons.push(
+      `docs/posts/math/notes/ 有 ${docsMath.length} 个 md，源 高等数学/ 只有 ${srcMath.length} 个` +
+        ` ⇒ 已分叉 ${docsMath.length - srcMath.length} 个，docs 侧有人工新增内容`,
+    )
+  }
+
+  const cfgPath = path.join(DOCS, '.vitepress/config.mts')
+  if (fs.existsSync(cfgPath)) {
+    const cfg = read(cfgPath)
+    const hit = ['日语', '学习手册', 'manifest'].filter((m) => cfg.includes(m))
+    if (hit.length) {
+      reasons.push(
+        `docs/.vitepress/config.mts 含人工内容标志：${hit.join(' / ')}` +
+          ' —— sync 重建整个 sidebar 时会删掉它们',
+      )
+    }
+  }
+
+  if (!reasons.length) return
+
+  console.error('')
+  console.error('🛑 已阻止 docs:sync —— 本脚本会覆盖 docs/ 的人工精修内容')
+  console.error('')
+  reasons.forEach((r, i) => console.error(`   ${i + 1}. ${r}`))
+  console.error('')
+  console.error('   docs/ 才是站点事实源；本脚本模板已落后（见文件头注释）。')
+  console.error('   实测跑一次会删掉 PWA 配置、日语板块、四科「学习手册」导航（-290 行）。')
+  console.error('')
+  console.error('   确实要跑：')
+  console.error('     git stash                                                  # 或先提交')
+  console.error('     node scripts/sync-obsidian-to-blog.mjs --dry-run --force   # 先看影响面')
+  console.error('     node scripts/sync-obsidian-to-blog.mjs --force             # 真写')
+  console.error('     git diff --stat                                            # 逐文件核对')
+  console.error('')
+  process.exit(1)
+}
+
 // ─────────── main ───────────
 function main() {
-  console.log('🔄 Sync Obsidian → VitePress …')
+  guardDeprecated()
+  console.log(DRY_RUN ? '🔄 Sync Obsidian → VitePress（dry-run · 不落盘）…' : '🔄 Sync Obsidian → VitePress …')
 
   const mathChapters = syncMathNotes()
   const computerNotes = syncComputerNotes()
@@ -1205,8 +1279,12 @@ function main() {
   updateGuide()
   writeConfig({ mathChapters, computerNotes, mathYears, compYears, polYears, engNotes, politicsNotes })
 
-  console.log(JSON.stringify({ written: stats.written, skipped: stats.skipped, sample: stats.files.slice(0, 20) }, null, 2))
-  console.log(`✅ done · wrote ${stats.written} files · skipped ${stats.skipped}`)
+  console.log(JSON.stringify({ dryRun: DRY_RUN, written: stats.written, skipped: stats.skipped, sample: stats.files.slice(0, 20) }, null, 2))
+  console.log(
+    DRY_RUN
+      ? `✅ dry-run 完成 · 将写 ${stats.written} files · skipped ${stats.skipped}（未落盘）`
+      : `✅ done · wrote ${stats.written} files · skipped ${stats.skipped}`,
+  )
 }
 
 main()

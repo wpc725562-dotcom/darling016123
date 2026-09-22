@@ -6,18 +6,19 @@
 4. 指针内存模型图
 输出到 docs/public/figs/，Nature 单栏风格（scipilot 规范）
 """
+import os
 import sys
-sys.path.insert(0, r'C:\Users\Administrator\.dsh\skills\scipilot-figure-skill\scripts')
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 from matplotlib.patches import FancyArrowPatch, Rectangle
 import numpy as np
-from setup_style import setup_style
+from _figstyle import setup_style, FIGS_DIR  # noqa: E402
 
 setup_style(journal='nature', lang='zh')
-OUT = r'C:\Users\Administrator\Desktop\deeepseek\zhuan-sheng-ben-notes\docs\public\figs'
+OUT = FIGS_DIR
 
 # ============ 图 1：二叉树三序遍历 ============
 def draw_binary_tree(ax, pos, node, x, y, dx, visited=None, order_text=""):

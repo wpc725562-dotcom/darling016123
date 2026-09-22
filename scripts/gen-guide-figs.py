@@ -3,16 +3,17 @@
 1. 2026 省控线对比（三科总分 vs 专业综合课，按类别）
 2. 公办计算机投档线趋势（韩山师范/嘉应学院等）
 """
+import os
 import sys
-sys.path.insert(0, r'C:\Users\Administrator\.dsh\skills\scipilot-figure-skill\scripts')
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import numpy as np
-from setup_style import setup_style
+from _figstyle import setup_style, FIGS_DIR  # noqa: E402
 
 setup_style(journal='nature', lang='zh')
-OUT = r'C:\Users\Administrator\Desktop\deeepseek\zhuan-sheng-ben-notes\docs\public\figs'
+OUT = FIGS_DIR
 
 # ============ 图 1：2026 省控线对比 ============
 cats = ['大学语文', '经济学', '民法', '教育理论', '高等数学', '生态学', '生理学', '管理学', '艺术概论']

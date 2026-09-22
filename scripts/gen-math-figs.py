@@ -4,16 +4,17 @@
 2. 定积分几何意义：曲线下面积黎曼和（3.7-定积分的概念）
 输出到 docs/public/figs/，Nature 单栏风格
 """
+import os
 import sys
-sys.path.insert(0, r'C:\Users\Administrator\.dsh\skills\scipilot-figure-skill\scripts')
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import numpy as np
-from setup_style import setup_style
+from _figstyle import setup_style, FIGS_DIR  # noqa: E402
 
 setup_style(journal='nature', lang='zh')
-OUT = r'C:\Users\Administrator\Desktop\deeepseek\zhuan-sheng-ben-notes\docs\public\figs'
+OUT = FIGS_DIR
 
 # ============ 图 1：导数几何意义——切线斜率 ============
 fig, ax = plt.subplots(figsize=(3.5, 2.6))

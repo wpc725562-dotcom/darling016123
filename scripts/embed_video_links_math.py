@@ -199,7 +199,8 @@ def embed(fname, rows):
         s = (" · " + tip) if tip else ""
         lines.append("- [" + t + "](" + url + ")" + s)
     lines.append("")
-    with open(path, "a", encoding="utf-8") as f:
+    # ★ E2（2026-09-20）：补 newline="\n"，理由同 embed_video_links.py。
+    with open(path, "a", encoding="utf-8", newline="\n") as f:
         f.write("\n" + "\n".join(lines) + "\n")
     return (True, "已嵌入: " + fname)
 

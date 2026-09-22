@@ -33,8 +33,31 @@ desktop.ini
 # Node / VitePress
 node_modules/
 docs/.vitepress/dist/
+# 绕沙箱批量删除保护时用的临时输出目录（distX / distY），构建完记得删
+docs/.vitepress/dist*/
+# 构建被打断时残留的临时配置文件
+docs/.vitepress/config.mts.timestamp-*.mjs
 docs/.vitepress/cache/
 package-lock.json.bak
+# 改脚本前的本地备份（2026-09-19 起用 <name>.bak-YYYYMMDD 命名）
+# .bak-* = 转换前的源（回归基线）；.orig-* = 前置搬运前的原件。
+#   ★ 脚本自己的备份只留本地；**真题页的基线与原件必须入库**，见下面两条例外。
+*.bak-*
+*.orig-*
+
+# ★ 例外（2026-09-20）：真题页的回归基线 / 原件纳入版本控制。
+#
+#   为什么必须入库：zhenti_regress.py 的默认检查是「拿 <页面>.bak-* 当输入，
+#   用当前转换器重跑，期望逐字节复现线上页面」。基线不入库 ⇒ 换机器 / 重新克隆
+#   之后 24 份页面全部走 NOBAK 分支 ⇒ 回归会报「24/24 复现一致 · 退出码 0」，
+#   而实际上一次字节比对都没做。（2026-09-19 审计实测确认。）
+#
+#   为什么不影响别的：这两条只对 docs/posts/ 生效。scripts/*.bak-*、
+#   *.log 之类的本地备份照旧被上面的规则挡住。
+#
+#   体积：34 个 .bak + 9 个 .orig，共约 0.8 MB。
+!docs/posts/**/*.bak-*
+!docs/posts/**/*.orig-*
 *.log
 .npm/
 
@@ -84,3 +107,35 @@ guangdong-zhuanshengben-resources/
 # Obsidian 误建的空库
 zsb/
 
+# B站视频解析产物（音频 / 画面帧 / 逐字稿）—— 本地用，不推送
+# 见 scripts/bili_analyze.py。注意 *.jpg / *.m4s 不在上面的通用媒体规则里，必须单独挡。
+data/bili-analyze/
+
+# 真题讲解抓取产物（字幕轨 / 画面帧 / 逐字稿 / 真题卡）—— 同上，本地用
+# 见 scripts/bili_zhenti.py。★ 只有重写后的 notes/*.md 会进 docs/，原始产物一律不进站。
+data/bili-zhenti/
+
+# 真题考点抽取与章节归并的中间产物（topics.json / analysis.json / 日志）—— 本地用
+# 见 data/zhenti-extract/*.py。结论已写进 docs/posts/高频考点/真题考点总析.md，产物本身不进站。
+data/zhenti-extract/
+
+# 从站内真题 PDF 抽正文的中间产物（文字层 txt / 300dpi 页面渲染 png / 逐题比对脚本）—— 本地用
+# 见 data/english-pdf/*.py。★ 原始 PDF 本身在 docs/public/papers/ 下，**是入库的**；
+# 这里只放「抽取结果 + 复核脚本」，产物本身不进站。
+data/english-pdf/
+
+# ★ B站登录态凭证 —— 绝不能进仓库（等于把账号交出去）
+.bili-sessdata
+**/.bili-sessdata
+# bili_login.py 在终端乱码时落出的二维码页面，属临时产物
+bili-qr.html
+
+# WorkBuddy AI agent 的本地工作记忆 / 自动化执行记录 —— 本地状态，不进仓库
+# 与上面 .obsidian/workspace.json 同理：设备相关、随时会变、对他人无意义。
+# 2026-09-21 补：此前这 2 个文件一直以 ?? 状态挂在 git status 里。
+.workbuddy-ai/
+
+
+# 本地预览用的目录联接（指向 docs/.vitepress/dist）—— 构建产物，不进仓库
+# 2026-09-21 补：此前它以数千个 ?? 的形式污染 git status。
+data/preview-root/

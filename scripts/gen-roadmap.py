@@ -13,6 +13,8 @@ def font(sz):
         try:
             return ImageFont.truetype(name, sz)
         except Exception:
+            # ★ A6 复核（2026-09-20）：**有意**吞掉。这是一串候选字体，
+            #   逐个试是设计意图；循环末尾有 load_default() 兜底。
             continue
     return ImageFont.load_default()
 

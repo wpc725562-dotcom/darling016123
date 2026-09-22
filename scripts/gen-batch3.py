@@ -1,17 +1,18 @@
 # -*- coding: utf-8 -*-
 """第三波：高数剩余 P0 8 张 + 计算机剩余 P0 5 张 = 13 张图"""
+import os
 import sys
-sys.path.insert(0, r'C:\Users\Administrator\.dsh\skills\scipilot-figure-skill\scripts')
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 from matplotlib.patches import Rectangle, Circle, FancyArrowPatch
 import numpy as np
-from setup_style import setup_style
+from _figstyle import setup_style, FIGS_DIR  # noqa: E402
 
 setup_style(journal='nature', lang='zh')
-OUT = r'C:\Users\Administrator\Desktop\deeepseek\zhuan-sheng-ben-notes\docs\public\figs'
+OUT = FIGS_DIR
 
 # ============ 高数 1：函数图像（基本初等函数）============
 fig, ax = plt.subplots(figsize=(3.5, 2.4))

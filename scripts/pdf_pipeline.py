@@ -17,9 +17,13 @@
 from __future__ import annotations
 
 import argparse
+import os
 import re
 import sys
 from pathlib import Path
+
+# ★ A5 残留（2026-09-20）：tesseract OCR 原先没有 timeout —— 外部命令挂住脚本就不返回。
+SUBPROC_TIMEOUT = int(os.environ.get("ZHENTI_SUBPROC_TIMEOUT", "600"))
 
 
 def detect(path: Path) -> str:
@@ -29,7 +33,11 @@ def detect(path: Path) -> str:
     if suf != ".pdf":
         return "unknown"
     try:
-        import fitz
+        # ★ E4 连带（2026-09-20）：`import fitz` 是**已弃用的旧名**，
+        #   实测会打 "The `fitz` API is deprecated and will be removed in future.
+        #   Use `import pymupdf` instead."。PyMuPDF 1.28 里 `pymupdf` 才是正式名。
+        #   用 `as fitz` 保留下面 `fitz.open(...)` 的写法，改动面最小。
+        import pymupdf as fitz
 
         doc = fitz.open(path)
         sample = ""
@@ -55,7 +63,7 @@ def detect(path: Path) -> str:
 
 
 def extract_text_pdf(path: Path, pages: str | None, out: Path | None) -> str:
-    import fitz
+    import pymupdf as fitz
 
     doc = fitz.open(path)
     idxs = parse_pages(pages, len(doc))
@@ -67,7 +75,7 @@ def extract_text_pdf(path: Path, pages: str | None, out: Path | None) -> str:
     text = "".join(parts)
     if out:
         out.parent.mkdir(parents=True, exist_ok=True)
-        out.write_text(text, encoding="utf-8")
+        out.write_text(text, encoding="utf-8", newline="\n")
     return text
 
 
@@ -80,7 +88,7 @@ def extract_docx(path: Path, out: Path | None) -> str:
     text = "\n".join(p.text for p in doc.paragraphs)
     if out:
         out.parent.mkdir(parents=True, exist_ok=True)
-        out.write_text(text, encoding="utf-8")
+        out.write_text(text, encoding="utf-8", newline="\n")
     return text
 
 
@@ -91,7 +99,7 @@ def ocr_pdf(
     out: Path | None,
     engine: str,
 ) -> str:
-    import fitz
+    import pymupdf as fitz
     import numpy as np
     from PIL import Image
 
@@ -131,6 +139,7 @@ def ocr_pdf(
                     ["tesseract", str(png), str(base), "-l", "chi_sim+eng", "--psm", "6"],
                     check=False,
                     capture_output=True,
+                    timeout=SUBPROC_TIMEOUT,
                 )
                 tpath = Path(str(base) + ".txt")
                 if tpath.exists():
@@ -140,7 +149,7 @@ def ocr_pdf(
     text = "".join(chunks)
     if out:
         out.parent.mkdir(parents=True, exist_ok=True)
-        out.write_text(text, encoding="utf-8")
+        out.write_text(text, encoding="utf-8", newline="\n")
     return text
 
 
@@ -168,6 +177,8 @@ def main() -> None:
     try:
         sys.stdout.reconfigure(encoding="utf-8")
     except Exception:
+        # ★ A6 复核（2026-09-20）：**有意**吞掉。这只是让 Windows 控制台别乱码，
+        #   失败不影响流水线任何产出（stdout 已被重定向时本来就会抛）。
         pass
 
     ap = argparse.ArgumentParser(description="专升本 PDF 分流流水线")

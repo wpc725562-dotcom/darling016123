@@ -1,0 +1,6 @@
+{
+  "file": "docs/posts/english/2015-英语-刷题版.md",
+  "mode": "zuoti",
+  "script": "zhenti_promote_english.py",
+  "_note": "前置搬运清单：只改形态不改内容。被 zhenti_regress.py 当作管线第一步重放。"
+}

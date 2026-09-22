@@ -11,16 +11,17 @@
 9. 方向导数与梯度：等高线 + 梯度场
 10. 微分方程：斜率场
 """
+import os
 import sys
-sys.path.insert(0, r'C:\Users\Administrator\.dsh\skills\scipilot-figure-skill\scripts')
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import numpy as np
-from setup_style import setup_style
+from _figstyle import setup_style, FIGS_DIR  # noqa: E402
 
 setup_style(journal='nature', lang='zh')
-OUT = r'C:\Users\Administrator\Desktop\deeepseek\zhuan-sheng-ben-notes\docs\public\figs'
+OUT = FIGS_DIR
 
 # ============ 1. 两个重要极限 ============
 fig, axes = plt.subplots(1, 2, figsize=(7.2, 2.4))

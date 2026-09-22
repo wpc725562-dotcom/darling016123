@@ -3,6 +3,11 @@ name: Tests
 # 2026-09-04：仓库有 26 个 unittest 覆盖 PDF 抽取管线（分流判定、页号解析、
 # 图片页补齐、水印正则），但此前无 CI。水印正则误含「插本」会静默删掉正文
 # 「广东专插本」，只有回归测试能拦住，所以必须每次 push 都跑。
+#
+# 2026-09-22：加 nav-coverage 作业。check-links 只做正向验证（导航里的链接
+# 有没有死链），发现不了反向问题（页面存在但没进导航）。实测有 22 个页面
+# 属此类。该作业用 --strict，只在出现「无导航入口 **且** 正文无任何引用」
+# 的真·不可达页时才失败 —— 单纯缺 sidebar 条目不阻塞 CI。
 
 on:
   push:
@@ -10,11 +15,15 @@ on:
     paths:
       - "scripts/**"
       - "tests/**"
+      - "docs/**"
+      - "package.json"
       - ".github/workflows/test.yml"
   pull_request:
     paths:
       - "scripts/**"
       - "tests/**"
+      - "docs/**"
+      - "package.json"
   workflow_dispatch:
 
 permissions:
@@ -37,3 +46,16 @@ jobs:
 
       - name: Run unittest suite
         run: python -m unittest discover -s tests -p "test_*.py" -v
+
+  nav-coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: 反向检查导航覆盖（无导航入口 / 不可达页面）
+        run: node scripts/check-nav-coverage.mjs --strict
+

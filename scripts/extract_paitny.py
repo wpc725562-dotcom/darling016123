@@ -15,7 +15,10 @@ import sys
 import docx
 import pymupdf
 
-SRC = r"D:\专升本\_pdf_cache\paitny"
+# ★ E1（2026-09-20）：这是**仓库外**的数据缓存（不进 Git），原来把本机路径写死在代码里。
+#   改成环境变量可覆盖、默认值保持不变 —— 换机器/换盘时不用改代码：
+#       PAITNY_SRC=/path/to/paitny python scripts/extract_paitny.py
+SRC = os.environ.get("PAITNY_SRC") or r"D:\专升本\_pdf_cache\paitny"
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(REPO, "资料", "外部资源文字版", "paitny")
 

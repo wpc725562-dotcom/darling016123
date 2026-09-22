@@ -102,7 +102,9 @@ def embed(fname_key_name, rows):
         s = (" · " + tip) if tip else ""
         lines.append("- [" + t + "](" + url + ")" + s)
     lines.append("")
-    with open(path, "a", encoding="utf-8") as f:
+    # ★ E2（2026-09-20）：补 newline="\n"。默认 newline=None 在 Windows 上会把
+    #   `\n` 翻译成 `\r\n`，同一份输入换个平台就产出不同字节 —— 与 write_text 同类。
+    with open(path, "a", encoding="utf-8", newline="\n") as f:
         f.write("\n" + "\n".join(lines) + "\n")
     return (True, "已嵌入: " + fname_key_name)
 

@@ -10,7 +10,9 @@ written = []
 def w(rel: str, content: str) -> None:
     p = ROOT / rel
     p.parent.mkdir(parents=True, exist_ok=True)
-    p.write_text(content.replace("\r\n", "\n"), encoding="utf-8")
+    # ★ E2（2026-09-20）：同 fill_abc_exams.py —— 上面的 `replace` 与文本模式写盘互相抵消，
+    #   必须显式 `newline="\n"` 才能真的写出 LF。
+    p.write_text(content.replace("\r\n", "\n"), encoding="utf-8", newline="\n")
     written.append(rel)
     print("W", rel, len(content))
 

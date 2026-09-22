@@ -1,5 +1,18 @@
 # 统一换行符：所有文本文件入库规范化为 LF，杜绝 CRLF/LF 幻影修改
-* text=auto
+#
+# ★ 2026-09-20 补 `eol=lf`（修 E2 的系统性那一半）。
+#   原来只有 `text=auto`，而 `text=auto` **只管入库方向**：提交时把 CRLF 规范成 LF，
+#   但检出方向仍受 `core.autocrlf=true` 支配 —— 于是工作区又被写回 CRLF。
+#   实测：`git ls-files --eol` 显示 991 个文件是 `i/lf w/crlf`，
+#   即上面那句注释承诺的效果**并没有发生**。
+#   `eol=lf` 把检出方向也钉死为 LF，注释才名副其实。
+#
+#   同时修掉一个边界：`docs/posts/computer/2025.md`、`2026.md` 在索引里被标成
+#   `-text`（git 判成非文本），这类文件**完全不做行尾规范化** ——
+#   `eol=lf` 让它们也回到受管状态。
+#
+#   本仓库没有 .bat / .cmd（那两个类型需要 CRLF），已确认过再改。
+* text=auto eol=lf
 
 # 明确的二进制类型（防止误规范化）
 *.png binary

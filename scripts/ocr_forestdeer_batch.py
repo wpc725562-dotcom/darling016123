@@ -31,7 +31,9 @@ from pdf_vision_ocr import (  # noqa: E402
 )
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-CACHE = r"D:\专升本\_pdf_cache\forestdeer"
+# ★ E1（2026-09-20）：仓库外的数据缓存，路径按本机现状写死 → 改成可覆盖。
+#       FORESTDEER_CACHE=/path/to/forestdeer python scripts/ocr_forestdeer_batch.py
+CACHE = os.environ.get("FORESTDEER_CACHE") or r"D:\专升本\_pdf_cache\forestdeer"
 OUT = os.path.join(REPO, "资料", "ForestDeer文字版")
 
 NOISE = re.compile(r"（公众号：[^）]*）|\(公众号：[^)]*\)|_unlocked|_\(1\)|\(\d+\)")

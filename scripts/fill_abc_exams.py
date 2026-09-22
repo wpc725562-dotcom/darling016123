@@ -8,7 +8,10 @@ written = []
 def w(rel: str, content: str) -> None:
     p = ROOT / rel
     p.parent.mkdir(parents=True, exist_ok=True)
-    p.write_text(content.replace("\r\n", "\n"), encoding="utf-8")
+    # ★ E2（2026-09-20）：`replace("\r\n","\n")` 把内容规范成 LF，但 `write_text`
+    #   在文本模式下**又把它翻回 CRLF** —— 一个函数里两步互相抵消。
+    #   加 `newline="\n"` 才真正落到磁盘上是 LF。
+    p.write_text(content.replace("\r\n", "\n"), encoding="utf-8", newline="\n")
     written.append(rel)
     print("W", rel, len(content))
 

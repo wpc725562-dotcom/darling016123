@@ -80,7 +80,7 @@ const BASE_HEIGHT = 300
 const SIZE_MIN = 70
 const SIZE_MAX = 150
 const SIZE_STEP = 5
-const DEFAULT_SIZE = 100
+const DEFAULT_SIZE = 80
 const loaded = ref(false)
 const disabled = ref(false)
 const desktopEligible = ref(false)
@@ -147,8 +147,10 @@ function initWidget(): void {
       motion: false,
     },
     react: {
-      opacityDefault: 0.8,
-      opacityOnHover: 0.2,
+      // ★ 2026-09-22：0.8 → 0.5。1023px 视口下 0.8 明显压住卡片内容。
+      //   opacityOnHover 与 pointer-events:none 冲突（不触发），保持同值避免误解。
+      opacityDefault: 0.5,
+      opacityOnHover: 0.5,
     },
     dialog: {
       enable: false,
@@ -189,6 +191,11 @@ function applyWidgetSize(persist = true): boolean {
   canvas.style.transformOrigin = 'left bottom'
   canvas.style.transition = 'transform 180ms ease'
   canvas.style.transform = `scale(${sizePercent.value / 100})`
+  // ★ 2026-09-22：看板娘是装饰，不该吃掉下层卡片的点击。
+  //   1023px 视口下它压在「政治真题」卡片上，导致该入口点不进去。
+  canvas.style.pointerEvents = 'none'
+  const box = document.getElementById('live2d-widget') || canvas.parentElement
+  if (box) box.style.pointerEvents = 'none'
   return true
 }
 
@@ -400,5 +407,9 @@ onUnmounted(() => {
 .live2d-close:hover,
 .live2d-restore:hover,
 .live2d-size-menu > summary:hover { color: var(--accent-color); border-color: var(--sakura-pink); }
-@media (max-width: 899px) { .live2d-controls { display: none; } }
+/* ★ 2026-09-22：窄屏不再整体隐藏控件 —— 否则「先宽后窄」时看板娘仍在，
+   关闭按钮却消失了，用户无法关闭。只收起大小菜单，保留关闭按钮。 */
+@media (max-width: 900px) {
+  .live2d-size-menu { display: none; }
+}
 </style>

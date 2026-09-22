@@ -224,7 +224,7 @@ L.append('**相关**：[题库总入口](/posts/题库/) · [🖥️ 计算机�
 L.append('')
 
 out = ROOT / "docs/posts/题库/计算机手写题.md"
-out.write_text('\n'.join(L), encoding='utf-8')
+out.write_text('\n'.join(L), encoding='utf-8', newline='\n')
 print("写入:", out)
 print("字节:", out.stat().st_size)
 from collections import Counter

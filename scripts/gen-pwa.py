@@ -22,6 +22,8 @@ def make_icon(size, letter, out):
     try:
         font = ImageFont.truetype("msyh.ttc", size // 2)
     except Exception:
+        # ★ A6 复核（2026-09-20）：**有意**吞掉。字体只是外观，找不到就用
+        #   PIL 内置位图字体，图标仍然生成得出来 —— 有可用降级路径，不是数据丢失。
         font = ImageFont.load_default()
     # 居中
     bbox = d.textbbox((0, 0), letter, font=font)
@@ -50,7 +52,8 @@ manifest = {
     ],
 }
 (public / "manifest.json").write_text(
-    __import__("json").dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8"
+    __import__("json").dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8",
+    newline="\n"
 )
 print(f"  manifest.json: {public / 'manifest.json'}")
 
@@ -88,6 +91,6 @@ self.addEventListener('fetch', (e) => {
   );
 });
 """
-(public / "sw.js").write_text(sw, encoding="utf-8")
+(public / "sw.js").write_text(sw, encoding="utf-8", newline="\n")
 print(f"  sw.js: {public / 'sw.js'}")
 print("DONE")

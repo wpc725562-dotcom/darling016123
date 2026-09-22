@@ -10,7 +10,10 @@
 - 标准库: argparse
 - 第三方: —
 - 函数内局部导入(第三方): —
-- 用途: B站(Bilibili)元数据+音频抓取脚本 -- 免登录走官方API(实测 2026-08)
+- 用途: B站(Bilibili)元数据+音频抓取脚本 -- 免登录走官方API。
+  2026-09-18 修复：`x/web-interface/view` 已被风控稳定 412，改用 `x/web-interface/wbi/view`（免签名），
+  并以 `x/player/pagelist` 兜底；新增字幕轨探测（`x/player/v2`，看 `need_login_subtitle` 判断值不值得登录）。
+  外部依赖仅 `ffprobe`（用于时长校验）。
 ### `embed_video_links.py`
 - 标准库: os
 - 第三方: —

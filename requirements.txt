@@ -1,0 +1,51 @@
+# 广东专升本笔记站 · Python 脚本依赖
+#
+# 建立于 2026-09-20（修审计条目 E4）。
+# 起因：仓库里有 56 个 Python 脚本、9 个第三方包，**却没有任何依赖声明**。
+# 换机器/重装环境时，只能靠一个个 ModuleNotFoundError 把依赖试出来 ——
+# 而 `gen-*-figs.py` 那 9 个脚本在缺依赖时的表现就是直接崩在 import 行，
+# 看不出「缺的是什么、要不要装」。
+#
+# 用法：
+#     python -m pip install -r requirements.txt
+#
+# ★ 需要 Python >= 3.10
+#   · `Path.write_text(newline=...)` 是 3.10 才加入的参数（2026-09-20 修 E2 时全量启用）
+#   · 脚本里用了 `str | None`、`list[int]` 这类内建泛型注解
+#   实测环境：CPython 3.13。
+#
+# ★ 为什么用 `==` 钉死而不是 `>=`
+#   9 个 gen-*-figs.py 用 matplotlib 画 docs/public/figs/ 下的 53 张配图，
+#   样式由外部技能 scipilot-figure-skill 的 `setup_style()` 控制。
+#   matplotlib 大版本变化会改默认 rcParams（字体回退顺序、savefig.dpi、bbox），
+#   图会**静默变样** —— 不报错，只是不一样了，肉眼很难发现。
+#   所以钉死版本，让「重新生成的图」与仓库里已有的图保持一致。
+#
+# ★ 按用途分组（不需要全套时可以只装前两组）
+#   ① 绘图（26 个脚本）：matplotlib, numpy
+#   ② 文档/PDF 抽取（8 个脚本）：PyMuPDF, python-docx, Pillow
+#   ③ 扫码登录（3 个脚本）：qrcode
+#   ④ 仅个别脚本需要：
+#        rapidocr-onnxruntime  → pdf_pipeline.py 的扫描件 OCR 兜底（体积大，可选）
+#        sympy                 → verify_math2025.py 的公式等价性验算
+#        yt-dlp                → bili_ytdlp.py 的元数据/字幕轨声明探测（可选增强，
+#                                缺失时该脚本打印安装提示并退出 2，不影响其他脚本）
+#
+# ★ 唯一的例外：yt-dlp **故意不钉版本**
+#   上面说「钉死版本」是为了让产物可复现。yt-dlp 恰好相反 ——
+#   它靠 extractor 追平台改动，B站一改接口就得靠新版本修；
+#   钉死旧版的结果不是「可复现」，而是「某天突然全都取不到」。
+#   本仓库只用到两个契约（`listsubtitles` 开关、cookiefile 传登录态），
+#   两者都跨版本稳定；真正的风险在 B站那一侧，只能靠升级 yt-dlp 应对。
+#   ⇒ 保持不钉，需要时 `pip install -U yt-dlp`。
+#   实测基准版本：2026.08.19
+
+matplotlib==3.11.1
+numpy==2.5.2
+Pillow==12.3.0
+PyMuPDF==1.28.2
+python-docx==1.2.0
+qrcode==8.2
+rapidocr-onnxruntime==1.2.3
+sympy==1.14.0
+yt-dlp

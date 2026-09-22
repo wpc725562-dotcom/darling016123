@@ -104,7 +104,7 @@ for rel, head_anchor, ans_anchor, text in FIXES:
     insert = f"\n**解析**：{text}"
     new = t[:line_end] + insert + t[line_end:]
     if APPLY:
-        p.write_text(new, encoding="utf-8")
+        p.write_text(new, encoding="utf-8", newline="\n")
     applied += 1
     print(f"  {'✅ 写入' if APPLY else '✓ 校验通过'}  {rel.split('/')[-1]}  {head_anchor[:34]}")
 

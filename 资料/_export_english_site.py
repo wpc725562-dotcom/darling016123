@@ -185,7 +185,7 @@ def main():
         year = int(m.group(1))
         md = to_site_md(p.read_text(encoding="utf-8"), year)
         out = DST / f"{year}.md"
-        out.write_text(md, encoding="utf-8")
+        out.write_text(md, encoding="utf-8", newline="\n")
         years.append(year)
         has_pdf = (PUBLIC / f"{year}-full.pdf").exists() or (
             PUBLIC / f"{year}-paper.pdf"
@@ -237,7 +237,7 @@ description: 广东专升本公共英语 2008–2024 真题详解 · 在线试�
 
 ← [回首页](/)
 """
-    (DST / "index.md").write_text(index, encoding="utf-8")
+    (DST / "index.md").write_text(index, encoding="utf-8", newline="\n")
     print("index years:", sorted(years, reverse=True))
 
 

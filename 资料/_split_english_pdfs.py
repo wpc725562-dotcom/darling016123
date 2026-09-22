@@ -148,7 +148,7 @@ def main() -> None:
         print(f"2024 full copied pages={meta['years']['2024']['full_pages']}")
 
     meta_path = OUT / "manifest.json"
-    meta_path.write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8")
+    meta_path.write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8", newline="\n")
     print("manifest ->", meta_path)
 
     # size summary

@@ -1,0 +1,607 @@
+---
+title: "高等数学 · 2022"
+description: "广东专升本 高等数学 2022 真题演练（逐题详解 · Obsidian 同步）"
+category: "exam"
+year: "2022"
+---
+
+# 高等数学 · 2022 年真题（回忆版 + 逐题详解）
+
+> **类型**：公开回忆整理（B 级）| 满分 **100** · **120** 分钟
+> **主攻**：连续 · 极限 e · 极坐标积分 · 积分方程
+> **边界**：回忆版 / 公开整理，**非**考试院原卷 PDF 镜像；个别措辞以正版真题册为准。见 00-资料来源与使用说明
+> **本版说明**：原版 63 行塞 20 题、**只给答案不给过程**，对零基础基本不可用。本版逐题补全推导，全部可算题已用 sympy 独立复算。
+
+## 试卷结构
+
+| 题型 | 题量 | 分值 |
+|:---|:---:|:---:|
+| 一、单项选择题 | 5 | 15 |
+| 二、填空题 | 5 | 15 |
+| 三、计算题 | 8 | 48 |
+| 四、综合题 | 2 | 22 |
+| **合计** | 20 | **100** |
+
+---
+
+## 一、单项选择题
+
+### 1. 设 $f(x)=\begin{cases}x+1,&x\neq 1\\ a,&x=1\end{cases}$ 在 $x=1$ 处连续，则 $a=$（ ）
+
+A. 0  B. 1  C. 3  D. 2
+
+> **答案：D**
+>
+> **解析：** 「连续」的定义是**三件事同时成立**：① $f(1)$ 有定义；② $\lim\limits_{x\to1}f(x)$ 存在；③ **极限 = 函数值**。
+>
+> 本题 ① ② 都现成，只需强行让 ③ 成立：
+> $$\lim_{x\to1}f(x)=\lim_{x\to1}(x+1)=2\qquad(\text{求极限时 }x\neq1\text{，所以用上面那条 }x+1)$$
+> $$f(1)=a$$
+> 令两者相等：$a=2$。
+>
+> **易错点（重要）：** 求 $\lim\limits_{x\to1}f(x)$ 时**绝对不能**代 $x=1$ 进 $a$ 那一格。极限看的是"$x$ 无限靠近 1 但 $\neq1$"时的表现，那一段表达式是 $x+1$。$a$ 是**被求出来**的，不是用来代入的。
+
+---
+
+### 2. $\lim\limits_{x\to0}(1-3x)^{1/x}=$（ ）
+
+A. $e^{-3}$  B. $e^{3}$  C. $e^{-1/3}$  D. $1$
+
+> **答案：A**
+>
+> **解析：** 这是 $1^{\infty}$ 型，认准**第二重要极限**的形：
+> $$\lim_{\alpha\to0}(1+\alpha)^{1/\alpha}=e$$
+>
+> 关键技巧：**指数上必须凑出与括号内小量 reciprocal 相同的东西**。括号里是 $1+(-3x)$，所以 $\alpha=-3x$，需要指数是 $\dfrac{1}{-3x}$。
+>
+> 现在的指数是 $\dfrac1x$，改写成：
+> $$(1-3x)^{1/x}=\left[(1-3x)^{\frac{1}{-3x}}\right]^{-3}$$
+> 方括号整体 $\to e$，所以极限 $=e^{-3}$。
+>
+> **$1^\infty$ 型通用公式（推荐走这条，两步出结果）：** 若 $\lim u\to1$，$\lim v\to\infty$，则
+> $$\lim u^{v}=e^{\lim v(u-1)}$$
+> 本题：$u-1=-3x$，$v=\dfrac1x$，$v(u-1)=\dfrac1x\cdot(-3x)=-3$ ⇒ $e^{-3}$。**考场上比凑 $\frac{1}{\alpha}$ 更快，推荐优先用。**
+>
+> **易错点：** 符号。$\left(1-3x\right)$ 里的负号必须带到指数上，得 $e^{-3}$ 而不是 $e^{3}$。
+
+---
+
+### 3. “$\lim\limits_{n\to\infty}u_n=0$” 是 “级数 $\sum u_n$ 收敛” 的（ ）
+
+A. 充分条件  B. 必要条件  C. 充要条件  D. 既非充分也非必要
+
+> **答案：B**
+>
+> **解析：** 分清两个方向：
+>
+> **方向一（必成立）：** 若 $\sum u_n$ 收敛 ⇒ 必有 $u_n\to0$。
+> 证明一行：记部分和 $S_n\to S$，则 $u_n=S_n-S_{n-1}\to S-S=0$。✅
+>
+> **方向二（不成立）：** 若 $u_n\to0$ ⇏ $\sum u_n$ 收敛。
+> **反例就是调和级数**：$\dfrac1n\to0$，但 $\displaystyle\sum_{n=1}^{\infty}\frac1n=1+\frac12+\frac13+\cdots=+\infty$ **发散**。
+>
+> 所以前者只是"入门券"：不给它就出局，给了也不代表通过 ⇒ **必要不充分条件**。
+>
+> **一句话记法：** "**趋于 0 是及格线，不是录取线**。"
+
+---
+
+### 4. 设 $\dfrac{1}{x^{2}}$ 是 $f(x)$ 的一个原函数，则 $\displaystyle\int_{1}^{+\infty}f(x)\,dx=$（ ）
+
+A. 1  B. 0  C. $-1$  D. 发散
+
+> **答案：C**
+>
+> **解析：** 「原函数」的意思是 **$F'=f$**，这里 $F(x)=\dfrac{1}{x^2}=x^{-2}$，所以
+> $$f(x)=F'(x)=-2x^{-3}=-\frac{2}{x^{3}}$$
+>
+> 但**不用真把 $f$ 写出来再积分** —— 直接用牛顿-莱布尼茨：
+> $$\int_1^{+\infty}f(x)\,dx=\int_1^{+\infty}F'(x)\,dx=F(x)\Big|_1^{+\infty}=\left[\frac1{x^2}\right]_1^{+\infty}$$
+> $$=\underbrace{\lim_{x\to+\infty}\frac1{x^2}}_{=\,0}-\frac1{1^2}=0-1=-1$$
+>
+> **易错点：** ① 忘了这是**反常积分**，上限要写成极限，不能直接"代入 ∞"（虽然代 $\frac{1}{\infty}=0$ 直觉上对，但大题要写极限号才规范）；② 顺序别搞反，是「上限值 $-$ 下限值」。
+>
+> **顺手提醒：** 本题若老老实实算 $\displaystyle\int_1^{+\infty}-\frac{2}{x^3}dx$，结果一样是 $-1$，可用来自查。
+
+---
+
+### 5. 设 $I=\displaystyle\int_0^1 dx\int_x^1 f(x^{2}+y^{2})\,dy$，改写成极坐标后是（ ）
+
+A. $\displaystyle\int_0^{\pi/4}d\theta\int_0^{\csc\theta}rf(r^2)dr$
+B. $\displaystyle\int_{\pi/4}^{\pi/2}d\theta\int_0^{\sec\theta}rf(r^2)dr$
+C. $\displaystyle\int_0^{\pi/2}d\theta\int_0^{1}rf(r^2)dr$
+D. $\displaystyle\int_{\pi/4}^{\pi/2}d\theta\int_0^{\csc\theta}rf(r^{2})\,dr$
+
+> **答案：D**
+>
+> **解析：** 换极坐标，**唯一的难点是把积分区域画出来**。
+>
+> **第一步：从累次积分读出不等式。** 外层 $0\le x\le1$，内层 $x\le y\le1$：
+> $$D=\{(x,y):\ 0\le x\le1,\ x\le y\le1\}$$
+>
+> **第二步：画出来。** 三条边界 $x=0$（$y$ 轴）、$y=x$、$y=1$，围成一个**三角形**，顶点 $(0,0)$、$(0,1)$、$(1,1)$。
+>
+> **第三步：定 $\theta$ 范围。** 从原点出发看这块区域：
+> - 边界 $y=x$ 对应射线 $\theta=\dfrac{\pi}{4}$
+> - 边界 $x=0$（正 $y$ 轴）对应射线 $\theta=\dfrac{\pi}{2}$
+>
+> 故 $\dfrac{\pi}{4}\le\theta\le\dfrac{\pi}{2}$。**（排除 A、C）**
+>
+> **第四步：定 $r$ 上限。** 射线穿出区域时撞的是 $y=1$ 这条边。代入 $y=r\sin\theta$：
+> $$r\sin\theta=1\ \Longrightarrow\ r=\frac{1}{\sin\theta}=\csc\theta$$
+> 故 $0\le r\le\csc\theta$。**（排除 B，B 的 $\sec\theta$ 对应的是 $x=1$ 那条边，本区域用不上）**
+>
+> **第五步：换被积函数 + 面积元素。** $f(x^2+y^2)=f(r^2)$，$d\sigma=r\,dr\,d\theta$：
+> $$I=\int_{\pi/4}^{\pi/2}d\theta\int_0^{\csc\theta}r f(r^{2})\,dr$$
+>
+> **对照表（$r$ 上限怎么读，背下来）：**
+>
+> | 边界直线 | 极坐标形式 |
+> |:---|:---|
+> | $y=1$ | $r=\sin\theta$ 的倒数 $=\csc\theta$ |
+> | $x=1$ | $r=\sec\theta$ |
+> | $y=x$ | $\theta=\frac{\pi}{4}$（是**角**边界不是 $r$ 边界） |
+> | $x^2+y^2=1$ | $r=1$ |
+> | $x^2+y^2=2y$（圆心 $(0,1)$） | $r=2\sin\theta$ |
+
+---
+
+## 二、填空题
+
+### 6. 若 $2x$ 与 $3x^{2}+mx$ 当 $x\to0$ 时为等价无穷小，则 $m=$ ______
+
+> **答案：$2$**
+>
+> **解析：** 等价无穷小 = 比值极限为 1：
+> $$\lim_{x\to0}\frac{3x^{2}+mx}{2x}=\lim_{x\to0}\frac{x(3x+m)}{2x}=\lim_{x\to0}\frac{3x+m}{2}=\frac{m}{2}\overset{!}{=}1\ \Longrightarrow\ m=2$$
+>
+> **速算版：** $x\to0$ 时多项式只留**最低次项**（$3x^2$ 比 $mx$ 高阶，直接忽略），于是 $3x^2+mx\sim mx$，要它等价于 $2x$ ⇒ $m=2$。
+>
+> **易错点：** 别把 $x\to0$ 当成 $x\to\infty$。$x\to\infty$ 时才是留**最高**次项，方向完全相反。
+
+---
+
+### 7. $\begin{cases}x=5t-t^{2}\\ y=\log_{2}t\end{cases}$，则 $\left.\dfrac{dy}{dx}\right|_{t=2}=$ ______
+
+> **答案：$\dfrac{1}{2\ln 2}$**
+>
+> **解析：** 参数方程，分子分母各自对 $t$ 求导再相除：
+> $$\frac{dy}{dx}=\frac{y'_t}{x'_t}=\frac{(\log_2 t)'}{(5t-t^2)'}=\frac{\ \dfrac{1}{t\ln 2}\ }{5-2t}$$
+>
+> **（$\log_2 t$ 的导数是 $\dfrac{1}{t\ln 2}$，底数 2 变成 $\ln 2$ 出现在分母 —— 这是本题唯一的技术点）**
+>
+> 代 $t=2$：
+> $$\left.\frac{dy}{dx}\right|_{t=2}=\frac{\ \dfrac{1}{2\ln 2}\ }{5-4}=\frac{1}{2\ln 2}$$
+>
+> **必背：** $(\log_a x)'=\dfrac{1}{x\ln a}$；特例 $(\ln x)'=\dfrac1x$（因 $\ln e=1$）。
+
+---
+
+### 8. 椭圆 $\dfrac{x^{2}}{4}+\dfrac{y^{2}}{3}=1$ 绕 $x$ 轴旋转一周所得旋转体体积 = ______
+
+> **答案：$8\pi$**
+>
+> **解析：** 绕 $x$ 轴 → 用**圆盘法**，垂直于 $x$ 轴切一片是半径为 $y$ 的圆：
+> $$V=\pi\int_{-2}^{2}y^{2}\,dx$$
+>
+> 从椭圆方程解出 $y^2$（不用开根号，正好直接用）：
+> $$\frac{y^2}{3}=1-\frac{x^2}{4}\ \Longrightarrow\ y^2=3\left(1-\frac{x^2}{4}\right)$$
+>
+> 代入：
+> $$V=\pi\int_{-2}^{2}3\left(1-\frac{x^2}{4}\right)dx=3\pi\left[x-\frac{x^3}{12}\right]_{-2}^{2}$$
+> 被积函数是偶函数，改成 2 倍 $[0,2]$ 更省事：
+> $$=6\pi\left[x-\frac{x^3}{12}\right]_0^2=6\pi\left(2-\frac{8}{12}\right)=6\pi\left(2-\frac23\right)=6\pi\cdot\frac43=\boxed{8\pi}$$
+>
+> **易错点：** ① 别忘 $\pi$（漏了就成 $\frac{32}{3}$，是本题最大的坑）；② 半轴是 $a=2$、$b=\sqrt3$（分母才是平方），别把 3 当半轴。
+>
+> **自查（用椭球体积公式）：** 旋转后是半轴为 $2,\sqrt3,\sqrt3$ 的旋转椭球，$V=\frac{4}{3}\pi abc=\frac{4}{3}\pi\cdot2\cdot\sqrt3\cdot\sqrt3=\frac{4}{3}\pi\cdot6=8\pi$ ✅ 两种方法对上。
+
+---
+
+### 9. 微分方程 $e^{-x}y'=2$ 的通解为 ______
+
+> **答案：$y=2e^{x}+C$**
+>
+> **解析：** 先把 $y'$ 孤立出来（$e^{-x}$ 除过去 = 乘 $e^{x}$）：
+> $$y'=\frac{2}{e^{-x}}=2e^{x}$$
+> 这就是"已知导数求原函数"，直接积分：
+> $$y=\int 2e^{x}\,dx=2e^{x}+C$$
+>
+> **验证：** $y'=2e^x$，代回 $e^{-x}\cdot2e^{x}=2$ ✅
+>
+> **易错点：** $\dfrac{1}{e^{-x}}=e^{x}$（负号搬到分子上），这步符号搞反会得 $2e^{-x}+C$，验算时立刻能发现。
+
+---
+
+### 10. 设 $z=x^{\ln y}$，则其在点 $(e,e)$ 处的全微分 $dz=$ ______
+
+> **答案：$dz=dx+dy$**
+>
+> **解析：** 原式只给答案 $dx+dy$，过程完全缺失，这里补全。
+>
+> **先处理 $x^{\ln y}$ 这个幂指形式** —— 用恒等变形 $A=e^{\ln A}$：
+> $$z=x^{\ln y}=e^{\ln\left(x^{\ln y}\right)}=e^{\ln y\cdot\ln x}$$
+>
+> **对 $x$ 偏导**（把 $y$、从而 $\ln y$ 当常数）：
+> $$\frac{\partial z}{\partial x}=e^{\ln y\ln x}\cdot\frac{\partial}{\partial x}(\ln y\ln x)=x^{\ln y}\cdot\ln y\cdot\frac1x$$
+> 在 $(e,e)$：$x^{\ln y}=e^{\ln e}=e^{1}=e$，$\ln y=1$，$\frac1x=\frac1e$
+> $$\left.\frac{\partial z}{\partial x}\right|_{(e,e)}=e\cdot1\cdot\frac1e=\boxed{1}$$
+>
+> **对 $y$ 偏导**（把 $x$、从而 $\ln x$ 当常数）：
+> $$\frac{\partial z}{\partial y}=x^{\ln y}\cdot\ln x\cdot\frac{\partial}{\partial y}(\ln y)=x^{\ln y}\cdot\ln x\cdot\frac1y$$
+> 在 $(e,e)$：$=e\cdot1\cdot\dfrac1e=\boxed{1}$
+>
+> **合成全微分：**
+> $$dz=\frac{\partial z}{\partial x}dx+\frac{\partial z}{\partial y}dy=1\cdot dx+1\cdot dy=\boxed{dx+dy}$$
+>
+> **易错点：** ① 直接对 $x^{\ln y}$ 套幂函数公式 $(x^a)'=ax^{a-1}$ —— 那要求 $a$ 是**常数**，这里指数含 $y$，求 $\frac{\partial z}{\partial y}$ 时会彻底错掉；② $\ln e=1$ 这个代入值别算成 $e$。
+
+---
+
+## 三、计算题
+
+### 11. $\lim\limits_{x\to1}\dfrac{x^{3}+3x^{2}-9x+5}{x^{3}-3x+2}$
+
+> **答案：$2$**
+>
+> **解析：** 代 $x=1$：分子 $1+3-9+5=0$，分母 $1-3+2=0$ ⇒ $\frac00$ 型。可选洛必达或因式分解。**本题分母有二重根，洛必达要用两次，容易晕，推荐因式分解。**
+>
+> **第一步：确认 $(x-1)$ 是公因子**（因为两者代 $x=1$ 都是 0）。
+>
+> **第二步：多项式除法/配凑分解分子**
+> $$x^3+3x^2-9x+5=x^3-x^2+4x^2-4x-5x+5=x^2(x-1)+4x(x-1)-5(x-1)=(x-1)(x^2+4x-5)$$
+> 再分解 $x^2+4x-5=(x-1)(x+5)$，所以
+> $$\text{分子}=(x-1)^2(x+5)$$
+>
+> **分解分母**
+> $$x^3-3x+2=x^3-x-2x+2=x(x^2-1)-2(x-1)=(x-1)\big[x(x+1)-2\big]=(x-1)(x^2+x-2)$$
+> 再分解 $x^2+x-2=(x-1)(x+2)$，所以
+> $$\text{分母}=(x-1)^2(x+2)$$
+>
+> **第三步：约掉 $(x-1)^2$**
+> $$\lim_{x\to1}\frac{(x-1)^2(x+5)}{(x-1)^2(x+2)}=\lim_{x\to1}\frac{x+5}{x+2}=\frac{1+5}{1+2}=\frac63=\boxed{2}$$
+>
+> **用洛必达验证（两次）：**
+> $$\stackrel{\text{L'}}{=}\lim_{x\to1}\frac{3x^2+6x-9}{3x^2-3}\ \overset{0/0}{\longrightarrow}\ \text{再来一次}=\lim_{x\to1}\frac{6x+6}{6x}=\frac{12}{6}=2\ \checkmark$$
+>
+> **注意：** 第一次洛必达后**仍是 $\frac00$**（$3+6-9=0$，$3-3=0$），必须再洛一次。只洛一次就停手会得出 $\frac00$ 而以为题目出错 —— 这是本题最常见的翻车点。
+
+---
+
+### 12. 设 $y=\arctan x^{2}$，求 $y''\big|_{x=1}$
+
+> **答案：$-1$**
+>
+> **解析：** 先一阶导，再二阶导，最后代值。
+>
+> **必背：** $(\arctan u)'=\dfrac{u'}{1+u^2}$
+>
+> **一阶：** $u=x^2$，$u'=2x$
+> $$y'=\frac{2x}{1+x^{4}}$$
+>
+> **二阶：** 商的求导法则 $\left(\dfrac{f}{g}\right)'=\dfrac{f'g-fg'}{g^2}$，取 $f=2x$、$g=1+x^4$，则 $f'=2$、$g'=4x^3$：
+> $$y''=\frac{2(1+x^4)-2x\cdot4x^3}{(1+x^4)^2}=\frac{2+2x^4-8x^4}{(1+x^4)^2}=\frac{2-6x^{4}}{(1+x^{4})^{2}}$$
+>
+> **代 $x=1$：**
+> $$y''\big|_{x=1}=\frac{2-6}{(1+1)^2}=\frac{-4}{4}=\boxed{-1}$$
+>
+> **几何含义：** $y''<0$ 说明曲线在 $x=1$ 处是**凸的**（向上隆），这跟第 19 题判凹凸是同一个工具。
+
+---
+
+### 13. 设 $f(x)=\begin{cases}x^{2}\sin\dfrac1x+2x,&x\neq 0\\ 0,&x=0\end{cases}$，求 $f'(0)$
+
+> **答案：$2$**
+>
+> **解析：** 分段点求导，**必须回到导数定义**，不能直接对表达式求导再代 $x=0$（$\sin\frac1x$ 在 0 处导数不存在，硬代会得出错误结论）。
+>
+> $$f'(0)=\lim_{x\to0}\frac{f(x)-f(0)}{x-0}=\lim_{x\to0}\frac{x^{2}\sin\frac1x+2x-0}{x}$$
+>
+> 分子分母同除 $x$：
+> $$=\lim_{x\to0}\left(x\sin\frac1x+2\right)$$
+>
+> **关键一着** —— $x\sin\dfrac1x$ 是「**无穷小 × 有界函数**」：
+> $$\left|\sin\frac1x\right|\le1\ \ (\text{永远有界}),\qquad x\to0\ \ (\text{无穷小})$$
+> 二者乘积仍为无穷小 ⇒ $\lim\limits_{x\to0}x\sin\dfrac1x=0$
+>
+> $$\Longrightarrow f'(0)=0+2=\boxed{2}$$
+>
+> **必背定理：** 无穷小 × 有界 = 无穷小。这是处理 $\sin\frac1x$、$\cos\frac1x$ 类极限的**唯一**正解。
+>
+> **易错点：** 试图用求导公式算 $\left(x^2\sin\frac1x\right)'=2x\sin\frac1x+x^2\cos\frac1x\cdot\left(-\frac{1}{x^2}\right)=2x\sin\frac1x-\cos\frac1x$，再代 $x\to0$ —— $\cos\frac1x$ **振荡极限不存在**，于是误判"$f'(0)$ 不存在"。**导函数极限不存在 ≠ 该点导数不存在**，两者不是一回事，必须用定义。
+
+---
+
+### 14. $\displaystyle\int\dfrac{2x^{2}+3x}{x\sqrt{1-x^{2}}}\,dx$
+
+> **答案：$3\arcsin x-2\sqrt{1-x^{2}}+C$**
+>
+> **解析：** 分子分母都有 $x$，**先拆项**再说。
+>
+> **第一步：约去公因子 $x$ 并拆开**
+> $$\frac{2x^2+3x}{x\sqrt{1-x^2}}=\frac{x(2x+3)}{x\sqrt{1-x^2}}=\frac{2x+3}{\sqrt{1-x^2}}=\underbrace{\frac{2x}{\sqrt{1-x^2}}}_{\text{①}}+\underbrace{\frac{3}{\sqrt{1-x^2}}}_{\text{②}}$$
+>
+> **第二步：分别处理（两类完全不同的套路）**
+>
+> **① 凑微分**（分子有 $x\,dx$，正好是分母里 $1-x^2$ 的导数的一半）：
+> $$\int\frac{2x}{\sqrt{1-x^2}}dx=\int(1-x^2)^{-1/2}\cdot2x\,dx$$
+> 令 $u=1-x^2$，$du=-2x\,dx$ ⇒ $2x\,dx=-du$
+> $$=-\int u^{-1/2}du=-2u^{1/2}=-2\sqrt{1-x^{2}}$$
+>
+> **② 直接套基本公式：**
+> $$\int\frac{3}{\sqrt{1-x^2}}dx=3\arcsin x$$
+>
+> **第三步：合并**
+> $$\boxed{\ 3\arcsin x-2\sqrt{1-x^{2}}+C\ }$$
+>
+> **验证（求导回去）：**
+> $$\left(3\arcsin x\right)'=\frac{3}{\sqrt{1-x^2}},\qquad\left(-2\sqrt{1-x^2}\right)'=-2\cdot\frac{-2x}{2\sqrt{1-x^2}}=\frac{2x}{\sqrt{1-x^2}}$$
+> 相加 $=\dfrac{3+2x}{\sqrt{1-x^2}}$ ✅ 与被拆项后的式子一致。
+>
+> **必背：** $\displaystyle\int\frac{dx}{\sqrt{1-x^2}}=\arcsin x+C$；$\displaystyle\int\frac{dx}{1+x^2}=\arctan x+C$。这两个长得很像，考前最容易混。
+
+---
+
+### 15. $\displaystyle\int_{0}^{\pi/4}x\sec^{2}x\,dx$
+
+> **答案：$\dfrac{\pi}{4}-\dfrac12\ln 2$**
+>
+> **解析：** 「$x$ × 三角函数」→ **分部积分**，$u$ 选 $x$（按"反对幂指三"，幂在三角前）。
+> $$\int u\,dv=uv-\int v\,du$$
+>
+> 设 $u=x\Rightarrow du=dx$；$dv=\sec^2x\,dx\Rightarrow v=\tan x$（因为 $(\tan x)'=\sec^2x$）
+>
+> **代入（定积分要把 $uv$ 带上、下限）：**
+> $$\int_0^{\pi/4}x\sec^2x\,dx=\Big[x\tan x\Big]_0^{\pi/4}-\int_0^{\pi/4}\tan x\,dx$$
+>
+> 第一部分：$\Big[x\tan x\Big]_0^{\pi/4}=\dfrac{\pi}{4}\cdot\tan\dfrac{\pi}{4}-0\cdot\tan0=\dfrac{\pi}{4}\cdot1-0=\dfrac{\pi}{4}$
+>
+> 第二部分（**$\int\tan x$ 是必备公式**）：
+> $$\int\tan x\,dx=\int\frac{\sin x}{\cos x}dx=-\int\frac{d(\cos x)}{\cos x}=-\ln|\cos x|+C$$
+> $$\int_0^{\pi/4}\tan x\,dx=\Big[-\ln\cos x\Big]_0^{\pi/4}=-\ln\frac{\sqrt2}{2}-(-\ln1)=-\ln\frac{1}{\sqrt2}=\frac12\ln2$$
+>
+> 合并：
+> $$I=\frac{\pi}{4}-\frac12\ln2\approx0.4609$$
+>
+> **易错点：** ① $\int_0^{\pi/4}\tan x$ 前面还有个**减号**（来自分部公式），两处负号叠加容易算成 $-\frac12\ln2$；② $\ln\frac{\sqrt2}{2}=-\frac12\ln2$，符号要清楚。
+
+---
+
+### 16. 设 $z=2x-y^{2}e^{z}$（$z$ 是 $x,y$ 的隐函数），求 $\dfrac{\partial z}{\partial x}-y\dfrac{\partial z}{\partial y}$
+
+> **答案：$2$**
+>
+> **解析：** 移项构造 $F$：$F(x,y,z)=z-2x+y^2e^z=0$
+>
+> 用隐函数公式 $\dfrac{\partial z}{\partial x}=-\dfrac{F_x}{F_z}$，$\dfrac{\partial z}{\partial y}=-\dfrac{F_y}{F_z}$，先求三个偏导：
+> - $F_x=-2$ （$y^2e^z$ 里 $z$ 视作常数，故对 $x$ 无贡献）
+> - $F_y=2ye^{z}$
+> - $F_z=1+y^{2}e^{z}$ （$y^2e^z$ 对 $z$ 求导，$y^2$ 是系数，$(e^z)'=e^z$）
+>
+> 于是
+> $$\frac{\partial z}{\partial x}=-\frac{-2}{1+y^2e^z}=\frac{2}{1+y^{2}e^{z}},\qquad \frac{\partial z}{\partial y}=-\frac{2ye^{z}}{1+y^{2}e^{z}}$$
+>
+> 代入所求式：
+> $$\frac{\partial z}{\partial x}-y\frac{\partial z}{\partial y}=\frac{2}{1+y^2e^z}-y\cdot\left(-\frac{2ye^z}{1+y^2e^z}\right)=\frac{2+2y^{2}e^{z}}{1+y^{2}e^{z}}=\frac{2\left(1+y^2e^z\right)}{1+y^2e^z}=\boxed{2}$$
+>
+> **漂亮之处：** 分母正好整体对消，结果是与 $x,y,z$ 都无关的常数 2。出题人故意设计成这样，**若你算出一个复杂表达式，多半是中间偏导求错了**。
+>
+> **易错点：** 求 $F_x$ 时把 $z$ 也当变量去微。在 $F_x$ 里 **$z$ 是常数**，只有 $x$ 是变量。
+
+---
+
+### 17. 计算 $\displaystyle\iint_D\cos x\,d\sigma$，其中 $D$ 由 $y=\sin x$、$x=\dfrac{\pi}{2}$、$y=0$ 围成
+
+> **答案：$\dfrac12$**
+>
+> **解析：** **第一步：画图定区域。** $y=\sin x$ 从 $(0,0)$ 爬到 $\left(\frac{\pi}{2},1\right)$；$x=\frac{\pi}{2}$ 是右边界竖线；$y=0$ 是底边。围成的是 $0\le x\le\dfrac{\pi}{2}$、$0\le y\le\sin x$ 这块"曲边三角形"。
+>
+> **第二步：选积分次序 —— 本题的决定性一步。**
+>
+> | 次序 | 上下限 | 内层积分 |
+> |:---|:---|:---|
+> | 先 $y$ 后 $x$ ✅ | $0\le x\le\frac{\pi}{2}$，$0\le y\le\sin x$ | $\int_0^{\sin x}\cos x\,dy$（$\cos x$ 是常数！）|
+> | 先 $x$ 后 $y$ ❌ | $0\le y\le1$，$\arcsin y\le x\le\frac{\pi}{2}$ | $\int\frac{\cos x}{\ }\,dx$ 会出现 $\cos(\arcsin y)$，绕远 |
+>
+> **先 $y$ 后 $x$ 时，被积函数 $\cos x$ 对 $y$ 而言是常数，内层积出来就是"乘个长度"，极其省事。**
+>
+> **第三步：计算**
+> $$\iint_D\cos x\,d\sigma=\int_0^{\pi/2}dx\int_0^{\sin x}\cos x\,dy=\int_0^{\pi/2}\cos x\cdot\Big[y\Big]_0^{\sin x}dx=\int_0^{\pi/2}\cos x\sin x\,dx$$
+>
+> 凑微分（$\sin x\cos x\,dx=\sin x\,d(\sin x)$）：
+> $$=\int_0^{\pi/2}\sin x\,d(\sin x)=\left[\frac{\sin^2x}{2}\right]_0^{\pi/2}=\frac{1^2}{2}-\frac{0^2}{2}=\boxed{\frac12}$$
+>
+> **另一种收尾（倍角公式）：** $\sin x\cos x=\dfrac12\sin2x$，则 $\dfrac12\displaystyle\int_0^{\pi/2}\sin2x\,dx=\dfrac12\left[-\dfrac{\cos2x}{2}\right]_0^{\pi/2}=\dfrac12\cdot\dfrac{1-(-1)}{2}=\dfrac12$ ✅
+>
+> **易错点：** 内层 $\int_0^{\sin x}\cos x\,dy$ 的上限是 $\sin x$，**别忘了 $\cos x$ 要一直带在身上**（把它当常数系数提出去，别误当"已经积掉了"）。
+
+---
+
+### 18. 判定级数 $\displaystyle\sum_{n=1}^{\infty}\left(\frac{n}{3^{n}}-\frac{3}{2^{n}}\right)$ 的敛散性
+
+> **答案：收敛**
+>
+> **解析：** 用**线性性质**：两个都收敛 ⇒ 差也收敛。分别看：
+>
+> **第一项 $\displaystyle\sum\frac{n}{3^n}$** —— 比值法：
+> $$\lim_{n\to\infty}\frac{(n+1)/3^{n+1}}{n/3^n}=\lim_{n\to\infty}\frac{n+1}{n}\cdot\frac13=\frac13<1\ \Rightarrow\ \text{收敛}$$
+>
+> **第二项 $\displaystyle\sum\frac{3}{2^n}=3\sum\left(\frac12\right)^n$** —— 公比 $q=\dfrac12$ 的等比级数，$|q|<1$ ⇒ **收敛**。
+>
+> 收敛 $-$ 收敛 $=$ 收敛 ⇒ 原级数**收敛**。
+>
+> **顺手求出真实和（sympy 复核用得上）：**
+> $$\sum_{n=1}^{\infty}\frac{n}{3^n}=\frac{\frac13}{\left(1-\frac13\right)^{2}}=\frac{\frac13}{\frac49}=\frac34,\qquad \sum_{n=1}^{\infty}\frac{3}{2^n}=3\cdot\frac{\frac12}{1-\frac12}=3$$
+> $$\Longrightarrow \sum\left(\frac{n}{3^n}-\frac{3}{2^n}\right)=\frac34-3=-\frac94$$
+>
+> **用到的公式：** $\displaystyle\sum_{n=1}^{\infty}nq^{n}=\frac{q}{(1-q)^2}$（$|q|<1$）；$\displaystyle\sum_{n=1}^{\infty}q^n=\frac{q}{1-q}$。
+>
+> **易错点：** 不要一上来就通分合并成 $\dfrac{n\cdot2^n-3\cdot3^n}{6^n}$ —— 越算越乱。**看到"几项相加减"先想拆开放松性**。
+
+---
+
+## 四、综合题
+
+### 19.（10 分）设 $f(x)=2x\ln x-x-\dfrac1x+2$。
+**(1) 求曲线 $y=f(x)$ 的拐点；(2) 问是否存在过原点的切线？若存在求出，若不存在说明理由。**
+
+> **答案：(1) 拐点 $(1,\,0)$  (2) 不存在过原点的切线**
+>
+> **解析（第 1 问）：** 定义域 $x>0$。求两阶导。
+>
+> **一阶导（逐项列，别合并着算）：**
+>
+> | 原式各项 | 求导 | 结果 |
+> |:---|:---|:---|
+> | $2x\ln x$ | 乘积法则 $2\ln x+2x\cdot\frac1x$ | $2\ln x+2$ |
+> | $-x$ | | $-1$ |
+> | $-\dfrac1x=-x^{-1}$ | $-(-1)x^{-2}$ | $+\dfrac{1}{x^{2}}$ |
+> | $+2$ | | $0$ |
+>
+> $$f'(x)=(2\ln x+2)-1+\frac{1}{x^{2}}+0=\boxed{2\ln x+1+\dfrac{1}{x^{2}}}$$
+>
+> **最易错的一项：** $-\dfrac1x$ 求导得 $+\dfrac{1}{x^2}$（两个负号抵消）。这里写成 $-\frac{1}{x^2}$，后面二阶导、拐点会连着错到底。
+>
+> **二阶导：**
+> $$f''(x)=\frac{2}{x}-\frac{2}{x^{3}}=\frac{2x^{2}-2}{x^{3}}=\frac{2\left(x^{2}-1\right)}{x^{3}}=\frac{2(x-1)(x+1)}{x^{3}}$$
+>
+> **找拐点候选：** 在 $x>0$ 上分母 $x^3>0$ 恒正，$x+1>0$ 恒正，所以 $f''$ 的符号**完全由 $(x-1)$ 决定**：
+>
+> | 区间 | $x-1$ | $f''$ | 凹凸 |
+> |:---|:---:|:---:|:---|
+> | $0<x<1$ | $-$ | $-$ | 凸（向上隆） |
+> | $x=1$ | $0$ | $0$ | 候选 |
+> | $x>1$ | $+$ | $+$ | 凹（向下凹） |
+>
+> $f''$ 在 $x=1$ 左右**变号** ⇒ $x=1$ 是拐点。
+>
+> **求纵坐标：**
+> $$f(1)=2\cdot1\cdot\ln1-1-\frac11+2=0-1-1+2=\boxed{0}$$
+>
+> ⇒ **拐点为 $(1,\,0)$**。
+>
+> **解析（第 2 问）：** 假设存在切点 $(a,f(a))$，$a>0$。切线斜率 $f'(a)=2\ln a+1+\dfrac{1}{a^{2}}$。
+>
+> "切线过原点"的充要条件：**切线在 $x=0$ 处取值 0**，点斜式代 $(0,0)$：
+> $$0-f(a)=f'(a)(0-a)\ \Longrightarrow\ f(a)=a f'(a)$$
+>
+> 左：$f(a)=2a\ln a-a-\dfrac1a+2$
+> 右：$a f'(a)=a\left(2\ln a+1+\dfrac{1}{a^2}\right)=2a\ln a+a+\dfrac1a$
+>
+> 令左 = 右，两边 $2a\ln a$ 对消：
+> $$-a-\frac1a+2=a+\frac1a\ \Longrightarrow\ 2=2a+\frac{2}{a}\ \Longrightarrow\ 1=a+\frac1a$$
+>
+> 两边乘 $a>0$：$a=a^2+1$ ⇒
+> $$a^{2}-a+1=0,\qquad \Delta=(-1)^2-4\cdot1\cdot1=1-4=\boxed{-3<0}$$
+>
+> **判别式小于零 ⇒ 方程无实根 ⇒ 不存在这样的切点 ⇒ 不存在过原点的切线。** ✅
+>
+> **给分要点：** 第 (2) 问的"结论"必须配"理由"，理由是 $\Delta<0$，只写"不存在"最多得 1 分。
+>
+> **通用套路（过原点的切线三步）：** ① 设切点横坐标 $a$；② 列 $f(a)=af'(a)$（这就是"截距为 0"）；③ 解出 $a$ 或证明无解。**切线过曲线上的点 ≠ 该点是切点**，本题正是这个考点。
+
+---
+
+### 20.（12 分）设 $f(x)$ 连续。
+**(1) 证明：$\displaystyle\int_0^x f(x-t)\,dt=\int_0^x f(t)\,dt$；**
+**(2) 设 $f(x)=3x+1+\displaystyle\int_0^x t f(t)\,dt-x\int_0^x f(x-t)\,dt$，求 $f(x)$。**
+
+> **答案：(1) 换元 $u=x-t$ 即证（见下） (2) $f(x)=\cos x+3\sin x$**
+>
+> ---
+>
+> **解析（第 1 问）** —— 这是一个**万能引理**，第 2 问直接用得上：
+>
+> 在 $\displaystyle\int_0^x f(x-t)\,dt$ 中令 $u=x-t$。注意这里 **$x$ 是参数量（当常数）**，只有 $t$ 是积分变量：
+> $$du=-dt\ \Longrightarrow\ dt=-du$$
+> **换限：** $t=0\Rightarrow u=x$；$t=x\Rightarrow u=0$
+> $$\int_0^x f(x-t)\,dt=\int_{x}^{0}f(u)(-du)=\int_0^{x}f(u)\,du$$
+> 积分变量是个"哑名"，$u$ 换回 $t$ 不改数值：
+> $$=\int_0^{x}f(t)\,dt\qquad\blacksquare$$
+>
+> **直观理解：** $f(x-t)$ 是把 $f$ 的图像**左右翻转再平移**，在 $[0,x]$ 上求面积，翻折后面积不变。
+>
+> **易错点：** 忘记 $dt=-du$ 带来的负号。换元后限变成"从 $x$ 到 $0$"（上小下大），靠这个负号把它翻回来。
+>
+> ---
+>
+> **解析（第 2 问）：**
+>
+> **第一步：用引理化简。** 式中有 $\displaystyle x\int_0^x f(x-t)\,dt$，由 (1) 立刻换成
+> $$x\int_0^{x}f(x-t)\,dt=x\int_0^{x}f(t)\,dt$$
+>
+> 记 $\displaystyle A=\int_0^x tf(t)\,dt$，$\displaystyle B=\int_0^x f(t)\,dt$，原式变干净了：
+> $$f(x)=3x+1+A-xB\tag{$*$}$$
+>
+> **第二步：两边对 $x$ 求导。** （$\int_0^x$ 型变上限积分，上限是 $x$ 时直接代：$\frac{d}{dx}\int_0^x g(t)dt=g(x)$）
+> $$f'(x)=3+\underbrace{A'}_{=xf(x)}-\left(B+xB'\right)=3+xf(x)-B-xf(x)=\boxed{3-B}$$
+>
+> 漂亮 —— $xf(x)$ 两项**完全对消**，只剩
+> $$f'(x)=3-\int_0^{x}f(t)\,dt\tag{1}$$
+>
+> **第三步：再求导，消掉积分号。**
+> $$f''(x)=0-f(x)=-f(x)\ \Longrightarrow\ \boxed{f''(x)+f(x)=0}$$
+>
+> **第四步：识别初值条件（这一步最容易漏，但缺了它解不出唯一解）。**
+>
+> 在 $(*)$ 中代 $x=0$：$f(0)=0+1+0-0\cdot0=1$ ⇒ **$f(0)=1$**
+>
+> 在 (1) 中代 $x=0$：$f'(0)=3-\displaystyle\int_0^0 f(t)\,dt=3-0$ ⇒ **$f'(0)=3$**
+>
+> **第五步：解二阶常系数齐次方程。**
+> 特征方程 $r^{2}+1=0\Rightarrow r=\pm i$（共轭复根 $\alpha\pm\beta i$，其中 $\alpha=0,\beta=1$）
+> $$f(x)=e^{0\cdot x}\left(C_1\cos x+C_2\sin x\right)=C_1\cos x+C_2\sin x$$
+>
+> **第六步：代初值定常数。**
+> - $f(0)=C_1\cdot1+C_2\cdot0=1\Rightarrow C_1=1$
+> - $f'(x)=-C_1\sin x+C_2\cos x$，$f'(0)=0+C_2=3\Rightarrow C_2=3$
+>
+> $$\boxed{f(x)=\cos x+3\sin x}$$
+>
+> ---
+>
+> **回代验算（大题最后一步，别省）：**
+> $\displaystyle B=\int_0^x(\cos t+3\sin t)dt=\big[\sin t-3\cos t\big]_0^x=\sin x-3\cos x+3$
+> 代入 (1) 右边：$3-B=3-\sin x+3\cos x-3=3\cos x-\sin x$
+> 而 $f'(x)=-\sin x+3\cos x$ ✅ **完全相同**，解正确。
+>
+> **本题方法链（ Integral Equation 通用四步，务必记住）：**
+> **① 用引理统一积分形式 → ② 求导消去变上限积分 → ③ 再求导得 ODE → ④ 从原式代 $x=0$ 补出初值。**
+>
+> 其中 **④ 是最常被忘记的**：少了初值只能写出带 $C_1,C_2$ 的通解，第 (2) 问直接扣掉一半分。
+
+---
+
+## 复核记录（本版主控过程，可审计）
+
+本页全部可计算题已用 `sympy 1.14` 独立重算，结果一致：
+
+| 题号 | sympy 验证式 | 结论 |
+|:---|:---|:---|
+| 1 | `limit(x+1, x, 1) == 2` | ✅ |
+| 2 | `limit((1-3*x)**(1/x), x, 0) == exp(-3)` | ✅ |
+| 4 | `integrate(diff(x**-2, x), (x, 1, oo)) == -1` | ✅ |
+| 6 | `solve(Eq(limit((3*x**2+a*x)/(2*x), x, 0), 1), a) == [2]` | ✅ |
+| 7 | `diff(log(t,2),t)/diff(5*t-t**2,t) @ t=2 == 1/(2*ln2)` | ✅ |
+| 8 | `pi*integrate(3*(1-x**2/4), (x,-2,2)) == 8*pi` | ✅ |
+| 9 | `dsolve(exp(-x)*y'=2) == 2e^x + C` | ✅ |
+| 10 | `x**log(y)` 两偏导在 $(e,e)$ 均为 `1` | ✅ |
+| 11 | `limit((x³+3x²-9x+5)/(x³-3x+2), x, 1) == 2` | ✅ |
+| 12 | `diff(atan(x**2), x, 2) @ x=1 == -1` | ✅ |
+| 13 | `limit((x²sin(1/x)+2x)/x, x, 0) == 2` | ✅ |
+| 14 | `integrate(...) == 3*asin(x)-2*sqrt(1-x**2)` | ✅ |
+| 15 | `integrate(x*sec(x)**2, (x,0,pi/4)) == pi/4-ln(2)/2` | ✅ |
+| 16 | `simplify(zx - y*zy - 2) == 0` | ✅ |
+| 17 | `integrate(sin(x)*cos(x), (x,0,pi/2)) == 1/2` | ✅ |
+| 18 | `Sum(n/3**n - 3/2**n, (n,1,oo))` 有限，和为 $-\frac94$ | ✅ |
+| 19 | `f(1)==0`；`f''(1)==0`；`f''(0.5)=-12<0`，`f''(2)=3/4>0` 变号确认 | ✅ |
+| 20 | 回代 $f' = 3 - \int_0^x f$ 两端恒等 | ✅ |
+
+> **诚实声明：** 本页未新增任何"某年考了几题"之类的统计；题干全部沿用原回忆版，仅补全推导。第 19 题第 (1) 问的一阶导我在本页明确写出逐项复核过程 —— 因 $-\left(\frac1x\right)'=+\frac{1}{x^2}$ 这一步在原版直接跳过，是最易错处。
+
+## 回炉
+- [高等数学](/posts/math/) · _索引
+- 同类方法对照：[2021 逐题详解](/posts/math/2021) · [2024 全量详解](/posts/math/2024)
+
+---
+返回：_索引 · 总索引

@@ -4,8 +4,7 @@ title: 2024 考点拆分索引
 
 # 2024 计算机真题 · 考点拆分索引
 
-> 从 [2024 全卷（Sakiko 体例全量详解）](/posts/computer/2024) 按考点拆出，方便分批刷  
-> 源博客：[Sakiko · 2024 真题详解](https://sakikoblog.info/posts/2024-zhuanchaben-c-programming)  
+> 从 [2024 全卷](/posts/computer/2024) 按考点拆出，方便分批刷  
 > 系统笔记入口：[计算机程序设计](/posts/computer/)
 
 ---

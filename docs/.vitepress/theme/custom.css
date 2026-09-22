@@ -469,5 +469,20 @@ body {
   cursor: pointer;
 }
 @media (max-width: 900px) {
-  .live2d-close, .live2d-restore { display: none; }
+  /* ★ 2026-09-22：**不再隐藏 .live2d-close** —— 否则「先宽后窄」时看板娘仍在、
+     关闭按钮却消失了，用户无法关闭（这是本条的真正根因，不在 Live2DWidget.vue 里）。
+     .live2d-restore 在窄屏本就不渲染（desktopEligible=false），保留隐藏无副作用。 */
+  .live2d-restore { display: none; }
+}
+
+/* ★ 2026-09-22：门户 iframe 常态宽度 ≈1023px 下，11 项横向 nav 仍放不下
+   （实测只显示到「日语」，缺「📊 高频考点」「📖 指南」）。
+   VitePress 只在 <768px 才切汉堡菜单，这里把阈值提到 1100px，
+   复用其自带的 VPNavScreen 全屏菜单，保证窄屏下 11 项全部可达。
+   ★ 已确认 VPNavScreen 是 v-if 按需渲染（dist HTML 里无该元素），
+     故 display:block 只在菜单打开时生效，不会常驻显示。 */
+@media (max-width: 1099px) {
+  .VPNavBarMenu { display: none !important; }
+  .VPNavBarHamburger { display: flex !important; }
+  .VPNavScreen { display: block !important; }
 }

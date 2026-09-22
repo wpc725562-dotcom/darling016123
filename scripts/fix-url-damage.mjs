@@ -2,6 +2,11 @@
 /**
  * 修复被 spacing 脚本误伤的 URL（github. com → github.com, www. xxx → www.xxx）
  * 用法：node scripts/fix-url-damage.mjs [--dry-run]
+ *
+ * 覆盖两类破坏：
+ *   ① 域名 / 顶级域被拆：`github. com`、`. cn`
+ *   ② **文件扩展名被拆**：`2020-full. pdf`、`2023. md`  ← 2026-09-20 补
+ *      原来只有 ①，于是 4 个英语页共 10 处扩展名坏链一直修不到。
  */
 import { readFileSync, writeFileSync, readdirSync, statSync } from 'node:fs'
 import { join, dirname, resolve } from 'node:path'
@@ -23,18 +28,28 @@ function walk(dir, out = []) {
 function fixUrls(text) {
   let count = 0
   // 1. 域名被拆：github. com → github.com（含 https:// 后的）
-  const before = text
   text = text.replace(/(https?:\/\/[a-zA-Z0-9_-]+)\. ([a-zA-Z]{2,5})\b/g, (m, a, b) => { count++; return `${a}.${b}` })
   // 2. www. xxx → www.xxx（www 后空格）
   text = text.replace(/\b(www)\. ([a-zA-Z0-9])/g, (m, a, b) => { count++; return `${a}.${b}` })
   // 3. 常见顶级域被拆：. com / . cn / . org 等（前面是域名片段）
   text = text.replace(/([a-zA-Z0-9_-])\. (com|cn|org|net|edu|io|gov|info|me|co)\b/g, (m, a, b) => { count++; return `${a}.${b}` })
-  // 4. markdown 链接内的 https://... 被拆的恢复（兜底：url 内 . 空格）
-  text = text.replace(/([a-z0-9])\. ([a-z0-9])/gi, (m, a, b) => {
-    // 仅在看起来像域名上下文中恢复（前面有 // 或 . 或 www）
-    // 简化：检查周围是否 URL 特征
-    return m
-  })
+  // 4. ★ 2026-09-20 补：**文件扩展名**被拆（`. pdf` / `. md` / `. png` …）。
+  //
+  //    上面 1–3 只认「域名 + 顶级域」，于是文件扩展名这一类**完全没覆盖**：
+  //      `/papers/english/2020-full. pdf`            → 三条规则都修不到
+  //      `…/blob/main/历年真题/公共英语/2023. md`     → 同上
+  //    实测 4 个英语页共 10 处坏链因此存活至今。
+  //
+  //    为什么这么久没被发现：当时的死链检查器正则是 /\(([^)\s]+)\)/，
+  //    要求链接目标**不含空白** —— 这些坏链整条匹配不上，既不计数也不报错。
+  //    修复工具漏这一类 + 检查器漏这一类，两处失守叠加，坏链才藏了下来。
+  //
+  //    只在 markdown 链接 / 图片目标内修，避免误伤正文里「句号 + 空格」的正常行文。
+  text = text.replace(/(\]\([^)]*?)\. (pdf|md|html?|png|jpe?g|gif|webp|svg|zip|csv|xlsx?|mp3|mp4|json|txt)\b/gi,
+    (m, pre, ext) => { count++; return `${pre}.${ext}` })
+  // 5. 裸 URL 里的扩展名被拆（不在 markdown 语法内，如正文直接写 https://x.com/a. pdf）
+  text = text.replace(/(https?:\/\/[^\s)]*?)\. (pdf|md|html?|png|jpe?g|gif|webp|svg|zip|csv|xlsx?|mp3|mp4|json|txt)\b/gi,
+    (m, pre, ext) => { count++; return `${pre}.${ext}` })
   return { text, count }
 }
 

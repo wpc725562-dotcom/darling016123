@@ -403,9 +403,9 @@ def split_old_2008_2012():
         if st > en:
             continue
         paper = "\n\n".join(page_map[n] for n in range(st, en + 1) if n in page_map)
-        (BY / f"{y}-paper.txt").write_text(paper, encoding="utf-8")
+        (BY / f"{y}-paper.txt").write_text(paper, encoding="utf-8", newline="\n")
         md = gen_note(y, paper, "")
-        (NOTES / f"{y}.md").write_text(md, encoding="utf-8")
+        (NOTES / f"{y}.md").write_text(md, encoding="utf-8", newline="\n")
         generated.append(y)
         print(f"wrote early {y}.md pages {st}-{en} chars={len(paper)}")
     return generated
@@ -420,7 +420,7 @@ def main():
             answers = load_text(BY / "2024-answers-partial.txt") or answers
         md = gen_note(y, paper, answers)
         path = NOTES / f"{y}.md"
-        path.write_text(md, encoding="utf-8")
+        path.write_text(md, encoding="utf-8", newline="\n")
         generated.append(y)
         print(f"wrote {y}.md md={len(md)} paper={len(paper)} ans={len(answers)}")
 

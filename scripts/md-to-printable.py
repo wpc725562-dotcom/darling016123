@@ -112,7 +112,7 @@ def convert(src, dst=None):
     html_doc = wrap_html(body, title)
     if dst is None:
         dst = p.with_suffix(".html")
-    pathlib.Path(dst).write_text(html_doc, encoding="utf-8")
+    pathlib.Path(dst).write_text(html_doc, encoding="utf-8", newline="\n")
     return dst, title
 
 if __name__ == "__main__":
