@@ -136,6 +136,17 @@ jobs:
           # 检查 wiki 双链 [[...]]
           echo "## Wiki 双链检查" >> "$REPORT_FILE"
           for file in $(find docs/ -name "*.md"); do
+            # ★ 2026-09-23：先剥离围栏代码块与行内代码，再抽双链 ——
+            #   与 scripts/check-links.mjs 的 stripCode() 保持一致（本文件是仓库里
+            #   第三套链接检查器，另两套在 scripts/ 下；test-patrol-logic.sh 的
+            #   「三套检查器一致性」扫描守住 SKIP_WIKI，但没守住「是否剥代码」）。
+            #   不剥离会把文档里**举例说明**的写法当成真链接：实测
+            #   `docs/posts/computer/notes/*.md` 那句「只统计真题原文里带标签
+            #   `[[1.1 …]]` 的题」，让 10 篇笔记各报 1 处；再加 1 处 `[[...]]`
+            #   语法示例，共 20 处假阳性 —— 长期把「断链检查」刷成 ⚠️ 而失去信号价值。
+            scannable=$(sed -e '/^[[:space:]]*```/,/^[[:space:]]*```/d' \
+                            -e '/^[[:space:]]*~~~/,/^[[:space:]]*~~~/d' \
+                            -e 's/`[^`]*`//g' "$file")
             # 提取所有 [[link]] 链接
             while IFS= read -r line; do
               if [[ $line =~ \[\[([^]]+)\]\] ]]; then
@@ -149,6 +160,9 @@ jobs:
                 target="$(printf '%s' "$target" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')"
                 # 空目标不是链接，跳过
                 if [[ -z "$target" ]]; then continue; fi
+                # 跳过「省略号占位」：`[[1.1 …]]`、`[[...]]` 是文档在描述格式，
+                # 真实文件名里不会有 … 或 ...（2026-09-23 加，与 health-check.mjs 一致）
+                case "$target" in *…|*...) continue ;; esac
                 # 跳过 Markdown 扩展指令：[[toc]] 由插件渲染成目录，没有对应文件。
                 # 此前 4 个日语页面因此被持续误报（2026-09-17 修，
                 # 与 scripts/health-check.mjs、scripts/check-links.mjs 的 SKIP_WIKI 一致）
@@ -166,7 +180,7 @@ jobs:
                   BROKEN_COUNT=$((BROKEN_COUNT + 1))
                 fi
               fi
-            done < <(grep -oP '\[\[[^\]]+\]\]' "$file" 2>/dev/null || true)
+            done < <(printf '%s\n' "$scannable" | grep -oP '\[\[[^\]]+\]\]' 2>/dev/null || true)
           done
           
           echo "" >> "$REPORT_FILE"

@@ -181,6 +181,31 @@ else
   fail "三套链接检查器 SKIP_WIKI 不一致（漏改某一套会导致误报）"
 fi
 
+# 8c+++. 三套链接检查器都必须「先剥行内代码，再抽双链」（2026-09-23 加）
+#   与 8c++ 完全同构的失效模式，只是换了个维度：SKIP_WIKI 守住了「跳过扩展指令」，
+#   但没人守「跳过反引号里的示例」。实测 workflow 内联那套没剥，
+#   于是 `docs/posts/computer/notes/*.md` 里那句「只统计带标签 `[[1.1 …]]` 的题」
+#   被当成真链接，10 篇笔记各报 1 处，加 1 处 `[[...]]` 语法示例共 20 处假阳性 ——
+#   断链检查因此长期停在 ⚠️，真出问题时反而看不出来。
+#   这里只断言「剥代码这段存在」，不比对具体写法（mjs 用 replace 正则，
+#   bash 用 sed，形式本来就不同，强行比对会变成脆弱测试）。
+extract_strip() {
+  if grep -qF '.replace(/`[^`\n]*`/g' "$1" 2>/dev/null; then echo "replace"
+  elif grep -qF 's/`[^`]*`//g' "$1" 2>/dev/null; then echo "sed"
+  else echo "none"; fi
+}
+hc_strip="$(extract_strip scripts/health-check.mjs)"
+cl_strip="$(extract_strip scripts/check-links.mjs)"
+wf_strip="$(extract_strip "$WF_FILE")"
+echo "  health-check.mjs 剥行内代码: $hc_strip"
+echo "  check-links.mjs  剥行内代码: $cl_strip"
+echo "  workflow 内联    剥行内代码: $wf_strip"
+if [[ "$hc_strip" != "none" && "$cl_strip" != "none" && "$wf_strip" != "none" ]]; then
+  pass "三套链接检查器都剥离了行内代码"
+else
+  fail "有检查器未剥离行内代码（会把反引号里的示例当成真链接，稳定误报）"
+fi
+
 # 8d. 工作流内不得再内联这些函数定义（否则又与库漂移）
 for fn in count_md pct_of read_expect rotate_reports; do
   if grep -qE "^[[:space:]]*${fn}\(\)[[:space:]]*\{" "$WF_FILE"; then
