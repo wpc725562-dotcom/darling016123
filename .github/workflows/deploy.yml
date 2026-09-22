@@ -43,6 +43,16 @@ jobs:
       - name: Build
         env:
           GITHUB_ACTIONS: true
+          # ★ 2026-09-23：把 Node 堆上限从默认 ~4 GB 提到 8 GB。
+          #   为什么必须显式设：站点从 316 页长到 405 页（docs/ +132k 行）后，
+          #   VitePress 的 "building client + server bundles" 阶段会突破默认上限，
+          #   报 `FATAL ERROR: Reached heap limit Allocation failed - JavaScript heap
+          #   out of memory` 并以退出码 134 失败（run 35786037737 实测）。
+          #   注意：机器人（Auto Patrol）的提交是拿 GITHUB_TOKEN 推的，**不会触发**
+          #   本工作流 —— 所以 2026-09-17 之后的站点增长一直没被 CI 构建过，
+          #   直到本次人工推送才暴露出来。
+          #   ubuntu-latest runner 有 16 GB 内存，8 GB 堆安全。
+          NODE_OPTIONS: --max-old-space-size=8192
         run: npm run docs:build
 
       - name: Upload artifact

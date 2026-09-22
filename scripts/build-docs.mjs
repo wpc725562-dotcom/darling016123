@@ -74,6 +74,21 @@ if (shimActive) {
   console.log('[build-docs] 未检测到沙箱拦截，按原样构建')
 }
 
+// ★ 2026-09-23：确保 Node 堆上限够用。
+//   站点从 316 页长到 405 页后，VitePress 的 "building client + server bundles"
+//   阶段会突破 Node 默认 ~4 GB 上限，报
+//   `FATAL ERROR: Reached heap limit Allocation failed - JavaScript heap out of memory`
+//   并以退出码 134 结束（本地 + CI 各实测一次）。
+//   `.github/workflows/deploy.yml` 与 `auto-patrol.yml` 里各设了一份 —— CI 直接跑
+//   `npm run docs:build`，不走这个脚本，所以两处都要有。
+//   这里**追加**而不是覆盖：NODE_OPTIONS 里可能还挂着沙箱 shim 的 --require。
+//   调用方已显式指定 --max-old-space-size 时不覆盖，尊重其选择。
+const HEAP_MB = 8192
+if (!/--max-old-space-size=/.test(String(env.NODE_OPTIONS || ''))) {
+  env.NODE_OPTIONS = `${String(env.NODE_OPTIONS || '').trim()} --max-old-space-size=${HEAP_MB}`.trim()
+  console.log(`[build-docs] 已补 --max-old-space-size=${HEAP_MB}（默认堆上限不足以打包 405 页）`)
+}
+
 const args = [VP, 'build', 'docs', ...passthrough]
 console.log('[build-docs] ' + process.execPath.split(path.sep).pop() + ' ' + args.join(' '))
 
