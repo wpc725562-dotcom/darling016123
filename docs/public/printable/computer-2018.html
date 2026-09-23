@@ -9,58 +9,62 @@ h1 { font-size: 22px; border-bottom: 2px solid #333; padding-bottom: 8px; }
 h2 { font-size: 18px; margin-top: 24px; }
 h3 { font-size: 16px; }
 table { margin: 12px 0; }
+th, td { text-align: left; vertical-align: top; }
+ul, ol { margin: 8px 0; padding-left: 26px; }
+li { margin: 2px 0; }
 blockquote { border-left: 3px solid #999; margin: 8px 0; padding: 4px 12px; color: #555; background: #f7f7f7; }
 code { background: #f0f0f0; padding: 1px 5px; border-radius: 3px; }
+pre { background: #f7f7f7; border: 1px solid #e0e0e0; border-radius: 4px; padding: 10px 12px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+hr { border: none; border-top: 1px solid #ddd; margin: 18px 0; }
+a { color: #1a4d8f; }
+.ctitle { background: #eef4fb; border-left: 3px solid #7aa7d9; margin: 10px 0; padding: 6px 12px; color: #24486f; }
 .gap { height: 8px; }
 @media print { body { margin: 0; padding: 0; max-width: none; } }
 </style>
 </head>
 <body>
 <div class='gap'></div>
-<div class='gap'></div>
 <h1>计算机程序设计 · 2018 年真题演练（加厚）</h1>
 <div class='gap'></div>
-<blockquote>**类型**：同型演练（B/C 级）| 主攻：**C 基础 + 线性表**</blockquote>
-<blockquote>**边界**：回忆版 / 公开整理，**非**考试院原卷 PDF 镜像；个别措辞以正版真题册为准。见 00-资料来源与使用说明</blockquote>
+<blockquote><strong>类型</strong>：同型演练（B/C 级）| 主攻：<strong>C 基础 + 线性表</strong></blockquote>
+<blockquote><strong>边界</strong>：回忆版 / 公开整理，<strong>非</strong>考试院原卷 PDF 镜像；个别措辞以正版真题册为准。见 00-资料来源与使用说明</blockquote>
 <blockquote>优先对照：2024 全卷 + 2023 + 考点拆分</blockquote>
 <div class='gap'></div>
 <h2>试卷结构（按近年）</h2>
 <div class='gap'></div>
 <table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
 <tr><th>题型</th><th>题量</th><th>分值</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>选择 20</th><th>60</th><th>概念 + 读代码</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>判断 10</th><th>20</th><th>细节</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>填空 5</th><th>20</th><th>结果 / 术语</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>简答 4</th><th>40</th><th>概念辨析</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>计算 3</th><th>30</th><th>追踪输出</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>应用 3</th><th>30</th><th>手写 C</th></tr>
+<tr><td>选择 20</td><td>60</td><td>概念 + 读代码</td></tr>
+<tr><td>判断 10</td><td>20</td><td>细节</td></tr>
+<tr><td>填空 5</td><td>20</td><td>结果 / 术语</td></tr>
+<tr><td>简答 4</td><td>40</td><td>概念辨析</td></tr>
+<tr><td>计算 3</td><td>30</td><td>追踪输出</td></tr>
+<tr><td>应用 3</td><td>30</td><td>手写 C</td></tr>
+</table>
 <div class='gap'></div>
 <h2>同型题（C 基础 + 线性表）</h2>
 <div class='gap'></div>
 <h3>选择</h3>
 <ol>
-<li>C 程序基本单位是 **函数**</li>
-<li>数组下标从 **0** 开始</li>
-<li>顺序表随机存取 **O(1)**</li>
-<li>栈：**LIFO**；队列：**FIFO**</li>
-<li>`strcmp` 头文件 **`string.h`**</li>
+<li>C 程序基本单位是 <strong>函数</strong></li>
+<li>数组下标从 <strong>0</strong> 开始</li>
+<li>顺序表随机存取 <strong>O(1)</strong></li>
+<li>栈：<strong>LIFO</strong>；队列：<strong>FIFO</strong></li>
+<li><code>strcmp</code> 头文件 <strong><code>string.h</code></strong></li>
 <li>指针与数组：数组名 ≈ 首元素地址</li>
 <li>完全二叉树叶子与层关系</li>
 <li>折半查找前提：有序顺序表</li>
-<li>时间复杂度双重循环 **O(n²)**</li>
-<li>`fopen` 失败返回 **NULL**</li>
+<li>时间复杂度双重循环 <strong>O(n²)</strong></li>
+<li><code>fopen</code> 失败返回 <strong>NULL</strong></li>
 </ol>
 <div class='gap'></div>
 <h3>判断默写</h3>
+<ul>
 <li>注释可出现在多处（对）</li>
 <li>程序一定是算法（错）</li>
 <li>栈和队列是线性表（对）</li>
+</ul>
 <div class='gap'></div>
 <h3>简答默写</h3>
 <ol>
@@ -72,15 +76,17 @@ code { background: #f0f0f0; padding: 1px 5px; border-radius: 3px; }
 <div class='gap'></div>
 <h3>编程草稿纸</h3>
 <div class='gap'></div>
-<p><code>`</code>c</p>
-<p>// 数组逆置 / 链表遍历 / 简单排序 / 查找</p>
-<div class='gap'></div>
-<p><code>`</code></p>
+<pre><code>
+// 数组逆置 / 链表遍历 / 简单排序 / 查找
+
+</code></pre>
 <div class='gap'></div>
 <h2>回炉</h2>
-<li>2024 · 2023 · [计算机程序设计](/posts/computer/)</li>
+<ul>
+<li>2024 · 2023 · <a href="/posts/computer/">计算机程序设计</a></li>
+</ul>
 <div class='gap'></div>
-<p>---</p>
+<hr>
 <p>返回：_索引 · 总索引</p>
 <div class='gap'></div>
 </body>

@@ -2,91 +2,758 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<title>高等数学 · 2022</title>
+<title>2022年广东专升本《高等数学》真题+逐题详解</title>
 <style>
 body { font-family: "Microsoft YaHei", "Noto Sans SC", sans-serif; max-width: 800px; margin: 40px auto; padding: 0 24px; font-size: 14px; line-height: 1.8; color: #222; }
 h1 { font-size: 22px; border-bottom: 2px solid #333; padding-bottom: 8px; }
 h2 { font-size: 18px; margin-top: 24px; }
 h3 { font-size: 16px; }
 table { margin: 12px 0; }
+th, td { text-align: left; vertical-align: top; }
+ul, ol { margin: 8px 0; padding-left: 26px; }
+li { margin: 2px 0; }
 blockquote { border-left: 3px solid #999; margin: 8px 0; padding: 4px 12px; color: #555; background: #f7f7f7; }
 code { background: #f0f0f0; padding: 1px 5px; border-radius: 3px; }
+pre { background: #f7f7f7; border: 1px solid #e0e0e0; border-radius: 4px; padding: 10px 12px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+hr { border: none; border-top: 1px solid #ddd; margin: 18px 0; }
+a { color: #1a4d8f; }
+.ctitle { background: #eef4fb; border-left: 3px solid #7aa7d9; margin: 10px 0; padding: 6px 12px; color: #24486f; }
 .gap { height: 8px; }
 @media print { body { margin: 0; padding: 0; max-width: none; } }
 </style>
 </head>
 <body>
 <div class='gap'></div>
+<h1>高等数学 · 2022 年真题（回忆版 + 逐题详解）</h1>
 <div class='gap'></div>
-<h1>高等数学 · 2022 年真题（回忆版 + 参考答案）</h1>
-<div class='gap'></div>
-<blockquote>**类型**：公开回忆整理（B 级）| 满分 **100** · **120** 分钟</blockquote>
-<blockquote>**主攻**：连续 · 极限 e · 极坐标积分 · 积分方程</blockquote>
-<blockquote>**边界**：回忆版 / 公开整理，**非**考试院原卷 PDF 镜像；个别措辞以正版真题册为准。见 00-资料来源与使用说明</blockquote>
+<blockquote><strong>类型</strong>：公开回忆整理（B 级）| 满分 <strong>100</strong> · <strong>120</strong> 分钟</blockquote>
+<blockquote><strong>主攻</strong>：连续 · 极限 e · 极坐标积分 · 积分方程</blockquote>
+<blockquote><strong>边界</strong>：回忆版 / 公开整理，<strong>非</strong>考试院原卷 PDF 镜像；个别措辞以正版真题册为准。见 00-资料来源与使用说明</blockquote>
+<blockquote><strong>本版说明</strong>：原版 63 行塞 20 题、<strong>只给答案不给过程</strong>，对零基础基本不可用。本版逐题补全推导，全部可算题已用 sympy 独立复算。</blockquote>
 <div class='gap'></div>
 <h2>试卷结构</h2>
 <div class='gap'></div>
 <table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>题型</th><th>题量</th><th>分值</th></tr>
+<tr><th>大题</th><th>题号</th><th>题量</th><th>分值</th><th>核心考查</th></tr>
+<tr><td>一、单项选择题</td><td>1–5</td><td>5</td><td>15</td><td>连续性、重要极限、级数、反常积分</td></tr>
+<tr><td>二、填空题</td><td>6–10</td><td>5</td><td>15</td><td>等价无穷小、参数方程、旋转体、微分方程</td></tr>
+<tr><td>三、计算题</td><td>11–18</td><td>8</td><td>48</td><td>极限、高阶导数、三角换元、分部积分</td></tr>
+<tr><td>四、综合题</td><td>19–20</td><td>2</td><td>22</td><td>拐点与切线、积分方程</td></tr>
+<tr><td><strong>合计</strong></td><td></td><td><strong>20</strong></td><td><strong>100</strong></td><td>满分 100 分 · 120 分钟</td></tr>
+</table>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>题目一览</h2>
+<div class='gap'></div>
+<p class='ctitle'>展开看答案速查表（先自己做完再对）</p>
+<div class='gap'></div>
 <table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>一、单项选择题</th><th>5</th><th>15</th></tr>
+<tr><th>题号</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr>
+<tr><td>答案</td><td>D</td><td>A</td><td>B</td><td>C</td><td>D</td><td>$2$</td><td>$\dfrac{1}{2\ln 2}$</td><td>$8\pi$</td><td>$y=2e^{x}+C$</td><td>$dz=dx+dy$</td></tr>
+</table>
+<div class='gap'></div>
 <table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>二、填空题</th><th>5</th><th>15</th></tr>
+<tr><th>题号</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th><th>19</th><th>20</th></tr>
+<tr><td>答案</td><td>$2$</td><td>$-1$</td><td>$2$</td><td>$3\arcsin x-2\sqrt{1-x^{2}}+C$</td><td>$\dfrac{\pi}{4}-\dfrac12\ln 2$</td><td>$2$</td><td>$\dfrac12$</td><td>收敛</td><td>拐点 $(1,0)$</td><td>$f(x)=\cos x+3\sin x$</td></tr>
+</table>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>一、单项选择题（本大题共 5 小题，每小题 3 分，共 15 分）</h2>
+<div class='gap'></div>
+<h3>第 1 题 · 分段函数连续性</h3>
+<div class='gap'></div>
+<p>设 $f(x)=\begin{cases}x+1,&amp;x\neq 1\\ a,&amp;x=1\end{cases}$ 在 $x=1$ 处连续，则 $a=$（ ）</p>
+<div class='gap'></div>
+<ul>
+<li><strong>A.</strong> 0</li>
+<li><strong>B.</strong> 1</li>
+<li><strong>C.</strong> 3</li>
+<li><strong>D.</strong> 2</li>
+</ul>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：D</strong></p>
+<div class='gap'></div>
+<p><strong>解析：</strong> 「连续」的定义是<strong>三件事同时成立</strong>：① $f(1)$ 有定义；② $\lim\limits_{x\to1}f(x)$ 存在；③ <strong>极限 = 函数值</strong>。</p>
+<div class='gap'></div>
+<p>本题 ① ② 都现成，只需强行让 ③ 成立：</p>
+<p>$$\lim_{x\to1}f(x)=\lim_{x\to1}(x+1)=2\qquad(\text{求极限时 }x\neq1\text{，所以用上面那条 }x+1)$$</p>
+<p>$$f(1)=a$$</p>
+<p>令两者相等：$a=2$。</p>
+<div class='gap'></div>
+<p><strong>易错点（重要）：</strong> 求 $\lim\limits_{x\to1}f(x)$ 时<strong>绝对不能</strong>代 $x=1$ 进 $a$ 那一格。极限看的是&quot;$x$ 无限靠近 1 但 $\neq1$&quot;时的表现，那一段表达式是 $x+1$。$a$ 是<strong>被求出来</strong>的，不是用来代入的。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 2 题 · 重要极限 e</h3>
+<div class='gap'></div>
+<p>$\lim\limits_{x\to0}(1-3x)^{1/x}=$（ ）</p>
+<div class='gap'></div>
+<ul>
+<li><strong>A.</strong> $e^{-3}$</li>
+<li><strong>B.</strong> $e^{3}$</li>
+<li><strong>C.</strong> $e^{-1/3}$</li>
+<li><strong>D.</strong> $1$</li>
+</ul>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：A</strong></p>
+<div class='gap'></div>
+<p><strong>解析：</strong> 这是 $1^{\infty}$ 型，认准<strong>第二重要极限</strong>的形：</p>
+<p>$$\lim_{\alpha\to0}(1+\alpha)^{1/\alpha}=e$$</p>
+<div class='gap'></div>
+<p>关键技巧：<strong>指数上必须凑出与括号内小量 reciprocal 相同的东西</strong>。括号里是 $1+(-3x)$，所以 $\alpha=-3x$，需要指数是 $\dfrac{1}{-3x}$。</p>
+<div class='gap'></div>
+<p>现在的指数是 $\dfrac1x$，改写成：</p>
+<p>$$(1-3x)^{1/x}=\left[(1-3x)^{\frac{1}{-3x}}\right]^{-3}$$</p>
+<p>方括号整体 $\to e$，所以极限 $=e^{-3}$。</p>
+<div class='gap'></div>
+<p><strong>$1^\infty$ 型通用公式（推荐走这条，两步出结果）：</strong> 若 $\lim u\to1$，$\lim v\to\infty$，则</p>
+<p>$$\lim u^{v}=e^{\lim v(u-1)}$$</p>
+<p>本题：$u-1=-3x$，$v=\dfrac1x$，$v(u-1)=\dfrac1x\cdot(-3x)=-3$ ⇒ $e^{-3}$。<strong>考场上比凑 $\frac{1}{\alpha}$ 更快，推荐优先用。</strong></p>
+<div class='gap'></div>
+<p><strong>易错点：</strong> 符号。$\left(1-3x\right)$ 里的负号必须带到指数上，得 $e^{-3}$ 而不是 $e^{3}$。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 3 题 · 级数收敛的必要条件</h3>
+<div class='gap'></div>
+<p>“$\lim\limits_{n\to\infty}u_n=0$” 是 “级数 $\sum u_n$ 收敛” 的（ ）</p>
+<div class='gap'></div>
+<ul>
+<li><strong>A.</strong> 充分条件</li>
+<li><strong>B.</strong> 必要条件</li>
+<li><strong>C.</strong> 充要条件</li>
+<li><strong>D.</strong> 既非充分也非必要</li>
+</ul>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：B</strong></p>
+<div class='gap'></div>
+<p><strong>解析：</strong> 分清两个方向：</p>
+<div class='gap'></div>
+<p><strong>方向一（必成立）：</strong> 若 $\sum u_n$ 收敛 ⇒ 必有 $u_n\to0$。</p>
+<p>证明一行：记部分和 $S_n\to S$，则 $u_n=S_n-S_{n-1}\to S-S=0$。✅</p>
+<div class='gap'></div>
+<p><strong>方向二（不成立）：</strong> 若 $u_n\to0$ ⇏ $\sum u_n$ 收敛。</p>
+<p><strong>反例就是调和级数</strong>：$\dfrac1n\to0$，但 $\displaystyle\sum_{n=1}^{\infty}\frac1n=1+\frac12+\frac13+\cdots=+\infty$ <strong>发散</strong>。</p>
+<div class='gap'></div>
+<p>所以前者只是&quot;入门券&quot;：不给它就出局，给了也不代表通过 ⇒ <strong>必要不充分条件</strong>。</p>
+<div class='gap'></div>
+<p><strong>一句话记法：</strong> &quot;<strong>趋于 0 是及格线，不是录取线</strong>。&quot;</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 4 题 · 反常积分</h3>
+<div class='gap'></div>
+<p>设 $\dfrac{1}{x^{2}}$ 是 $f(x)$ 的一个原函数，则 $\displaystyle\int_{1}^{+\infty}f(x)\,dx=$（ ）</p>
+<div class='gap'></div>
+<ul>
+<li><strong>A.</strong> 1</li>
+<li><strong>B.</strong> 0</li>
+<li><strong>C.</strong> $-1$</li>
+<li><strong>D.</strong> 发散</li>
+</ul>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：C</strong></p>
+<div class='gap'></div>
+<p><strong>解析：</strong> 「原函数」的意思是 <strong>$F&#x27;=f$</strong>，这里 $F(x)=\dfrac{1}{x^2}=x^{-2}$，所以</p>
+<p>$$f(x)=F&#x27;(x)=-2x^{-3}=-\frac{2}{x^{3}}$$</p>
+<div class='gap'></div>
+<p>但<strong>不用真把 $f$ 写出来再积分</strong> —— 直接用牛顿-莱布尼茨：</p>
+<p>$$\int_1^{+\infty}f(x)\,dx=\int_1^{+\infty}F&#x27;(x)\,dx=F(x)\Big|_1^{+\infty}=\left[\frac1{x^2}\right]_1^{+\infty}$$</p>
+<p>$$=\underbrace{\lim_{x\to+\infty}\frac1{x^2}}_{=\,0}-\frac1{1^2}=0-1=-1$$</p>
+<div class='gap'></div>
+<p><strong>易错点：</strong> ① 忘了这是<strong>反常积分</strong>，上限要写成极限，不能直接&quot;代入 ∞&quot;（虽然代 $\frac{1}{\infty}=0$ 直觉上对，但大题要写极限号才规范）；② 顺序别搞反，是「上限值 $-$ 下限值」。</p>
+<div class='gap'></div>
+<p><strong>顺手提醒：</strong> 本题若老老实实算 $\displaystyle\int_1^{+\infty}-\frac{2}{x^3}dx$，结果一样是 $-1$，可用来自查。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 5 题 · 极坐标变换</h3>
+<div class='gap'></div>
+<p>设 $I=\displaystyle\int_0^1 dx\int_x^1 f(x^{2}+y^{2})\,dy$，改写成极坐标后是（ ）</p>
+<div class='gap'></div>
+<ul>
+<li><strong>A.</strong> $\displaystyle\int_0^{\pi/4}d\theta\int_0^{\csc\theta}rf(r^2)dr$</li>
+<li><strong>B.</strong> $\displaystyle\int_{\pi/4}^{\pi/2}d\theta\int_0^{\sec\theta}rf(r^2)dr$</li>
+<li><strong>C.</strong> $\displaystyle\int_0^{\pi/2}d\theta\int_0^{1}rf(r^2)dr$</li>
+<li><strong>D.</strong> $\displaystyle\int_{\pi/4}^{\pi/2}d\theta\int_0^{\csc\theta}rf(r^{2})\,dr$</li>
+</ul>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：D</strong></p>
+<div class='gap'></div>
+<p><strong>解析：</strong> 换极坐标，<strong>唯一的难点是把积分区域画出来</strong>。</p>
+<div class='gap'></div>
+<p><strong>第一步：从累次积分读出不等式。</strong> 外层 $0\le x\le1$，内层 $x\le y\le1$：</p>
+<p>$$D=\{(x,y):\ 0\le x\le1,\ x\le y\le1\}$$</p>
+<div class='gap'></div>
+<p><strong>第二步：画出来。</strong> 三条边界 $x=0$（$y$ 轴）、$y=x$、$y=1$，围成一个<strong>三角形</strong>，顶点 $(0,0)$、$(0,1)$、$(1,1)$。</p>
+<div class='gap'></div>
+<p><strong>第三步：定 $\theta$ 范围。</strong> 从原点出发看这块区域：</p>
+<ul>
+<li>边界 $y=x$ 对应射线 $\theta=\dfrac{\pi}{4}$</li>
+<li>边界 $x=0$（正 $y$ 轴）对应射线 $\theta=\dfrac{\pi}{2}$</li>
+</ul>
+<div class='gap'></div>
+<p>故 $\dfrac{\pi}{4}\le\theta\le\dfrac{\pi}{2}$。<strong>（排除 A、C）</strong></p>
+<div class='gap'></div>
+<p><strong>第四步：定 $r$ 上限。</strong> 射线穿出区域时撞的是 $y=1$ 这条边。代入 $y=r\sin\theta$：</p>
+<p>$$r\sin\theta=1\ \Longrightarrow\ r=\frac{1}{\sin\theta}=\csc\theta$$</p>
+<p>故 $0\le r\le\csc\theta$。<strong>（排除 B，B 的 $\sec\theta$ 对应的是 $x=1$ 那条边，本区域用不上）</strong></p>
+<div class='gap'></div>
+<p><strong>第五步：换被积函数 + 面积元素。</strong> $f(x^2+y^2)=f(r^2)$，$d\sigma=r\,dr\,d\theta$：</p>
+<p>$$I=\int_{\pi/4}^{\pi/2}d\theta\int_0^{\csc\theta}r f(r^{2})\,dr$$</p>
+<div class='gap'></div>
+<p><strong>对照表（$r$ 上限怎么读，背下来）：</strong></p>
+<div class='gap'></div>
 <table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>三、计算题</th><th>8</th><th>48</th></tr>
+<tr><th>边界直线</th><th>极坐标形式</th></tr>
+<tr><td>$y=1$</td><td>$r=\sin\theta$ 的倒数 $=\csc\theta$</td></tr>
+<tr><td>$x=1$</td><td>$r=\sec\theta$</td></tr>
+<tr><td>$y=x$</td><td>$\theta=\frac{\pi}{4}$（是<strong>角</strong>边界不是 $r$ 边界）</td></tr>
+<tr><td>$x^2+y^2=1$</td><td>$r=1$</td></tr>
+<tr><td>$x^2+y^2=2y$（圆心 $(0,1)$）</td><td>$r=2\sin\theta$</td></tr>
+</table>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>二、填空题（本大题共 5 小题，每小题 3 分，共 15 分）</h2>
+<div class='gap'></div>
+<h3>第 6 题 · 等价无穷小</h3>
+<div class='gap'></div>
+<p>若 $2x$ 与 $3x^{2}+mx$ 当 $x\to0$ 时为等价无穷小，则 $m=$ ______</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：$2$</strong></p>
+<div class='gap'></div>
+<p><strong>解析：</strong> 等价无穷小 = 比值极限为 1：</p>
+<p>$$\lim_{x\to0}\frac{3x^{2}+mx}{2x}=\lim_{x\to0}\frac{x(3x+m)}{2x}=\lim_{x\to0}\frac{3x+m}{2}=\frac{m}{2}\overset{!}{=}1\ \Longrightarrow\ m=2$$</p>
+<div class='gap'></div>
+<p><strong>速算版：</strong> $x\to0$ 时多项式只留<strong>最低次项</strong>（$3x^2$ 比 $mx$ 高阶，直接忽略），于是 $3x^2+mx\sim mx$，要它等价于 $2x$ ⇒ $m=2$。</p>
+<div class='gap'></div>
+<p><strong>易错点：</strong> 别把 $x\to0$ 当成 $x\to\infty$。$x\to\infty$ 时才是留<strong>最高</strong>次项，方向完全相反。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 7 题 · 参数方程求导</h3>
+<div class='gap'></div>
+<p>$\begin{cases}x=5t-t^{2}\\ y=\log_{2}t\end{cases}$，则 $\left.\dfrac{dy}{dx}\right|_{t=2}=$ ______</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：$\dfrac{1}{2\ln 2}$</strong></p>
+<div class='gap'></div>
+<p><strong>解析：</strong> 参数方程，分子分母各自对 $t$ 求导再相除：</p>
+<p>$$\frac{dy}{dx}=\frac{y&#x27;_t}{x&#x27;_t}=\frac{(\log_2 t)&#x27;}{(5t-t^2)&#x27;}=\frac{\ \dfrac{1}{t\ln 2}\ }{5-2t}$$</p>
+<div class='gap'></div>
+<p><strong>（$\log_2 t$ 的导数是 $\dfrac{1}{t\ln 2}$，底数 2 变成 $\ln 2$ 出现在分母 —— 这是本题唯一的技术点）</strong></p>
+<div class='gap'></div>
+<p>代 $t=2$：</p>
+<p>$$\left.\frac{dy}{dx}\right|_{t=2}=\frac{\ \dfrac{1}{2\ln 2}\ }{5-4}=\frac{1}{2\ln 2}$$</p>
+<div class='gap'></div>
+<p><strong>必背：</strong> $(\log_a x)&#x27;=\dfrac{1}{x\ln a}$；特例 $(\ln x)&#x27;=\dfrac1x$（因 $\ln e=1$）。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 8 题 · 旋转体体积</h3>
+<div class='gap'></div>
+<p>椭圆 $\dfrac{x^{2}}{4}+\dfrac{y^{2}}{3}=1$ 绕 $x$ 轴旋转一周所得旋转体体积 = ______</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：$8\pi$</strong></p>
+<div class='gap'></div>
+<p><strong>解析：</strong> 绕 $x$ 轴 → 用<strong>圆盘法</strong>，垂直于 $x$ 轴切一片是半径为 $y$ 的圆：</p>
+<p>$$V=\pi\int_{-2}^{2}y^{2}\,dx$$</p>
+<div class='gap'></div>
+<p>从椭圆方程解出 $y^2$（不用开根号，正好直接用）：</p>
+<p>$$\frac{y^2}{3}=1-\frac{x^2}{4}\ \Longrightarrow\ y^2=3\left(1-\frac{x^2}{4}\right)$$</p>
+<div class='gap'></div>
+<p>代入：</p>
+<p>$$V=\pi\int_{-2}^{2}3\left(1-\frac{x^2}{4}\right)dx=3\pi\left[x-\frac{x^3}{12}\right]_{-2}^{2}$$</p>
+<p>被积函数是偶函数，改成 2 倍 $[0,2]$ 更省事：</p>
+<p>$$=6\pi\left[x-\frac{x^3}{12}\right]_0^2=6\pi\left(2-\frac{8}{12}\right)=6\pi\left(2-\frac23\right)=6\pi\cdot\frac43=\boxed{8\pi}$$</p>
+<div class='gap'></div>
+<p><strong>易错点：</strong> ① 别忘 $\pi$（漏了就成 $\frac{32}{3}$，是本题最大的坑）；② 半轴是 $a=2$、$b=\sqrt3$（分母才是平方），别把 3 当半轴。</p>
+<div class='gap'></div>
+<p><strong>自查（用椭球体积公式）：</strong> 旋转后是半轴为 $2,\sqrt3,\sqrt3$ 的旋转椭球，$V=\frac{4}{3}\pi abc=\frac{4}{3}\pi\cdot2\cdot\sqrt3\cdot\sqrt3=\frac{4}{3}\pi\cdot6=8\pi$ ✅ 两种方法对上。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 9 题 · 微分方程通解</h3>
+<div class='gap'></div>
+<p>微分方程 $e^{-x}y&#x27;=2$ 的通解为 ______</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：$y=2e^{x}+C$</strong></p>
+<div class='gap'></div>
+<p><strong>解析：</strong> 先把 $y&#x27;$ 孤立出来（$e^{-x}$ 除过去 = 乘 $e^{x}$）：</p>
+<p>$$y&#x27;=\frac{2}{e^{-x}}=2e^{x}$$</p>
+<p>这就是&quot;已知导数求原函数&quot;，直接积分：</p>
+<p>$$y=\int 2e^{x}\,dx=2e^{x}+C$$</p>
+<div class='gap'></div>
+<p><strong>验证：</strong> $y&#x27;=2e^x$，代回 $e^{-x}\cdot2e^{x}=2$ ✅</p>
+<div class='gap'></div>
+<p><strong>易错点：</strong> $\dfrac{1}{e^{-x}}=e^{x}$（负号搬到分子上），这步符号搞反会得 $2e^{-x}+C$，验算时立刻能发现。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 10 题 · 全微分</h3>
+<div class='gap'></div>
+<p>设 $z=x^{\ln y}$，则其在点 $(e,e)$ 处的全微分 $dz=$ ______</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：$dz=dx+dy$</strong></p>
+<div class='gap'></div>
+<p><strong>解析：</strong> 原式只给答案 $dx+dy$，过程完全缺失，这里补全。</p>
+<div class='gap'></div>
+<p><strong>先处理 $x^{\ln y}$ 这个幂指形式</strong> —— 用恒等变形 $A=e^{\ln A}$：</p>
+<p>$$z=x^{\ln y}=e^{\ln\left(x^{\ln y}\right)}=e^{\ln y\cdot\ln x}$$</p>
+<div class='gap'></div>
+<p><strong>对 $x$ 偏导</strong>（把 $y$、从而 $\ln y$ 当常数）：</p>
+<p>$$\frac{\partial z}{\partial x}=e^{\ln y\ln x}\cdot\frac{\partial}{\partial x}(\ln y\ln x)=x^{\ln y}\cdot\ln y\cdot\frac1x$$</p>
+<p>在 $(e,e)$：$x^{\ln y}=e^{\ln e}=e^{1}=e$，$\ln y=1$，$\frac1x=\frac1e$</p>
+<p>$$\left.\frac{\partial z}{\partial x}\right|_{(e,e)}=e\cdot1\cdot\frac1e=\boxed{1}$$</p>
+<div class='gap'></div>
+<p><strong>对 $y$ 偏导</strong>（把 $x$、从而 $\ln x$ 当常数）：</p>
+<p>$$\frac{\partial z}{\partial y}=x^{\ln y}\cdot\ln x\cdot\frac{\partial}{\partial y}(\ln y)=x^{\ln y}\cdot\ln x\cdot\frac1y$$</p>
+<p>在 $(e,e)$：$=e\cdot1\cdot\dfrac1e=\boxed{1}$</p>
+<div class='gap'></div>
+<p><strong>合成全微分：</strong></p>
+<p>$$dz=\frac{\partial z}{\partial x}dx+\frac{\partial z}{\partial y}dy=1\cdot dx+1\cdot dy=\boxed{dx+dy}$$</p>
+<div class='gap'></div>
+<p><strong>易错点：</strong> ① 直接对 $x^{\ln y}$ 套幂函数公式 $(x^a)&#x27;=ax^{a-1}$ —— 那要求 $a$ 是<strong>常数</strong>，这里指数含 $y$，求 $\frac{\partial z}{\partial y}$ 时会彻底错掉；② $\ln e=1$ 这个代入值别算成 $e$。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>三、计算题（本大题共 8 小题，每小题 6 分，共 48 分）</h2>
+<div class='gap'></div>
+<h3>第 11 题 · 极限（约分）</h3>
+<div class='gap'></div>
+<p>$\lim\limits_{x\to1}\dfrac{x^{3}+3x^{2}-9x+5}{x^{3}-3x+2}$</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：$2$</strong></p>
+<div class='gap'></div>
+<p><strong>解析：</strong> 代 $x=1$：分子 $1+3-9+5=0$，分母 $1-3+2=0$ ⇒ $\frac00$ 型。可选洛必达或因式分解。<strong>本题分母有二重根，洛必达要用两次，容易晕，推荐因式分解。</strong></p>
+<div class='gap'></div>
+<p><strong>第一步：确认 $(x-1)$ 是公因子</strong>（因为两者代 $x=1$ 都是 0）。</p>
+<div class='gap'></div>
+<p><strong>第二步：多项式除法/配凑分解分子</strong></p>
+<p>$$x^3+3x^2-9x+5=x^3-x^2+4x^2-4x-5x+5=x^2(x-1)+4x(x-1)-5(x-1)=(x-1)(x^2+4x-5)$$</p>
+<p>再分解 $x^2+4x-5=(x-1)(x+5)$，所以</p>
+<p>$$\text{分子}=(x-1)^2(x+5)$$</p>
+<div class='gap'></div>
+<p><strong>分解分母</strong></p>
+<p>$$x^3-3x+2=x^3-x-2x+2=x(x^2-1)-2(x-1)=(x-1)\big[x(x+1)-2\big]=(x-1)(x^2+x-2)$$</p>
+<p>再分解 $x^2+x-2=(x-1)(x+2)$，所以</p>
+<p>$$\text{分母}=(x-1)^2(x+2)$$</p>
+<div class='gap'></div>
+<p><strong>第三步：约掉 $(x-1)^2$</strong></p>
+<p>$$\lim_{x\to1}\frac{(x-1)^2(x+5)}{(x-1)^2(x+2)}=\lim_{x\to1}\frac{x+5}{x+2}=\frac{1+5}{1+2}=\frac63=\boxed{2}$$</p>
+<div class='gap'></div>
+<p><strong>用洛必达验证（两次）：</strong></p>
+<p>$$\stackrel{\text{L&#x27;}}{=}\lim_{x\to1}\frac{3x^2+6x-9}{3x^2-3}\ \overset{0/0}{\longrightarrow}\ \text{再来一次}=\lim_{x\to1}\frac{6x+6}{6x}=\frac{12}{6}=2\ \checkmark$$</p>
+<div class='gap'></div>
+<p><strong>注意：</strong> 第一次洛必达后<strong>仍是 $\frac00$</strong>（$3+6-9=0$，$3-3=0$），必须再洛一次。只洛一次就停手会得出 $\frac00$ 而以为题目出错 —— 这是本题最常见的翻车点。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 12 题 · 高阶导数</h3>
+<div class='gap'></div>
+<p>设 $y=\arctan x^{2}$，求 $y&#x27;&#x27;\big|_{x=1}$</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：$-1$</strong></p>
+<div class='gap'></div>
+<p><strong>解析：</strong> 先一阶导，再二阶导，最后代值。</p>
+<div class='gap'></div>
+<p><strong>必背：</strong> $(\arctan u)&#x27;=\dfrac{u&#x27;}{1+u^2}$</p>
+<div class='gap'></div>
+<p><strong>一阶：</strong> $u=x^2$，$u&#x27;=2x$</p>
+<p>$$y&#x27;=\frac{2x}{1+x^{4}}$$</p>
+<div class='gap'></div>
+<p><strong>二阶：</strong> 商的求导法则 $\left(\dfrac{f}{g}\right)&#x27;=\dfrac{f&#x27;g-fg&#x27;}{g^2}$，取 $f=2x$、$g=1+x^4$，则 $f&#x27;=2$、$g&#x27;=4x^3$：</p>
+<p>$$y&#x27;&#x27;=\frac{2(1+x^4)-2x\cdot4x^3}{(1+x^4)^2}=\frac{2+2x^4-8x^4}{(1+x^4)^2}=\frac{2-6x^{4}}{(1+x^{4})^{2}}$$</p>
+<div class='gap'></div>
+<p><strong>代 $x=1$：</strong></p>
+<p>$$y&#x27;&#x27;\big|_{x=1}=\frac{2-6}{(1+1)^2}=\frac{-4}{4}=\boxed{-1}$$</p>
+<div class='gap'></div>
+<p><strong>几何含义：</strong> $y&#x27;&#x27;&lt;0$ 说明曲线在 $x=1$ 处是<strong>凸的</strong>（向上隆），这跟第 19 题判凹凸是同一个工具。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 13 题 · 导数定义</h3>
+<div class='gap'></div>
+<p>设 $f(x)=\begin{cases}x^{2}\sin\dfrac1x+2x,&amp;x\neq 0\\ 0,&amp;x=0\end{cases}$，求 $f&#x27;(0)$</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：$2$</strong></p>
+<div class='gap'></div>
+<p><strong>解析：</strong> 分段点求导，<strong>必须回到导数定义</strong>，不能直接对表达式求导再代 $x=0$（$\sin\frac1x$ 在 0 处导数不存在，硬代会得出错误结论）。</p>
+<div class='gap'></div>
+<p>$$f&#x27;(0)=\lim_{x\to0}\frac{f(x)-f(0)}{x-0}=\lim_{x\to0}\frac{x^{2}\sin\frac1x+2x-0}{x}$$</p>
+<div class='gap'></div>
+<p>分子分母同除 $x$：</p>
+<p>$$=\lim_{x\to0}\left(x\sin\frac1x+2\right)$$</p>
+<div class='gap'></div>
+<p><strong>关键一着</strong> —— $x\sin\dfrac1x$ 是「<strong>无穷小 × 有界函数</strong>」：</p>
+<p>$$\left|\sin\frac1x\right|\le1\ \ (\text{永远有界}),\qquad x\to0\ \ (\text{无穷小})$$</p>
+<p>二者乘积仍为无穷小 ⇒ $\lim\limits_{x\to0}x\sin\dfrac1x=0$</p>
+<div class='gap'></div>
+<p>$$\Longrightarrow f&#x27;(0)=0+2=\boxed{2}$$</p>
+<div class='gap'></div>
+<p><strong>必背定理：</strong> 无穷小 × 有界 = 无穷小。这是处理 $\sin\frac1x$、$\cos\frac1x$ 类极限的<strong>唯一</strong>正解。</p>
+<div class='gap'></div>
+<p><strong>易错点：</strong> 试图用求导公式算 $\left(x^2\sin\frac1x\right)&#x27;=2x\sin\frac1x+x^2\cos\frac1x\cdot\left(-\frac{1}{x^2}\right)=2x\sin\frac1x-\cos\frac1x$，再代 $x\to0$ —— $\cos\frac1x$ <strong>振荡极限不存在</strong>，于是误判&quot;$f&#x27;(0)$ 不存在&quot;。<strong>导函数极限不存在 ≠ 该点导数不存在</strong>，两者不是一回事，必须用定义。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 14 题 · 不定积分（三角换元）</h3>
+<div class='gap'></div>
+<p>$\displaystyle\int\dfrac{2x^{2}+3x}{x\sqrt{1-x^{2}}}\,dx$</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：$3\arcsin x-2\sqrt{1-x^{2}}+C$</strong></p>
+<div class='gap'></div>
+<p><strong>解析：</strong> 分子分母都有 $x$，<strong>先拆项</strong>再说。</p>
+<div class='gap'></div>
+<p><strong>第一步：约去公因子 $x$ 并拆开</strong></p>
+<p>$$\frac{2x^2+3x}{x\sqrt{1-x^2}}=\frac{x(2x+3)}{x\sqrt{1-x^2}}=\frac{2x+3}{\sqrt{1-x^2}}=\underbrace{\frac{2x}{\sqrt{1-x^2}}}_{\text{①}}+\underbrace{\frac{3}{\sqrt{1-x^2}}}_{\text{②}}$$</p>
+<div class='gap'></div>
+<p><strong>第二步：分别处理（两类完全不同的套路）</strong></p>
+<div class='gap'></div>
+<p><strong>① 凑微分</strong>（分子有 $x\,dx$，正好是分母里 $1-x^2$ 的导数的一半）：</p>
+<p>$$\int\frac{2x}{\sqrt{1-x^2}}dx=\int(1-x^2)^{-1/2}\cdot2x\,dx$$</p>
+<p>令 $u=1-x^2$，$du=-2x\,dx$ ⇒ $2x\,dx=-du$</p>
+<p>$$=-\int u^{-1/2}du=-2u^{1/2}=-2\sqrt{1-x^{2}}$$</p>
+<div class='gap'></div>
+<p><strong>② 直接套基本公式：</strong></p>
+<p>$$\int\frac{3}{\sqrt{1-x^2}}dx=3\arcsin x$$</p>
+<div class='gap'></div>
+<p><strong>第三步：合并</strong></p>
+<p>$$\boxed{\ 3\arcsin x-2\sqrt{1-x^{2}}+C\ }$$</p>
+<div class='gap'></div>
+<p><strong>验证（求导回去）：</strong></p>
+<p>$$\left(3\arcsin x\right)&#x27;=\frac{3}{\sqrt{1-x^2}},\qquad\left(-2\sqrt{1-x^2}\right)&#x27;=-2\cdot\frac{-2x}{2\sqrt{1-x^2}}=\frac{2x}{\sqrt{1-x^2}}$$</p>
+<p>相加 $=\dfrac{3+2x}{\sqrt{1-x^2}}$ ✅ 与被拆项后的式子一致。</p>
+<div class='gap'></div>
+<p><strong>必背：</strong> $\displaystyle\int\frac{dx}{\sqrt{1-x^2}}=\arcsin x+C$；$\displaystyle\int\frac{dx}{1+x^2}=\arctan x+C$。这两个长得很像，考前最容易混。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 15 题 · 分部积分</h3>
+<div class='gap'></div>
+<p>$\displaystyle\int_{0}^{\pi/4}x\sec^{2}x\,dx$</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：$\dfrac{\pi}{4}-\dfrac12\ln 2$</strong></p>
+<div class='gap'></div>
+<p><strong>解析：</strong> 「$x$ × 三角函数」→ <strong>分部积分</strong>，$u$ 选 $x$（按&quot;反对幂指三&quot;，幂在三角前）。</p>
+<p>$$\int u\,dv=uv-\int v\,du$$</p>
+<div class='gap'></div>
+<p>设 $u=x\Rightarrow du=dx$；$dv=\sec^2x\,dx\Rightarrow v=\tan x$（因为 $(\tan x)&#x27;=\sec^2x$）</p>
+<div class='gap'></div>
+<p><strong>代入（定积分要把 $uv$ 带上、下限）：</strong></p>
+<p>$$\int_0^{\pi/4}x\sec^2x\,dx=\Big[x\tan x\Big]_0^{\pi/4}-\int_0^{\pi/4}\tan x\,dx$$</p>
+<div class='gap'></div>
+<p>第一部分：$\Big[x\tan x\Big]_0^{\pi/4}=\dfrac{\pi}{4}\cdot\tan\dfrac{\pi}{4}-0\cdot\tan0=\dfrac{\pi}{4}\cdot1-0=\dfrac{\pi}{4}$</p>
+<div class='gap'></div>
+<p>第二部分（<strong>$\int\tan x$ 是必备公式</strong>）：</p>
+<p>$$\int\tan x\,dx=\int\frac{\sin x}{\cos x}dx=-\int\frac{d(\cos x)}{\cos x}=-\ln|\cos x|+C$$</p>
+<p>$$\int_0^{\pi/4}\tan x\,dx=\Big[-\ln\cos x\Big]_0^{\pi/4}=-\ln\frac{\sqrt2}{2}-(-\ln1)=-\ln\frac{1}{\sqrt2}=\frac12\ln2$$</p>
+<div class='gap'></div>
+<p>合并：</p>
+<p>$$I=\frac{\pi}{4}-\frac12\ln2\approx0.4609$$</p>
+<div class='gap'></div>
+<p><strong>易错点：</strong> ① $\int_0^{\pi/4}\tan x$ 前面还有个<strong>减号</strong>（来自分部公式），两处负号叠加容易算成 $-\frac12\ln2$；② $\ln\frac{\sqrt2}{2}=-\frac12\ln2$，符号要清楚。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 16 题 · 隐函数偏导</h3>
+<div class='gap'></div>
+<p>设 $z=2x-y^{2}e^{z}$（$z$ 是 $x,y$ 的隐函数），求 $\dfrac{\partial z}{\partial x}-y\dfrac{\partial z}{\partial y}$</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：$2$</strong></p>
+<div class='gap'></div>
+<p><strong>解析：</strong> 移项构造 $F$：$F(x,y,z)=z-2x+y^2e^z=0$</p>
+<div class='gap'></div>
+<p>用隐函数公式 $\dfrac{\partial z}{\partial x}=-\dfrac{F_x}{F_z}$，$\dfrac{\partial z}{\partial y}=-\dfrac{F_y}{F_z}$，先求三个偏导：</p>
+<ul>
+<li>$F_x=-2$ （$y^2e^z$ 里 $z$ 视作常数，故对 $x$ 无贡献）</li>
+<li>$F_y=2ye^{z}$</li>
+<li>$F_z=1+y^{2}e^{z}$ （$y^2e^z$ 对 $z$ 求导，$y^2$ 是系数，$(e^z)&#x27;=e^z$）</li>
+</ul>
+<div class='gap'></div>
+<p>于是</p>
+<p>$$\frac{\partial z}{\partial x}=-\frac{-2}{1+y^2e^z}=\frac{2}{1+y^{2}e^{z}},\qquad \frac{\partial z}{\partial y}=-\frac{2ye^{z}}{1+y^{2}e^{z}}$$</p>
+<div class='gap'></div>
+<p>代入所求式：</p>
+<p>$$\frac{\partial z}{\partial x}-y\frac{\partial z}{\partial y}=\frac{2}{1+y^2e^z}-y\cdot\left(-\frac{2ye^z}{1+y^2e^z}\right)=\frac{2+2y^{2}e^{z}}{1+y^{2}e^{z}}=\frac{2\left(1+y^2e^z\right)}{1+y^2e^z}=\boxed{2}$$</p>
+<div class='gap'></div>
+<p><strong>漂亮之处：</strong> 分母正好整体对消，结果是与 $x,y,z$ 都无关的常数 2。出题人故意设计成这样，<strong>若你算出一个复杂表达式，多半是中间偏导求错了</strong>。</p>
+<div class='gap'></div>
+<p><strong>易错点：</strong> 求 $F_x$ 时把 $z$ 也当变量去微。在 $F_x$ 里 <strong>$z$ 是常数</strong>，只有 $x$ 是变量。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 17 题 · 二重积分</h3>
+<div class='gap'></div>
+<p>计算 $\displaystyle\iint_D\cos x\,d\sigma$，其中 $D$ 由 $y=\sin x$、$x=\dfrac{\pi}{2}$、$y=0$ 围成</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：$\dfrac12$</strong></p>
+<div class='gap'></div>
+<p><strong>解析：</strong> <strong>第一步：画图定区域。</strong> $y=\sin x$ 从 $(0,0)$ 爬到 $\left(\frac{\pi}{2},1\right)$；$x=\frac{\pi}{2}$ 是右边界竖线；$y=0$ 是底边。围成的是 $0\le x\le\dfrac{\pi}{2}$、$0\le y\le\sin x$ 这块&quot;曲边三角形&quot;。</p>
+<div class='gap'></div>
+<p><strong>第二步：选积分次序 —— 本题的决定性一步。</strong></p>
+<div class='gap'></div>
 <table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>四、综合题</th><th>2</th><th>22</th></tr>
+<tr><th>次序</th><th>上下限</th><th>内层积分</th></tr>
+<tr><td>先 $y$ 后 $x$ ✅</td><td>$0\le x\le\frac{\pi}{2}$，$0\le y\le\sin x$</td><td>$\int_0^{\sin x}\cos x\,dy$（$\cos x$ 是常数！）</td></tr>
+<tr><td>先 $x$ 后 $y$ ❌</td><td>$0\le y\le1$，$\arcsin y\le x\le\frac{\pi}{2}$</td><td>$\int\frac{\cos x}{\ }\,dx$ 会出现 $\cos(\arcsin y)$，绕远</td></tr>
+</table>
+<div class='gap'></div>
+<p><strong>先 $y$ 后 $x$ 时，被积函数 $\cos x$ 对 $y$ 而言是常数，内层积出来就是&quot;乘个长度&quot;，极其省事。</strong></p>
+<div class='gap'></div>
+<p><strong>第三步：计算</strong></p>
+<p>$$\iint_D\cos x\,d\sigma=\int_0^{\pi/2}dx\int_0^{\sin x}\cos x\,dy=\int_0^{\pi/2}\cos x\cdot\Big[y\Big]_0^{\sin x}dx=\int_0^{\pi/2}\cos x\sin x\,dx$$</p>
+<div class='gap'></div>
+<p>凑微分（$\sin x\cos x\,dx=\sin x\,d(\sin x)$）：</p>
+<p>$$=\int_0^{\pi/2}\sin x\,d(\sin x)=\left[\frac{\sin^2x}{2}\right]_0^{\pi/2}=\frac{1^2}{2}-\frac{0^2}{2}=\boxed{\frac12}$$</p>
+<div class='gap'></div>
+<p><strong>另一种收尾（倍角公式）：</strong> $\sin x\cos x=\dfrac12\sin2x$，则 $\dfrac12\displaystyle\int_0^{\pi/2}\sin2x\,dx=\dfrac12\left[-\dfrac{\cos2x}{2}\right]_0^{\pi/2}=\dfrac12\cdot\dfrac{1-(-1)}{2}=\dfrac12$ ✅</p>
+<div class='gap'></div>
+<p><strong>易错点：</strong> 内层 $\int_0^{\sin x}\cos x\,dy$ 的上限是 $\sin x$，<strong>别忘了 $\cos x$ 要一直带在身上</strong>（把它当常数系数提出去，别误当&quot;已经积掉了&quot;）。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 18 题 · 级数敛散性</h3>
+<div class='gap'></div>
+<p>判定级数 $\displaystyle\sum_{n=1}^{\infty}\left(\frac{n}{3^{n}}-\frac{3}{2^{n}}\right)$ 的敛散性</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：收敛</strong></p>
+<div class='gap'></div>
+<p><strong>解析：</strong> 用<strong>线性性质</strong>：两个都收敛 ⇒ 差也收敛。分别看：</p>
+<div class='gap'></div>
+<p><strong>第一项 $\displaystyle\sum\frac{n}{3^n}$</strong> —— 比值法：</p>
+<p>$$\lim_{n\to\infty}\frac{(n+1)/3^{n+1}}{n/3^n}=\lim_{n\to\infty}\frac{n+1}{n}\cdot\frac13=\frac13&lt;1\ \Rightarrow\ \text{收敛}$$</p>
+<div class='gap'></div>
+<p><strong>第二项 $\displaystyle\sum\frac{3}{2^n}=3\sum\left(\frac12\right)^n$</strong> —— 公比 $q=\dfrac12$ 的等比级数，$|q|&lt;1$ ⇒ <strong>收敛</strong>。</p>
+<div class='gap'></div>
+<p>收敛 $-$ 收敛 $=$ 收敛 ⇒ 原级数<strong>收敛</strong>。</p>
+<div class='gap'></div>
+<p><strong>顺手求出真实和（sympy 复核用得上）：</strong></p>
+<p>$$\sum_{n=1}^{\infty}\frac{n}{3^n}=\frac{\frac13}{\left(1-\frac13\right)^{2}}=\frac{\frac13}{\frac49}=\frac34,\qquad \sum_{n=1}^{\infty}\frac{3}{2^n}=3\cdot\frac{\frac12}{1-\frac12}=3$$</p>
+<p>$$\Longrightarrow \sum\left(\frac{n}{3^n}-\frac{3}{2^n}\right)=\frac34-3=-\frac94$$</p>
+<div class='gap'></div>
+<p><strong>用到的公式：</strong> $\displaystyle\sum_{n=1}^{\infty}nq^{n}=\frac{q}{(1-q)^2}$（$|q|&lt;1$）；$\displaystyle\sum_{n=1}^{\infty}q^n=\frac{q}{1-q}$。</p>
+<div class='gap'></div>
+<p><strong>易错点：</strong> 不要一上来就通分合并成 $\dfrac{n\cdot2^n-3\cdot3^n}{6^n}$ —— 越算越乱。<strong>看到&quot;几项相加减&quot;先想拆开放松性</strong>。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>四、综合题（本大题共 2 小题，第 19 小题 10 分，第 20 小题 12 分，共 22 分）</h2>
+<div class='gap'></div>
+<h3>第 19 题 · 拐点与切线</h3>
+<div class='gap'></div>
+<p>设 $f(x)=2x\ln x-x-\dfrac1x+2$。</p>
+<div class='gap'></div>
+<p><strong>(1) 求曲线 $y=f(x)$ 的拐点；(2) 问是否存在过原点的切线？若存在求出，若不存在说明理由。</strong></p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：(1) 拐点 $(1,\,0)$  (2) 不存在过原点的切线</strong></p>
+<div class='gap'></div>
+<p><strong>解析（第 1 问）：</strong> 定义域 $x&gt;0$。求两阶导。</p>
+<div class='gap'></div>
+<p><strong>一阶导（逐项列，别合并着算）：</strong></p>
+<div class='gap'></div>
 <table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>**合计**</th><th>20</th><th>**100**</th></tr>
+<tr><th>原式各项</th><th>求导</th><th>结果</th></tr>
+<tr><td>$2x\ln x$</td><td>乘积法则 $2\ln x+2x\cdot\frac1x$</td><td>$2\ln x+2$</td></tr>
+<tr><td>$-x$</td><td></td><td>$-1$</td></tr>
+<tr><td>$-\dfrac1x=-x^{-1}$</td><td>$-(-1)x^{-2}$</td><td>$+\dfrac{1}{x^{2}}$</td></tr>
+<tr><td>$+2$</td><td></td><td>$0$</td></tr>
+</table>
 <div class='gap'></div>
-<p>---</p>
+<p>$$f&#x27;(x)=(2\ln x+2)-1+\frac{1}{x^{2}}+0=\boxed{2\ln x+1+\dfrac{1}{x^{2}}}$$</p>
 <div class='gap'></div>
-<h2>一、单项选择题</h2>
+<p><strong>最易错的一项：</strong> $-\dfrac1x$ 求导得 $+\dfrac{1}{x^2}$（两个负号抵消）。这里写成 $-\frac{1}{x^2}$，后面二阶导、拐点会连着错到底。</p>
 <div class='gap'></div>
-<ol>
-<li>$f(x)=\begin{cases}x+1,&amp;x\neq1\\a,&amp;x=1\end{cases}$ 在 1 连续 → **D. $a=2$**</li>
-<li>$\lim_{x\to0}(1-3x)^{1/x}$ → **A. $e^{-3}$**</li>
-<li>$\lim u_n=0$ 是级数收敛的 → **B. 必要条件**</li>
-<li>$1/x^{2}$ 是 $f$ 原函数，$\int_1^{+\infty}f$ → **C. $-1$**</li>
-<li>$I=\int_0^1 dx\int_x^1 f(x^{2}+y^{2})dy$ 极坐标 → **D.** $\int_{\pi/4}^{\pi/2}d\theta\int_0^{\csc\theta} r f(r^{2})dr$</li>
-</ol>
+<p><strong>二阶导：</strong></p>
+<p>$$f&#x27;&#x27;(x)=\frac{2}{x}-\frac{2}{x^{3}}=\frac{2x^{2}-2}{x^{3}}=\frac{2\left(x^{2}-1\right)}{x^{3}}=\frac{2(x-1)(x+1)}{x^{3}}$$</p>
 <div class='gap'></div>
-<h2>二、填空</h2>
+<p><strong>找拐点候选：</strong> 在 $x&gt;0$ 上分母 $x^3&gt;0$ 恒正，$x+1&gt;0$ 恒正，所以 $f&#x27;&#x27;$ 的符号<strong>完全由 $(x-1)$ 决定</strong>：</p>
 <div class='gap'></div>
-<ol>
-<li>$2x$ 与 $3x^{2}+mx$ 等价 → $m=$ **2**</li>
-<li>$\begin{cases}x=5t-t^{2}\\y=\log_2 t\end{cases}$，$dy/dx|_{t=2}=$ **$1/(2\ln2)$**</li>
-<li>椭圆 $x^{2}/4+y^{2}/3=1$ 绕 $x$ 轴体积 → **$8\pi$**</li>
-<li>$e^{-x}y&#x27;=2$ 通解 → **$y=2e^{x}+C$**</li>
-<li>$z=x^{\ln y}$ 在 $(e,e)$ 全微分 → **$dx+dy$**</li>
-</ol>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>区间</th><th>$x-1$</th><th>$f&#x27;&#x27;$</th><th>凹凸</th></tr>
+<tr><td>$0&lt;x&lt;1$</td><td>$-$</td><td>$-$</td><td>凸（向上隆）</td></tr>
+<tr><td>$x=1$</td><td>$0$</td><td>$0$</td><td>候选</td></tr>
+<tr><td>$x&gt;1$</td><td>$+$</td><td>$+$</td><td>凹（向下凹）</td></tr>
+</table>
 <div class='gap'></div>
-<h2>三、计算</h2>
+<p>$f&#x27;&#x27;$ 在 $x=1$ 左右<strong>变号</strong> ⇒ $x=1$ 是拐点。</p>
 <div class='gap'></div>
-<ol>
-<li>$\lim_{x\to1}\dfrac{x^{3}+3x^{2}-9x+5}{x^{3}-3x+2}$ → **2**</li>
-<li>$y=\arctan x^{2}$，$y&#x27;&#x27;|_{x=1}$ → **$-1$**</li>
-<li>$f(x)=x^{2}\sin(1/x)+2x\ (x\neq0)$，$f&#x27;(0)$ → **2**</li>
-<li>$\int\dfrac{2x^{2}+3x}{x\sqrt{1-x^{2}}}dx$ → $3\arcsin x-2\sqrt{1-x^{2}}+C$</li>
-<li>$\int_0^{\pi/4}x\sec^{2}x\,dx$ → $\pi/4-\frac12\ln2$</li>
-<li>$z=2x-y^{2}e^{z}$，$z_x-y z_y$ → **2**</li>
-<li>$\iint_D\cos x\,d\sigma$（$y=\sin x$ 等围成）→ **$1/2$**</li>
-<li>$\sum(n/3^{n}-3/2^{n})$ → **收敛**</li>
-</ol>
+<p><strong>求纵坐标：</strong></p>
+<p>$$f(1)=2\cdot1\cdot\ln1-1-\frac11+2=0-1-1+2=\boxed{0}$$</p>
 <div class='gap'></div>
-<h2>四、综合</h2>
+<p>⇒ <strong>拐点为 $(1,\,0)$</strong>。</p>
 <div class='gap'></div>
-<ol>
-<li>$f=2x\ln x-x-1/x+2$：拐点 $(1,0)$；**不存在**过原点切线</li>
-<li>(1) 证 $\int_0^x f(x-t)dt=\int_0^x f(t)dt$</li>
-</ol>
-<p>    (2) $f=3x+1+\int_0^x t f-\,x\int_0^x f(x-t)$ → $f=\cos x+3\sin x$</p>
+<p><strong>解析（第 2 问）：</strong> 假设存在切点 $(a,f(a))$，$a&gt;0$。切线斜率 $f&#x27;(a)=2\ln a+1+\dfrac{1}{a^{2}}$。</p>
 <div class='gap'></div>
-<h2>回炉</h2>
-<li>[高等数学](/posts/math/) · _索引</li>
+<p>&quot;切线过原点&quot;的充要条件：<strong>切线在 $x=0$ 处取值 0</strong>，点斜式代 $(0,0)$：</p>
+<p>$$0-f(a)=f&#x27;(a)(0-a)\ \Longrightarrow\ f(a)=a f&#x27;(a)$$</p>
 <div class='gap'></div>
-<p>---</p>
-<p>返回：_索引 · 总索引</p>
+<p>左：$f(a)=2a\ln a-a-\dfrac1a+2$</p>
+<p>右：$a f&#x27;(a)=a\left(2\ln a+1+\dfrac{1}{a^2}\right)=2a\ln a+a+\dfrac1a$</p>
+<div class='gap'></div>
+<p>令左 = 右，两边 $2a\ln a$ 对消：</p>
+<p>$$-a-\frac1a+2=a+\frac1a\ \Longrightarrow\ 2=2a+\frac{2}{a}\ \Longrightarrow\ 1=a+\frac1a$$</p>
+<div class='gap'></div>
+<p>两边乘 $a&gt;0$：$a=a^2+1$ ⇒</p>
+<p>$$a^{2}-a+1=0,\qquad \Delta=(-1)^2-4\cdot1\cdot1=1-4=\boxed{-3&lt;0}$$</p>
+<div class='gap'></div>
+<p><strong>判别式小于零 ⇒ 方程无实根 ⇒ 不存在这样的切点 ⇒ 不存在过原点的切线。</strong> ✅</p>
+<div class='gap'></div>
+<p><strong>给分要点：</strong> 第 (2) 问的&quot;结论&quot;必须配&quot;理由&quot;，理由是 $\Delta&lt;0$，只写&quot;不存在&quot;最多得 1 分。</p>
+<div class='gap'></div>
+<p><strong>通用套路（过原点的切线三步）：</strong> ① 设切点横坐标 $a$；② 列 $f(a)=af&#x27;(a)$（这就是&quot;截距为 0&quot;）；③ 解出 $a$ 或证明无解。<strong>切线过曲线上的点 ≠ 该点是切点</strong>，本题正是这个考点。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 20 题 · 积分方程</h3>
+<div class='gap'></div>
+<p>设 $f(x)$ 连续。</p>
+<div class='gap'></div>
+<p><strong>(1) 证明：$\displaystyle\int_0^x f(x-t)\,dt=\int_0^x f(t)\,dt$；</strong></p>
+<p><strong>(2) 设 $f(x)=3x+1+\displaystyle\int_0^x t f(t)\,dt-x\int_0^x f(x-t)\,dt$，求 $f(x)$。</strong></p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：(1) 换元 $u=x-t$ 即证（见下） (2) $f(x)=\cos x+3\sin x$</strong></p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<p><strong>解析（第 1 问）</strong> —— 这是一个<strong>万能引理</strong>，第 2 问直接用得上：</p>
+<div class='gap'></div>
+<p>在 $\displaystyle\int_0^x f(x-t)\,dt$ 中令 $u=x-t$。注意这里 <strong>$x$ 是参数量（当常数）</strong>，只有 $t$ 是积分变量：</p>
+<p>$$du=-dt\ \Longrightarrow\ dt=-du$$</p>
+<p><strong>换限：</strong> $t=0\Rightarrow u=x$；$t=x\Rightarrow u=0$</p>
+<p>$$\int_0^x f(x-t)\,dt=\int_{x}^{0}f(u)(-du)=\int_0^{x}f(u)\,du$$</p>
+<p>积分变量是个&quot;哑名&quot;，$u$ 换回 $t$ 不改数值：</p>
+<p>$$=\int_0^{x}f(t)\,dt\qquad\blacksquare$$</p>
+<div class='gap'></div>
+<p><strong>直观理解：</strong> $f(x-t)$ 是把 $f$ 的图像<strong>左右翻转再平移</strong>，在 $[0,x]$ 上求面积，翻折后面积不变。</p>
+<div class='gap'></div>
+<p><strong>易错点：</strong> 忘记 $dt=-du$ 带来的负号。换元后限变成&quot;从 $x$ 到 $0$&quot;（上小下大），靠这个负号把它翻回来。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<p><strong>解析（第 2 问）：</strong></p>
+<div class='gap'></div>
+<p><strong>第一步：用引理化简。</strong> 式中有 $\displaystyle x\int_0^x f(x-t)\,dt$，由 (1) 立刻换成</p>
+<p>$$x\int_0^{x}f(x-t)\,dt=x\int_0^{x}f(t)\,dt$$</p>
+<div class='gap'></div>
+<p>记 $\displaystyle A=\int_0^x tf(t)\,dt$，$\displaystyle B=\int_0^x f(t)\,dt$，原式变干净了：</p>
+<p>$$f(x)=3x+1+A-xB\tag{$*$}$$</p>
+<div class='gap'></div>
+<p><strong>第二步：两边对 $x$ 求导。</strong> （$\int_0^x$ 型变上限积分，上限是 $x$ 时直接代：$\frac{d}{dx}\int_0^x g(t)dt=g(x)$）</p>
+<p>$$f&#x27;(x)=3+\underbrace{A&#x27;}_{=xf(x)}-\left(B+xB&#x27;\right)=3+xf(x)-B-xf(x)=\boxed{3-B}$$</p>
+<div class='gap'></div>
+<p>漂亮 —— $xf(x)$ 两项<strong>完全对消</strong>，只剩</p>
+<p>$$f&#x27;(x)=3-\int_0^{x}f(t)\,dt\tag{1}$$</p>
+<div class='gap'></div>
+<p><strong>第三步：再求导，消掉积分号。</strong></p>
+<p>$$f&#x27;&#x27;(x)=0-f(x)=-f(x)\ \Longrightarrow\ \boxed{f&#x27;&#x27;(x)+f(x)=0}$$</p>
+<div class='gap'></div>
+<p><strong>第四步：识别初值条件（这一步最容易漏，但缺了它解不出唯一解）。</strong></p>
+<div class='gap'></div>
+<p>在 $(*)$ 中代 $x=0$：$f(0)=0+1+0-0\cdot0=1$ ⇒ <strong>$f(0)=1$</strong></p>
+<div class='gap'></div>
+<p>在 (1) 中代 $x=0$：$f&#x27;(0)=3-\displaystyle\int_0^0 f(t)\,dt=3-0$ ⇒ <strong>$f&#x27;(0)=3$</strong></p>
+<div class='gap'></div>
+<p><strong>第五步：解二阶常系数齐次方程。</strong></p>
+<p>特征方程 $r^{2}+1=0\Rightarrow r=\pm i$（共轭复根 $\alpha\pm\beta i$，其中 $\alpha=0,\beta=1$）</p>
+<p>$$f(x)=e^{0\cdot x}\left(C_1\cos x+C_2\sin x\right)=C_1\cos x+C_2\sin x$$</p>
+<div class='gap'></div>
+<p><strong>第六步：代初值定常数。</strong></p>
+<ul>
+<li>$f(0)=C_1\cdot1+C_2\cdot0=1\Rightarrow C_1=1$</li>
+<li>$f&#x27;(x)=-C_1\sin x+C_2\cos x$，$f&#x27;(0)=0+C_2=3\Rightarrow C_2=3$</li>
+</ul>
+<div class='gap'></div>
+<p>$$\boxed{f(x)=\cos x+3\sin x}$$</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<p><strong>回代验算（大题最后一步，别省）：</strong></p>
+<p>$\displaystyle B=\int_0^x(\cos t+3\sin t)dt=\big[\sin t-3\cos t\big]_0^x=\sin x-3\cos x+3$</p>
+<p>代入 (1) 右边：$3-B=3-\sin x+3\cos x-3=3\cos x-\sin x$</p>
+<p>而 $f&#x27;(x)=-\sin x+3\cos x$ ✅ <strong>完全相同</strong>，解正确。</p>
+<div class='gap'></div>
+<p><strong>本题方法链（ Integral Equation 通用四步，务必记住）：</strong></p>
+<p><strong>① 用引理统一积分形式 → ② 求导消去变上限积分 → ③ 再求导得 ODE → ④ 从原式代 $x=0$ 补出初值。</strong></p>
+<div class='gap'></div>
+<p>其中 <strong>④ 是最常被忘记的</strong>：少了初值只能写出带 $C_1,C_2$ 的通解，第 (2) 问直接扣掉一半分。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>复核记录（本版主控过程，可审计）</h2>
+<div class='gap'></div>
+<p>本页全部可计算题已用 <code>sympy 1.14</code> 独立重算，结果一致：</p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>题号</th><th>sympy 验证式</th><th>结论</th></tr>
+<tr><td>1</td><td><code>limit(x+1, x, 1) == 2</code></td><td>✅</td></tr>
+<tr><td>2</td><td><code>limit((1-3*x)**(1/x), x, 0) == exp(-3)</code></td><td>✅</td></tr>
+<tr><td>4</td><td><code>integrate(diff(x**-2, x), (x, 1, oo)) == -1</code></td><td>✅</td></tr>
+<tr><td>6</td><td><code>solve(Eq(limit((3*x**2+a*x)/(2*x), x, 0), 1), a) == [2]</code></td><td>✅</td></tr>
+<tr><td>7</td><td><code>diff(log(t,2),t)/diff(5*t-t**2,t) @ t=2 == 1/(2*ln2)</code></td><td>✅</td></tr>
+<tr><td>8</td><td><code>pi*integrate(3*(1-x**2/4), (x,-2,2)) == 8*pi</code></td><td>✅</td></tr>
+<tr><td>9</td><td><code>dsolve(exp(-x)*y&#x27;=2) == 2e^x + C</code></td><td>✅</td></tr>
+<tr><td>10</td><td><code>x**log(y)</code> 两偏导在 $(e,e)$ 均为 <code>1</code></td><td>✅</td></tr>
+<tr><td>11</td><td><code>limit((x³+3x²-9x+5)/(x³-3x+2), x, 1) == 2</code></td><td>✅</td></tr>
+<tr><td>12</td><td><code>diff(atan(x**2), x, 2) @ x=1 == -1</code></td><td>✅</td></tr>
+<tr><td>13</td><td><code>limit((x²sin(1/x)+2x)/x, x, 0) == 2</code></td><td>✅</td></tr>
+<tr><td>14</td><td><code>integrate(...) == 3*asin(x)-2*sqrt(1-x**2)</code></td><td>✅</td></tr>
+<tr><td>15</td><td><code>integrate(x*sec(x)**2, (x,0,pi/4)) == pi/4-ln(2)/2</code></td><td>✅</td></tr>
+<tr><td>16</td><td><code>simplify(zx - y*zy - 2) == 0</code></td><td>✅</td></tr>
+<tr><td>17</td><td><code>integrate(sin(x)*cos(x), (x,0,pi/2)) == 1/2</code></td><td>✅</td></tr>
+<tr><td>18</td><td><code>Sum(n/3**n - 3/2**n, (n,1,oo))</code> 有限，和为 $-\frac94$</td><td>✅</td></tr>
+<tr><td>19</td><td><code>f(1)==0</code>；<code>f&#x27;&#x27;(1)==0</code>；<code>f&#x27;&#x27;(0.5)=-12&lt;0</code>，<code>f&#x27;&#x27;(2)=3/4&gt;0</code> 变号确认</td><td>✅</td></tr>
+<tr><td>20</td><td>回代 $f&#x27; = 3 - \int_0^x f$ 两端恒等</td><td>✅</td></tr>
+</table>
+<div class='gap'></div>
+<blockquote><strong>诚实声明：</strong> 本页未新增任何&quot;某年考了几题&quot;之类的统计；题干全部沿用原回忆版，仅补全推导。第 19 题第 (1) 问的一阶导我在本页明确写出逐项复核过程 —— 因 $-\left(\frac1x\right)&#x27;=+\frac{1}{x^2}$ 这一步在原版直接跳过，是最易错处。</blockquote>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<blockquote>相关：<a href="/posts/math/">真题总览</a> · <a href="/posts/math/真题章节对照表">真题章节对照表</a></blockquote>
 <div class='gap'></div>
 </body>
 </html>

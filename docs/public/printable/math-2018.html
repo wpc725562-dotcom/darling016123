@@ -2,181 +2,312 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<title>高等数学 · 2018</title>
+<title>2018年广东专升本《高等数学》真题+逐题详解</title>
 <style>
 body { font-family: "Microsoft YaHei", "Noto Sans SC", sans-serif; max-width: 800px; margin: 40px auto; padding: 0 24px; font-size: 14px; line-height: 1.8; color: #222; }
 h1 { font-size: 22px; border-bottom: 2px solid #333; padding-bottom: 8px; }
 h2 { font-size: 18px; margin-top: 24px; }
 h3 { font-size: 16px; }
 table { margin: 12px 0; }
+th, td { text-align: left; vertical-align: top; }
+ul, ol { margin: 8px 0; padding-left: 26px; }
+li { margin: 2px 0; }
 blockquote { border-left: 3px solid #999; margin: 8px 0; padding: 4px 12px; color: #555; background: #f7f7f7; }
 code { background: #f0f0f0; padding: 1px 5px; border-radius: 3px; }
+pre { background: #f7f7f7; border: 1px solid #e0e0e0; border-radius: 4px; padding: 10px 12px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+hr { border: none; border-top: 1px solid #ddd; margin: 18px 0; }
+a { color: #1a4d8f; }
+.ctitle { background: #eef4fb; border-left: 3px solid #7aa7d9; margin: 10px 0; padding: 6px 12px; color: #24486f; }
 .gap { height: 8px; }
 @media print { body { margin: 0; padding: 0; max-width: none; } }
 </style>
 </head>
 <body>
 <div class='gap'></div>
-<div class='gap'></div>
 <h1>高等数学 · 2018 年真题（回忆版 + 参考答案）</h1>
 <div class='gap'></div>
-<blockquote>**类型**：公开回忆整理（B 级）| 满分 **100** · **120** 分钟</blockquote>
-<blockquote>**主攻**：极限 · 极值 · 级数 · 二重积分 · 微分方程</blockquote>
-<blockquote>**边界**：回忆版 / 公开整理，**非**考试院原卷 PDF 镜像；个别措辞以正版真题册为准。见 00-资料来源与使用说明</blockquote>
+<blockquote><strong>类型</strong>：公开回忆整理（B 级）| 满分 <strong>100</strong> · <strong>120</strong> 分钟</blockquote>
+<blockquote><strong>主攻</strong>：极限 · 极值 · 级数 · 二重积分 · 微分方程</blockquote>
+<blockquote><strong>边界</strong>：回忆版 / 公开整理，<strong>非</strong>考试院原卷 PDF 镜像；个别措辞以正版真题册为准。见 00-资料来源与使用说明</blockquote>
 <blockquote>来源：公开回忆卷交叉整理（知乎专栏 / 华哥专升本等）</blockquote>
 <div class='gap'></div>
 <h2>试卷结构</h2>
 <div class='gap'></div>
 <table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>题型</th><th>题量</th><th>分值</th></tr>
+<tr><th>大题</th><th>题号</th><th>题量</th><th>分值</th><th>核心考查</th></tr>
+<tr><td>一、单项选择题</td><td>1–5</td><td>5</td><td>15</td><td>极限、极值、积分、级数</td></tr>
+<tr><td>二、填空题</td><td>6–10</td><td>5</td><td>15</td><td>参数方程、反常积分、微分方程</td></tr>
+<tr><td>三、计算题</td><td>11–18</td><td>8</td><td>48</td><td>连续性、极限、隐函数、二重积分</td></tr>
+<tr><td>四、综合题</td><td>19–20</td><td>2</td><td>22</td><td>微分方程、变限积分</td></tr>
+<tr><td><strong>合计</strong></td><td></td><td><strong>20</strong></td><td><strong>100</strong></td><td>满分 100 分 · 120 分钟</td></tr>
+</table>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>题目一览</h2>
+<div class='gap'></div>
+<p class='ctitle'>展开看答案速查表（先自己做完再对）</p>
+<div class='gap'></div>
 <table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>一、单项选择题</th><th>5</th><th>15</th></tr>
+<tr><th>题号</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr>
+<tr><td>答案</td><td>B</td><td>C</td><td>D</td><td>C</td><td>A</td><td>$3\ln^{2}3$</td><td>$4$</td><td>$\dfrac{e}{2}$</td><td>$dx+e\,dy$</td><td>$e^{1-1/x}$</td></tr>
+</table>
+<div class='gap'></div>
 <table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>二、填空题</th><th>5</th><th>15</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>三、计算题</th><th>8</th><th>48</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>四、综合题</th><th>2</th><th>22</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>**合计**</th><th>20</th><th>**100**</th></tr>
+<tr><th>题号</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th><th>19</th><th>20</th></tr>
+<tr><td>答案</td><td>$a=b=1$</td><td>$\dfrac12$</td><td>$\dfrac{e^{x}(x+1)}{2y\arctan y+1}$</td><td>$\dfrac{2x^{2}}{1+x^{2}}-\ln(1+x^{2})+C$</td><td>$3-\dfrac{\pi}{2}$</td><td>$\dfrac{x(1-y^{2})}{(1+y^{2})^{2}}$</td><td>$1$</td><td>收敛</td><td>$f(x)=\dfrac12 e^{2x}-\dfrac12 e^{-2x}$</td><td>见解析</td></tr>
+</table>
 <div class='gap'></div>
-<p>---</p>
+<hr>
 <div class='gap'></div>
-<h2>一、单项选择题（每题 3 分，共 15 分）</h2>
+<h2>一、单项选择题（本大题共 5 小题，每小题 3 分，共 15 分）</h2>
 <div class='gap'></div>
-<h3>1. $\displaystyle\lim_{x\to 0}\Bigl(3x\sin\dfrac{1}{x}+\dfrac{\sin x}{x}\Bigr)=$</h3>
+<h3>第 1 题 · 夹逼准则</h3>
 <div class='gap'></div>
-<p>A. $0$ B. $1$ C. $3$ D. $4$</p>
+<p>$\displaystyle\lim_{x\to 0}\Bigl(3x\sin\dfrac{1}{x}+\dfrac{\sin x}{x}\Bigr)=$</p>
 <div class='gap'></div>
-<blockquote>**答案与解析**</blockquote>
-<blockquote>**B**。$3x\sin(1/x)\to 0$（夹逼），$\sin x/x\to 1$。</blockquote>
+<ul>
+<li><strong>A.</strong> $0$</li>
+<li><strong>B.</strong> $1$</li>
+<li><strong>C.</strong> $3$</li>
+<li><strong>D.</strong> $4$</li>
+</ul>
 <div class='gap'></div>
-<h3>2. $f$ 有二阶导数，$f&#x27;(0)=-1$，$f&#x27;(1)=0$，$f&#x27;&#x27;(0)=-1$，$f&#x27;&#x27;(1)=3$，正确的是</h3>
+<p class='ctitle'>答案与解析</p>
 <div class='gap'></div>
-<p>A. $x=0$ 是极小值点 B. $x=0$ 是极大值点 C. $x=1$ 是极小值点 D. $x=1$ 是极大值点</p>
+<p><strong>B</strong>。$3x\sin(1/x)\to 0$（夹逼），$\sin x/x\to 1$。</p>
 <div class='gap'></div>
-<blockquote>**答案与解析**</blockquote>
-<blockquote>**C**。$f&#x27;(1)=0$ 且 $f&#x27;&#x27;(1)=3&gt;0$ → 极小；$f&#x27;(0)\ne 0$ 不是驻点。</blockquote>
+<hr>
 <div class='gap'></div>
-<h3>3. 已知 $\int f(x)\,dx=x^{2}+C$，则 $\int f(x^{2})\,dx=$</h3>
+<h3>第 2 题 · 极值判定</h3>
 <div class='gap'></div>
-<p>A. $x^{5}+C$ B. $x^{4}+C$ C. $\dfrac12 x^{4}+C$ D. $\dfrac23 x^{3}+C$</p>
+<p>$f$ 有二阶导数，$f&#x27;(0)=-1$，$f&#x27;(1)=0$，$f&#x27;&#x27;(0)=-1$，$f&#x27;&#x27;(1)=3$，正确的是</p>
 <div class='gap'></div>
-<blockquote>**答案与解析**</blockquote>
-<blockquote>**D**。$f(x)=2x$，故 $f(x^{2})=2x^{2}$，$\int 2x^{2}=\dfrac23 x^{3}+C$。</blockquote>
+<ul>
+<li><strong>A.</strong> $x=0$ 是极小值点</li>
+<li><strong>B.</strong> $x=0$ 是极大值点</li>
+<li><strong>C.</strong> $x=1$ 是极小值点</li>
+<li><strong>D.</strong> $x=1$ 是极大值点</li>
+</ul>
 <div class='gap'></div>
-<h3>4. 级数 $\displaystyle\sum_{n=1}^{\infty}\dfrac{2+(-1)^{n}}{3^{n}}=$</h3>
+<p class='ctitle'>答案与解析</p>
 <div class='gap'></div>
-<p>A. $2$ B. $1$ C. $\dfrac34$ D. $\dfrac12$</p>
+<p><strong>C</strong>。$f&#x27;(1)=0$ 且 $f&#x27;&#x27;(1)=3&gt;0$ → 极小；$f&#x27;(0)\ne 0$ 不是驻点。</p>
 <div class='gap'></div>
-<blockquote>**答案与解析**</blockquote>
-<blockquote>**C**。拆为 $2\sum(1/3)^{n}+\sum(-1/3)^{n}$ 几何级数求和得 $3/4$。</blockquote>
+<hr>
 <div class='gap'></div>
-<h3>5. $D=\{(x,y)\mid 4\le x^{2}+y^{2}\le 9\}$，$\displaystyle\iint_{D}\dfrac{1}{\sqrt{x^{2}+y^{2}}}\,d\sigma=$</h3>
+<h3>第 3 题 · 原函数与换元</h3>
 <div class='gap'></div>
-<p>A. $2\pi$ B. $10\pi$ C. $2\pi\ln\dfrac32$ D. $4\pi\ln\dfrac32$</p>
+<p>已知 $\int f(x)\,dx=x^{2}+C$，则 $\int f(x^{2})\,dx=$</p>
 <div class='gap'></div>
-<blockquote>**答案与解析**</blockquote>
-<blockquote>**A**。极坐标：$\int_{0}^{2\pi}d\theta\int_{2}^{3}(1/r)\cdot r\,dr=2\pi\cdot 1=2\pi$。</blockquote>
+<ul>
+<li><strong>A.</strong> $x^{5}+C$</li>
+<li><strong>B.</strong> $x^{4}+C$</li>
+<li><strong>C.</strong> $\dfrac12 x^{4}+C$</li>
+<li><strong>D.</strong> $\dfrac23 x^{3}+C$</li>
+</ul>
 <div class='gap'></div>
-<h2>二、填空题（每题 3 分，共 15 分）</h2>
+<p class='ctitle'>答案与解析</p>
 <div class='gap'></div>
-<ol>
-<li>$\begin{cases}x=\log_{3}t\\ y=3^{t}\end{cases}$，$\dfrac{dy}{dx}\big|_{t=1}=$ ______</li>
-</ol>
-<blockquote>**答案**</blockquote>
-<blockquote>$3\ln^{2}3$</blockquote>
+<p><strong>D</strong>。$f(x)=2x$，故 $f(x^{2})=2x^{2}$，$\int 2x^{2}=\dfrac23 x^{3}+C$。</p>
 <div class='gap'></div>
-<ol>
-<li>$\displaystyle\int_{-2}^{2}(|x|+\sin x)\,dx=$ ______</li>
-</ol>
-<blockquote>**答案**</blockquote>
-<blockquote>$4$（奇函数部分积分为 0）</blockquote>
+<hr>
 <div class='gap'></div>
-<ol>
-<li>$\displaystyle\int_{0}^{+\infty}e^{1-2x}\,dx=$ ______</li>
-</ol>
-<blockquote>**答案**</blockquote>
-<blockquote>$\dfrac{e}{2}$</blockquote>
+<h3>第 4 题 · 级数求和</h3>
 <div class='gap'></div>
-<ol>
-<li>$z=x^{y+1}$，在 $x=e,y=0$ 处全微分 $dz=$ ______</li>
-</ol>
-<blockquote>**答案**</blockquote>
-<blockquote>$dx+e\,dy$</blockquote>
+<p>级数 $\displaystyle\sum_{n=1}^{\infty}\dfrac{2+(-1)^{n}}{3^{n}}=$</p>
 <div class='gap'></div>
-<ol>
-<li>$x^{2}dy=y\,dx$，$y|_{x=1}=1$ 的特解 $y=$ ______</li>
-</ol>
-<blockquote>**答案**</blockquote>
-<blockquote>$e^{1-1/x}$</blockquote>
+<ul>
+<li><strong>A.</strong> $2$</li>
+<li><strong>B.</strong> $1$</li>
+<li><strong>C.</strong> $\dfrac34$</li>
+<li><strong>D.</strong> $\dfrac12$</li>
+</ul>
 <div class='gap'></div>
-<h2>三、计算题（每题 6 分，共 48 分）</h2>
+<p class='ctitle'>答案与解析</p>
 <div class='gap'></div>
-<ol>
-<li>使 $f$ 在 $x=0$ 连续：分段 $x&lt;0$ 为 $(x+a)/(x^{2}+1)$，$x=0$ 为 $b$，$x&gt;0$ 为 $(1+2/x)^{x}$。</li>
-</ol>
-<blockquote>**答案**</blockquote>
-<blockquote>$a=b=1$</blockquote>
+<p><strong>C</strong>。拆为 $2\sum(1/3)^{n}+\sum(-1/3)^{n}$ 几何级数求和得 $3/4$。</p>
 <div class='gap'></div>
-<ol>
-<li>$\displaystyle\lim_{x\to 0}\Bigl[\dfrac{1}{x}-\dfrac{\ln(1+x)}{x^{2}}\Bigr]$</li>
-</ol>
-<blockquote>**答案**</blockquote>
-<blockquote>$\dfrac12$</blockquote>
+<hr>
 <div class='gap'></div>
-<ol>
-<li>隐函数 $(1+y^{2})\arctan y=xe^{x}$，求 $dy/dx$</li>
-</ol>
-<blockquote>**答案**</blockquote>
-<blockquote>$\dfrac{e^{x}(x+1)}{2y\arctan y+1}$</blockquote>
+<h3>第 5 题 · 极坐标二重积分</h3>
 <div class='gap'></div>
-<ol>
-<li>$\ln(1+x^{2})$ 是 $f$ 的一个原函数，求 $\int x f&#x27;(x)\,dx$</li>
-</ol>
-<blockquote>**答案**</blockquote>
-<blockquote>$\dfrac{2x^{2}}{1+x^{2}}-\ln(1+x^{2})+C$</blockquote>
+<p>$D=\{(x,y)\mid 4\le x^{2}+y^{2}\le 9\}$，$\displaystyle\iint_{D}\dfrac{1}{\sqrt{x^{2}+y^{2}}}\,d\sigma=$</p>
 <div class='gap'></div>
-<ol>
-<li>$y=1+\dfrac{\sqrt{x}}{1+x}$ 与 $y=0,x=0,x=1$ 围成面积 $A$</li>
-</ol>
-<blockquote>**答案**</blockquote>
-<blockquote>$3-\dfrac{\pi}{2}$</blockquote>
+<ul>
+<li><strong>A.</strong> $2\pi$</li>
+<li><strong>B.</strong> $10\pi$</li>
+<li><strong>C.</strong> $2\pi\ln\dfrac32$</li>
+<li><strong>D.</strong> $4\pi\ln\dfrac32$</li>
+</ul>
 <div class='gap'></div>
-<ol>
-<li>$z=\dfrac{xy}{1+y^{2}}$，求 $\partial z/\partial y$ 与 $\partial^{2}z/\partial y\partial x$</li>
-</ol>
-<blockquote>**答案**</blockquote>
-<blockquote>$\partial z/\partial y=\dfrac{x(1-y^{2})}{(1+y^{2})^{2}}$，$\partial^{2}z/\partial y\partial x=\dfrac{1-y^{2}}{(1+y^{2})^{2}}$</blockquote>
+<p class='ctitle'>答案与解析</p>
 <div class='gap'></div>
-<ol>
-<li>$\displaystyle\iint_{D}\sqrt{1-\dfrac{x}{y}}\,d\sigma$（$y=x,y=1,y=2,x=0$ 围成）</li>
-</ol>
-<blockquote>**答案**</blockquote>
-<blockquote>$1$</blockquote>
+<p><strong>A</strong>。极坐标：$\int_{0}^{2\pi}d\theta\int_{2}^{3}(1/r)\cdot r\,dr=2\pi\cdot 1=2\pi$。</p>
 <div class='gap'></div>
-<ol>
-<li>判定 $\displaystyle\sum_{n=1}^{\infty}\dfrac{n}{|\sin n|+2^{n}}$ 的收敛性</li>
-</ol>
-<blockquote>**答案**</blockquote>
-<blockquote>**收敛**（与 $\sum n/2^{n}$ 比较）</blockquote>
+<hr>
 <div class='gap'></div>
-<h2>四、综合题</h2>
+<h2>二、填空题（本大题共 5 小题，每小题 3 分，共 15 分）</h2>
 <div class='gap'></div>
-<h3>19.（10 分）$f&#x27;&#x27;-4f=0$，曲线过 $(0,0)$ 且切线平行于 $y=2x+1$</h3>
+<h3>第 6 题 · 参数方程求导</h3>
+<div class='gap'></div>
+<p>$\begin{cases}x=\log_{3}t\\ y=3^{t}\end{cases}$，$\dfrac{dy}{dx}\big|_{t=1}=$ ______</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p>$3\ln^{2}3$</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 7 题 · 定积分奇偶性</h3>
+<div class='gap'></div>
+<p>$\displaystyle\int_{-2}^{2}(|x|+\sin x)\,dx=$ ______</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p>$4$（奇函数部分积分为 0）</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 8 题 · 反常积分</h3>
+<div class='gap'></div>
+<p>$\displaystyle\int_{0}^{+\infty}e^{1-2x}\,dx=$ ______</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p>$\dfrac{e}{2}$</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 9 题 · 全微分</h3>
+<div class='gap'></div>
+<p>$z=x^{y+1}$，在 $x=e,y=0$ 处全微分 $dz=$ ______</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p>$dx+e\,dy$</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 10 题 · 可分离变量微分方程</h3>
+<div class='gap'></div>
+<p>$x^{2}dy=y\,dx$，$y|_{x=1}=1$ 的特解 $y=$ ______</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p>$e^{1-1/x}$</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>三、计算题（本大题共 8 小题，每小题 6 分，共 48 分）</h2>
+<div class='gap'></div>
+<h3>第 11 题 · 分段函数连续性</h3>
+<div class='gap'></div>
+<p>使 $f$ 在 $x=0$ 连续：分段 $x&lt;0$ 为 $(x+a)/(x^{2}+1)$，$x=0$ 为 $b$，$x&gt;0$ 为 $(1+2/x)^{x}$。</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p>$a=b=1$</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 12 题 · 极限（通分）</h3>
+<div class='gap'></div>
+<p>$\displaystyle\lim_{x\to 0}\Bigl[\dfrac{1}{x}-\dfrac{\ln(1+x)}{x^{2}}\Bigr]$</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p>$\dfrac12$</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 13 题 · 隐函数求导</h3>
+<div class='gap'></div>
+<p>隐函数 $(1+y^{2})\arctan y=xe^{x}$，求 $dy/dx$</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p>$\dfrac{e^{x}(x+1)}{2y\arctan y+1}$</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 14 题 · 分部积分</h3>
+<div class='gap'></div>
+<p>$\ln(1+x^{2})$ 是 $f$ 的一个原函数，求 $\int x f&#x27;(x)\,dx$</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p>$\dfrac{2x^{2}}{1+x^{2}}-\ln(1+x^{2})+C$</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 15 题 · 平面图形面积</h3>
+<div class='gap'></div>
+<p>$y=1+\dfrac{\sqrt{x}}{1+x}$ 与 $y=0,x=0,x=1$ 围成面积 $A$</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p>$3-\dfrac{\pi}{2}$</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 16 题 · 偏导数</h3>
+<div class='gap'></div>
+<p>$z=\dfrac{xy}{1+y^{2}}$，求 $\partial z/\partial y$ 与 $\partial^{2}z/\partial y\partial x$</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p>$\partial z/\partial y=\dfrac{x(1-y^{2})}{(1+y^{2})^{2}}$，$\partial^{2}z/\partial y\partial x=\dfrac{1-y^{2}}{(1+y^{2})^{2}}$</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 17 题 · 二重积分</h3>
+<div class='gap'></div>
+<p>$\displaystyle\iint_{D}\sqrt{1-\dfrac{x}{y}}\,d\sigma$（$y=x,y=1,y=2,x=0$ 围成）</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p>$1$</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 18 题 · 级数敛散性</h3>
+<div class='gap'></div>
+<p>判定 $\displaystyle\sum_{n=1}^{\infty}\dfrac{n}{|\sin n|+2^{n}}$ 的收敛性</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：收敛</strong>（与 $\sum n/2^{n}$ 比较）</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>四、综合题（本大题共 2 小题，第 19 小题 10 分，第 20 小题 12 分，共 22 分）</h2>
+<div class='gap'></div>
+<h3>第 19 题 · 二阶常系数微分方程</h3>
+<div class='gap'></div>
+<p>$f&#x27;&#x27;-4f=0$，曲线过 $(0,0)$ 且切线平行于 $y=2x+1$</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
 <p>(1) $f(x)=\dfrac12 e^{2x}-\dfrac12 e^{-2x}$（即 $\sinh 2x$）</p>
 <p>(2) 凹 $(0,+\infty)$，凸 $(-\infty,0)$，拐点 $(0,0)$</p>
 <div class='gap'></div>
-<h3>20.（12 分）$f(x)=\displaystyle\int_{0}^{x}\cos t^{2}\,dt$</h3>
+<hr>
+<div class='gap'></div>
+<h3>第 20 题 · 变限积分性质</h3>
+<div class='gap'></div>
+<p>$f(x)=\displaystyle\int_{0}^{x}\cos t^{2}\,dt$</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
 <p>(1) $f&#x27;(0)=1$</p>
 <p>(2) $f$ 为<strong>奇函数</strong></p>
 <p>(3) 当 $x&gt;0$ 时 $f(x)&gt;x-\dfrac{(1+\lambda)x^{3}}{3\lambda}$（$\lambda&gt;0$）</p>
 <div class='gap'></div>
-<h2>回炉</h2>
-<li>[高等数学](/posts/math/) · _索引 · 对照 2019 2020 2021</li>
+<hr>
 <div class='gap'></div>
-<p>---</p>
-<p>返回：_索引 · 总索引</p>
+<blockquote>相关：<a href="/posts/math/">真题总览</a> · <a href="/posts/math/真题章节对照表">真题章节对照表</a></blockquote>
 <div class='gap'></div>
 </body>
 </html>

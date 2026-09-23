@@ -2,148 +2,1657 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<title>计算机程序设计 · 2023</title>
+<title>2023年广东专升本《计算机程序设计》真题+逐题详解</title>
 <style>
 body { font-family: "Microsoft YaHei", "Noto Sans SC", sans-serif; max-width: 800px; margin: 40px auto; padding: 0 24px; font-size: 14px; line-height: 1.8; color: #222; }
 h1 { font-size: 22px; border-bottom: 2px solid #333; padding-bottom: 8px; }
 h2 { font-size: 18px; margin-top: 24px; }
 h3 { font-size: 16px; }
 table { margin: 12px 0; }
+th, td { text-align: left; vertical-align: top; }
+ul, ol { margin: 8px 0; padding-left: 26px; }
+li { margin: 2px 0; }
 blockquote { border-left: 3px solid #999; margin: 8px 0; padding: 4px 12px; color: #555; background: #f7f7f7; }
 code { background: #f0f0f0; padding: 1px 5px; border-radius: 3px; }
+pre { background: #f7f7f7; border: 1px solid #e0e0e0; border-radius: 4px; padding: 10px 12px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+hr { border: none; border-top: 1px solid #ddd; margin: 18px 0; }
+a { color: #1a4d8f; }
+.ctitle { background: #eef4fb; border-left: 3px solid #7aa7d9; margin: 10px 0; padding: 6px 12px; color: #24486f; }
 .gap { height: 8px; }
 @media print { body { margin: 0; padding: 0; max-width: none; } }
 </style>
 </head>
 <body>
 <div class='gap'></div>
+<h1>计算机程序设计 · 2023 年真题（回忆版 + 逐题讲解）</h1>
 <div class='gap'></div>
-<h1>计算机程序设计 · 2023 年真题（回忆版 + 结构化）</h1>
+<blockquote><strong>类型</strong>：考生回忆 + 公开抽取整理（B 级）| <strong>200</strong> 分 · <strong>150</strong> 分钟</blockquote>
+<blockquote><strong>边界</strong>：回忆版 / 公开整理，<strong>非</strong>考试院原卷 PDF 镜像；个别措辞以正版真题册为准。见 00-资料来源与使用说明</blockquote>
+<blockquote>本地：<code>资料/计算机真题原卷/2023.txt</code></blockquote>
 <div class='gap'></div>
-<blockquote>**类型**：考生回忆 + 公开抽取整理（B 级）| **200** 分 · **150** 分钟</blockquote>
-<blockquote>**边界**：回忆版 / 公开整理，**非**考试院原卷 PDF 镜像；个别措辞以正版真题册为准。见 00-资料来源与使用说明</blockquote>
-<blockquote>本地：`资料/计算机真题原卷/2023.txt`</blockquote>
+<hr>
+<div class='gap'></div>
+<h2>先读这一段（本版改了什么）</h2>
+<div class='gap'></div>
+<p>原版这页只有「题号 → 答案字母」，<strong>一句解释都没有</strong>。做错了，你不知道自己错在哪一步；下次换个问法，你照样错。本版补的就是&quot;为什么&quot;。</p>
+<div class='gap'></div>
+<p>有一条得先说清楚：<strong>回忆版只留下了考点和答案，A/B/C/D 四个选项的原文大多丢了。</strong> 所以本版<strong>不替你编选项</strong>（编出来的假选项会让你背错东西），而是把<strong>这个考点本身怎么判断</strong>讲透 —— 这样换一套卷、选项顺序打乱，你照样会做。题干残缺到看不出问法的，我在题里直接标「题干残缺」，不猜。</p>
 <div class='gap'></div>
 <h2>试卷结构</h2>
 <div class='gap'></div>
 <table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>题型</th><th>题量</th><th>分值</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>一、单项选择</th><th>20</th><th>60</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>二、判断</th><th>10</th><th>20</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>三、填空</th><th>5</th><th>20</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>四、简答</th><th>4</th><th>40</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>五、计算</th><th>3</th><th>30</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>六、应用</th><th>3</th><th>30</th></tr>
+<tr><th>大题</th><th>题号</th><th>题量</th><th>分值</th><th>核心考查</th></tr>
+<tr><td>一、单项选择题</td><td>1–20</td><td>20</td><td>60</td><td>C 语法、指针、数据结构</td></tr>
+<tr><td>二、判断题</td><td>21–30</td><td>10</td><td>20</td><td>C 语言细节、数据结构性质</td></tr>
+<tr><td>三、填空题</td><td>31–35</td><td>5</td><td>20</td><td>算法、树、图、查找</td></tr>
+<tr><td>四、简答题</td><td>36–39</td><td>4</td><td>40</td><td>概念辨析</td></tr>
+<tr><td>五、计算／读程题</td><td>40–42</td><td>3</td><td>30</td><td>程序执行结果分析</td></tr>
+<tr><td>六、应用编程题</td><td>43–45</td><td>3</td><td>30</td><td>手写 C 语言程序</td></tr>
+<tr><td><strong>合计</strong></td><td></td><td><strong>45</strong></td><td><strong>200</strong></td><td>满分 200 分 · 150 分钟</td></tr>
+</table>
 <div class='gap'></div>
-<p>---</p>
+<hr>
 <div class='gap'></div>
-<h2>一、选择题（回忆要点）</h2>
+<h2>题目一览</h2>
+<div class='gap'></div>
+<p class='ctitle'>展开看答案速查表（先自己做完再对）</p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>题号</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th><th>19</th><th>20</th><th>21</th><th>22</th><th>23</th></tr>
+<tr><td>答案</td><td>C</td><td>B</td><td>C</td><td>D</td><td>D</td><td>B</td><td>B</td><td>C</td><td>A</td><td>C</td><td>3 次</td><td>6 个</td><td>D</td><td><code>p-&gt;next = q-&gt;next; free(q);</code></td><td><code>person</code> 是变量名</td><td>$O(n^{2})$</td><td>关键字有序的顺序表</td><td><code>strcat</code></td><td>见解析</td><td><code>scanf(&quot;%d&quot;, a)</code></td><td>×</td><td>√</td><td>×</td></tr>
+</table>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>题号</th><th>24</th><th>25</th><th>26</th><th>27</th><th>28</th><th>29</th><th>30</th><th>31</th><th>32</th><th>33</th><th>34</th><th>35</th><th>36</th><th>37</th><th>38</th><th>39</th><th>40</th><th>41</th><th>42</th><th>43</th><th>44</th><th>45</th></tr>
+<tr><td>答案</td><td>×</td><td>√</td><td>√</td><td>×</td><td>√</td><td>√</td><td>×</td><td>1</td><td>多对多</td><td>0</td><td>广度</td><td>5（最少）／13（最坏）</td><td>见解析</td><td>见解析</td><td>见解析</td><td>见解析</td><td>见解析</td><td>见解析</td><td>见解析</td><td>见解析</td><td>见解析</td><td>见解析</td></tr>
+</table>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>一、单项选择题（本大题共 20 小题，每小题 3 分，共 60 分）</h2>
+<div class='gap'></div>
+<h3>第 1 题 · 标识符规则</h3>
+<div class='gap'></div>
+<p>下列<strong>不能</strong>用作 C 语言标识符的是（ ）</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p>回忆答案：<strong>C. <code>&amp;a</code></strong> · 考点 <a href="/posts/computer/notes/1.1-C语言概述与基本概念">1.1 C语言概述与基本概念</a></p>
+<div class='gap'></div>
+<p><strong>标识符就是你给变量、函数起的名字。</strong> C 语言对取名立了三条规矩：</p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>规矩</th><th>说明</th><th>例子</th></tr>
+<tr><td>① 只能用<strong>字母、数字、下划线</strong></td><td>其它符号一律不许出现</td><td><code>sum</code>、<code>_total</code>、<code>a1</code> ✅</td></tr>
+<tr><td>② <strong>不能以数字开头</strong></td><td>开头必须是字母或下划线</td><td><code>a1</code> ✅ ／ <code>1a</code> ❌</td></tr>
+<tr><td>③ <strong>不能是关键字</strong></td><td>C 自带的 32 个保留词不能用</td><td><code>int</code>、<code>return</code>、<code>if</code> ❌</td></tr>
+</table>
+<div class='gap'></div>
+<p><code>&amp;a</code> 里的 <code>&amp;</code> 是<strong>取地址运算符</strong>。它违反规矩① —— 名字里不能有这样的符号。更要紧的是，<code>&amp;a</code> 在 C 里根本不是一个&quot;名字&quot;，而是一个<strong>动作</strong>：&quot;取出 a 的地址&quot;。</p>
+<div class='gap'></div>
+<p><strong>这一类题的全部考点，就是下面这张表：</strong></p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>写法</th><th>合法？</th><th>原因</th></tr>
+<tr><td><code>_6_</code></td><td>✅</td><td>下划线开头允许</td></tr>
+<tr><td><code>6_6</code></td><td>❌</td><td>数字开头</td></tr>
+<tr><td><code>int</code>、<code>void</code>、<code>if</code></td><td>❌</td><td>关键字</td></tr>
+<tr><td><code>a-b</code></td><td>❌</td><td>含减号，会被读成&quot;a 减 b&quot;</td></tr>
+<tr><td><code>and</code>、<code>Add</code>、<code>_if</code></td><td>✅</td><td>不是关键字；C <strong>区分大小写</strong>，<code>Add ≠ add</code>，<code>_if ≠ if</code></td></tr>
+</table>
+<div class='gap'></div>
+<p><strong>两个爱设的坑：</strong></p>
+<div class='gap'></div>
+<ul>
+<li><code>scanf</code>、<code>printf</code> <strong>不是关键字</strong>，是库函数名。技术上你能拿它们当变量名（<code>int scanf;</code> 合法），虽然实际绝不该这么写。</li>
+<li><code>define</code>、<code>include</code> 是<strong>预处理命令</strong>，严格说也不在 32 个关键字里。考试遇到，按&quot;合法但不该用&quot;处理。</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 2 题 · fopen 返回值</h3>
+<div class='gap'></div>
+<p><code>fopen</code> 打开文件失败时返回（ ）</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p>回忆答案：<strong>B. <code>NULL</code></strong> · 考点 <a href="/posts/computer/notes/1.10-文件操作">1.10 文件操作</a></p>
+<div class='gap'></div>
+<p><strong>为什么返回 NULL？</strong> <code>fopen</code> 成功时给你一个<strong>文件指针</strong> —— 相当于系统为你和这个文件之间搭好的一根线，你后面所有读写都顺着这根线走。失败了，<strong>没有线可给</strong>，于是返回一个&quot;指向空处&quot;的指针，就是 <code>NULL</code>。</p>
+<div class='gap'></div>
+<p>打个比方：<code>fopen</code> 像去柜台办一张卡。办成了给你一张卡；办不成，柜员给你一张<strong>写着 0 号的空卡</strong>。你要是拿着空卡去刷卡（继续读写），当然出事。</p>
+<div class='gap'></div>
+<p><strong>所以打开之后第一件事就是检查。</strong> 标准写法：</p>
+<div class='gap'></div>
+<pre><code>
+#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    FILE *fp = fopen(&quot;data.txt&quot;, &quot;r&quot;);    /* 尝试以只读方式打开 */
+    if (fp == NULL) {                     /* 一定先查这一句 */
+        printf(&quot;打开失败\n&quot;);
+        return 1;                         /* 打不开就别往下走 */
+    }
+    /* …… 用 fp 读数据 …… */
+    fclose(fp);                           /* 用完关掉 */
+    return 0;
+}
+</code></pre>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>写法</th><th>评价</th></tr>
+<tr><td><code>if (fp == NULL)</code></td><td>✅ 规范</td></tr>
+<tr><td><code>if (!fp)</code></td><td>✅ 也对，考试两种都认</td></tr>
+<tr><td><code>if (fp == 0)</code></td><td>⚠️ 数值等价，但不如写 <code>NULL</code> 清楚</td></tr>
+<tr><td>不检查就 <code>fgetc(fp)</code></td><td>❌ 程序崩溃 —— <strong>本章最大的失分点</strong></td></tr>
+</table>
+<div class='gap'></div>
+<p><strong>一句话记：</strong> 打开 → 读写 → 关闭，三步缺一不可；<strong>第一步的返回值必查</strong>。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 3 题 · 按序号取前驱</h3>
+<div class='gap'></div>
+<p>要频繁&quot;取第 i 个结点及其前驱&quot;，最省时间的存储结构是（ ）</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p>回忆答案：<strong>C. 顺序表</strong> · 考点 <a href="/posts/computer/notes/2.2-线性表">2.2 线性表</a></p>
+<div class='gap'></div>
+<p><strong>关键在于顺序表能&quot;随机访问&quot;。</strong></p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>结构</th><th>找第 i 个要花多久</th><th>比喻</th></tr>
+<tr><td><strong>顺序表</strong>（数组实现）</td><td>$O(1)$，一步到位</td><td><strong>一排连号储物柜</strong>：报柜号，直接走到</td></tr>
+<tr><td><strong>链表</strong></td><td>$O(n)$，必须从头一个个走</td><td><strong>寻宝游戏</strong>：每条线索只告诉你下一个在哪</td></tr>
+</table>
+<div class='gap'></div>
+<p>顺序表在内存里是<strong>连续</strong>的一长条。第 <code>i</code> 个的地址 = 首地址 + <code>i × 每个元素占的字节数</code> —— <strong>一道乘法就算出来</strong>，跟 <code>i</code> 是 5 还是 5000 一样快。链表的结点散落在内存各处，靠 <code>next</code> 指针手拉手，你只能顺着手摸过去。</p>
+<div class='gap'></div>
+<p><strong>&quot;及其前驱&quot;这半句是细节加分项：</strong> 第 <code>i</code> 个的前驱就是第 <code>i-1</code> 个，顺序表里同样是 $O(1)$。而链表找 <code>p</code> 的<strong>前驱</strong>更痛苦 —— 单链表不能回头，只能从头再走一遍。</p>
+<div class='gap'></div>
+<p><strong>反过来，什么时候该选链表？</strong> 把这两类放一起对照记：</p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>你的需求</th><th>该选</th></tr>
+<tr><td>按下标快速取元素</td><td><strong>顺序表</strong></td></tr>
+<tr><td>频繁插入、删除</td><td><strong>链表</strong>（不用搬一堆元素）</td></tr>
+<tr><td>长度不确定、经常增减</td><td><strong>链表</strong>（不用预先估计大小）</td></tr>
+<tr><td>想省掉指针占的空间</td><td><strong>顺序表</strong></td></tr>
+</table>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 4 题 · 表达式真假</h3>
+<div class='gap'></div>
+<p>设 <code>int a=4, b=3, c=2;</code>，则值为&quot;真&quot;的表达式是（ ）</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p>回忆答案：<strong>D. <code>a&amp;&amp;b||c</code></strong> · 考点 <a href="/posts/computer/notes/1.2-数据的存储与运算">1.2 数据的存储与运算</a></p>
+<div class='gap'></div>
+<p><strong>C 语言判定真假只看一件事：</strong></p>
+<div class='gap'></div>
+<p><strong>值为 0 → 假；值不为 0 → 真。</strong>（负数也算真，<code>-5</code> 是真）</p>
+<div class='gap'></div>
+<p>三个逻辑运算符的优先级，<strong>从高到低</strong>：</p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>优先级</th><th>运算符</th><th>名称</th><th>结果</th></tr>
+<tr><td>高</td><td><code>!</code></td><td>逻辑非</td><td>0 或 1</td></tr>
+<tr><td>中</td><td><code>&amp;&amp;</code></td><td>逻辑与</td><td>0 或 1</td></tr>
+<tr><td>低</td><td>`\</td><td>\</td><td>`</td><td>逻辑或</td><td>0 或 1</td></tr>
+</table>
+<div class='gap'></div>
+<p><strong>算 <code>a&amp;&amp;b||c</code>：</strong> 先 <code>a&amp;&amp;b</code> = <code>4&amp;&amp;3</code> → 两边都非 0 → 得 <strong>1</strong>；再 <code>1||c</code> → 左边已经是 1 → 整个是 <strong>1（真）</strong>。</p>
+<div class='gap'></div>
+<p><strong>这里藏着一个必考机制 —— 短路求值：</strong></p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>表达式</th><th>行为</th></tr>
+<tr><td>`A \</td><td>\</td><td>B`</td><td>若 <code>A</code> 为真，<strong><code>B</code> 根本不去算</strong>（结果已注定为真）</td></tr>
+<tr><td><code>A &amp;&amp; B</code></td><td>若 <code>A</code> 为假，<strong><code>B</code> 根本不去算</strong>（结果已注定为假）</td></tr>
+</table>
+<div class='gap'></div>
+<p>短路不只省时间，还能<strong>避免程序崩溃</strong>（比如防止除零、防止越界访问）：</p>
+<div class='gap'></div>
+<pre><code>
+if (p != NULL &amp;&amp; *p &gt; 0)   /* ✅ p 为空时右边不执行，不会崩 */
+    ...
+if (*p &gt; 0 &amp;&amp; p != NULL)   /* ❌ 顺序反了：p 为空时先解引用就崩了 */
+    ...
+</code></pre>
+<div class='gap'></div>
+<p><strong>这一类题最常见的三种错法：</strong></p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>写法</th><th>结果</th><th>说明</th></tr>
+<tr><td><code>3 &lt; a &lt; 5</code></td><td>⚠️ <strong>恒为真</strong></td><td>先算 <code>3&lt;a</code> 得 1，再算 <code>1&lt;5</code> 得 1。想表达区间必须写 <code>a&gt;3 &amp;&amp; a&lt;5</code></td></tr>
+<tr><td><code>if (a = 5)</code></td><td>⚠️ 恒为真</td><td><code>=</code> 是赋值，<code>==</code> 才是比较。这句把 a 改成 5 并判定为真</td></tr>
+<tr><td><code>!a</code>，其中 <code>a=4</code></td><td><code>0</code></td><td>非 0 取反得 0</td></tr>
+</table>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 5 题 · 算法分析内容</h3>
+<div class='gap'></div>
+<p>对一个算法进行分析，主要包括哪两个方面（ ）</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p>回忆答案：<strong>D. 时间复杂度 + 空间复杂度</strong> · 考点 <a href="/posts/computer/notes/2.9-算法基本概念与分析">2.9 算法基本概念与分析</a></p>
+<div class='gap'></div>
+<p><strong>算法就是&quot;解决这个问题的步骤清单&quot;。</strong> 评价一份清单好不好，只看它花掉你两样东西：</p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>维度</th><th>问的是什么</th><th>比喻（做菜）</th></tr>
+<tr><td><strong>时间复杂度</strong></td><td>要执行多少次基本操作</td><td>炒这盘菜要<strong>多久</strong></td></tr>
+<tr><td><strong>空间复杂度</strong></td><td>要额外占多少内存</td><td>用掉<strong>多少案板</strong></td></tr>
+</table>
+<div class='gap'></div>
+<p><strong>&quot;空间&quot;指额外空间</strong>，不含程序代码本身和输入数据。原地工作的算法（比如只用一个临时变量做交换）空间复杂度记 $O(1)$。</p>
+<div class='gap'></div>
+<p><strong>常考量级排队（从小到大，必须背）：</strong></p>
+<div class='gap'></div>
+<p>$$O(1)&lt;O(\log_2 n)&lt;O(n)&lt;O(n\log_2 n)&lt;O(n^{2})&lt;O(n^{3})&lt;O(2^{n})$$</p>
+<div class='gap'></div>
+<p><strong>读代码一眼看出量级的技巧：</strong></p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>代码长相</th><th>量级</th></tr>
+<tr><td>没有循环，固定几句</td><td>$O(1)$</td></tr>
+<tr><td>一层循环 <code>for(i=0;i&lt;n;i++)</code></td><td>$O(n)$</td></tr>
+<tr><td>两层循环嵌套，都到 <code>n</code></td><td>$O(n^2)$</td></tr>
+<tr><td>循环变量每次<strong>翻倍</strong> <code>i=i*2</code></td><td>$O(\log_2 n)$</td></tr>
+<tr><td>循环变量每次<strong>折半</strong> <code>n=n/2</code></td><td>$O(\log_2 n)$</td></tr>
+</table>
+<div class='gap'></div>
+<p><strong>注意：</strong> 时间复杂度分析的是<strong>基本运算的执行次数</strong>，跟你电脑快慢、用哪种语言无关。所以&quot;这段在我电脑上跑 0.1 秒&quot;不属于复杂度分析 —— 这是概念题爱设的干扰项。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 6 题 · 结构体说法</h3>
+<div class='gap'></div>
+<p>关于结构体，下列说法<strong>错误</strong>的是（ ）</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p>回忆答案：<strong>B. 由系统直接提供</strong> · 考点 <a href="/posts/computer/notes/1.9-结构体与共用体">1.9 结构体与共用体</a></p>
+<div class='gap'></div>
+<p><strong>结构体是你自己造的类型，不是系统给的。</strong></p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>类型</th><th>谁提供</th><th>例子</th></tr>
+<tr><td><strong>基本类型</strong></td><td>系统自带</td><td><code>int</code>、<code>char</code>、<code>float</code></td></tr>
+<tr><td><strong>构造类型</strong></td><td><strong>你自己定义</strong></td><td><code>struct Student{...}</code> ← 结构体在这</td></tr>
+</table>
+<div class='gap'></div>
+<p>比方说：<code>int</code> 是<strong>超市里现成的收纳盒</strong>；结构体是你<strong>自己画图纸定做的盒子</strong> —— 图纸必须先由你画出来，系统不可能预先知道你要装什么。</p>
+<div class='gap'></div>
+<p><strong>定义与使用，考点全在这几行：</strong></p>
+<div class='gap'></div>
+<pre><code>
+#include &lt;stdio.h&gt;
+
+struct Student          /* 这一步只是&quot;画图纸&quot;，不占内存 */
+{
+    int   id;
+    char  name[20];
+    float score;
+};                      /* 这个分号千万别漏 */
+
+int main(void)
+{
+    struct Student s = {1001, &quot;Li Ming&quot;, 88.5};   /* 按顺序初始化 */
+    s.score = 90.0;                                /* 用点号访问成员 */
+    printf(&quot;%d %s %.1f\n&quot;, s.id, s.name, s.score);
+    return 0;
+}
+</code></pre>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>写法</th><th>问题</th></tr>
+<tr><td><code>struct Student s;</code></td><td>✅ 定义变量必须带 <code>struct</code></td></tr>
+<tr><td><code>Student s;</code></td><td>❌ 纯 C 不行（C++ 可以），考试按 C 判错</td></tr>
+<tr><td>定义完忘写 <code>;</code></td><td>❌ 编译报错，最高频的错</td></tr>
+<tr><td><code>s.name = &quot;Li&quot;;</code></td><td>❌ <strong>数组名不能被赋值</strong>，要用 <code>strcpy(s.name, &quot;Li&quot;)</code></td></tr>
+<tr><td><code>struct Student a, b;</code></td><td>✅ 一次定义多个</td></tr>
+</table>
+<div class='gap'></div>
+<p><strong>连带考点：</strong> 结构体变量<strong>整体可以赋值</strong>（<code>a = b;</code> 合法，逐成员拷贝），但<strong>不能整体比较</strong>（<code>a == b</code> 非法，只能一个一个成员比）。这两条经常被混在同一个选项里考。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 7 题 · 存储结构选择</h3>
+<div class='gap'></div>
+<p>选择数据的存储结构时，<strong>不需要</strong>考虑（ ）</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p>回忆答案：<strong>B. 各结点值如何</strong> · 考点 <a href="/posts/computer/notes/2.1-数据结构基本概念">2.1 数据结构基本概念</a></p>
+<div class='gap'></div>
+<p><strong>先把数据结构最基础的两层分清：</strong></p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>层次</th><th>管什么</th><th>举例</th></tr>
+<tr><td><strong>逻辑结构</strong></td><td>元素之间的<strong>关系</strong>长什么样</td><td>线性（排队）／层次（公司架构）／图形（朋友圈）</td></tr>
+<tr><td><strong>存储结构</strong>（物理结构）</td><td>在内存里<strong>怎么摆</strong></td><td>顺序存储／链式存储</td></tr>
+<tr><td>数据的<strong>取值</strong></td><td>每个元素<strong>装什么内容</strong></td><td>学号 1001，姓名 Li Ming</td></tr>
+</table>
+<div class='gap'></div>
+<p>选&quot;用数组还是用链表&quot;，取决于<strong>你要做什么操作</strong>（按下标查得多？还是插入删除多？）；跟&quot;这个位置存的是 1001 还是 2002&quot;<strong>完全无关</strong>。</p>
+<div class='gap'></div>
+<p>一句话：逻辑结构 = 人和人怎么认识；存储结构 = 这些人在教室里怎么坐。</p>
+<p><strong>谁坐第几排，跟某人叫什么名字没关系。</strong></p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 8 题 · scanf 调用</h3>
+<div class='gap'></div>
+<p>下列 <code>scanf</code> 调用<strong>正确</strong>的是（ ）</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p>回忆答案：<strong>C. <code>scanf(&quot;%f%f&quot;, &amp;c, &amp;d)</code></strong>（<code>c</code>、<code>d</code> 为 <code>float</code>） · 考点 <a href="/posts/computer/notes/1.3-顺序程序设计">1.3 顺序程序设计</a></p>
+<div class='gap'></div>
+<p><strong><code>scanf</code> 有一条铁律：</strong></p>
+<div class='gap'></div>
+<p><strong>从键盘读值，参数必须给&quot;地址&quot;，不能给&quot;值&quot;。</strong></p>
+<div class='gap'></div>
+<p>因为 <code>scanf</code> 要<strong>往你的变量里写东西</strong>，你得告诉它&quot;写到哪门哪号&quot;。只给值，等于告诉它&quot;写到 5 号房间&quot;而 5 号房间根本不存在 → 程序崩。</p>
+<div class='gap'></div>
+<p><strong>必背地址表（考试就考这张）：</strong></p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>变量定义</th><th>正确写法</th><th>为什么</th></tr>
+<tr><td><code>int a;</code></td><td><code>scanf(&quot;%d&quot;, &amp;a)</code></td><td>普通变量要加 <code>&amp;</code></td></tr>
+<tr><td><code>float c;</code></td><td><code>scanf(&quot;%f&quot;, &amp;c)</code></td><td>同上，注意是 <code>%f</code></td></tr>
+<tr><td><code>char s[20];</code></td><td><code>scanf(&quot;%s&quot;, s)</code></td><td><strong>数组名本身就是地址，不加 <code>&amp;</code></strong></td></tr>
+<tr><td><code>int a[5];</code> 读首元素</td><td><code>scanf(&quot;%d&quot;, a)</code></td><td><code>a</code> 就是 <code>&amp;a[0]</code>，见第 20 题</td></tr>
+<tr><td><code>struct Stu st;</code> 读成员</td><td><code>scanf(&quot;%d&quot;, &amp;st.id)</code></td><td>成员是普通变量，要加 <code>&amp;</code></td></tr>
+</table>
+<div class='gap'></div>
+<p><strong>格式符对照（同样是高频考点）：</strong></p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>类型</th><th>用</th><th>注意</th></tr>
+<tr><td><code>int</code></td><td><code>%d</code></td><td>用 <code>%f</code> 读 int → 得到 0</td></tr>
+<tr><td><code>float</code></td><td><code>%f</code></td><td>写成 <code>%lf</code> 是<strong>错</strong>的</td></tr>
+<tr><td><code>double</code></td><td><code>%lf</code></td><td><strong>只有 <code>scanf</code> 区分</strong>；<code>printf</code> 输出 float/double 用 <code>%f</code> 都可以</td></tr>
+<tr><td><code>char</code></td><td><code>%c</code></td><td>会把空格、换行也当字符读走</td></tr>
+<tr><td>字符串</td><td><code>%s</code></td><td>遇空格停止；读整行要用 <code>fgets</code></td></tr>
+</table>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>写法</th><th>问题</th></tr>
+<tr><td><code>scanf(&quot;%f%f&quot;, &amp;c, &amp;d);</code></td><td>✅</td></tr>
+<tr><td><code>scanf(&quot;%f%f&quot;, c, d);</code></td><td>❌ 少了 <code>&amp;</code></td></tr>
+<tr><td><code>scanf(&quot;%f %f&quot;, &amp;c, &amp;d);</code></td><td>✅ 中间加空格也合法</td></tr>
+<tr><td><code>scanf(&quot;a=%f,b=%f&quot;, &amp;c, &amp;d);</code></td><td>⚠️ 合法，但<strong>你输入时必须原样敲出 <code>a=</code> 和 <code>,</code></strong>，否则读不进去</td></tr>
+</table>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 9 题 · 指针自增</h3>
+<div class='gap'></div>
+<p>设 <code>int a[5]={10,20,30,40,50}; int *p=&amp;a[1]; int b=*(p++);</code>，则 <code>b</code> 的值是（ ）</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p>回忆答案：<strong>A. 20</strong> · 考点 <a href="/posts/computer/notes/1.8-指针">1.8 指针</a> · <a href="/posts/computer/notes/1.6-数组">1.6 数组</a></p>
+<div class='gap'></div>
+<p><strong>这题考括号决定的先后顺序。记住四个字：先用后走。</strong></p>
+<div class='gap'></div>
+<p><code>p++</code> 是<strong>后置</strong>自增 —— <strong>先把 <code>p</code> 的当前值交出去用，用完之后才让 <code>p</code> 前进一格。</strong></p>
+<div class='gap'></div>
+<p><strong>一步一步走：</strong></p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>步骤</th><th>发生什么</th><th><code>p</code> 指向</th><th><code>b</code></th></tr>
+<tr><td>初始</td><td><code>a[5] = {10,20,30,40,50}</code></td><td>—</td><td>—</td></tr>
+<tr><td>①</td><td><code>p = &amp;a[1]</code></td><td><code>a[1]</code>（值 20）</td><td>—</td></tr>
+<tr><td>②</td><td><code>*(p++)</code>：取 <code>p</code> <strong>当前</strong>指向的值</td><td>仍是 <code>a[1]</code></td><td><strong>20</strong></td></tr>
+<tr><td>③</td><td>取完值，<code>p</code> 才自增</td><td><code>a[2]</code>（值 30）</td><td>20</td></tr>
+</table>
+<div class='gap'></div>
+<p><strong>所以 <code>b = 20</code>，而 <code>p</code> 事后走到了 <code>a[2]</code>。</strong></p>
+<div class='gap'></div>
+<p><strong>三种写法必须分清（专挑这里出题）：</strong></p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>写法</th><th>含义</th><th><code>b</code> 得</th><th>副作用</th></tr>
+<tr><td><code>b = *(p++);</code></td><td>先取值，后走</td><td><code>a[1]</code> = <strong>20</strong></td><td><code>p</code> 指向 <code>a[2]</code></td></tr>
+<tr><td><code>b = (*p)++;</code></td><td>取 <code>*p</code> 给 b，<strong>再把 a[1] 这个数 +1</strong></td><td><strong>20</strong></td><td><code>p</code> 不动，但 <strong><code>a[1]</code> 变成 21</strong></td></tr>
+<tr><td><code>b = *(++p);</code></td><td>先走一步，再取新位置的值</td><td><code>a[2]</code> = <strong>30</strong></td><td><code>p</code> 指向 <code>a[2]</code></td></tr>
+</table>
+<div class='gap'></div>
+<p><strong>注意第二行的杀伤力：</strong> <code>(*p)++</code> 改的是<strong>数组里的数据</strong>，不是指针。很多人以为它和 <code>*(p++)</code> 差不多 —— 其实一个动指针、一个动数据，完全不同。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 10 题 · 栈的特点</h3>
+<div class='gap'></div>
+<p>栈的特点是（ ）</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p>回忆答案：<strong>C. LIFO</strong> · 考点 <a href="/posts/computer/notes/2.3-栈和队列">2.3 栈和队列</a></p>
+<div class='gap'></div>
+<p><strong>栈就是一根只许从顶部操作的管子。</strong></p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>结构</th><th>进出规则</th><th>生活比喻</th><th>插入/删除位置</th></tr>
+<tr><td><strong>栈</strong> stack</td><td><strong>LIFO</strong> 后进先出</td><td><strong>一摞盘子</strong>：只能拿最上面那个，也只能往最上面叠</td><td>都在<strong>栈顶</strong></td></tr>
+<tr><td><strong>队列</strong> queue</td><td><strong>FIFO</strong> 先进先出</td><td><strong>排队买饭</strong>：先来先服务</td><td>队尾进、队头出</td></tr>
+</table>
+<div class='gap'></div>
+<p><strong>必背术语：</strong></p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>词</th><th>意思</th></tr>
+<tr><td>栈顶 top</td><td>唯一允许插入和删除的一端</td></tr>
+<tr><td>栈底 bottom</td><td>另一端，不能直接碰</td></tr>
+<tr><td><code>push</code> 入栈</td><td>放到栈顶</td></tr>
+<tr><td><code>pop</code> 出栈</td><td>从栈顶拿走</td></tr>
+<tr><td><code>getTop</code> 取栈顶</td><td>看一眼栈顶<strong>但不拿走</strong>（不算修改栈）</td></tr>
+</table>
+<div class='gap'></div>
+<p><strong>常考的&quot;出入栈序列是否可能&quot;判断题，用这条规矩：</strong> 入栈顺序 <code>1,2,3</code> 固定，问哪个出栈序列不可能。</p>
+<div class='gap'></div>
+<p><strong>出栈序列中，任何一个数后面、比它小的那些数，必须是递减排列的。</strong></p>
+<p>例：<code>3,1,2</code> ❌ 不可能 —— 3 能第一个出来，说明 1、2 此时都还在栈里，而 2 压在 1 上面；那么 1 出来时，2 必须<strong>在它之前</strong>出来才对。</p>
+<div class='gap'></div>
+<p><strong>栈在程序里干什么用（简答题会问）：</strong> 函数调用与递归、表达式求值、括号匹配、深度优先搜索、浏览器&quot;后退&quot;按钮。<strong>每次调用函数，系统就把返回地址压进栈</strong> —— 这正是递归太深会&quot;栈溢出 stack overflow&quot;的原因。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 11 题 · for 循环执行次数</h3>
+<div class='gap'></div>
+<p><code>for (int i = 1; i++ &lt; 4; );</code> 循环体执行几次？结束后 <code>i</code> 是多少？</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p>回忆答案：<strong>3 次</strong> · 考点 <a href="/posts/computer/notes/1.5-循环结构程序设计">1.5 循环结构程序设计</a></p>
+<div class='gap'></div>
+<p><strong>这题把三件事叠在一起考</strong>：后置 <code>++</code> 的&quot;先用后走&quot;、<code>for</code> 的执行顺序、空循环体。</p>
+<div class='gap'></div>
+<p><strong>先背 <code>for</code> 的执行顺序：</strong></p>
+<div class='gap'></div>
+<pre><code>
+for (①初始化 ; ②条件 ; ③更新)  循环体
+     ↓          ↓                ↑
+     └──首次──→ 判断 ──真──→ 循环体 ──→ ③更新 ──┐
+                     ↓假                         │
+                  退出 ←─────────────────────────┘
+</code></pre>
+<div class='gap'></div>
+<p><strong>逐轮追踪</strong>（关键：条件里的 <code>i++</code> 是<strong>先用当前值判断，判断完才 +1</strong>）：</p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>轮次</th><th>进入条件时 <code>i</code></th><th>判断用的值</th><th>判断结果</th><th>判断后 <code>i</code></th><th>执行循环体？</th></tr>
+<tr><td>1</td><td>1</td><td>1 &lt; 4</td><td>真</td><td><strong>2</strong></td><td>✅ 第 1 次</td></tr>
+<tr><td>2</td><td>2</td><td>2 &lt; 4</td><td>真</td><td><strong>3</strong></td><td>✅ 第 2 次</td></tr>
+<tr><td>3</td><td>3</td><td>3 &lt; 4</td><td>真</td><td><strong>4</strong></td><td>✅ 第 3 次</td></tr>
+<tr><td>4</td><td>4</td><td>4 &lt; 4</td><td><strong>假</strong></td><td><strong>5</strong></td><td>❌ 退出</td></tr>
+</table>
+<div class='gap'></div>
+<p>⇒ <strong>循环体执行 3 次，<code>i</code> 最终为 5。</strong></p>
+<div class='gap'></div>
+<p><strong>两个必须注意的细节：</strong></p>
 <div class='gap'></div>
 <ol>
-<li>不能做标识符 → **C. `&amp;a`**</li>
-<li>`fopen` 失败 → **B. `NULL`**</li>
-<li>取第 i 结点及前驱最省时 → **C. 顺序表**</li>
-<li>`a=4,b=3,c=2` 为真 → **D. `a&amp;&amp;b||c`**</li>
-<li>算法分析两方面 → **D. 时间 + 空间复杂度**</li>
-<li>结构体错误说法 → **B. 由系统直接提供**</li>
-<li>选存储结构不考虑 → **B. 各结点值如何**</li>
-<li>`scanf` 正确 → **C. `scanf(&quot;%f%f&quot;,&amp;c,&amp;d)`**</li>
-<li>`b=*(p++)`，`p=&amp;a[1]`，`a[5]={10..50}` → **A. 20**</li>
-<li>栈特点 → **C. LIFO**</li>
-<li>`for(int i=1;i++&lt;4;);` 次数 → **A. 3**</li>
-<li>完全二叉树 12 结点叶子 → **B. 6**</li>
-<li>操作链表须找到 → **D. 表头**</li>
-<li>删 `q`（`p` 前驱）→ **`p-&gt;next=q-&gt;next; free(q);`**</li>
-<li>`person` 是变量不是类型名</li>
-<li>双重 for → **O(n²)**</li>
-<li>二分查找 → **键值有序顺序表**</li>
-<li>字符串连接 → **`strcat`**</li>
-<li>树深度错误：各结点度最大值</li>
-<li>`int a[5];` 输入 → **`scanf(&quot;%d&quot;,a)`**</li>
+<li><strong><code>for</code> 后面直接跟的那个 <code>;</code> 就是循环体</strong>（空语句，什么都不做）。这种写法常用来&quot;就是想让 i 涨到某个值&quot;，但极易被误读成 bug，自己写代码别这么干。</li>
+<li><strong><code>i</code> 是在&quot;判断之后&quot;才 +1 的</strong>，所以退出时 <code>i</code> 已经被多加了一次（变成 5 而不是 4）。这才是本题真正的陷阱。</li>
 </ol>
 <div class='gap'></div>
-<h2>二、判断（回忆）</h2>
+<p><strong>对照练习（先在纸上推一遍再看答案）：</strong></p>
 <div class='gap'></div>
 <table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>#</th><th>命题</th><th>参考</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>1</th><th>注释只能在程序最开始</th><th>错</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>2</th><th>满二叉树是完全二叉树特殊情形</th><th>对</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>3</th><th>if 表达式只能是逻辑表达式</th><th>错</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>4</th><th>程序一定是算法</th><th>错</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>5</th><th>栈和队列都是线性表</th><th>对</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>6</th><th>C 可嵌套调用</th><th>对（调用可嵌套）</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>7</th><th>循环链表不一定成环</th><th>错</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>8</th><th>结构体成员存续期驻留内存</th><th>对</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>9</th><th>fclose 成功返回 0</th><th>对</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>10</th><th>同一队列元素类型可不同</th><th>错</th></tr>
+<tr><th>写法</th><th>循环体几次</th><th>结束 i</th></tr>
+<tr><td><code>for(i=1; i++&lt;4; );</code></td><td>3</td><td>5</td></tr>
+<tr><td><code>for(i=1; ++i&lt;4; );</code></td><td>2</td><td>4</td></tr>
+<tr><td><code>for(i=1; i&lt;4; i++);</code></td><td>3</td><td>4</td></tr>
+</table>
 <div class='gap'></div>
-<h2>三、填空（回忆）</h2>
+<p>第二行为什么不同？<code>++i</code> 是<strong>先加再判断</strong>，第一轮 i 立刻变成 2 才开始比。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 12 题 · 完全二叉树叶子数</h3>
+<div class='gap'></div>
+<p>含有 12 个结点的完全二叉树，叶子结点（终端结点）有几个？</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p>回忆答案：<strong>6 个</strong> · 考点 <a href="/posts/computer/notes/2.5-树和二叉树">2.5 树和二叉树</a></p>
+<div class='gap'></div>
+<p><strong>先说什么是完全二叉树：</strong> 除最后一层外每层都排满，且最后一层的结点<strong>靠左边连续排列</strong>（像按编号 1、2、3… 一层层从左往右塞座位）。</p>
+<div class='gap'></div>
+<p><strong>核心规律（记住这一个就够）：</strong> 把结点按层从上到下、每层从左到右编号 <code>1…n</code>，则</p>
+<div class='gap'></div>
+<p><strong>编号 $i$ 的结点是叶子 ⇔ $2i &gt; n$</strong>（它连左孩子都没有）</p>
+<div class='gap'></div>
+<p>反过来，<strong>编号 $1 \dots \lfloor n/2 \rfloor$ 的都是有孩子的分支结点</strong>，剩下的全是叶子。</p>
+<div class='gap'></div>
+<p><strong>代入 $n=12$：</strong></p>
+<div class='gap'></div>
+<ul>
+<li>分支结点：编号 $1 \dots \lfloor 12/2 \rfloor = 6$，共 <strong>6 个</strong></li>
+<li>叶子结点：编号 $7 \dots 12$，共 $12-6=$ <strong>6 个</strong></li>
+</ul>
+<div class='gap'></div>
+<p>⇒ <strong>叶子 6 个</strong>，验算：$6+6=12$ ✅</p>
+<div class='gap'></div>
+<p><strong>通用公式（照抄可用）：</strong></p>
+<div class='gap'></div>
+<p>$$\text{叶子数} = n - \left\lfloor \frac n2 \right\rfloor$$</p>
+<div class='gap'></div>
+<p><strong>两个例子对照，看清 $n$ 奇偶的影响：</strong></p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>$n$</th><th>$\lfloor n/2\rfloor$（分支）</th><th>叶子 $=n-\lfloor n/2\rfloor$</th></tr>
+<tr><td>12（偶）</td><td>6</td><td><strong>6</strong></td></tr>
+<tr><td>1001（奇）</td><td>500</td><td><strong>501</strong></td></tr>
+</table>
+<div class='gap'></div>
+<p>$n$ 为<strong>偶数</strong>时叶子恰好占一半；$n$ 为<strong>奇数</strong>时叶子多一个。<strong>别背&quot;一半&quot;这个数，要背公式</strong> —— 这正是 <a href="/posts/computer/2022">2022 年第 17 题</a>（1001 结点答 501）和本题的区别所在。</p>
+<div class='gap'></div>
+<p><strong>顺手把完全二叉树的三兄弟记全（<code>i</code> 的爸爸和儿子）：</strong></p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>关系</th><th>编号公式</th><th>限制</th></tr>
+<tr><td>$i$ 的双亲</td><td>$\lfloor i/2 \rfloor$</td><td>$i&gt;1$（根结点 1 无双亲）</td></tr>
+<tr><td>$i$ 的左孩子</td><td>$2i$</td><td>仅当 $2i\le n$</td></tr>
+<tr><td>$i$ 的右孩子</td><td>$2i+1$</td><td>仅当 $2i+1\le n$</td></tr>
+</table>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 13 题 · 单链表操作前提</h3>
+<div class='gap'></div>
+<p>在单链表中进行操作，必须事先找到（ ）</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p>回忆答案：<strong>D. 表头</strong> · 考点 <a href="/posts/computer/notes/2.2-线性表">2.2 线性表</a></p>
+<div class='gap'></div>
+<p>⚠️ <strong>题干残缺</strong>：回忆版只留下&quot;操作链表须找到 → 表头&quot;，完整问法未保留。下面按最可能的问法（&quot;要访问/操作某个结点，为什么必须从头开始&quot;）来讲；若真题原问法是&quot;删除某结点须找到什么&quot;，我在本题末尾一并给出。</p>
+<div class='gap'></div>
+<p><strong>为什么离不开表头？</strong> 单链表<strong>只有一个方向的信息</strong> —— 每个结点只存&quot;下一个在哪&quot;（<code>next</code>），<strong>不存&quot;上一个在哪&quot;</strong>。</p>
+<div class='gap'></div>
+<pre><code>
+head → [A|·] → [B|·] → [C|·] → NULL
+</code></pre>
+<div class='gap'></div>
+<p>你想找 <code>C</code>，唯一的路是 <code>head → A → B → C</code>。<strong>从中间任何位置都没法&quot;退回去&quot;</strong>，所以一切操作的起点都是表头。</p>
+<div class='gap'></div>
+<p>这跟顺序表形成鲜明对比（回到第 3 题）：数组有编号能一步跳过去，链表只能顺藤摸瓜 —— <strong>这就是链表&quot;按下标访问 $O(n)$&quot;的根本原因。</strong></p>
+<div class='gap'></div>
+<p><strong>如果原问法是&quot;删除某结点&quot;，答案要换成&quot;它的前驱&quot;：</strong></p>
+<div class='gap'></div>
+<pre><code>
+p → [q] → x        删除前
+p ──────→ x        删除后：p-&gt;next 直接指向 x，q 被甩出去
+</code></pre>
+<div class='gap'></div>
+<p>删除 <code>q</code> 时，你要改的是<strong><code>q</code> 前面那个结点的 <code>next</code></strong>，所以要找的是 <code>q</code> 的<strong>前驱 <code>p</code></strong>。</p>
+<div class='gap'></div>
+<p><strong>一句话分清两种问法：</strong> 「访问第 i 个」→ 从<strong>表头</strong>开始；「删除某结点」→ 必须找到它的<strong>前驱</strong>。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 14 题 · 删除结点语句</h3>
+<div class='gap'></div>
+<p>已知 <code>p</code> 是 <code>q</code> 的前驱，要删除 <code>q</code>，正确的语句是（ ）</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p>回忆答案：<strong><code>p-&gt;next = q-&gt;next; free(q);</code></strong> · 考点 <a href="/posts/computer/notes/2.2-线性表">2.2 线性表</a> · <a href="/posts/computer/notes/1.8-指针">1.8 指针</a></p>
+<div class='gap'></div>
+<p><strong>两步，顺序绝不能颠倒：</strong></p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>步骤</th><th>语句</th><th>为什么</th></tr>
+<tr><td>① <strong>接桥</strong></td><td><code>p-&gt;next = q-&gt;next;</code></td><td>让 <code>p</code> 直接指向 <code>q</code> 的下一个，把 <code>q</code> 绕过去</td></tr>
+<tr><td>② <strong>放手</strong></td><td><code>free(q);</code></td><td>归还 <code>q</code> 占的内存</td></tr>
+</table>
+<div class='gap'></div>
+<p><strong>如果顺序反了会怎样？</strong></p>
+<div class='gap'></div>
+<pre><code>
+free(q);                  /* ❌ 先释放了 q */
+p-&gt;next = q-&gt;next;        /* 此时 q 的内存已归还，q-&gt;next 是垃圾值 */
+</code></pre>
+<div class='gap'></div>
+<p>这叫<strong>悬空指针 / use-after-free</strong>：内存已经还给了系统，你却还去读它。后果是<strong>链表后段丢失</strong>甚至崩溃 —— 而且不一定当场报错，可能跑到很后面才炸，最难查。</p>
+<div class='gap'></div>
+<p><strong>其余常见错法：</strong></p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>写法</th><th>问题</th></tr>
+<tr><td>只写 <code>free(q);</code></td><td>❌ 没接桥 → <code>q</code> 后面所有结点<strong>全部丢失</strong></td></tr>
+<tr><td>只写 <code>p-&gt;next = q-&gt;next;</code></td><td>⚠️ 逻辑对但<strong>内存没释放</strong> → 内存泄漏，考试必须写 <code>free</code></td></tr>
+<tr><td><code>p = q-&gt;next;</code></td><td>❌ 只改了 <code>p</code> 这个指针变量，链表没变，还把 <code>p</code> 弄丢了</td></tr>
+</table>
+<div class='gap'></div>
+<p><strong>记忆：先接桥，后拆房。</strong></p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 15 题 · typedef 与结构体</h3>
+<div class='gap'></div>
+<p>关于 <code>typedef</code> 与结构体：<code>person</code> 是变量名而不是类型名</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p>回忆要点：<strong><code>person</code> 是变量不是类型名</strong> · 考点 <a href="/posts/computer/notes/1.9-结构体与共用体">1.9 结构体与共用体</a></p>
+<div class='gap'></div>
+<p>⚠️ <strong>题干残缺</strong>：完整问法与选项未保留，下面把这个考点的两种写法讲清 —— 考试就考这两种的区别。</p>
+<div class='gap'></div>
+<p><strong>区别全看 <code>typedef</code> 这个词在不在：</strong></p>
+<div class='gap'></div>
+<pre><code>
+/* 甲：只是定义结构体类型，没起别名 */
+struct Per { int age; };
+struct Per p1;        /* ✅ 用 struct Per 声明变量 */
+/* Per p2; */         /* ❌ 纯 C 里 Per 单独不成类型 */
+
+/* 乙：用 typedef 起了别名 */
+typedef struct { int age; } Person;
+Person p3;            /* ✅ Person 现在是类型名，不用写 struct */
+</code></pre>
+<div class='gap'></div>
+<p><strong>本题的坑在两句形似的代码：</strong></p>
+<div class='gap'></div>
+<pre><code>
+struct Per { int age; } person;     /* person 是【变量】！ */
+typedef struct { int age; } Person; /* Person 是【类型名】 */
+</code></pre>
+<div class='gap'></div>
+<p>第一行末尾多了一个 <code>person</code> —— <strong>那个位置写的就是变量名</strong>。所以&quot;person 是变量不是类型名&quot;考的是：<strong>看花括号后面紧跟的是名字还是分号。</strong></p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>结尾长相</th><th>含义</th></tr>
+<tr><td><code>struct Per {...};</code></td><td>只定义类型</td></tr>
+<tr><td><code>struct Per {...} person;</code></td><td>定义类型的<strong>同时</strong>声明了一个变量 <code>person</code></td></tr>
+<tr><td><code>typedef struct {...} Person;</code></td><td>定义类型并起<strong>别名</strong> <code>Person</code></td></tr>
+</table>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 16 题 · 双重循环复杂度</h3>
+<div class='gap'></div>
+<p>双重 <code>for</code> 循环（两层都从 1 到 n）的时间复杂度是（ ）</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p>回忆答案：<strong>$O(n^2)$</strong> · 考点 <a href="/posts/computer/notes/2.9-算法基本概念与分析">2.9 算法基本概念与分析</a></p>
+<div class='gap'></div>
+<pre><code>
+for (i = 1; i &lt;= n; i++)
+    for (j = 1; j &lt;= n; j++)
+        x = x + 1;          /* 基本操作 */
+</code></pre>
+<div class='gap'></div>
+<p><strong>数执行次数：</strong> 外层走 <code>n</code> 轮，<strong>每一轮</strong>里内层都完整地走 <code>n</code> 遍 ⇒ 共 $n \times n = n^{2}$ 次。取最高次项、丢系数 ⇒ $O(n^{2})$。</p>
+<div class='gap'></div>
+<p><strong>&quot;每轮都从头再来&quot;是嵌套的关键词。</strong> 内层不是&quot;一共走 n 次&quot;，而是&quot;外层每走一步，内层就走满 n 次&quot;。</p>
+<div class='gap'></div>
+<p><strong>变式对照（考试就换这几个数字）：</strong></p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>代码</th><th>次数计算</th><th>量级</th></tr>
+<tr><td><code>for(i=1;i&lt;=n;i++) for(j=1;j&lt;=n;j++)</code></td><td>$n \times n$</td><td>$O(n^2)$</td></tr>
+<tr><td><code>for(i=1;i&lt;=n;i++) for(j=1;j&lt;=i;j++)</code></td><td>$1+2+\cdots+n=\frac{n(n+1)}{2}$</td><td>$O(n^2)$</td></tr>
+<tr><td><code>for(i=1;i&lt;=n;i++) for(j=1;j&lt;=n;j+=2)</code></td><td>$n \times \frac n2$</td><td>$O(n^2)$（<strong>系数丢掉</strong>）</td></tr>
+<tr><td><code>for(i=1;i&lt;=n;i*=2) for(j=1;j&lt;=n;j++)</code></td><td>$\log_2 n \times n$</td><td>$O(n\log_2 n)$</td></tr>
+<tr><td><code>for(i=1;i&lt;=n;i++)</code> 单层</td><td>$n$</td><td>$O(n)$</td></tr>
+</table>
+<div class='gap'></div>
+<p><strong>注意第 3 行：</strong> $\frac{n^2}{2}$ 仍是 $O(n^2)$ —— 大 O <strong>只看增长率，不看绝对快慢</strong>，常数一律丢掉。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 17 题 · 折半查找前提</h3>
+<div class='gap'></div>
+<p>能用二分（折半）查找的前提条件是（ ）</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p>回忆答案：<strong>关键字有序的顺序表</strong> · 考点 <a href="/posts/computer/notes/2.7-查找">2.7 查找</a></p>
+<div class='gap'></div>
+<p><strong>两个条件，缺一不可：</strong></p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>条件</th><th>为什么必须</th></tr>
+<tr><td>① <strong>有序</strong>（排好序）</td><td>每轮要判断&quot;目标在左半边还是右半边&quot;，无序就没法判断</td></tr>
+<tr><td>② <strong>顺序存储</strong>（数组）</td><td>每轮要<strong>一步跳到中间</strong>那个位置；链表做不到</td></tr>
+</table>
+<div class='gap'></div>
+<p><strong>比喻：</strong> 查字典。字典<strong>按拼音排好序</strong>（条件①），而且你能<strong>直接翻到中间那一页</strong>（条件②，靠页码=下标）。如果是一本&quot;用线索串起来的寻宝册&quot;（链表），你没法一下翻到中间，只能从头读。</p>
+<div class='gap'></div>
+<p><strong>过程演示（在 <code>1,3,5,7,9,11,13</code> 里找 9）：</strong></p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>轮</th><th>low</th><th>high</th><th>mid</th><th><code>a[mid]</code></th><th>与 9 比</th><th>行动</th></tr>
+<tr><td>1</td><td>0</td><td>6</td><td>3</td><td>7</td><td>小</td><td>目标在右，<code>low = 4</code></td></tr>
+<tr><td>2</td><td>4</td><td>6</td><td>5</td><td>11</td><td>大</td><td>目标在左，<code>high = 4</code></td></tr>
+<tr><td>3</td><td>4</td><td>4</td><td>4</td><td><strong>9</strong></td><td>相等</td><td>✅ 找到，返回 4</td></tr>
+</table>
+<div class='gap'></div>
+<p>7 个数，最多 3 次就找到 —— 因为每轮砍掉一半。</p>
+<div class='gap'></div>
+<p><strong>效率：</strong> 最多比较 $\lfloor\log_2 n\rfloor + 1$ 次 ⇒ $O(\log_2 n)$；顺序查找要 $O(n)$。<strong>$n=1000$ 时，顺序查找平均 500 次，二分最多 10 次。</strong></p>
+<div class='gap'></div>
+<p><strong>链表为什么不行？</strong> 它没有随机访问，取中间元素得先从头走一半 —— 省下的那一半又被走路花掉，白省。</p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>写法</th><th>问题</th></tr>
+<tr><td>对<strong>无序</strong>数组用二分</td><td>❌ 会漏解，结果错</td></tr>
+<tr><td>对<strong>链表</strong>用二分</td><td>❌ 退化成 $O(n)$，失去意义</td></tr>
+<tr><td><code>while (low &lt;= high)</code></td><td>✅ 注意有 <code>=</code>，写成 <code>&lt;</code> 会漏掉最后一个元素</td></tr>
+<tr><td><code>mid = (low + high) / 2</code></td><td>⚠️ 考试可接受；工程上写 <code>low + (high-low)/2</code> 防溢出</td></tr>
+</table>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 18 题 · 字符串连接函数</h3>
+<div class='gap'></div>
+<p>要把两个字符串连接成一个，应调用（ ）</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p>回忆答案：<strong><code>strcat</code></strong> · 考点 <a href="/posts/computer/notes/1.6-数组">1.6 数组</a></p>
+<div class='gap'></div>
+<p><strong>四个 <code>str</code> 开头的函数长得很像，一次分清：</strong></p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>函数</th><th>干什么</th><th>名字来源</th><th>头文件</th></tr>
+<tr><td><code>strcat(s1, s2)</code></td><td>把 s2 <strong>接到</strong> s1 尾巴上</td><td><strong>cat</strong> 连接</td><td><code>&lt;string.h&gt;</code></td></tr>
+<tr><td><code>strcpy(s1, s2)</code></td><td>把 s2 <strong>复制到</strong> s1</td><td><strong>copy</strong> 复制</td><td><code>&lt;string.h&gt;</code></td></tr>
+<tr><td><code>strlen(s)</code></td><td>求 s 的<strong>长度</strong></td><td><strong>len</strong>gth 长度</td><td><code>&lt;string.h&gt;</code></td></tr>
+<tr><td><code>strcmp(s1, s2)</code></td><td><strong>比较</strong> s1、s2</td><td><strong>cmp</strong>are 比较</td><td><code>&lt;string.h&gt;</code></td></tr>
+</table>
+<div class='gap'></div>
+<p><strong>记忆法：</strong> 记英文名 —— <code>cat</code>=连接、<code>copy</code>=复制、<code>len</code>=长度、<code>cmp</code>=比较。</p>
+<div class='gap'></div>
+<pre><code>
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main(void)
+{
+    char s1[30] = &quot;Hello &quot;;      /* 必须留够空间！ */
+    char s2[]   = &quot;World&quot;;
+    strcat(s1, s2);              /* s1 变成 &quot;Hello World&quot; */
+    printf(&quot;%s\n&quot;, s1);          /* Hello World */
+    printf(&quot;%zu\n&quot;, strlen(s1)); /* 11 —— 不含结尾 &#x27;\0&#x27; */
+    return 0;
+}
+</code></pre>
+<div class='gap'></div>
+<p><strong>三个必须知道的细节：</strong></p>
 <div class='gap'></div>
 <ol>
-<li>`char` 占 **1** 字节</li>
-<li>图：元素 **多对多**</li>
-<li>`a[][3]={0},{1},{2}`，`a[1][2]=` **0**</li>
-<li>图遍历：深度优先 + **广度**优先</li>
-<li>合并升序 5 与 9：最少比较约 **5**（最坏 13，以教材为准）</li>
+<li><strong><code>s1</code> 的数组要足够大。</strong> <code>strcat</code> <strong>不会</strong>帮你扩容，写越界直接破坏内存 —— 本章最危险的地方。</li>
+<li><strong>原来的 <code>&#x27;\0&#x27;</code> 会被覆盖</strong>：s2 接在 s1 的 <code>&#x27;\0&#x27;</code> 位置上，最后再补一个新 <code>&#x27;\0&#x27;</code>。</li>
+<li><strong><code>strlen</code> 不数 <code>&#x27;\0&#x27;</code>，<code>sizeof</code> 会数。</strong> <code>char s[10]=&quot;abc&quot;;</code> → <code>strlen(s)=3</code>、<code>sizeof(s)=10</code>。</li>
 </ol>
 <div class='gap'></div>
-<h2>四、简答要点</h2>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>比较</th><th>结果</th><th>说明</th></tr>
+<tr><td><code>strcmp(&quot;abc&quot;,&quot;abc&quot;)</code></td><td><code>0</code></td><td>相等返回 0</td></tr>
+<tr><td><code>strcmp(&quot;abc&quot;,&quot;abd&quot;)</code></td><td><strong>负数</strong></td><td>遇到第一个不同字符比大小</td></tr>
+<tr><td><code>strcmp(&quot;abc&quot;,&quot;ab&quot;)</code></td><td><strong>正数</strong></td><td>长的反而&quot;大&quot;</td></tr>
+<tr><td><code>if (s1 == s2)</code></td><td>❌ 错</td><td>比的是<strong>地址</strong>不是内容，必须用 <code>strcmp</code></td></tr>
+</table>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 19 题 · 树的深度</h3>
+<div class='gap'></div>
+<p>关于&quot;树的深度&quot;，下列说法<strong>错误</strong>的是（ ）</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p>回忆要点：错误说法是 <strong>&quot;树的深度是各结点度最大值&quot;</strong> · 考点 <a href="/posts/computer/notes/2.5-树和二叉树">2.5 树和二叉树</a></p>
+<div class='gap'></div>
+<p><strong>这两个概念根本不是一回事，混了就错：</strong></p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>概念</th><th>定义</th><th>描述的对象</th></tr>
+<tr><td><strong>结点的度</strong></td><td>这个结点有<strong>几个孩子</strong></td><td>单个结点</td></tr>
+<tr><td><strong>树的度</strong></td><td>树中<strong>所有结点的度的最大值</strong></td><td>最大孩子数</td></tr>
+<tr><td><strong>树的深度（高度）</strong></td><td>树中<strong>结点的最大层次</strong>，根算第 1 层</td><td><strong>整棵树的层数</strong></td></tr>
+</table>
+<div class='gap'></div>
+<p><strong>&quot;度&quot;问的是&quot;一个孩子生了几个&quot;，&quot;深度&quot;问的是&quot;家族传了几代&quot;。</strong> 两者没有必然关系。</p>
+<div class='gap'></div>
+<p><strong>看图就懂（树的度是 3，深度是 4）：</strong></p>
+<div class='gap'></div>
+<pre><code>
+              A            ← 第 1 层
+          /   |   \
+         B    C    D       ← 第 2 层   （A 有 3 个孩子 → 度 3）
+             /
+            E              ← 第 3 层
+           /
+          F                ← 第 4 层   （E 只有 1 个孩子）
+</code></pre>
+<div class='gap'></div>
+<ul>
+<li>各结点的度：A=3、B=0、C=0、D=0、E=1、F=0</li>
+<li><strong>树的度 = 3</strong>（A 的孩子最多）</li>
+<li><strong>深度 = 4</strong>（一共 4 层，因为 E 下面还挂着 F）</li>
+</ul>
+<div class='gap'></div>
+<p><strong>&quot;各结点度最大值&quot;算出来是 3，而真正的深度是 4 —— 反例到手，所以那个说法错。</strong></p>
+<div class='gap'></div>
+<p><strong>几个必背结论：</strong></p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>命题</th><th>对/错</th><th>说明</th></tr>
+<tr><td>叶子结点的度为 0</td><td>✅</td><td>没有孩子</td></tr>
+<tr><td>深度为 $k$ 的二叉树<strong>最多</strong>有 $2^{k}-1$ 个结点</td><td>✅</td><td>每层翻倍再减 1</td></tr>
+<tr><td>第 $i$ 层<strong>最多</strong> $2^{i-1}$ 个结点</td><td>✅</td><td>根是第 1 层，$2^0=1$</td></tr>
+<tr><td>$n_0 = n_2 + 1$（叶子数 = 度为 2 的结点数 + 1）</td><td>✅</td><td>二叉树最重要的性质</td></tr>
+<tr><td>树的深度 = 各结点度最大值</td><td>❌</td><td><strong>本题的错误说法</strong></td></tr>
+</table>
+<div class='gap'></div>
+<p><strong>用 $n_0=n_2+1$ 快算一道题：</strong> 二叉树有 5 个度为 2 的结点，叶子几个？$n_0=5+1=$ <strong>6</strong>。不用画图。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 20 题 · scanf 读入数组元素</h3>
+<div class='gap'></div>
+<p>设 <code>int a[5];</code>，要把一个整数读入 <code>a[0]</code>，正确的 <code>scanf</code> 是（ ）</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p>回忆答案：<strong><code>scanf(&quot;%d&quot;, a)</code></strong> · 考点 <a href="/posts/computer/notes/1.6-数组">1.6 数组</a> · <a href="/posts/computer/notes/1.8-指针">1.8 指针</a></p>
+<div class='gap'></div>
+<p><strong>核心知识点就一句：数组名本身就是首元素的地址。</strong></p>
+<div class='gap'></div>
+<p>$$a \equiv \&amp;a[0] \equiv \text{首元素地址}$$</p>
+<div class='gap'></div>
+<p>所以想写 <code>a[0]</code>，可以给 <code>scanf</code> 这些地址：</p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>写法</th><th>合法？</th><th>说明</th></tr>
+<tr><td><code>scanf(&quot;%d&quot;, a);</code></td><td>✅ <strong>本题所给答案</strong></td><td>数组名 = 首地址</td></tr>
+<tr><td><code>scanf(&quot;%d&quot;, &amp;a[0]);</code></td><td>✅ 也对，更直白</td><td>明确取第 0 个的地址</td></tr>
+<tr><td><code>scanf(&quot;%d&quot;, &amp;a);</code></td><td>⚠️ 数值相同、类型不同</td><td>语义是&quot;整个数组的地址&quot;，考试<strong>不推荐</strong></td></tr>
+<tr><td><code>scanf(&quot;%d&quot;, a[0]);</code></td><td>❌</td><td><code>a[0]</code> 是<strong>值</strong>不是地址 → 崩溃</td></tr>
+<tr><td><code>scanf(&quot;%d&quot;, a[5]);</code></td><td>❌</td><td>双重错：越界 + 给的是值</td></tr>
+</table>
+<div class='gap'></div>
+<p><strong>延伸：读入任意第 i 个，几种等价写法（选择题爱考）：</strong></p>
+<div class='gap'></div>
+<pre><code>
+scanf(&quot;%d&quot;, &amp;a[i]);   /* ✅ 最常用 */
+scanf(&quot;%d&quot;, a + i);   /* ✅ 等价：a+i 就是 &amp;a[i] */
+scanf(&quot;%d&quot;, &amp;*(a+i)); /* ✅ 绕一圈，同样 */
+</code></pre>
+<div class='gap'></div>
+<p><strong>为什么 <code>a</code> 不用加 <code>&amp;</code> 而 <code>a[i]</code> 要加？</strong></p>
+<div class='gap'></div>
+<p><code>a</code> <strong>已经</strong>是地址了；<code>a[i]</code> 是那个地址里的<strong>内容</strong>，所以要 <code>&amp;</code> 才能拿到它的地址。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>二、判断题（本大题共 10 小题，每小题 2 分，共 20 分）</h2>
+<div class='gap'></div>
+<h3>第 21 题 · 注释位置</h3>
+<div class='gap'></div>
+<p>注释只能写在程序最开始</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：×</strong></p>
+<div class='gap'></div>
+<p>注释可以放在<strong>任意</strong>能放空格的地方。</p>
+<div class='gap'></div>
+<p><strong>展开：</strong> 两种写法 —— <code>/* ... */</code>（可跨行）和 <code>// ...</code>（到行尾）。放哪都行，甚至能夹在表达式里：</p>
+<div class='gap'></div>
+<pre><code>
+int a = 1 /* 这是初值 */ + 2;   /* 合法，a = 3 */
+</code></pre>
+<div class='gap'></div>
+<p>⚠️ <code>/* */</code> <strong>不能嵌套</strong>。<code>/* a /* b */ */</code> 会从第一个 <code>/*</code> 直接配到第一个 <code>*/</code>，剩下的 <code>*/</code> 成了垃圾 —— 编译报错，且报错位置很误导人。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 22 题 · 满与完全二叉树</h3>
+<div class='gap'></div>
+<p>满二叉树是完全二叉树的特殊情形</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：√</strong></p>
+<div class='gap'></div>
+<p>满 ⇒ 每层全满 ⇒ 当然&quot;最后一层靠左连续&quot;。</p>
+<div class='gap'></div>
+<p><strong>展开（用数字看清）：</strong></p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>深度 3 的例子</th><th>结点数</th><th>是完全二叉树？</th></tr>
+<tr><td>满二叉树</td><td>7</td><td>✅ 是</td></tr>
+<tr><td>完全但不满</td><td>5、6</td><td>✅ 是（靠左连续就行）</td></tr>
+<tr><td>既不满也不完全</td><td>缺中间某个位置</td><td>❌ 否</td></tr>
+</table>
+<div class='gap'></div>
+<p>⇒ <strong>满 ⊂ 完全</strong>。反过来不成立：6 个结点的完全二叉树<strong>不是</strong>满二叉树。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 23 题 · if 表达式类型</h3>
+<div class='gap'></div>
+<p><code>if</code> 的表达式只能是逻辑表达式</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：×</strong></p>
+<div class='gap'></div>
+<p>任何值都行：<strong>0 为假，非 0 为真</strong></p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 24 题 · 程序与算法</h3>
+<div class='gap'></div>
+<p>程序就是算法</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：×</strong></p>
+<div class='gap'></div>
+<p>算法是<strong>思路</strong>，程序是思路用某语言<strong>写出的实现</strong></p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 25 题 · 栈队列线性性</h3>
+<div class='gap'></div>
+<p>栈和队列都是线性结构</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：√</strong></p>
+<div class='gap'></div>
+<p>都是线性表，只是<strong>限制</strong>了进出位置。</p>
+<div class='gap'></div>
+<p><strong>展开：&quot;线性结构&quot;包含哪些？</strong> 线性表、栈、队列、串、数组。<strong>树是层次结构，图是多对多结构</strong> —— 这两个不是线性。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 26 题 · 函数嵌套调用</h3>
+<div class='gap'></div>
+<p>C 语言函数可以嵌套调用</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：√</strong></p>
+<div class='gap'></div>
+<p><code>main</code> 调 <code>f</code>，<code>f</code> 再调 <code>g</code>，随便套</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 27 题 · 循环链表成环</h3>
+<div class='gap'></div>
+<p>循环链表不一定形成环</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：×</strong></p>
+<div class='gap'></div>
+<p>定义就是<strong>尾结点 <code>next</code> 指回头部</strong>，必然是环</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 28 题 · 结构体生命周期</h3>
+<div class='gap'></div>
+<p>结构体变量在其存续期间一直占用内存</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：√</strong></p>
+<div class='gap'></div>
+<p>从进入作用域到离开，内存一直为它保留</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 29 题 · fclose 返回值</h3>
+<div class='gap'></div>
+<p><code>fclose</code> 成功时返回 0</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：√</strong></p>
+<div class='gap'></div>
+<p>成功 0，失败返回 <code>EOF</code>（-1）。</p>
+<div class='gap'></div>
+<p><strong>展开：为什么成功返回 0 而不是 1？</strong> C 语言里 <strong>0 表示&quot;没问题&quot;</strong>（跟日常直觉相反）。同类的还有 <code>strcmp</code> 相等返回 0；<code>scanf</code> 返回的是<strong>成功读到的项数</strong>。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 30 题 · 队列元素类型</h3>
+<div class='gap'></div>
+<p>同一队列中各元素的类型可以不同</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：×</strong></p>
+<div class='gap'></div>
+<p>队列是<strong>同类型</strong>元素的线性结构</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>三、填空题（本大题共 5 小题，每小题 4 分，共 20 分）</h2>
+<div class='gap'></div>
+<h3>第 31 题 · char 字节数</h3>
+<div class='gap'></div>
+<p>C 语言中 <code>char</code> 类型占 <code>____</code> 个字节。</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：1</strong></p>
+<p><code>char</code> 的定义就是&quot;一个字符的存储单元&quot;，固定 1 字节。基本类型对照：<code>char</code> 1、<code>short</code> 2、<code>int</code> 4、<code>long long</code> 8、<code>float</code> 4、<code>double</code> 8（标准只保证&quot;至少&quot;，具体看编译器，考试按这套常见值记）。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 32 题 · 图的关系</h3>
+<div class='gap'></div>
+<p>图结构中，元素之间的关系是 <code>____</code>。</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：多对多</strong></p>
+<p>三种逻辑结构排在一起记：</p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>结构</th><th>关系</th><th>一个结点能有几个后继</th></tr>
+<tr><td>线性表</td><td>一对一</td><td>最多 1 个</td></tr>
+<tr><td>树</td><td>一对多</td><td>可以多个，但<strong>双亲唯一</strong></td></tr>
+<tr><td>图</td><td><strong>多对多</strong></td><td>双亲和孩子都可以多个</td></tr>
+</table>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 33 题 · 数组补 0</h3>
+<div class='gap'></div>
+<p>设 <code>int a[][3] = {0}, {1}, {2};</code>，则 <code>a[1][2] =</code> <code>____</code>。</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：0</strong></p>
+<p>（这个花括号写法在标准 C 里会报警告，通常按&quot;等价于 <code>{0,1,2}</code>&quot;理解。）真正考点是<strong>没给值的部分自动补 0</strong>。</p>
+<div class='gap'></div>
+<p>二维数组按行填进&quot;3 列&quot;的格子：</p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th></th><th>第0列</th><th>第1列</th><th>第2列</th></tr>
+<tr><td>第0行</td><td>0</td><td>1</td><td>2</td></tr>
+<tr><td>第1行</td><td><strong>0</strong></td><td><strong>0</strong></td><td><strong>0</strong> ← 全补 0</td></tr>
+</table>
+<div class='gap'></div>
+<p>只给了 3 个数，恰好占满第 0 行；第 1 行一个都没给 ⇒ 全补 0 ⇒ <code>a[1][2]=0</code>。</p>
+<div class='gap'></div>
+<p><strong>必记两条规则：</strong> ① <strong>列数可以省、行数不能省</strong>（编译器要靠列数算地址）；② 初始值不够时，<strong>未赋值部分一律补 0</strong>（<code>char</code> 数组补 <code>&#x27;\0&#x27;</code>）。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 34 题 · 图的遍历</h3>
+<div class='gap'></div>
+<p>图的遍历有两种：深度优先搜索和 <code>____</code> 优先搜索。</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：广度</strong>（BFS，Breadth-First Search）</p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th></th><th>深度优先 DFS</th><th>广度优先 BFS</th></tr>
+<tr><td>走法</td><td>一条路<strong>走到黑</strong>，撞墙才回头换路</td><td>一圈圈<strong>向外扩散</strong>，先近后远</td></tr>
+<tr><td>用的结构</td><td><strong>栈</strong>（递归天然就是栈）</td><td><strong>队列</strong></td></tr>
+<tr><td>比喻</td><td>钻迷宫</td><td>往水里扔石头，涟漪荡开</td></tr>
+<tr><td>典型用途</td><td>连通性、拓扑排序</td><td><strong>无权图最短路径</strong></td></tr>
+</table>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 35 题 · 归并比较次数</h3>
+<div class='gap'></div>
+<p>将两个<strong>升序</strong>序列（长度 5 和 9）归并成一个升序序列，最少比较 <code>____</code> 次（最坏 13 次）。</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：5</strong>（最少）／ <strong>13</strong>（最坏）</p>
+<p>这是<strong>归并（merge）</strong>的比较次数分析。做法：两个序列各看<strong>队头</strong>，谁小谁出队。</p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>情形</th><th>过程</th><th>次数</th></tr>
+<tr><td><strong>最少</strong></td><td>短的那个 5 个<strong>全部</strong>比输、整段先出尽 ⇒ 每个只比 1 次</td><td>$\min(5,9)=$ <strong>5</strong></td></tr>
+<tr><td><strong>最坏</strong></td><td>两序列交替各留一个，直到<strong>只剩最后一个元素</strong>不用再比</td><td>$5+9-1=$ <strong>13</strong></td></tr>
+</table>
+<div class='gap'></div>
+<p><strong>通用公式（背这个）：</strong> 归并长度 $m$ 和 $n$ 的两个有序表，</p>
+<p>$$\text{最少} = \min(m,n),\qquad \text{最坏} = m+n-1$$</p>
+<div class='gap'></div>
+<p><strong>为什么最坏要 $-1$？</strong> 当一个表还剩 1 个、另一个已经空时，剩下那个<strong>直接搬过去，不需要比较</strong>。这个细节就是本题的考点。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>四、简答题（本大题共 4 小题，每小题 10 分，共 40 分）</h2>
+<div class='gap'></div>
+<h3>第 36 题 · 字符串输入输出</h3>
+<div class='gap'></div>
+<p>字符数组／字符串有哪些常用的输入输出方式？</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>参考答案</strong>：</p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>用途</th><th>函数</th><th>特点与风险</th></tr>
+<tr><td>输出</td><td><code>printf(&quot;%s&quot;, s)</code></td><td>格式控制用 <code>%s</code></td></tr>
+<tr><td>输出</td><td><code>puts(s)</code></td><td>输出内容并<strong>自动换行</strong>，更省事</td></tr>
+<tr><td>输入</td><td><code>scanf(&quot;%s&quot;, s)</code></td><td><strong>遇空格或换行就停</strong>，读不了带空格的整句；不检查长度，容易越界</td></tr>
+<tr><td>输入</td><td><code>gets(s)</code></td><td>读整行到换行；<strong>完全不管数组多大 → 溢出隐患，C11 已删除</strong></td></tr>
+<tr><td>输入</td><td><code>fgets(s, n, stdin)</code></td><td>✅ <strong>推荐</strong>：限长 <code>n</code>，但会把换行符也存进去</td></tr>
+</table>
+<div class='gap'></div>
+<p><strong>要点串讲：</strong> 数组名本身就是地址，所以 <code>scanf(&quot;%s&quot;, s)</code> <strong>不加 <code>&amp;</code></strong>（和第 20 题同一个知识点）。<code>gets</code> 与 <code>scanf(&quot;%s&quot;)</code> 的区别是<strong>遇不遇空格停止</strong>。</p>
+<div class='gap'></div>
+<pre><code>
+#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    char line[100];
+    printf(&quot;请输入一行：\n&quot;);
+    fgets(line, 100, stdin);       /* 读整行，含末尾换行 */
+    fputs(line, stdout);           /* 原样输出 */
+    return 0;
+}
+</code></pre>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 37 题 · 文件分类</h3>
+<div class='gap'></div>
+<p>文件按存取方式分哪两类？区别是什么？</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>参考答案</strong>：分<strong>文本文件</strong>和<strong>二进制文件</strong>。</p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th></th><th>文本文件</th><th>二进制文件</th></tr>
+<tr><td>存的是什么</td><td>字符的<strong>编码</strong></td><td>数据在内存中的<strong>原始字节</strong></td></tr>
+<tr><td>打开模式</td><td><code>&quot;r&quot;</code> / <code>&quot;w&quot;</code> / <code>&quot;a&quot;</code></td><td><code>&quot;rb&quot;</code> / <code>&quot;wb&quot;</code> / <code>&quot;ab&quot;</code>（<strong>带 <code>b</code></strong>）</td></tr>
+<tr><td>读写函数</td><td><code>fgetc</code>/<code>fgets</code>/<code>fprintf</code>/<code>fscanf</code></td><td><code>fread</code>/<code>fwrite</code></td></tr>
+<tr><td>人眼能看？</td><td>✅ 记事本打开就是字</td><td>❌ 乱码</td></tr>
+<tr><td>体积</td><td>大（数字 12345 要 5 字节）</td><td>小（<code>int</code> 恒为 4 字节）</td></tr>
+</table>
+<div class='gap'></div>
+<p><strong>关键区别：</strong> 文本文件把整数 <code>12345</code> 存成 5 个字符 <code>&#x27;1&#x27;,&#x27;2&#x27;,&#x27;3&#x27;,&#x27;4&#x27;,&#x27;5&#x27;</code>；二进制文件直接存它的机器码。所以<strong>程序自己存给自己读用二进制更省更快，要给人看用文本。</strong></p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 38 题 · 数据与数据对象</h3>
+<div class='gap'></div>
+<p>数据和数据对象的区别？</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>参考答案</strong>：</p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>术语</th><th>定义</th><th>例子</th></tr>
+<tr><td><strong>数据</strong></td><td>能输入计算机、被程序处理的<strong>符号</strong>总称</td><td>数字、字符、图像、声音都算</td></tr>
+<tr><td><strong>数据元素</strong></td><td>数据中作为一个整体讨论的<strong>基本单位</strong></td><td>一名学生的完整档案</td></tr>
+<tr><td><strong>数据项</strong></td><td>数据的<strong>最小</strong>单位（不可再分）</td><td>学号、姓名各是一个数据项</td></tr>
+<tr><td><strong>数据对象</strong></td><td><strong>性质相同</strong>的数据元素的集合</td><td>全班 50 名学生</td></tr>
+</table>
+<div class='gap'></div>
+<p><strong>层次（从大到小）：</strong> 数据 ⊃ 数据对象 ⊃ 数据元素 ⊃ 数据项。</p>
+<div class='gap'></div>
+<p><strong>一句话分清：</strong> 数据元素是&quot;一个整体&quot;，数据项是&quot;拆开后的零件&quot;。<strong>一个数据元素可由若干数据项组成</strong> —— 结构体 <code>struct Student</code> 是一个数据元素，里面的 <code>id</code>、<code>name</code>、<code>score</code> 是数据项（呼应第 6 题）。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 39 题 · 递归优缺点</h3>
+<div class='gap'></div>
+<p>递归的优点和缺点各是什么？</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>参考答案</strong>：递归 = 函数在<strong>自己的函数体里调用自己</strong>（直接或间接）。</p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th></th><th>说明</th></tr>
+<tr><td><strong>优点</strong></td><td>① <strong>代码简洁</strong>，逻辑贴近数学定义（阶乘、斐波那契、汉诺塔）&lt;br&gt;② 特别适合本身<strong>递归定义</strong>的结构 —— 树的遍历、图的 DFS、分治，用循环反而极难写</td></tr>
+<tr><td><strong>缺点</strong></td><td>① <strong>慢</strong>：每次调用要压栈（返回地址、参数、局部变量），开销远大于一次循环&lt;br&gt;② <strong>费内存</strong>：嵌套太深栈会满 → <strong>栈溢出</strong>&lt;br&gt;③ <strong>易写错</strong>：忘终止条件就是无限递归，必崩</td></tr>
+</table>
+<div class='gap'></div>
+<pre><code>
+#include &lt;stdio.h&gt;
+
+/* 递归求 n! —— 两个要素都在里面 */
+long fact(int n)
+{
+    if (n &lt;= 1) return 1;      /* ① 终止条件：没有它就无限递归 */
+    return n * fact(n - 1);    /* ② 自我调用：规模必须缩小 */
+}
+
+int main(void)
+{
+    printf(&quot;%ld\n&quot;, fact(5));  /* 120 */
+    return 0;
+}
+</code></pre>
+<div class='gap'></div>
+<p><strong>采分点：</strong> 递归两要素（<strong>终止条件</strong> + <strong>规模缩小</strong>）、栈开销、可改写为循环。这也解释了第 10 题说的&quot;函数调用为什么用栈&quot;。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>五、计算／读程题（本大题共 3 小题，每小题 10 分，共 30 分）</h2>
+<div class='gap'></div>
+<h3>第 40 题 · 递归函数求值</h3>
+<div class='gap'></div>
+<p>递归函数求值：<code>sub(6)</code> = <strong>21</strong>，且调用后 <code>i</code> 仍为 <strong>6</strong></p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p>⚠️ <strong>原函数体在回忆版里丢了</strong>，只留下答案 <code>sub(6)=21</code> 与&quot;<code>i</code> 仍为 6&quot;。下面按最能同时满足这两个结果的常见形式讲解；<strong>换一套卷请照下面的方法自己推一遍</strong>。</p>
+<div class='gap'></div>
+<p><strong>能推出 21 的一种常见形式</strong>（累加但跳过某个值）：</p>
+<div class='gap'></div>
+<pre><code>
+#include &lt;stdio.h&gt;
+
+int sub(int i)
+{
+    if (i == 0) return 0;                 /* 终止条件 */
+    if (i == 3) return sub(i - 1);        /* 跳过 3 */
+    return i + sub(i - 1);                /* 否则 i + sub(i-1) */
+}
+
+int main(void)
+{
+    int i = 6;
+    printf(&quot;%d %d\n&quot;, sub(i), i);         /* 21 6 */
+    return 0;
+}
+</code></pre>
+<div class='gap'></div>
+<p><strong>怎么推（列表法，考场上就这么写）：</strong></p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>调用</th><th>展开</th><th>结果</th></tr>
+<tr><td><code>sub(0)</code></td><td>0</td><td>0</td></tr>
+<tr><td><code>sub(1)</code></td><td>1 + sub(0)</td><td>1</td></tr>
+<tr><td><code>sub(2)</code></td><td>2 + sub(1)</td><td>3</td></tr>
+<tr><td><code>sub(3)</code></td><td>= sub(2)（跳过 3）</td><td>3</td></tr>
+<tr><td><code>sub(4)</code></td><td>4 + sub(3)</td><td>7</td></tr>
+<tr><td><code>sub(5)</code></td><td>5 + sub(4)</td><td>12</td></tr>
+<tr><td><code>sub(6)</code></td><td>6 + sub(5)</td><td><strong>21</strong> ✅</td></tr>
+</table>
+<div class='gap'></div>
+<p>对照：$1+2+3+4+5+6=21$ —— 3 被&quot;跳过&quot;了，却又通过 <code>sub(2)</code> 把 3 的累加值带回了一次，正好抵消。<strong>这就是这类题爱设的巧合陷阱。</strong></p>
+<div class='gap'></div>
+<p><strong>&quot;<code>i</code> 仍为 6&quot;才是本题真正的考点 —— C 语言是值传递：</strong></p>
+<div class='gap'></div>
+<pre><code>
+int sub(int i) { i = 100; return i; }   /* 改的是副本 */
+int main(void) { int i = 6; sub(i); /* i 还是 6 */ }
+</code></pre>
+<div class='gap'></div>
+<p><strong>形参是实参的一份拷贝。</strong> 函数里怎么改形参，<code>main</code> 里那个 <code>i</code> 都<strong>纹丝不动</strong>。</p>
+<p>想真的改到外面，必须传<strong>地址</strong>：<code>void sub(int *i) { *i = 100; }</code> → 调用写 <code>sub(&amp;i);</code></p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>写法</th><th>能否改动外部变量</th></tr>
+<tr><td><code>void f(int x) { x = 10; }</code> → <code>f(a);</code></td><td>❌ 改的是副本</td></tr>
+<tr><td><code>void f(int *p) { *p = 10; }</code> → <code>f(&amp;a);</code></td><td>✅ 通过地址改</td></tr>
+<tr><td>数组作参数 <code>void f(int a[])</code> 里改 <code>a[0]</code></td><td>✅ 传的是地址，<strong>能改</strong></td></tr>
+</table>
+<div class='gap'></div>
+<p>⚠️ 最后一条经常和第一条混：<strong>数组名传的是地址，普通变量传的是值。</strong> 这是读程题最经典的失分点。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 41 题 · 读程序求平均</h3>
+<div class='gap'></div>
+<p>读程序：跳过不及格求平均</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><code>n = 5</code>，<code>avg = 81.20</code></p>
+<div class='gap'></div>
+<p>⚠️ <strong>原始数据在回忆版里丢了</strong>，只留下结果 <code>n=5</code>、<code>avg=81.20</code>。下面把这类题的通用解法与最可能考的两个陷阱讲清。</p>
+<div class='gap'></div>
+<p><strong>结果 <code>avg=81.20</code> 的含义</strong>：5 个数之和 $= 81.20 \times 5 = 406$。即<strong>有 5 人及格</strong>，平均分带小数。</p>
+<div class='gap'></div>
+<p><strong>这类读程题的通用解法（照这个流程推，什么变体都不怕）：</strong></p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>步骤</th><th>做什么</th></tr>
+<tr><td>① 先画变量表</td><td>把 <code>n</code>、<code>sum</code>、<code>i</code>、<code>p</code> 等<strong>列成一张表</strong>，别在脑子里记</td></tr>
+<tr><td>② 每轮只改一格</td><td>循环体每句按顺序执行，<strong>逐行更新表格</strong></td></tr>
+<tr><td>③ 警惕整除陷阱</td><td><code>sum / n</code> 若都是 <code>int</code> ⇒ <strong>小数被砍掉</strong></td></tr>
+<tr><td>④ 核对终止条件</td><td>大多数错误出在&quot;多算一轮 / 少算一轮&quot;</td></tr>
+</table>
+<div class='gap'></div>
+<p><strong>整除陷阱（几乎每年都有，务必掌握）：</strong></p>
+<div class='gap'></div>
+<pre><code>
+int    sum = 406, n = 5;
+double a = sum / n;             /* ❌ 得 81.00 —— 先做整数除法，才转 double */
+double b = (double)sum / n;     /* ✅ 得 81.20 —— 先转型，变成浮点除法 */
+double c = 1.0 * sum / n;       /* ✅ 同上，另一种常用写法 */
+</code></pre>
+<div class='gap'></div>
+<p><code>int / int</code> <strong>结果还是 int</strong>，小数部分<strong>直接砍掉</strong>（不是四舍五入）。要浮点结果，<strong>必须在除法发生之前</strong>把其中一边变成浮点。</p>
+<p>题目答案 <code>81.20</code> 恰好说明原程序<strong>用了强制转换</strong>——这正是出题人想考的点。</p>
+<div class='gap'></div>
+<p><strong>&quot;跳过不及格&quot;的标准写法（&lt;60 不计入）：</strong></p>
+<div class='gap'></div>
+<pre><code>
+#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    int    score[10];
+    int    i, n = 0;
+    double sum = 0;
+
+    for (i = 0; i &lt; 10; i++) {
+        if (score[i] &lt; 60) continue;   /* continue：跳过本轮，不进统计 */
+        sum += score[i];
+        n++;
+    }
+    if (n &gt; 0) printf(&quot;n=%d avg=%.2f\n&quot;, n, sum / n);
+    return 0;
+}
+</code></pre>
+<div class='gap'></div>
+<p>⚠️ 打印前<strong>必须判 <code>n &gt; 0</code></strong>，否则一个及格都没有时 <code>sum/n</code> 除零崩溃 —— 这是简答题的采分点之一。</p>
+<div class='gap'></div>
+<p><strong>如果原题读的是字符串</strong>（<code>while(*p)</code> 型），核心两件事：</p>
+<div class='gap'></div>
+<pre><code>
+char s[] = &quot;AbaB&quot;;
+char *p = s;
+int    upper = 0;
+
+while (*p) {                  /* 走到 &#x27;\0&#x27; 时 *p 为 0，循环自然停 */
+    if (*p &gt;= &#x27;A&#x27; &amp;&amp; *p &lt;= &#x27;Z&#x27;) upper++;
+    p++;                      /* 忘了这句就是死循环 */
+}
+printf(&quot;%d\n&quot;, upper);        /* 2 */
+</code></pre>
+<div class='gap'></div>
+<p><strong>常见读程题的四种&quot;跳格&quot;写法（必须一眼认出）：</strong></p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>写法</th><th>含义</th></tr>
+<tr><td><code>while (*p)</code></td><td>走到字符串结尾 <code>&#x27;\0&#x27;</code> 就停</td></tr>
+<tr><td><code>while (*p != &#x27;x&#x27;)</code></td><td>找到字符 <code>&#x27;x&#x27;</code> 就停</td></tr>
+<tr><td><code>for (i=0; i&lt;strlen(s); i++)</code></td><td>每轮<strong>重算长度</strong> ⇒ $O(n^2)$，慢</td></tr>
+<tr><td><code>while ((c = getchar()) != &#x27;\n&#x27;)</code></td><td>逐个读字符直到换行</td></tr>
+</table>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 42 题 · 静态链表</h3>
+<div class='gap'></div>
+<p>静态链表读程序</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p>输出 <strong>2</strong> 然后 <strong>4</strong></p>
+<div class='gap'></div>
+<p>⚠️ 原表内容在回忆版中丢失，只留下输出 <code>2</code>、<code>4</code>。静态链表是&quot;用数组模拟链表&quot;，概念本身值得单独讲清。</p>
+<div class='gap'></div>
+<p><strong>什么是静态链表？</strong> 不用指针，改用<strong>数组下标</strong>当&quot;指针&quot;：</p>
+<div class='gap'></div>
+<pre><code>
+struct Node {
+    int data;   /* 数据 */
+    int next;   /* 下一个结点的下标 —— 这就是&quot;指针&quot;的替代品 */
+};
+</code></pre>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th></th><th>动态链表</th><th>静态链表</th></tr>
+<tr><td>链接方式</td><td>真指针 <code>next</code></td><td><strong>数组下标</strong> <code>next</code></td></tr>
+<tr><td>内存</td><td><code>malloc</code> 现申请</td><td>预先开好数组</td></tr>
+<tr><td>删除操作</td><td>改指针</td><td><strong>改下标</strong></td></tr>
+<tr><td>结尾标记</td><td><code>NULL</code></td><td><code>-1</code> 或 <code>0</code></td></tr>
+</table>
+<div class='gap'></div>
+<p><strong>图示（下标即地址）：</strong></p>
+<div class='gap'></div>
+<pre><code>
+下标：   0      1      2      3      4
+data：   1      2      3      4      5
+next：   1      3     -1      4     -1
+                ↑head
+</code></pre>
+<div class='gap'></div>
+<p><strong>跟着走一遍</strong>（设 <code>head = 1</code>）：</p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>步</th><th><code>p</code></th><th><code>node[p].data</code> 输出</th><th><code>node[p].next</code> → 新 <code>p</code></th></tr>
+<tr><td>1</td><td>1</td><td><strong>2</strong></td><td>3</td></tr>
+<tr><td>2</td><td>3</td><td><strong>4</strong></td><td>4</td></tr>
+<tr><td>3</td><td>4</td><td><strong>5</strong>？</td><td>—</td></tr>
+</table>
+<div class='gap'></div>
+<p>⚠️ 这张表恰好演示了<strong>为什么读程题必须一格一格算</strong>：按上表走到 <code>p=4</code> 会再多输出一个 <code>5</code> 才停。要得到题目给的两个数，<code>next[3]</code> 应为 <code>-1</code>：</p>
+<div class='gap'></div>
+<pre><code>
+下标：   0      1      2      3      4
+data：   1      2      3      4      5
+next：   1      3     -1     -1      0
+                ↑head         停
+</code></pre>
+<div class='gap'></div>
+<p>此时链路是 <code>1 → 3 → 结束</code>，输出正好 <strong>2、4</strong> ✅（下标 0 和 4 是不在链上的空闲结点 —— 静态链表里&quot;没挂上&quot;的结点照常留在数组里，这正是它和顺序表的区别）。</p>
+<div class='gap'></div>
+<p><strong>注意两种结束标记：</strong> 上面第一张表用 <code>-1</code> 表示结尾，第二张表 <code>next[3] = 0</code> 同样能表示结尾。<strong>静态链表常用 0 当&quot; null &quot;</strong>，因为下标 0 往往被留作<strong>空闲结点链的表头</strong>。看题时<strong>先确认题目用的是哪种约定</strong>，别默认。</p>
+<div class='gap'></div>
+<p><strong>这类题的解法（照抄走一遍）：</strong></p>
+<div class='gap'></div>
+<pre><code>
+int p = head;                   /* 从头下标开始 */
+while (p != -1) {               /* -1 表示&quot;没有下一个&quot; */
+    printf(&quot;%d &quot;, node[p].data);
+    p = node[p].next;           /* 关键：用下标跳到下一个结点 */
+}
+</code></pre>
+<div class='gap'></div>
+<p><strong>做题要领：</strong> 草稿上画一张「下标 / data / next」三列表，<strong>每走一步就把 <code>p</code> 的新值标出来</strong>。这类题不需要懂算法，老老实实照着走，走对了必得分。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>六、应用编程题（本大题共 3 小题，每小题 10 分，共 30 分）</h2>
+<div class='gap'></div>
+<blockquote>三题都是<strong>基础结构默写</strong>：比大小、判断正负、顺序查找。考场要求：<strong>一字不差手写出来</strong>。</blockquote>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 43 题 · 求最高分</h3>
+<div class='gap'></div>
+<p>输入三次成绩，输出最高分</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：见解析</strong></p>
+<div class='gap'></div>
+<pre><code>
+#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    int a, b, c, max;
+    scanf(&quot;%d%d%d&quot;, &amp;a, &amp;b, &amp;c);   /* 三个 %d 之间不写逗号，输入用空格隔开 */
+
+    max = a;                        /* 先假设第一个最大 */
+    if (b &gt; max) max = b;           /* 再来一个就比一次 */
+    if (c &gt; max) max = c;
+
+    printf(&quot;%d\n&quot;, max);
+    return 0;
+}
+</code></pre>
+<div class='gap'></div>
+<p><strong>思路：打擂台</strong> —— 先让 a 站上擂主位，b、c 挨个挑战，赢了就换人。这个&quot;先设初值再逐个比较&quot;的模式<strong>可以推广到任意多个数</strong>（套上循环就是求一组数的最大值）。</p>
+<div class='gap'></div>
+<p>⚠️ <code>max = a;</code> <strong>不能省</strong>。若只写 <code>if (a&gt;b &amp;&amp; a&gt;c) max=a; ...</code> 而没有兜底分支，<code>max</code> 可能根本没被赋值 —— 未初始化的变量里是<strong>垃圾值</strong>。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 44 题 · 判断正负零</h3>
+<div class='gap'></div>
+<p>输入一个数，判断正数／负数／零</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：见解析</strong></p>
+<div class='gap'></div>
+<pre><code>
+#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    int x;
+    scanf(&quot;%d&quot;, &amp;x);
+
+    if (x &gt; 0)      puts(&quot;正数&quot;);
+    else if (x &lt; 0) puts(&quot;负数&quot;);
+    else            puts(&quot;零&quot;);
+
+    return 0;
+}
+</code></pre>
+<div class='gap'></div>
+<p><strong>思路：</strong> 三个互斥情况用 <code>if / else if / else</code> 串起来。<strong><code>else</code> 是兜底 —— 剩下的就是零。</strong></p>
+<div class='gap'></div>
+<p>⚠️ <strong>易错三连：</strong></p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>错法</th><th>后果</th></tr>
+<tr><td><code>if (x &gt; 0); puts(&quot;正数&quot;);</code></td><td>多一个<strong>分号</strong>，<code>if</code> 管的是空语句，<code>puts</code> 变成无条件执行</td></tr>
+<tr><td><code>if (x = 0)</code></td><td>这是<strong>赋值</strong>，永远为假（呼应第 4 题）。判断要用 <code>==</code></td></tr>
+<tr><td>写三个独立 <code>if</code> 不配 <code>else</code></td><td>逻辑绕远，且漏掉某分支时更容易出错</td></tr>
+</table>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 45 题 · 顺序查找</h3>
+<div class='gap'></div>
+<p>输入 10 个班的人数，再输入 y，查有没有这个班</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：见解析</strong></p>
+<div class='gap'></div>
+<pre><code>
+#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    int a[10];
+    int y, i;
+    int found = 0;                    /* 标志变量：0 表示还没找到 */
+
+    for (i = 0; i &lt; 10; i++)
+        scanf(&quot;%d&quot;, &amp;a[i]);           /* 数组元素是普通变量，要加 &amp; */
+
+    scanf(&quot;%d&quot;, &amp;y);
+
+    for (i = 0; i &lt; 10; i++) {
+        if (a[i] == y) {
+            found = 1;                /* 找到了，先置标志 */
+            break;                    /* 再立刻退出，别白跑 */
+        }
+    }
+
+    if (found) puts(&quot;Success&quot;);
+    else       puts(&quot;Fail&quot;);
+
+    return 0;
+}
+</code></pre>
+<div class='gap'></div>
+<p><strong>这是「顺序查找」的标准模板</strong>，四个部件缺一不可：</p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>部件</th><th>作用</th></tr>
+<tr><td><code>found = 0</code></td><td><strong>先假设找不到</strong>（标志变量必须初始化）</td></tr>
+<tr><td><code>if (a[i] == y)</code></td><td>逐个比对</td></tr>
+<tr><td><code>found = 1; break;</code></td><td>命中就置标志并<strong>立即退出</strong></td></tr>
+<tr><td>循环后判断 <code>found</code></td><td>统一输出，<strong>不在循环里输出</strong></td></tr>
+</table>
+<div class='gap'></div>
+<p>⚠️ <strong>最常见的两个扣分点：</strong></p>
 <div class='gap'></div>
 <ol>
-<li>字符数组：输入 `scanf/gets/fgets`，输出 `printf/puts`</li>
-<li>文件：文本 / 二进制</li>
-<li>数据 vs 数据对象</li>
-<li>递归：优缺点（简洁 / 栈开销）</li>
+<li><strong>忘写 <code>break</code></strong> —— 本题结果碰巧还对，但白跑；若改成&quot;输出下标&quot;就会重复输出。</li>
+<li><strong>在循环里直接 <code>puts(&quot;Success&quot;)</code></strong> —— 多个匹配会输出多行；而<strong>一个都没找到时什么都不输出</strong>，题目要的 &quot;Fail&quot; 就丢了。<strong>必须用标志变量，在循环外统一判断。</strong></li>
 </ol>
 <div class='gap'></div>
-<h2>五、计算题</h2>
+<p><strong><code>break</code> / <code>continue</code> / <code>return</code> 的区别（顺带记全）：</strong></p>
 <div class='gap'></div>
-<h3>递归 `sub(6)` → **21**；`i` 仍为 **6**</h3>
-<h3>跳过不及格平均 → n=**5**，avg=**81.20**</h3>
-<h3>静态链表输出 → **2** 然后 **4**</h3>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>语句</th><th>效果</th></tr>
+<tr><td><code>break</code></td><td><strong>跳出整个循环</strong></td></tr>
+<tr><td><code>continue</code></td><td><strong>跳过本轮剩余语句</strong>，直接进入下一轮</td></tr>
+<tr><td><code>return</code></td><td>直接<strong>结束整个函数</strong>（连循环带函数一起出去）</td></tr>
+</table>
 <div class='gap'></div>
-<h2>六、应用题（默写）</h2>
+<hr>
 <div class='gap'></div>
-<p><code>`</code>c</p>
-<p>// 1. 三次成绩取最大</p>
-<p>int a,b,c,m; scanf(&quot;%d%d%d&quot;,&amp;a,&amp;b,&amp;c);</p>
-<p>m=a; if(b&gt;m)m=b; if(c&gt;m)m=c; printf(&quot;%d\n&quot;,m);</p>
+<h2>自测：合上笔记，自己答</h2>
 <div class='gap'></div>
-<p>// 2. 正负零</p>
-<p>int x; scanf(&quot;%d&quot;,&amp;x);</p>
-<p>if(x&gt;0) puts(&quot;正数&quot;); else if(x&lt;0) puts(&quot;负数&quot;); else puts(&quot;零&quot;);</p>
+<ol>
+<li><code>int k = 5;</code> 执行 <code>if (k = 0) puts(&quot;hi&quot;);</code> 会输出什么？为什么？</li>
+<li><code>scanf(&quot;%d%s&quot;, &amp;a, s)</code>（<code>s</code> 是 <code>char[]</code>）——为什么 <code>&amp;a</code> 有 <code>&amp;</code> 而 <code>s</code> 没有？</li>
+<li>归并两个长度 4 和 7 的有序表，最少比几次？最坏几次？</li>
+<li>二叉树中有 3 个度为 2 的结点，叶子几个？</li>
+<li><code>int a[3] = {1,2,3}; int *p = a;</code> 求 <code>*(p+1)</code> 和 <code>*p + 1</code>。</li>
+</ol>
 <div class='gap'></div>
-<p>// 3. 十班人数查 y</p>
-<p>int a[10],y,i,ok=0;</p>
-<p>for(i=0;i&lt;10;i++) scanf(&quot;%d&quot;,&amp;a[i]);</p>
-<p>scanf(&quot;%d&quot;,&amp;y);</p>
-<p>for(i=0;i&lt;10;i++) if(a[i]==y){ ok=1; break; }</p>
-<p>puts(ok?&quot;Success&quot;:&quot;Fail&quot;);</p>
-<p><code>`</code></p>
+<p>&lt;details&gt;&lt;summary&gt;点开对答案&lt;/summary&gt;</p>
 <div class='gap'></div>
-<h2>回炉</h2>
+<ol>
+<li><strong>什么都不输出。</strong> <code>k = 0</code> 是赋值，表达式的值为 0 ⇒ 判定为<strong>假</strong>（呼应第 4 题）。想比较必须写 <code>==</code>。</li>
+<li><strong>数组名本身就是首元素地址</strong>，再加 <code>&amp;</code> 类型就变成&quot;整个数组的地址&quot;了；而 <code>a</code> 是普通 <code>int</code> 变量，<code>scanf</code> 要它的地址，所以必须加 <code>&amp;</code>（呼应第 8、20 题）。</li>
+<li>最少 $\min(4,7)=$ <strong>4</strong> 次；最坏 $4+7-1=$ <strong>10</strong> 次（呼应填空第 5 题）。</li>
+<li>$n_0 = n_2 + 1 = 3+1=$ <strong>4</strong> 个叶子（呼应第 19 题）。</li>
+<li><code>*(p+1)</code> = <strong>2</strong>（指针往后挪一格再取值）；<code>*p + 1</code> = <code>1 + 1</code> = <strong>2</strong>。本题两问数值恰好相同，含义完全不同：<code>*(p+1)</code> 是 <code>a[1]</code>，<code>*p + 1</code> 是 <code>a[0] + 1</code>（呼应第 9 题的括号优先级）。</li>
+</ol>
 <div class='gap'></div>
-<li>[原卷 PDF](/papers/computer/2023.pdf)</li>
-<li>2024 全量详解 · 考点拆分</li>
+<p>&lt;/details&gt;</p>
 <div class='gap'></div>
-<p>---</p>
-<p>返回：_索引 · 总索引</p>
+<hr>
+<div class='gap'></div>
+<h2>这卷最该带走的 6 条</h2>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>考点</th><th>一句话</th></tr>
+<tr><td>标识符三条规矩</td><td>只用字母数字下划线／不能数字开头／不用关键字；<code>&amp;a</code> 是动作不是名字</td></tr>
+<tr><td>逻辑真假</td><td><strong>0 假非 0 真</strong>；`A\</td><td>\</td><td>B<code> 中 A 真则 B 不算，</code>A&amp;&amp;B` 中 A 假则 B 不算</td></tr>
+<tr><td>顺序表 vs 链表</td><td>查得多选顺序表（$O(1)$ 随机访问），改得多选链表</td></tr>
+<tr><td><code>scanf</code> 要不要 <code>&amp;</code></td><td><strong>数组名不加，其它都加</strong></td></tr>
+<tr><td><code>*(p++)</code> vs <code>(*p)++</code></td><td>一个动<strong>指针</strong>、一个动<strong>数据</strong></td></tr>
+<tr><td><code>int / int</code></td><td>结果还是 int，小数<strong>直接砍掉</strong>；要浮点必须先转型</td></tr>
+</table>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<blockquote>相关：<a href="/posts/computer/">真题总览</a> · <a href="/posts/computer/真题章节对照表">真题章节对照表</a> · <a href="/posts/computer/topics/">考点拆分索引</a></blockquote>
 <div class='gap'></div>
 </body>
 </html>

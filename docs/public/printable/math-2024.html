@@ -2,453 +2,587 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<title>2024年广东专插本《高等数学》真题回忆版+详解</title>
+<title>2024年广东专升本《高等数学》真题+逐题详解</title>
 <style>
 body { font-family: "Microsoft YaHei", "Noto Sans SC", sans-serif; max-width: 800px; margin: 40px auto; padding: 0 24px; font-size: 14px; line-height: 1.8; color: #222; }
 h1 { font-size: 22px; border-bottom: 2px solid #333; padding-bottom: 8px; }
 h2 { font-size: 18px; margin-top: 24px; }
 h3 { font-size: 16px; }
 table { margin: 12px 0; }
+th, td { text-align: left; vertical-align: top; }
+ul, ol { margin: 8px 0; padding-left: 26px; }
+li { margin: 2px 0; }
 blockquote { border-left: 3px solid #999; margin: 8px 0; padding: 4px 12px; color: #555; background: #f7f7f7; }
 code { background: #f0f0f0; padding: 1px 5px; border-radius: 3px; }
+pre { background: #f7f7f7; border: 1px solid #e0e0e0; border-radius: 4px; padding: 10px 12px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+hr { border: none; border-top: 1px solid #ddd; margin: 18px 0; }
+a { color: #1a4d8f; }
+.ctitle { background: #eef4fb; border-left: 3px solid #7aa7d9; margin: 10px 0; padding: 6px 12px; color: #24486f; }
 .gap { height: 8px; }
 @media print { body { margin: 0; padding: 0; max-width: none; } }
 </style>
 </head>
 <body>
 <div class='gap'></div>
-<div class='gap'></div>
 <p>本文整理自 <strong>2024年广东省普通专升本（专插本）统考《高等数学》考生回忆版</strong>，附每道题的详细解析。虽然回忆版无法做到100%还原真题用词，但考点、数据、答案均与考试一致，是2025/2026届考生最接近真实考试的参考资料。</p>
 <div class='gap'></div>
 <p>&lt;!-- more --&gt;</p>
 <div class='gap'></div>
-<h2>试卷结构（满分100分，120分钟）</h2>
+<h2>试卷结构</h2>
 <div class='gap'></div>
 <table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>题型</th><th>题量</th><th>分值</th><th>核心考查内容</th></tr>
+<tr><th>大题</th><th>题号</th><th>题量</th><th>分值</th><th>核心考查</th></tr>
+<tr><td>一、单项选择题</td><td>1–5</td><td>5</td><td>15</td><td>极限、导数、积分比较、二次积分</td></tr>
+<tr><td>二、填空题</td><td>6–10</td><td>5</td><td>15</td><td>高阶导数、微分、级数、参数方程</td></tr>
+<tr><td>三、计算题</td><td>11–18</td><td>8</td><td>48</td><td>极限、隐函数、偏导、积分、级数</td></tr>
+<tr><td>四、综合题</td><td>19–20</td><td>2</td><td>22</td><td>极值与单调性、积分方程</td></tr>
+<tr><td><strong>合计</strong></td><td></td><td><strong>20</strong></td><td><strong>100</strong></td><td>满分 100 分 · 120 分钟</td></tr>
+</table>
+<div class='gap'></div>
+<blockquote><strong>参考教材：</strong> 同济大学《高等数学》（第七版）+ 赵树嫄《微积分》（第四版）</blockquote>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>题目一览</h2>
+<div class='gap'></div>
+<p class='ctitle'>展开看答案速查表（先自己做完再对）</p>
+<div class='gap'></div>
 <table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>一、单项选择题</th><th>5题</th><th>15分（3分/题）</th><th>极限、导数、积分比较、二次积分</th></tr>
+<tr><th>题号</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr>
+<tr><td>答案</td><td>A</td><td>C</td><td>B</td><td>D</td><td>C</td><td>$12x^2$</td><td>$\dfrac{1}{x+1}\,dx$</td><td>$-2$</td><td>$-2\sqrt{2}$</td><td>$e^2-3$</td></tr>
+</table>
+<div class='gap'></div>
 <table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>二、填空题</th><th>5题</th><th>15分（3分/题）</th><th>高阶导数、微分、级数、参数方程</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>三、计算题</th><th>8题</th><th>48分（6分/题）</th><th>极限、求导、积分、级数、微分方程、二重积分</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>四、综合题</th><th>2题</th><th>22分（10+12分）</th><th>函数单调性、方程根的存在性、积分方程+不等式</th></tr>
-<div class='gap'></div>
-<blockquote>**参考教材：** 同济大学《高等数学》（第七版）+ 赵树嫄《微积分》（第四版）</blockquote>
-<div class='gap'></div>
-<p>---</p>
-<div class='gap'></div>
-<h2>一、单项选择题（本大题共5小题，每小题3分，共15分）</h2>
+<tr><th>题号</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th><th>19</th><th>20</th></tr>
+<tr><td>答案</td><td>$\dfrac12$</td><td>$-\dfrac{y+e^{x}}{x-\sin y}$</td><td>$\dfrac{1}{z}$</td><td>$\dfrac23(x-4)^{3/2}+10(x-4)^{1/2}+C$</td><td>$2$</td><td>发散</td><td>$y=e^{2x}+e^{3x}$</td><td>$\dfrac83$</td><td>$a=-\dfrac32,\,b=0$</td><td>$f(x)=e^{x}+e^{-x}-2$</td></tr>
+</table>
 <div class='gap'></div>
-<h3>1. $\lim\limits_{x \to 0} \dfrac{\sin 3x}{x} =$ （ ）</h3>
+<hr>
 <div class='gap'></div>
-<p>A. 3　　B. 1　　C. -1　　D. -3</p>
+<h2>一、单项选择题（本大题共 5 小题，每小题 3 分，共 15 分）</h2>
 <div class='gap'></div>
-<blockquote>**答案：A**</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析：** 利用重要极限 $\lim_{x\to 0}\frac{\sin x}{x}=1$：</blockquote>
-<blockquote>$$\lim_{x\to 0}\frac{\sin 3x}{x} = \lim_{x\to 0}\frac{\sin 3x}{3x} \cdot 3 = 1 \cdot 3 = 3$$</blockquote>
-<blockquote>**易错点：** 部分同学会忘记补系数，直接写成 1。遇到 $\sin kx$ 必须凑成 $\frac{\sin kx}{kx} \cdot k$。</blockquote>
+<h3>第 1 题 · 重要极限（sin）</h3>
 <div class='gap'></div>
-<p>---</p>
+<p>$\lim\limits_{x \to 0} \dfrac{\sin 3x}{x} =$ （ ）</p>
 <div class='gap'></div>
-<h3>2. $f(x) = x^2 - \cos x$，则 $f&#x27;(\frac{\pi}{2}) =$ （ ）</h3>
+<ul>
+<li><strong>A.</strong> 3</li>
+<li><strong>B.</strong> 1</li>
+<li><strong>C.</strong> -1</li>
+<li><strong>D.</strong> -3</li>
+</ul>
 <div class='gap'></div>
-<p>A. $\pi - 1$　　B. $\pi$　　C. $\pi + 1$　　D. $2\pi$</p>
+<p class='ctitle'>答案与解析</p>
 <div class='gap'></div>
-<blockquote>**答案：C**</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析：** 逐项求导：</blockquote>
-<blockquote>$$f&#x27;(x) = 2x + \sin x$$</blockquote>
-<blockquote>代入 $x = \frac{\pi}{2}$：</blockquote>
-<blockquote>$$f&#x27;\left(\frac{\pi}{2}\right) = 2 \cdot \frac{\pi}{2} + \sin\frac{\pi}{2} = \pi + 1$$</blockquote>
-<blockquote>**考点：** 基本求导公式——$(\cos x)&#x27; = -\sin x$，所以 $-(\cos x)&#x27; = \sin x$。别漏掉负号。</blockquote>
+<p><strong>答案：A</strong></p>
 <div class='gap'></div>
-<p>---</p>
+<p><strong>解析：</strong> 利用重要极限 $\lim_{x\to 0}\frac{\sin x}{x}=1$：</p>
+<p>$$\lim_{x\to 0}\frac{\sin 3x}{x} = \lim_{x\to 0}\frac{\sin 3x}{3x} \cdot 3 = 1 \cdot 3 = 3$$</p>
+<p><strong>易错点：</strong> 部分同学会忘记补系数，直接写成 1。遇到 $\sin kx$ 必须凑成 $\frac{\sin kx}{kx} \cdot k$。</p>
 <div class='gap'></div>
-<h3>3. 当 $x \to 0$ 时，$ax$ 与 $4x^3 - 3x^2 + 2x$ 是等价无穷小，则 $a =$ （ ）</h3>
+<hr>
 <div class='gap'></div>
-<p>A. 1　　B. 2　　C. 3　　D. 4</p>
-<div class='gap'></div>
-<blockquote>**答案：B**</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析：** 等价无穷小的定义：$\lim_{x\to 0}\frac{ax}{4x^3 - 3x^2 + 2x} = 1$。</blockquote>
-<blockquote></blockquote>
-<blockquote>分子分母同除以 $x$：</blockquote>
-<blockquote>$$\lim_{x\to 0}\frac{a}{4x^2 - 3x + 2} = \frac{a}{0 - 0 + 2} = \frac{a}{2} = 1$$</blockquote>
-<blockquote>所以 $a = 2$。</blockquote>
-<blockquote></blockquote>
-<blockquote>**技巧：** 当 $x \to 0$ 时，只需保留**最低次幂**项。$4x^3 - 3x^2 + 2x \sim 2x$（$x$ 是最低次幂），直接得 $a = 2$。</blockquote>
+<h3>第 2 题 · 求导与代入</h3>
 <div class='gap'></div>
-<p>---</p>
-<div class='gap'></div>
-<h3>4. 设 $I_1 = \int_0^1 e^{x}\,dx$，$I_2 = \int_0^1 e^{2x}\,dx$，$I_3 = \int_0^1 e^{3x}\,dx$，则下列关系成立的是（ ）</h3>
-<div class='gap'></div>
-<p>A. $I_1 &gt; I_2 &gt; I_3$</p>
-<p>B. $I_1 &gt; I_3 &gt; I_2$</p>
-<p>C. $I_3 &gt; I_1 &gt; I_2$</p>
-<p>D. $I_3 &gt; I_2 &gt; I_1$</p>
-<div class='gap'></div>
-<blockquote>**答案：D**</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析：** 在 $[0, 1]$ 上，当 $x &gt; 0$ 时有 $e^x &lt; e^{2x} &lt; e^{3x}$（因为指数函数的底 $e&gt;1$，指数越大函数值越大）。定积分保序，故 $I_1 &lt; I_2 &lt; I_3$，即 $I_3 &gt; I_2 &gt; I_1$。</blockquote>
-<blockquote></blockquote>
-<blockquote>也可以算出具体值验证：</blockquote>
-<blockquote>- $I_1 = e - 1 \approx 1.718$</blockquote>
-<blockquote>- $I_2 = \frac{e^2 - 1}{2} \approx 3.195$</blockquote>
-<blockquote>- $I_3 = \frac{e^3 - 1}{3} \approx 6.362$</blockquote>
-<div class='gap'></div>
-<p>---</p>
-<div class='gap'></div>
-<h3>5. 交换二次积分 $I = \int_0^1 dy \int_{y^{2}}^{y} f(x,y)\,dx$ 的积分次序，则 $I =$ （ ）</h3>
-<div class='gap'></div>
-<p>A. $\int_0^1 dx \int_{x}^{x^2} f(x,y)\,dy$</p>
-<p>B. $\int_0^1 dx \int_{x^2}^{x} f(x,y)\,dy$</p>
-<p>C. $\int_0^1 dx \int_{x^2}^{\sqrt{x}} f(x,y)\,dy$</p>
-<p>D. $\int_0^1 dx \int_{\sqrt{x}}^{x^2} f(x,y)\,dy$</p>
-<div class='gap'></div>
-<blockquote>**答案：C**</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析：** 原积分区域 $D: 0 \le y \le 1,\; y^2 \le x \le y$。</blockquote>
-<blockquote></blockquote>
-<blockquote>画出积分区域：</blockquote>
-<blockquote>- $x = y^2$ 即 $y = \sqrt{x}$（抛物线右半支）</blockquote>
-<blockquote>- $x = y$ 即 $y = x$（直线）</blockquote>
-<blockquote></blockquote>
-<blockquote>当 $y \in [0,1]$ 时，$y^2 \le y$，所以 $x$ 从 $y^2$ 到 $y$。</blockquote>
-<blockquote></blockquote>
-<blockquote>换序：$x \in [0, 1]$，固定 $x$ 后，由 $y^2 \le x$ 得 $y \ge x^2$（下界），由 $x \le y$ 得 $y \le \sqrt{x}$（上界）。注意区域中 $y$ 的下界是 $x^2$（因为 $y^2 \le x \Rightarrow y \ge x^2$... 等下，$y^2 \le x$ 意味着 $y \le \sqrt{x}$，而 $x \le y$ 意味着 $y \ge x$）。</blockquote>
-<blockquote></blockquote>
-<blockquote>重新整理：原区域 $y^2 \le x \le y$ 等价于 $\{x^2 \le y \le \sqrt{x},\; 0 \le x \le 1\}$。</blockquote>
-<blockquote></blockquote>
-<blockquote>所以 $I = \int_0^1 dx \int_{x^2}^{\sqrt{x}} f(x,y)\,dy$，选 **C**。</blockquote>
-<blockquote></blockquote>
-<blockquote>**口诀：** 交换积分次序 = 画区域 → 换视角 → 重新写限。先确定 $x$ 范围，再对每个 $x$ 确定 $y$ 的上下界。</blockquote>
-<div class='gap'></div>
-<p>---</p>
-<div class='gap'></div>
-<h2>二、填空题（本大题共5小题，每小题3分，共15分）</h2>
-<div class='gap'></div>
-<h3>6. 已知 $y = x^4$，则 $y&#x27;&#x27; =$ ＿＿＿＿</h3>
-<div class='gap'></div>
-<blockquote>**答案：** $12x^2$</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析：** 逐阶求导：</blockquote>
-<blockquote>$$y&#x27; = 4x^3,\quad y&#x27;&#x27; = 12x^2$$</blockquote>
-<blockquote>高阶导数就是反复求导，没有捷径。</blockquote>
-<div class='gap'></div>
-<p>---</p>
-<div class='gap'></div>
-<h3>7. 已知 $y = \ln(x+1)$，则 $dy =$ ＿＿＿＿</h3>
-<div class='gap'></div>
-<blockquote>**答案：** $\dfrac{1}{x+1}\,dx$</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析：** 微分公式 $dy = y&#x27;\,dx$。</blockquote>
-<blockquote>$$y&#x27; = \frac{1}{x+1} \quad\Rightarrow\quad dy = \frac{1}{x+1}\,dx$$</blockquote>
-<blockquote>**区分：** $y&#x27; = \frac{dy}{dx}$ 是导数（一个数），$dy = y&#x27;\,dx$ 是微分（含 $dx$）。填空题写微分时**别忘了 $dx$**！</blockquote>
-<div class='gap'></div>
-<p>---</p>
-<div class='gap'></div>
-<h3>8. 已知级数 $\sum\limits_{n=1}^{\infty} a_n$ 收敛，则 $\lim\limits_{n \to \infty} (a_n + 2)(a_n - 1) =$ ＿＿＿＿</h3>
-<div class='gap'></div>
-<blockquote>**答案：** $-2$</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析：** 级数收敛的必要条件：$\lim_{n\to\infty} a_n = 0$。</blockquote>
-<blockquote>$$\lim_{n\to\infty} (a_n + 2)(a_n - 1) = (0 + 2)(0 - 1) = 2 \times (-1) = -2$$</blockquote>
-<blockquote>**考点：** 若 $\sum a_n$ 收敛，则通项 $a_n \to 0$。注意**逆命题不成立**（通项趋于0不代表级数收敛，如调和级数）。</blockquote>
-<div class='gap'></div>
-<p>---</p>
-<div class='gap'></div>
-<h3>9. 曲线 $\begin{cases} x = \sin t \\ y = \cos 2t \end{cases}$ 在 $t = \dfrac{\pi}{4}$ 处的切线斜率为 ＿＿＿＿</h3>
-<div class='gap'></div>
-<blockquote>**答案：** $-2\sqrt{2}$</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析：** 参数方程求导公式：</blockquote>
-<blockquote>$$\frac{dy}{dx} = \frac{dy/dt}{dx/dt}$$</blockquote>
-<blockquote>- $dx/dt = \cos t$</blockquote>
-<blockquote>- $dy/dt = -2\sin 2t = -4\sin t\cos t$</blockquote>
-<blockquote></blockquote>
-<blockquote>$$\frac{dy}{dx} = \frac{-4\sin t\cos t}{\cos t} = -4\sin t$$</blockquote>
-<blockquote></blockquote>
-<blockquote>代入 $t = \frac{\pi}{4}$：</blockquote>
-<blockquote>$$\left.\frac{dy}{dx}\right|_{t=\frac{\pi}{4}} = -4\sin\frac{\pi}{4} = -4 \cdot \frac{\sqrt{2}}{2} = -2\sqrt{2}$$</blockquote>
-<div class='gap'></div>
-<p>---</p>
-<div class='gap'></div>
-<h3>10. 设 $f(t) = \lim\limits_{n \to \infty} \left(1 + \dfrac{1}{n}\right)^{2nt}$，$g(x) = \int_0^x f&#x27;&#x27;(t)\,dt$，则 $\int_0^1 g(x)\,dx =$ ＿＿＿＿</h3>
-<div class='gap'></div>
-<blockquote>**答案：** $e^2 - 3$</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析：** 逐步推导：</blockquote>
-<blockquote></blockquote>
-<blockquote>**第一步：** 求 $f(t)$。利用重要极限 $\lim_{n\to\infty}(1+\frac{1}{n})^n = e$：</blockquote>
-<blockquote>$$f(t) = \lim_{n\to\infty} \left[\left(1+\frac{1}{n}\right)^n\right]^{2t} = e^{2t}$$</blockquote>
-<blockquote></blockquote>
-<blockquote>**第二步：** 求 $f&#x27;&#x27;(t)$。</blockquote>
-<blockquote>$$f&#x27;(t) = 2e^{2t},\quad f&#x27;&#x27;(t) = 4e^{2t}$$</blockquote>
-<blockquote></blockquote>
-<blockquote>**第三步：** 求 $g(x)$。</blockquote>
-<blockquote>$$g(x) = \int_0^x 4e^{2t}\,dt = 2e^{2t}\Big|_0^x = 2e^{2x} - 2$$</blockquote>
-<blockquote></blockquote>
-<blockquote>**第四步：** 计算定积分。</blockquote>
-<blockquote>$$\int_0^1 (2e^{2x} - 2)\,dx = \left[e^{2x} - 2x\right]_0^1 = (e^2 - 2) - (1 - 0) = e^2 - 3$$</blockquote>
-<blockquote></blockquote>
-<blockquote>**考点：** 重要极限 + 变限积分求导 + 定积分计算。每一步都是基本功，综合在一道题里就是拉分题。</blockquote>
-<div class='gap'></div>
-<p>---</p>
-<div class='gap'></div>
-<h2>三、计算题（本大题共8小题，每小题6分，共48分）</h2>
-<div class='gap'></div>
-<h3>11. 求极限：$\lim\limits_{x \to \infty} \dfrac{x^2 + x}{2x^2 + 1}$</h3>
-<div class='gap'></div>
-<blockquote>**答案：** $\dfrac{1}{2}$</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析：** $\frac{\infty}{\infty}$ 型，分子分母同除以最高次幂 $x^2$：</blockquote>
-<blockquote>$$\lim_{x\to\infty}\frac{x^2 + x}{2x^2 + 1} = \lim_{x\to\infty}\frac{1 + \frac{1}{x}}{2 + \frac{1}{x^2}} = \frac{1 + 0}{2 + 0} = \frac{1}{2}$$</blockquote>
-<blockquote></blockquote>
-<blockquote>**通用方法：** 有理函数 $x\to\infty$ 的极限，只看最高次项系数比。$x^2$ 系数：分子 1，分母 2 → $\frac{1}{2}$。</blockquote>
-<div class='gap'></div>
-<p>---</p>
-<div class='gap'></div>
-<h3>12. 已知 $xy + e^x + \cos y = 0$，求隐函数导数 $\dfrac{dy}{dx}$</h3>
-<div class='gap'></div>
-<blockquote>**答案：** $\dfrac{dy}{dx} = -\dfrac{y + e^x}{x - \sin y}$</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析：** 方程两边对 $x$ 求导，**记住 $y$ 是 $x$ 的函数**：</blockquote>
-<blockquote>$$\frac{d}{dx}(xy) + \frac{d}{dx}(e^x) + \frac{d}{dx}(\cos y) = 0$$</blockquote>
-<blockquote></blockquote>
-<blockquote>逐项计算：</blockquote>
-<blockquote>- $\frac{d}{dx}(xy) = y + x\frac{dy}{dx}$（乘法法则）</blockquote>
-<blockquote>- $\frac{d}{dx}(e^x) = e^x$</blockquote>
-<blockquote>- $\frac{d}{dx}(\cos y) = -\sin y \cdot \frac{dy}{dx}$（链式法则）</blockquote>
-<blockquote></blockquote>
-<blockquote>代入：</blockquote>
-<blockquote>$$y + x\frac{dy}{dx} + e^x - \sin y \cdot \frac{dy}{dx} = 0$$</blockquote>
-<blockquote></blockquote>
-<blockquote>整理含 $\frac{dy}{dx}$ 的项：</blockquote>
-<blockquote>$$(x - \sin y)\frac{dy}{dx} = -y - e^x$$</blockquote>
-<blockquote></blockquote>
-<blockquote>$$\frac{dy}{dx} = -\frac{y + e^x}{x - \sin y}$$</blockquote>
-<div class='gap'></div>
-<p>---</p>
-<div class='gap'></div>
-<h3>13. 设 $z = \sqrt{x^2 + y^2}$，求 $\dfrac{\partial^2 z}{\partial x^2} + \dfrac{\partial^2 z}{\partial y^2}$</h3>
-<div class='gap'></div>
-<blockquote>**答案：** $\dfrac{1}{\sqrt{x^2 + y^2}} = \dfrac{1}{z}$</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析：** $z = (x^2 + y^2)^{1/2}$。</blockquote>
-<blockquote></blockquote>
-<blockquote>**一阶偏导：**</blockquote>
-<blockquote>$$\frac{\partial z}{\partial x} = \frac{x}{\sqrt{x^2 + y^2}},\quad \frac{\partial z}{\partial y} = \frac{y}{\sqrt{x^2 + y^2}}$$</blockquote>
-<blockquote></blockquote>
-<blockquote>**二阶偏导：** 对 $\frac{\partial z}{\partial x} = x(x^2+y^2)^{-1/2}$ 再求导：</blockquote>
-<blockquote>$$\frac{\partial^2 z}{\partial x^2} = (x^2+y^2)^{-1/2} + x \cdot \left(-\frac{1}{2}\right)(x^2+y^2)^{-3/2} \cdot 2x = \frac{1}{\sqrt{x^2+y^2}} - \frac{x^2}{(x^2+y^2)^{3/2}}$$</blockquote>
-<blockquote></blockquote>
-<blockquote>化简：</blockquote>
-<blockquote>$$\frac{\partial^2 z}{\partial x^2} = \frac{(x^2+y^2) - x^2}{(x^2+y^2)^{3/2}} = \frac{y^2}{(x^2+y^2)^{3/2}}$$</blockquote>
-<blockquote></blockquote>
-<blockquote>由对称性，$\frac{\partial^2 z}{\partial y^2} = \frac{x^2}{(x^2+y^2)^{3/2}}$。</blockquote>
-<blockquote></blockquote>
-<blockquote>相加：</blockquote>
-<blockquote>$$\frac{\partial^2 z}{\partial x^2} + \frac{\partial^2 z}{\partial y^2} = \frac{x^2 + y^2}{(x^2+y^2)^{3/2}} = \frac{1}{\sqrt{x^2+y^2}}$$</blockquote>
-<blockquote></blockquote>
-<blockquote>**这其实就是二维拉普拉斯算子**作用于 $r$，结果等于 $\frac{1}{r}$。记住结论能省时间。</blockquote>
-<div class='gap'></div>
-<p>---</p>
-<div class='gap'></div>
-<h3>14. 求不定积分：$\displaystyle\int \dfrac{x+1}{\sqrt{x-4}}\,dx$</h3>
-<div class='gap'></div>
-<blockquote>**答案：** $\dfrac{2}{3}(x-4)^{3/2} + 10(x-4)^{1/2} + C$</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析：** 换元法。令 $u = x - 4$，则 $x = u + 4$，$dx = du$：</blockquote>
-<blockquote>$$\int \frac{x+1}{\sqrt{x-4}}\,dx = \int \frac{(u+4)+1}{\sqrt{u}}\,du = \int \frac{u+5}{\sqrt{u}}\,du$$</blockquote>
-<blockquote></blockquote>
-<blockquote>拆分成两个积分：</blockquote>
-<blockquote>$$\int u^{1/2}\,du + 5\int u^{-1/2}\,du = \frac{2}{3}u^{3/2} + 5 \cdot 2u^{1/2} + C$$</blockquote>
-<blockquote></blockquote>
-<blockquote>代回 $u = x-4$：</blockquote>
-<blockquote>$$\frac{2}{3}(x-4)^{3/2} + 10(x-4)^{1/2} + C$$</blockquote>
-<blockquote></blockquote>
-<blockquote>也可以提取公因式写成 $\frac{2}{3}(x-4)^{1/2}(x + 11) + C$。</blockquote>
-<div class='gap'></div>
-<p>---</p>
-<div class='gap'></div>
-<h3>15. 求定积分：$\displaystyle\int_0^{\pi/2} (1+x)\sin x\,dx$</h3>
-<div class='gap'></div>
-<blockquote>**答案：** $2$</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析：** 拆成两个积分分别计算：</blockquote>
-<blockquote></blockquote>
-<blockquote>**第一部分：** $\int_0^{\pi/2} \sin x\,dx = -\cos x\Big|_0^{\pi/2} = -(0 - 1) = 1$</blockquote>
-<blockquote></blockquote>
-<blockquote>**第二部分：** $\int_0^{\pi/2} x\sin x\,dx$，用分部积分法，令 $u = x$，$dv = \sin x\,dx$，则 $du = dx$，$v = -\cos x$：</blockquote>
-<blockquote>$$\int_0^{\pi/2} x\sin x\,dx = -x\cos x\Big|_0^{\pi/2} + \int_0^{\pi/2} \cos x\,dx$$</blockquote>
-<blockquote>$$= \left[-\frac{\pi}{2} \cdot 0 - 0\right] + \sin x\Big|_0^{\pi/2} = 0 + (1 - 0) = 1$$</blockquote>
-<blockquote></blockquote>
-<blockquote>两式相加：$1 + 1 = 2$</blockquote>
-<blockquote></blockquote>
-<blockquote>**另解：** 直接用分部积分，令 $u = 1+x$，$dv = \sin x\,dx$：</blockquote>
-<blockquote>$$= -(1+x)\cos x\Big|_0^{\pi/2} + \int_0^{\pi/2} \cos x\,dx = \left[0 + 1\right] + 1 = 2$$</blockquote>
-<div class='gap'></div>
-<p>---</p>
-<div class='gap'></div>
-<h3>16. 判定级数 $\displaystyle\sum_{n=1}^{\infty} \dfrac{3^n \cdot n!}{n^n}$ 的收敛性</h3>
-<div class='gap'></div>
-<blockquote>**答案：** 发散</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析：** 通项含阶乘和幂次，用**比值判别法**（达朗贝尔判别法）。</blockquote>
-<blockquote></blockquote>
-<blockquote>$$a_n = \frac{3^n \cdot n!}{n^n}$$</blockquote>
-<blockquote></blockquote>
-<blockquote>$$\lim_{n\to\infty}\left|\frac{a_{n+1}}{a_n}\right| = \lim_{n\to\infty}\frac{3^{n+1} \cdot (n+1)!}{(n+1)^{n+1}} \cdot \frac{n^n}{3^n \cdot n!}$$</blockquote>
-<blockquote></blockquote>
-<blockquote>化简：$3^{n+1}/3^n = 3$，$(n+1)!/n! = n+1$：</blockquote>
-<blockquote>$$= \lim_{n\to\infty} 3(n+1) \cdot \frac{n^n}{(n+1)^{n+1}} = \lim_{n\to\infty} 3(n+1) \cdot \frac{n^n}{(n+1)^n(n+1)}$$</blockquote>
-<blockquote>$$= \lim_{n\to\infty} 3 \cdot \frac{n^n}{(n+1)^n} = 3 \cdot \lim_{n\to\infty} \frac{1}{(1+\frac{1}{n})^n} = 3 \cdot \frac{1}{e} = \frac{3}{e}$$</blockquote>
-<blockquote></blockquote>
-<blockquote>由于 $\frac{3}{e} \approx \frac{3}{2.718} \approx 1.104 &gt; 1$，由比值判别法，**级数发散**。</blockquote>
-<blockquote></blockquote>
-<blockquote>**关键：** 记住 $\lim_{n\to\infty}(1+\frac{1}{n})^n = e$ 在此处的应用。这一步如果忘记了，这道题就做不出来。</blockquote>
-<div class='gap'></div>
-<p>---</p>
-<div class='gap'></div>
-<h3>17. 求微分方程 $y&#x27;&#x27; - 5y&#x27; + 6y = 0$ 满足 $y\big|_{x=0}=2$，$y&#x27;\big|_{x=0}=5$ 的特解</h3>
-<div class='gap'></div>
-<blockquote>**答案：** $y = e^{2x} + e^{3x}$</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析：** 二阶常系数齐次线性微分方程。</blockquote>
-<blockquote></blockquote>
-<blockquote>**第一步：** 写特征方程。</blockquote>
-<blockquote>$$r^2 - 5r + 6 = 0$$</blockquote>
-<blockquote></blockquote>
-<blockquote>**第二步：** 求特征根。</blockquote>
-<blockquote>$$(r-2)(r-3)=0 \quad\Rightarrow\quad r_1 = 2,\; r_2 = 3$$</blockquote>
-<blockquote>两个不等实根，通解为：</blockquote>
-<blockquote>$$y = C_1 e^{2x} + C_2 e^{3x}$$</blockquote>
-<blockquote></blockquote>
-<blockquote>**第三步：** 利用初始条件定 $C_1, C_2$。</blockquote>
-<blockquote>$$y(0) = C_1 + C_2 = 2$$</blockquote>
-<blockquote>$$y&#x27;(x) = 2C_1 e^{2x} + 3C_2 e^{3x},\quad y&#x27;(0) = 2C_1 + 3C_2 = 5$$</blockquote>
-<blockquote></blockquote>
-<blockquote>解方程组：</blockquote>
-<blockquote>$$\begin{cases} C_1 + C_2 = 2 \\ 2C_1 + 3C_2 = 5 \end{cases}$$</blockquote>
-<blockquote>由第一式 $C_2 = 2 - C_1$，代入第二式：$2C_1 + 3(2-C_1) = 5$，$6 - C_1 = 5$，$C_1 = 1$，$C_2 = 1$。</blockquote>
-<blockquote></blockquote>
-<blockquote>特解：$y = e^{2x} + e^{3x}$</blockquote>
-<div class='gap'></div>
-<p>---</p>
-<div class='gap'></div>
-<h3>18. 计算二重积分 $\displaystyle\iint_D x\,d\sigma$，其中 $D$ 是由 $x^2 + y^2 = 4$ 及坐标轴所围成的在第一象限内的闭区域</h3>
-<div class='gap'></div>
-<blockquote>**答案：** $\dfrac{8}{3}$</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析：** $D$ 是半径为 2 的圆在第一象限的部分。使用**极坐标变换**：</blockquote>
-<blockquote>$$x = r\cos\theta,\quad y = r\sin\theta,\quad d\sigma = r\,dr\,d\theta$$</blockquote>
-<blockquote></blockquote>
-<blockquote>积分区域：$0 \le r \le 2$，$0 \le \theta \le \frac{\pi}{2}$。</blockquote>
-<blockquote></blockquote>
-<blockquote>$$\iint_D x\,d\sigma = \int_0^{\pi/2} \int_0^2 r\cos\theta \cdot r\,dr\,d\theta = \int_0^{\pi/2} \cos\theta\,d\theta \cdot \int_0^2 r^2\,dr$$</blockquote>
-<blockquote></blockquote>
-<blockquote>$$= \sin\theta\Big|_0^{\pi/2} \cdot \frac{r^3}{3}\Big|_0^2 = 1 \cdot \frac{8}{3} = \frac{8}{3}$$</blockquote>
-<blockquote></blockquote>
-<blockquote>**技巧：** 被积函数含有 $x$ 或 $y$，积分区域是圆（的一部分）→ 极坐标是首选。积分恰好能分离变量，计算量很小。</blockquote>
-<div class='gap'></div>
-<p>---</p>
-<div class='gap'></div>
-<h2>四、综合题（本大题共2小题，共22分）</h2>
-<div class='gap'></div>
-<h3>19.（本题10分）已知函数 $f(x) = x^3 + ax^2 + bx + 1$</h3>
+<p>$f(x) = x^2 - \cos x$，则 $f&#x27;(\frac{\pi}{2}) =$ （ ）</p>
+<div class='gap'></div>
+<ul>
+<li><strong>A.</strong> $\pi - 1$</li>
+<li><strong>B.</strong> $\pi$</li>
+<li><strong>C.</strong> $\pi + 1$</li>
+<li><strong>D.</strong> $2\pi$</li>
+</ul>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：C</strong></p>
+<div class='gap'></div>
+<p><strong>解析：</strong> 逐项求导：</p>
+<p>$$f&#x27;(x) = 2x + \sin x$$</p>
+<p>代入 $x = \frac{\pi}{2}$：</p>
+<p>$$f&#x27;\left(\frac{\pi}{2}\right) = 2 \cdot \frac{\pi}{2} + \sin\frac{\pi}{2} = \pi + 1$$</p>
+<p><strong>考点：</strong> 基本求导公式——$(\cos x)&#x27; = -\sin x$，所以 $-(\cos x)&#x27; = \sin x$。别漏掉负号。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 3 题 · 等价无穷小</h3>
+<div class='gap'></div>
+<p>当 $x \to 0$ 时，$ax$ 与 $4x^3 - 3x^2 + 2x$ 是等价无穷小，则 $a =$ （ ）</p>
+<div class='gap'></div>
+<ul>
+<li><strong>A.</strong> 1</li>
+<li><strong>B.</strong> 2</li>
+<li><strong>C.</strong> 3</li>
+<li><strong>D.</strong> 4</li>
+</ul>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：B</strong></p>
+<div class='gap'></div>
+<p><strong>解析：</strong> 等价无穷小的定义：$\lim_{x\to 0}\frac{ax}{4x^3 - 3x^2 + 2x} = 1$。</p>
+<div class='gap'></div>
+<p>分子分母同除以 $x$：</p>
+<p>$$\lim_{x\to 0}\frac{a}{4x^2 - 3x + 2} = \frac{a}{0 - 0 + 2} = \frac{a}{2} = 1$$</p>
+<p>所以 $a = 2$。</p>
+<div class='gap'></div>
+<p><strong>技巧：</strong> 当 $x \to 0$ 时，只需保留<strong>最低次幂</strong>项。$4x^3 - 3x^2 + 2x \sim 2x$（$x$ 是最低次幂），直接得 $a = 2$。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 4 题 · 定积分比较</h3>
+<div class='gap'></div>
+<p>设 $I_1 = \int_0^1 e^{x}\,dx$，$I_2 = \int_0^1 e^{2x}\,dx$，$I_3 = \int_0^1 e^{3x}\,dx$，则下列关系成立的是（ ）</p>
+<div class='gap'></div>
+<ul>
+<li><strong>A.</strong> $I_1 &gt; I_2 &gt; I_3$</li>
+<li><strong>B.</strong> $I_1 &gt; I_3 &gt; I_2$</li>
+<li><strong>C.</strong> $I_3 &gt; I_1 &gt; I_2$</li>
+<li><strong>D.</strong> $I_3 &gt; I_2 &gt; I_1$</li>
+</ul>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：D</strong></p>
+<div class='gap'></div>
+<p><strong>解析：</strong> 在 $[0, 1]$ 上，当 $x &gt; 0$ 时有 $e^x &lt; e^{2x} &lt; e^{3x}$（因为指数函数的底 $e&gt;1$，指数越大函数值越大）。定积分保序，故 $I_1 &lt; I_2 &lt; I_3$，即 $I_3 &gt; I_2 &gt; I_1$。</p>
+<div class='gap'></div>
+<p>也可以算出具体值验证：</p>
+<ul>
+<li>$I_1 = e - 1 \approx 1.718$</li>
+<li>$I_2 = \frac{e^2 - 1}{2} \approx 3.195$</li>
+<li>$I_3 = \frac{e^3 - 1}{3} \approx 6.362$</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 5 题 · 交换积分次序</h3>
+<div class='gap'></div>
+<p>交换二次积分 $I = \int_0^1 dy \int_{y^{2}}^{y} f(x,y)\,dx$ 的积分次序，则 $I =$ （ ）</p>
+<div class='gap'></div>
+<ul>
+<li><strong>A.</strong> $\int_0^1 dx \int_{x}^{x^2} f(x,y)\,dy$</li>
+<li><strong>B.</strong> $\int_0^1 dx \int_{x^2}^{x} f(x,y)\,dy$</li>
+<li><strong>C.</strong> $\int_0^1 dx \int_{x^2}^{\sqrt{x}} f(x,y)\,dy$</li>
+<li><strong>D.</strong> $\int_0^1 dx \int_{\sqrt{x}}^{x^2} f(x,y)\,dy$</li>
+</ul>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：C</strong></p>
+<div class='gap'></div>
+<p><strong>解析：</strong> 原积分区域 $D: 0 \le y \le 1,\; y^2 \le x \le y$。</p>
+<div class='gap'></div>
+<p>画出积分区域：</p>
+<ul>
+<li>$x = y^2$ 即 $y = \sqrt{x}$（抛物线右半支）</li>
+<li>$x = y$ 即 $y = x$（直线）</li>
+</ul>
+<div class='gap'></div>
+<p>当 $y \in [0,1]$ 时，$y^2 \le y$，所以 $x$ 从 $y^2$ 到 $y$。</p>
+<div class='gap'></div>
+<p>换序：$x \in [0, 1]$，固定 $x$ 后，由 $y^2 \le x$ 得 $y \ge x^2$（下界），由 $x \le y$ 得 $y \le \sqrt{x}$（上界）。注意区域中 $y$ 的下界是 $x^2$（因为 $y^2 \le x \Rightarrow y \ge x^2$... 等下，$y^2 \le x$ 意味着 $y \le \sqrt{x}$，而 $x \le y$ 意味着 $y \ge x$）。</p>
+<div class='gap'></div>
+<p>重新整理：原区域 $y^2 \le x \le y$ 等价于 $\{x^2 \le y \le \sqrt{x},\; 0 \le x \le 1\}$。</p>
+<div class='gap'></div>
+<p>所以 $I = \int_0^1 dx \int_{x^2}^{\sqrt{x}} f(x,y)\,dy$，选 <strong>C</strong>。</p>
+<div class='gap'></div>
+<p><strong>口诀：</strong> 交换积分次序 = 画区域 → 换视角 → 重新写限。先确定 $x$ 范围，再对每个 $x$ 确定 $y$ 的上下界。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>二、填空题（本大题共 5 小题，每小题 3 分，共 15 分）</h2>
+<div class='gap'></div>
+<h3>第 6 题 · 高阶导数</h3>
+<div class='gap'></div>
+<p>已知 $y = x^4$，则 $y&#x27;&#x27; =$ ＿＿＿＿</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：</strong> $12x^2$</p>
+<div class='gap'></div>
+<p><strong>解析：</strong> 逐阶求导：</p>
+<p>$$y&#x27; = 4x^3,\quad y&#x27;&#x27; = 12x^2$$</p>
+<p>高阶导数就是反复求导，没有捷径。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 7 题 · 微分</h3>
+<div class='gap'></div>
+<p>已知 $y = \ln(x+1)$，则 $dy =$ ＿＿＿＿</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：</strong> $\dfrac{1}{x+1}\,dx$</p>
+<div class='gap'></div>
+<p><strong>解析：</strong> 微分公式 $dy = y&#x27;\,dx$。</p>
+<p>$$y&#x27; = \frac{1}{x+1} \quad\Rightarrow\quad dy = \frac{1}{x+1}\,dx$$</p>
+<p><strong>区分：</strong> $y&#x27; = \frac{dy}{dx}$ 是导数（一个数），$dy = y&#x27;\,dx$ 是微分（含 $dx$）。填空题写微分时<strong>别忘了 $dx$</strong>！</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 8 题 · 级数收敛的必要条件</h3>
+<div class='gap'></div>
+<p>已知级数 $\sum\limits_{n=1}^{\infty} a_n$ 收敛，则 $\lim\limits_{n \to \infty} (a_n + 2)(a_n - 1) =$ ＿＿＿＿</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：</strong> $-2$</p>
+<div class='gap'></div>
+<p><strong>解析：</strong> 级数收敛的必要条件：$\lim_{n\to\infty} a_n = 0$。</p>
+<p>$$\lim_{n\to\infty} (a_n + 2)(a_n - 1) = (0 + 2)(0 - 1) = 2 \times (-1) = -2$$</p>
+<p><strong>考点：</strong> 若 $\sum a_n$ 收敛，则通项 $a_n \to 0$。注意<strong>逆命题不成立</strong>（通项趋于0不代表级数收敛，如调和级数）。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 9 题 · 参数方程切线斜率</h3>
+<div class='gap'></div>
+<p>曲线 $\begin{cases} x = \sin t \\ y = \cos 2t \end{cases}$ 在 $t = \dfrac{\pi}{4}$ 处的切线斜率为 ＿＿＿＿</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：</strong> $-2\sqrt{2}$</p>
+<div class='gap'></div>
+<p><strong>解析：</strong> 参数方程求导公式：</p>
+<p>$$\frac{dy}{dx} = \frac{dy/dt}{dx/dt}$$</p>
+<ul>
+<li>$dx/dt = \cos t$</li>
+<li>$dy/dt = -2\sin 2t = -4\sin t\cos t$</li>
+</ul>
+<div class='gap'></div>
+<p>$$\frac{dy}{dx} = \frac{-4\sin t\cos t}{\cos t} = -4\sin t$$</p>
+<div class='gap'></div>
+<p>代入 $t = \frac{\pi}{4}$：</p>
+<p>$$\left.\frac{dy}{dx}\right|_{t=\frac{\pi}{4}} = -4\sin\frac{\pi}{4} = -4 \cdot \frac{\sqrt{2}}{2} = -2\sqrt{2}$$</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 10 题 · 变限积分与极限</h3>
+<div class='gap'></div>
+<p>设 $f(t) = \lim\limits_{n \to \infty} \left(1 + \dfrac{1}{n}\right)^{2nt}$，$g(x) = \int_0^x f&#x27;&#x27;(t)\,dt$，则 $\int_0^1 g(x)\,dx =$ ＿＿＿＿</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：</strong> $e^2 - 3$</p>
+<div class='gap'></div>
+<p><strong>解析：</strong> 逐步推导：</p>
+<div class='gap'></div>
+<p><strong>第一步：</strong> 求 $f(t)$。利用重要极限 $\lim_{n\to\infty}(1+\frac{1}{n})^n = e$：</p>
+<p>$$f(t) = \lim_{n\to\infty} \left[\left(1+\frac{1}{n}\right)^n\right]^{2t} = e^{2t}$$</p>
+<div class='gap'></div>
+<p><strong>第二步：</strong> 求 $f&#x27;&#x27;(t)$。</p>
+<p>$$f&#x27;(t) = 2e^{2t},\quad f&#x27;&#x27;(t) = 4e^{2t}$$</p>
+<div class='gap'></div>
+<p><strong>第三步：</strong> 求 $g(x)$。</p>
+<p>$$g(x) = \int_0^x 4e^{2t}\,dt = 2e^{2t}\Big|_0^x = 2e^{2x} - 2$$</p>
+<div class='gap'></div>
+<p><strong>第四步：</strong> 计算定积分。</p>
+<p>$$\int_0^1 (2e^{2x} - 2)\,dx = \left[e^{2x} - 2x\right]_0^1 = (e^2 - 2) - (1 - 0) = e^2 - 3$$</p>
+<div class='gap'></div>
+<p><strong>考点：</strong> 重要极限 + 变限积分求导 + 定积分计算。每一步都是基本功，综合在一道题里就是拉分题。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>三、计算题（本大题共 8 小题，每小题 6 分，共 48 分）</h2>
+<div class='gap'></div>
+<h3>第 11 题 · 极限（抓大头）</h3>
+<div class='gap'></div>
+<p>求极限：$\lim\limits_{x \to \infty} \dfrac{x^2 + x}{2x^2 + 1}$</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：</strong> $\dfrac{1}{2}$</p>
+<div class='gap'></div>
+<p><strong>解析：</strong> $\frac{\infty}{\infty}$ 型，分子分母同除以最高次幂 $x^2$：</p>
+<p>$$\lim_{x\to\infty}\frac{x^2 + x}{2x^2 + 1} = \lim_{x\to\infty}\frac{1 + \frac{1}{x}}{2 + \frac{1}{x^2}} = \frac{1 + 0}{2 + 0} = \frac{1}{2}$$</p>
+<div class='gap'></div>
+<p><strong>通用方法：</strong> 有理函数 $x\to\infty$ 的极限，只看最高次项系数比。$x^2$ 系数：分子 1，分母 2 → $\frac{1}{2}$。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 12 题 · 隐函数求导</h3>
+<div class='gap'></div>
+<p>已知 $xy + e^x + \cos y = 0$，求隐函数导数 $\dfrac{dy}{dx}$</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：</strong> $\dfrac{dy}{dx} = -\dfrac{y + e^x}{x - \sin y}$</p>
+<div class='gap'></div>
+<p><strong>解析：</strong> 方程两边对 $x$ 求导，<strong>记住 $y$ 是 $x$ 的函数</strong>：</p>
+<p>$$\frac{d}{dx}(xy) + \frac{d}{dx}(e^x) + \frac{d}{dx}(\cos y) = 0$$</p>
+<div class='gap'></div>
+<p>逐项计算：</p>
+<ul>
+<li>$\frac{d}{dx}(xy) = y + x\frac{dy}{dx}$（乘法法则）</li>
+<li>$\frac{d}{dx}(e^x) = e^x$</li>
+<li>$\frac{d}{dx}(\cos y) = -\sin y \cdot \frac{dy}{dx}$（链式法则）</li>
+</ul>
+<div class='gap'></div>
+<p>代入：</p>
+<p>$$y + x\frac{dy}{dx} + e^x - \sin y \cdot \frac{dy}{dx} = 0$$</p>
+<div class='gap'></div>
+<p>整理含 $\frac{dy}{dx}$ 的项：</p>
+<p>$$(x - \sin y)\frac{dy}{dx} = -y - e^x$$</p>
+<div class='gap'></div>
+<p>$$\frac{dy}{dx} = -\frac{y + e^x}{x - \sin y}$$</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 13 题 · 二阶偏导</h3>
+<div class='gap'></div>
+<p>设 $z = \sqrt{x^2 + y^2}$，求 $\dfrac{\partial^2 z}{\partial x^2} + \dfrac{\partial^2 z}{\partial y^2}$</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：</strong> $\dfrac{1}{\sqrt{x^2 + y^2}} = \dfrac{1}{z}$</p>
+<div class='gap'></div>
+<p><strong>解析：</strong> $z = (x^2 + y^2)^{1/2}$。</p>
+<div class='gap'></div>
+<p><strong>一阶偏导：</strong></p>
+<p>$$\frac{\partial z}{\partial x} = \frac{x}{\sqrt{x^2 + y^2}},\quad \frac{\partial z}{\partial y} = \frac{y}{\sqrt{x^2 + y^2}}$$</p>
+<div class='gap'></div>
+<p><strong>二阶偏导：</strong> 对 $\frac{\partial z}{\partial x} = x(x^2+y^2)^{-1/2}$ 再求导：</p>
+<p>$$\frac{\partial^2 z}{\partial x^2} = (x^2+y^2)^{-1/2} + x \cdot \left(-\frac{1}{2}\right)(x^2+y^2)^{-3/2} \cdot 2x = \frac{1}{\sqrt{x^2+y^2}} - \frac{x^2}{(x^2+y^2)^{3/2}}$$</p>
+<div class='gap'></div>
+<p>化简：</p>
+<p>$$\frac{\partial^2 z}{\partial x^2} = \frac{(x^2+y^2) - x^2}{(x^2+y^2)^{3/2}} = \frac{y^2}{(x^2+y^2)^{3/2}}$$</p>
+<div class='gap'></div>
+<p>由对称性，$\frac{\partial^2 z}{\partial y^2} = \frac{x^2}{(x^2+y^2)^{3/2}}$。</p>
+<div class='gap'></div>
+<p>相加：</p>
+<p>$$\frac{\partial^2 z}{\partial x^2} + \frac{\partial^2 z}{\partial y^2} = \frac{x^2 + y^2}{(x^2+y^2)^{3/2}} = \frac{1}{\sqrt{x^2+y^2}}$$</p>
+<div class='gap'></div>
+<p><strong>这其实就是二维拉普拉斯算子</strong>作用于 $r$，结果等于 $\frac{1}{r}$。记住结论能省时间。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 14 题 · 不定积分（根式换元）</h3>
+<div class='gap'></div>
+<p>求不定积分：$\displaystyle\int \dfrac{x+1}{\sqrt{x-4}}\,dx$</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：</strong> $\dfrac{2}{3}(x-4)^{3/2} + 10(x-4)^{1/2} + C$</p>
+<div class='gap'></div>
+<p><strong>解析：</strong> 换元法。令 $u = x - 4$，则 $x = u + 4$，$dx = du$：</p>
+<p>$$\int \frac{x+1}{\sqrt{x-4}}\,dx = \int \frac{(u+4)+1}{\sqrt{u}}\,du = \int \frac{u+5}{\sqrt{u}}\,du$$</p>
+<div class='gap'></div>
+<p>拆分成两个积分：</p>
+<p>$$\int u^{1/2}\,du + 5\int u^{-1/2}\,du = \frac{2}{3}u^{3/2} + 5 \cdot 2u^{1/2} + C$$</p>
+<div class='gap'></div>
+<p>代回 $u = x-4$：</p>
+<p>$$\frac{2}{3}(x-4)^{3/2} + 10(x-4)^{1/2} + C$$</p>
+<div class='gap'></div>
+<p>也可以提取公因式写成 $\frac{2}{3}(x-4)^{1/2}(x + 11) + C$。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 15 题 · 定积分（分部积分）</h3>
+<div class='gap'></div>
+<p>求定积分：$\displaystyle\int_0^{\pi/2} (1+x)\sin x\,dx$</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：</strong> $2$</p>
+<div class='gap'></div>
+<p><strong>解析：</strong> 拆成两个积分分别计算：</p>
+<div class='gap'></div>
+<p><strong>第一部分：</strong> $\int_0^{\pi/2} \sin x\,dx = -\cos x\Big|_0^{\pi/2} = -(0 - 1) = 1$</p>
+<div class='gap'></div>
+<p><strong>第二部分：</strong> $\int_0^{\pi/2} x\sin x\,dx$，用分部积分法，令 $u = x$，$dv = \sin x\,dx$，则 $du = dx$，$v = -\cos x$：</p>
+<p>$$\int_0^{\pi/2} x\sin x\,dx = -x\cos x\Big|_0^{\pi/2} + \int_0^{\pi/2} \cos x\,dx$$</p>
+<p>$$= \left[-\frac{\pi}{2} \cdot 0 - 0\right] + \sin x\Big|_0^{\pi/2} = 0 + (1 - 0) = 1$$</p>
+<div class='gap'></div>
+<p>两式相加：$1 + 1 = 2$</p>
+<div class='gap'></div>
+<p><strong>另解：</strong> 直接用分部积分，令 $u = 1+x$，$dv = \sin x\,dx$：</p>
+<p>$$= -(1+x)\cos x\Big|_0^{\pi/2} + \int_0^{\pi/2} \cos x\,dx = \left[0 + 1\right] + 1 = 2$$</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 16 题 · 级数敛散性（比值法）</h3>
+<div class='gap'></div>
+<p>判定级数 $\displaystyle\sum_{n=1}^{\infty} \dfrac{3^n \cdot n!}{n^n}$ 的收敛性</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：</strong> 发散</p>
+<div class='gap'></div>
+<p><strong>解析：</strong> 通项含阶乘和幂次，用<strong>比值判别法</strong>（达朗贝尔判别法）。</p>
+<div class='gap'></div>
+<p>$$a_n = \frac{3^n \cdot n!}{n^n}$$</p>
+<div class='gap'></div>
+<p>$$\lim_{n\to\infty}\left|\frac{a_{n+1}}{a_n}\right| = \lim_{n\to\infty}\frac{3^{n+1} \cdot (n+1)!}{(n+1)^{n+1}} \cdot \frac{n^n}{3^n \cdot n!}$$</p>
+<div class='gap'></div>
+<p>化简：$3^{n+1}/3^n = 3$，$(n+1)!/n! = n+1$：</p>
+<p>$$= \lim_{n\to\infty} 3(n+1) \cdot \frac{n^n}{(n+1)^{n+1}} = \lim_{n\to\infty} 3(n+1) \cdot \frac{n^n}{(n+1)^n(n+1)}$$</p>
+<p>$$= \lim_{n\to\infty} 3 \cdot \frac{n^n}{(n+1)^n} = 3 \cdot \lim_{n\to\infty} \frac{1}{(1+\frac{1}{n})^n} = 3 \cdot \frac{1}{e} = \frac{3}{e}$$</p>
+<div class='gap'></div>
+<p>由于 $\frac{3}{e} \approx \frac{3}{2.718} \approx 1.104 &gt; 1$，由比值判别法，<strong>级数发散</strong>。</p>
+<div class='gap'></div>
+<p><strong>关键：</strong> 记住 $\lim_{n\to\infty}(1+\frac{1}{n})^n = e$ 在此处的应用。这一步如果忘记了，这道题就做不出来。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 17 题 · 二阶常系数微分方程</h3>
+<div class='gap'></div>
+<p>求微分方程 $y&#x27;&#x27; - 5y&#x27; + 6y = 0$ 满足 $y\big|_{x=0}=2$，$y&#x27;\big|_{x=0}=5$ 的特解</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：</strong> $y = e^{2x} + e^{3x}$</p>
+<div class='gap'></div>
+<p><strong>解析：</strong> 二阶常系数齐次线性微分方程。</p>
+<div class='gap'></div>
+<p><strong>第一步：</strong> 写特征方程。</p>
+<p>$$r^2 - 5r + 6 = 0$$</p>
+<div class='gap'></div>
+<p><strong>第二步：</strong> 求特征根。</p>
+<p>$$(r-2)(r-3)=0 \quad\Rightarrow\quad r_1 = 2,\; r_2 = 3$$</p>
+<p>两个不等实根，通解为：</p>
+<p>$$y = C_1 e^{2x} + C_2 e^{3x}$$</p>
+<div class='gap'></div>
+<p><strong>第三步：</strong> 利用初始条件定 $C_1, C_2$。</p>
+<p>$$y(0) = C_1 + C_2 = 2$$</p>
+<p>$$y&#x27;(x) = 2C_1 e^{2x} + 3C_2 e^{3x},\quad y&#x27;(0) = 2C_1 + 3C_2 = 5$$</p>
+<div class='gap'></div>
+<p>解方程组：</p>
+<p>$$\begin{cases} C_1 + C_2 = 2 \\ 2C_1 + 3C_2 = 5 \end{cases}$$</p>
+<p>由第一式 $C_2 = 2 - C_1$，代入第二式：$2C_1 + 3(2-C_1) = 5$，$6 - C_1 = 5$，$C_1 = 1$，$C_2 = 1$。</p>
+<div class='gap'></div>
+<p>特解：$y = e^{2x} + e^{3x}$</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 18 题 · 二重积分（极坐标）</h3>
+<div class='gap'></div>
+<p>计算二重积分 $\displaystyle\iint_D x\,d\sigma$，其中 $D$ 是由 $x^2 + y^2 = 4$ 及坐标轴所围成的在第一象限内的闭区域</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：</strong> $\dfrac{8}{3}$</p>
+<div class='gap'></div>
+<p><strong>解析：</strong> $D$ 是半径为 2 的圆在第一象限的部分。使用<strong>极坐标变换</strong>：</p>
+<p>$$x = r\cos\theta,\quad y = r\sin\theta,\quad d\sigma = r\,dr\,d\theta$$</p>
+<div class='gap'></div>
+<p>积分区域：$0 \le r \le 2$，$0 \le \theta \le \frac{\pi}{2}$。</p>
+<div class='gap'></div>
+<p>$$\iint_D x\,d\sigma = \int_0^{\pi/2} \int_0^2 r\cos\theta \cdot r\,dr\,d\theta = \int_0^{\pi/2} \cos\theta\,d\theta \cdot \int_0^2 r^2\,dr$$</p>
+<div class='gap'></div>
+<p>$$= \sin\theta\Big|_0^{\pi/2} \cdot \frac{r^3}{3}\Big|_0^2 = 1 \cdot \frac{8}{3} = \frac{8}{3}$$</p>
+<div class='gap'></div>
+<p><strong>技巧：</strong> 被积函数含有 $x$ 或 $y$，积分区域是圆（的一部分）→ 极坐标是首选。积分恰好能分离变量，计算量很小。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>四、综合题（本大题共 2 小题，第 19 小题 10 分，第 20 小题 12 分，共 22 分）</h2>
+<div class='gap'></div>
+<h3>第 19 题 · 极值与单调性</h3>
+<div class='gap'></div>
+<p>（本题10分）已知函数 $f(x) = x^3 + ax^2 + bx + 1$</p>
 <div class='gap'></div>
 <p><strong>(1)</strong> 若 $f(x)$ 在 $x = 1$ 处取得极值，且 $f&#x27;(0) = 0$，求常数 $a, b$ 的值；（4分）</p>
 <div class='gap'></div>
 <p><strong>(2)</strong> 讨论此时 $f(x)$ 的单调性，并求极值。（6分）</p>
 <div class='gap'></div>
-<blockquote>**参考答案：**</blockquote>
-<blockquote></blockquote>
-<blockquote>**(1)** 求导：</blockquote>
-<blockquote>$$f&#x27;(x) = 3x^2 + 2ax + b$$</blockquote>
-<blockquote></blockquote>
-<blockquote>由条件：</blockquote>
-<blockquote>- $f&#x27;(1) = 3 + 2a + b = 0$　①</blockquote>
-<blockquote>- $f&#x27;(0) = b = 0$　②</blockquote>
-<blockquote></blockquote>
-<blockquote>由②得 $b = 0$，代入①：$3 + 2a = 0$，$a = -\frac{3}{2}$。</blockquote>
-<blockquote></blockquote>
-<blockquote>所以 $a = -\dfrac{3}{2}$，$b = 0$。此时 $f(x) = x^3 - \dfrac{3}{2}x^2 + 1$。</blockquote>
-<blockquote></blockquote>
-<blockquote>**(2)** $f&#x27;(x) = 3x^2 - 3x = 3x(x - 1)$。</blockquote>
-<blockquote></blockquote>
-<blockquote>令 $f&#x27;(x) = 0$，得 $x_1 = 0$，$x_2 = 1$。</blockquote>
-<blockquote></blockquote>
-<blockquote>列表讨论：</blockquote>
-<blockquote></blockquote>
-<blockquote>| $x$ | $(-\infty, 0)$ | $0$ | $(0, 1)$ | $1$ | $(1, +\infty)$ |</blockquote>
-<blockquote>|---|---|---|---|---|---|</blockquote>
-<blockquote>| $f&#x27;(x)$ | $+$ | $0$ | $-$ | $0$ | $+$ |</blockquote>
-<blockquote>| $f(x)$ | $\nearrow$ | 极大值 | $\searrow$ | 极小值 | $\nearrow$ |</blockquote>
-<blockquote></blockquote>
-<blockquote>- 极大值：$f(0) = 1$</blockquote>
-<blockquote>- 极小值：$f(1) = 1 - \frac{3}{2} + 1 = \frac{1}{2}$</blockquote>
-<blockquote></blockquote>
-<blockquote>单调区间：在 $(-\infty, 0)$ 上单调递增，在 $(0, 1)$ 上单调递减，在 $(1, +\infty)$ 上单调递增。</blockquote>
-<blockquote></blockquote>
-<blockquote>**评分要点：** 求导正确（2分）| 解出参数（2分）| 求驻点+列表（3分）| 单调区间+极值（3分）</blockquote>
+<p class='ctitle'>答案与解析</p>
 <div class='gap'></div>
-<p>---</p>
+<p><strong>参考答案：</strong></p>
 <div class='gap'></div>
-<h3>20.（本题12分）设 $f(x)$ 在 $(-\infty, +\infty)$ 上连续，且满足积分方程</h3>
+<p><strong>(1)</strong> 求导：</p>
+<p>$$f&#x27;(x) = 3x^2 + 2ax + b$$</p>
+<div class='gap'></div>
+<p>由条件：</p>
+<ul>
+<li>$f&#x27;(1) = 3 + 2a + b = 0$　①</li>
+<li>$f&#x27;(0) = b = 0$　②</li>
+</ul>
+<div class='gap'></div>
+<p>由②得 $b = 0$，代入①：$3 + 2a = 0$，$a = -\frac{3}{2}$。</p>
+<div class='gap'></div>
+<p>所以 $a = -\dfrac{3}{2}$，$b = 0$。此时 $f(x) = x^3 - \dfrac{3}{2}x^2 + 1$。</p>
+<div class='gap'></div>
+<p><strong>(2)</strong> $f&#x27;(x) = 3x^2 - 3x = 3x(x - 1)$。</p>
+<div class='gap'></div>
+<p>令 $f&#x27;(x) = 0$，得 $x_1 = 0$，$x_2 = 1$。</p>
+<div class='gap'></div>
+<p>列表讨论：</p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>$x$</th><th>$(-\infty, 0)$</th><th>$0$</th><th>$(0, 1)$</th><th>$1$</th><th>$(1, +\infty)$</th></tr>
+<tr><td>$f&#x27;(x)$</td><td>$+$</td><td>$0$</td><td>$-$</td><td>$0$</td><td>$+$</td></tr>
+<tr><td>$f(x)$</td><td>$\nearrow$</td><td>极大值</td><td>$\searrow$</td><td>极小值</td><td>$\nearrow$</td></tr>
+</table>
+<div class='gap'></div>
+<ul>
+<li>极大值：$f(0) = 1$</li>
+<li>极小值：$f(1) = 1 - \frac{3}{2} + 1 = \frac{1}{2}$</li>
+</ul>
+<div class='gap'></div>
+<p>单调区间：在 $(-\infty, 0)$ 上单调递增，在 $(0, 1)$ 上单调递减，在 $(1, +\infty)$ 上单调递增。</p>
+<div class='gap'></div>
+<p><strong>评分要点：</strong> 求导正确（2分）| 解出参数（2分）| 求驻点+列表（3分）| 单调区间+极值（3分）</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 20 题 · 积分方程与不等式</h3>
+<div class='gap'></div>
+<p>（本题12分）设 $f(x)$ 在 $(-\infty, +\infty)$ 上连续，且满足积分方程</p>
+<div class='gap'></div>
 <p>$$f(x) = x^2 + \int_0^x (x - t)f(t)\,dt$$</p>
 <div class='gap'></div>
 <p><strong>(1)</strong> 求 $f(x)$ 的表达式；（8分）</p>
 <div class='gap'></div>
 <p><strong>(2)</strong> 证明：对任意实数 $x$，有 $f(x) \ge 0$。（4分）</p>
 <div class='gap'></div>
-<blockquote>**参考答案：**</blockquote>
-<blockquote></blockquote>
-<blockquote>**(1)** 先将积分方程改写：</blockquote>
-<blockquote>$$f(x) = x^2 + x\int_0^x f(t)\,dt - \int_0^x tf(t)\,dt$$</blockquote>
-<blockquote></blockquote>
-<blockquote>对 $x$ 求导（注意变上限积分的求导法则 $\frac{d}{dx}\int_0^x g(t)dt = g(x)$）：</blockquote>
-<blockquote>$$f&#x27;(x) = 2x + \int_0^x f(t)\,dt + xf(x) - xf(x) = 2x + \int_0^x f(t)\,dt$$</blockquote>
-<blockquote></blockquote>
-<blockquote>再求导：</blockquote>
-<blockquote>$$f&#x27;&#x27;(x) = 2 + f(x)$$</blockquote>
-<blockquote></blockquote>
-<blockquote>得到二阶微分方程：</blockquote>
-<blockquote>$$f&#x27;&#x27;(x) - f(x) = 2$$</blockquote>
-<blockquote></blockquote>
-<blockquote>这是二阶常系数非齐次线性方程。</blockquote>
-<blockquote></blockquote>
-<blockquote>齐次方程 $f&#x27;&#x27; - f = 0$ 的特征方程：$r^2 - 1 = 0$，$r = \pm 1$。齐次通解：</blockquote>
-<blockquote>$$f_h(x) = C_1 e^x + C_2 e^{-x}$$</blockquote>
-<blockquote></blockquote>
-<blockquote>设特解 $f_p = A$（常数），代入方程：$0 - A = 2$，$A = -2$。</blockquote>
-<blockquote></blockquote>
-<blockquote>通解：</blockquote>
-<blockquote>$$f(x) = C_1 e^x + C_2 e^{-x} - 2$$</blockquote>
-<blockquote></blockquote>
-<blockquote>利用初始条件定 $C_1, C_2$。</blockquote>
-<blockquote></blockquote>
-<blockquote>在原方程中令 $x = 0$：$f(0) = 0^2 + 0 = 0$，所以 $C_1 + C_2 - 2 = 0$　①</blockquote>
-<blockquote></blockquote>
-<blockquote>在一阶导数式中，$f&#x27;(x) = 2x + \int_0^x f(t)dt$，令 $x = 0$：$f&#x27;(0) = 0$。而 $f&#x27;(x) = C_1 e^x - C_2 e^{-x}$，所以 $C_1 - C_2 = 0$　②</blockquote>
-<blockquote></blockquote>
-<blockquote>由①②得：$C_1 = C_2 = 1$。</blockquote>
-<blockquote></blockquote>
-<blockquote>故 $f(x) = e^x + e^{-x} - 2 = 2\cosh x - 2$。</blockquote>
-<blockquote></blockquote>
-<blockquote>**(2)** 由双曲余弦的性质，$\cosh x = \frac{e^x + e^{-x}}{2} \ge 1$（当且仅当 $x = 0$ 时取等号）。</blockquote>
-<blockquote></blockquote>
-<blockquote>所以 $f(x) = 2(\cosh x - 1) \ge 0$ 对所有实数 $x$ 成立，当且仅当 $x = 0$ 时 $f(0) = 0$。</blockquote>
-<blockquote></blockquote>
-<blockquote>也可以用初等方法证明：$e^x + e^{-x} \ge 2\sqrt{e^x \cdot e^{-x}} = 2$（均值不等式），所以 $f(x) \ge 2 - 2 = 0$。</blockquote>
-<blockquote></blockquote>
-<blockquote>**评分要点：** 积分方程转微分方程（3分）| 解微分方程（3分）| 确定常数（2分）| 证明不等式（4分）</blockquote>
-<blockquote></blockquote>
-<blockquote>**核心思路：** 含变限积分的方程 → 求导消去积分号 → 得到微分方程 → 用原方程确定初始条件。这是专插本综合题的经典套路。</blockquote>
+<p class='ctitle'>答案与解析</p>
 <div class='gap'></div>
-<p>---</p>
+<p><strong>参考答案：</strong></p>
+<div class='gap'></div>
+<p><strong>(1)</strong> 先将积分方程改写：</p>
+<p>$$f(x) = x^2 + x\int_0^x f(t)\,dt - \int_0^x tf(t)\,dt$$</p>
+<div class='gap'></div>
+<p>对 $x$ 求导（注意变上限积分的求导法则 $\frac{d}{dx}\int_0^x g(t)dt = g(x)$）：</p>
+<p>$$f&#x27;(x) = 2x + \int_0^x f(t)\,dt + xf(x) - xf(x) = 2x + \int_0^x f(t)\,dt$$</p>
+<div class='gap'></div>
+<p>再求导：</p>
+<p>$$f&#x27;&#x27;(x) = 2 + f(x)$$</p>
+<div class='gap'></div>
+<p>得到二阶微分方程：</p>
+<p>$$f&#x27;&#x27;(x) - f(x) = 2$$</p>
+<div class='gap'></div>
+<p>这是二阶常系数非齐次线性方程。</p>
+<div class='gap'></div>
+<p>齐次方程 $f&#x27;&#x27; - f = 0$ 的特征方程：$r^2 - 1 = 0$，$r = \pm 1$。齐次通解：</p>
+<p>$$f_h(x) = C_1 e^x + C_2 e^{-x}$$</p>
+<div class='gap'></div>
+<p>设特解 $f_p = A$（常数），代入方程：$0 - A = 2$，$A = -2$。</p>
+<div class='gap'></div>
+<p>通解：</p>
+<p>$$f(x) = C_1 e^x + C_2 e^{-x} - 2$$</p>
+<div class='gap'></div>
+<p>利用初始条件定 $C_1, C_2$。</p>
+<div class='gap'></div>
+<p>在原方程中令 $x = 0$：$f(0) = 0^2 + 0 = 0$，所以 $C_1 + C_2 - 2 = 0$　①</p>
+<div class='gap'></div>
+<p>在一阶导数式中，$f&#x27;(x) = 2x + \int_0^x f(t)dt$，令 $x = 0$：$f&#x27;(0) = 0$。而 $f&#x27;(x) = C_1 e^x - C_2 e^{-x}$，所以 $C_1 - C_2 = 0$　②</p>
+<div class='gap'></div>
+<p>由①②得：$C_1 = C_2 = 1$。</p>
+<div class='gap'></div>
+<p>故 $f(x) = e^x + e^{-x} - 2 = 2\cosh x - 2$。</p>
+<div class='gap'></div>
+<p><strong>(2)</strong> 由双曲余弦的性质，$\cosh x = \frac{e^x + e^{-x}}{2} \ge 1$（当且仅当 $x = 0$ 时取等号）。</p>
+<div class='gap'></div>
+<p>所以 $f(x) = 2(\cosh x - 1) \ge 0$ 对所有实数 $x$ 成立，当且仅当 $x = 0$ 时 $f(0) = 0$。</p>
+<div class='gap'></div>
+<p>也可以用初等方法证明：$e^x + e^{-x} \ge 2\sqrt{e^x \cdot e^{-x}} = 2$（均值不等式），所以 $f(x) \ge 2 - 2 = 0$。</p>
+<div class='gap'></div>
+<p><strong>评分要点：</strong> 积分方程转微分方程（3分）| 解微分方程（3分）| 确定常数（2分）| 证明不等式（4分）</p>
+<div class='gap'></div>
+<p><strong>核心思路：</strong> 含变限积分的方程 → 求导消去积分号 → 得到微分方程 → 用原方程确定初始条件。这是专插本综合题的经典套路。</p>
+<div class='gap'></div>
+<hr>
 <div class='gap'></div>
 <h2>考点分布与复习策略</h2>
 <div class='gap'></div>
@@ -456,58 +590,51 @@ code { background: #f0f0f0; padding: 1px 5px; border-radius: 3px; }
 <div class='gap'></div>
 <table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
 <tr><th>章节</th><th>涉及题型</th><th>约分值</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>函数与极限</th><th>单选1/3、填空10、计算11</th><th>~15分</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>导数与微分</th><th>单选2、填空6/7、计算12</th><th>~15分</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>微分中值定理与导数应用</th><th>综合19</th><th>~10分</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>不定积分</th><th>计算14</th><th>~6分</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>定积分及其应用</th><th>单选4、计算15</th><th>~9分</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>微分方程</th><th>计算17、综合20</th><th>~18分</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>空间解析几何</th><th>—</th><th>~0分（2024未考）</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>多元函数微分学</th><th>计算13、填空9</th><th>~9分</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>二重积分</th><th>单选5、计算18</th><th>~9分</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>无穷级数</th><th>填空8、计算16</th><th>~9分</th></tr>
+<tr><td>函数与极限</td><td>单选1/3、填空10、计算11</td><td>~15分</td></tr>
+<tr><td>导数与微分</td><td>单选2、填空6/7、计算12</td><td>~15分</td></tr>
+<tr><td>微分中值定理与导数应用</td><td>综合19</td><td>~10分</td></tr>
+<tr><td>不定积分</td><td>计算14</td><td>~6分</td></tr>
+<tr><td>定积分及其应用</td><td>单选4、计算15</td><td>~9分</td></tr>
+<tr><td>微分方程</td><td>计算17、综合20</td><td>~18分</td></tr>
+<tr><td>空间解析几何</td><td>—</td><td>~0分（2024未考）</td></tr>
+<tr><td>多元函数微分学</td><td>计算13、填空9</td><td>~9分</td></tr>
+<tr><td>二重积分</td><td>单选5、计算18</td><td>~9分</td></tr>
+<tr><td>无穷级数</td><td>填空8、计算16</td><td>~9分</td></tr>
+</table>
 <div class='gap'></div>
 <h3>难度分档</h3>
 <div class='gap'></div>
 <table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
 <tr><th>难度</th><th>特征</th><th>典型题号</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>⭐ 送分</th><th>纯公式、一步到位</th><th>单选1/2、填空6/7、计算11</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>⭐⭐ 基础</th><th>需简单推导或换元</th><th>单选3/4、填空8、计算14/15/17</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>⭐⭐⭐ 拉分</th><th>综合多个知识点</th><th>单选5、填空10、计算12/13/16/18、综合19/20</th></tr>
+<tr><td>⭐ 送分</td><td>纯公式、一步到位</td><td>单选1/2、填空6/7、计算11</td></tr>
+<tr><td>⭐⭐ 基础</td><td>需简单推导或换元</td><td>单选3/4、填空8、计算14/15/17</td></tr>
+<tr><td>⭐⭐⭐ 拉分</td><td>综合多个知识点</td><td>单选5、填空10、计算12/13/16/18、综合19/20</td></tr>
+</table>
 <div class='gap'></div>
 <h3>备考建议</h3>
 <div class='gap'></div>
 <ol>
-<li>**三大计算是根基**——极限、导数、积分必须滚瓜烂熟。这三样占了大半壁江山（约50分以上）。</li>
-<li>**微分方程必考一道大题**——2024考了两次（计算17 + 综合20的一部分），特征方程法必须熟练掌握。</li>
-<li>**二重积分必考**——每年至少一道（单选/计算），极坐标变换是首选方法，注意画图确定积分限。</li>
-<li>**级数判别法要记牢**——比值判别法是最常考的，记住 $\lim(1+\frac{1}{n})^n = e$ 在级数题中的应用。</li>
-<li>**隐函数求导不能丢**——记住 $y$ 是 $x$ 的函数，每项求导时遇到 $y$ 都要乘 $\frac{dy}{dx}$。</li>
-<li>**综合题的套路固定**：积分方程 → 求导去积分号 → 解微分方程。把近5年真题的综合题刷熟，考试基本就是换数字。</li>
-<li>**填空题注意格式**——微分要写 $dx$，不定积分要写 $+C$，这些细节丢分太亏。</li>
-<li>**2024年没考空间解析几何和曲线曲面积分**，但2025年不排除会考，复习时不能完全跳过。</li>
+<li><strong>三大计算是根基</strong>——极限、导数、积分必须滚瓜烂熟。这三样占了大半壁江山（约50分以上）。</li>
+<li><strong>微分方程必考一道大题</strong>——2024考了两次（计算17 + 综合20的一部分），特征方程法必须熟练掌握。</li>
+<li><strong>二重积分必考</strong>——每年至少一道（单选/计算），极坐标变换是首选方法，注意画图确定积分限。</li>
+<li><strong>级数判别法要记牢</strong>——比值判别法是最常考的，记住 $\lim(1+\frac{1}{n})^n = e$ 在级数题中的应用。</li>
+<li><strong>隐函数求导不能丢</strong>——记住 $y$ 是 $x$ 的函数，每项求导时遇到 $y$ 都要乘 $\frac{dy}{dx}$。</li>
+<li><strong>综合题的套路固定</strong>：积分方程 → 求导去积分号 → 解微分方程。把近5年真题的综合题刷熟，考试基本就是换数字。</li>
+<li><strong>填空题注意格式</strong>——微分要写 $dx$，不定积分要写 $+C$，这些细节丢分太亏。</li>
+<li><strong>2024年没考空间解析几何和曲线曲面积分</strong>，但2025年不排除会考，复习时不能完全跳过。</li>
 </ol>
 <div class='gap'></div>
-<p>---</p>
+<hr>
 <div class='gap'></div>
 <blockquote>2024年真题整体难度适中偏易，计算量不大但覆盖面广。只要三大计算扎实、微分方程和二重积分的套路熟悉，拿到 85+ 并不难。祝各位备考顺利 🎯</blockquote>
 <div class='gap'></div>
-<p>---</p>
+<hr>
 <div class='gap'></div>
 <p>*免责声明：本文基于2024年考生回忆版及网络公开资料整理，题目措辞可能与原卷有细微差异，但考点、数据、答案均与真题一致，仅供学习参考。*</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<blockquote>相关：<a href="/posts/math/">真题总览</a> · <a href="/posts/math/真题章节对照表">真题章节对照表</a></blockquote>
 <div class='gap'></div>
 </body>
 </html>

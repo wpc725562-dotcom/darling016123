@@ -2,824 +2,1124 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<title>计算机 2025 真题回忆版详解</title>
+<title>2025年广东专升本《计算机程序设计》真题回忆版 · 同型重构详解</title>
 <style>
 body { font-family: "Microsoft YaHei", "Noto Sans SC", sans-serif; max-width: 800px; margin: 40px auto; padding: 0 24px; font-size: 14px; line-height: 1.8; color: #222; }
 h1 { font-size: 22px; border-bottom: 2px solid #333; padding-bottom: 8px; }
 h2 { font-size: 18px; margin-top: 24px; }
 h3 { font-size: 16px; }
 table { margin: 12px 0; }
+th, td { text-align: left; vertical-align: top; }
+ul, ol { margin: 8px 0; padding-left: 26px; }
+li { margin: 2px 0; }
 blockquote { border-left: 3px solid #999; margin: 8px 0; padding: 4px 12px; color: #555; background: #f7f7f7; }
 code { background: #f0f0f0; padding: 1px 5px; border-radius: 3px; }
+pre { background: #f7f7f7; border: 1px solid #e0e0e0; border-radius: 4px; padding: 10px 12px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+hr { border: none; border-top: 1px solid #ddd; margin: 18px 0; }
+a { color: #1a4d8f; }
+.ctitle { background: #eef4fb; border-left: 3px solid #7aa7d9; margin: 10px 0; padding: 6px 12px; color: #24486f; }
 .gap { height: 8px; }
 @media print { body { margin: 0; padding: 0; max-width: none; } }
 </style>
 </head>
 <body>
 <div class='gap'></div>
-<div class='gap'></div>
 <h1>计算机程序设计 · 2025 年真题（回忆版碎片 + 同型重构详解）</h1>
 <div class='gap'></div>
-<blockquote>**类型**：考生回忆版碎片 + 同型题重构（C 级资料）| 满分 **200** 分 · **150** 分钟</blockquote>
-<blockquote>**科目**：广东普通专升本《计算机基础与程序设计》</blockquote>
-<blockquote>**体例来源**：抖音「哎上课」莹莹老师 2025 真题讲解碎片 + 2024 同型题重构</blockquote>
-<blockquote>**边界**：考试院不公开发布原卷。标注 ✅ 的为考生回忆确证考点，标注 🔄 的为同型重构题（考点一致、题面非原题）。见 [00-资料来源与使用说明](/guide/sources)</blockquote>
-<blockquote>**按考点拆练**：[考点拆分索引](/posts/computer/topics/)</blockquote>
+<blockquote><strong>类型</strong>：考生回忆版碎片 + 同型题重构（C 级资料）| 满分 <strong>200</strong> 分 · <strong>150</strong> 分钟</blockquote>
+<blockquote><strong>科目</strong>：广东普通专升本《计算机基础与程序设计》</blockquote>
+<blockquote><strong>边界</strong>：考试院不公开发布原卷。标注 ✅ 的为考生回忆确证考点，标注 🔄 的为同型重构题（考点一致、题面非原题）。见 <a href="/guide/sources">00-资料来源与使用说明</a></blockquote>
+<blockquote><strong>按考点拆练</strong>：<a href="/posts/computer/topics/">考点拆分索引</a></blockquote>
 <div class='gap'></div>
-<p>---</p>
+<hr>
 <div class='gap'></div>
-<h2>试卷结构（2025 · 与 2024 完全一致）</h2>
+<h2>试卷结构</h2>
 <div class='gap'></div>
 <table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>题型</th><th>题量</th><th>分值</th><th>核心考查内容</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>一、单项选择题</th><th>20</th><th>60（3 分/题）</th><th>C 语法、运算符、数据结构概念</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>二、判断题</th><th>10</th><th>20（2 分/题）</th><th>C 语言细节、数据结构性质</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>三、填空题</th><th>5</th><th>20（4 分/题）</th><th>程序补全、数据结构术语</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>四、简答题</th><th>4</th><th>40（10 分/题）</th><th>概念辨析、算法思想</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>五、计算题</th><th>3</th><th>30（10 分/题）</th><th>程序执行结果、遍历序列</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>六、应用题</th><th>3</th><th>30（10 分/题）</th><th>手写 C 程序</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>**合计**</th><th></th><th>**200**</th><th></th></tr>
+<tr><th>大题</th><th>题号</th><th>题量</th><th>分值</th><th>核心考查</th></tr>
+<tr><td>一、单项选择题</td><td>1–20</td><td>20</td><td>60</td><td>sizeof、进制转换、栈与树、排序</td></tr>
+<tr><td>二、判断题</td><td>21–30</td><td>10</td><td>20</td><td>C 语言细节、数据结构性质</td></tr>
+<tr><td>三、填空题</td><td>31–35</td><td>5</td><td>20</td><td>程序输出、二叉树结点数、复杂度</td></tr>
+<tr><td>四、简答题</td><td>36–39</td><td>4</td><td>40</td><td>概念辨析与算法思想</td></tr>
+<tr><td>五、计算题</td><td>40–42</td><td>3</td><td>30</td><td>读程、遍历还原、进制转换</td></tr>
+<tr><td>六、应用题</td><td>43–45</td><td>3</td><td>30</td><td>手写 C 语言程序</td></tr>
+<tr><td><strong>合计</strong></td><td></td><td><strong>45</strong></td><td><strong>200</strong></td><td>满分 200 分 · 150 分钟 · C 级（同型重构）</td></tr>
+</table>
 <div class='gap'></div>
 <p><strong>2025 考情特点</strong>（考生反馈）：</p>
-<li>✅ 数据结构题量较往年**略有增加**</li>
-<li>✅ 第 1 题考 `sizeof`</li>
+<ul>
+<li>✅ 数据结构题量较往年<strong>略有增加</strong></li>
+<li>✅ 第 1 题考 <code>sizeof</code></li>
 <li>✅ 第 3 题考三目运算符（条件运算符）</li>
-<li>✅ 考了字符串函数（`strcpy`/`strcat`/`strcmp` 类）</li>
+<li>✅ 考了字符串函数（<code>strcpy</code>/<code>strcat</code>/<code>strcmp</code> 类）</li>
 <li>✅ 第 35 题考进制转换（十进制转其他进制）</li>
+</ul>
 <div class='gap'></div>
-<p>---</p>
+<hr>
+<div class='gap'></div>
+<h2>题目一览</h2>
+<div class='gap'></div>
+<p class='ctitle'>展开看答案速查表（先自己做完再对）</p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>题号</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th><th>19</th><th>20</th><th>21</th><th>22</th><th>23</th></tr>
+<tr><td>答案</td><td>B</td><td>B</td><td>A</td><td>B</td><td>B</td><td>B</td><td>B</td><td>C</td><td>C</td><td>C</td><td>A</td><td>A</td><td>B</td><td>C</td><td>C</td><td>B</td><td>A</td><td>C</td><td>B</td><td>B</td><td>错</td><td>对</td><td>对</td></tr>
+</table>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>题号</th><th>24</th><th>25</th><th>26</th><th>27</th><th>28</th><th>29</th><th>30</th><th>31</th><th>32</th><th>33</th><th>34</th><th>35</th><th>36</th><th>37</th><th>38</th><th>39</th><th>40</th><th>41</th><th>42</th><th>43</th><th>44</th><th>45</th></tr>
+<tr><td>答案</td><td>错</td><td>错</td><td>对</td><td>错</td><td>对</td><td>对</td><td>错</td><td>3</td><td>22</td><td>6, 5</td><td>2^k - 1</td><td>O(n log n)</td><td>见解析</td><td>见解析</td><td>见解析</td><td>见解析</td><td>3, 11</td><td>见解析</td><td>见解析</td><td>见解析</td><td>见解析</td><td>见解析</td></tr>
+</table>
+<div class='gap'></div>
+<hr>
 <div class='gap'></div>
 <h2>一、单项选择题（本大题共 20 小题，每小题 3 分，共 60 分）</h2>
 <div class='gap'></div>
-<h3>1. ✅ 以下程序的输出结果是（ ）</h3>
+<h3>第 1 题 · sizeof 输出</h3>
 <div class='gap'></div>
-<p><code>`</code>c</p>
-<p>#include &lt;stdio.h&gt;</p>
-<p>int main() {</p>
-<p>    int a = 10;</p>
-<p>    printf(&quot;%d, %d\n&quot;, sizeof(a), sizeof(int));</p>
-<p>    return 0;</p>
-<p>}</p>
-<p><code>`</code></p>
+<p>✅ 以下程序的输出结果是（ ）</p>
 <div class='gap'></div>
-<p>A. 10, 4 B. 4, 4 C. 4, 10 D. 10, 10</p>
+<pre><code>
+#include &lt;stdio.h&gt;
+int main() {
+    int a = 10;
+    printf(&quot;%d, %d\n&quot;, sizeof(a), sizeof(int));
+    return 0;
+}
+</code></pre>
 <div class='gap'></div>
-<blockquote>**答案：B** · 考点 **1.2 数据的存储与运算**</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析**：`sizeof` 是运算符不是函数，返回类型或变量所占字节数。`int` 在 32/64 位系统通常占 4 字节，`sizeof(a)` 等价于 `sizeof(int)`，均为 4。注意 `sizeof` 不计算表达式的值，只看类型。</blockquote>
+<ul>
+<li><strong>A.</strong> 10, 4</li>
+<li><strong>B.</strong> 4, 4</li>
+<li><strong>C.</strong> 4, 10</li>
+<li><strong>D.</strong> 10, 10</li>
+</ul>
 <div class='gap'></div>
-<p>---</p>
+<p class='ctitle'>答案与解析</p>
 <div class='gap'></div>
-<h3>2. 🔄 C 语言中，以下合法的字符常量是（ ）</h3>
+<p><strong>答案：B</strong> · 考点 <strong>1.2 数据的存储与运算</strong></p>
 <div class='gap'></div>
-<p>A. <code>&quot;\n&quot;</code> B. <code>&#x27;A&#x27;</code> C. <code>&#x27;ab&#x27;</code> D. <code>a</code></p>
+<p><strong>解析</strong>：<code>sizeof</code> 是运算符不是函数，返回类型或变量所占字节数。<code>int</code> 在 32/64 位系统通常占 4 字节，<code>sizeof(a)</code> 等价于 <code>sizeof(int)</code>，均为 4。注意 <code>sizeof</code> 不计算表达式的值，只看类型。</p>
 <div class='gap'></div>
-<blockquote>**答案：B** · 考点 **1.1 C语言概述与基本概念**</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析**：字符常量用单引号括单个字符。A 是字符串常量，C 单引号内不能有多个字符（部分编译器允许但值为最后一个字符，不标准），D 是标识符不是常量。</blockquote>
+<hr>
 <div class='gap'></div>
-<p>---</p>
+<h3>第 2 题 · 合法字符常量</h3>
 <div class='gap'></div>
-<h3>3. ✅ 以下程序的输出结果是（ ）</h3>
+<p>🔄 C 语言中，以下合法的字符常量是（ ）</p>
 <div class='gap'></div>
-<p><code>`</code>c</p>
-<p>#include &lt;stdio.h&gt;</p>
-<p>int main() {</p>
-<p>    int a = 5, b = 3;</p>
-<p>    printf(&quot;%d\n&quot;, a &gt; b ? a : b);</p>
-<p>    return 0;</p>
-<p>}</p>
-<p><code>`</code></p>
+<ul>
+<li><strong>A.</strong> <code>&quot;\n&quot;</code></li>
+<li><strong>B.</strong> <code>&#x27;A&#x27;</code></li>
+<li><strong>C.</strong> <code>&#x27;ab&#x27;</code></li>
+<li><strong>D.</strong> <code>a</code></li>
+</ul>
 <div class='gap'></div>
-<p>A. 5 B. 3 C. 1 D. 0</p>
+<p class='ctitle'>答案与解析</p>
 <div class='gap'></div>
-<blockquote>**答案：A** · 考点 **1.2 数据的存储与运算** · 三目运算符</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析**：三目运算符 `条件 ? 表达式1 : 表达式2`，条件为真取表达式1，为假取表达式2。`a &gt; b` 即 `5 &gt; 3` 为真，取 `a` 的值 5。</blockquote>
-<blockquote></blockquote>
-<blockquote>**变体考法**：若 `a &lt; b ? a++ : b++`，注意三目运算符只执行其中一个分支。</blockquote>
+<p><strong>答案：B</strong> · 考点 <strong>1.1 C语言概述与基本概念</strong></p>
 <div class='gap'></div>
-<p>---</p>
+<p><strong>解析</strong>：字符常量用单引号括单个字符。A 是字符串常量，C 单引号内不能有多个字符（部分编译器允许但值为最后一个字符，不标准），D 是标识符不是常量。</p>
 <div class='gap'></div>
-<h3>4. 🔄 表达式 `sizeof(&quot;hello&quot;)` 的值是（ ）</h3>
+<hr>
 <div class='gap'></div>
-<p>A. 5 B. 6 C. 7 D. 4</p>
+<h3>第 3 题 · 条件运算符输出</h3>
 <div class='gap'></div>
-<blockquote>**答案：B** · 考点 **1.6 数组** · 字符串</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析**：字符串常量 `&quot;hello&quot;` 在内存中占 6 字节（5 个字符 + 1 个结束符 `\0`）。`sizeof` 计算整个数组大小，包含 `\0`。注意与 `strlen(&quot;hello&quot;)` 区分，后者返回 5（不计 `\0`）。</blockquote>
+<p>✅ 以下程序的输出结果是（ ）</p>
 <div class='gap'></div>
-<p>---</p>
+<pre><code>
+#include &lt;stdio.h&gt;
+int main() {
+    int a = 5, b = 3;
+    printf(&quot;%d\n&quot;, a &gt; b ? a : b);
+    return 0;
+}
+</code></pre>
 <div class='gap'></div>
-<h3>5. 🔄 以下程序的输出结果是（ ）</h3>
+<ul>
+<li><strong>A.</strong> 5</li>
+<li><strong>B.</strong> 3</li>
+<li><strong>C.</strong> 1</li>
+<li><strong>D.</strong> 0</li>
+</ul>
 <div class='gap'></div>
-<p><code>`</code>c</p>
-<p>#include &lt;stdio.h&gt;</p>
-<p>int main() {</p>
-<p>    int x = 10;</p>
-<p>    printf(&quot;%d\n&quot;, x &gt; 5 ? (x &lt; 8 ? 1 : 2) : 3);</p>
-<p>    return 0;</p>
-<p>}</p>
-<p><code>`</code></p>
+<p class='ctitle'>答案与解析</p>
 <div class='gap'></div>
-<p>A. 1 B. 2 C. 3 D. 10</p>
+<p><strong>答案：A</strong> · 考点 <strong>1.2 数据的存储与运算</strong> · 三目运算符</p>
 <div class='gap'></div>
-<blockquote>**答案：B** · 考点 **1.4 选择结构程序设计** · 嵌套三目</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析**：嵌套三目运算符。`x &gt; 5` 为真（10 &gt; 5），执行 `(x &lt; 8 ? 1 : 2)`；`x &lt; 8` 为假（10 &lt; 8 不成立），取 2。</blockquote>
+<p><strong>解析</strong>：三目运算符 <code>条件 ? 表达式1 : 表达式2</code>，条件为真取表达式1，为假取表达式2。<code>a &gt; b</code> 即 <code>5 &gt; 3</code> 为真，取 <code>a</code> 的值 5。</p>
 <div class='gap'></div>
-<p>---</p>
+<p><strong>变体考法</strong>：若 <code>a &lt; b ? a++ : b++</code>，注意三目运算符只执行其中一个分支。</p>
 <div class='gap'></div>
-<h3>6. ✅ 以下程序的输出结果是（ ）</h3>
+<hr>
 <div class='gap'></div>
-<p><code>`</code>c</p>
-<p>#include &lt;stdio.h&gt;</p>
-<p>#include &lt;string.h&gt;</p>
-<p>int main() {</p>
-<p>    char s[20] = &quot;hello&quot;;</p>
-<p>    char t[20] = &quot;world&quot;;</p>
-<p>    strcpy(s, t);</p>
-<p>    printf(&quot;%s\n&quot;, s);</p>
-<p>    return 0;</p>
-<p>}</p>
-<p><code>`</code></p>
+<h3>第 4 题 · sizeof 字符串</h3>
 <div class='gap'></div>
-<p>A. hello B. world C. helloworld D. 编译错误</p>
+<p>🔄 表达式 <code>sizeof(&quot;hello&quot;)</code> 的值是（ ）</p>
 <div class='gap'></div>
-<blockquote>**答案：B** · 考点 **1.6 数组** · 字符串函数</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析**：`strcpy(s, t)` 将 t 的内容（含 `\0`）复制到 s，覆盖原内容。复制后 s 变为 &quot;world&quot;。注意目标数组 s 必须足够大。</blockquote>
+<ul>
+<li><strong>A.</strong> 5</li>
+<li><strong>B.</strong> 6</li>
+<li><strong>C.</strong> 7</li>
+<li><strong>D.</strong> 4</li>
+</ul>
 <div class='gap'></div>
-<p>---</p>
+<p class='ctitle'>答案与解析</p>
 <div class='gap'></div>
-<h3>7. 🔄 以下程序的输出结果是（ ）</h3>
+<p><strong>答案：B</strong> · 考点 <strong>1.6 数组</strong> · 字符串</p>
 <div class='gap'></div>
-<p><code>`</code>c</p>
-<p>#include &lt;stdio.h&gt;</p>
-<p>#include &lt;string.h&gt;</p>
-<p>int main() {</p>
-<p>    char s[20] = &quot;hello&quot;;</p>
-<p>    char t[20] = &quot;world&quot;;</p>
-<p>    strcat(s, t);</p>
-<p>    printf(&quot;%d\n&quot;, strlen(s));</p>
-<p>    return 0;</p>
-<p>}</p>
-<p><code>`</code></p>
+<p><strong>解析</strong>：字符串常量 <code>&quot;hello&quot;</code> 在内存中占 6 字节（5 个字符 + 1 个结束符 <code>\0</code>）。<code>sizeof</code> 计算整个数组大小，包含 <code>\0</code>。注意与 <code>strlen(&quot;hello&quot;)</code> 区分，后者返回 5（不计 <code>\0</code>）。</p>
 <div class='gap'></div>
-<p>A. 5 B. 10 C. 11 D. 20</p>
+<hr>
 <div class='gap'></div>
-<blockquote>**答案：B** · 考点 **1.6 数组** · 字符串函数</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析**：`strcat(s, t)` 将 t 拼接到 s 末尾（覆盖 s 的 `\0`），结果 s = &quot;helloworld&quot;。`strlen` 不计 `\0`，长度为 10。</blockquote>
+<h3>第 5 题 · 循环输出</h3>
 <div class='gap'></div>
-<p>---</p>
+<p>🔄 以下程序的输出结果是（ ）</p>
 <div class='gap'></div>
-<h3>8. 🔄 以下程序的输出结果是（ ）</h3>
+<pre><code>
+#include &lt;stdio.h&gt;
+int main() {
+    int x = 10;
+    printf(&quot;%d\n&quot;, x &gt; 5 ? (x &lt; 8 ? 1 : 2) : 3);
+    return 0;
+}
+</code></pre>
+<div class='gap'></div>
+<ul>
+<li><strong>A.</strong> 1</li>
+<li><strong>B.</strong> 2</li>
+<li><strong>C.</strong> 3</li>
+<li><strong>D.</strong> 10</li>
+</ul>
 <div class='gap'></div>
-<p><code>`</code>c</p>
-<p>#include &lt;stdio.h&gt;</p>
-<p>int main() {</p>
-<p>    int a[5] = {1, 2, 3, 4, 5};</p>
-<p>    int *p = a;</p>
-<p>    printf(&quot;%d\n&quot;, *(p + 2));</p>
-<p>    return 0;</p>
-<p>}</p>
-<p><code>`</code></p>
+<p class='ctitle'>答案与解析</p>
 <div class='gap'></div>
-<p>A. 1 B. 2 C. 3 D. 4</p>
+<p><strong>答案：B</strong> · 考点 <strong>1.4 选择结构程序设计</strong> · 嵌套三目</p>
 <div class='gap'></div>
-<blockquote>**答案：C** · 考点 **1.8 指针**</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析**：`p` 指向数组首元素 `a[0]`。`p + 2` 指向 `a[2]`（指针加法按类型大小偏移），`*(p+2)` 即 `a[2]` = 3。</blockquote>
+<p><strong>解析</strong>：嵌套三目运算符。<code>x &gt; 5</code> 为真（10 &gt; 5），执行 <code>(x &lt; 8 ? 1 : 2)</code>；<code>x &lt; 8</code> 为假（10 &lt; 8 不成立），取 2。</p>
 <div class='gap'></div>
-<p>---</p>
+<hr>
 <div class='gap'></div>
-<h3>9. 🔄 以下关于指针的叙述，正确的是（ ）</h3>
+<h3>第 6 题 · 程序输出</h3>
 <div class='gap'></div>
-<p>A. 指针变量可以存储任何类型的数据</p>
-<p>B. <code>int *p; p = 10;</code> 是合法的</p>
-<p>C. 指针变量的值是一个内存地址</p>
-<p>D. 两个指针可以相加</p>
+<p>✅ 以下程序的输出结果是（ ）</p>
 <div class='gap'></div>
-<blockquote>**答案：C** · 考点 **1.8 指针**</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析**：A 错，指针只能存地址；B 错，不能直接把整数赋给指针（除非强制转换）；D 错，C 语言不支持指针+指针。C 正确，指针变量存的就是内存地址。</blockquote>
+<pre><code>
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+int main() {
+    char s[20] = &quot;hello&quot;;
+    char t[20] = &quot;world&quot;;
+    strcpy(s, t);
+    printf(&quot;%s\n&quot;, s);
+    return 0;
+}
+</code></pre>
 <div class='gap'></div>
-<p>---</p>
+<ul>
+<li><strong>A.</strong> hello</li>
+<li><strong>B.</strong> world</li>
+<li><strong>C.</strong> helloworld</li>
+<li><strong>D.</strong> 编译错误</li>
+</ul>
 <div class='gap'></div>
-<h3>10. 🔄 十进制数 15 转换为二进制是（ ）</h3>
+<p class='ctitle'>答案与解析</p>
 <div class='gap'></div>
-<p>A. 1101 B. 1110 C. 1111 D. 10000</p>
+<p><strong>答案：B</strong> · 考点 <strong>1.6 数组</strong> · 字符串函数</p>
 <div class='gap'></div>
-<blockquote>**答案：C** · 考点 **进制转换**</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析**：15 ÷ 2 = 7 余 1，7 ÷ 2 = 3 余 1，3 ÷ 2 = 1 余 1，1 ÷ 2 = 0 余 1。从下往上读：1111。</blockquote>
-<blockquote></blockquote>
-<blockquote>**记忆**：2⁴-1 = 15 = 1111(B)，2³ = 8 = 1000(B)。</blockquote>
+<p><strong>解析</strong>：<code>strcpy(s, t)</code> 将 t 的内容（含 <code>\0</code>）复制到 s，覆盖原内容。复制后 s 变为 &quot;world&quot;。注意目标数组 s 必须足够大。</p>
 <div class='gap'></div>
-<p>---</p>
+<hr>
 <div class='gap'></div>
-<h3>11. 🔄 十进制数 25 转换为十六进制是（ ）</h3>
+<h3>第 7 题 · 指针运算输出</h3>
 <div class='gap'></div>
-<p>A. 19 B. 1A C. 1F D. 25</p>
+<p>🔄 以下程序的输出结果是（ ）</p>
 <div class='gap'></div>
-<blockquote>**答案：A** · 考点 **进制转换**</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析**：25 ÷ 16 = 1 余 9，所以 25 = 0x19。</blockquote>
+<pre><code>
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+int main() {
+    char s[20] = &quot;hello&quot;;
+    char t[20] = &quot;world&quot;;
+    strcat(s, t);
+    printf(&quot;%d\n&quot;, strlen(s));
+    return 0;
+}
+</code></pre>
 <div class='gap'></div>
-<p>---</p>
+<ul>
+<li><strong>A.</strong> 5</li>
+<li><strong>B.</strong> 10</li>
+<li><strong>C.</strong> 11</li>
+<li><strong>D.</strong> 20</li>
+</ul>
 <div class='gap'></div>
-<h3>12. 🔄 以下程序的输出结果是（ ）</h3>
+<p class='ctitle'>答案与解析</p>
 <div class='gap'></div>
-<p><code>`</code>c</p>
-<p>#include &lt;stdio.h&gt;</p>
-<p>int main() {</p>
-<p>    int i;</p>
-<p>    for (i = 0; i &lt; 5; i++) {</p>
-<p>        if (i == 3) break;</p>
-<p>        printf(&quot;%d &quot;, i);</p>
-<p>    }</p>
-<p>    return 0;</p>
-<p>}</p>
-<p><code>`</code></p>
+<p><strong>答案：B</strong> · 考点 <strong>1.6 数组</strong> · 字符串函数</p>
 <div class='gap'></div>
-<p>A. 0 1 2 B. 0 1 2 3 C. 0 1 2 3 4 D. 1 2 3</p>
+<p><strong>解析</strong>：<code>strcat(s, t)</code> 将 t 拼接到 s 末尾（覆盖 s 的 <code>\0</code>），结果 s = &quot;helloworld&quot;。<code>strlen</code> 不计 <code>\0</code>，长度为 10。</p>
 <div class='gap'></div>
-<blockquote>**答案：A** · 考点 **1.5 循环结构程序设计**</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析**：`break` 跳出整个循环。i=0,1,2 时打印，i=3 时 break 退出。输出 0 1 2。</blockquote>
+<hr>
 <div class='gap'></div>
-<p>---</p>
+<h3>第 8 题 · 数组输出</h3>
 <div class='gap'></div>
-<h3>13. 🔄 以下程序的输出结果是（ ）</h3>
+<p>🔄 以下程序的输出结果是（ ）</p>
 <div class='gap'></div>
-<p><code>`</code>c</p>
-<p>#include &lt;stdio.h&gt;</p>
-<p>int main() {</p>
-<p>    int i, sum = 0;</p>
-<p>    for (i = 1; i &lt;= 10; i++) {</p>
-<p>        if (i % 2 == 0) continue;</p>
-<p>        sum += i;</p>
-<p>    }</p>
-<p>    printf(&quot;%d\n&quot;, sum);</p>
-<p>    return 0;</p>
-<p>}</p>
-<p><code>`</code></p>
+<pre><code>
+#include &lt;stdio.h&gt;
+int main() {
+    int a[5] = {1, 2, 3, 4, 5};
+    int *p = a;
+    printf(&quot;%d\n&quot;, *(p + 2));
+    return 0;
+}
+</code></pre>
 <div class='gap'></div>
-<p>A. 55 B. 25 C. 30 D. 45</p>
+<ul>
+<li><strong>A.</strong> 1</li>
+<li><strong>B.</strong> 2</li>
+<li><strong>C.</strong> 3</li>
+<li><strong>D.</strong> 4</li>
+</ul>
 <div class='gap'></div>
-<blockquote>**答案：B** · 考点 **1.5 循环结构程序设计**</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析**：`continue` 跳过本次循环剩余语句。偶数时 continue，只累加奇数：1+3+5+7+9 = 25。</blockquote>
+<p class='ctitle'>答案与解析</p>
 <div class='gap'></div>
-<p>---</p>
+<p><strong>答案：C</strong> · 考点 <strong>1.8 指针</strong></p>
 <div class='gap'></div>
-<h3>14. 🔄 以下关于栈的叙述，正确的是（ ）</h3>
+<p><strong>解析</strong>：<code>p</code> 指向数组首元素 <code>a[0]</code>。<code>p + 2</code> 指向 <code>a[2]</code>（指针加法按类型大小偏移），<code>*(p+2)</code> 即 <code>a[2]</code> = 3。</p>
 <div class='gap'></div>
-<p>A. 栈是先进先出的线性表</p>
-<p>B. 栈只能在栈底进行插入和删除</p>
-<p>C. 栈是后进先出的线性表</p>
-<p>D. 栈可以在任意位置插入删除</p>
+<hr>
 <div class='gap'></div>
-<blockquote>**答案：C** · 考点 **2.3 栈和队列**</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析**：栈（Stack）是后进先出（LIFO）的线性表，只能在栈顶进行插入（push）和删除（pop）。A 是队列的特点。</blockquote>
+<h3>第 9 题 · 指针叙述</h3>
 <div class='gap'></div>
-<p>---</p>
+<p>🔄 以下关于指针的叙述，正确的是（ ）</p>
 <div class='gap'></div>
-<h3>15. 🔄 一个栈的入栈序列是 1,2,3,4,5，则不可能的出栈序列是（ ）</h3>
+<ul>
+<li><strong>A.</strong> 指针变量可以存储任何类型的数据</li>
+<li><strong>B.</strong> <code>int *p; p = 10;</code> 是合法的</li>
+<li><strong>C.</strong> 指针变量的值是一个内存地址</li>
+<li><strong>D.</strong> 两个指针可以相加</li>
+</ul>
 <div class='gap'></div>
-<p>A. 5,4,3,2,1 B. 2,1,5,4,3 C. 4,3,5,1,2 D. 1,2,3,4,5</p>
+<p class='ctitle'>答案与解析</p>
 <div class='gap'></div>
-<blockquote>**答案：C** · 考点 **2.3 栈和队列**</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析**：C 中 4,3,5 出栈后，栈中剩余 1,2（1 在栈底，2 在栈顶），出栈必须 2 先于 1，不可能 1 先出。</blockquote>
+<p><strong>答案：C</strong> · 考点 <strong>1.8 指针</strong></p>
 <div class='gap'></div>
-<p>---</p>
+<p><strong>解析</strong>：A 错，指针只能存地址；B 错，不能直接把整数赋给指针（除非强制转换）；D 错，C 语言不支持指针+指针。C 正确，指针变量存的就是内存地址。</p>
 <div class='gap'></div>
-<h3>16. 🔄 深度为 5 的完全二叉树，最少有（ ）个节点</h3>
+<hr>
 <div class='gap'></div>
-<p>A. 15 B. 16 C. 31 D. 32</p>
+<h3>第 10 题 · 十进制转二进制</h3>
 <div class='gap'></div>
-<blockquote>**答案：B** · 考点 **2.5 树和二叉树**</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析**：深度为 k 的完全二叉树最少节点数 = 前 k-1 层满 + 第 k 层 1 个 = 2^(k-1) - 1 + 1 = 2^(k-1) = 2^4 = 16。</blockquote>
+<p>🔄 十进制数 15 转换为二进制是（ ）</p>
 <div class='gap'></div>
-<p>---</p>
+<ul>
+<li><strong>A.</strong> 1101</li>
+<li><strong>B.</strong> 1110</li>
+<li><strong>C.</strong> 1111</li>
+<li><strong>D.</strong> 10000</li>
+</ul>
 <div class='gap'></div>
-<h3>17. 🔄 对序列 {5, 2, 8, 1, 9} 进行升序冒泡排序，第一趟排序后的结果是（ ）</h3>
+<p class='ctitle'>答案与解析</p>
 <div class='gap'></div>
-<p>A. {2, 5, 1, 8, 9} B. {2, 1, 5, 8, 9} C. {1, 2, 5, 8, 9} D. {2, 5, 8, 1, 9}</p>
+<p><strong>答案：C</strong> · 考点 <strong>进制转换</strong></p>
 <div class='gap'></div>
-<blockquote>**答案：A** · 考点 **2.8 排序**</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析**：冒泡排序第一趟从左到右比较相邻元素，大的往后沉：</blockquote>
+<p><strong>解析</strong>：15 ÷ 2 = 7 余 1，7 ÷ 2 = 3 余 1，3 ÷ 2 = 1 余 1，1 ÷ 2 = 0 余 1。从下往上读：1111。</p>
+<div class='gap'></div>
+<p><strong>记忆</strong>：2⁴-1 = 15 = 1111(B)，2³ = 8 = 1000(B)。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 11 题 · 十进制转十六进制</h3>
+<div class='gap'></div>
+<p>🔄 十进制数 25 转换为十六进制是（ ）</p>
+<div class='gap'></div>
+<ul>
+<li><strong>A.</strong> 19</li>
+<li><strong>B.</strong> 1A</li>
+<li><strong>C.</strong> 1F</li>
+<li><strong>D.</strong> 25</li>
+</ul>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：A</strong> · 考点 <strong>进制转换</strong></p>
+<div class='gap'></div>
+<p><strong>解析</strong>：25 ÷ 16 = 1 余 9，所以 25 = 0x19。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 12 题 · 字符串输出</h3>
+<div class='gap'></div>
+<p>🔄 以下程序的输出结果是（ ）</p>
+<div class='gap'></div>
+<pre><code>
+#include &lt;stdio.h&gt;
+int main() {
+    int i;
+    for (i = 0; i &lt; 5; i++) {
+        if (i == 3) break;
+        printf(&quot;%d &quot;, i);
+    }
+    return 0;
+}
+</code></pre>
+<div class='gap'></div>
+<ul>
+<li><strong>A.</strong> 0 1 2</li>
+<li><strong>B.</strong> 0 1 2 3</li>
+<li><strong>C.</strong> 0 1 2 3 4</li>
+<li><strong>D.</strong> 1 2 3</li>
+</ul>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：A</strong> · 考点 <strong>1.5 循环结构程序设计</strong></p>
+<div class='gap'></div>
+<p><strong>解析</strong>：<code>break</code> 跳出整个循环。i=0,1,2 时打印，i=3 时 break 退出。输出 0 1 2。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 13 题 · 函数调用输出</h3>
+<div class='gap'></div>
+<p>🔄 以下程序的输出结果是（ ）</p>
+<div class='gap'></div>
+<pre><code>
+#include &lt;stdio.h&gt;
+int main() {
+    int i, sum = 0;
+    for (i = 1; i &lt;= 10; i++) {
+        if (i % 2 == 0) continue;
+        sum += i;
+    }
+    printf(&quot;%d\n&quot;, sum);
+    return 0;
+}
+</code></pre>
+<div class='gap'></div>
+<ul>
+<li><strong>A.</strong> 55</li>
+<li><strong>B.</strong> 25</li>
+<li><strong>C.</strong> 30</li>
+<li><strong>D.</strong> 45</li>
+</ul>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：B</strong> · 考点 <strong>1.5 循环结构程序设计</strong></p>
+<div class='gap'></div>
+<p><strong>解析</strong>：<code>continue</code> 跳过本次循环剩余语句。偶数时 continue，只累加奇数：1+3+5+7+9 = 25。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 14 题 · 栈的叙述</h3>
+<div class='gap'></div>
+<p>🔄 以下关于栈的叙述，正确的是（ ）</p>
+<div class='gap'></div>
+<ul>
+<li><strong>A.</strong> 栈是先进先出的线性表</li>
+<li><strong>B.</strong> 栈只能在栈底进行插入和删除</li>
+<li><strong>C.</strong> 栈是后进先出的线性表</li>
+<li><strong>D.</strong> 栈可以在任意位置插入删除</li>
+</ul>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：C</strong> · 考点 <strong>2.3 栈和队列</strong></p>
+<div class='gap'></div>
+<p><strong>解析</strong>：栈（Stack）是后进先出（LIFO）的线性表，只能在栈顶进行插入（push）和删除（pop）。A 是队列的特点。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 15 题 · 出栈序列</h3>
+<div class='gap'></div>
+<p>🔄 一个栈的入栈序列是 1,2,3,4,5，则不可能的出栈序列是（ ）</p>
+<div class='gap'></div>
+<ul>
+<li><strong>A.</strong> 5,4,3,2,1</li>
+<li><strong>B.</strong> 2,1,5,4,3</li>
+<li><strong>C.</strong> 4,3,5,1,2</li>
+<li><strong>D.</strong> 1,2,3,4,5</li>
+</ul>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：C</strong> · 考点 <strong>2.3 栈和队列</strong></p>
+<div class='gap'></div>
+<p><strong>解析</strong>：C 中 4,3,5 出栈后，栈中剩余 1,2（1 在栈底，2 在栈顶），出栈必须 2 先于 1，不可能 1 先出。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 16 题 · 完全二叉树结点数</h3>
+<div class='gap'></div>
+<p>🔄 深度为 5 的完全二叉树，最少有（ ）个节点</p>
+<div class='gap'></div>
+<ul>
+<li><strong>A.</strong> 15</li>
+<li><strong>B.</strong> 16</li>
+<li><strong>C.</strong> 31</li>
+<li><strong>D.</strong> 32</li>
+</ul>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：B</strong> · 考点 <strong>2.5 树和二叉树</strong></p>
+<div class='gap'></div>
+<p><strong>解析</strong>：深度为 k 的完全二叉树最少节点数 = 前 k-1 层满 + 第 k 层 1 个 = 2^(k-1) - 1 + 1 = 2^(k-1) = 2^4 = 16。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 17 题 · 冒泡第一趟</h3>
+<div class='gap'></div>
+<p>🔄 对序列 {5, 2, 8, 1, 9} 进行升序冒泡排序，第一趟排序后的结果是（ ）</p>
+<div class='gap'></div>
+<ul>
+<li><strong>A.</strong> {2, 5, 1, 8, 9}</li>
+<li><strong>B.</strong> {2, 1, 5, 8, 9}</li>
+<li><strong>C.</strong> {1, 2, 5, 8, 9}</li>
+<li><strong>D.</strong> {2, 5, 8, 1, 9}</li>
+</ul>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：A</strong> · 考点 <strong>2.8 排序</strong></p>
+<div class='gap'></div>
+<p><strong>解析</strong>：冒泡排序第一趟从左到右比较相邻元素，大的往后沉：</p>
+<ul>
 <li>5&gt;2 交换 → {2,5,8,1,9}</li>
 <li>5&lt;8 不换</li>
 <li>8&gt;1 交换 → {2,5,1,8,9}</li>
 <li>8&lt;9 不换</li>
+</ul>
 <p>结果：{2,5,1,8,9}</p>
 <div class='gap'></div>
-<p>---</p>
+<hr>
 <div class='gap'></div>
-<h3>18. 🔄 以下排序算法中，稳定的是（ ）</h3>
+<h3>第 18 题 · 排序稳定性</h3>
 <div class='gap'></div>
-<p>A. 快速排序 B. 堆排序 C. 归并排序 D. 选择排序</p>
+<p>🔄 以下排序算法中，稳定的是（ ）</p>
 <div class='gap'></div>
-<blockquote>**答案：C** · 考点 **2.8 排序**</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析**：稳定排序：冒泡、插入、归并、基数。不稳定：选择、快速、堆、希尔。</blockquote>
+<ul>
+<li><strong>A.</strong> 快速排序</li>
+<li><strong>B.</strong> 堆排序</li>
+<li><strong>C.</strong> 归并排序</li>
+<li><strong>D.</strong> 选择排序</li>
+</ul>
 <div class='gap'></div>
-<p>---</p>
+<p class='ctitle'>答案与解析</p>
 <div class='gap'></div>
-<h3>19. 🔄 折半查找要求查找表必须是（ ）</h3>
+<p><strong>答案：C</strong> · 考点 <strong>2.8 排序</strong></p>
 <div class='gap'></div>
-<p>A. 顺序存储的无序表</p>
-<p>B. 顺序存储的有序表</p>
-<p>C. 链式存储的无序表</p>
-<p>D. 链式存储的有序表</p>
+<p><strong>解析</strong>：稳定排序：冒泡、插入、归并、基数。不稳定：选择、快速、堆、希尔。</p>
 <div class='gap'></div>
-<blockquote>**答案：B** · 考点 **2.7 查找**</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析**：折半查找（二分查找）要求顺序存储且关键字有序。链式存储无法随机访问中间元素。</blockquote>
+<hr>
 <div class='gap'></div>
-<p>---</p>
+<h3>第 19 题 · 折半查找前提</h3>
 <div class='gap'></div>
-<h3>20. 🔄 含 10 个节点的二叉树，最少有（ ）层（根为第 1 层）</h3>
+<p>🔄 折半查找要求查找表必须是（ ）</p>
 <div class='gap'></div>
-<p>A. 3 B. 4 C. 5 D. 10</p>
+<ul>
+<li><strong>A.</strong> 顺序存储的无序表</li>
+<li><strong>B.</strong> 顺序存储的有序表</li>
+<li><strong>C.</strong> 链式存储的无序表</li>
+<li><strong>D.</strong> 链式存储的有序表</li>
+</ul>
 <div class='gap'></div>
-<blockquote>**答案：B** · 考点 **2.5 树和二叉树**</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析**：每层最多 2^(k-1) 个节点。3 层最多 1+2+4=7 个 &lt; 10，4 层最多 15 个 ≥ 10，所以最少 4 层。</blockquote>
+<p class='ctitle'>答案与解析</p>
 <div class='gap'></div>
-<p>---</p>
+<p><strong>答案：B</strong> · 考点 <strong>2.7 查找</strong></p>
+<div class='gap'></div>
+<p><strong>解析</strong>：折半查找（二分查找）要求顺序存储且关键字有序。链式存储无法随机访问中间元素。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 20 题 · 二叉树最少层数</h3>
+<div class='gap'></div>
+<p>🔄 含 10 个节点的二叉树，最少有（ ）层（根为第 1 层）</p>
+<div class='gap'></div>
+<ul>
+<li><strong>A.</strong> 3</li>
+<li><strong>B.</strong> 4</li>
+<li><strong>C.</strong> 5</li>
+<li><strong>D.</strong> 10</li>
+</ul>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：B</strong> · 考点 <strong>2.5 树和二叉树</strong></p>
+<div class='gap'></div>
+<p><strong>解析</strong>：每层最多 2^(k-1) 个节点。3 层最多 1+2+4=7 个 &lt; 10，4 层最多 15 个 ≥ 10，所以最少 4 层。</p>
+<div class='gap'></div>
+<hr>
 <div class='gap'></div>
 <h2>二、判断题（本大题共 10 小题，每小题 2 分，共 20 分）</h2>
 <div class='gap'></div>
-<h3>1. 🔄 C 语言中，`sizeof` 是一个函数。（ ）</h3>
+<h3>第 21 题 · sizeof 是运算符</h3>
 <div class='gap'></div>
-<blockquote>**答案：错** · 考点 **1.2 数据的存储与运算**</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析**：`sizeof` 是运算符，不是函数。它在编译时计算，不计算操作数的值。</blockquote>
+<p>🔄 C 语言中，<code>sizeof</code> 是一个函数。（ ）</p>
 <div class='gap'></div>
-<p>---</p>
+<p class='ctitle'>答案与解析</p>
 <div class='gap'></div>
-<h3>2. 🔄 三目运算符 `?:` 是 C 语言中唯一的三目运算符。（ ）</h3>
+<p><strong>答案：错</strong> · 考点 <strong>1.2 数据的存储与运算</strong></p>
 <div class='gap'></div>
-<blockquote>**答案：对** · 考点 **1.2 数据的存储与运算**</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析**：C 语言中只有 `?:` 是三目运算符，其他都是单目或双目。</blockquote>
+<p><strong>解析</strong>：<code>sizeof</code> 是运算符，不是函数。它在编译时计算，不计算操作数的值。</p>
 <div class='gap'></div>
-<p>---</p>
+<hr>
 <div class='gap'></div>
-<h3>3. 🔄 `strcpy` 函数会自动在目标字符串末尾添加 `\0`。（ ）</h3>
+<h3>第 22 题 · 三目运算符唯一性</h3>
 <div class='gap'></div>
-<blockquote>**答案：对** · 考点 **1.6 数组**</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析**：`strcpy` 会将源字符串的 `\0` 一起复制到目标，所以目标字符串以 `\0` 结尾。</blockquote>
+<p>🔄 三目运算符 <code>?:</code> 是 C 语言中唯一的三目运算符。（ ）</p>
 <div class='gap'></div>
-<p>---</p>
+<p class='ctitle'>答案与解析</p>
 <div class='gap'></div>
-<h3>4. 🔄 指针变量可以直接用整数赋值。（ ）</h3>
+<p><strong>答案：对</strong> · 考点 <strong>1.2 数据的存储与运算</strong></p>
 <div class='gap'></div>
-<blockquote>**答案：错** · 考点 **1.8 指针**</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析**：不能直接 `p = 10;`，需要强制转换 `p = (int *)10;`，且通常无意义。指针应存有效地址。</blockquote>
+<p><strong>解析</strong>：C 语言中只有 <code>?:</code> 是三目运算符，其他都是单目或双目。</p>
 <div class='gap'></div>
-<p>---</p>
+<hr>
 <div class='gap'></div>
-<h3>5. 🔄 数组名可以作为左值被修改。（ ）</h3>
+<h3>第 23 题 · strcpy 补结束符</h3>
 <div class='gap'></div>
-<blockquote>**答案：错** · 考点 **1.6 数组**</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析**：数组名是常量指针（地址常量），不能被修改，不能做 `a++` 或 `a = p`。</blockquote>
+<p>🔄 <code>strcpy</code> 函数会自动在目标字符串末尾添加 <code>\0</code>。（ ）</p>
 <div class='gap'></div>
-<p>---</p>
+<p class='ctitle'>答案与解析</p>
 <div class='gap'></div>
-<h3>6. 🔄 栈和队列都是限制存取位置的线性表。（ ）</h3>
+<p><strong>答案：对</strong> · 考点 <strong>1.6 数组</strong></p>
 <div class='gap'></div>
-<blockquote>**答案：对** · 考点 **2.3 栈和队列**</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析**：栈只能在栈顶操作，队列只能在队尾插入、队头删除，都是受限的线性表。</blockquote>
+<p><strong>解析</strong>：<code>strcpy</code> 会将源字符串的 <code>\0</code> 一起复制到目标，所以目标字符串以 <code>\0</code> 结尾。</p>
 <div class='gap'></div>
-<p>---</p>
+<hr>
 <div class='gap'></div>
-<h3>7. 🔄 完全二叉树一定是满二叉树。（ ）</h3>
+<h3>第 24 题 · 指针赋值</h3>
 <div class='gap'></div>
-<blockquote>**答案：错** · 考点 **2.5 树和二叉树**</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析**：满二叉树一定是完全二叉树，但完全二叉树不一定是满二叉树（最后一层可以不满）。</blockquote>
+<p>🔄 指针变量可以直接用整数赋值。（ ）</p>
 <div class='gap'></div>
-<p>---</p>
+<p class='ctitle'>答案与解析</p>
 <div class='gap'></div>
-<h3>8. 🔄 快速排序在最坏情况下的时间复杂度是 O(n²)。（ ）</h3>
+<p><strong>答案：错</strong> · 考点 <strong>1.8 指针</strong></p>
 <div class='gap'></div>
-<blockquote>**答案：对** · 考点 **2.8 排序**</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析**：快速排序平均 O(nlogn)，最坏（已有序）O(n²)。</blockquote>
+<p><strong>解析</strong>：不能直接 <code>p = 10;</code>，需要强制转换 <code>p = (int *)10;</code>，且通常无意义。指针应存有效地址。</p>
 <div class='gap'></div>
-<p>---</p>
+<hr>
 <div class='gap'></div>
-<h3>9. 🔄 图的深度优先搜索（DFS）类似于树的先序遍历。（ ）</h3>
+<h3>第 25 题 · 数组名作左值</h3>
 <div class='gap'></div>
-<blockquote>**答案：对** · 考点 **2.6 图**</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析**：DFS 尽可能深地搜索，类似于先序遍历（根→左→右的深度优先思路）。BFS 类似于层序遍历。</blockquote>
+<p>🔄 数组名可以作为左值被修改。（ ）</p>
 <div class='gap'></div>
-<p>---</p>
+<p class='ctitle'>答案与解析</p>
 <div class='gap'></div>
-<h3>10. 🔄 散列表的装填因子越大，发生冲突的可能性越小。（ ）</h3>
+<p><strong>答案：错</strong> · 考点 <strong>1.6 数组</strong></p>
 <div class='gap'></div>
-<blockquote>**答案：错** · 考点 **2.7 查找**</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析**：装填因子 α = 元素数 / 表长，α 越大说明表越满，冲突可能性越大。</blockquote>
+<p><strong>解析</strong>：数组名是常量指针（地址常量），不能被修改，不能做 <code>a++</code> 或 <code>a = p</code>。</p>
 <div class='gap'></div>
-<p>---</p>
+<hr>
+<div class='gap'></div>
+<h3>第 26 题 · 栈与队列</h3>
+<div class='gap'></div>
+<p>🔄 栈和队列都是限制存取位置的线性表。（ ）</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：对</strong> · 考点 <strong>2.3 栈和队列</strong></p>
+<div class='gap'></div>
+<p><strong>解析</strong>：栈只能在栈顶操作，队列只能在队尾插入、队头删除，都是受限的线性表。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 27 题 · 完全与满二叉树</h3>
+<div class='gap'></div>
+<p>🔄 完全二叉树一定是满二叉树。（ ）</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：错</strong> · 考点 <strong>2.5 树和二叉树</strong></p>
+<div class='gap'></div>
+<p><strong>解析</strong>：满二叉树一定是完全二叉树，但完全二叉树不一定是满二叉树（最后一层可以不满）。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 28 题 · 快排最坏复杂度</h3>
+<div class='gap'></div>
+<p>🔄 快速排序在最坏情况下的时间复杂度是 O(n²)。（ ）</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：对</strong> · 考点 <strong>2.8 排序</strong></p>
+<div class='gap'></div>
+<p><strong>解析</strong>：快速排序平均 O(nlogn)，最坏（已有序）O(n²)。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 29 题 · DFS 与先序</h3>
+<div class='gap'></div>
+<p>🔄 图的深度优先搜索（DFS）类似于树的先序遍历。（ ）</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：对</strong> · 考点 <strong>2.6 图</strong></p>
+<div class='gap'></div>
+<p><strong>解析</strong>：DFS 尽可能深地搜索，类似于先序遍历（根→左→右的深度优先思路）。BFS 类似于层序遍历。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 30 题 · 装填因子</h3>
+<div class='gap'></div>
+<p>🔄 散列表的装填因子越大，发生冲突的可能性越小。（ ）</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：错</strong> · 考点 <strong>2.7 查找</strong></p>
+<div class='gap'></div>
+<p><strong>解析</strong>：装填因子 α = 元素数 / 表长，α 越大说明表越满，冲突可能性越大。</p>
+<div class='gap'></div>
+<hr>
 <div class='gap'></div>
 <h2>三、填空题（本大题共 5 小题，每小题 4 分，共 20 分）</h2>
 <div class='gap'></div>
-<h3>1. 🔄 以下程序的输出结果是 ______</h3>
+<h3>第 31 题 · 程序输出填空</h3>
 <div class='gap'></div>
-<p><code>`</code>c</p>
-<p>#include &lt;stdio.h&gt;</p>
-<p>int main() {</p>
-<p>    int a = 5, b = 3;</p>
-<p>    printf(&quot;%d\n&quot;, a % b + a / b);</p>
-<p>    return 0;</p>
-<p>}</p>
-<p><code>`</code></p>
+<p>🔄 以下程序的输出结果是 ______</p>
 <div class='gap'></div>
-<blockquote>**答案：3** · 考点 **1.2 数据的存储与运算**</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析**：`a % b` = 5 % 3 = 2，`a / b` = 5 / 3 = 1（整数除法），2 + 1 = 3。</blockquote>
+<pre><code>
+#include &lt;stdio.h&gt;
+int main() {
+    int a = 5, b = 3;
+    printf(&quot;%d\n&quot;, a % b + a / b);
+    return 0;
+}
+</code></pre>
 <div class='gap'></div>
-<p>---</p>
+<p class='ctitle'>答案与解析</p>
 <div class='gap'></div>
-<h3>2. 🔄 以下程序的输出结果是 ______</h3>
+<p><strong>答案：3</strong> · 考点 <strong>1.2 数据的存储与运算</strong></p>
 <div class='gap'></div>
-<p><code>`</code>c</p>
-<p>#include &lt;stdio.h&gt;</p>
-<p>int main() {</p>
-<p>    int x = 10;</p>
-<p>    printf(&quot;%d\n&quot;, x++ + ++x);</p>
-<p>    return 0;</p>
-<p>}</p>
-<p><code>`</code></p>
+<p><strong>解析</strong>：<code>a % b</code> = 5 % 3 = 2，<code>a / b</code> = 5 / 3 = 1（整数除法），2 + 1 = 3。</p>
 <div class='gap'></div>
-<blockquote>**答案：22**（注意：不同编译器可能有差异，标准 C 中此表达式行为未定义/未指定）</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析**：`x++` 先取值 10 再加 1，`++x` 先加 1 再取值。若按从左到右：x++ 取 10（x=11），++x 取 12（x=12），10+12=22。</blockquote>
-<blockquote></blockquote>
-<blockquote>**注意**：C 标准中函数参数/同一表达式中多次修改同一变量是未定义行为，考试通常按&quot;从左到右&quot;理解。</blockquote>
+<hr>
 <div class='gap'></div>
-<p>---</p>
+<h3>第 32 题 · 程序输出填空</h3>
 <div class='gap'></div>
-<h3>3. 🔄 以下程序的输出结果是 ______</h3>
+<p>🔄 以下程序的输出结果是 ______</p>
 <div class='gap'></div>
-<p><code>`</code>c</p>
-<p>#include &lt;stdio.h&gt;</p>
-<p>#include &lt;string.h&gt;</p>
-<p>int main() {</p>
-<p>    char s[] = &quot;hello&quot;;</p>
-<p>    printf(&quot;%d, %d\n&quot;, sizeof(s), strlen(s));</p>
-<p>    return 0;</p>
-<p>}</p>
-<p><code>`</code></p>
+<pre><code>
+#include &lt;stdio.h&gt;
+int main() {
+    int x = 10;
+    printf(&quot;%d\n&quot;, x++ + ++x);
+    return 0;
+}
+</code></pre>
 <div class='gap'></div>
-<blockquote>**答案：6, 5** · 考点 **1.6 数组**</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析**：`sizeof(s)` 计算整个数组大小 = 5 字符 + `\0` = 6；`strlen(s)` 不计 `\0` = 5。</blockquote>
+<p class='ctitle'>答案与解析</p>
 <div class='gap'></div>
-<p>---</p>
+<p><strong>答案：22</strong>（注意：不同编译器可能有差异，标准 C 中此表达式行为未定义/未指定）</p>
 <div class='gap'></div>
-<h3>4. 🔄 深度为 k 的满二叉树有 ______ 个节点</h3>
+<p><strong>解析</strong>：<code>x++</code> 先取值 10 再加 1，<code>++x</code> 先加 1 再取值。若按从左到右：x++ 取 10（x=11），++x 取 12（x=12），10+12=22。</p>
 <div class='gap'></div>
-<blockquote>**答案：2^k - 1** · 考点 **2.5 树和二叉树**</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析**：满二叉树每层节点数为 1, 2, 4, ..., 2^(k-1)，总和 = 2^k - 1。</blockquote>
+<p><strong>注意</strong>：C 标准中函数参数/同一表达式中多次修改同一变量是未定义行为，考试通常按&quot;从左到右&quot;理解。</p>
 <div class='gap'></div>
-<p>---</p>
+<hr>
 <div class='gap'></div>
-<h3>5. 🔄 对 n 个元素进行归并排序，时间复杂度为 ______</h3>
+<h3>第 33 题 · 程序输出填空</h3>
 <div class='gap'></div>
-<blockquote>**答案：O(n log n)** · 考点 **2.8 排序**</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析**：归并排序最好、最坏、平均都是 O(n log n)，空间复杂度 O(n)。</blockquote>
+<p>🔄 以下程序的输出结果是 ______</p>
 <div class='gap'></div>
-<p>---</p>
+<pre><code>
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+int main() {
+    char s[] = &quot;hello&quot;;
+    printf(&quot;%d, %d\n&quot;, sizeof(s), strlen(s));
+    return 0;
+}
+</code></pre>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：6, 5</strong> · 考点 <strong>1.6 数组</strong></p>
+<div class='gap'></div>
+<p><strong>解析</strong>：<code>sizeof(s)</code> 计算整个数组大小 = 5 字符 + <code>\0</code> = 6；<code>strlen(s)</code> 不计 <code>\0</code> = 5。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 34 题 · 满二叉树结点数</h3>
+<div class='gap'></div>
+<p>🔄 深度为 k 的满二叉树有 ______ 个节点</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：2^k - 1</strong> · 考点 <strong>2.5 树和二叉树</strong></p>
+<div class='gap'></div>
+<p><strong>解析</strong>：满二叉树每层节点数为 1, 2, 4, ..., 2^(k-1)，总和 = 2^k - 1。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 35 题 · 归并排序复杂度</h3>
+<div class='gap'></div>
+<p>🔄 对 n 个元素进行归并排序，时间复杂度为 ______</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：O(n log n)</strong> · 考点 <strong>2.8 排序</strong></p>
+<div class='gap'></div>
+<p><strong>解析</strong>：归并排序最好、最坏、平均都是 O(n log n)，空间复杂度 O(n)。</p>
+<div class='gap'></div>
+<hr>
 <div class='gap'></div>
 <h2>四、简答题（本大题共 4 小题，每小题 10 分，共 40 分）</h2>
 <div class='gap'></div>
-<h3>1. 🔄 简述 C 语言中指针和数组的区别与联系。（10 分）</h3>
+<h3>第 36 题 · 指针与数组</h3>
 <div class='gap'></div>
-<blockquote>**参考答案**：</blockquote>
-<blockquote></blockquote>
-<blockquote>**区别**：</blockquote>
-<blockquote>1. 定义方式不同：数组 `int a[10];` 分配连续内存；指针 `int *p;` 只分配指针变量空间</blockquote>
-<blockquote>2. 数组名是地址常量，不能修改（不能 `a++`）；指针是变量，可以修改（`p++`）</blockquote>
-<blockquote>3. `sizeof(数组)` 返回整个数组字节数；`sizeof(指针)` 返回指针变量大小（4 或 8 字节）</blockquote>
-<blockquote>4. 数组不能直接赋值（`a = b` 非法）；指针可以赋值</blockquote>
-<blockquote></blockquote>
-<blockquote>**联系**：</blockquote>
-<blockquote>1. 数组名在表达式中退化为指向首元素的指针</blockquote>
-<blockquote>2. 数组元素可以用指针访问：`a[i]` 等价于 `*(a + i)`</blockquote>
-<blockquote>3. 指针可以指向数组，通过指针遍历数组</blockquote>
-<blockquote>4. 数组作为函数参数时退化为指针</blockquote>
+<p>🔄 简述 C 语言中指针和数组的区别与联系。（10 分）</p>
 <div class='gap'></div>
-<p>---</p>
+<p class='ctitle'>答案与解析</p>
 <div class='gap'></div>
-<h3>2. 🔄 简述栈和队列的区别，并各举一个应用场景。（10 分）</h3>
+<p><strong>参考答案</strong>：</p>
 <div class='gap'></div>
-<blockquote>**参考答案**：</blockquote>
-<blockquote></blockquote>
-<blockquote>**区别**：</blockquote>
-<blockquote>| 特性 | 栈 | 队列 |</blockquote>
-<blockquote>|:---|:---|:---|</blockquote>
-<blockquote>| 操作原则 | 后进先出（LIFO） | 先进先出（FIFO） |</blockquote>
-<blockquote>| 插入位置 | 栈顶 | 队尾 |</blockquote>
-<blockquote>| 删除位置 | 栈顶 | 队头 |</blockquote>
-<blockquote>| 操作数 | 一端操作 | 两端操作 |</blockquote>
-<blockquote></blockquote>
-<blockquote>**栈的应用**：函数调用栈（保存返回地址和局部变量）、表达式求值、括号匹配、递归实现</blockquote>
-<blockquote></blockquote>
-<blockquote>**队列的应用**：操作系统进程调度、打印任务排队、广度优先搜索（BFS）、缓冲区</blockquote>
+<p><strong>区别</strong>：</p>
+<ol>
+<li>定义方式不同：数组 <code>int a[10];</code> 分配连续内存；指针 <code>int *p;</code> 只分配指针变量空间</li>
+<li>数组名是地址常量，不能修改（不能 <code>a++</code>）；指针是变量，可以修改（<code>p++</code>）</li>
+<li><code>sizeof(数组)</code> 返回整个数组字节数；<code>sizeof(指针)</code> 返回指针变量大小（4 或 8 字节）</li>
+<li>数组不能直接赋值（<code>a = b</code> 非法）；指针可以赋值</li>
+</ol>
 <div class='gap'></div>
-<p>---</p>
+<p><strong>联系</strong>：</p>
+<ol>
+<li>数组名在表达式中退化为指向首元素的指针</li>
+<li>数组元素可以用指针访问：<code>a[i]</code> 等价于 <code>*(a + i)</code></li>
+<li>指针可以指向数组，通过指针遍历数组</li>
+<li>数组作为函数参数时退化为指针</li>
+</ol>
 <div class='gap'></div>
-<h3>3. 🔄 简述二叉树的三种遍历方式，并写出对下图的遍历结果。（10 分）</h3>
+<hr>
 <div class='gap'></div>
-<p><code>`</code></p>
-<p>        A</p>
-<p>       / \</p>
-<p>      B   C</p>
-<p>     / \   \</p>
-<p>    D   E   F</p>
-<p><code>`</code></p>
+<h3>第 37 题 · 栈与队列区别</h3>
 <div class='gap'></div>
-<blockquote>**参考答案**：</blockquote>
-<blockquote></blockquote>
-<blockquote>**先序遍历（根→左→右）**：A → B → D → E → C → F</blockquote>
-<blockquote></blockquote>
-<blockquote>**中序遍历（左→根→右）**：D → B → E → A → C → F</blockquote>
-<blockquote></blockquote>
-<blockquote>**后序遍历（左→右→根）**：D → E → B → F → C → A</blockquote>
-<blockquote></blockquote>
-<blockquote>**遍历方法**：</blockquote>
-<blockquote>- 先序：先访问根节点，再遍历左子树，最后遍历右子树</blockquote>
-<blockquote>- 中序：先遍历左子树，再访问根节点，最后遍历右子树</blockquote>
-<blockquote>- 后序：先遍历左子树，再遍历右子树，最后访问根节点</blockquote>
+<p>🔄 简述栈和队列的区别，并各举一个应用场景。（10 分）</p>
 <div class='gap'></div>
-<p>---</p>
+<p class='ctitle'>答案与解析</p>
 <div class='gap'></div>
-<h3>4. 🔄 简述快速排序的基本思想，并分析其时间复杂度。（10 分）</h3>
+<p><strong>参考答案</strong>：</p>
 <div class='gap'></div>
-<blockquote>**参考答案**：</blockquote>
-<blockquote></blockquote>
-<blockquote>**基本思想**（分治法）：</blockquote>
-<blockquote>1. 选取一个基准元素（pivot，通常选第一个或最后一个）</blockquote>
-<blockquote>2. 分区（partition）：将小于基准的放左边，大于基准的放右边</blockquote>
-<blockquote>3. 递归对左右两个子序列分别进行快速排序</blockquote>
-<blockquote>4. 递归终止条件：子序列长度为 0 或 1</blockquote>
-<blockquote></blockquote>
-<blockquote>**时间复杂度**：</blockquote>
-<blockquote>- 最好情况（每次均分）：O(n log n)</blockquote>
-<blockquote>- 平均情况：O(n log n)</blockquote>
-<blockquote>- 最坏情况（已有序，每次选最大/最小为基准）：O(n²)</blockquote>
-<blockquote></blockquote>
-<blockquote>**空间复杂度**：O(log n)（递归栈），最坏 O(n)</blockquote>
-<blockquote></blockquote>
-<blockquote>**稳定性**：不稳定</blockquote>
+<p><strong>区别</strong>：</p>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>特性</th><th>栈</th><th>队列</th></tr>
+<tr><td>操作原则</td><td>后进先出（LIFO）</td><td>先进先出（FIFO）</td></tr>
+<tr><td>插入位置</td><td>栈顶</td><td>队尾</td></tr>
+<tr><td>删除位置</td><td>栈顶</td><td>队头</td></tr>
+<tr><td>操作数</td><td>一端操作</td><td>两端操作</td></tr>
+</table>
 <div class='gap'></div>
-<p>---</p>
+<p><strong>栈的应用</strong>：函数调用栈（保存返回地址和局部变量）、表达式求值、括号匹配、递归实现</p>
+<div class='gap'></div>
+<p><strong>队列的应用</strong>：操作系统进程调度、打印任务排队、广度优先搜索（BFS）、缓冲区</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 38 题 · 二叉树遍历</h3>
+<div class='gap'></div>
+<p>🔄 简述二叉树的三种遍历方式，并写出对下图的遍历结果。（10 分）</p>
+<div class='gap'></div>
+<pre><code>
+        A
+       / \
+      B   C
+     / \   \
+    D   E   F
+</code></pre>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>参考答案</strong>：</p>
+<div class='gap'></div>
+<p><strong>先序遍历（根→左→右）</strong>：A → B → D → E → C → F</p>
+<div class='gap'></div>
+<p><strong>中序遍历（左→根→右）</strong>：D → B → E → A → C → F</p>
+<div class='gap'></div>
+<p><strong>后序遍历（左→右→根）</strong>：D → E → B → F → C → A</p>
+<div class='gap'></div>
+<p><strong>遍历方法</strong>：</p>
+<ul>
+<li>先序：先访问根节点，再遍历左子树，最后遍历右子树</li>
+<li>中序：先遍历左子树，再访问根节点，最后遍历右子树</li>
+<li>后序：先遍历左子树，再遍历右子树，最后访问根节点</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 39 题 · 快速排序思想</h3>
+<div class='gap'></div>
+<p>🔄 简述快速排序的基本思想，并分析其时间复杂度。（10 分）</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>参考答案</strong>：</p>
+<div class='gap'></div>
+<p><strong>基本思想</strong>（分治法）：</p>
+<ol>
+<li>选取一个基准元素（pivot，通常选第一个或最后一个）</li>
+<li>分区（partition）：将小于基准的放左边，大于基准的放右边</li>
+<li>递归对左右两个子序列分别进行快速排序</li>
+<li>递归终止条件：子序列长度为 0 或 1</li>
+</ol>
+<div class='gap'></div>
+<p><strong>时间复杂度</strong>：</p>
+<ul>
+<li>最好情况（每次均分）：O(n log n)</li>
+<li>平均情况：O(n log n)</li>
+<li>最坏情况（已有序，每次选最大/最小为基准）：O(n²)</li>
+</ul>
+<div class='gap'></div>
+<p><strong>空间复杂度</strong>：O(log n)（递归栈），最坏 O(n)</p>
+<div class='gap'></div>
+<p><strong>稳定性</strong>：不稳定</p>
+<div class='gap'></div>
+<hr>
 <div class='gap'></div>
 <h2>五、计算题（本大题共 3 小题，每小题 10 分，共 30 分）</h2>
 <div class='gap'></div>
-<h3>1. 🔄 分析以下程序的运行结果。（10 分）</h3>
+<h3>第 40 题 · 程序运行结果</h3>
 <div class='gap'></div>
-<p><code>`</code>c</p>
-<p>#include &lt;stdio.h&gt;</p>
+<p>🔄 分析以下程序的运行结果。（10 分）</p>
 <div class='gap'></div>
-<p>void func(int a, int *b) {</p>
-<p>    a = a * 2;</p>
-<p>    *b = *b + a;</p>
-<p>}</p>
+<pre><code>
+#include &lt;stdio.h&gt;
+
+void func(int a, int *b) {
+    a = a * 2;
+    *b = *b + a;
+}
+
+int main() {
+    int x = 3, y = 5;
+    func(x, &amp;y);
+    printf(&quot;%d, %d\n&quot;, x, y);
+    return 0;
+}
+</code></pre>
 <div class='gap'></div>
-<p>int main() {</p>
-<p>    int x = 3, y = 5;</p>
-<p>    func(x, &amp;y);</p>
-<p>    printf(&quot;%d, %d\n&quot;, x, y);</p>
-<p>    return 0;</p>
-<p>}</p>
-<p><code>`</code></p>
+<p class='ctitle'>答案与解析</p>
 <div class='gap'></div>
-<blockquote>**答案：3, 11**</blockquote>
-<blockquote></blockquote>
-<blockquote>**解析**：</blockquote>
-<blockquote>1. `x = 3, y = 5`</blockquote>
-<blockquote>2. 调用 `func(3, &amp;y)`：a=3（传值），b 指向 y</blockquote>
-<blockquote>3. `a = a * 2` → a = 6（不影响 x）</blockquote>
-<blockquote>4. `*b = *b + a` → y = 5 + 6 = 11</blockquote>
-<blockquote>5. 返回 main：x 仍为 3（传值不改变实参），y 变为 11</blockquote>
-<blockquote>6. 输出：3, 11</blockquote>
+<p><strong>答案：3, 11</strong></p>
 <div class='gap'></div>
-<p>---</p>
+<p><strong>解析</strong>：</p>
+<ol>
+<li><code>x = 3, y = 5</code></li>
+<li>调用 <code>func(3, &amp;y)</code>：a=3（传值），b 指向 y</li>
+<li><code>a = a * 2</code> → a = 6（不影响 x）</li>
+<li><code>*b = *b + a</code> → y = 5 + 6 = 11</li>
+<li>返回 main：x 仍为 3（传值不改变实参），y 变为 11</li>
+<li>输出：3, 11</li>
+</ol>
 <div class='gap'></div>
-<h3>2. 🔄 已知一棵二叉树的先序遍历为 ABDECF，中序遍历为 DBEAFC，画出该二叉树并写出后序遍历序列。（10 分）</h3>
+<hr>
 <div class='gap'></div>
-<blockquote>**参考答案**：</blockquote>
-<blockquote></blockquote>
-<blockquote>**构造过程**：</blockquote>
-<blockquote>1. 先序第一个 A 是根</blockquote>
-<blockquote>2. 中序中 A 左边 DBE 是左子树，右边 FC 是右子树</blockquote>
-<blockquote>3. 左子树先序 BDE，中序 DBE → B 是左子树根，D 左，E 右</blockquote>
-<blockquote>4. 右子树先序 CF，中序 FC → C 是右子树根，F 是左孩子</blockquote>
-<blockquote></blockquote>
-<blockquote>**二叉树结构**：</blockquote>
-<blockquote>```</blockquote>
-<blockquote>        A</blockquote>
-<blockquote>       / \</blockquote>
-<blockquote>      B   C</blockquote>
-<blockquote>     / \ /</blockquote>
-<blockquote>    D  E F</blockquote>
-<blockquote>```</blockquote>
-<blockquote></blockquote>
-<blockquote>**后序遍历（左→右→根）**：D → E → B → F → C → A</blockquote>
+<h3>第 41 题 · 遍历还原二叉树</h3>
 <div class='gap'></div>
-<p>---</p>
+<p>🔄 已知一棵二叉树的先序遍历为 ABDECF，中序遍历为 DBEAFC，画出该二叉树并写出后序遍历序列。（10 分）</p>
 <div class='gap'></div>
-<h3>3. ✅ 将十进制数 35 转换为二进制、八进制、十六进制。（10 分）</h3>
+<p class='ctitle'>答案与解析</p>
 <div class='gap'></div>
-<blockquote>**参考答案**：</blockquote>
-<blockquote></blockquote>
-<blockquote>**转二进制**（除 2 取余）：</blockquote>
-<blockquote>35 ÷ 2 = 17 余 1</blockquote>
-<blockquote>17 ÷ 2 = 8 余 1</blockquote>
-<blockquote>8 ÷ 2 = 4 余 0</blockquote>
-<blockquote>4 ÷ 2 = 2 余 0</blockquote>
-<blockquote>2 ÷ 2 = 1 余 0</blockquote>
-<blockquote>1 ÷ 2 = 0 余 1</blockquote>
-<blockquote>从下往上：**100011**</blockquote>
-<blockquote></blockquote>
-<blockquote>**转八进制**（除 8 取余，或三位分组）：</blockquote>
-<blockquote>35 ÷ 8 = 4 余 3 → **43**</blockquote>
-<blockquote>验证：4×8 + 3 = 35 ✓</blockquote>
-<blockquote></blockquote>
-<blockquote>**转十六进制**（除 16 取余）：</blockquote>
-<blockquote>35 ÷ 16 = 2 余 3 → **23**</blockquote>
-<blockquote>验证：2×16 + 3 = 35 ✓</blockquote>
-<blockquote></blockquote>
-<blockquote>**快速验证**：100011(B) = 32+2+1 = 35 ✓</blockquote>
+<p><strong>参考答案</strong>：</p>
 <div class='gap'></div>
-<p>---</p>
+<p><strong>构造过程</strong>：</p>
+<ol>
+<li>先序第一个 A 是根</li>
+<li>中序中 A 左边 DBE 是左子树，右边 FC 是右子树</li>
+<li>左子树先序 BDE，中序 DBE → B 是左子树根，D 左，E 右</li>
+<li>右子树先序 CF，中序 FC → C 是右子树根，F 是左孩子</li>
+</ol>
+<div class='gap'></div>
+<p><strong>二叉树结构</strong>：</p>
+<pre><code>
+        A
+       / \
+      B   C
+     / \ /
+    D  E F
+</code></pre>
+<div class='gap'></div>
+<p><strong>后序遍历（左→右→根）</strong>：D → E → B → F → C → A</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 42 题 · 进制转换</h3>
+<div class='gap'></div>
+<p>✅ 将十进制数 35 转换为二进制、八进制、十六进制。（10 分）</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>参考答案</strong>：</p>
+<div class='gap'></div>
+<p><strong>转二进制</strong>（除 2 取余）：</p>
+<p>35 ÷ 2 = 17 余 1</p>
+<p>17 ÷ 2 = 8 余 1</p>
+<p>8 ÷ 2 = 4 余 0</p>
+<p>4 ÷ 2 = 2 余 0</p>
+<p>2 ÷ 2 = 1 余 0</p>
+<p>1 ÷ 2 = 0 余 1</p>
+<p>从下往上：<strong>100011</strong></p>
+<div class='gap'></div>
+<p><strong>转八进制</strong>（除 8 取余，或三位分组）：</p>
+<p>35 ÷ 8 = 4 余 3 → <strong>43</strong></p>
+<p>验证：4×8 + 3 = 35 ✓</p>
+<div class='gap'></div>
+<p><strong>转十六进制</strong>（除 16 取余）：</p>
+<p>35 ÷ 16 = 2 余 3 → <strong>23</strong></p>
+<p>验证：2×16 + 3 = 35 ✓</p>
+<div class='gap'></div>
+<p><strong>快速验证</strong>：100011(B) = 32+2+1 = 35 ✓</p>
+<div class='gap'></div>
+<hr>
 <div class='gap'></div>
 <h2>六、应用题（本大题共 3 小题，每小题 10 分，共 30 分）</h2>
 <div class='gap'></div>
-<h3>1. 🔄 编写程序：输入一个字符串，统计其中大写字母、小写字母、数字和其他字符的个数。（10 分）</h3>
+<h3>第 43 题 · 统计字符类别</h3>
 <div class='gap'></div>
-<blockquote>**参考答案**：</blockquote>
-<blockquote></blockquote>
-<blockquote>```c</blockquote>
-<blockquote>#include &lt;stdio.h&gt;</blockquote>
-<blockquote>#include &lt;string.h&gt;</blockquote>
-<blockquote></blockquote>
-<blockquote>int main() {</blockquote>
-<blockquote>    char s[100];</blockquote>
-<blockquote>    int upper = 0, lower = 0, digit = 0, other = 0;</blockquote>
-<blockquote>    int i = 0;</blockquote>
-<blockquote></blockquote>
-<blockquote>    printf(&quot;请输入字符串：&quot;);</blockquote>
-<blockquote>    scanf(&quot;%s&quot;, s);</blockquote>
-<blockquote></blockquote>
-<blockquote>    while (s[i] != &#x27;\0&#x27;) {</blockquote>
-<blockquote>        if (s[i] &gt;= &#x27;A&#x27; &amp;&amp; s[i] &lt;= &#x27;Z&#x27;)</blockquote>
-<blockquote>            upper++;</blockquote>
-<blockquote>        else if (s[i] &gt;= &#x27;a&#x27; &amp;&amp; s[i] &lt;= &#x27;z&#x27;)</blockquote>
-<blockquote>            lower++;</blockquote>
-<blockquote>        else if (s[i] &gt;= &#x27;0&#x27; &amp;&amp; s[i] &lt;= &#x27;9&#x27;)</blockquote>
-<blockquote>            digit++;</blockquote>
-<blockquote>        else</blockquote>
-<blockquote>            other++;</blockquote>
-<blockquote>        i++;</blockquote>
-<blockquote>    }</blockquote>
-<blockquote></blockquote>
-<blockquote>    printf(&quot;大写字母：%d\n&quot;, upper);</blockquote>
-<blockquote>    printf(&quot;小写字母：%d\n&quot;, lower);</blockquote>
-<blockquote>    printf(&quot;数字：%d\n&quot;, digit);</blockquote>
-<blockquote>    printf(&quot;其他字符：%d\n&quot;, other);</blockquote>
-<blockquote></blockquote>
-<blockquote>    return 0;</blockquote>
-<blockquote>}</blockquote>
-<blockquote>```</blockquote>
-<blockquote></blockquote>
-<blockquote>**评分要点**：头文件（1分）、变量定义（1分）、输入（1分）、循环遍历（2分）、四类判断（3分）、输出（1分）、结束符（1分）</blockquote>
+<p>🔄 编写程序：输入一个字符串，统计其中大写字母、小写字母、数字和其他字符的个数。（10 分）</p>
 <div class='gap'></div>
-<p>---</p>
+<p class='ctitle'>答案与解析</p>
 <div class='gap'></div>
-<h3>2. 🔄 编写函数：用指针实现两个整数的交换，并在主函数中调用验证。（10 分）</h3>
+<p><strong>参考答案</strong>：</p>
 <div class='gap'></div>
-<blockquote>**参考答案**：</blockquote>
-<blockquote></blockquote>
-<blockquote>```c</blockquote>
-<blockquote>#include &lt;stdio.h&gt;</blockquote>
-<blockquote></blockquote>
-<blockquote>void swap(int *a, int *b) {</blockquote>
-<blockquote>    int temp;</blockquote>
-<blockquote>    temp = *a;</blockquote>
-<blockquote>    *a = *b;</blockquote>
-<blockquote>    *b = temp;</blockquote>
-<blockquote>}</blockquote>
-<blockquote></blockquote>
-<blockquote>int main() {</blockquote>
-<blockquote>    int x = 3, y = 5;</blockquote>
-<blockquote>    printf(&quot;交换前：x=%d, y=%d\n&quot;, x, y);</blockquote>
-<blockquote>    swap(&amp;x, &amp;y);</blockquote>
-<blockquote>    printf(&quot;交换后：x=%d, y=%d\n&quot;, x, y);</blockquote>
-<blockquote>    return 0;</blockquote>
-<blockquote>}</blockquote>
-<blockquote>```</blockquote>
-<blockquote></blockquote>
-<blockquote>**评分要点**：函数参数用指针（3分）、解引用操作（2分）、中间变量（1分）、调用时传地址（2分）、输出验证（2分）</blockquote>
+<pre><code>
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main() {
+    char s[100];
+    int upper = 0, lower = 0, digit = 0, other = 0;
+    int i = 0;
+
+    printf(&quot;请输入字符串：&quot;);
+    scanf(&quot;%s&quot;, s);
+
+    while (s[i] != &#x27;\0&#x27;) {
+        if (s[i] &gt;= &#x27;A&#x27; &amp;&amp; s[i] &lt;= &#x27;Z&#x27;)
+            upper++;
+        else if (s[i] &gt;= &#x27;a&#x27; &amp;&amp; s[i] &lt;= &#x27;z&#x27;)
+            lower++;
+        else if (s[i] &gt;= &#x27;0&#x27; &amp;&amp; s[i] &lt;= &#x27;9&#x27;)
+            digit++;
+        else
+            other++;
+        i++;
+    }
+
+    printf(&quot;大写字母：%d\n&quot;, upper);
+    printf(&quot;小写字母：%d\n&quot;, lower);
+    printf(&quot;数字：%d\n&quot;, digit);
+    printf(&quot;其他字符：%d\n&quot;, other);
+
+    return 0;
+}
+</code></pre>
 <div class='gap'></div>
-<p>---</p>
+<p><strong>评分要点</strong>：头文件（1分）、变量定义（1分）、输入（1分）、循环遍历（2分）、四类判断（3分）、输出（1分）、结束符（1分）</p>
 <div class='gap'></div>
-<h3>3. 🔄 编写程序：对一个整型数组进行冒泡排序（升序），并输出排序前后的结果。（10 分）</h3>
+<hr>
 <div class='gap'></div>
-<blockquote>**参考答案**：</blockquote>
-<blockquote></blockquote>
-<blockquote>```c</blockquote>
-<blockquote>#include &lt;stdio.h&gt;</blockquote>
-<blockquote></blockquote>
-<blockquote>void bubbleSort(int a[], int n) {</blockquote>
-<blockquote>    int i, j, temp;</blockquote>
-<blockquote>    for (i = 0; i &lt; n - 1; i++) {</blockquote>
-<blockquote>        for (j = 0; j &lt; n - 1 - i; j++) {</blockquote>
-<blockquote>            if (a[j] &gt; a[j + 1]) {</blockquote>
-<blockquote>                temp = a[j];</blockquote>
-<blockquote>                a[j] = a[j + 1];</blockquote>
-<blockquote>                a[j + 1] = temp;</blockquote>
-<blockquote>            }</blockquote>
-<blockquote>        }</blockquote>
-<blockquote>    }</blockquote>
-<blockquote>}</blockquote>
-<blockquote></blockquote>
-<blockquote>int main() {</blockquote>
-<blockquote>    int arr[10] = {5, 2, 9, 1, 7, 3, 8, 4, 6, 0};</blockquote>
-<blockquote>    int i;</blockquote>
-<blockquote></blockquote>
-<blockquote>    printf(&quot;排序前：&quot;);</blockquote>
-<blockquote>    for (i = 0; i &lt; 10; i++)</blockquote>
-<blockquote>        printf(&quot;%d &quot;, arr[i]);</blockquote>
-<blockquote>    printf(&quot;\n&quot;);</blockquote>
-<blockquote></blockquote>
-<blockquote>    bubbleSort(arr, 10);</blockquote>
-<blockquote></blockquote>
-<blockquote>    printf(&quot;排序后：&quot;);</blockquote>
-<blockquote>    for (i = 0; i &lt; 10; i++)</blockquote>
-<blockquote>        printf(&quot;%d &quot;, arr[i]);</blockquote>
-<blockquote>    printf(&quot;\n&quot;);</blockquote>
-<blockquote></blockquote>
-<blockquote>    return 0;</blockquote>
-<blockquote>}</blockquote>
-<blockquote>```</blockquote>
-<blockquote></blockquote>
-<blockquote>**评分要点**：函数定义（1分）、外层循环（2分）、内层循环边界（2分）、比较交换（2分）、数组传参（1分）、输出（1分）、格式（1分）</blockquote>
+<h3>第 44 题 · 指针实现交换</h3>
 <div class='gap'></div>
-<p>---</p>
+<p>🔄 编写函数：用指针实现两个整数的交换，并在主函数中调用验证。（10 分）</p>
 <div class='gap'></div>
-<h2>七、2025 真题确证碎片汇总</h2>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>参考答案</strong>：</p>
+<div class='gap'></div>
+<pre><code>
+#include &lt;stdio.h&gt;
+
+void swap(int *a, int *b) {
+    int temp;
+    temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+int main() {
+    int x = 3, y = 5;
+    printf(&quot;交换前：x=%d, y=%d\n&quot;, x, y);
+    swap(&amp;x, &amp;y);
+    printf(&quot;交换后：x=%d, y=%d\n&quot;, x, y);
+    return 0;
+}
+</code></pre>
+<div class='gap'></div>
+<p><strong>评分要点</strong>：函数参数用指针（3分）、解引用操作（2分）、中间变量（1分）、调用时传地址（2分）、输出验证（2分）</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 45 题 · 冒泡排序程序</h3>
+<div class='gap'></div>
+<p>🔄 编写程序：对一个整型数组进行冒泡排序（升序），并输出排序前后的结果。（10 分）</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>参考答案</strong>：</p>
+<div class='gap'></div>
+<pre><code>
+#include &lt;stdio.h&gt;
+
+void bubbleSort(int a[], int n) {
+    int i, j, temp;
+    for (i = 0; i &lt; n - 1; i++) {
+        for (j = 0; j &lt; n - 1 - i; j++) {
+            if (a[j] &gt; a[j + 1]) {
+                temp = a[j];
+                a[j] = a[j + 1];
+                a[j + 1] = temp;
+            }
+        }
+    }
+}
+
+int main() {
+    int arr[10] = {5, 2, 9, 1, 7, 3, 8, 4, 6, 0};
+    int i;
+
+    printf(&quot;排序前：&quot;);
+    for (i = 0; i &lt; 10; i++)
+        printf(&quot;%d &quot;, arr[i]);
+    printf(&quot;\n&quot;);
+
+    bubbleSort(arr, 10);
+
+    printf(&quot;排序后：&quot;);
+    for (i = 0; i &lt; 10; i++)
+        printf(&quot;%d &quot;, arr[i]);
+    printf(&quot;\n&quot;);
+
+    return 0;
+}
+</code></pre>
+<div class='gap'></div>
+<p><strong>评分要点</strong>：函数定义（1分）、外层循环（2分）、内层循环边界（2分）、比较交换（2分）、数组传参（1分）、输出（1分）、格式（1分）</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>附录 · 2025 真题确证碎片汇总</h2>
 <div class='gap'></div>
 <table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
 <tr><th>题号</th><th>考点</th><th>来源</th><th>置信度</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>第1题</th><th>sizeof</th><th>抖音莹莹老师讲解</th><th>✅ 高</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>第3题</th><th>三目运算符（条件运算符）</th><th>抖音莹莹老师讲解</th><th>✅ 高</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>字符串题</th><th>strcpy/strcat/strcmp</th><th>抖音莹莹老师讲解</th><th>✅ 高</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>第35题</th><th>进制转换（十进制转其他）</th><th>抖音真题讲解（四）</th><th>✅ 高</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>整体</th><th>数据结构题量增加</th><th>考生反馈</th><th>✅ 中</th></tr>
+<tr><td>第1题</td><td>sizeof</td><td>抖音莹莹老师讲解</td><td>✅ 高</td></tr>
+<tr><td>第3题</td><td>三目运算符（条件运算符）</td><td>抖音莹莹老师讲解</td><td>✅ 高</td></tr>
+<tr><td>字符串题</td><td>strcpy/strcat/strcmp</td><td>抖音莹莹老师讲解</td><td>✅ 高</td></tr>
+<tr><td>第35题</td><td>进制转换（十进制转其他）</td><td>抖音真题讲解（四）</td><td>✅ 高</td></tr>
+<tr><td>整体</td><td>数据结构题量增加</td><td>考生反馈</td><td>✅ 中</td></tr>
+</table>
 <div class='gap'></div>
 <blockquote>📌 以上标注 ✅ 的考点确证出现在 2025 真题中，但题面为同型重构（非原题文字）。标注 🔄 的为基于考纲和 2024 真题的同型练习题。</blockquote>
 <blockquote></blockquote>
 <blockquote>如需完整原题，建议购买正版真题册或等待机构陆续放出回忆版。</blockquote>
 <div class='gap'></div>
-<p>---</p>
+<hr>
 <div class='gap'></div>
-<p>📊 <strong>[下一份：《计算机 2026 题型变化》](/posts/computer/2026)</strong> · 📊 <strong>[上一份：《计算机 2024 全卷详解》](/posts/computer/2024)</strong></p>
+<hr>
 <div class='gap'></div>
-<p>---</p>
-<div class='gap'></div>
-<p>← [回真题总览](/posts/computer/) · [2027 备考指南](/posts/computer/2027-备考指南) · [知识点笔记](/posts/computer/notes/)</p>
+<blockquote>相关：<a href="/posts/computer/">真题总览</a> · <a href="/posts/computer/2025">2025 逐帧还原版</a> · <a href="/posts/computer/真题章节对照表">真题章节对照表</a> · <a href="/posts/computer/topics/">考点拆分索引</a></blockquote>
 <div class='gap'></div>
 </body>
 </html>

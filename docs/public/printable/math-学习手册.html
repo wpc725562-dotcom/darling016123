@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>高等数学 · 学习手册（零基础版）</title>
+<style>
+body { font-family: "Microsoft YaHei", "Noto Sans SC", sans-serif; max-width: 800px; margin: 40px auto; padding: 0 24px; font-size: 14px; line-height: 1.8; color: #222; }
+h1 { font-size: 22px; border-bottom: 2px solid #333; padding-bottom: 8px; }
+h2 { font-size: 18px; margin-top: 24px; }
+h3 { font-size: 16px; }
+table { margin: 12px 0; }
+th, td { text-align: left; vertical-align: top; }
+ul, ol { margin: 8px 0; padding-left: 26px; }
+li { margin: 2px 0; }
+blockquote { border-left: 3px solid #999; margin: 8px 0; padding: 4px 12px; color: #555; background: #f7f7f7; }
+code { background: #f0f0f0; padding: 1px 5px; border-radius: 3px; }
+pre { background: #f7f7f7; border: 1px solid #e0e0e0; border-radius: 4px; padding: 10px 12px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+hr { border: none; border-top: 1px solid #ddd; margin: 18px 0; }
+a { color: #1a4d8f; }
+.ctitle { background: #eef4fb; border-left: 3px solid #7aa7d9; margin: 10px 0; padding: 6px 12px; color: #24486f; }
+.gap { height: 8px; }
+@media print { body { margin: 0; padding: 0; max-width: none; } }
+</style>
+</head>
+<body>
+<div class='gap'></div>
+<h1>高等数学 · 学习手册（零基础版）</h1>
+<div class='gap'></div>
+<blockquote><strong>怎么用</strong>：按教材顺序一节课一节课推进。每节固定四步：</blockquote>
+<blockquote>1. <strong>学什么</strong> — 大白话告诉你这节解决什么问题</blockquote>
+<blockquote>2. <strong>核心公式</strong> — 本节必须背下来的公式（⭐越多越常考）</blockquote>
+<blockquote>3. <strong>笔记链接</strong> — 点开本库详细笔记</blockquote>
+<blockquote>4. <strong>复习任务</strong> — 学完闭卷自测，做不出就回去重看</blockquote>
+<blockquote></blockquote>
+<blockquote><strong>配套</strong>：<a href="/posts/math/教材目录基准">教材目录基准</a> · <a href="/posts/math/公式速查卡">公式速查卡</a></blockquote>
+<blockquote><strong>原则</strong>：一节能自测通过再进下一节，比囫囵吞枣看完一整章有用得多。</blockquote>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>上册（第 1—7 章）</h2>
+<div class='gap'></div>
+<h2>第一章 函数与极限（地基章，必拿分）</h2>
+<div class='gap'></div>
+<blockquote>考试占比约 24 分（含综合题）。极限是全书一切概念的基础，先攻下它。</blockquote>
+<div class='gap'></div>
+<h3>1-1 映射与函数</h3>
+<div class='gap'></div>
+<p><strong>学什么</strong>：什么是函数？——一台&quot;投币出物&quot;的自动售货机：一个 $x$ 只能吐出一个 $y$。重点求定义域。</p>
+<div class='gap'></div>
+<p><strong>核心公式</strong>：</p>
+<ul>
+<li>定义域三禁：分母 $\neq 0$、根号内 $\ge 0$（偶次）、对数真数 $&gt;0$</li>
+<li>$\arcsin x$、$\arccos x$ 定义域 $[-1,1]$</li>
+</ul>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/math/notes/1.1-函数的概念">1.1 函数的概念</a></p>
+<div class='gap'></div>
+<p><strong>复习任务（闭卷自测）</strong>：</p>
+<ul>
+<li>[ ] 判断 $y=(\sqrt{x})^2$ 与 $y=x$ 是否同一函数</li>
+<li>[ ] 求 $y=\arcsin(2x-3)$ 的定义域</li>
+<li>[ ] 默写定义域&quot;三禁&quot;</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>1-2 数列的极限</h3>
+<div class='gap'></div>
+<p><strong>学什么</strong>：当 $n$ 无限增大时，数列无限逼近哪个数。</p>
+<div class='gap'></div>
+<p><strong>核心公式</strong>：</p>
+<ul>
+<li>$\lim_{n\to\infty}\dfrac{1}{n}=0$</li>
+<li>$\lim_{n\to\infty}q^n=0\quad(|q|&lt;1)$</li>
+</ul>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/math/notes/1.2-数列的极限">1.2 数列的极限</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 判断 $\lim_{n\to\infty}\dfrac{3n+1}{n}=3$ 是否成立</li>
+<li>[ ] 背下两个基本极限</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>1-3 函数的极限</h3>
+<div class='gap'></div>
+<p><strong>学什么</strong>：自变量逼近某点时函数逼近哪个值。左右极限都相等极限才存在。</p>
+<div class='gap'></div>
+<p><strong>核心公式</strong>：$\lim_{x\to x_0^-}f(x)=\lim_{x\to x_0^+}f(x)=A \iff \lim_{x\to x_0}f(x)=A$</p>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/math/notes/1.3-函数的极限">1.3 函数的极限</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 求分段函数在分段点的极限（左右分别求）</li>
+<li>[ ] 说出&quot;极限存在&quot;的充要条件</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>1-4 无穷小与无穷大</h3>
+<div class='gap'></div>
+<p><strong>学什么</strong>：无穷小→0，无穷大→∞。抓大头比阶数。</p>
+<div class='gap'></div>
+<p><strong>核心公式</strong>：$\dfrac{a x^n+\cdots}{b x^m+\cdots}\to\begin{cases}\frac{a}{b},&amp;n=m\\0,&amp;n&lt;m\\\infty,&amp;n&gt;m\end{cases}$</p>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/math/notes/1.8-极限界限之“抓大头”法则">1.8 极限界限之&quot;抓大头&quot;法则</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 用抓大头算 $\lim_{x\to\infty}\dfrac{2x^2+1}{3x^2-x}$</li>
+<li>[ ] 记住：无穷小 × 有界函数 = 无穷小</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>1-5 极限运算法则</h3>
+<div class='gap'></div>
+<p><strong>学什么</strong>：极限加减乘除可拆开算（分母不为0时）。$\frac{0}{0}$ 要先化简。</p>
+<div class='gap'></div>
+<p><strong>核心公式</strong>：$\lim(f\pm g)=\lim f\pm\lim g$，$\lim(fg)=\lim f\cdot\lim g$</p>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/math/notes/1.5-极限运算法则">1.5 极限运算法则</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 算 $\lim_{x\to 2}\dfrac{x^2-4}{x-2}$（先因式分解）</li>
+<li>[ ] 知道什么情况下不能直接代值</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>1-6 两个重要极限 ⭐</h3>
+<div class='gap'></div>
+<p><strong>学什么</strong>：两大&quot;必用公式&quot;，绝大多数极限题靠它们。</p>
+<div class='gap'></div>
+<p><strong>核心公式</strong>：</p>
+<ul>
+<li>$\lim_{x\to 0}\dfrac{\sin x}{x}=1$ ⭐⭐⭐</li>
+<li>$\lim_{x\to\infty}\left(1+\dfrac{1}{x}\right)^x=e$ ⭐⭐⭐</li>
+</ul>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/math/notes/1.6-两个重要极限">1.6 两个重要极限</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 默写两个重要极限</li>
+<li>[ ] 算 $\lim_{x\to 0}\dfrac{\sin 4x}{x}$（凑成 $\dfrac{\sin 4x}{4x}\cdot 4$）</li>
+<li>[ ] 算 $\lim_{x\to\infty}\left(1+\dfrac{2}{x}\right)^x$</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>1-7 等价无穷小替换 ⭐</h3>
+<div class='gap'></div>
+<p><strong>学什么</strong>：$x\to 0$ 时，许多函数可换为简单式子。</p>
+<div class='gap'></div>
+<p><strong>核心公式</strong>（$x\to 0$ 时）：$\sin x\sim x$，$\tan x\sim x$，$\ln(1+x)\sim x$，$e^x-1\sim x$，$1-\cos x\sim\frac{x^2}{2}$</p>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/math/notes/1.4-等价无穷小替换原理">1.4 等价无穷小替换原理</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 默写 5 条等价无穷小公式</li>
+<li>[ ] 用替换算 $\lim_{x\to 0}\dfrac{\sin 2x}{\tan 3x}$</li>
+<li>[ ] 知道&quot;加减中不能随便换&quot;</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>1-8 连续性与间断点 ⭐</h3>
+<div class='gap'></div>
+<p><strong>学什么</strong>：连续=曲线不断开。间断点分第一类（可去/跳跃）和第二类（无穷/振荡）。</p>
+<div class='gap'></div>
+<p><strong>核心公式</strong>：$f(x)$ 在 $x_0$ 连续 $\iff \lim_{x\to x_0}f(x)=f(x_0)$</p>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/math/notes/1.12-函数的连续性与间断点分类">1.12 函数的连续性与间断点分类</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 判断分段函数在分段点是否连续</li>
+<li>[ ] 说出可去 vs 跳跃间断点的区别</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>1-9 初等函数的连续性</h3>
+<div class='gap'></div>
+<p><strong>学什么</strong>：初等函数在定义域内处处连续，求极限直接代值。</p>
+<div class='gap'></div>
+<p><strong>核心公式</strong>：$\lim_{x\to x_0}f(x)=f(x_0)$（$f$ 为初等函数且 $x_0$ 在定义域内）</p>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/math/notes/1.9-初等函数的连续性">1.9 初等函数的连续性</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 直接代值算 $\lim_{x\to 1}(x^2+3x-2)$</li>
+<li>[ ] 知道什么是初等函数</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>1-10 闭区间上连续函数的性质</h3>
+<div class='gap'></div>
+<p><strong>学什么</strong>：零点定理——证明题高频。</p>
+<div class='gap'></div>
+<p><strong>核心公式</strong>（零点定理）：$f(a)\cdot f(b)&lt;0 \Rightarrow$ 存在 $\xi\in(a,b)$ 使 $f(\xi)=0$</p>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/math/notes/1.14-闭区间上连续函数的性质">1.14 闭区间上连续函数的性质</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 用零点定理证方程在区间内有根</li>
+<li>[ ] 记住&quot;闭区间+连续&quot;才有最值定理</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第二章 导数与微分（重头戏，占比约24分）</h2>
+<div class='gap'></div>
+<h3>2-1 导数概念 ⭐</h3>
+<div class='gap'></div>
+<p><strong>学什么</strong>：导数=变化率=切线斜率。</p>
+<div class='gap'></div>
+<p><strong>核心公式</strong>：$f&#x27;(x_0)=\lim_{\Delta x\to 0}\dfrac{f(x_0+\Delta x)-f(x_0)}{\Delta x}$ ⭐⭐⭐</p>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/math/notes/2.1-导数的定义">2.1 导数的定义</a> · <a href="/posts/math/notes/2.2-单侧导数以及可导与连续的关系">2.2 单侧导数及可导与连续的关系</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 用定义求 $y=x^3+1$ 在 $x=1$ 的导数</li>
+<li>[ ] 记住：可导 ⟹ 连续；连续不一定可导（如 $|x|$ 在 0 处）</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>2-2 求导法则与链式法则 ⭐⭐</h3>
+<div class='gap'></div>
+<p><strong>学什么</strong>：背公式表+四则运算+链式法则（复合函数求导，必考）。</p>
+<div class='gap'></div>
+<p><strong>核心公式</strong>：链式法则：$[f(g(x))]&#x27;=f&#x27;(g(x))\cdot g&#x27;(x)$ ⭐⭐⭐</p>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/math/notes/2.3-基本导数公式和四则运算求导法则">2.3 基本导数公式和四则运算求导法则</a> · <a href="/posts/math/notes/2.4-复合函数的求导方法（链式法则）">2.4 复合函数的求导方法（链式法则）</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 默写基本导数表（幂/三角/指数/对数）</li>
+<li>[ ] 求 $f(x)=\sin(3x+1)$ 的导数</li>
+<li>[ ] 求 $y=e^{x^2}$ 的导数</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>2-3 高阶导数</h3>
+<div class='gap'></div>
+<p><strong>学什么</strong>：再求导一次就是二阶导，以此类推。</p>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/math/notes/2.6-高阶导数">2.6 高阶导数</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 求 $f(x)=(x-3)^5$ 的 $f&#x27;&#x27;&#x27;(4)$</li>
+<li>[ ] 记住多项式求高阶导降次规律</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>2-4 隐函数与参数方程求导</h3>
+<div class='gap'></div>
+<p><strong>学什么</strong>：方程两边同时求导（$y$ 要乘 $y&#x27;$）；参数方程用&quot;相除&quot;。</p>
+<div class='gap'></div>
+<p><strong>核心公式</strong>：参数方程 $\dfrac{\mathrm dy}{\mathrm dx}=\dfrac{\mathrm dy/\mathrm dt}{\mathrm dx/\mathrm dt}$ ⭐</p>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/math/notes/2.5-隐函数与参数方程求导方法">2.5 隐函数与参数方程求导方法</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 求 $x^2+y^2=25$ 在 $(3,4)$ 处的切线斜率</li>
+<li>[ ] 对 $\begin{cases}x=e^t+t\\y=t\cos t\end{cases}$ 求 $\dfrac{\mathrm dy}{\mathrm dx}$</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>2-5 函数的微分</h3>
+<div class='gap'></div>
+<p><strong>学什么</strong>：微分=线性近似，$\mathrm dy=y&#x27;\mathrm dx$。</p>
+<div class='gap'></div>
+<p><strong>核心公式</strong>：$\mathrm dy=f&#x27;(x)\,\mathrm dx$ ⭐</p>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/math/notes/2.7-微分">2.7 微分</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 求 $y=\ln x$ 的微分</li>
+<li>[ ] 注意：填空题求微分别漏掉 $\mathrm dx$</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第三章 微分中值定理与导数的应用（约15分）</h2>
+<div class='gap'></div>
+<h3>3-1 微分中值定理</h3>
+<div class='gap'></div>
+<p><strong>学什么</strong>：罗尔、拉格朗日——证明题的理论支柱。</p>
+<div class='gap'></div>
+<p><strong>核心公式</strong>：罗尔：$f(a)=f(b) \Rightarrow$ 存在 $\xi$ 使 $f&#x27;(\xi)=0$。拉格朗日：$\dfrac{f(b)-f(a)}{b-a}=f&#x27;(\xi)$</p>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/math/notes/2.8-微分中值定理（罗尔与拉格朗日）">2.8 微分中值定理（罗尔与拉格朗日）</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 说清罗尔定理的三个条件</li>
+<li>[ ] 能构造辅助函数证方程根的存在性</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>3-2 洛必达法则 ⭐⭐⭐</h3>
+<div class='gap'></div>
+<p><strong>学什么</strong>：$\frac{0}{0}$ 或 $\frac{\infty}{\infty}$ 型极限——分子分母分别求导。</p>
+<div class='gap'></div>
+<p><strong>核心公式</strong>：$\lim\dfrac{f(x)}{g(x)}=\lim\dfrac{f&#x27;(x)}{g&#x27;(x)}$（满足条件时）</p>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/math/notes/2.9-洛必达法则">2.9 洛必达法则</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 算 $\lim_{x\to 0}\dfrac{1-\cos x}{x^2}$</li>
+<li>[ ] 知道 $\frac{0}{0}$、$\frac{\infty}{\infty}$ 才能用；$1^\infty$ 要先变形</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>3-3 泰勒公式</h3>
+<div class='gap'></div>
+<p><strong>学什么</strong>：用多项式逼近复杂函数。重点记麦克劳林展开。</p>
+<div class='gap'></div>
+<p><strong>记忆</strong>：$e^x=1+x+\dfrac{x^2}{2!}+\cdots$（掌握前几项即可）</p>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/math/notes/2.13-泰勒公式与麦克劳林公式">2.13 泰勒公式与麦克劳林公式</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 写出 $e^x$、$\sin x$、$\ln(1+x)$ 的麦克劳林前 2-3 项</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>3-4/3-5 单调性、凹凸性、极值与最值 ⭐⭐</h3>
+<div class='gap'></div>
+<p><strong>学什么</strong>：用导数判断函数走向——应用题核心。</p>
+<div class='gap'></div>
+<p><strong>核心公式</strong>：$f&#x27;(x)&gt;0$ 递增，$f&#x27;(x)&lt;0$ 递减。$f&#x27;&#x27;(x)&gt;0$ 凹，$f&#x27;&#x27;(x)&lt;0$ 凸。</p>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/math/notes/2.10-导数的几何应用（切线与单调性）">2.10 导数的几何应用（切线与单调性）</a> · <a href="/posts/math/notes/2.11-函数的极值与曲线凹凸性">2.11 函数的极值与曲线凹凸性</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 求 $f(x)=x^3-3x$ 的单调区间与极值</li>
+<li>[ ] 求闭区间上函数最值（端点+驻点比较）</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>3-6 渐近线</h3>
+<div class='gap'></div>
+<p><strong>学什么</strong>：画图前必查。垂直渐近线（分母为0处），水平渐近线（$x\to\infty$ 时的极限）。</p>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/math/notes/2.12-函数曲线的渐近线">2.12 函数曲线的渐近线</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 求 $y=\dfrac{1}{x-1}$ 的垂直和水平渐近线</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第四章 不定积分（占比约16分）</h2>
+<div class='gap'></div>
+<h3>4-1 不定积分的概念与性质</h3>
+<div class='gap'></div>
+<p><strong>学什么</strong>：积分=微分的逆运算。原函数可导，导数为 $f(x)$ 则 $F(x)$ 是 $f(x)$ 的原函数。</p>
+<div class='gap'></div>
+<p><strong>核心公式</strong>：$\int f(x)\,\mathrm dx=F(x)+C$，其中 $F&#x27;(x)=f(x)$ ⭐⭐⭐</p>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/math/notes/3.1-原函数与不定积分的概念及性质">3.1 原函数与不定积分的概念及性质</a> · <a href="/posts/math/notes/3.2-直接积分法">3.2 直接积分法</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 默写基本积分表（与导数表对照）</li>
+<li>[ ] 算 $\int(3x^2+2x+1)\,\mathrm dx$</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>4-2 换元积分法 ⭐</h3>
+<div class='gap'></div>
+<p><strong>学什么</strong>：第一类换元=凑微分；第二类换元=根式代换/三角代换。</p>
+<div class='gap'></div>
+<p><strong>核心公式</strong>：$\int f(g(x))\,g&#x27;(x)\,\mathrm dx=\int f(u)\,\mathrm du$（令 $u=g(x)$）⭐⭐</p>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/math/notes/3.3-第一类换元法（凑微分法）">3.3 第一类换元法（凑微分法）</a> · <a href="/posts/math/notes/3.4-第二类换元法之根式代换">3.4 第二类换元法之根式代换</a> · <a href="/posts/math/notes/3.5-第二类换元法之三角代换">3.5 第二类换元法之三角代换</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 算 $\int 2x\,e^{x^2}\,\mathrm dx$（凑微分）</li>
+<li>[ ] 算 $\int\dfrac{\mathrm dx}{1+\sqrt{x}}$（根式代换）</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>4-3 分部积分法 ⭐⭐</h3>
+<div class='gap'></div>
+<p><strong>学什么</strong>：$\int u\,\mathrm dv=uv-\int v\,\mathrm du$。选谁当 $u$：反对幂指三。</p>
+<div class='gap'></div>
+<p><strong>核心公式</strong>：$\int u\,\mathrm dv=uv-\int v\,\mathrm du$ ⭐⭐⭐</p>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/math/notes/3.6-分部积分法">3.6 分部积分法</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 算 $\int x\sin x\,\mathrm dx$</li>
+<li>[ ] 算 $\int x\ln x\,\mathrm dx$（注意谁当 $u$）</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第五章 定积分（约16分）</h2>
+<div class='gap'></div>
+<h3>5-1 定积分的概念与性质</h3>
+<div class='gap'></div>
+<p><strong>学什么</strong>：定积分=曲边梯形面积。</p>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/math/notes/3.7-定积分的概念">3.7 定积分的概念</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 说出定积分的几何意义</li>
+<li>[ ] 记住 $\int_a^b 1\,\mathrm dx=b-a$</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>5-2 微积分基本公式 ⭐⭐⭐</h3>
+<div class='gap'></div>
+<p><strong>学什么</strong>：定积分=原函数在上下限的差值。无需求和，直接算。</p>
+<div class='gap'></div>
+<p><strong>核心公式</strong>：$\int_a^b f(x)\,\mathrm dx=F(b)-F(a)$，其中 $F&#x27;(x)=f(x)$ ⭐⭐⭐</p>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/math/notes/3.8-牛顿-莱布尼兹公式及定积分的性质">3.8 牛顿-莱布尼兹公式及定积分的性质</a> · <a href="/posts/math/notes/3.11-积分变限函数及其导数">3.11 积分变限函数及其导数</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 算 $\int_0^1(3x^2+2x)\,\mathrm dx$</li>
+<li>[ ] 求 $\dfrac{\mathrm d}{\mathrm dx}\int_0^x e^{t^2}\,\mathrm dt$（变上限积分求导）</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>5-3 定积分的换元法与分部积分法</h3>
+<div class='gap'></div>
+<p><strong>学什么</strong>：换元要换限，分部公式同不定积分但带上下限。</p>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/math/notes/3.9-定积分的换元法">3.9 定积分的换元法</a> · <a href="/posts/math/notes/3.10-定积分的分部积分法">3.10 定积分的分部积分法</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 算 $\int_0^{\pi/2}\sin x\cos x\,\mathrm dx$</li>
+<li>[ ] 算 $\int_0^1 x\,e^x\,\mathrm dx$</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>5-4 反常积分</h3>
+<div class='gap'></div>
+<p><strong>学什么</strong>：积分区间无限或函数在积分区间内无界→按极限算。</p>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/math/notes/3.12-反常积分（广义积分）">3.12 反常积分（广义积分）</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 判断 $\int_1^{+\infty}\dfrac{1}{x^2}\,\mathrm dx$ 收敛还是发散</li>
+<li>[ ] 记住：$\dfrac{1}{x^p}$ 在 $(1,+\infty)$ 上 $p&gt;1$ 收敛，$p\le 1$ 发散</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第六章 定积分的应用（约5分）</h2>
+<div class='gap'></div>
+<h3>6-1/6-2 求面积与体积 ⭐⭐</h3>
+<div class='gap'></div>
+<p><strong>学什么</strong>：面积=上减下积分；旋转体体积=$\int\pi(\text{半径})^2\,\mathrm dx$。</p>
+<div class='gap'></div>
+<p><strong>核心公式</strong>：面积 $S=\int_a^b[f(x)-g(x)]\,\mathrm dx$ ⭐⭐</p>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/math/notes/3.13-求平面图形的面积">3.13 求平面图形的面积</a> · <a href="/posts/math/notes/3.14-求旋转体的体积">3.14 求旋转体的体积</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 求 $y=x^2$ 与 $y=x$ 所围图形面积</li>
+<li>[ ] 求该图形绕 $x$ 轴旋转的体积</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第七章 微分方程（约12分）</h2>
+<div class='gap'></div>
+<h3>7-1 微分方程的基本概念</h3>
+<div class='gap'></div>
+<p><strong>学什么</strong>：含导数的方程。阶数=最高阶导数的阶。</p>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/math/notes/7.1-微分方程的基本概念">7.1 微分方程的基本概念</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 说出微分方程的阶、通解、特解的区别</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>7-2/7-4 一阶微分方程 ⭐⭐</h3>
+<div class='gap'></div>
+<p><strong>学什么</strong>：可分离变量（两边积分）和一阶线性（套公式）。</p>
+<div class='gap'></div>
+<p><strong>核心公式</strong>：可分离：$\dfrac{\mathrm dy}{\mathrm dx}=g(x)h(y)$ → $\dfrac{\mathrm dy}{h(y)}=g(x)\,\mathrm dx$；一阶线性：$y&#x27;+P(x)y=Q(x)$</p>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/math/notes/7.2-一阶微分方程">7.2 一阶微分方程</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 解 $y&#x27;=2xy$（分离变量）</li>
+<li>[ ] 解 $y&#x27;+y=e^x$（一阶线性）</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>7-6/7-8 高阶线性微分方程</h3>
+<div class='gap'></div>
+<p><strong>学什么</strong>：常系数齐次→特征方程法。</p>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/math/notes/7.3-高阶线性微分方程">7.3 高阶线性微分方程</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 解 $y&#x27;&#x27;-3y&#x27;+2y=0$（特征方程 $r^2-3r+2=0$）</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>下册（第 8—12 章）</h2>
+<div class='gap'></div>
+<h2>第八章 向量与空间解析几何（约5分）</h2>
+<div class='gap'></div>
+<h3>8-1 向量及其线性运算</h3>
+<div class='gap'></div>
+<p><strong>学什么</strong>：向量=有方向的量。加减、数乘、模长、方向余弦。</p>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/math/notes/4.1-空间直角坐标系与向量的线性运算">4.1 空间直角坐标系与向量的线性运算</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 求向量 $(1,2,2)$ 的模长和方向余弦</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>8-2 数量积与向量积</h3>
+<div class='gap'></div>
+<p><strong>学什么</strong>：点积得数（投影），叉积得向量（面积）。</p>
+<div class='gap'></div>
+<p><strong>核心公式</strong>：$\vec a\cdot\vec b=|\vec a||\vec b|\cos\theta$，$\vec a\times\vec b=|\vec a||\vec b|\sin\theta$</p>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/math/notes/4.2-向量的数量积与向量积">4.2 向量的数量积与向量积</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 判两向量垂直（点积 $=0$）和平行（叉积 $=0$）</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>8-3/8-4 平面与直线方程</h3>
+<div class='gap'></div>
+<p><strong>学什么</strong>：平面方程=点法式；直线方程=对称式/参数式。</p>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/math/notes/4.3-平面及其方程">4.3 平面及其方程</a> · <a href="/posts/math/notes/4.4-空间直线及其方程">4.4 空间直线及其方程</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 求过三点 $(1,0,0)$、$(0,1,0)$、$(0,0,1)$ 的平面方程</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第九章 多元函数微分法（约15分）</h2>
+<div class='gap'></div>
+<h3>9-1/9-2 多元函数与偏导数 ⭐</h3>
+<div class='gap'></div>
+<p><strong>学什么</strong>：对一个变量求导，其他变量视为常数。</p>
+<div class='gap'></div>
+<p><strong>核心公式</strong>：$\dfrac{\partial z}{\partial x}$ = 只对 $x$ 求导，$y$ 当常数 ⭐⭐⭐</p>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/math/notes/5.1-多元函数的基本概念">5.1 多元函数的基本概念</a> · <a href="/posts/math/notes/5.2-偏导数与全微分">5.2 偏导数与全微分</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 求 $z=x^2y+xy^2$ 的 $\dfrac{\partial z}{\partial x}$ 和 $\dfrac{\partial z}{\partial y}$</li>
+<li>[ ] 求全微分 $\mathrm dz$</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>9-4/9-5 复合函数与隐函数求导</h3>
+<div class='gap'></div>
+<p><strong>学什么</strong>：多元链式法则；隐函数用公式。</p>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/math/notes/5.3-多元复合函数与隐函数求导法">5.3 多元复合函数与隐函数求导法</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 对 $z=f(x,y)$，$x=2t$，$y=t^2$ 求 $\dfrac{\mathrm dz}{\mathrm dt}$</li>
+<li>[ ] 隐函数 $F(x,y)=0$ 求 $\dfrac{\mathrm dy}{\mathrm dx}=-\dfrac{F_x}{F_y}$</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>9-8 多元函数的极值</h3>
+<div class='gap'></div>
+<p><strong>学什么</strong>：求驻点→$AC-B^2$ 判别法。</p>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/math/notes/5.4-多元函数的极值">5.4 多元函数的极值</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 求 $f(x,y)=x^2+y^2-2x-4y$ 的极值</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第十章 重积分（约15分）</h2>
+<div class='gap'></div>
+<h3>10-1/10-2 二重积分 ⭐⭐</h3>
+<div class='gap'></div>
+<p><strong>学什么</strong>：二重积分=曲顶柱体体积。直角坐标或极坐标。</p>
+<div class='gap'></div>
+<p><strong>核心公式</strong>：$\iint_D f(x,y)\,\mathrm dx\,\mathrm dy$ 先 $y$ 后 $x$ 或先 $x$ 后 $y$ ⭐⭐</p>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/math/notes/6.1-二重积分的概念与性质">6.1 二重积分的概念与性质</a> · <a href="/posts/math/notes/6.2-二重积分的计算">6.2 二重积分的计算</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 算 $\iint_D (x+y)\,\mathrm dx\,\mathrm dy$，$D$ 由 $y=2$、$y=x$ 和 $y$ 轴围成</li>
+<li>[ ] 圆域用极坐标：$x=r\cos\theta$，$y=r\sin\theta$</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>10-3 三重积分</h3>
+<div class='gap'></div>
+<p><strong>学什么</strong>：二重积分的推广，三维空间上的积分。</p>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/math/notes/6.3-三重积分">6.3 三重积分</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 了解基本概念，专插本低频</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第十一章 曲线积分与曲面积分（约3分）</h2>
+<div class='gap'></div>
+<h3>11-1 对弧长的曲线积分</h3>
+<div class='gap'></div>
+<p><strong>学什么</strong>：沿曲线积分，$\mathrm ds$=弧长微元。</p>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/math/notes/6.4-曲线积分">6.4 曲线积分</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 记住基本公式，专插本低频</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第十二章 无穷级数（约9分）</h2>
+<div class='gap'></div>
+<h3>12-1 常数项级数的概念与性质</h3>
+<div class='gap'></div>
+<p><strong>学什么</strong>：无穷项求和。级数收敛=部分和极限存在。</p>
+<div class='gap'></div>
+<p><strong>核心公式</strong>：等比级数 $\sum q^n$ 收敛当 $|q|&lt;1$ ⭐</p>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/math/notes/8.1-常数项级数的概念与性质">8.1 常数项级数的概念与性质</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 判断 $\sum\left(\dfrac{2}{3}\right)^n$ 收敛还是发散</li>
+<li>[ ] 记住：通项不趋于 0 则级数必发散</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>12-2 正项级数审敛法 ⭐</h3>
+<div class='gap'></div>
+<p><strong>学什么</strong>：比值判别法、比较判别法。先看通项→0 是最快的。</p>
+<div class='gap'></div>
+<p><strong>核心公式</strong>：$\lim\dfrac{u_{n+1}}{u_n}&gt;1$ 发散，$&lt;1$ 收敛 ⭐⭐</p>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/math/notes/8.2-正项级数审敛法">8.2 正项级数审敛法</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 判断 $\sum\dfrac{2^n}{n^2}$ 的敛散性</li>
+<li>[ ] 先看通项！通项不趋于 0 直接发散</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>12-3/12-4 幂级数 ⭐</h3>
+<div class='gap'></div>
+<p><strong>学什么</strong>：形如 $\sum a_n(x-x_0)^n$，求收敛半径和收敛域。</p>
+<div class='gap'></div>
+<p><strong>核心公式</strong>：$R=\dfrac{1}{\lim|a_{n+1}/a_n|}$ ⭐</p>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/math/notes/8.3-幂级数">8.3 幂级数</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 求 $\sum\dfrac{x^n}{n}$ 的收敛半径和收敛域</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>12-5 傅里叶级数</h3>
+<div class='gap'></div>
+<p><strong>学什么</strong>：周期函数展开为正弦余弦和。</p>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/math/notes/8.4-傅里叶级数">8.4 傅里叶级数</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 了解基本概念，专插本低频</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>学习计划建议</h2>
+<div class='gap'></div>
+<blockquote>零基础，每周 3-6 小时，目标 80 分。</blockquote>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>周期</th><th>章节</th><th>建议时间</th></tr>
+<tr><td>第1-2周</td><td>第一章 函数与极限（10节）</td><td>10h</td></tr>
+<tr><td>第3-4周</td><td>第二章 导数与微分（5节）</td><td>8h</td></tr>
+<tr><td>第5周</td><td>第三章 中值定理与应用（6节）</td><td>6h</td></tr>
+<tr><td>第6-7周</td><td>第四章 不定积分（5节）</td><td>8h</td></tr>
+<tr><td>第8周</td><td>第五章 定积分（4节）</td><td>6h</td></tr>
+<tr><td>第9周</td><td>第六章 应用 + 第七章 微分方程</td><td>6h</td></tr>
+<tr><td>第10周</td><td>下册（8-12章，低频为主）</td><td>6h</td></tr>
+<tr><td>第11周起</td><td>刷真题（2026/2024优先）</td><td>每周2h+</td></tr>
+</table>
+<div class='gap'></div>
+<blockquote>每节学完，能勾掉复习任务里所有[ ]，才算过关。</blockquote>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<blockquote>本手册是学习导航，详细笔记和自测题在&quot;笔记链接&quot;中。&lt;br&gt;</blockquote>
+<div class='gap'></div>
+</body>
+</html>

@@ -9,191 +9,372 @@ h1 { font-size: 22px; border-bottom: 2px solid #333; padding-bottom: 8px; }
 h2 { font-size: 18px; margin-top: 24px; }
 h3 { font-size: 16px; }
 table { margin: 12px 0; }
+th, td { text-align: left; vertical-align: top; }
+ul, ol { margin: 8px 0; padding-left: 26px; }
+li { margin: 2px 0; }
 blockquote { border-left: 3px solid #999; margin: 8px 0; padding: 4px 12px; color: #555; background: #f7f7f7; }
 code { background: #f0f0f0; padding: 1px 5px; border-radius: 3px; }
+pre { background: #f7f7f7; border: 1px solid #e0e0e0; border-radius: 4px; padding: 10px 12px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+hr { border: none; border-top: 1px solid #ddd; margin: 18px 0; }
+a { color: #1a4d8f; }
+.ctitle { background: #eef4fb; border-left: 3px solid #7aa7d9; margin: 10px 0; padding: 6px 12px; color: #24486f; }
 .gap { height: 8px; }
 @media print { body { margin: 0; padding: 0; max-width: none; } }
 </style>
 </head>
 <body>
 <div class='gap'></div>
-<div class='gap'></div>
 <h1>计算机程序设计 · 2026 年真题（回忆版 + 同题型复盘详解）</h1>
 <div class='gap'></div>
-<blockquote>**类型**：考生回忆版 + 同题型复盘 | 满分 **200** 分 · **150** 分钟</blockquote>
-<blockquote>**科目**：广东普通专升本《计算机基础与程序设计》</blockquote>
-<blockquote>**来源**：Sakiko 博客真题整理 · 2026-07-23</blockquote>
-<blockquote>**参考教材**：谭浩强《C语言程序设计》（第5版）+ 严蔚敏《数据结构（C语言版）》（第2版）</blockquote>
+<blockquote><strong>类型</strong>：考生回忆版 + 同题型复盘 | 满分 <strong>200</strong> 分 · <strong>150</strong> 分钟</blockquote>
+<blockquote><strong>科目</strong>：广东普通专升本《计算机基础与程序设计》</blockquote>
+<blockquote><strong>参考教材</strong>：谭浩强《C语言程序设计》（第5版）+ 严蔚敏《数据结构（C语言版）》（第2版）</blockquote>
 <div class='gap'></div>
-<p>---</p>
+<hr>
 <div class='gap'></div>
 <h2>试卷结构（满分200分，150分钟）</h2>
 <div class='gap'></div>
 <table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
 <tr><th>题型</th><th>题量</th><th>分值</th><th>核心考查内容</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>一、单项选择题</th><th>20题</th><th>60分（3分/题）</th><th>C语言语法、表达式、程序阅读、数据结构概念</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>二、判断题</th><th>10题</th><th>20分（2分/题）</th><th>C语言细节、数据结构性质、算法复杂度</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>三、填空题</th><th>5题</th><th>20分（4分/题）</th><th>程序补全、字符串、树与图</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>四、简答题</th><th>4题</th><th>40分（10分/题）</th><th>概念辨析、存储结构、算法分析</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>五、计算题</th><th>3题</th><th>30分（10分/题）</th><th>程序执行结果、查找与排序过程</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>六、应用题</th><th>3题</th><th>30分（10分/题）</th><th>C语言程序设计与数据处理</th></tr>
+<tr><td>一、单项选择题</td><td>20题</td><td>60分（3分/题）</td><td>C语言语法、表达式、程序阅读、数据结构概念</td></tr>
+<tr><td>二、判断题</td><td>10题</td><td>20分（2分/题）</td><td>C语言细节、数据结构性质、算法复杂度</td></tr>
+<tr><td>三、填空题</td><td>5题</td><td>20分（4分/题）</td><td>程序补全、字符串、树与图</td></tr>
+<tr><td>四、简答题</td><td>4题</td><td>40分（10分/题）</td><td>概念辨析、存储结构、算法分析</td></tr>
+<tr><td>五、计算题</td><td>3题</td><td>30分（10分/题）</td><td>程序执行结果、查找与排序过程</td></tr>
+<tr><td>六、应用题</td><td>3题</td><td>30分（10分/题）</td><td>C语言程序设计与数据处理</td></tr>
+</table>
 <div class='gap'></div>
-<p>---</p>
+<blockquote><strong>本页含两类内容，别混</strong>：</blockquote>
+<blockquote>- <strong>2026 真题原题</strong> —— 3 道应用题，有视频源逐帧/逐句核对，见第一节；</blockquote>
+<blockquote>- <strong>同题型复盘题</strong> —— 16 道按 2026 考纲题型自编的练习，<strong>不是真题</strong>，见第二、三节。</blockquote>
 <div class='gap'></div>
-<h2>一、C语言同题型复盘</h2>
+<hr>
+<div class='gap'></div>
+<h2>一、2026 真题 · 考生回忆版（应用题 3 题）</h2>
+<div class='gap'></div>
+<blockquote><strong>来源</strong>：B 站 <a href="https://www.bilibili.com/video/BV1Z4w3znE6h">BV1Z4w3znE6h</a> P5（UP：一灯computer）· 考生回忆版</blockquote>
+<blockquote><strong>核实时间</strong>：2026-09-19，逐帧 + 逐句核对</blockquote>
+<blockquote><strong>边界</strong>：UP 在片尾自述「目前来说我看到比较完善的就是这三道编程题」—— 2026 计算机公开可考的回忆题<strong>只有这 3 道</strong>，其余题型暂无真题源。</blockquote>
+<blockquote></blockquote>
+<blockquote>⚠️ <strong>数据说明</strong>：第 1、2 题视频里给的那组具体数值，是<strong>讲解老师自己编的</strong>（原话：「我不确定他有没有给到我这个……所以呢我就自己随机写了一个分数过来」「他也没有给我值啊，没有给我具体的值，我就假设……」）。真题原卷只给了题目要求，没给数据。所以下面把「题目要求」和「讲解者自编的示例数据」<strong>分开写</strong> —— 别把示例数据当成题目条件背下来。</blockquote>
+<div class='gap'></div>
+<h3>第 1 题 · 射箭比赛计分（数组 + 循环 + 分支）</h3>
+<div class='gap'></div>
+<p><strong>题目要求</strong></p>
+<div class='gap'></div>
+<p>有 A、B 两个小队，每队 5 名队员进行射箭比赛，成绩用数组存储。按队员顺序逐个比较两队的分数：A 队队员分数高于 B 队则记 A 队赢一局，低于则记 B 队赢一局，相等记平局。要求统计并输出 A 队赢的局数、B 队赢的局数、平局的次数。</p>
+<div class='gap'></div>
+<blockquote>⚠️ 本题<strong>没有卷面帧</strong> —— 上面这段是按口播整理的，不是卷面逐字原文。</blockquote>
+<div class='gap'></div>
+<p><strong>示例数据（讲解者自编，非真题数据）</strong></p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>队伍</th><th>队员 1</th><th>队员 2</th><th>队员 3</th><th>队员 4</th><th>队员 5</th></tr>
+<tr><td>A 队</td><td>15</td><td>7</td><td>20</td><td>22</td><td>21</td></tr>
+<tr><td>B 队</td><td>16</td><td>5</td><td>20</td><td>22</td><td>14</td></tr>
+</table>
+<div class='gap'></div>
+<p><strong>参考代码</strong></p>
+<div class='gap'></div>
+<pre><code>
+#include &lt;stdio.h&gt;
+
+int main() {
+    int a[5] = {15, 7, 20, 22, 21};
+    int b[5] = {16, 5, 20, 22, 14};
+    int a_win = 0, b_win = 0, draw = 0;
+    int i;
+
+    for (i = 0; i &lt; 5; i++) {
+        if (a[i] &gt; b[i])       a_win++;   /* A 队这一局赢 */
+        else if (a[i] &lt; b[i])  b_win++;   /* B 队这一局赢 */
+        else                   draw++;    /* 平局单独统计 */
+    }
+
+    printf(&quot;A队赢 %d 局，B队赢 %d 局，平局 %d 次\n&quot;, a_win, b_win, draw);
+    return 0;
+}
+</code></pre>
+<div class='gap'></div>
+<p><strong>运行结果</strong>（在上面那组自编数据下）</p>
+<div class='gap'></div>
+<pre><code>
+A队赢 2 局，B队赢 1 局，平局 2 次
+</code></pre>
+<div class='gap'></div>
+<p><strong>易错点</strong></p>
+<div class='gap'></div>
+<ul>
+<li>三个计数器写成同一个变量 —— 三个统计量必须各自独立。</li>
+<li>判断写成 <code>a[i] &gt;= b[i]</code> 归到「赢」—— <strong>相等必须单独归入平局</strong>，否则平局数恒为 0。</li>
+<li>循环边界写成 <code>i &lt;= 5</code> —— 数组长度 5，合法下标 0~4，会越界。</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 2 题 · 停车场七天最多台数（指针）</h3>
+<div class='gap'></div>
+<p><strong>题目要求</strong>（卷面逐字）</p>
+<div class='gap'></div>
+<blockquote>停车场连续七天记录每晚停车的台数，要求找出一周内停车的最多为多少台，用指针实现。</blockquote>
+<div class='gap'></div>
+<p><strong>示例数据（讲解者自编，非真题数据）</strong></p>
+<div class='gap'></div>
+<p><code>28, 17, 19, 43, 22, 85, 8</code></p>
+<div class='gap'></div>
+<p><strong>参考代码</strong></p>
+<div class='gap'></div>
+<pre><code>
+#include &lt;stdio.h&gt;
+
+int main() {
+    int car[7] = {28, 17, 19, 43, 22, 85, 8};
+    int *p = car;        /* 数组名就是首元素地址 */
+    int max = *p;        /* 先假设第一天最多，而不是写 max = 0 */
+    int i;
+
+    for (i = 1; i &lt; 7; i++) {
+        p++;             /* 指针后移一个元素 */
+        if (*p &gt; max) max = *p;
+    }
+
+    printf(&quot;一周内停车最多 %d 台\n&quot;, max);
+    return 0;
+}
+</code></pre>
+<div class='gap'></div>
+<blockquote>更地道的写法是把指针移动直接放进 <code>for</code>：</blockquote>
+<blockquote></blockquote>
+<pre><code>
+for (p = car + 1; p &lt; car + 7; p++)
+    if (*p &gt; max) max = *p;
+</code></pre>
+<div class='gap'></div>
+<p><strong>运行结果</strong></p>
+<div class='gap'></div>
+<pre><code>
+一周内停车最多 85 台
+</code></pre>
+<div class='gap'></div>
+<p><strong>易错点</strong></p>
+<div class='gap'></div>
+<ul>
+<li><strong><code>max</code> 初值写 <code>0</code></strong> —— 本题数据全是正数才碰巧对，一旦数据可能为负就错。规范做法是<strong>拿第一个元素当初值</strong>。</li>
+<li>指针忘了初始化（<code>int *p = car;</code> 或 <code>&amp;car[0]</code>）就直接 <code>*p</code> —— 野指针。</li>
+<li><code>*p++</code> 与 <code>(*p)++</code> 混淆：前者是「取值后指针后移」，后者是「取到的那个值加一」。</li>
+<li>循环边界写成 <code>i &lt;= 7</code> —— 越界（合法下标 0~6）。</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 3 题 · 结构体 <code>staff</code> 录入与输出</h3>
+<div class='gap'></div>
+<p><strong>题目要求</strong>（卷面逐字）</p>
+<div class='gap'></div>
+<blockquote>定义一个结构体 staff，里面记录了员工的姓名、id、入职年份和薪资。然后输入一条数据，并且打印出该信息，用结构体编程实现。</blockquote>
+<div class='gap'></div>
+<p><strong>参考代码</strong></p>
+<div class='gap'></div>
+<pre><code>
+#include &lt;stdio.h&gt;
+
+struct staff {
+    char  name[20];
+    char  id[20];      /* ★ 用字符数组，不用 int —— 见易错点 */
+    int   year;
+    float salary;
+};
+
+int main() {
+    struct staff s;
+
+    printf(&quot;请输入 姓名 id 入职年份 薪资：&quot;);
+    scanf(&quot;%s %s %d %f&quot;, s.name, s.id, &amp;s.year, &amp;s.salary);
+
+    printf(&quot;员工信息如下：\n&quot;);
+    printf(&quot;姓名：%s\n&quot;, s.name);
+    printf(&quot;id：%s\n&quot;, s.id);
+    printf(&quot;入职年份：%d\n&quot;, s.year);
+    printf(&quot;薪资：%.2f\n&quot;, s.salary);
+
+    return 0;
+}
+</code></pre>
+<div class='gap'></div>
+<p><strong>运行示例</strong></p>
+<div class='gap'></div>
+<pre><code>
+请输入 姓名 id 入职年份 薪资：小李 101 2023 8000
+员工信息如下：
+姓名：小李
+id：101
+入职年份：2023
+薪资：8000.00
+</code></pre>
+<div class='gap'></div>
+<blockquote>本题<strong>不预设数据</strong> —— 题目要求就是「输入一条数据」，上面只是示例输入，输出随输入变化。</blockquote>
+<div class='gap'></div>
+<p><strong>易错点</strong></p>
+<div class='gap'></div>
+<ul>
+<li><strong>★ <code>id</code> 用 <code>int</code> 会丢前导零</strong>：输入 <code>001</code> 出来变 <code>1</code>。讲解老师实测踩过这个坑，最后改成字符数组 <code>char id[20]</code> —— 这样还能存带字母的编号。</li>
+<li><code>struct</code> 定义末尾<strong>漏分号</strong> —— 编译报错，而且报错位置常常指向下一行，容易看错。</li>
+<li>声明变量时漏写 <code>struct</code>：C 语言里必须写 <code>struct staff s;</code>，除非用 <code>typedef</code>。</li>
+<li><code>scanf</code> 读 <code>float</code> 用 <code>%f</code>、读 <code>double</code> 用 <code>%lf</code> —— 用混会读出垃圾值。</li>
+<li>字符串成员用 <code>=</code> 赋值（<code>s.name = &quot;小李&quot;;</code>）—— 数组名不可赋值，必须用 <code>scanf</code> 或 <code>strcpy</code>。</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>二、C语言同题型复盘</h2>
 <div class='gap'></div>
 <h3>1. 以下程序段的输出结果是（ ）</h3>
 <div class='gap'></div>
-<p><code>`</code>c</p>
-<p>int a = 5, b = 2;</p>
-<p>double c = a / b;</p>
-<p>printf(&quot;%.2f&quot;, c);</p>
-<p><code>`</code></p>
+<pre><code>
+int a = 5, b = 2;
+double c = a / b;
+printf(&quot;%.2f&quot;, c);
+</code></pre>
 <div class='gap'></div>
 <p>A. 2.00　　B. 2.50　　C. 2.5　　D. 2</p>
 <div class='gap'></div>
-<blockquote>**答案：A**</blockquote>
+<blockquote><strong>答案：A</strong></blockquote>
 <blockquote></blockquote>
-<blockquote>**解析：** `a` 和 `b` 都是 `int` 类型，`a / b` 执行整数除法，结果为 2（小数部分被截断）。虽然赋值给 `double` 变量，但截断已经发生在整数除法阶段。所以输出 `2.00`。</blockquote>
+<blockquote><strong>解析：</strong> <code>a</code> 和 <code>b</code> 都是 <code>int</code> 类型，<code>a / b</code> 执行整数除法，结果为 2（小数部分被截断）。虽然赋值给 <code>double</code> 变量，但截断已经发生在整数除法阶段。所以输出 <code>2.00</code>。</blockquote>
 <blockquote></blockquote>
-<blockquote>**💡 秒懂技巧：** 计算机里整数除法就像分蛋糕——&quot;5块蛋糕分给2个人，每人只能拿整块&quot;，结果是2块，剩下的1块丢了。想得到精确值，必须先把其中一个数变成小数（如 `(double)a / b`）。</blockquote>
+<blockquote><strong>💡 秒懂技巧：</strong> 计算机里整数除法就像分蛋糕——&quot;5块蛋糕分给2个人，每人只能拿整块&quot;，结果是2块，剩下的1块丢了。想得到精确值，必须先把其中一个数变成小数（如 <code>(double)a / b</code>）。</blockquote>
 <blockquote></blockquote>
-<blockquote>**易错点：** 很多同学以为赋值给 `double` 会自动保留小数，但C语言是从右向左执行——先算除法（整数），再赋值。</blockquote>
+<blockquote><strong>易错点：</strong> 很多同学以为赋值给 <code>double</code> 会自动保留小数，但C语言是从右向左执行——先算除法（整数），再赋值。</blockquote>
 <div class='gap'></div>
-<p>---</p>
+<hr>
 <div class='gap'></div>
-<h3>2. 执行 `int x = 5; printf(&quot;%d&quot;, x++ + ++x);` 后，输出结果是（ ）</h3>
+<h3>2. 执行 <code>int x = 5; printf(&quot;%d&quot;, x++ + ++x);</code> 后，输出结果是（ ）</h3>
 <div class='gap'></div>
 <p>A. 10　　B. 11　　C. 12　　D. 未定义行为</p>
 <div class='gap'></div>
-<blockquote>**答案：D**</blockquote>
+<blockquote><strong>答案：D</strong></blockquote>
 <blockquote></blockquote>
-<blockquote>**解析：** 在同一条表达式中，对同一个变量 `x` 同时进行读取和修改（`x++` 读取后修改，`++x` 修改后读取），且修改顺序未定义，属于**未定义行为**。不同编译器结果可能不同。</blockquote>
+<blockquote><strong>解析：</strong> 在同一条表达式中，对同一个变量 <code>x</code> 同时进行读取和修改（<code>x++</code> 读取后修改，<code>++x</code> 修改后读取），且修改顺序未定义，属于<strong>未定义行为</strong>。不同编译器结果可能不同。</blockquote>
 <blockquote></blockquote>
-<blockquote>**💡 秒懂技巧：** 就像你同时说&quot;先吃饭再洗碗&quot;和&quot;先洗碗再吃饭&quot;——这两件事顺序冲突，结果不确定。考试中遇到这种情况，选&quot;未定义&quot;就对了。</blockquote>
+<blockquote><strong>💡 秒懂技巧：</strong> 就像你同时说&quot;先吃饭再洗碗&quot;和&quot;先洗碗再吃饭&quot;——这两件事顺序冲突，结果不确定。考试中遇到这种情况，选&quot;未定义&quot;就对了。</blockquote>
 <blockquote></blockquote>
-<blockquote>**铁律：** 一条语句中，一个变量最多被修改一次。</blockquote>
+<blockquote><strong>铁律：</strong> 一条语句中，一个变量最多被修改一次。</blockquote>
 <div class='gap'></div>
-<p>---</p>
+<hr>
 <div class='gap'></div>
 <h3>3. 以下代码的输出是（ ）</h3>
 <div class='gap'></div>
-<p><code>`</code>c</p>
-<p>char s[] = &quot;Hello&quot;;</p>
-<p>char t[] = &quot;Hello&quot;;</p>
-<p>if (s == t) printf(&quot;相等&quot;);</p>
-<p>else printf(&quot;不相等&quot;);</p>
-<p><code>`</code></p>
+<pre><code>
+char s[] = &quot;Hello&quot;;
+char t[] = &quot;Hello&quot;;
+if (s == t) printf(&quot;相等&quot;);
+else printf(&quot;不相等&quot;);
+</code></pre>
 <div class='gap'></div>
 <p>A. 相等　　B. 不相等　　C. 编译错误　　D. 运行时错误</p>
 <div class='gap'></div>
-<blockquote>**答案：B**</blockquote>
+<blockquote><strong>答案：B</strong></blockquote>
 <blockquote></blockquote>
-<blockquote>**解析：** `s` 和 `t` 是两个不同的数组，它们在内存中占据不同的地址。`s == t` 比较的是**数组首地址**，而不是字符串内容。比较字符串内容应使用 `strcmp`。</blockquote>
+<blockquote><strong>解析：</strong> <code>s</code> 和 <code>t</code> 是两个不同的数组，它们在内存中占据不同的地址。<code>s == t</code> 比较的是<strong>数组首地址</strong>，而不是字符串内容。比较字符串内容应使用 <code>strcmp</code>。</blockquote>
 <blockquote></blockquote>
-<blockquote>**💡 秒懂技巧：** 就像两个人都有&quot;Hello&quot;的笔记本，但笔记本是不同本子——问&quot;这两本笔记本是不是同一本&quot;，答案是&quot;不是&quot;。要比较内容，得逐字对照（`strcmp`）。</blockquote>
+<blockquote><strong>💡 秒懂技巧：</strong> 就像两个人都有&quot;Hello&quot;的笔记本，但笔记本是不同本子——问&quot;这两本笔记本是不是同一本&quot;，答案是&quot;不是&quot;。要比较内容，得逐字对照（<code>strcmp</code>）。</blockquote>
 <blockquote></blockquote>
-<blockquote>**延伸：** `strlen(s)` 计算长度（不含 `\0`），`sizeof(s)` 计算数组大小（含 `\0`），`sizeof(&quot;Hello&quot;)` = 6。</blockquote>
+<blockquote><strong>延伸：</strong> <code>strlen(s)</code> 计算长度（不含 <code>\0</code>），<code>sizeof(s)</code> 计算数组大小（含 <code>\0</code>），<code>sizeof(&quot;Hello&quot;)</code> = 6。</blockquote>
 <div class='gap'></div>
-<p>---</p>
+<hr>
 <div class='gap'></div>
 <h3>4. 执行以下代码，输出结果是（ ）</h3>
 <div class='gap'></div>
-<p><code>`</code>c</p>
-<p>int a[3][3] = {{1,2},{3,4},{5,6}};</p>
-<p>printf(&quot;%d&quot;, a[1][1]);</p>
-<p><code>`</code></p>
+<pre><code>
+int a[3][3] = {{1,2},{3,4},{5,6}};
+printf(&quot;%d&quot;, a[1][1]);
+</code></pre>
 <div class='gap'></div>
 <p>A. 1　　B. 2　　C. 3　　D. 4</p>
 <div class='gap'></div>
-<blockquote>**答案：D**</blockquote>
+<blockquote><strong>答案：D</strong></blockquote>
 <blockquote></blockquote>
-<blockquote>**解析：** 二维数组初始化时，未指定的元素自动补 0。`a[3][3]` 实际存储为：</blockquote>
-<blockquote>```</blockquote>
-<blockquote>第0行: {1, 2, 0}</blockquote>
-<blockquote>第1行: {3, 4, 0}</blockquote>
-<blockquote>第2行: {5, 6, 0}</blockquote>
-<blockquote>```</blockquote>
-<blockquote>`a[1][1]` 是第1行第1列，即 4。</blockquote>
+<blockquote><strong>解析：</strong> 二维数组初始化时，未指定的元素自动补 0。<code>a[3][3]</code> 实际存储为：</blockquote>
+<pre><code>
+第0行: {1, 2, 0}
+第1行: {3, 4, 0}
+第2行: {5, 6, 0}
+</code></pre>
+<blockquote><code>a[1][1]</code> 是第1行第1列，即 4。</blockquote>
 <blockquote></blockquote>
-<blockquote>**💡 秒懂技巧：** 二维数组就像 Excel 表格。`a[1][1]` 是第2行第2列（C语言从0开始数）。没填的格子自动填0。</blockquote>
+<blockquote><strong>💡 秒懂技巧：</strong> 二维数组就像 Excel 表格。<code>a[1][1]</code> 是第2行第2列（C语言从0开始数）。没填的格子自动填0。</blockquote>
 <div class='gap'></div>
-<p>---</p>
+<hr>
 <div class='gap'></div>
 <h3>5. 以下程序输出是（ ）</h3>
 <div class='gap'></div>
-<p><code>`</code>c</p>
-<p>void swap(int x, int y) {</p>
-<p>    int t = x; x = y; y = t;</p>
-<p>}</p>
-<p>int main() {</p>
-<p>    int a = 3, b = 5;</p>
-<p>    swap(a, b);</p>
-<p>    printf(&quot;%d,%d&quot;, a, b);</p>
-<p>    return 0;</p>
-<p>}</p>
-<p><code>`</code></p>
+<pre><code>
+void swap(int x, int y) {
+    int t = x; x = y; y = t;
+}
+int main() {
+    int a = 3, b = 5;
+    swap(a, b);
+    printf(&quot;%d,%d&quot;, a, b);
+    return 0;
+}
+</code></pre>
 <div class='gap'></div>
 <p>A. 3,5　　B. 5,3　　C. 3,3　　D. 5,5</p>
 <div class='gap'></div>
-<blockquote>**答案：A**</blockquote>
+<blockquote><strong>答案：A</strong></blockquote>
 <blockquote></blockquote>
-<blockquote>**解析：** C语言函数参数是**值传递**——`swap(a, b)` 把 `a` 和 `b` 的**值拷贝**给 `x` 和 `y`，函数内部交换的是拷贝值，不影响原变量。</blockquote>
+<blockquote><strong>解析：</strong> C语言函数参数是<strong>值传递</strong>——<code>swap(a, b)</code> 把 <code>a</code> 和 <code>b</code> 的<strong>值拷贝</strong>给 <code>x</code> 和 <code>y</code>，函数内部交换的是拷贝值，不影响原变量。</blockquote>
 <blockquote></blockquote>
-<blockquote>**💡 秒懂技巧：** 就像你把身份证复印件给工作人员，工作人员在复印件上改名字——原件上的名字不会变。想改原件，必须给原件地址（指针）。</blockquote>
+<blockquote><strong>💡 秒懂技巧：</strong> 就像你把身份证复印件给工作人员，工作人员在复印件上改名字——原件上的名字不会变。想改原件，必须给原件地址（指针）。</blockquote>
 <blockquote></blockquote>
-<blockquote>**要真正交换，必须用指针：**</blockquote>
-<blockquote>```c</blockquote>
-<blockquote>void swap(int *x, int *y) {</blockquote>
-<blockquote>    int t = *x; *x = *y; *y = t;</blockquote>
-<blockquote>}</blockquote>
-<blockquote>swap(&amp;a, &amp;b);  // 传地址</blockquote>
-<blockquote>```</blockquote>
+<blockquote><strong>要真正交换，必须用指针：</strong></blockquote>
+<pre><code>
+void swap(int *x, int *y) {
+    int t = *x; *x = *y; *y = t;
+}
+swap(&amp;a, &amp;b);  // 传地址
+</code></pre>
 <div class='gap'></div>
-<p>---</p>
+<hr>
 <div class='gap'></div>
 <h3>6. 执行下面程序段，输出结果是（ ）</h3>
 <div class='gap'></div>
-<p><code>`</code>c</p>
-<p>int i, sum = 0;</p>
-<p>for (i = 1; i &lt;= 5; i++) {</p>
-<p>    if (i == 3) continue;</p>
-<p>    sum += i;</p>
-<p>}</p>
-<p>printf(&quot;%d&quot;, sum);</p>
-<p><code>`</code></p>
+<pre><code>
+int i, sum = 0;
+for (i = 1; i &lt;= 5; i++) {
+    if (i == 3) continue;
+    sum += i;
+}
+printf(&quot;%d&quot;, sum);
+</code></pre>
 <div class='gap'></div>
 <p>A. 9　　B. 12　　C. 15　　D. 18</p>
 <div class='gap'></div>
-<blockquote>**答案：B**</blockquote>
+<blockquote><strong>答案：B</strong></blockquote>
 <blockquote></blockquote>
-<blockquote>**解析：** `i==3` 时跳过本轮累加，因此 `sum=1+2+4+5=12`。</blockquote>
+<blockquote><strong>解析：</strong> <code>i==3</code> 时跳过本轮累加，因此 <code>sum=1+2+4+5=12</code>。</blockquote>
 <blockquote></blockquote>
-<blockquote>**💡 秒懂技巧：** `continue` 就像&quot;跳过当前这一轮&quot;——i=3 时直接跳过去下一轮。`break` 是&quot;整个循环都不玩了&quot;。</blockquote>
+<blockquote><strong>💡 秒懂技巧：</strong> <code>continue</code> 就像&quot;跳过当前这一轮&quot;——i=3 时直接跳过去下一轮。<code>break</code> 是&quot;整个循环都不玩了&quot;。</blockquote>
 <blockquote></blockquote>
-<blockquote>**易错点：** `continue` 只跳过当前循环，`break` 才会直接结束循环。</blockquote>
+<blockquote><strong>易错点：</strong> <code>continue</code> 只跳过当前循环，<code>break</code> 才会直接结束循环。</blockquote>
 <div class='gap'></div>
-<p>---</p>
+<hr>
 <div class='gap'></div>
-<h3>7. 设 `int x=10; int *p=&amp;x;`，执行 `(*p)++;` 后（ ）</h3>
+<h3>7. 设 <code>int x=10; int *p=&amp;x;</code>，执行 <code>(*p)++;</code> 后（ ）</h3>
 <div class='gap'></div>
 <p>A. <code>p</code> 的地址加 1　　B. <code>x</code> 变为 11　　C. <code>p</code> 指向空地址　　D. 语法错误</p>
 <div class='gap'></div>
-<blockquote>**答案：B**</blockquote>
+<blockquote><strong>答案：B</strong></blockquote>
 <blockquote></blockquote>
-<blockquote>**解析：** 括号保证先执行 `*p` 得到 `x`，再对该变量自增，所以 `x` 变为 11。</blockquote>
+<blockquote><strong>解析：</strong> 括号保证先执行 <code>*p</code> 得到 <code>x</code>，再对该变量自增，所以 <code>x</code> 变为 11。</blockquote>
 <blockquote></blockquote>
-<blockquote>**💡 秒懂技巧：** 指针就像&quot;门牌号&quot;——`p` 是写着&quot;x的家&quot;的门牌，`*p` 是去敲这个门。`(*p)++` 是&quot;去敲x的门，然后让x加1&quot;。`p++` 是&quot;门牌号本身加1&quot;，指向别处了。</blockquote>
+<blockquote><strong>💡 秒懂技巧：</strong> 指针就像&quot;门牌号&quot;——<code>p</code> 是写着&quot;x的家&quot;的门牌，<code>*p</code> 是去敲这个门。<code>(*p)++</code> 是&quot;去敲x的门，然后让x加1&quot;。<code>p++</code> 是&quot;门牌号本身加1&quot;，指向别处了。</blockquote>
 <blockquote></blockquote>
-<blockquote>**区分：** `(*p)++` 修改指向的值，`p++` 修改指针本身。</blockquote>
+<blockquote><strong>区分：</strong> <code>(*p)++</code> 修改指向的值，<code>p++</code> 修改指针本身。</blockquote>
 <div class='gap'></div>
-<p>---</p>
+<hr>
 <div class='gap'></div>
 <h3>8. 关于编译错误与运行错误，下列说法正确的是（ ）</h3>
 <div class='gap'></div>
@@ -202,173 +383,158 @@ code { background: #f0f0f0; padding: 1px 5px; border-radius: 3px; }
 <p>C. 除以 0 一定属于链接错误</p>
 <p>D. 函数声明不匹配一定不会报警</p>
 <div class='gap'></div>
-<blockquote>**答案：B**</blockquote>
+<blockquote><strong>答案：B</strong></blockquote>
 <blockquote></blockquote>
-<blockquote>**解析：** 缺少分号会破坏语法，通常由编译器报告。数组越界和除以 0 可能在运行阶段才暴露；链接错误常见于函数或全局符号找不到定义。</blockquote>
+<blockquote><strong>解析：</strong> 缺少分号会破坏语法，通常由编译器报告。数组越界和除以 0 可能在运行阶段才暴露；链接错误常见于函数或全局符号找不到定义。</blockquote>
 <blockquote></blockquote>
-<blockquote>**💡 秒懂技巧：**</blockquote>
-<blockquote>- **编译错误** = 写作文时语法不通（老师一眼看出）</blockquote>
-<blockquote>- **链接错误** = 你引用了一本不存在的书（图书馆找不到）</blockquote>
-<blockquote>- **运行错误** = 作文写好了，但读的时候发现逻辑矛盾（只有读了才知道）</blockquote>
+<blockquote><strong>💡 秒懂技巧：</strong></blockquote>
+<blockquote>- <strong>编译错误</strong> = 写作文时语法不通（老师一眼看出）</blockquote>
+<blockquote>- <strong>链接错误</strong> = 你引用了一本不存在的书（图书馆找不到）</blockquote>
+<blockquote>- <strong>运行错误</strong> = 作文写好了，但读的时候发现逻辑矛盾（只有读了才知道）</blockquote>
 <blockquote></blockquote>
-<blockquote>**考点：** 2026 考纲新增强调的程序运行环境与代码调试。</blockquote>
+<blockquote><strong>考点：</strong> 2026 考纲新增强调的程序运行环境与代码调试。</blockquote>
 <div class='gap'></div>
-<p>---</p>
+<hr>
 <div class='gap'></div>
-<h2>二、数据结构同题型复盘</h2>
+<h2>三、数据结构同题型复盘</h2>
 <div class='gap'></div>
 <h3>9. 长度为 $n$ 的顺序表，在表头插入一个元素的时间复杂度是（ ）</h3>
 <div class='gap'></div>
 <p>A. $O(1)$　　B. $O(\log n)$　　C. $O(n)$　　D. $O(n^2)$</p>
 <div class='gap'></div>
-<blockquote>**答案：C**</blockquote>
+<blockquote><strong>答案：C</strong></blockquote>
 <blockquote></blockquote>
-<blockquote>**解析：** 在表头插入时，原有 $n$ 个元素都需要向后移动一位，因此时间复杂度为 $O(n)$。</blockquote>
+<blockquote><strong>解析：</strong> 在表头插入时，原有 $n$ 个元素都需要向后移动一位，因此时间复杂度为 $O(n)$。</blockquote>
 <blockquote></blockquote>
-<blockquote>**💡 秒懂技巧：** 就像排队时插到最前面——后面所有人必须往后退一步。人越多，退的步数越多。</blockquote>
+<blockquote><strong>💡 秒懂技巧：</strong> 就像排队时插到最前面——后面所有人必须往后退一步。人越多，退的步数越多。</blockquote>
 <div class='gap'></div>
-<p>---</p>
+<hr>
 <div class='gap'></div>
 <h3>10. 栈的操作原则是（ ）</h3>
 <div class='gap'></div>
 <p>A. 先进先出　　B. 后进先出　　C. 随机存取　　D. 按关键字有序</p>
 <div class='gap'></div>
-<blockquote>**答案：B**</blockquote>
+<blockquote><strong>答案：B</strong></blockquote>
 <blockquote></blockquote>
-<blockquote>**解析：** 栈是后进先出（LIFO）的受限线性表，只允许在栈顶进行插入和删除。</blockquote>
+<blockquote><strong>解析：</strong> 栈是后进先出（LIFO）的受限线性表，只允许在栈顶进行插入和删除。</blockquote>
 <blockquote></blockquote>
-<blockquote>**💡 秒懂技巧：** 栈就像一摞盘子——你只能从最上面拿盘子（后放的先拿），也只能在最上面放盘子。</blockquote>
+<blockquote><strong>💡 秒懂技巧：</strong> 栈就像一摞盘子——你只能从最上面拿盘子（后放的先拿），也只能在最上面放盘子。</blockquote>
 <div class='gap'></div>
-<p>---</p>
+<hr>
 <div class='gap'></div>
-<h3>11. 循环队列中，若队头指针为 `front`、队尾指针为 `rear`、数组长度为 `m`，常用的队满条件是（ ）</h3>
+<h3>11. 循环队列中，若队头指针为 <code>front</code>、队尾指针为 <code>rear</code>、数组长度为 <code>m</code>，常用的队满条件是（ ）</h3>
 <div class='gap'></div>
 <p>A. <code>front == rear</code></p>
 <p>B. <code>(rear + 1) % m == front</code></p>
 <p>C. <code>rear == m</code></p>
 <p>D. <code>front == 0</code></p>
 <div class='gap'></div>
-<blockquote>**答案：B**</blockquote>
+<blockquote><strong>答案：B</strong></blockquote>
 <blockquote></blockquote>
-<blockquote>**解析：** 采用&quot;牺牲一个存储单元&quot;的实现时，`front == rear` 表示队空，`(rear+1)%m == front` 表示队满。</blockquote>
+<blockquote><strong>解析：</strong> 采用&quot;牺牲一个存储单元&quot;的实现时，<code>front == rear</code> 表示队空，<code>(rear+1)%m == front</code> 表示队满。</blockquote>
 <blockquote></blockquote>
-<blockquote>**💡 秒懂技巧：** 循环队列就像一圈停车位——你有一圈车位，队尾指针追上了队头指针就说明满了。但为了区分&quot;空&quot;和&quot;满&quot;，故意空一个车位不占。</blockquote>
+<blockquote><strong>💡 秒懂技巧：</strong> 循环队列就像一圈停车位——你有一圈车位，队尾指针追上了队头指针就说明满了。但为了区分&quot;空&quot;和&quot;满&quot;，故意空一个车位不占。</blockquote>
 <div class='gap'></div>
-<p>---</p>
+<hr>
 <div class='gap'></div>
 <h3>12. 一棵具有 7 个结点的完全二叉树，其叶子结点数是（ ）</h3>
 <div class='gap'></div>
 <p>A. 2　　B. 3　　C. 4　　D. 7</p>
 <div class='gap'></div>
-<blockquote>**答案：C**</blockquote>
+<blockquote><strong>答案：C</strong></blockquote>
 <blockquote></blockquote>
-<blockquote>**解析：** 7 个结点恰好构成三层满二叉树，第三层的 4 个结点都是叶子。</blockquote>
+<blockquote><strong>解析：</strong> 7 个结点恰好构成三层满二叉树，第三层的 4 个结点都是叶子。</blockquote>
 <blockquote></blockquote>
-<blockquote>**💡 秒懂技巧：** 画个三层二叉树：第一层1个，第二层2个，第三层4个。第三层没有子节点的就是叶子。</blockquote>
+<blockquote><strong>💡 秒懂技巧：</strong> 画个三层二叉树：第一层1个，第二层2个，第三层4个。第三层没有子节点的就是叶子。</blockquote>
 <div class='gap'></div>
-<p>---</p>
+<hr>
 <div class='gap'></div>
 <h3>13. 对二叉搜索树进行哪一种遍历可以得到递增序列（ ）</h3>
 <div class='gap'></div>
 <p>A. 先序遍历　　B. 中序遍历　　C. 后序遍历　　D. 层序遍历</p>
 <div class='gap'></div>
-<blockquote>**答案：B**</blockquote>
+<blockquote><strong>答案：B</strong></blockquote>
 <blockquote></blockquote>
-<blockquote>**解析：** 二叉搜索树满足&quot;左子树关键字小于根，右子树关键字大于根&quot;，中序遍历顺序是左—根—右，因此结果递增。</blockquote>
+<blockquote><strong>解析：</strong> 二叉搜索树满足&quot;左子树关键字小于根，右子树关键字大于根&quot;，中序遍历顺序是左—根—右，因此结果递增。</blockquote>
 <blockquote></blockquote>
-<blockquote>**💡 秒懂技巧：** 中序遍历就像&quot;先看左边 → 再看中间 → 再看右边&quot;，因为左边都是小的，所以从小到大输出。</blockquote>
+<blockquote><strong>💡 秒懂技巧：</strong> 中序遍历就像&quot;先看左边 → 再看中间 → 再看右边&quot;，因为左边都是小的，所以从小到大输出。</blockquote>
 <div class='gap'></div>
-<p>---</p>
+<hr>
 <div class='gap'></div>
 <h3>14. 含 $n$ 个顶点的无向连通图，至少有多少条边（ ）</h3>
 <div class='gap'></div>
 <p>A. $n-1$　　B. $n$　　C. $n+1$　　D. $2n$</p>
 <div class='gap'></div>
-<blockquote>**答案：A**</blockquote>
+<blockquote><strong>答案：A</strong></blockquote>
 <blockquote></blockquote>
-<blockquote>**解析：** 无向连通图的极小连通结构是一棵生成树，树有 $n-1$ 条边。</blockquote>
+<blockquote><strong>解析：</strong> 无向连通图的极小连通结构是一棵生成树，树有 $n-1$ 条边。</blockquote>
 <blockquote></blockquote>
-<blockquote>**💡 秒懂技巧：** 想象你要用网线把 n 台电脑连起来，让它们都能互相通信——最少需要 n-1 根网线（形成一条线或树形结构）。</blockquote>
+<blockquote><strong>💡 秒懂技巧：</strong> 想象你要用网线把 n 台电脑连起来，让它们都能互相通信——最少需要 n-1 根网线（形成一条线或树形结构）。</blockquote>
 <div class='gap'></div>
-<p>---</p>
+<hr>
 <div class='gap'></div>
 <h3>15. 对长度为 $n$ 的有序表进行折半查找，平均时间复杂度是（ ）</h3>
 <div class='gap'></div>
 <p>A. $O(1)$　　B. $O(\log n)$　　C. $O(n)$　　D. $O(n\log n)$</p>
 <div class='gap'></div>
-<blockquote>**答案：B**</blockquote>
+<blockquote><strong>答案：B</strong></blockquote>
 <blockquote></blockquote>
-<blockquote>**解析：** 每次比较都会排除一半查找区间，因此比较次数与 $\log_2 n$ 同阶。</blockquote>
+<blockquote><strong>解析：</strong> 每次比较都会排除一半查找区间，因此比较次数与 $\log_2 n$ 同阶。</blockquote>
 <blockquote></blockquote>
-<blockquote>**💡 秒懂技巧：** 折半查找就像猜数字——你说&quot;50&quot;，我说&quot;大了&quot;，你就知道答案在1-49之间，一次排除一半。100个数字最多猜7次就能找到。</blockquote>
+<blockquote><strong>💡 秒懂技巧：</strong> 折半查找就像猜数字——你说&quot;50&quot;，我说&quot;大了&quot;，你就知道答案在1-49之间，一次排除一半。100个数字最多猜7次就能找到。</blockquote>
 <blockquote></blockquote>
-<blockquote>**前提：** 表必须有序，并且存储结构支持随机访问。</blockquote>
+<blockquote><strong>前提：</strong> 表必须有序，并且存储结构支持随机访问。</blockquote>
 <div class='gap'></div>
-<p>---</p>
+<hr>
 <div class='gap'></div>
 <h3>16. 下列排序算法中，平均时间复杂度为 $O(n\log n)$ 且通常需要额外 $O(n)$ 空间的是（ ）</h3>
 <div class='gap'></div>
 <p>A. 冒泡排序　　B. 直接插入排序　　C. 归并排序　　D. 简单选择排序</p>
 <div class='gap'></div>
-<blockquote>**答案：C**</blockquote>
+<blockquote><strong>答案：C</strong></blockquote>
 <blockquote></blockquote>
-<blockquote>**解析：** 归并排序通过分治将序列不断二分，再使用辅助数组归并，平均和最坏时间复杂度均为 $O(n\log n)$。</blockquote>
+<blockquote><strong>解析：</strong> 归并排序通过分治将序列不断二分，再使用辅助数组归并，平均和最坏时间复杂度均为 $O(n\log n)$。</blockquote>
 <blockquote></blockquote>
-<blockquote>**💡 秒懂技巧：** 归并排序就像&quot;分组比赛&quot;——先把一堆牌分成两小堆，每小堆排好，再合并成有序的一堆。合并时需要一张额外的桌子放牌（额外空间）。</blockquote>
+<blockquote><strong>💡 秒懂技巧：</strong> 归并排序就像&quot;分组比赛&quot;——先把一堆牌分成两小堆，每小堆排好，再合并成有序的一堆。合并时需要一张额外的桌子放牌（额外空间）。</blockquote>
 <div class='gap'></div>
-<p>---</p>
+<hr>
 <div class='gap'></div>
-<h2>答案速查</h2>
+<h2>答案速查（第二、三节的同型复盘题）</h2>
+<div class='gap'></div>
+<blockquote>第一节的 3 道真题原题没有固定答案 —— 输出取决于输入数据。</blockquote>
 <div class='gap'></div>
 <table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
 <tr><th>题号</th><th>答案</th><th>核心考点</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>1</th><th>A</th><th>整数除法与类型转换</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>2</th><th>D</th><th>未定义行为</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>3</th><th>B</th><th>数组地址比较 vs 字符串比较</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>4</th><th>D</th><th>二维数组初始化</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>5</th><th>A</th><th>值传递（参数传递方式）</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>6</th><th>B</th><th>循环与 `continue`</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>7</th><th>B</th><th>指针解引用</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>8</th><th>B</th><th>编译、链接与运行错误</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>9</th><th>C</th><th>顺序表插入时间复杂度</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>10</th><th>B</th><th>栈的 LIFO 特性</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>11</th><th>B</th><th>循环队列队满条件</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>12</th><th>C</th><th>完全二叉树叶子结点</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>13</th><th>B</th><th>二叉搜索树中序遍历</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>14</th><th>A</th><th>无向连通图最少边数</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>15</th><th>B</th><th>折半查找时间复杂度</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>16</th><th>C</th><th>归并排序时空复杂度</th></tr>
+<tr><td>1</td><td>A</td><td>整数除法与类型转换</td></tr>
+<tr><td>2</td><td>D</td><td>未定义行为</td></tr>
+<tr><td>3</td><td>B</td><td>数组地址比较 vs 字符串比较</td></tr>
+<tr><td>4</td><td>D</td><td>二维数组初始化</td></tr>
+<tr><td>5</td><td>A</td><td>值传递（参数传递方式）</td></tr>
+<tr><td>6</td><td>B</td><td>循环与 <code>continue</code></td></tr>
+<tr><td>7</td><td>B</td><td>指针解引用</td></tr>
+<tr><td>8</td><td>B</td><td>编译、链接与运行错误</td></tr>
+<tr><td>9</td><td>C</td><td>顺序表插入时间复杂度</td></tr>
+<tr><td>10</td><td>B</td><td>栈的 LIFO 特性</td></tr>
+<tr><td>11</td><td>B</td><td>循环队列队满条件</td></tr>
+<tr><td>12</td><td>C</td><td>完全二叉树叶子结点</td></tr>
+<tr><td>13</td><td>B</td><td>二叉搜索树中序遍历</td></tr>
+<tr><td>14</td><td>A</td><td>无向连通图最少边数</td></tr>
+<tr><td>15</td><td>B</td><td>折半查找时间复杂度</td></tr>
+<tr><td>16</td><td>C</td><td>归并排序时空复杂度</td></tr>
+</table>
 <div class='gap'></div>
-<p>---</p>
+<hr>
 <div class='gap'></div>
 <h2>2026 考纲新变化</h2>
 <div class='gap'></div>
 <table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
 <tr><th>变化项</th><th>说明</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>改错题信号</th><th>2026 题型可能含改错题，2027 备考需关注</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>程序调试</th><th>考纲新增强调程序运行环境与代码调试</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>参考教材更新</th><th>严蔚敏、吴伟民《数据结构（C 语言版）》第 2 版（**清华大学出版社 2025-10**，✅ 官方考纲确认；原&quot;人邮 2021&quot;为旧口径）</th></tr>
+<tr><td>改错题信号</td><td>2026 题型可能含改错题，2027 备考需关注</td></tr>
+<tr><td>程序调试</td><td>考纲新增强调程序运行环境与代码调试</td></tr>
+<tr><td>参考教材更新</td><td>严蔚敏、吴伟民《数据结构（C 语言版）》第 2 版（<strong>清华大学出版社 2025-10</strong>，✅ 官方考纲确认；原&quot;人邮 2021&quot;为旧口径）</td></tr>
+</table>
 <div class='gap'></div>
-<blockquote>📊 **[上一份：《计算机 2025 真题回忆版》](/posts/computer/2025-真题回忆版)** · [回真题总览](/posts/computer/)</blockquote>
+<blockquote>📊 <strong><a href="/posts/computer/2025-真题回忆版">上一份：《计算机 2025 真题回忆版》</a></strong> · <a href="/posts/computer/">回真题总览</a></blockquote>
 <div class='gap'></div>
 </body>
 </html>

@@ -2,204 +2,521 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<title>计算机程序设计 · 2022</title>
+<title>2022年广东专升本《计算机程序设计》真题+逐题详解</title>
 <style>
 body { font-family: "Microsoft YaHei", "Noto Sans SC", sans-serif; max-width: 800px; margin: 40px auto; padding: 0 24px; font-size: 14px; line-height: 1.8; color: #222; }
 h1 { font-size: 22px; border-bottom: 2px solid #333; padding-bottom: 8px; }
 h2 { font-size: 18px; margin-top: 24px; }
 h3 { font-size: 16px; }
 table { margin: 12px 0; }
+th, td { text-align: left; vertical-align: top; }
+ul, ol { margin: 8px 0; padding-left: 26px; }
+li { margin: 2px 0; }
 blockquote { border-left: 3px solid #999; margin: 8px 0; padding: 4px 12px; color: #555; background: #f7f7f7; }
 code { background: #f0f0f0; padding: 1px 5px; border-radius: 3px; }
+pre { background: #f7f7f7; border: 1px solid #e0e0e0; border-radius: 4px; padding: 10px 12px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+hr { border: none; border-top: 1px solid #ddd; margin: 18px 0; }
+a { color: #1a4d8f; }
+.ctitle { background: #eef4fb; border-left: 3px solid #7aa7d9; margin: 10px 0; padding: 6px 12px; color: #24486f; }
 .gap { height: 8px; }
 @media print { body { margin: 0; padding: 0; max-width: none; } }
 </style>
 </head>
 <body>
 <div class='gap'></div>
-<div class='gap'></div>
 <h1>计算机程序设计 · 2022 年真题（选项拆解 + 解析）</h1>
 <div class='gap'></div>
-<blockquote>**类型**：公开资料抽取 + 逐题拆解（B 级）| 满分 **200** · **150** 分钟</blockquote>
-<blockquote>**边界**：回忆版 / 公开整理，**非**考试院原卷 PDF 镜像；个别措辞以正版真题册为准。见 00-资料来源与使用说明</blockquote>
-<blockquote>本地原文件：`资料/计算机真题原卷/2022.docx` / `2022.txt`</blockquote>
+<blockquote><strong>类型</strong>：公开资料抽取 + 逐题拆解（B 级）| 满分 <strong>200</strong> · <strong>150</strong> 分钟</blockquote>
+<blockquote><strong>边界</strong>：回忆版 / 公开整理，<strong>非</strong>考试院原卷 PDF 镜像；个别措辞以正版真题册为准。见 00-资料来源与使用说明</blockquote>
+<blockquote>本地原文件：<code>资料/计算机真题原卷/2022.docx</code> / <code>2022.txt</code></blockquote>
 <blockquote>优先对照：2024 全量详解 · 2021 · 2023</blockquote>
+<blockquote><strong>完成度</strong>：<strong>单选 1–20 + 应用编程 43–45 有逐题解析</strong>；判断 21–30、填空 31–35、简答 36–39、读程 40–42 四段原卷未保留逐题题干，<strong>以摘要形式保留</strong>，未强行拆题（见各节开头的说明）。</blockquote>
 <div class='gap'></div>
 <h2>试卷结构</h2>
 <div class='gap'></div>
 <table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>题型</th><th>题量</th><th>分值</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>一、单项选择</th><th>20</th><th>60</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>二、判断</th><th>10</th><th>20</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>三、填空</th><th>5</th><th>20</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>四、简答</th><th>4</th><th>40</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>五、计算/读程</th><th>3</th><th>30</th></tr>
-<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
-<tr><th>六、应用编程</th><th>3</th><th>30</th></tr>
+<tr><th>大题</th><th>题号</th><th>题量</th><th>分值</th><th>核心考查</th></tr>
+<tr><td>一、单项选择题</td><td>1–20</td><td>20</td><td>60</td><td>运算符、数组与指针、树与图、排序</td></tr>
+<tr><td>二、判断题</td><td>21–30</td><td>10</td><td>20</td><td>摘要（原卷未保留题干）</td></tr>
+<tr><td>三、填空 / 四、简答</td><td>31–39</td><td>9</td><td>60</td><td>摘要（原卷未保留题干）</td></tr>
+<tr><td>五、读程题</td><td>40–42</td><td>3</td><td>30</td><td>摘要（原卷未保留题干）</td></tr>
+<tr><td>六、应用题</td><td>43–45</td><td>3</td><td>30</td><td>手写 C 语言程序</td></tr>
+<tr><td><strong>合计</strong></td><td></td><td><strong>45</strong></td><td><strong>200</strong></td><td>满分 200 分 · 150 分钟 · 已拆解 23 题</td></tr>
+</table>
 <div class='gap'></div>
-<p>---</p>
+<hr>
 <div class='gap'></div>
-<h2>一、单项选择题（每题 3 分，共 60 分）</h2>
+<h2>题目一览</h2>
 <div class='gap'></div>
-<h3>1. `char a[10]=&quot; wait &quot;; printf(&quot;%d&quot;, strlen(a));` 结果（ ）</h3>
-<p>A. 4 B. 5 C. 8 D. 10</p>
-<p><strong>答案：B 或 C（视空格）</strong> · 考点 [1.6 数组](/posts/computer/notes/1.6-数组)</p>
+<p class='ctitle'>展开看答案速查表（先自己做完再对）</p>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>题号</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th><th>12</th></tr>
+<tr><td>答案</td><td>B 或 C</td><td>C</td><td>D（常见）</td><td>A</td><td>A</td><td>D</td><td>C</td><td>D</td><td>B</td><td>B</td><td>B</td><td>B</td></tr>
+</table>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>题号</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th><th>19</th><th>20</th><th>43</th><th>44</th><th>45</th></tr>
+<tr><td>答案</td><td>D</td><td>C</td><td>D</td><td>A</td><td>C</td><td>C</td><td>B</td><td>D</td><td>见解析</td><td>见解析</td><td>见解析</td></tr>
+</table>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>一、单项选择题（本大题共 20 小题，每小题 3 分，共 60 分）</h2>
+<div class='gap'></div>
+<h3>第 1 题 · strlen 长度</h3>
+<div class='gap'></div>
+<p><code>char a[10]=&quot; wait &quot;; printf(&quot;%d&quot;, strlen(a));</code> 结果（ ）</p>
+<div class='gap'></div>
+<ul>
+<li><strong>A.</strong> 4</li>
+<li><strong>B.</strong> 5</li>
+<li><strong>C.</strong> 8</li>
+<li><strong>D.</strong> 10</li>
+</ul>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：B 或 C（视空格）</strong> · 考点 <a href="/posts/computer/notes/1.6-数组">1.6 数组</a></p>
 <p><strong>解析</strong>：字面量若为 <code>&quot; wait &quot;</code>（前 1 空格 + wait + 1 空格）长度 <strong>6</strong>；常见回忆 <code>&quot;wait &quot;</code> 为 5。以本地原卷空格为准，刷题重点：<code>strlen</code> <strong>不含</strong> <code>\0</code>、<strong>含</strong>空格。</p>
 <div class='gap'></div>
-<h3>2. `(a==6)||(a!=6)` 的值（ ）</h3>
-<p>A. 0 B. 6 C. 1 D. 不确定</p>
-<p><strong>答案：C</strong> · 考点 [1.2 数据的存储与运算](/posts/computer/notes/1.2-数据的存储与运算)</p>
+<hr>
+<div class='gap'></div>
+<h3>第 2 题 · 逻辑恒真式</h3>
+<div class='gap'></div>
+<p><code>(a==6)||(a!=6)</code> 的值（ ）</p>
+<div class='gap'></div>
+<ul>
+<li><strong>A.</strong> 0</li>
+<li><strong>B.</strong> 6</li>
+<li><strong>C.</strong> 1</li>
+<li><strong>D.</strong> 不确定</li>
+</ul>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：C</strong> · 考点 <a href="/posts/computer/notes/1.2-数据的存储与运算">1.2 数据的存储与运算</a></p>
 <p><strong>解析</strong>：恒真，逻辑值为 <strong>1</strong>。</p>
 <div class='gap'></div>
-<h3>3. 冒泡升序，初始 `49,38,65,97,76,13,27`，**第一趟**后（ ）</h3>
-<p>A. 38,49,65,27,76,13,97 B. 38,49,65,27,13,76,97</p>
-<p>C. 38,49,65,27,13,76,97 D. 38,49,65,76,13,27,97</p>
-<p><strong>答案：D（常见）</strong> · 考点 [2.8 排序](/posts/computer/notes/2.8-排序)</p>
+<hr>
+<div class='gap'></div>
+<h3>第 3 题 · 冒泡第一趟</h3>
+<div class='gap'></div>
+<p>冒泡升序，初始 <code>49,38,65,97,76,13,27</code>，<strong>第一趟</strong>后（ ）</p>
+<div class='gap'></div>
+<ul>
+<li><strong>A.</strong> 38,49,65,27,76,13,97</li>
+<li><strong>B.</strong> 38,49,65,27,13,76,97</li>
+<li><strong>C.</strong> 38,49,65,27,13,76,97</li>
+<li><strong>D.</strong> 38,49,65,76,13,27,97</li>
+</ul>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：D（常见）</strong> · 考点 <a href="/posts/computer/notes/2.8-排序">2.8 排序</a></p>
 <p><strong>解析</strong>：一趟冒泡把最大 <strong>97</strong> 沉底：相邻交换后末尾为 97，前部为相对有序结果。请按「两两比较交换」手推一趟验证。</p>
 <div class='gap'></div>
-<h3>4. 可用作 C 自定义标识符的是（ ）</h3>
-<p>A. <code>_6_</code> B. <code>6_6</code> C. <code>define</code> D. <code>typedef</code></p>
-<p><strong>答案：A</strong> · 考点 [1.1 C语言概述与基本概念](/posts/computer/notes/1.1-C语言概述与基本概念)</p>
+<hr>
+<div class='gap'></div>
+<h3>第 4 题 · 标识符合法性</h3>
+<div class='gap'></div>
+<p>可用作 C 自定义标识符的是（ ）</p>
+<div class='gap'></div>
+<ul>
+<li><strong>A.</strong> <code>_6_</code></li>
+<li><strong>B.</strong> <code>6_6</code></li>
+<li><strong>C.</strong> <code>define</code></li>
+<li><strong>D.</strong> <code>typedef</code></li>
+</ul>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：A</strong> · 考点 <a href="/posts/computer/notes/1.1-C语言概述与基本概念">1.1 C语言概述与基本概念</a></p>
 <p><strong>解析</strong>：不能以数字开头；C/D 为关键字。</p>
 <div class='gap'></div>
-<h3>5. 深度为 6 的二叉树最多结点数（ ）</h3>
-<p>A. 63 B. 32 C. 64 D. 128</p>
-<p><strong>答案：A</strong> · 考点 [2.5 树和二叉树](/posts/computer/notes/2.5-树和二叉树)</p>
+<hr>
+<div class='gap'></div>
+<h3>第 5 题 · 二叉树结点数</h3>
+<div class='gap'></div>
+<p>深度为 6 的二叉树最多结点数（ ）</p>
+<div class='gap'></div>
+<ul>
+<li><strong>A.</strong> 63</li>
+<li><strong>B.</strong> 32</li>
+<li><strong>C.</strong> 64</li>
+<li><strong>D.</strong> 128</li>
+</ul>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：A</strong> · 考点 <a href="/posts/computer/notes/2.5-树和二叉树">2.5 树和二叉树</a></p>
 <p><strong>解析</strong>：$2^6-1=63$（深度从 1 计满二叉树）。</p>
 <div class='gap'></div>
-<h3>6. 删除 p 所指结点的**直接后继**（ ）</h3>
-<p>A. <code>p-&gt;next=p</code> B. <code>p=p-&gt;next</code> C. <code>p=p-&gt;next-&gt;next</code> D. <code>p-&gt;next=p-&gt;next-&gt;next</code></p>
-<p><strong>答案：D</strong> · 考点 [2.2 线性表](/posts/computer/notes/2.2-线性表)</p>
+<hr>
 <div class='gap'></div>
-<h3>7. 有向图所有顶点出度总和与入度总和比值（ ）</h3>
-<p>A. 4 B. 2 C. 1 D. 3</p>
-<p><strong>答案：C</strong> · 考点 [2.6 图](/posts/computer/notes/2.6-图)</p>
+<h3>第 6 题 · 删除后继结点</h3>
 <div class='gap'></div>
-<h3>8. `(double)(5/2)+2.5` 的值（ ）</h3>
-<p>A. 4 B. 5.0 C. 5 D. 4.5</p>
-<p><strong>答案：D</strong> · 考点 [1.2 数据的存储与运算](/posts/computer/notes/1.2-数据的存储与运算)</p>
+<p>删除 p 所指结点的<strong>直接后继</strong>（ ）</p>
+<div class='gap'></div>
+<ul>
+<li><strong>A.</strong> <code>p-&gt;next=p</code></li>
+<li><strong>B.</strong> <code>p=p-&gt;next</code></li>
+<li><strong>C.</strong> <code>p=p-&gt;next-&gt;next</code></li>
+<li><strong>D.</strong> <code>p-&gt;next=p-&gt;next-&gt;next</code></li>
+</ul>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：D</strong> · 考点 <a href="/posts/computer/notes/2.2-线性表">2.2 线性表</a></p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 7 题 · 出入度总和</h3>
+<div class='gap'></div>
+<p>有向图所有顶点出度总和与入度总和比值（ ）</p>
+<div class='gap'></div>
+<ul>
+<li><strong>A.</strong> 4</li>
+<li><strong>B.</strong> 2</li>
+<li><strong>C.</strong> 1</li>
+<li><strong>D.</strong> 3</li>
+</ul>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：C</strong> · 考点 <a href="/posts/computer/notes/2.6-图">2.6 图</a></p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 8 题 · 整数除法与转换</h3>
+<div class='gap'></div>
+<p><code>(double)(5/2)+2.5</code> 的值（ ）</p>
+<div class='gap'></div>
+<ul>
+<li><strong>A.</strong> 4</li>
+<li><strong>B.</strong> 5.0</li>
+<li><strong>C.</strong> 5</li>
+<li><strong>D.</strong> 4.5</li>
+</ul>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：D</strong> · 考点 <a href="/posts/computer/notes/1.2-数据的存储与运算">1.2 数据的存储与运算</a></p>
 <p><strong>解析</strong>：先整除 <code>5/2=2</code>，再转 double：<code>2.0+2.5=4.5</code>。</p>
 <div class='gap'></div>
-<h3>9. 下列**语法错误**的是（ ）</h3>
-<p>A. <code>int a[2][2]={1,2,3,4}</code> B. <code>int a[2][]={1,2,3,4}</code></p>
-<p>C. <code>int a[][2]={1,2,3,4}</code> D. <code>int a[2][2]={1},{2,3}</code></p>
-<p><strong>答案：B</strong> · 考点 [1.6 数组](/posts/computer/notes/1.6-数组)</p>
+<hr>
+<div class='gap'></div>
+<h3>第 9 题 · 语法错误排查</h3>
+<div class='gap'></div>
+<p>下列<strong>语法错误</strong>的是（ ）</p>
+<div class='gap'></div>
+<ul>
+<li><strong>A.</strong> <code>int a[2][2]={1,2,3,4}</code></li>
+<li><strong>B.</strong> <code>int a[2][]={1,2,3,4}</code></li>
+<li><strong>C.</strong> <code>int a[][2]={1,2,3,4}</code></li>
+<li><strong>D.</strong> <code>int a[2][2]={1},{2,3}</code></li>
+</ul>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：B</strong> · 考点 <a href="/posts/computer/notes/1.6-数组">1.6 数组</a></p>
 <p><strong>解析</strong>：二维数组定义时<strong>列数不可省</strong>（行可省）。</p>
 <div class='gap'></div>
-<h3>10. 数组名作为函数参数传递的是（ ）</h3>
-<p>A. 长度 B. 首地址 C. 元素值 D. 元素个数</p>
-<p><strong>答案：B</strong> · 考点 [1.6 数组](/posts/computer/notes/1.6-数组) / [1.7 函数](/posts/computer/notes/1.7-函数)</p>
+<hr>
 <div class='gap'></div>
-<h3>11. `int z=2; while(z--); printf(&quot;z=%d&quot;,z);`（ ）</h3>
-<p>A. z=0 B. z=-1 C. z=1 D. 无结果</p>
-<p><strong>答案：B</strong> · 考点 [1.5 循环结构程序设计](/posts/computer/notes/1.5-循环结构程序设计)</p>
+<h3>第 10 题 · 数组作函数参数</h3>
+<div class='gap'></div>
+<p>数组名作为函数参数传递的是（ ）</p>
+<div class='gap'></div>
+<ul>
+<li><strong>A.</strong> 长度</li>
+<li><strong>B.</strong> 首地址</li>
+<li><strong>C.</strong> 元素值</li>
+<li><strong>D.</strong> 元素个数</li>
+</ul>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：B</strong> · 考点 <a href="/posts/computer/notes/1.6-数组">1.6 数组</a> / <a href="/posts/computer/notes/1.7-函数">1.7 函数</a></p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 11 题 · while 与后置自减</h3>
+<div class='gap'></div>
+<p><code>int z=2; while(z--); printf(&quot;z=%d&quot;,z);</code>（ ）</p>
+<div class='gap'></div>
+<ul>
+<li><strong>A.</strong> z=0</li>
+<li><strong>B.</strong> z=-1</li>
+<li><strong>C.</strong> z=1</li>
+<li><strong>D.</strong> 无结果</li>
+</ul>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：B</strong> · 考点 <a href="/posts/computer/notes/1.5-循环结构程序设计">1.5 循环结构程序设计</a></p>
 <p><strong>解析</strong>：空循环体；z 从 2→1→0 时条件取 0 后仍后置减成 <strong>-1</strong> 再退出。</p>
 <div class='gap'></div>
-<h3>12. 最常用操作是按序号存取，且只在表尾插入删除，最省时结构（ ）</h3>
-<p>A. 双链表 B. 顺序表 C. 单循环链表 D. 带头结点双循环链表</p>
-<p><strong>答案：B</strong> · 考点 [2.2 线性表](/posts/computer/notes/2.2-线性表)</p>
+<hr>
+<div class='gap'></div>
+<h3>第 12 题 · 存储结构选择</h3>
+<div class='gap'></div>
+<p>最常用操作是按序号存取，且只在表尾插入删除，最省时结构（ ）</p>
+<div class='gap'></div>
+<ul>
+<li><strong>A.</strong> 双链表</li>
+<li><strong>B.</strong> 顺序表</li>
+<li><strong>C.</strong> 单循环链表</li>
+<li><strong>D.</strong> 带头结点双循环链表</li>
+</ul>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：B</strong> · 考点 <a href="/posts/computer/notes/2.2-线性表">2.2 线性表</a></p>
 <p><strong>解析</strong>：按序号随机访问 O(1) → 顺序表；尾插删 O(1)（若知 length）。</p>
 <div class='gap'></div>
-<h3>13. `char a[10],b[10],*p=a,*q=b;` 正确的是（ ）</h3>
-<p>A. <code>p*=3</code> B. <code>p/=9</code> C. <code>p=&amp;9</code> D. <code>p+=3</code></p>
-<p><strong>答案：D</strong> · 考点 [1.8 指针](/posts/computer/notes/1.8-指针)</p>
+<hr>
+<div class='gap'></div>
+<h3>第 13 题 · 字符串指针操作</h3>
+<div class='gap'></div>
+<p><code>char a[10],b[10],*p=a,*q=b;</code> 正确的是（ ）</p>
+<div class='gap'></div>
+<ul>
+<li><strong>A.</strong> <code>p*=3</code></li>
+<li><strong>B.</strong> <code>p/=9</code></li>
+<li><strong>C.</strong> <code>p=&amp;9</code></li>
+<li><strong>D.</strong> <code>p+=3</code></li>
+</ul>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：D</strong> · 考点 <a href="/posts/computer/notes/1.8-指针">1.8 指针</a></p>
 <p><strong>解析</strong>：指针可加减整数；不可 <code>*=</code>/<code>/=</code>，<code>&amp;9</code> 非法。</p>
 <div class='gap'></div>
-<h3>14. 广义表 `L=((α,β,γ))` 长度与深度（ ）</h3>
-<p>A. 1,1 B. 1,3 C. 1,2 D. 2,3</p>
-<p><strong>答案：C</strong> · 考点 [2.4 串、数组和广义表](/posts/computer/notes/2.4-串、数组和广义表)</p>
+<hr>
+<div class='gap'></div>
+<h3>第 14 题 · 广义表长度与深度</h3>
+<div class='gap'></div>
+<p>广义表 <code>L=((α,β,γ))</code> 长度与深度（ ）</p>
+<div class='gap'></div>
+<ul>
+<li><strong>A.</strong> 1,1</li>
+<li><strong>B.</strong> 1,3</li>
+<li><strong>C.</strong> 1,2</li>
+<li><strong>D.</strong> 2,3</li>
+</ul>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：C</strong> · 考点 <a href="/posts/computer/notes/2.4-串、数组和广义表">2.4 串、数组和广义表</a></p>
 <p><strong>解析</strong>：最外一层只有 1 个元素（一个表）；深度 2。</p>
 <div class='gap'></div>
-<h3>15. 下列说法**错误**的是（ ）</h3>
-<p>A. <code>fgets</code> 可从键盘读字符串 B. <code>fwrite</code> 输出到文件</p>
-<p>C. <code>fputs</code> 输出字符到文件 D. <code>getchar</code> 从磁盘文件读入字符</p>
-<p><strong>答案：D</strong> · 考点 [1.10 文件操作](/posts/computer/notes/1.10-文件操作)</p>
+<hr>
+<div class='gap'></div>
+<h3>第 15 题 · 概念辨析</h3>
+<div class='gap'></div>
+<p>下列说法<strong>错误</strong>的是（ ）</p>
+<div class='gap'></div>
+<ul>
+<li><strong>A.</strong> <code>fgets</code> 可从键盘读字符串</li>
+<li><strong>B.</strong> <code>fwrite</code> 输出到文件</li>
+<li><strong>C.</strong> <code>fputs</code> 输出字符到文件</li>
+<li><strong>D.</strong> <code>getchar</code> 从磁盘文件读入字符</li>
+</ul>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：D</strong> · 考点 <a href="/posts/computer/notes/1.10-文件操作">1.10 文件操作</a></p>
 <p><strong>解析</strong>：<code>getchar</code> 从标准输入，不是磁盘文件专用。</p>
 <div class='gap'></div>
-<h3>16. 结构体变量分配的内存容量为（ ）</h3>
-<p>A. 各成员所需总和（含对齐） B. 仅第一成员 C. 最大成员 D. 最后成员</p>
-<p><strong>答案：A</strong> · 考点 [1.9 结构体与共用体](/posts/computer/notes/1.9-结构体与共用体)</p>
+<hr>
+<div class='gap'></div>
+<h3>第 16 题 · 结构体内存容量</h3>
+<div class='gap'></div>
+<p>结构体变量分配的内存容量为（ ）</p>
+<div class='gap'></div>
+<ul>
+<li><strong>A.</strong> 各成员所需总和（含对齐）</li>
+<li><strong>B.</strong> 仅第一成员</li>
+<li><strong>C.</strong> 最大成员</li>
+<li><strong>D.</strong> 最后成员</li>
+</ul>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：A</strong> · 考点 <a href="/posts/computer/notes/1.9-结构体与共用体">1.9 结构体与共用体</a></p>
 <p>（联合体才是最大成员）</p>
 <div class='gap'></div>
-<h3>17. 完全二叉树 1001 个结点，终端结点（叶子）个数（ ）</h3>
-<p>A. 499 B. 500 C. 501 D. 502</p>
-<p><strong>答案：C</strong> · 考点 [2.5 树和二叉树](/posts/computer/notes/2.5-树和二叉树)</p>
+<hr>
+<div class='gap'></div>
+<h3>第 17 题 · 完全二叉树叶子数</h3>
+<div class='gap'></div>
+<p>完全二叉树 1001 个结点，终端结点（叶子）个数（ ）</p>
+<div class='gap'></div>
+<ul>
+<li><strong>A.</strong> 499</li>
+<li><strong>B.</strong> 500</li>
+<li><strong>C.</strong> 501</li>
+<li><strong>D.</strong> 502</li>
+</ul>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：C</strong> · 考点 <a href="/posts/computer/notes/2.5-树和二叉树">2.5 树和二叉树</a></p>
 <p><strong>解析</strong>：n 个结点的完全二叉树叶子数为 $\lceil n/2 \rceil$ 或公式 $n-\lfloor n/2 \rfloor$ → <strong>501</strong>。</p>
 <div class='gap'></div>
-<h3>18. 序列 1..n 入栈，第一个出栈为 n，则第 i 个出栈元素为（ ）</h3>
-<p>A. n-i-1 B. n-i C. n-i+1 D. 不确定</p>
-<p><strong>答案：C</strong> · 考点 [2.3 栈和队列](/posts/computer/notes/2.3-栈和队列)</p>
+<hr>
+<div class='gap'></div>
+<h3>第 18 题 · 出栈序列推导</h3>
+<div class='gap'></div>
+<p>序列 1..n 入栈，第一个出栈为 n，则第 i 个出栈元素为（ ）</p>
+<div class='gap'></div>
+<ul>
+<li><strong>A.</strong> n-i-1</li>
+<li><strong>B.</strong> n-i</li>
+<li><strong>C.</strong> n-i+1</li>
+<li><strong>D.</strong> 不确定</li>
+</ul>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：C</strong> · 考点 <a href="/posts/computer/notes/2.3-栈和队列">2.3 栈和队列</a></p>
 <p><strong>解析</strong>：必须先 1..n 全入再依次弹出：n,n-1,… → 第 i 个为 <strong>n-i+1</strong>。</p>
 <div class='gap'></div>
-<h3>19. 存储空间与顶点个数相关（常考邻接矩阵）（ ）</h3>
-<p>A. 邻接表 B. 邻接矩阵 C. 十字链表 D. 逆邻接表</p>
-<p><strong>答案：B</strong> · 考点 [2.6 图](/posts/computer/notes/2.6-图)</p>
+<hr>
+<div class='gap'></div>
+<h3>第 19 题 · 存储空间与顶点</h3>
+<div class='gap'></div>
+<p>存储空间与顶点个数相关（常考邻接矩阵）（ ）</p>
+<div class='gap'></div>
+<ul>
+<li><strong>A.</strong> 邻接表</li>
+<li><strong>B.</strong> 邻接矩阵</li>
+<li><strong>C.</strong> 十字链表</li>
+<li><strong>D.</strong> 逆邻接表</li>
+</ul>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：B</strong> · 考点 <a href="/posts/computer/notes/2.6-图">2.6 图</a></p>
 <p><strong>解析</strong>：邻接矩阵 $O(n^2)$ 只与顶点数相关。</p>
 <div class='gap'></div>
-<h3>20. 队列和栈的共同点是（ ）</h3>
-<p>A. 先进先出 B. 先进后出 C. 后进先出 D. 只能在端点插入或删除</p>
-<p><strong>答案：D</strong> · 考点 [2.3 栈和队列](/posts/computer/notes/2.3-栈和队列)</p>
+<hr>
 <div class='gap'></div>
-<p>---</p>
+<h3>第 20 题 · 队列与栈的共同点</h3>
 <div class='gap'></div>
-<h2>二、判断题（摘要）</h2>
+<p>队列和栈的共同点是（ ）</p>
+<div class='gap'></div>
+<ul>
+<li><strong>A.</strong> 先进先出</li>
+<li><strong>B.</strong> 先进后出</li>
+<li><strong>C.</strong> 后进先出</li>
+<li><strong>D.</strong> 只能在端点插入或删除</li>
+</ul>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：D</strong> · 考点 <a href="/posts/computer/notes/2.3-栈和队列">2.3 栈和队列</a></p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>二、判断题（本大题共 10 小题，每小题 2 分，共 20 分 · 摘要）</h2>
+<div class='gap'></div>
+<blockquote>⚠️ <strong>本节为摘要，没有逐题题干与答案</strong>（原卷未保留）。试卷结构里记的是<strong>卷面</strong>题量，不是本节已拆解的题量。</blockquote>
 <div class='gap'></div>
 <p>以本地 <code>2022.txt</code> 后半为准；常见点：</p>
+<div class='gap'></div>
+<ul>
 <li>空语句、指针运算、排序稳定性、图的存储等</li>
 <li>建议对照 2024 判断题风格闭卷练</li>
+</ul>
 <div class='gap'></div>
-<p>---</p>
+<hr>
 <div class='gap'></div>
-<h2>三、填空 / 四、简答</h2>
+<h2>三、填空题 / 四、简答题（本大题共 9 小题，共 60 分 · 摘要）</h2>
+<div class='gap'></div>
+<blockquote>⚠️ <strong>本节为摘要，没有逐题题干与答案</strong>（原卷未保留）。</blockquote>
 <div class='gap'></div>
 <p>按本地原卷补全关键词：结构化程序、文件函数、树/图术语、算法特点、指针概念。</p>
 <div class='gap'></div>
-<p>---</p>
+<hr>
 <div class='gap'></div>
-<h2>五、读程题（摘要）</h2>
+<h2>五、计算／读程题（本大题共 3 小题，每小题 10 分，共 30 分 · 摘要）</h2>
 <div class='gap'></div>
-<li>含 `continue` + 指针走访字符数组的循环：先算 `m` 终值，再看 `printf` 输出字符序列。</li>
+<blockquote>⚠️ <strong>本节为摘要，没有逐题题干与答案</strong>（原卷未保留）。</blockquote>
+<div class='gap'></div>
+<ul>
+<li>含 <code>continue</code> + 指针走访字符数组的循环：先算 <code>m</code> 终值，再看 <code>printf</code> 输出字符序列。</li>
 <li>手推：画表格记录 m、条件、输出。</li>
+</ul>
 <div class='gap'></div>
-<p>---</p>
+<hr>
 <div class='gap'></div>
-<h2>六、应用题</h2>
+<h2>六、应用题（本大题共 3 小题，每小题 10 分，共 30 分）</h2>
 <div class='gap'></div>
-<h3>图遍历 + 最小生成树</h3>
-<p>(1) 从 1 开始 DFS，邻接点按编号升序 → 写出访问序列</p>
-<p>(2) 最小生成树：Prim 或 Kruskal，写算法名并画树</p>
+<h3>第 43 题 · 图遍历与最小生成树</h3>
 <div class='gap'></div>
-<h3>统计指定字符个数</h3>
-<p><code>`</code>c</p>
-<p>int count_char(const char *s, char ch) {</p>
-<p>  int c=0; for(;*s;s++) if(*s==ch) c++;</p>
-<p>  return c;</p>
-<p>}</p>
-<p><code>`</code></p>
+<p>图遍历 + 最小生成树</p>
 <div class='gap'></div>
-<h3>选择排序 30 个成绩</h3>
-<p><code>`</code>c</p>
-<p>void select_sort(int a[], int n) {</p>
-<p>  for(int i=0;i&lt;n-1;i++) {</p>
-<p>    int k=i;</p>
-<p>    for(int j=i+1;j&lt;n;j++) if(a[j]&lt;a[k]) k=j;</p>
-<p>    if(k!=i) { int t=a[i]; a[i]=a[k]; a[k]=t; }</p>
-<p>  }</p>
-<p>}</p>
-<p><code>`</code></p>
+<p><strong>（1）</strong> 从 1 开始 DFS，邻接点按编号升序，写出访问序列。</p>
 <div class='gap'></div>
-<h2>回炉</h2>
+<p><strong>（2）</strong> 求最小生成树：写算法名并画出树。</p>
 <div class='gap'></div>
-<li>[原卷 PDF](/papers/computer/2022.pdf)</li>
-<li>2024 · 2021 · 考点拆分</li>
+<p class='ctitle'>答案与解析</p>
 <div class='gap'></div>
-<p>---</p>
-<p>返回：_索引 · 总索引</p>
+<p><strong>答案：见解析</strong></p>
+<div class='gap'></div>
+<p>⚠️ <strong>原卷的图在回忆版里丢了</strong>，无法给出确定的序列。方法如下：</p>
+<div class='gap'></div>
+<p><strong>DFS</strong>：从顶点 1 出发，邻接点按编号升序，能走就走、走不通就回溯，直到所有顶点访问完。要写出序列，就在纸上把「第一次到达」的顺序记下来。</p>
+<div class='gap'></div>
+<p><strong>最小生成树</strong>：<strong>Prim</strong> —— 从顶点 1 起，每次在「一端在树内、一端在树外」的边里挑权最小的并入，共选 $n-1$ 条边；<strong>Kruskal</strong> —— 边按权升序，不成环就收，同样收到 $n-1$ 条。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 44 题 · 统计指定字符个数</h3>
+<div class='gap'></div>
+<p>统计指定字符个数</p>
+<div class='gap'></div>
+<p>编写函数 <code>count_char(const char *s, char ch)</code>，返回字符串 <code>s</code> 中字符 <code>ch</code> 出现的次数。</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：见解析（参考实现见下）</strong></p>
+<div class='gap'></div>
+<pre><code>
+int count_char(const char *s, char ch) {
+  int c=0; for(;*s;s++) if(*s==ch) c++;
+  return c;
+}
+</code></pre>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h3>第 45 题 · 选择排序</h3>
+<div class='gap'></div>
+<p>选择排序 30 个成绩</p>
+<div class='gap'></div>
+<p>编写函数，用选择排序把 30 个成绩按升序排列。</p>
+<div class='gap'></div>
+<p class='ctitle'>答案与解析</p>
+<div class='gap'></div>
+<p><strong>答案：见解析（参考实现见下）</strong></p>
+<div class='gap'></div>
+<pre><code>
+void select_sort(int a[], int n) {
+  for(int i=0;i&lt;n-1;i++) {
+    int k=i;
+    for(int j=i+1;j&lt;n;j++) if(a[j]&lt;a[k]) k=j;
+    if(k!=i) { int t=a[i]; a[i]=a[k]; a[k]=t; }
+  }
+}
+</code></pre>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<blockquote>相关：<a href="/posts/computer/">真题总览</a> · <a href="/posts/computer/真题章节对照表">真题章节对照表</a> · <a href="/posts/computer/topics/">考点拆分索引</a></blockquote>
 <div class='gap'></div>
 </body>
 </html>

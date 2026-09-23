@@ -1,0 +1,1818 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>计算机 · 真题原卷文字版</title>
+<style>
+body { font-family: "Microsoft YaHei", "Noto Sans SC", sans-serif; max-width: 800px; margin: 40px auto; padding: 0 24px; font-size: 14px; line-height: 1.8; color: #222; }
+h1 { font-size: 22px; border-bottom: 2px solid #333; padding-bottom: 8px; }
+h2 { font-size: 18px; margin-top: 24px; }
+h3 { font-size: 16px; }
+table { margin: 12px 0; }
+th, td { text-align: left; vertical-align: top; }
+ul, ol { margin: 8px 0; padding-left: 26px; }
+li { margin: 2px 0; }
+blockquote { border-left: 3px solid #999; margin: 8px 0; padding: 4px 12px; color: #555; background: #f7f7f7; }
+code { background: #f0f0f0; padding: 1px 5px; border-radius: 3px; }
+pre { background: #f7f7f7; border: 1px solid #e0e0e0; border-radius: 4px; padding: 10px 12px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+hr { border: none; border-top: 1px solid #ddd; margin: 18px 0; }
+a { color: #1a4d8f; }
+.ctitle { background: #eef4fb; border-left: 3px solid #7aa7d9; margin: 10px 0; padding: 6px 12px; color: #24486f; }
+.gap { height: 8px; }
+@media print { body { margin: 0; padding: 0; max-width: none; } }
+</style>
+</head>
+<body>
+<div class='gap'></div>
+<h1>计算机基础与程序设计 · 真题原卷文字版（2021-2024）</h1>
+<div class='gap'></div>
+<blockquote>📄 <strong>来源</strong>：扫描版原卷 PDF 逐页 OCR 提取（2026-08）</blockquote>
+<blockquote>⚠️ OCR 提取存在少量同音字误差，<strong>做题建议对照原 PDF</strong>；文字版用于快速检索/速读。</blockquote>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>2024 年真题</h2>
+<div class='gap'></div>
+<blockquote>来源: 扫描版 PDF 逐页 OCR 提取</blockquote>
+<blockquote>页数: 26 页</blockquote>
+<blockquote>提取时间: 2026/8/21 21:06:55</blockquote>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第 1 页</h2>
+<div class='gap'></div>
+<p>计算 机 程序 设计 。2024 年 真题 (考生 回忆 版 + 全 量 详解 )</p>
+<p>六 类 型 六 : 考生 回忆 版 (B 级 资料 ) | 满分 六 200x# 分 . 六 150x* 分 钟</p>
+<p><strong> 科 目 </strong>: 广东 普通 专升本 《计算 机 基础 与 程序 设计 》</p>
+<p>六 边界 六 : 考试 院 不 公开 发 布 原 卷 PDF; 措 酝 / 个 别 数字 以 你 手头 正版 真题 册 为 准 。 见 [00- 资 料 来 源 与 使 用 说 明 ]</p>
+<p>(Uguide/sources)</p>
+<p>xx 按 考 点 拆 练 信 : <a href="/posts/computer/topics/">考点拆分索引</a></p>
+<p>本 文 整理 自 2024 年 广东 省 普通 专升本 ( 专 插 本 ) 统考 《计算 机 基础 与 程序 设计 》 考 生 回 忆 版 ， 附 每 道 题 的 详细 解析 。</p>
+<p>回忆 版 无 法 100% 还 原 真 题 用 词 ， 但 考点 、 数 据 、 答 案 与 考试 高 度 一 致 ， 是 2025/2026 届 最 接近 真实 考试 的 参考 之 一 。</p>
+<p>试卷 结构</p>
+<p>|</p>
+<p>一 、 单 项 选择 题 0 60 (3 分 / 题 ) C 语法 基础 、 运 算 符 、 数 据 结 构 概 念</p>
+<p>二 、 判 断 题 Co 20 (2 分 / 题 ) C 语言 细节 、 数 据 结构 性 质</p>
+<p>和 RH</p>
+<p>人 0</p>
+<p>五 、 计 算 题 攻 30 (10 分 / 题 ) 程序 执行 结果 分 析</p>
+<p>7 二</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第 2 页</h2>
+<div class='gap'></div>
+<p>参考 教材 : 谭 浩 强 《C 语言 程序 设计 》 (第 5 版 ) + 严 蔚 人 敏 《数据 结构 (C 语言 版 ) 》</p>
+<div class='gap'></div>
+<p>一 、 单 项 选择 题 (本 大 题 共 20 小 题 ， 每 小 题 3 分 ， 共 60 分 )</p>
+<div class='gap'></div>
+<ol>
+<li>以 下 关于 上 程序 的 叙述 中 ， 错 误 的 是 ( )</li>
+</ol>
+<div class='gap'></div>
+<p>A. 语句 最 后 必须 是 分 号</p>
+<div class='gap'></div>
+<p>B. C 程序 的 基本 组 成 单位 是 函数</p>
+<div class='gap'></div>
+<ol>
+<li>注释 可 以 用 \N 开始</li>
+</ol>
+<div class='gap'></div>
+<p>D. 一 条 语句 可 以 分 成 多 行 来 写</p>
+<div class='gap'></div>
+<ul>
+<li>答 案 : C** : 考点 扩 1.1 C 语 言 概述 与 基本 概念 六</li>
+</ul>
+<div class='gap'></div>
+<p>解析 : 人 语言 注释 用 /# */ 或 //， 不 存在 \N 开头 的 注释 格式 。A 正确 (语句 以 分 号 结尾 ) ; B 正确 〈C 以 函数 为 基</p>
+<p>本 组 成 单位 ) ; D 正确 (一 条 语句 可 跨 多 行 ) 。</p>
+<div class='gap'></div>
+<ol>
+<li>C 语言 中 ， 使 用 &quot;strcmp`” 函数 需要 包含 的 头 文件 是 ( )</li>
+</ol>
+<div class='gap'></div>
+<p>A._ string.h  B. math.h  C. stdlib.h  D. stdio.h</p>
+<div class='gap'></div>
+<p>答案 : Ax* . 考点 关 2.4 串 、 数 组 和 广义 表 兰 . *#1.6 数组 六</p>
+<div class='gap'></div>
+<p>解析 : 字符 串 处 理 函 数 ( strcmp 、 strcpy 、 strlen 、 strcat 等 ) 声明 在 string.h 。B 数学 函数 ，C 标准 库</p>
+<p>(malloc / free ) ，D 标准 输入 输出 。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第 3 页</h2>
+<div class='gap'></div>
+<ol>
+<li>下 面 程序 输出 结果 为 ( )</li>
+</ol>
+<div class='gap'></div>
+<p>CC</p>
+<div class='gap'></div>
+<p>inta=1b=0;</p>
+<div class='gap'></div>
+<p>printf(&quot;%d&quot; b = a + b):</p>
+<div class='gap'></div>
+<p>printf(&quot;%d&quot; a = 2 - b);</p>
+<div class='gap'></div>
+<p>A.10 B.12 C.3,2 D.00</p>
+<div class='gap'></div>
+<p>六 答案 : B** (回忆 版 共识 ) 考点 ##1.2 数据 的 存储 与 运算 芒</p>
+<div class='gap'></div>
+<p>解析 / 注意 :</p>
+<div class='gap'></div>
+<p>按 字面 逐步 : bp =a+b 一 b=1, 输出 1;  a=2-b 一 a=1,， 输出 上 1 一 连 写 为 &quot;11， 选 项 中 无 。</p>
+<p>回忆 版 OCR/ 措 辞 可 能 偏差 : 若 第 二 式 为 a = 2* b ， 则 输出 1 与 2 ， 对 应 选项 B。</p>
+<div class='gap'></div>
+<p>*x 剧 | 师 重 点 ** : 赋值 表达 式 可 作 printf 实 参 ; 逗号 / 连 写 输出 不 要 想当然 。</p>
+<div class='gap'></div>
+<ol>
+<li>表达 式 <code>10 != 9</code> 的 值 是 ( )</li>
+</ol>
+<div class='gap'></div>
+<p>A.0 B.1 C8 D 非 0</p>
+<div class='gap'></div>
+<p><strong> 答 案 : Bx</strong> . 考点 六 1.2 数据 的 存储 与 运算 从</p>
+<div class='gap'></div>
+<p>解析 : != 为 不 等 于 。 10 != 9 为 真 ，C 中 关系 表达 式 为 真 时 值 为 1 (不 是 「 任 意 非 0」 ) 。</p>
+<ol>
+<li>以 下 表达 式 中 值 为 3 的 是 ( )</li>
+</ol>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第 4 页</h2>
+<div class='gap'></div>
+<p>A. 2+3/2</p>
+<div class='gap'></div>
+<p>B. 17 - 14 % 10</p>
+<div class='gap'></div>
+<p>C. 13/3-2</p>
+<div class='gap'></div>
+<p>D. (3+6) /(13-9)</p>
+<div class='gap'></div>
+<p>答案: Ax* . 考点 六 1.2 数据 的 存储 与 运算 六</p>
+<div class='gap'></div>
+<p>解析 (整数 除法 截断 ) :</p>
+<p>|</p>
+<p>Ta</p>
+<p>|</p>
+<p>|</p>
+<ol>
+<li>下 列 可 用 做 C 语言 字符 串 常量 的 是 ( )</li>
+</ol>
+<div class='gap'></div>
+<p>A 人 . 色 B. $ABC C. “Horse” D. abc</p>
+<div class='gap'></div>
+<p>答案: C*# : 考点 扩 1.1 5 语言 概述 与 基本 概念 六</p>
+<div class='gap'></div>
+<p>解析 : 字符 串 常量 必须 用 双 引 号 。A 为 字符 常量 写法 不 完整 ， B、D 不 是 合法 字符 串 常量 写法 。</p>
+<div class='gap'></div>
+<ol>
+<li>执行 代码 `int a = 205, b = 206; printf(&quot;%d&#x27;“， (a, b))” 的 输出 结果 为 ( )</li>
+</ol>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第 5 页</h2>
+<div class='gap'></div>
+<p>A.205 B.206 .205, 206 D. 206, 206</p>
+<div class='gap'></div>
+<ul>
+<li>答 案 : B 扩 .考点 六 1.2 数据 的 存储 与 运算 入</li>
+</ul>
+<div class='gap'></div>
+<p>解析 : 《〈a，Pp) 是 逗号 表达 式 : 从 左 到 右 计 算 ， 取 最 后 一 个 表达 式 的 值 ~ p 即 206。</p>
+<p>对 比 : printf(%d ，a，b) 格式 串 只 有 一 个 %d ， 多 出 的 参数 行为 未 定义 /被 忽略 ， 不 是 本 题 。</p>
+<ol>
+<li>以 下 程序 段 的 功能 是 ( )</li>
+</ol>
+<div class='gap'></div>
+<p>CC</p>
+<div class='gap'></div>
+<p>int temp, x, y;</p>
+<div class='gap'></div>
+<p>temp = x=yy=temp;</p>
+<div class='gap'></div>
+<p>A. 交换 x 和 y 的 值</p>
+<div class='gap'></div>
+<p>B. 交换 x 和 temp 的 值</p>
+<div class='gap'></div>
+<p>C. 交换 x 和 z 的 值</p>
+<div class='gap'></div>
+<p>D. x 和 y 从 大 到 小 排序</p>
+<div class='gap'></div>
+<p>六 答案 : A&#x27; . 考点 关 1.3 顺序 程序 设计 和</p>
+<div class='gap'></div>
+<p>解析 : 经 典 三 变量 交换 ;此 处 用 逗号 表达 式 把 三 条 赋值 写 在 一 行 。</p>
+<div class='gap'></div>
+<ol>
+<li>执行 语句 int a = 1; while (a &lt; 4) printf(&quot;%d&quot;, a++); 的 输出 结果 为 ()</li>
+</ol>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第 6 页</h2>
+<div class='gap'></div>
+<p>A.1 B.12 (5C.1234 D.123</p>
+<div class='gap'></div>
+<ul>
+<li>答 案 : D** &#x27; 考点 六 1.5 循环 结构 程序 设计 亿</li>
+</ul>
+<p>解析 ( at++ 后 置 : 先 用 后 加 ) :</p>
+<div class='gap'></div>
+<p>最 终 输 出 123 。</p>
+<div class='gap'></div>
+<ol>
+<li>下 列 关于 算法 的 说 法 中 ， 错 误 的 是 ( )</li>
+</ol>
+<p>A. 常用 伪 代 码 描述 算法</p>
+<div class='gap'></div>
+<p>B. 自然 语言 可 以 描述 算法</p>
+<div class='gap'></div>
+<ol>
+<li>算法 是 求解 问题 的 有 限 序 列</li>
+</ol>
+<div class='gap'></div>
+<p>D. 算法 不 存在 时 间 复 杂 度</p>
+<div class='gap'></div>
+<p>志和 答案 : D** . 考点 六 2.9 算法 基本 概念 与 分 析 入</p>
+<p>解析 : 算法 一 定 有 时 间 复 杂 度 (效率 度量 ) 。A/B/C 均 为 正确 描述 。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第 7 页</h2>
+<div class='gap'></div>
+<ol>
+<li>语言 结构 体 类 型 变量 在 程序 执行 期 间 ( )</li>
+</ol>
+<div class='gap'></div>
+<p>A. 所 有 成 员 一 直 驻 留 在 内 存 中</p>
+<div class='gap'></div>
+<p>B. 只 有 一 个 成 员 驻 留 在 内 存 中</p>
+<div class='gap'></div>
+<p>C. 部 分 成 员 驻 留 在 内 存 中</p>
+<div class='gap'></div>
+<p>D. 没有 成 员 驻 留 在 内 存 中</p>
+<div class='gap'></div>
+<p>x** 答 案 : Ax* : 考点 六 1.9 结构 体 与 共用 体 六</p>
+<div class='gap'></div>
+<p>解析 : 结构 体 变 量 定 义 后 ， 所 有 成 员 同 时 分 配 ( 含 对 齐 ) 。 联 合体 union 才 是 成 员 共享 同一 块 内 存 。</p>
+<ol>
+<li>长 度 为 n 的 顺序 表 ， 在 第 i 个 元 素 后 面 插入 一 个 新 元 素 的 时 间 复 杂 度 为 ( )</li>
+</ol>
+<div class='gap'></div>
+<p>A.O(0) B.O() COm D.O(n2)</p>
+<div class='gap'></div>
+<p>hx 答案，Cxx . 考点 k2.2 线性 表 必</p>
+<div class='gap'></div>
+<p>解析 : 插入 需 将 i 后 元 素 整体 后 移 ， 最 坏 约 n 次 移动 ,平均 n/2 一 O(n)。</p>
+<div class='gap'></div>
+<ol>
+<li>通过 折 半 查找 对 关键 字 序列 {12, 18, 21, 35, 45, 55, 66}， 查 找 21 需要 查找 ( ) 次</li>
+</ol>
+<p>A.4 B.3 C.2 D.1</p>
+<div class='gap'></div>
+<ul>
+<li>答 案 : B 六 :考点 **2.7 查找 和</li>
+</ul>
+<div class='gap'></div>
+<p>解析 (下 标 0..6， 已 升序 ) :</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第 8 页</h2>
+<div class='gap'></div>
+<p>1.mid = (0+6)/2 = 3 一 `a[3]=35，21 &amp;lt 35 一 左 半</p>
+<p>2.mid = (0+2)/2 =1 一 `a[1]=18，21&amp;gt 18 一 右 半</p>
+<ol>
+<li>mid = (2+2)/2 = 2 一 `a[2]=21 找到</li>
+</ol>
+<div class='gap'></div>
+<p>共 3 次 。</p>
+<div class='gap'></div>
+<ol>
+<li>串 “abcd” 的 长 度 为 ( )</li>
+</ol>
+<div class='gap'></div>
+<p>A.5 B.2 CC 6 D.4</p>
+<div class='gap'></div>
+<ul>
+<li>答 案 : Di : 考点 六 2.4 串 、 数 组 和 广义 表 和 人</li>
+</ul>
+<div class='gap'></div>
+<p>解析 : 串 长 = 字符 个 数 ， 不 含 “\0&#x27; 。 strlen( abcd)=4 ; sizeof(abcd“)=5 ( 含 结束 符 ) 。</p>
+<div class='gap'></div>
+<ol>
+<li>数据 的 结构 类 型 ， 从 逻辑 上 可 分 为 ()</li>
+</ol>
+<div class='gap'></div>
+<p>A. 动态 结构 和 静态 结构</p>
+<div class='gap'></div>
+<p>B. 紧凑 结构 和 非 紧凑 结构</p>
+<div class='gap'></div>
+<ol>
+<li>线性 结构 和 非 线 性 结构</li>
+</ol>
+<div class='gap'></div>
+<p>D. 内 部 结构 和 外 部 结构</p>
+<div class='gap'></div>
+<p>答案 : C#* :考点 六 2.1 数据 结构 基本 概念 六</p>
+<div class='gap'></div>
+<p>解析 :</p>
+<div class='gap'></div>
+<p>** 逻 辑 结构 六 : 线性 ( 表 / 栈 /队列 / 串 ) vs 非 线性 〈 树 /图 /集合 )</p>
+<div class='gap'></div>
+<p>** 人 储 结构 六 : 顺序 / 链 式 / 索引 / 散 列</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第 9 页</h2>
+<div class='gap'></div>
+<ol>
+<li>链 式 存储 的 存储 结构 所 占 空间 ( )</li>
+</ol>
+<div class='gap'></div>
+<p>A 只 有 一部分 存放 结 点 值</p>
+<div class='gap'></div>
+<p>B. 只 有 一 部 分 存放 结 点 间 关系 的 指针</p>
+<div class='gap'></div>
+<p>C 分 两 部 分 ， 一 部 分 存放 结 点 值 ， 另 一 部 分 存放 结 点 所 占 单元 数</p>
+<div class='gap'></div>
+<p>D. 分 两 部 分 ， 一 部 分 存放 结 点 值 ， 另 一 部 分 存放 表示 结 点 间 关 系 的 指针</p>
+<div class='gap'></div>
+<p>| “ 管 案 ; pw -考点 “2.2 线性 表 &quot;</p>
+<div class='gap'></div>
+<p>解析 : 结 点 = 数据 域 + 指针 域 。C 错 在 「 所 占 单元 数 」 一 指针 存 的 是 邻接 地 址 。</p>
+<div class='gap'></div>
+<ol>
+<li>带 有 头 结 点 的 单 链表 ， 头 指针 为 &quot;head `， 则 表示 单 链表 为 空 的 选项 是 ( )</li>
+</ol>
+<p>A. head == NULL</p>
+<div class='gap'></div>
+<p>B. head != NULL</p>
+<div class='gap'></div>
+<p>C. head→next == NULL</p>
+<div class='gap'></div>
+<p>D. head→next == head</p>
+<div class='gap'></div>
+<p>xx 答案 : Cxx 因 考点 xxD .D 线性 表 #x*</p>
+<div class='gap'></div>
+<p>解析 : 带头 结 点 时 头 结 点 始终 存在 ; 空 表 一 头 结 点 后 无 数据 结 点 二 head→next == NULL 。</p>
+<p>A 是 不 带头 结 点 判 空 ，D 常见 于 循环 链表 等 场景。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第 10 页</h2>
+<div class='gap'></div>
+<ol>
+<li>四 个 元 素 1、2、3、4 依次 入 栈 ， 第 一 个 出 栈 元 素 为 4， 则 第 3 个 出 栈 元 素 为 ( )</li>
+</ol>
+<p>A.1 B.2 C.3 D.4</p>
+<div class='gap'></div>
+<p>答案 : B** :考点 六 2.3 栈 和 队列 入</p>
+<div class='gap'></div>
+<p>解析 (LIFO) : 四 个 全 入 后 才 弹 一 出 栈 序 4 3, 2, 1 一 第 3 个 是 2。</p>
+<div class='gap'></div>
+<ol>
+<li>二 叉 树 第 3 层 的 结 点 个 数 最 多 有 ( ) 个</li>
+</ol>
+<div class='gap'></div>
+<p>A.1 B.4 C.8 D.16</p>
+<div class='gap'></div>
+<p>所 答案 : B 六 .考点 *2.5 树 和 二 又 树 芝</p>
+<div class='gap'></div>
+<p>解析 : 第 k 层 最 多 \(2^{kc1}N 个 ( 根 为 第 1 层 ) 。 第 3 层 : X2^{2}=4N)。</p>
+<div class='gap'></div>
+<ol>
+<li>在 单 链表 中 ， 要 将 s 所 指向 结 点 插入 到 p 所 指向 结 点 之 后 ， 其 语句 应 为 ( )</li>
+</ol>
+<p>A. sr→next = pD + 1; p→next = Si;</p>
+<div class='gap'></div>
+<p>B.，s→next = p→next; p→next = S→next;</p>
+<div class='gap'></div>
+<p>C，(#p) .next→s; (ks). next = (#kp) .next</p>
+<div class='gap'></div>
+<p>D.，s→next = p→next; p→next = S;</p>
+<div class='gap'></div>
+<p>xx 答案 :Dax . 考点 愉 2.2 线性 表 坟</p>
+<div class='gap'></div>
+<p>解析 (顺序 不 能 反 ) :</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第 11 页</h2>
+<div class='gap'></div>
+<p>1.s→next = p→next&quot; // 先 挂 上 p 的 后 继</p>
+<ol>
+<li>&#x27;p→next = s 人 /再 让 p 指 向 s</li>
+</ol>
+<p>先 改 p→next 会 和 后 继 。B 第 二 步 把 p→next 设 回 s→next 等 于 没 插 对 。</p>
+<p>二 、 判 断 题 (本 大 题 共 10 小 题 ， 每 小 题 2 分 ， 共 20 分 )</p>
+<p>判断 正确 填 [v] ， 错 误 填 [xj 。</p>
+<ol>
+<li>结构 体 变量 的 成 吴 可 以 通过 “. 成 吴 名 ` 来 引用 其 值 。 ( )</li>
+</ol>
+<p>答案 : Varx . 赔 1.9 结构 体 与 共用 体 忆</p>
+<p>结构 体 变量 用 ，; 结构 体 指针 用 -》 或 GDp) .成 员 。</p>
+<ol>
+<li>数组 的 下 标 从 1 开始 。 ( )</li>
+</ol>
+<p>| -es en6aaan</p>
+<p>C 数组 下 标 从 0 开始 。 int al5] 合法 下 标 0….4 。</p>
+<ol>
+<li>复合 语句 (人 ) 中 定义 的 变量 ， 其 作用 域 仅 限于 该 复合 语句 内 部 。 ( )</li>
+</ol>
+<p>| -7</p>
+<p>花 括号 内 局 部 变量 ， 离 开 】 后 不 可 访问 。</p>
+<ol>
+<li>不 同 函 数 中 可 以 使 用 同名 的 变量 ， 它 们 互 不 影响 。 ( )</li>
+</ol>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第 12 页</h2>
+<div class='gap'></div>
+<p>| -ea</p>
+<div class='gap'></div>
+<p>各 函数 局 部 变量 在 各 自 栈 帧 ， 同 名 互 不 影响 。</p>
+<div class='gap'></div>
+<ol>
+<li>栈 和 队列 没有 共同 点 。 ( )</li>
+</ol>
+<div class='gap'></div>
+<p>六 答 案 : x 术 ,xx*2.3 栈 和 队列 六</p>
+<div class='gap'></div>
+<p>共同 点 : 都 是 操作 受 限 的 线性 表 。 区 别 : 栈 LIFO， 队 列 FIFO。</p>
+<ol>
+<li>while` 语句 的 退出 方式 只 有 条 件 表达 式 为 假 这 一 种 。 ( )</li>
+</ol>
+<p>xx 答案 : xxx* &#x27; **1.5 循环 结构 程序 设计 和</p>
+<div class='gap'></div>
+<p>还 可 用 break (以 及 return / exit 结束 函数 /进程 ) 。</p>
+<div class='gap'></div>
+<ol>
+<li>二 维 数 组 在 内 存 中 按 行 优先 顺序 存储 。 ( )</li>
+</ol>
+<div class='gap'></div>
+<p>| -sen6me</p>
+<div class='gap'></div>
+<p>C 按 行 优先 : a[0][0]，a[0][，…，a[1][0]，… 。</p>
+<div class='gap'></div>
+<ol>
+<li>串 是 一 种 特殊 的 线性 表 ， 其 数据 元 素 只 能 是 字符 。 ( )</li>
+</ol>
+<p>xx 答案 : Vxx . xx*2.4 串 、 数 组 和 广义 表 六</p>
+<div class='gap'></div>
+<p>串 = 零 个 或 多 个 字符 的 有 限 序列 。</p>
+<div class='gap'></div>
+<ol>
+<li>算法 的 时 间 复杂 度 和 空间 复杂 度 一 定 呈 反 比 关 系 。 ( )</li>
+</ol>
+<p>ti 答案: xi .xx*2.9 算法 基本 概念 与 分 析 关</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第 13 页</h2>
+<div class='gap'></div>
+<p>无 必然 反比 ; 仅 部 分 场景 存在 「 以 空间 换 时 间 」 权衡 。</p>
+<div class='gap'></div>
+<ol>
+<li>在 线性 表 中 ， 除 了 第 一 个 元 素 外 ， 每 个 元 素 有 且 只 有 一 个 直接 前 驱 。 ( )</li>
+</ol>
+<p>答案， Vix . 姑 2.2 线性 表 必</p>
+<div class='gap'></div>
+<p>线性 表 基 本 特性 ( 首 元 无 前 驱 ， 末 元 无 后 继 ) 。</p>
+<div class='gap'></div>
+<p>三 、 填 空 题 (本 大 题 共 5 小 题 ， 每 小 题 4 分 ， 共 20 分 )</p>
+<ol>
+<li>下 面 程序 的 功能 是 通过 指针 形 参 返 回 两 个 数 的 和 ， 请 补 全 。</li>
+</ol>
+<p> &amp;lt;C</p>
+<div class='gap'></div>
+<p>void add(int x inty int xz) {</p>
+<div class='gap'></div>
+<p>}</p>
+<div class='gap'></div>
+<p>xz 答案 :xz = X + 儿科 :于 1.8 指针 类</p>
+<div class='gap'></div>
+<p>2 是 int*x ， 要 改 外 部 变量 必须 *z 解 引 用 赋值 。</p>
+<div class='gap'></div>
+<ol>
+<li>执行 以 下 程序 段 后 ， 输 出 结果 是 ” 。</li>
+</ol>
+<div class='gap'></div>
+<p> &amp;lt;C</p>
+<div class='gap'></div>
+<p>char s1[20] = &quot;Hello&quot;;</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第 14 页</h2>
+<div class='gap'></div>
+<p>char s2[20] = &quot;Hi &quot;;</p>
+<div class='gap'></div>
+<p>printf(&quot;98d&quot;, strlen(strcpy(s1, s2)));</p>
+<div class='gap'></div>
+<p>| -ea</p>
+<div class='gap'></div>
+<p>strcpy(sl, s2) 把 “Hi” 拷 到 sl 并 返回 sl ; strlen( Hi )=2 。</p>
+<ol>
+<li>串 的 两 种 基本 存储 方式 是 : “和 。</li>
+</ol>
+<div class='gap'></div>
+<p>| “答案 : 别 字 存 储 、 链 式 存 侍 &#x27;* .2 .4 中、 数组 和 广义 表 &quot;*</p>
+<div class='gap'></div>
+<ol>
+<li>广义 表 民 = (a, (b, 9, 0) 的 长 度 是 ”</li>
+</ol>
+<div class='gap'></div>
+<p>| “全 案 : 3 24 中 由 B 和 r 义 表 &quot;</p>
+<div class='gap'></div>
+<p>长 度 = 第 一 层 元 素 个 数 : a 、 (bo) 、 0 共 3。 深 度 为 2。</p>
+<div class='gap'></div>
+<ol>
+<li>9 个 顶点 的 连通 图 最 少 需要 ”条 边 。</li>
+</ol>
+<div class='gap'></div>
+<p>| 26 国 。</p>
+<div class='gap'></div>
+<p>n 顶点 连通 最 少 n-1 条 边 ( 树 ) 。</p>
+<div class='gap'></div>
+<p>四 、 简 答题 (本 大 题 共 4 小 题 ， 共 40 分 )</p>
+<div class='gap'></div>
+<ol>
+<li>什么 是 数据 项 ?什么 是 抽象 数据 类 型 (ADT) ? (10 分 )</li>
+</ol>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第 15 页</h2>
+<div class='gap'></div>
+<p>考点 2.1 数据 结构 基本 概 全</p>
+<div class='gap'></div>
+<p>参考 答案 :</p>
+<div class='gap'></div>
+<p>“数据 项 “*: 数据 结构 中 讨论 的 最 小 单位 ， 不 可 再 分 割 。 例 : 学 生 的 学 号 、 姓 名 、 成 绩 。</p>
+<p>“抽象 数据 类 型 (ADT) *: 一 个 数学 模型 + 定义 在 该 异型 上 的 一 组 操作 。 特 征 :</p>
+<ul>
+<li>抽象 性 : 只 关心 「 做 什么 」， 不 关心 「 怎 么 做 ]</li>
+</ul>
+<div class='gap'></div>
+<ul>
+<li>封装 性 : 数据 与 操作 封装 ， 外 部 仅 通过 接口 访问</li>
+</ul>
+<div class='gap'></div>
+<p>常用 三 元 组 : ADT = (D, S, P) 一 一 数据 对 象 、 关 系 集 、 操 作 集</p>
+<div class='gap'></div>
+<p>例 ; 整数 ADT 含 数据 {.…-1.0,1…》 与 操作 (+,-*/396}， 使 用 者 无 需 知道 底层 二 进 制 实现 。</p>
+<ol>
+<li>分 析 以 下 程序 段 的 功能 ， 并 写 出 循环 结束 时 i 的 值 。 (10 分 )</li>
+</ol>
+<div class='gap'></div>
+<p>CC</p>
+<div class='gap'></div>
+<p>int a[10] = {85, 72, 93, 68, 80, 76, 90, 83, 78, 88);</p>
+<div class='gap'></div>
+<p>int sum = 0, 1</p>
+<div class='gap'></div>
+<p>for( = 0:i&lt; 10:i+r+){</p>
+<div class='gap'></div>
+<p>sum += a[i];</p>
+<div class='gap'></div>
+<p>)</p>
+<div class='gap'></div>
+<p>printf(&quot; 平 均值 = %.1fAn sum / 10.0);</p>
+<div class='gap'></div>
+<p>考点 1.5 循环 结构 程序 设计 . 1.6 数组</p>
+<div class='gap'></div>
+<p>参考 答案 :</p>
+<div class='gap'></div>
+<p>“功能 ”“: 计算 数组 &#x27;a 中 10 个 元 素 的 平均 值 并 栓 出 。</p>
+<div class='gap'></div>
+<p>“循环 结束 时 i = 10** ( 当 =10 时 i&lt;10 不 成 立 退出 ) 。</p>
+<div class='gap'></div>
+<p>此 时 sum=803`， 输 出 平均 值 = 80.3</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第 16 页</h2>
+<div class='gap'></div>
+<ol>
+<li>简 述 顺序 表 人 存储 结构 的 优 缺 点 。 (10 分 )</li>
+</ol>
+<div class='gap'></div>
+<p>考点 2.2 线性 表</p>
+<div class='gap'></div>
+<p>Te</p>
+<p>随机 访问 : 下 标 O(1) 插入 /删除 平均 O(n) ， 需 大 量 移动</p>
+<p>存储 密度 高 (无 指针 开销 ) 预 分 配 容量 ， 易 浪费 或 不 够 用</p>
+<div class='gap'></div>
+<p>适用 : 数据 量 已 知 、 查 多 改 少 。</p>
+<div class='gap'></div>
+<ol>
+<li>什么 是 有 向 图 ? 什么 是 有 向 图 中 顶点 的 出 度 和 入 度 ? (10 分 )</li>
+</ol>
+<div class='gap'></div>
+<p>考点 2.6 图</p>
+<div class='gap'></div>
+<p>** 有 向 图 #*:; 顶点 集 + 边 集 ， 边 为 有 序 对 “&amp;lt;Vvw&amp;gt; ”( 从 v 指向 w 的 缴 ) 。 &amp;lt;Vvw&amp;gt; 与 “&amp;lt;wVv&amp;gt; 是 不 同 的 边 。</p>
+<div class='gap'></div>
+<ul>
+<li>出 度 OD(V) 关 : 以 v 为 弧 属 的 弧 数 (从 v 出 发 ) 。</li>
+</ul>
+<div class='gap'></div>
+<p>六 入 度 ID(V)i#: 以 v 为 弧 头 的 弧 数 (指向 v) 。</p>
+<div class='gap'></div>
+<p><strong> 性 质 </strong>: 工 出 度 = 二 入 度 = 边 数 。</p>
+<div class='gap'></div>
+<p>五 、 计 算 题 (本 大 题 共 3 小 题 ， 每 小 题 10 分 ， 共 30 分 )</p>
+<div class='gap'></div>
+<ol>
+<li>写 出 以 下 程序 的 输出 结果 。</li>
+</ol>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第 17 页</h2>
+<div class='gap'></div>
+<p>5</p>
+<div class='gap'></div>
+<p>#include &amp;lt;stdio.h&gt;</p>
+<div class='gap'></div>
+<p>int main( {</p>
+<div class='gap'></div>
+<p>int X;</p>
+<div class='gap'></div>
+<p>scanf(&quot;%d&quot;，&amp;x); // 假设 输入 75</p>
+<p>int n;</p>
+<div class='gap'></div>
+<p>Switch (Xx/ 10){</p>
+<div class='gap'></div>
+<p>Case 0: Case 1: Case 2: Case 3: Case 4: Case 5:</p>
+<p>n = 0; break:</p>
+<div class='gap'></div>
+<p>Case 6: Case 7:</p>
+<div class='gap'></div>
+<p>n = 1; break:</p>
+<div class='gap'></div>
+<p>Case 8:</p>
+<div class='gap'></div>
+<p>n = 2; break:</p>
+<div class='gap'></div>
+<p>Case 9: Case 10:</p>
+<div class='gap'></div>
+<p>n = 3; break:</p>
+<div class='gap'></div>
+<p>default:</p>
+<div class='gap'></div>
+<p>n = -1</p>
+<div class='gap'></div>
+<p>】</p>
+<div class='gap'></div>
+<p>printf(&quot;n = %dNn&#x27;， nm);</p>
+<div class='gap'></div>
+<p>return 0;</p>
+<div class='gap'></div>
+<p>}</p>
+<div class='gap'></div>
+<p>*x 答 案 : n = 1x** .sx1.4 选择 结构 程序 设计 乱</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第 18 页</h2>
+<div class='gap'></div>
+<p>解析 : 75/10=7 一 case 7 一 n=l 。 等 级 映射 : 0-59 一 0，60-79 一 1，80-89 一 2，90-100 一 3。</p>
+<ol>
+<li>写 出 以 下 程序 的 输出 结果 。</li>
+</ol>
+<div class='gap'></div>
+<p>”&lt;</p>
+<div class='gap'></div>
+<p>#include &amp;lt;stdio.h&gt;</p>
+<div class='gap'></div>
+<p>int main() {</p>
+<div class='gap'></div>
+<p>int1= 153;</p>
+<div class='gap'></div>
+<p>int a, b;</p>
+<div class='gap'></div>
+<p>a=i/100;V 百 位</p>
+<div class='gap'></div>
+<p>b =(iV 10) % 10; / 十 位</p>
+<div class='gap'></div>
+<p>printf(&quot;a = %d, b = %d\n&quot; a, b);</p>
+<div class='gap'></div>
+<p>return 0;</p>
+<div class='gap'></div>
+<p>】}</p>
+<div class='gap'></div>
+<ul>
+<li>答 案 : a = 1 b = 5 .ix1.2 数据 的 存储 与 运算 六</li>
+</ul>
+<p>解析 :</p>
+<div class='gap'></div>
+<p>百 位 : “153/100=T</p>
+<div class='gap'></div>
+<p>十 位 : `(153/10)9%10=159610=5、</p>
+<div class='gap'></div>
+<p>个 位 (未 输出 ) : “1539%610=3</p>
+<div class='gap'></div>
+<p>经 典 数位 分 解 套路 。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第 19 页</h2>
+<div class='gap'></div>
+<ol>
+<li>写 出 以 下 程序 的 输出 结果 。</li>
+</ol>
+<p>加</p>
+<div class='gap'></div>
+<p>#include &amp;lt;stdio.h&gt;</p>
+<p>#include &amp;lt;string.h&gt;</p>
+<p>int main0 {</p>
+<div class='gap'></div>
+<p>char s[] = &quot;abcdefgh &quot;;</p>
+<p>char t[20];</p>
+<div class='gap'></div>
+<p>intj = 0;</p>
+<div class='gap'></div>
+<p>for (inti=0)s[i]!= NO7)i++){</p>
+<p>if (s[!=  c){</p>
+<div class='gap'></div>
+<p>tD] = s[;</p>
+<div class='gap'></div>
+<p>j++;</p>
+<div class='gap'></div>
+<p>}</p>
+<div class='gap'></div>
+<p>】</p>
+<div class='gap'></div>
+<p>tDU] = \0&quot;</p>
+<p>printf(&quot;%dNn&quot;， j):</p>
+<p>printf(&quot;9%6sNn tf;</p>
+<p>return 0;</p>
+<div class='gap'></div>
+<p>】</p>
+<div class='gap'></div>
+<p>答案 :</p>
+<div class='gap'></div>
+<p>7</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第 20 页</h2>
+<div class='gap'></div>
+<p>abdefgh</p>
+<div class='gap'></div>
+<p>1.6 数组</p>
+<div class='gap'></div>
+<p>解析 : 去 掉 &quot;ec 后 8 一 7 个 字符 ， j 同时 是 长 度 与 下 标 计 数 。</p>
+<div class='gap'></div>
+<p>六、 应 用 题 (本 大 题 共 3 小 题 ， 每 小 题 10 分 ， 共 30 分 )</p>
+<ol>
+<li>编程 : 将 201~209 这 9 个 数 按 行 存 入 3x3 的 二 维 数组 ， 并 输出 和 矩阵 。</li>
+</ol>
+<p>考点 1.6 数组 . 拆 练 [05 手写 编程 ]/posts/computervtopics/05-coding)</p>
+<p> &amp;lt;C</p>
+<div class='gap'></div>
+<p>#include &amp;lt;stdio.h&gt;</p>
+<div class='gap'></div>
+<p>int main() {</p>
+<div class='gap'></div>
+<p>int a[3][3];</p>
+<div class='gap'></div>
+<p>int num = 201;</p>
+<div class='gap'></div>
+<p>for(inti=0:i&lt;3;i++){</p>
+<div class='gap'></div>
+<p>for (intj = 0;j&lt; 3;j++){</p>
+<div class='gap'></div>
+<p>aliD] = num++;</p>
+<div class='gap'></div>
+<p>】</p>
+<div class='gap'></div>
+<p>】</p>
+<div class='gap'></div>
+<p>printf(&quot; 输 出 矩阵 : N\n );</p>
+<div class='gap'></div>
+<p>for(inti=0i&lt;3;i++){</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第 21 页</h2>
+<div class='gap'></div>
+<p>for (intj= 0;j&lt;3)j++){</p>
+<div class='gap'></div>
+<p>printf(&quot;%d “ali]D]);</p>
+<div class='gap'></div>
+<p>】}</p>
+<div class='gap'></div>
+<p>printf(\n );</p>
+<div class='gap'></div>
+<p>】}</p>
+<div class='gap'></div>
+<p>return 0;</p>
+<div class='gap'></div>
+<p>】}</p>
+<div class='gap'></div>
+<p>输出 :</p>
+<div class='gap'></div>
+<p>输出 矩阵 :</p>
+<div class='gap'></div>
+<p>201 202 203</p>
+<div class='gap'></div>
+<p>204 205 206</p>
+<div class='gap'></div>
+<p>207 208 209</p>
+<div class='gap'></div>
+<p>评分 要 点 : 二 维 数组 定义 (2) | 循环 仍 套 (3) | 按 行 赋值 (3) | 输出 格式 (2)</p>
+<ol>
+<li>编程 : 输入 30 名 学 生 的 成 绩 ， 输 出 最 高 分 。</li>
+</ol>
+<p>考点 1.6 数组 . 1.5 循环 结构 程序 设计</p>
+<div class='gap'></div>
+<p>CC</p>
+<div class='gap'></div>
+<p>#include &amp;lt;stdio.h&gt;</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第 22 页</h2>
+<div class='gap'></div>
+<p>int main( {</p>
+<div class='gap'></div>
+<p>int scores[30];</p>
+<div class='gap'></div>
+<p>int max&#x27;</p>
+<div class='gap'></div>
+<p>printf(&quot; 请 输入 30 名 学 生 的 成 绩 : \n );</p>
+<div class='gap'></div>
+<p>for (inti=0i&lt;30:i++){</p>
+<div class='gap'></div>
+<p>scanf(&quot;%d&quot;，&amp;scores[i]);</p>
+<div class='gap'></div>
+<p>】</p>
+<div class='gap'></div>
+<p>max = Scores[0];</p>
+<div class='gap'></div>
+<p>for (inti=1i&lt;30:i++){</p>
+<div class='gap'></div>
+<p>if (scores[i] &gt; mayx) {</p>
+<div class='gap'></div>
+<p>max = scores[i];</p>
+<div class='gap'></div>
+<p>】</p>
+<div class='gap'></div>
+<p>】</p>
+<div class='gap'></div>
+<p>printf(&quot; 最 高 分 = %dn max;</p>
+<div class='gap'></div>
+<p>return 0;</p>
+<div class='gap'></div>
+<p>}</p>
+<div class='gap'></div>
+<p>评分 要 点 : 数组 (2) | 输入 循环 (2) | 最 大 值 逻 辑 (4) | 输出 (2)</p>
+<p>扩展 : 可 不 存 数组 ， 边 读 边 比 ， 只 保留 max 。</p>
+<div class='gap'></div>
+<ol>
+<li>编程 : 计算 1~300 之 间 所 有 奇数 的 和 与 偶数 的 和 ， 并 分 别 输出 。</li>
+</ol>
+<p>考点 1.5 循环 结构 程序 设计</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第 23 页</h2>
+<div class='gap'></div>
+<p>加</p>
+<div class='gap'></div>
+<p>#include &amp;lt;stdio.h&gt;</p>
+<div class='gap'></div>
+<p>int main() {</p>
+<div class='gap'></div>
+<p>int sum_odd = 0;</p>
+<div class='gap'></div>
+<p>int sum_even = 0;</p>
+<p>for(inti=1i&lt;= 300;i++){</p>
+<p>if(i%2==1){</p>
+<div class='gap'></div>
+<p>sum_odd += 小</p>
+<div class='gap'></div>
+<p>} else{</p>
+<div class='gap'></div>
+<p>sum_even +=i</p>
+<div class='gap'></div>
+<p>}</p>
+<div class='gap'></div>
+<p>}</p>
+<div class='gap'></div>
+<p>printf( &quot;奇数 和 = %dNn， sum_odd);</p>
+<p>printf(&quot; 偶 数 和 = %d\n&quot;, sum_even);</p>
+<p>return 0;</p>
+<div class='gap'></div>
+<p>}</p>
+<div class='gap'></div>
+<p>输出 :</p>
+<div class='gap'></div>
+<p>奇数 和 = 22500</p>
+<div class='gap'></div>
+<p>偶数 和 = 22650</p>
+<div class='gap'></div>
+<p>验证 : 1…300 总 和 300X301/2=45150 ， 225001+22650=45150 图</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第 24 页</h2>
+<div class='gap'></div>
+<p>优化 : 等 差 数 列 公 式 O(1) 直接 得 : 奇数 150X150=22500 ， 偶 数 150X151=22650 。</p>
+<p>评分 要 点 : 初始 化 2) | 循环 范围 (2) | 奇偶 判断 (3) | 累加 (2) | 输出 (1)</p>
+<p>考点 分 布 与 复习 策略</p>
+<p>各 章节 分 值 占 比 ( 约 )</p>
+<p>实现 简单 (数组 即 可 ) 需 连 续 大 块 内 存 ， 碎 片 敏 感</p>
+<p>|</p>
+<p>C 语言 基础 〈 语 法、 表达 式 、 运 算 符 ) 单 选 1-9、 填 空 1-2 &gt;</p>
+<p>数组 (一 维 、 二 维 、 字 符 数组 ) 判断 2/7、 计 算 3、 应 用 1 5</p>
+<p>ae</p>
+<p>人 中 而 |</p>
+<p>数据 结构 概念 (逻辑 /存储 ) 单 选 15-16、 判 断 5/8/10、 简 答 1/3 0</p>
+<p>|</p>
+<p>站</p>
+<blockquote>|</blockquote>
+<p>本 而 iT</p>
+<p>机 二 加 四</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第 25 页</h2>
+<div class='gap'></div>
+<p>难度 分 档</p>
+<p>ET ai</p>
+<p>Ta</p>
+<p>人 单 选 /2/4/6/10/14/15、 判 断 1/275/7/8/10</p>
+<p>颌 全 基础 简单 计算 /推导 单 选 3/5/7/9/11/16/17/19、 判 断 3/4/6/9、 填 空 3/4/5</p>
+<p>备考 建议</p>
+<p>x**C 与 数据 结构 约 各 半 关 一 一 别 偏 科</p>
+<p>** 单 选 12-20 数据 结构 关 是 区 分 度 关键 : 顺序 表 / 链 表 / 栈 / 树 / 图</p>
+<p>*#* 应 用 编程 30 分 关 拿 满 不 难 : 循环 + 数组 ， 注 意 分 号 /人 花 括号 /初始 化</p>
+<p>** 程 序 分 析 逐 行 手 推 ##*: switch 穿 透 、 循 环 、 下 标 、 字 符 过 滤</p>
+<p>六 简 答 背 关键 词 六 : ADT、 顺 序 表 优 缺点 、 入 度 / 出 度</p>
+<p>** 易 混 扩 :sizeof vs strlen 、 顺 序 vs 链 式 、 逻 辑 vs 存储 、 线 性 vs 非 线性</p>
+<p>整体 难度 适中 ; 基础 扎实 拿 到 150+ 可 期 。</p>
+<p>2024 考点 热力 图 一 拆 练</p>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>三 语 商 拉 分</th><th>完整 推理 /代码 分 析 单 选 12/13/18/20、 填 空 /2、 简 答 、 计 算 、 应 用</th></tr>
+</table>
+<p>To 过</p>
+<p>ER</p>
+<p>数组 。 字符 串 。 指针 加 *x02 数组 指针 **</p>
+<p>线性 表 。 栈 队 列 上 *x03 链表 栈 队 列 坟</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第 26 页</h2>
+<div class='gap'></div>
+<p>网 -本 间 直 扯 1</p>
+<p>刷 题 匀 选</p>
+<p>[ ] 单 选 20 题 &lt;25 分 钟</p>
+<p>[ ] 判断 + 填空 闭卷</p>
+<p>[ ] 4 道 简 答 默写 关键 词</p>
+<p>[ ] 3 道 计 算 手 推 输出</p>
+<p>[ ] 3 道 编程 纸 上 写 完整 main</p>
+<p>来 源 与 声明</p>
+<p>入 库 说 明 : 全 题 干 + 答案 + 逐步 解析 + 考点 分 布 + 备考 策略 ; 并 加 本 库 系 统 笔记 与 考点 拆 分 链接</p>
+<p>六 仅 供 个 人 学 习 关 ;回忆 版 措辞 可 能 与 原 卷 有 细微 差异 ， 考 点 与 答案 以 正版 真题 册 / 当 次 正式 卷 为 准</p>
+<p>见 [00- 资 料 来 源 与 使 用 说 明 ]Vguide/sources)</p>
+<p>原 卷 PDF: [2024 计算 机 ](原卷 PDF（见仓库 docs/public/papers/printable/）) (本 地 OCR 版 )</p>
+<p>关联 : <a href="/posts/computer/">计算机程序设计</a> : <a href="/posts/computer/topics/">考点拆分</a></p>
+<p>返回 : [_ 索引 (Wposts/computer/) . 总 索引</p>
+<p>简 答 默写 + 手写 编程 号 *x*05 手写 编程 **</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>2023 年真题</h2>
+<div class='gap'></div>
+<blockquote>来源: 扫描版 PDF 逐页 OCR 提取</blockquote>
+<blockquote>页数: 4 页</blockquote>
+<blockquote>提取时间: 2026/8/21 21:06:43</blockquote>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第 1 页</h2>
+<div class='gap'></div>
+<p>计算 机 程序 设计 。2023 年 真题 (回忆 版 + 结构 化 )</p>
+<p>ix 类 型 六 : 考生 回忆 + 公开 抽取 整理 (B 级 ) | 六 200** 分 .六 150#x* 分 钟</p>
+<div class='gap'></div>
+<p>关 边 界 信 : 回忆 版 / 公开 整理 ， 关 在 ** 考 试 院 原 卷 PDF 镜像 ; 个 别 措 娠 以 正版 真题 册 为 准 。 见 00- 资 料 来 源 与 使 用 说</p>
+<div class='gap'></div>
+<p>明</p>
+<p>本 地 :， 资料 /计算 机 真题 原 卷 /2023.txt-</p>
+<p>试卷 结构</p>
+<p>EC</p>
+<div class='gap'></div>
+<p>二 Taw</p>
+<div class='gap'></div>
+<p>|</p>
+<p>ra TTT</p>
+<p>anTT</p>
+<p>ra</p>
+<p>一 、 选 择 题 (回忆 要 点 )</p>
+<div class='gap'></div>
+<ol>
+<li>不 能 做 标识 符 一 六 C，&amp;a 和</li>
+</ol>
+<div class='gap'></div>
+<ol>
+<li>fopen ` 失败 一 <strong>B._ NULL </strong></li>
+</ol>
+<div class='gap'></div>
+<ol>
+<li>取 第 i 结 点 及 前 驱 最 省 时 一 六 C. 顺序 表 关</li>
+</ol>
+<div class='gap'></div>
+<p>4.<code>a=4b=3c=2 为 真一 #*D.</code>a&amp;&amp;bllcxx</p>
+<div class='gap'></div>
+<ol>
+<li>算法 分 析 两 方面 一 六 D. 时 间 + 空间 复杂 度 六</li>
+</ol>
+<div class='gap'></div>
+<ol>
+<li>结构 体 错误 说 法 一 关 B. 由 系统 直接 提供 六</li>
+</ol>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第 2 页</h2>
+<div class='gap'></div>
+<ol>
+<li>选 存储 结构 不 考虑 一 关 B. 各 结 点 值 如 何 们</li>
+</ol>
+<div class='gap'></div>
+<ol>
+<li>Scanf 正确 一 *#*C. scanf(&quot;9%6f96f ,8&amp;C&amp;d)</li>
+</ol>
+<div class='gap'></div>
+<ol>
+<li>bp=*(p++)，p=&amp;a[1] ，`a[5]={10..50} 一 *xA. 20xr*</li>
+</ol>
+<div class='gap'></div>
+<ol>
+<li>栈 特点 一 六 C. LIFOx*</li>
+</ol>
+<div class='gap'></div>
+<ol>
+<li>for(int ij=1Ti++&lt;4) 次 数 一 xx*A. 3xx</li>
+</ol>
+<div class='gap'></div>
+<ol>
+<li>完全 二 叉 树 12 结 点 叶子 一 **B. 6x*</li>
+</ol>
+<div class='gap'></div>
+<ol>
+<li>操作 链表 须 找 到 一 六 D. 表 头 和</li>
+</ol>
+<div class='gap'></div>
+<ol>
+<li>删 &#x27;&quot;q (CpP 前 驱 ) 一 六 p→next=q→next; free(q)7 xx</li>
+</ol>
+<div class='gap'></div>
+<ol>
+<li>&quot;person ` 是 变量 不 是 类 型 名</li>
+</ol>
+<div class='gap'></div>
+<ol>
+<li>双重 for 一 *#*O(n2)xx</li>
+</ol>
+<div class='gap'></div>
+<ol>
+<li>二 分 查找 一 关键 值 有 序 顺序 表 闪</li>
+</ol>
+<div class='gap'></div>
+<ol>
+<li>字符 串 连接 一 六 &quot;strCat xx</li>
+</ol>
+<div class='gap'></div>
+<ol>
+<li>树 深度 错误 : 各 结 点 度 最 大 值</li>
+</ol>
+<div class='gap'></div>
+<ol>
+<li>int a[5]; 输入 一 xx&quot;scanf(&quot;9%8d &quot;,a) xx</li>
+</ol>
+<p>二 、 判 断 (回忆 )</p>
+<p>AT</p>
+<p>Ta</p>
+<p>一 全 二 再</p>
+<p>E RE 攻 本</p>
+<p>医 到 话 表达 式 只 能 是 远 辑 表达 式 国光</p>
+<p>本 而 一 |</p>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>一</th></tr>
+</table>
+<p>| 5 人</p>
+<p>下 本 二 丁丁</p>
+<p>本 到 结构 体 成 员 存 续 期 驻 留 内存 对</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第 3 页</h2>
+<div class='gap'></div>
+<p>| Rn 3</p>
+<p>三 、 填 空 (回忆 )</p>
+<ol>
+<li>&quot;char 占 六 1#*x 字 节</li>
+<li>图 : 元 素 人 # 多 对 多 六</li>
+<li>al[3]={Oj{1j{2} ， af[1][2]= 入 0 和</li>
+<li>图 遍历 : 深度 优先 + 基 广 度 扩 优先</li>
+<li>合并 升序 5 与 9: 最 少 比 较 约 ##5** (最 坏 13， 以 教材 为 准 )</li>
+</ol>
+<p>四 、 简 答 要 点</p>
+<ol>
+<li>字符 数组 : 输入 &quot;scanf/gets/fgets<code>， 输 出 &quot;printf/puts</code></li>
+<li>文件 : 文本 / 二 进 制</li>
+<li>数据 vs 数据 对 象</li>
+<li>递归 : 优 缺 点 (简洁 / 栈 开 销 )</li>
+</ol>
+<p>五 、 计 算 题</p>
+<p>递归 `sub(6 信 一 xxD1xx， 个 仍 为 # 光 GxY</p>
+<p>跳 过 不 及 格 平均 一 n=<strong>5</strong>，avg=**81.20x*</p>
+<p>静态 链表 输出 一 &gt; 类 礁 尖 类 然后 类 K 人 类</p>
+<p>六 、 应 用 题 (默写 )</p>
+<p> &amp;lt;C</p>
+<p>// 1. 三 次 成 绩 取 最 大</p>
+<p>int ab,cmi; scanf(&quot;9%d%d%d&quot;,&amp;a&amp;b,&amp;c);</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第 4 页</h2>
+<div class='gap'></div>
+<p>m=aiiftb&gt;m)m=b;if(Cc&gt;m)m=c printf(&quot;%dNn&quot; mm);</p>
+<div class='gap'></div>
+<p>// 2. 正 负 零</p>
+<div class='gap'></div>
+<p>int Xx; Scanf(&quot;9%d&quot;,&amp;X;</p>
+<div class='gap'></div>
+<p>if(x&gt;0) puts(&quot; 正 数 &quot;); else if(x&lt;0) puts(&quot; 负 数 &quot;); else puts(&quot; 零 &quot;);</p>
+<p>// 3. 十 班 人 数 查 y</p>
+<div class='gap'></div>
+<p>int a[10],yiok=0;</p>
+<div class='gap'></div>
+<p>for(i=0;i&lt;10;i++) scanf(&quot;%d&quot;,&amp;afi]);</p>
+<div class='gap'></div>
+<p>scanf(&quot;%d &quot;8&amp;y);</p>
+<div class='gap'></div>
+<p>for(i=0i&lt;10;i++) if(allj==y)j(ok=1; break&#x27;; }</p>
+<p>puts(ok?&quot;Success&quot;:&quot;Fail&quot;);</p>
+<div class='gap'></div>
+<p>回炉</p>
+<div class='gap'></div>
+<p>[ 原 卷 PDF]Vpapers/computer/2023.pdf)</p>
+<div class='gap'></div>
+<p>2024 全 量 详解 考点 拆 分</p>
+<div class='gap'></div>
+<p>返回 : _ 索引. 总 索引</p>
+<div class='gap'></div>
+<p>本 HR 区 本</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>2022 年真题</h2>
+<div class='gap'></div>
+<blockquote>来源: 扫描版 PDF 逐页 OCR 提取</blockquote>
+<blockquote>页数: 7 页</blockquote>
+<blockquote>提取时间: 2026/8/21 21:06:30</blockquote>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第 1 页</h2>
+<div class='gap'></div>
+<p>计算 机 程序 设计 。2022 年 真题 (选项 拆 解 + 解析 )</p>
+<p>六 类 型 六 : 公开 资料 抽取 + 逐 题 拆 解 (B 级 ) | 满分 六 200x*# . #150x* 分 钟</p>
+<p>关 边 界 信 : 回忆 版 / 公开 整理 ， 关 在 ** 考 试 院 原 卷 PDF 镜像 ; 个 别 措 娠 以 正版 真题 册 为 准 。 见 00- 资 料 来 源 与 使 用 说</p>
+<p>明</p>
+<p>本 地 原文 件 : 资料 /计算 机 真题 原 卷 /2022.docx / `2022.txt-</p>
+<p>优先 对 照 : 2024 全 量 详解 . 2021 . 2023</p>
+<p>试卷 结构</p>
+<p>Ta</p>
+<p>二 二 T</p>
+<p>|</p>
+<p>|</p>
+<p>二 本 3</p>
+<p>一 、 单 项 选择 题 (每 题 3 分 ， 共 60 分 )</p>
+<ol>
+<li>char a[10]=&quot; wait &quot;; printf(&quot;%d&quot;, strlen(a)); 结果 ( )</li>
+</ol>
+<p>A.4 B.5 CC.8 D.10</p>
+<p>答案 : B 或 C ( 视 空格 ) .考点 [1.6 数组 ]/posts/computervnotes/1.6- 数 组 )</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第 2 页</h2>
+<div class='gap'></div>
+<p>解析 : 字面 量 若 为 “wait (前 1 空格 + wait + 1 空格 ) 长 度 6; 常见 回忆 “wait ”为 5。 以 本 地 原 卷 空格 为 准 ，</p>
+<p>刷 题 重点 : strlen 不 含 \0 、 含 空格 。</p>
+<div class='gap'></div>
+<ol>
+<li>(a==6)||(a!=6) 的 值 ()</li>
+</ol>
+<div class='gap'></div>
+<p>A.0 B.6 C.1 D. 不 确定</p>
+<div class='gap'></div>
+<p>答案 : C . 考点 [1.2 数据 的 存储 与 运算 ]/posts/computernotes/1.2- 数 据 的 存储 与 运算 )</p>
+<div class='gap'></div>
+<p>解析 : 恒 真 ， 逻 辑 值 为 1。</p>
+<div class='gap'></div>
+<ol>
+<li>冒 泡 升 序 ， 初 始 &quot;49,38,65,97,76,13,27`，<strong> 第 一 趟 </strong> 后 ( )</li>
+</ol>
+<div class='gap'></div>
+<p>A. 38,49,65,27,76,13,97 B. 38,49,65,27,13,76,97</p>
+<div class='gap'></div>
+<p>C. 38,49,65,27,13,76,97 ”D. 38,49,65,76,13,27,97</p>
+<div class='gap'></div>
+<p>答案 : D (常见 ) . 考点 [2.8 排序 ]/posts/computervnotes/2.8- 排 序 )</p>
+<div class='gap'></div>
+<p>解析 : 一 趟 冒 泡 把 最 大 97 沉 底 : 相 邻 交换 后 末尾 为 97， 前 部 为 相对 有 序 结果 。 请 按 「 两 两 比较 交换 」 手 推 一 趟 验 证 。</p>
+<ol>
+<li>可 用 作 c 自 定义 标识 符 的 是 ( )</li>
+</ol>
+<div class='gap'></div>
+<p>A. 6  B.66 5C. define  D typedef</p>
+<div class='gap'></div>
+<p>答案 : A . 考点 [1.1 C 语 言 概述 与 基本 概念 ]/posts/computer/notes/1.1-C 语 言 概述 与 基本 概念 )</p>
+<p>解析 : 不 能 以 数字 开头 ; C/D 为 关键 字 。</p>
+<div class='gap'></div>
+<ol>
+<li>深度 为 6 的 二 又 树 最 多 结 点 数 ( )</li>
+</ol>
+<div class='gap'></div>
+<p>A.63 B.32 5.64 D.128</p>
+<div class='gap'></div>
+<p>答案 : A . 考点 [2.5 树 和 二 叉 树 ]V/posts/computernotes/2.5- 树 和 二 叉 树 )</p>
+<div class='gap'></div>
+<p>解析 : $2^6-1=634$ (深度 从 1 计 满 二 叉 树 ) 。</p>
+<div class='gap'></div>
+<ol>
+<li>删除 P 所 指 结 点 的 <strong> 直 接 后 继 </strong> ( )</li>
+</ol>
+<div class='gap'></div>
+<p>A. p→next=p “ B. p=p→next  (C. p=p→next→next “ D. p→next=p→next→next</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第 3 页</h2>
+<div class='gap'></div>
+<p>答案 : D . 考点 [2.2 线性 表 ](/posts/computernotes/2.2- 线 性 表 )</p>
+<div class='gap'></div>
+<ol>
+<li>有 向 图 所 有 项 点 出 度 总 和 与 入 度 总 和 比值 ( )</li>
+</ol>
+<div class='gap'></div>
+<p>A.4 B.2 C.1 D.3</p>
+<div class='gap'></div>
+<p>答案 : C : 考点 [2.6 图 ]U/posts/computernotes/2.6- 图 )</p>
+<div class='gap'></div>
+<ol>
+<li>(double)(5/2)+2.5` 的 值 ()</li>
+</ol>
+<div class='gap'></div>
+<p>A.4 B.5.0 CC.5 D.4.5</p>
+<div class='gap'></div>
+<p>答案 : D . 考点 [1.2 数据 的 存储 与 运算 ]/posts/computernotes/1.2- 数 据 的 存储 与 运算 )</p>
+<p>解析 : 先 整除 5/2=2 ， 再 转 double: 2. 0+2. 5=4.5 。</p>
+<div class='gap'></div>
+<ol>
+<li>下 列 *#* 语 法 错误 ** 的 是 ( )</li>
+</ol>
+<div class='gap'></div>
+<p>A. int a[2][2]={fl,2,3,4} Bint a[2] 吕 ={12,3,4)</p>
+<div class='gap'></div>
+<p>C. int a[][2]={fl2,3,4 Dint a[2][2]={1}，{2, 3}</p>
+<div class='gap'></div>
+<p>答案 : B . 考点 [1.6 数组 ]/posts/computernotes/1.6- 数 组 )</p>
+<div class='gap'></div>
+<p>解析 : 二 维 数 组 定义 时 列 数 不 可 省 ( 行 可 省 ) 。</p>
+<div class='gap'></div>
+<ol>
+<li>数组 名 作为 函数 参数 传递 的 是 ( )</li>
+</ol>
+<div class='gap'></div>
+<p>A. 长 度 _B. 首 地 址 “_. 元 素 值 “D. 元 素 个 数</p>
+<div class='gap'></div>
+<p>答案 : B . 考点 [1.6 数组 ]/posts/computernotes/1.6- 数 组 ) / [1.7 函数 ]/posts/computernotes/1.7- 函 数 )</p>
+<ol>
+<li>int z=2; while(z--); printf(&quot;z=%d&quot;,z)”()</li>
+</ol>
+<div class='gap'></div>
+<p>A.z=0 B.z=-1 (C.z=1  D. 无 结果</p>
+<div class='gap'></div>
+<p>答案 : B . 考点 [1.5 循环 结构 程序 设计 ]Wposts/computernotes/1.5- 循 环 结构 程序 设计 )</p>
+<p>解析 : 空 循环 体 ; z 从 2 一 1 一 0 时 条 件 取 0 后 仍 后 置 减 成 -1 再 退出 。</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第 4 页</h2>
+<div class='gap'></div>
+<ol>
+<li>最 常用 操作 是 按 序号 存 取 ， 且 只 在 表 尾 插入 删除 ， 最 省 时 结构 ( )</li>
+</ol>
+<p>A. 双 链表 。B. 顺序 表 “人 . 单 循环 链表 。D. 带头 结 点 双 循 环 链表</p>
+<div class='gap'></div>
+<p>答案 : B . 考点 [2.2 线性 表 ]Uposts/computer/notes/2.2- 线 性 表 )</p>
+<div class='gap'></div>
+<p>解析 : 按 序号 随机 访问 O(1T) 一 顺序 表 ; 尾 插 出 O(1) ( 若 知 length) 。</p>
+<div class='gap'></div>
+<ol>
+<li>char a[10],b[10],*p=a,*q=b; 正确 的 是 ( )</li>
+</ol>
+<div class='gap'></div>
+<p>A.， pxk=3 “B. p/=9 “C. ps&amp;9 ”D.，p+=3</p>
+<div class='gap'></div>
+<p>答案 : D . 考点 [1.8 指针 ](Vposts/computer/notes/1.8- 指 针 )</p>
+<div class='gap'></div>
+<p>解析 : 指针 可 加 减 整数 ;不 可 关 / /= ， t9 非法 。</p>
+<div class='gap'></div>
+<ol>
+<li>广义 表 L=((o,B,Y)) 长 度 与 深度 ( )</li>
+</ol>
+<div class='gap'></div>
+<p>A.11 B.13 (CC.12 D.23</p>
+<div class='gap'></div>
+<p>答案 :《 . 考点 [2.4 串 、 数 组 和 广义 表 ]Uposts/computer/notes/2.4- 串 、 数 组 和 广义 表 )</p>
+<p>解析 : 最 外 一 层 只 有 1 个 元 素 (一 个 表 ) ; 深度 2。</p>
+<div class='gap'></div>
+<ol>
+<li>下 列 说 法 <strong> 错 误 </strong> 的 是 ( )</li>
+</ol>
+<div class='gap'></div>
+<p>A，fgets 可 从 键盘 读 字符 串 “B，fwrite 输出 到 文件</p>
+<div class='gap'></div>
+<p>C，fputs 输出 字符 到 文件 _D，getchar 从 磁盘 文件 读 入 字符</p>
+<div class='gap'></div>
+<p>答案 : D . 考点 [1.10 文件 操作 ]Vposts/computer/notes/1.10- 文 件 操作 )</p>
+<p>解析 :getcehar 从 标准 输入 ， 不 是 磁盘 文件 专用 。</p>
+<div class='gap'></div>
+<ol>
+<li>结构 体 变量 分 配 的 内 存 容量 为 ( )</li>
+</ol>
+<div class='gap'></div>
+<p>A. 各 成 员 所 需 总 和 ( 含 对 齐 ) 。B. 仅 第 一 成 员 . 最 大 成 员 “D. 最 后 成 员</p>
+<p>答案 : A . 考点 [1.9 结构 体 与 共用 体 ]/posts/computer/notes/1.9- 结 构 体 与 共用 体 )</p>
+<p>(联合 体 才 是 最 大 成 员 )</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第 5 页</h2>
+<div class='gap'></div>
+<ol>
+<li>完全 二 叉 树 1001 个 结 点 ， 终 端 结 点 (叶子 ) 个 数 ( )</li>
+</ol>
+<div class='gap'></div>
+<p>A. 499 B.500 CC.501 D. 502</p>
+<div class='gap'></div>
+<p>答案 : C : 考点 [2.5 树 和 二 叉 树 ]/posts/computer/notes/2.5- 树 和 二 叉 树 )</p>
+<p>解析 : n 个 结 点 的 完全 二 叉 树 叶子 数 为 $lceil n/2 \rceil$ 或 公式 $n-NIfloor m/2 \rfloor$ 一 501。</p>
+<ol>
+<li>序列 1..n 入 栈 ， 第 一 个 出 栈 为 n， 则 第 i 个 出 栈 元 素 为 ( )</li>
+</ol>
+<p>A.n-i-1 B.n-i  C.n-i+1  D. 不 确定</p>
+<div class='gap'></div>
+<p>答案 : C . 考点 [2.3 栈 和 队列 JUposts/computeVnotes/2.3- 栈 和 队列 )</p>
+<p>解析 : 必须 先 1..n 全 入 再 依次 弹出 : mn-1… 一 第 i 个 为 n-i+1。</p>
+<div class='gap'></div>
+<ol>
+<li>存储 空间 与 顶点 个 数 相关 ( 常 考 邻 接 和 矩阵 ) ()</li>
+</ol>
+<div class='gap'></div>
+<p>A. 邻接 表 B. 邻接 憩 阵 “. 十 字 链 表 “D. 逆 邻 接 表</p>
+<div class='gap'></div>
+<p>答案 : B . 考点 [2.6 图 ]U/posts/computer/notes/2.6- 图 )</p>
+<div class='gap'></div>
+<p>解析 : 邻接 矩阵 $O(n^2)$ 只 与 顶点 数 相关 。</p>
+<div class='gap'></div>
+<ol>
+<li>队列 和 栈 的 共同 点 是 ( )</li>
+</ol>
+<div class='gap'></div>
+<p>A. 先进 先 出 ”B. 先进 后 出 “. 后 进 先 出 “D. 只 能 在 端点 插入 或 删除</p>
+<div class='gap'></div>
+<p>答案 : D . 考点 [2.3 栈 和 队列 JUposts/computeYnotes/2.3- 栈 和 队列 )</p>
+<p>二 、 判 断 题 〈 摘 要)</p>
+<div class='gap'></div>
+<p>以 本 地 2022. txt 后 半 为 准 ; 常见 点 :</p>
+<div class='gap'></div>
+<p>空 语句 、 指 针 运 算 、 排 序 稳定 性 、 图 的 存储 等</p>
+<div class='gap'></div>
+<p>建议 对 照 2024 判断 题 风格 闭卷 练</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第 6 页</h2>
+<div class='gap'></div>
+<p>三 、 填 空 / 四 、 简 答</p>
+<div class='gap'></div>
+<p>按 本 地 原 卷 补 全 关键 词 : 结构 化 程序 、 文 件 函 数 、 树 /图 术语 、 算 法 特点 、 指 针 概念 。</p>
+<p>五 、 读 程 题 (摘要 )</p>
+<div class='gap'></div>
+<p>含 “continue<code> + 指针 走访 字符 数组 的 循环 : 先 算 &quot;m </code> 终 值 ， 再 看 “printf 输出 字符 序列 。</p>
+<p>手 推 : 画 表格 记录 m、 条 件 、 输 出 。</p>
+<div class='gap'></div>
+<p>六、 应 用 题</p>
+<div class='gap'></div>
+<p>图 遍历 + 最 小 生成 树</p>
+<div class='gap'></div>
+<p>(1T) 从 1 开始 DFS， 邻 接点 按 编号 升序 一 写 出 访问 序列</p>
+<div class='gap'></div>
+<p>(2) 最 小 生成 树 : Prim 或 Kruskal， 写 算法 名 并 画 树</p>
+<div class='gap'></div>
+<p>统计 指定 字符 个 数</p>
+<div class='gap'></div>
+<p> &amp;lt;C</p>
+<div class='gap'></div>
+<p>int count_char(const char *s, char ch) {</p>
+<div class='gap'></div>
+<p>int Cc=0; for(*s;s++) if(xks==ch) c++;</p>
+<div class='gap'></div>
+<p>return ci;</p>
+<div class='gap'></div>
+<p>】}</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第 7 页</h2>
+<div class='gap'></div>
+<p>选择 排序 30 个 成 绩</p>
+<p>CC</p>
+<p>void select_ sort(int a0, int nm) {</p>
+<p>for(int i=0;i&amp;lt;n-Ti++){</p>
+<p>int k=i</p>
+<p>for(int j=i+1j&amp;lt;nj++) if(a[j]&amp;lt;a[k]) k=j:</p>
+<p>if(kL=i) {intt=afi]; af]=a[kl; a[k]=t)}</p>
+<p>】}</p>
+<p>】}</p>
+<p>回炉</p>
+<p>[ 原 卷 PDF](/papers 人 /computer2022.pdf)</p>
+<p>2024 . 2021 . 考点 拆 分</p>
+<p>返回 : 索引 总 索引</p>
+<p>六 和</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>2021 年真题</h2>
+<div class='gap'></div>
+<blockquote>来源: 扫描版 PDF 逐页 OCR 提取</blockquote>
+<blockquote>页数: 8 页</blockquote>
+<blockquote>提取时间: 2026/8/21 21:06:15</blockquote>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第 1 页</h2>
+<div class='gap'></div>
+<p>计算 机 程序 设计 。2021 年 真题 (选项 拆 解 + 解析 )</p>
+<p>六 类 型 六 : 公开 资料 抽取 + 逐 题 拆 解 (B 级 ) | 满分 六 200x*# . #150x* 分 钟</p>
+<p>关 边 界 信 : 回忆 版 / 公开 整理 ， 关 在 ** 考 试 院 原 卷 PDF 镜像 ; 个 别 措 娠 以 正版 真题 册 为 准 。 见 00- 资 料 来 源 与 使 用 说</p>
+<p>明</p>
+<p>本 地 原文 件 : 资料 /计算 机 真题 原 卷 /2021.docx / 2021.txt-</p>
+<p>优先 对 照 : 2024 全 量 详解 . 2022 . 2023</p>
+<p>试卷 结构</p>
+<p>Ta</p>
+<p>二 二 T</p>
+<p>|</p>
+<p>|</p>
+<p>二 本 3</p>
+<p>一 、 单 项 选择 题 (每 题 3 分 ， 共 60 分 )</p>
+<ol>
+<li>已 知 整 型 a=2, b=3， 求 1a||b 的 值 ()</li>
+</ol>
+<p>A.0 B.1 C2 D.3</p>
+<p>答案 : B . 考点 [1.2 数据 的 存储 与 运算 ]/posts/computernotes/1.2- 数 据 的 存储 与 运算 )</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第 2 页</h2>
+<div class='gap'></div>
+<p>解析 : !a 一 !2 一 0 (逻辑 非 ) ; 0 || 3 一 真一 1 (逻辑 或 结果 为 0/1) 。</p>
+<ol>
+<li>当 a 为 奇数 时 为 真 、 侦 数 为 假 ，<strong> 不 能 满足 </strong> 需 求 的 是 ( )</li>
+</ol>
+<p>A.a%2==1  B. !(a%2)  “C. 1!(a%2==0)  D. (a%2)&amp;&amp; (a%2&gt;0)</p>
+<div class='gap'></div>
+<p>答案 : B . 考点 [1.2 数据 的 存储 与 运算 ]/posts/computernotes/1.2- 数 据 的 存储 与 运算 )</p>
+<p>解析 : a%2 奇 =1 偶 =0; !(a%2) 对 奇数 得 0 ( 假 ) ， 需 求 相 反 。</p>
+<div class='gap'></div>
+<ol>
+<li>int a=1,b=4,c; c=a/b:; 结束 后 C 的 值 ( )</li>
+</ol>
+<div class='gap'></div>
+<p>A.1 B.0.25 (CC.0 D.44200</p>
+<div class='gap'></div>
+<p>答案 : C . 考点 [1.2 数据 的 存储 与 运算 ]/posts/computernotes/1.2- 数 据 的 存储 与 运算 )</p>
+<p>解析 : 整除 1/4=0 。</p>
+<div class='gap'></div>
+<ol>
+<li>将 两 个 字符 串 链接 成 一 个 ， 可 选用 ( )</li>
+</ol>
+<div class='gap'></div>
+<p>A 人 . strcat (O B. strcpy() CC. strlen() D. strcmp ()</p>
+<div class='gap'></div>
+<p>答案 : A . 考点 [1.6 数组 ]/posts/computernotes/1.6- 数 组 ) / 串</p>
+<div class='gap'></div>
+<p>解析 : strcat 连接 ; strcpy 复制 ; strlen 长 度 ; strcmp 比较 。</p>
+<div class='gap'></div>
+<ol>
+<li>下 列 说 法 <strong> 错 误 </strong> 的 是 ( )</li>
+</ol>
+<div class='gap'></div>
+<p>A. 被 调 函 数 可 以 不 用 return</p>
+<div class='gap'></div>
+<p>B. 被 调 函 数 可 出 现 多 个 return</p>
+<div class='gap'></div>
+<p>C. 有 返回 值 就 一 定 要 有 return</p>
+<div class='gap'></div>
+<p>D. 一 个 return 可 返回 多 个 值 给 调用 函数</p>
+<div class='gap'></div>
+<p>答案 : D . 考点 [1.7 函数 ]W/posts/computernotes/1.7- 函 数 )</p>
+<div class='gap'></div>
+<p>解析 : 一 次 return 只 能 返回 一 个 值 (可 用 指针 /结构 体 间接 带 回 多 值 ) 。</p>
+<div class='gap'></div>
+<ol>
+<li>指针 变量 p“<strong> 不 能 </strong> 初 始 化 为 ()</li>
+</ol>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第 3 页</h2>
+<div class='gap'></div>
+<p>A. 地 址 B. NULL C. 0 D. 1</p>
+<div class='gap'></div>
+<p>答案 : D . 考点 [1.8 指针 ]UWposts/computernotes/1.8- 指 针 )</p>
+<div class='gap'></div>
+<p>解析 : 1 不 是 合法 地 址 / NULL 语义 。</p>
+<div class='gap'></div>
+<ol>
+<li>下 列 函 数 声明 正确 的 是 ( )</li>
+</ol>
+<div class='gap'></div>
+<p>A. void f(x y) ; B.f(int x，int y) ; C. void f(int, int) ; D. void f(int x，y) ;</p>
+<p>答案 : C . 考点 [1.7 函数 ]/posts/computernotes/1.7- 函 数 )</p>
+<div class='gap'></div>
+<p>解析 : 声明 中 形 参 类 型 不 可 省 ; 可 只 写 类 型 。A 缺 类 型 ; B 缺 返 回 类 型 (旧式 不 规范 ) ; D 第 二 个 形 参 缺 类 型 。</p>
+<ol>
+<li>能 作为 输入 文件 名 的 <strong> 字 符 串 常量 </strong> 是 ( )</li>
+</ol>
+<div class='gap'></div>
+<p>A 人 . CiuUSserNtext. txt B. CNuserNtext. txt C. “cNuserNtext. txt “ D. “cN\NuserNNtext. 七 X</p>
+<p>答案 : D . 考点 [1.10 文件 操作 ]Wposts/computernotes/1.10- 文 件 操作 )</p>
+<div class='gap'></div>
+<p>解析 : 路 径 字符 串 需 双 引号 ;Windows 路 径 \ 在 字符 串 中 写作 \\ 。</p>
+<div class='gap'></div>
+<ol>
+<li>两 有 序 表 n、m 个 元 素 (n&amp;lt;m) 归并 ， 最 少 比 较 次 数 ( )</li>
+</ol>
+<div class='gap'></div>
+<p>An B.m cC.n-1 Dmr+n</p>
+<div class='gap'></div>
+<p>答案 : A . 考点 [2.2 线性 表 ](/posts/computernotes/2.2- 线 性 表 ) / 归并</p>
+<div class='gap'></div>
+<p>解析 : 短 表 元 素 依次 与 长 表 比 较 插 入 ， 最 少 约 n 次 比较 。</p>
+<div class='gap'></div>
+<ol>
+<li>非 空 循环 单 链 表 head， 尾 结 点 p 满足 ( )</li>
+</ol>
+<div class='gap'></div>
+<p>A. bp→next==NULL “B. p==NULL ”C. p→next==head “，D. p==head</p>
+<div class='gap'></div>
+<p>答案 : C . 考点 [2.2 线性 表 ]Uposts/computernotes/2.2- 线 性 表 )</p>
+<div class='gap'></div>
+<p>解析 : 循环 链表 尾 后 继 指 向 头 (OCR 中 pext 即 next ) 。</p>
+<div class='gap'></div>
+<ol>
+<li>叶子 权 `{3,7,11,8,9,12} 构造 哈 夫 曼 树 ， 高 度 是 ( )</li>
+</ol>
+<div class='gap'></div>
+<p>A.3 B.4 C.1 D.2</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第 4 页</h2>
+<div class='gap'></div>
+<p>答案 : B : 考点 [2.5 树 和 二 叉 树 ]Uposts/computer/notes/2.5- 树 和 二 又 树 )</p>
+<div class='gap'></div>
+<p>解析 : 哈 夫 最 逐步 合并 ， 该 权 集 高 度 一 般 为 4 (回忆 共识 ) 。</p>
+<div class='gap'></div>
+<ol>
+<li>表 <code>{3,12,24,46,10,20} ，</code>H(k)=k%9` ， 散 列 地 址 为 <strong>0</strong> 的 元 素 个 数 (原文 缺 选项 A)</li>
+</ol>
+<p>余数 : 3,3,6,1,12 一 地 址 0 的 个 数 为 0; 若 问 某 常 见地 址 ， 按 表 重 算 。</p>
+<div class='gap'></div>
+<p>考点 [2.7 查找 ]/posts/computernotes/2.7- 查 找 )</p>
+<div class='gap'></div>
+<ol>
+<li>适用 于 折 半 查找 的 是 ( )</li>
+</ol>
+<div class='gap'></div>
+<p>A. 链 式 无 序 B. 链 式 有 序 “. 顺序 无 序 _D. 顺序 有 序</p>
+<div class='gap'></div>
+<p>答案 : D . 考点 [2.7 查找 ]Uposts/computernotes/2.7- 查 找 )</p>
+<div class='gap'></div>
+<ol>
+<li>串 `S= &quot;software 子 串 数目 ( 含 空 串 ) ()</li>
+</ol>
+<div class='gap'></div>
+<p>A.38 B.35 CC.36 D.37</p>
+<div class='gap'></div>
+<p>答案 : D . 考点 [2.4 串 ]Uposts/computernotes/2.4- 串 、 数 组 和 广义 表 )</p>
+<div class='gap'></div>
+<p>解析 : 长 度 n=8， 子 串 数 gn(n+1)/2+1=37$。</p>
+<div class='gap'></div>
+<ol>
+<li>与 * 数 据 存储 ** 无 关 的 是 ( )</li>
+</ol>
+<div class='gap'></div>
+<p>A. 顺序 表 B. 链表 “. 散 列 表 “D. 队列</p>
+<div class='gap'></div>
+<p>答案 : D . 考点 [2.1 数据 结构 基本 概念 ]/posts/computer/notes/2.1- 数 据 结构 基本 概念 )</p>
+<p>解析 : 队列 是 逻辑 结构 ; A/B/C 是 存储 结构 (或 具体 实现 ) 。</p>
+<div class='gap'></div>
+<ol>
+<li>对 新 算法 作 性 能 分 析 的 主要 目的 是 ( )</li>
+</ol>
+<div class='gap'></div>
+<p>A. 找 合理 数据 结构 “B. 研究 输入 实例 “. 分 析 效 率 以 求 改进 “”D. 考量 易 懂 易 读</p>
+<div class='gap'></div>
+<p>答案 : C : 考点 [2.9 算法 基本 概念 与 分 析 ](/posts/computernotes/2.9- 算 法 基本 概念 与 分 析 )</p>
+<ol>
+<li>数据 结构 在 计算 机 内 存 中 的 表示 是 指 ( )</li>
+</ol>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第 5 页</h2>
+<div class='gap'></div>
+<p>A. 数据 结构 “B. 逻辑 结构 “. 存储 结构 “D. 数据 元 素 关 系</p>
+<div class='gap'></div>
+<p>答案 : C . 考点 [2.1 数据 结构 基本 概念 ]/posts/computernotes/2.1- 数 据 结构 基本 概念 )</p>
+<ol>
+<li>十 进 制 630 的 二 进 制 是 ( )</li>
+</ol>
+<div class='gap'></div>
+<p>A. 1001110000 B. 1001110110 “. 1010110100 _D. 1010100111</p>
+<p>答案 : B . 考点 进 制</p>
+<div class='gap'></div>
+<p>解析 : 630=512+118; 118=64+54; … 得 1001110110 。</p>
+<div class='gap'></div>
+<ol>
+<li>单 链 表 a 是 b 的 前 驱 ， 在 a、b 间 插 入 c， 应 执行 ()</li>
+</ol>
+<div class='gap'></div>
+<p>A 人 . c→1ink=b→1link; b→1ink=c; B. b→1ink=c; c→1ink=a;</p>
+<div class='gap'></div>
+<p>(C. b→1ink=c→1ink; c→]ink=a; D. a→]1ink=c; c→1ink=b ;</p>
+<p>答案 : D . 考点 [2.2 线性 表 ](/posts/computernotes/2.2- 线 性 表 )</p>
+<ol>
+<li>递归 算法 实现 一 般 需 利用 ( )</li>
+</ol>
+<div class='gap'></div>
+<p>A. 队 列 8B. 栈 “. 循环 链表 “D. 双向 链表</p>
+<div class='gap'></div>
+<p>答案 : B . 考点 [2.3 栈 和 队列 ]U/posts/computenotes/2.3- 栈 和 队列 )</p>
+<p>二 、 判 断 题 (每 题 2 分 )</p>
+<div class='gap'></div>
+<p>过 有</p>
+<p>Ta</p>
+<p>吓 放 一 个 程序 里 有 且 仅 有 一 个 &quot;main 区 汉</p>
+<p>瑟 汉 字符 审 “a” 在 内 存 中 占 1 个 字符 x ( 含 \0- 占 2)</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第 6 页</h2>
+<div class='gap'></div>
+<p>国宝 ET 轿 弹</p>
+<p>攻 RE |</p>
+<p>用 全 局 变量 必须 定义 在 文件 开头 本 强</p>
+<p>6 二 叉 树 每 个 叶子 都 有 2 个 叶子 x (表述 混乱 ， 错 )</p>
+<p>2 | 冒 泡 排序 时 间 复 杂 度 是 O(m) x (一 般 O(n2))</p>
+<p>PR 本</p>
+<p>号 汪 无 向 /有 向 图 区 别 在 于 顶点 对 无 序 /有 序 区 到</p>
+<p>三 、 填 空 题</p>
+<div class='gap'></div>
+<ol>
+<li>三 种 基本 结构 : 顺序 、 选 择 、 关 循环 兴 〈 重 复 )</li>
+</ol>
+<div class='gap'></div>
+<ol>
+<li>b=(int)(a/9)%4 ，-a=28 一 b=3 (28/9=3.11.… 一 3，39%64=3)</li>
+</ol>
+<div class='gap'></div>
+<ol>
+<li>打开 文件 用 闪 fopen 六</li>
+</ol>
+<div class='gap'></div>
+<ol>
+<li>高 度 h 的 树 至 少 有 关 h+ 1** 个 结 点 ( 单 支 )</li>
+</ol>
+<div class='gap'></div>
+<ol>
+<li>入 栈 6,7,8,9,10， 合 法 出 栈 之 一 示例 : 六 6,7,8,9,10 芒 或 六 10,9,8,7,6*# 等 ( 题 干 常 要 求 写 出 一 种 合法 序列 )</li>
+</ol>
+<p>四 、 简 答题 要 点</p>
+<div class='gap'></div>
+<ol>
+<li>”数据 结构 六 : 相互 之 间 存 在 一 种 或 多 种 特定 关系 的 数据 元 素 的 集合 ; “数据 类 型 *:; 一 组 值 的 集合 及 定义 在 该 集</li>
+</ol>
+<div class='gap'></div>
+<p>合 上 的 一 组 操作 。</p>
+<ol>
+<li>六 算法 特点 闪 : 有 穷 、 确 定 、 可 行 、 有 输入 、 有 输出 ;算法 vs 程序 : 算法 强调 步骤 ， 程 序 是 实现 且 可 依赖 具体 语</li>
+</ol>
+<p>言 /0Os。</p>
+<ol>
+<li>关 指 针 **: 地 址 ; 关 指 针 变 量 关 : 存放 地 址 的 变量 ; 关系 : 指针 变量 的 值 是 指针 。</li>
+<li>关 二 叉 树 ”五 种 形态 : 空 ; 仪 根 ; 根 + 左 ; 根 + 右 ; 根 + 左 右 。</li>
+</ol>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第 7 页</h2>
+<div class='gap'></div>
+<p>五 、 计 算 / 读 程</p>
+<div class='gap'></div>
+<ol>
+<li>fun ` 求 各 位 数字 之 和</li>
+</ol>
+<div class='gap'></div>
+<p>(1) 功能 : 求 十 进 制 各 位 数字 和</p>
+<div class='gap'></div>
+<p>(2) 结果 取决 于 输入 ;如 输入 123 则 输出 6</p>
+<div class='gap'></div>
+<ol>
+<li>指针 + switch 读 程</li>
+</ol>
+<div class='gap'></div>
+<p>”&lt;</p>
+<div class='gap'></div>
+<p>intja[]={1,3,5,7,9,11,13,15})*p=a+5;</p>
+<p>for(j=4jj&gt;0j--){</p>
+<div class='gap'></div>
+<p>switch(j) {</p>
+<div class='gap'></div>
+<p>case 1: case 2: printf(&quot;%d&quot;,*p); breaki</p>
+<div class='gap'></div>
+<p>case 3: printf(&quot;%d&quot;x(--p));</p>
+<div class='gap'></div>
+<p>case 4: printf(&quot;%d &quot;,*(--p));</p>
+<div class='gap'></div>
+<p>】}</p>
+<div class='gap'></div>
+<p>】}</p>
+<div class='gap'></div>
+<p>(1) 循环 4 次 U=43,2,1)</p>
+<div class='gap'></div>
+<p>(2) 注意 case3 贯穿 case4; 逐步 模拟 输出 (回忆 版 答案 以 本 地 演算 为 准 )</p>
+<ol>
+<li>无 向 图 邻接 和 矩阵 ( 按 图 作答 ， 图 见 原 卷 )</li>
+</ol>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第 8 页</h2>
+<div class='gap'></div>
+<p>六、 应 用 题</p>
+<div class='gap'></div>
+<ol>
+<li>交换 a、b 并 输出 较 大 值</li>
+</ol>
+<div class='gap'></div>
+<p>思路 : 指针 /引用 交换 + 比较 输出</p>
+<div class='gap'></div>
+<p> &amp;lt;C</p>
+<div class='gap'></div>
+<p>void swap(int *x, int *y) { int t=*x; *X=x*y; *y=f}</p>
+<div class='gap'></div>
+<p>/main 中 scanf 后 swap(&amp;a,&amp;b); printf(&quot;%d&quot;， a&gt;by?a:b);</p>
+<ol>
+<li>剔除 非 数 字 字符 输出</li>
+</ol>
+<div class='gap'></div>
+<p>人 遍历 字符 串 ， isdigit(c) 则 putchar(c) 。</p>
+<div class='gap'></div>
+<ol>
+<li>Prim 最 小 生成 树 (以 结 点 1 为 起 点 ， 过 程 见 原 图 )</li>
+</ol>
+<p>回炉</p>
+<div class='gap'></div>
+<p>[ 原 卷 PDF](/papers 人 /computer2021.pdf)</p>
+<div class='gap'></div>
+<p>2024 . 考点 拆 分 . 系统 笔记 1.1-2.9</p>
+<div class='gap'></div>
+<p>返回 : 索引 . 总 索引</p>
+<div class='gap'></div>
+<p>3 5 7</p>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<hr>
+<p><a href="/posts/computer/">← 回总览</a></p>
+<div class='gap'></div>
+</body>
+</html>

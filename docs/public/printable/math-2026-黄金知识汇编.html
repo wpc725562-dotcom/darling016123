@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>2026 黄金知识汇编（高等数学）</title>
+<style>
+body { font-family: "Microsoft YaHei", "Noto Sans SC", sans-serif; max-width: 800px; margin: 40px auto; padding: 0 24px; font-size: 14px; line-height: 1.8; color: #222; }
+h1 { font-size: 22px; border-bottom: 2px solid #333; padding-bottom: 8px; }
+h2 { font-size: 18px; margin-top: 24px; }
+h3 { font-size: 16px; }
+table { margin: 12px 0; }
+th, td { text-align: left; vertical-align: top; }
+ul, ol { margin: 8px 0; padding-left: 26px; }
+li { margin: 2px 0; }
+blockquote { border-left: 3px solid #999; margin: 8px 0; padding: 4px 12px; color: #555; background: #f7f7f7; }
+code { background: #f0f0f0; padding: 1px 5px; border-radius: 3px; }
+pre { background: #f7f7f7; border: 1px solid #e0e0e0; border-radius: 4px; padding: 10px 12px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+hr { border: none; border-top: 1px solid #ddd; margin: 18px 0; }
+a { color: #1a4d8f; }
+.ctitle { background: #eef4fb; border-left: 3px solid #7aa7d9; margin: 10px 0; padding: 6px 12px; color: #24486f; }
+.gap { height: 8px; }
+@media print { body { margin: 0; padding: 0; max-width: none; } }
+</style>
+</head>
+<body>
+<div class='gap'></div>
+<h1>2026 黄金知识汇编（高等数学）</h1>
+<div class='gap'></div>
+<blockquote>本页由《2026 广东专插本 · 高等数学 · 黄金知识汇编》PDF 文字稿整理而成，覆盖 12 章、63 个考点；公式按标准 LaTeX 还原，部分原稿中为图片的公式以文字近似表述，精确对照请以原 PDF 为准。</blockquote>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第一章 函数、极限、连续</h2>
+<div class='gap'></div>
+<h3>考点1. 判断函数是否为同一函数</h3>
+<p><strong>要点</strong></p>
+<ul>
+<li>函数二要素：定义域、对应法则；两者都相同方为同一函数。</li>
+</ul>
+<p><strong>易错点</strong></p>
+<ul>
+<li>化简后解析式相同但定义域不同（如根号与绝对值、对数与幂）不算同一函数。</li>
+</ul>
+<p><strong>例题</strong>：判断各组 $f(x)$ 与 $g(x)$ 是否同一函数，答案 D（$\ln x$ 与 $\ln x^3$）。</p>
+<div class='gap'></div>
+<h3>考点2. 求函数定义域</h3>
+<p><strong>要点</strong></p>
+<ul>
+<li>具体函数常见限制：分式分母 $\ne 0$；偶次根号被开方式 $\ge 0$；$\log_a f(x)$ 真数 $&gt;0$；$\arcsin f(x)$、$\arccos f(x)$ 要求 $-1\le f(x)\le 1$。</li>
+<li>抽象函数 $f(g(x))$：以 $f(\square)$ 内整体取值范围为准，使内层值域落入 $f$ 的定义域，求出 $x$ 范围。</li>
+</ul>
+<p><strong>易错点</strong></p>
+<ul>
+<li>抽象函数不能直接套原定义域；多个限制条件取交集。</li>
+</ul>
+<p><strong>例题</strong>：根式函数（被开方为二次式 $(x+4)(x-3)$）定义域 $(-\infty,-4]\cup[3,+\infty)$；已知 $f(x)$ 定义域 $[-2,2]$，求复合函数定义域，答案 $[1,3]$。</p>
+<div class='gap'></div>
+<h3>考点3. 函数的解析式、反函数的求法</h3>
+<p><strong>要点</strong></p>
+<ul>
+<li>解析式求法：配凑法、换元法。</li>
+<li>反函数：先反解出 $x=\varphi(y)$，再互换 $x$、$y$ 得 $y=\varphi(x)$。</li>
+</ul>
+<p><strong>易错点</strong></p>
+<ul>
+<li>反函数定义域须取原函数值域，不可随意扩大。</li>
+</ul>
+<p><strong>例题</strong>：已知 $f(x-1)=x$，求 $f(f(x))$，答案 D；已知 $y=\dfrac{x-1}{x+1}$，求反函数，答案 $f^{-1}(x)=\dfrac{1+x}{1-x}$。</p>
+<div class='gap'></div>
+<h3>考点4. 函数的基本性质</h3>
+<p><strong>要点</strong></p>
+<ul>
+<li>单调性：$f&#x27;(x)&gt;0$ 单调递增，$f&#x27;(x)&lt;0$ 单调递减。</li>
+<li>奇偶性：定义域关于原点对称，$f(-x)=f(x)$ 为偶函数，$f(-x)=-f(x)$ 为奇函数。</li>
+<li>奇偶运算（公共定义域上）：奇+奇=奇，奇×奇=偶，偶+偶=偶，偶×偶=偶，奇×偶=奇。</li>
+<li>有界性：识记常见有界函数 $\sin x$、$\cos x$、$\arcsin x$、$\arccos x$、$\arctan x$。</li>
+<li>周期性（不常考）。</li>
+</ul>
+<p><strong>易错点</strong></p>
+<ul>
+<li>判奇偶前先看定义域是否关于原点对称；用导数判单调须在定义域内。</li>
+</ul>
+<p><strong>例题</strong>：$f(x)=\ln x$ 在 $(0,e)$ 内严格单调递增且无界，答案 C；$y=\ln(x+\sqrt{x^2+1})$ 为奇函数。</p>
+<div class='gap'></div>
+<h3>考点5. 数列的极限</h3>
+<p><strong>要点</strong></p>
+<ul>
+<li>定义：$n\to\infty$ 时数列 $\{x_n\}$ 无限趋近于常数 $a$，记 $\lim_{n\to\infty}x_n=a$。</li>
+<li>有理分式极限：$\lim_{x\to\infty}\dfrac{a_m x^m+\cdots+a_0}{b_n x^n+\cdots+b_0}$，当 $m&lt;n$ 为 $0$，$m=n$ 为 $\dfrac{a_m}{b_n}$，$m&gt;n$ 为 $\infty$。</li>
+</ul>
+<p><strong>易错点</strong></p>
+<ul>
+<li>比较分子分母最高次幂，而非项数；分子分母同除最高次幂。</li>
+</ul>
+<p><strong>例题</strong>：数列 $-1,\dfrac12,-\dfrac13,\dfrac14,\cdots$ 通项 $x_n=\dfrac{(-1)^n}{n}$；$1,\dfrac12,\dfrac14,\dfrac18,\cdots$ 前项和 $S_n=2(1-2^{-n})$，$\lim_{n\to\infty}S_n=2$。</p>
+<div class='gap'></div>
+<h3>考点6. 函数的极限</h3>
+<p><strong>要点</strong></p>
+<ul>
+<li>七种未定式：$\dfrac{0}{0}$、$\dfrac{\infty}{\infty}$、$\infty-\infty$、$0\cdot\infty$、$1^\infty$、$\infty^0$、$0^0$。</li>
+<li>常用方法：①约去零因式（$x\to0$）；②除以适当无穷大（$x\to\infty$，$\dfrac{\infty}{\infty}$）；③分子分母有理化（含根号）；④通分、倒代换（$\infty-\infty$）；⑤基本极限公式（$\dfrac{0}{0}$、$1^\infty$）；⑥等价无穷小替换；⑦无穷小性质（无穷小×有界量=无穷小）；⑧夹逼原理（放缩）；⑨取 $e$ 法/取对数法（$1^\infty$、$\infty^0$、$0^0$）；⑩洛必达法则（$\dfrac{0}{0}$、$\dfrac{\infty}{\infty}$）。</li>
+</ul>
+<p><strong>易错点</strong></p>
+<ul>
+<li>等价无穷小只能在乘除因子中替换，加减项不可单独替换；洛必达前须验证为未定式。</li>
+</ul>
+<p><strong>例题</strong>：$\lim_{x\to0}\dfrac{e^{\sin x}-e^{-\sin x}}{\sin x}=2$。</p>
+<div class='gap'></div>
+<h3>考点7. 无穷小量的阶</h3>
+<p><strong>要点</strong></p>
+<ul>
+<li>设 $\lim\alpha=0,\ \lim\beta=0$，比较 $\lim\frac{\beta}{\alpha}$：为 $0$ 则 $\beta$ 是 $\alpha$ 的高阶无穷小，记 $\beta=o(\alpha)$；为 $\infty$ 则低阶；为 $c\ne0$ 则同阶；$c=1$ 即 $\lim\frac{\beta}{\alpha}=1$ 时为等价无穷小，记 $\beta\sim\alpha$。</li>
+</ul>
+<p><strong>易错点</strong></p>
+<ul>
+<li>求阶前须确认 $\alpha,\beta$ 均为无穷小；等价替换只用于乘除因子，加减项不可直接替换。</li>
+</ul>
+<p><strong>例题</strong></p>
+<ul>
+<li>$x\to0$ 时为 $x$ 的高阶无穷小的是（A. $e^x-1$ B. $x+x^2$ C. $\sin x$ D. $\cos x-1$）。答 D（$\lim_{x\to0}\frac{\cos x-1}{x}=0$）。</li>
+<li>$\cos x\ln(1+x)$ 与 $Ax^k$ 等价，求 $A,k$。答 $A=1,\ k=1$。</li>
+</ul>
+<div class='gap'></div>
+<h3>考点8. 用极限解决参数问题</h3>
+<p><strong>要点</strong></p>
+<ul>
+<li>已知含参极限为定值，反求参数：判定类型后比较分子分母同次幂系数，或对 $\infty-\infty$ 型有理化，建立方程求解。</li>
+</ul>
+<p><strong>易错点</strong></p>
+<ul>
+<li>$\frac{\infty}{\infty}$ 型定值要求分子最高次不超过分母，多余高次项系数须为 0，易漏条件。</li>
+</ul>
+<p><strong>例题</strong></p>
+<ul>
+<li>已知含 $a,b$ 的有理分式极限为定值，求 $a,b$。答 $a=2,\ b=-2$。</li>
+</ul>
+<div class='gap'></div>
+<h3>考点9. 函数的连续性</h3>
+<p><strong>要点</strong></p>
+<ul>
+<li>$f(x)$ 在 $x_0$ 连续 $\iff$ ① $f(x_0)$ 有定义；② $\lim_{x\to x_0}f(x)$ 存在；③ $\lim_{x\to x_0}f(x)=f(x_0)$。分段点须用左右极限判定。</li>
+</ul>
+<p><strong>易错点</strong></p>
+<ul>
+<li>只验极限存在不验是否等于 $f(x_0)$。</li>
+</ul>
+<p><strong>例题</strong></p>
+<ul>
+<li>分段函数在分段点 $x_0$ 连续，求 $a$。由 $\lim_{x\to x_0}f(x)=f(x_0)$ 得 $a=e^{x_0}$。</li>
+</ul>
+<div class='gap'></div>
+<h3>考点10. 求函数的间断点及其类型</h3>
+<p><strong>要点</strong></p>
+<ul>
+<li>第一类（左右极限均存在）：可去——$f(x_0^-)=f(x_0^+)$；跳跃——$f(x_0^-)\ne f(x_0^+)$。</li>
+<li>第二类（左右极限至少一个不存在）：无穷间断点 $\lim_{x\to x_0}f(x)=\infty$。</li>
+</ul>
+<p><strong>易错点</strong></p>
+<ul>
+<li>须先求左右极限再分类，勿只看单侧；可去与跳跃的区别在左右极限是否相等。</li>
+</ul>
+<p><strong>例题</strong></p>
+<ul>
+<li>函数在 $x_0$ 处左右极限均存在但不相等。答：跳跃间断点。</li>
+</ul>
+<div class='gap'></div>
+<h3>考点11. 求渐近线</h3>
+<p><strong>要点</strong></p>
+<ul>
+<li>水平：$\lim_{x\to\infty}f(x)=A\Rightarrow y=A$（分别考查 $x\to\pm\infty$）。</li>
+<li>垂直：$\lim_{x\to x_0}f(x)=\infty\Rightarrow x=x_0$（常在分母零点、对数真数零点处）。</li>
+<li>斜：$y=ax+b$，$a=\lim_{x\to\infty}\frac{f(x)}{x}$，$b=\lim_{x\to\infty}[f(x)-ax]$。</li>
+</ul>
+<p><strong>易错点</strong></p>
+<ul>
+<li>不同方向可有不同渐近线，须分别求；$a=0$ 时退化为水平，勿重复计。</li>
+</ul>
+<p><strong>例题</strong></p>
+<ul>
+<li>求含 $e^x,\ \ln(1+x)$ 的函数的渐近线。答：水平 $y=0$、垂直 $x=-1$、斜 $y=x$。</li>
+</ul>
+<div class='gap'></div>
+<h3>考点12. 零点定理、介值定理相关证明</h3>
+<p><strong>要点</strong></p>
+<ul>
+<li>零点定理：$f$ 在 $[a,b]$ 连续且 $f(a)f(b)&lt;0$，则 $\exists\,\xi\in(a,b),\ f(\xi)=0$。</li>
+<li>介值定理：$f$ 在 $[a,b]$ 连续，$A=f(a),\ B=f(b)$，对 $A,B$ 之间任一 $C$，$\exists\,\xi\in[a,b],\ f(\xi)=C$。</li>
+<li>存在性用定理，唯一性用单调性（导数符号）。</li>
+</ul>
+<p><strong>易错点</strong></p>
+<ul>
+<li>须验证闭区间连续且端点值异号；单调性须在整个区间成立。</li>
+</ul>
+<p><strong>例题</strong></p>
+<ul>
+<li>证 $f(x)=0$ 在 $(0,1)$ 内有且仅有一实根。由 $f(0)f(1)&lt;0$ 及零点定理证存在，由 $f&#x27;(x)&lt;0$（单调递减）证唯一。</li>
+</ul>
+<div class='gap'></div>
+<h2>第二章 一元函数微分学</h2>
+<div class='gap'></div>
+<h3>考点13. 导数的定义（两个公式）、左导数与右导数</h3>
+<div class='gap'></div>
+<p><strong>要点</strong></p>
+<ul>
+<li>导数定义两个等价公式：$f&#x27;(x)=\lim_{\Delta x\to 0}\dfrac{f(x+\Delta x)-f(x)}{\Delta x}$，及 $f&#x27;(x_0)=\lim_{x\to x_0}\dfrac{f(x)-f(x_0)}{x-x_0}$。</li>
+<li>左导数 $f&#x27;_-(x_0)=\lim_{x\to x_0^-}\dfrac{f(x)-f(x_0)}{x-x_0}$，右导数 $f&#x27;_+(x_0)=\lim_{x\to x_0^+}\dfrac{f(x)-f(x_0)}{x-x_0}$。</li>
+<li>$f&#x27;(x_0)$ 存在 ⟺ $f&#x27;_-(x_0)$、$f&#x27;_+(x_0)$ 都存在且相等。</li>
+<li>判断某极限是否为 $f&#x27;(x_0)$，须化为上述定义形式；广义化后符合定义即可。</li>
+</ul>
+<div class='gap'></div>
+<p><strong>易错点</strong></p>
+<ul>
+<li>注意差商方向：$\dfrac{f(x)-f(x_0)}{x-x_0}$ 才是 $f&#x27;(x_0)$，写成 $\dfrac{f(x_0)-f(x)}{x-x_0}$ 会差一个负号。</li>
+<li>左、右导数都存在还不够，须相等才算可导。</li>
+</ul>
+<div class='gap'></div>
+<p>例（选择）：$f(x)$ 在 $x_0$ 可导，则 $f&#x27;(x_0)=$ ？四个极限形式中选符合定义 $\lim_{x\to x_0}\dfrac{f(x)-f(x_0)}{x-x_0}$ 者（答案 C）。</p>
+<div class='gap'></div>
+<h3>考点14. 导数的几何意义、斜率与切线方程</h3>
+<div class='gap'></div>
+<p><strong>要点</strong></p>
+<ul>
+<li>几何意义：$f&#x27;(x_0)$ 是曲线 $y=f(x)$ 在切点 $(x_0,f(x_0))$ 处切线的斜率 $k=f&#x27;(x_0)$。</li>
+<li>切线方程：$y-y_0=k(x-x_0)$，即 $y-f(x_0)=f&#x27;(x_0)(x-x_0)$。</li>
+<li>步骤：求 $f&#x27;(x)$，代入 $x_0$ 得斜率，再代入切点写出方程。</li>
+</ul>
+<div class='gap'></div>
+<p><strong>易错点</strong></p>
+<ul>
+<li>斜率须用切点处的导数值，不能用导函数代替。</li>
+<li>切点须同时在曲线与切线上，注意验算。</li>
+</ul>
+<div class='gap'></div>
+<p>例：求曲线 $y=2x+\ln x$ 在点 $(1,2)$ 处的切线方程。答：$y=3x-1$。</p>
+<div class='gap'></div>
+<h3>考点15. 连续与可导的关系</h3>
+<div class='gap'></div>
+<p><strong>要点</strong></p>
+<ul>
+<li>可导必连续：函数在某点可导，则在该点一定连续。</li>
+<li>连续不一定可导：在某点连续未必可导（如 $y=|x|$ 在 $x=0$）。</li>
+<li>分段函数在分段点可导 ⇒ 先连续（左、右极限相等且等于函数值），再左、右导数相等。</li>
+</ul>
+<div class='gap'></div>
+<p><strong>易错点</strong></p>
+<ul>
+<li>分段点判定须分两步：先验连续，再验左右导数相等，缺一不可。</li>
+<li>由连续推不出可导，不可省略导数检验。</li>
+</ul>
+<div class='gap'></div>
+<p>例：$a,b$ 为何值时 $f(x)=\begin{cases}x^2,&amp;x\le 1\\ ax+b,&amp;x&gt;1\end{cases}$ 在 $x=1$ 可导？答：由连续得 $a+b=1$，由左右导数相等得 $a=2$，故 $b=-1$。</p>
+<div class='gap'></div>
+<h3>考点16. 显函数、反函数、参数方程求导</h3>
+<div class='gap'></div>
+<p><strong>要点</strong></p>
+<ul>
+<li>显函数直接套基本求导公式及和差积商、链式法则。</li>
+<li>反函数求导：若 $y=f(x)$ 反函数为 $x=\varphi(y)$，则 $\varphi&#x27;(y)=\dfrac{1}{f&#x27;(x)}$。</li>
+<li>参数方程 $\begin{cases}x=\varphi(t)\\y=\psi(t)\end{cases}$：$\dfrac{dy}{dx}=\dfrac{\psi&#x27;(t)}{\varphi&#x27;(t)}$，切线由对应 $t$ 的点与斜率写出。</li>
+</ul>
+<div class='gap'></div>
+<p><strong>易错点</strong></p>
+<ul>
+<li>反函数求导自变量为 $y$，变量关系易搞反。</li>
+<li>参数方程是 $\psi&#x27;(t)/\varphi&#x27;(t)$，不可分别对 $x$ 求导。</li>
+</ul>
+<div class='gap'></div>
+<h3>考点17. 隐函数、对数求导法、幂指函数、复合函数、高阶导数</h3>
+<div class='gap'></div>
+<p><strong>要点</strong></p>
+<ul>
+<li>隐函数求导：两边对 $x$ 求导解出 $y&#x27;$；或用 $\dfrac{dy}{dx}=-\dfrac{F&#x27;_x}{F&#x27;_y}$。</li>
+<li>对数求导法：两边取对数再求导，适用于幂指函数与连乘积。</li>
+<li>幂指函数 $u(x)^{v(x)}$：取 $e$ 法 $y=e^{v\ln u}$，或两边取对数。</li>
+<li>复合函数 $y=f(u),u=\varphi(x)$：$\dfrac{dy}{dx}=\dfrac{dy}{du}\cdot\dfrac{du}{dx}$。</li>
+<li>高阶导数：依次求一、二、三阶，归纳通项。</li>
+</ul>
+<div class='gap'></div>
+<p><strong>易错点</strong></p>
+<ul>
+<li>隐函数求导时 $y$ 视为 $x$ 的函数，须用链式法则。</li>
+<li>幂指函数不能用幂法则或指数法则直接求导。</li>
+</ul>
+<div class='gap'></div>
+<p><strong>例题</strong></p>
+<ul>
+<li>$y=(1+\sin x)^{\cos x}$，$y&#x27;=(1+\sin x)^{\cos x}\big[\cos x\ln\cos x-\tan x\sin x\big]$。</li>
+<li>$y=2^x$，则 $y^{(n)}=2^x(\ln 2)^n$。</li>
+</ul>
+<div class='gap'></div>
+<h3>考点18. 微分</h3>
+<div class='gap'></div>
+<p><strong>要点</strong></p>
+<ul>
+<li>微分 $dy=f&#x27;(x)\,dx$；基本初等函数微分即对应导数乘 $dx$（如 $d(x^\mu)=\mu x^{\mu-1}dx$、$d(\sin x)=\cos x\,dx$、$d(e^x)=e^x dx$）。</li>
+<li>易错：$d(\log_a x)=\dfrac{dx}{x\ln a}$（勿漏 $\ln a$）；$d(\arcsin x)=\dfrac{dx}{\sqrt{1-x^2}}$、$d(\arctan x)=\dfrac{dx}{1+x^2}$，而 $\arccos$、$\operatorname{arccot}$ 取负。</li>
+<li>一阶微分形式不变性：$dy=f&#x27;(u)\,du=f&#x27;(\varphi(x))\varphi&#x27;(x)\,dx$。</li>
+</ul>
+<div class='gap'></div>
+<p><strong>例题</strong></p>
+<ul>
+<li>$y=x\arcsin\dfrac{x}{2}+\dfrac{1}{2}\sqrt{4-x^2}$，则 $dy=\arcsin\dfrac{x}{2}\,dx$。</li>
+</ul>
+<div class='gap'></div>
+<h2>第三章 微分中值定理与导数的应用</h2>
+<div class='gap'></div>
+<h3>考点19. 罗尔定理、拉格朗日中值定理及推论</h3>
+<div class='gap'></div>
+<p><strong>要点</strong></p>
+<ul>
+<li>罗尔定理：$f(x)$ 在 $[a,b]$ 连续、$(a,b)$ 可导、$f(a)=f(b)$，则 $\exists\,\xi\in(a,b)$ 使 $f&#x27;(\xi)=0$。</li>
+<li>拉格朗日中值定理：$f(x)$ 在 $[a,b]$ 连续、$(a,b)$ 可导，则 $\exists\,\xi\in(a,b)$ 使 $f&#x27;(\xi)=\dfrac{f(b)-f(a)}{b-a}$。</li>
+<li>证含 $\xi$ 等式常构造辅助函数用罗尔定理；证不等式常用拉格朗日中值定理。</li>
+</ul>
+<div class='gap'></div>
+<p><strong>易错点</strong></p>
+<ul>
+<li>连续、可导、端点值相等三条件须同时满足；$\xi$ 在开区间 $(a,b)$ 内。</li>
+</ul>
+<div class='gap'></div>
+<p><strong>例题</strong></p>
+<ul>
+<li>判断函数满足罗尔定理条件（答案 D；A、B 不连续，C 端点值不等）。</li>
+<li>$f(x)=x^3-3x^2$ 在 $[0,3]$ 上满足罗尔定理，则 $\xi=2$（答案 A）。</li>
+</ul>
+<div class='gap'></div>
+<h3>考点20. 单调性、极值、最值</h3>
+<div class='gap'></div>
+<p><strong>要点</strong></p>
+<ul>
+<li>单调性：$f&#x27;(x)&gt;0$ 单调增，$f&#x27;(x)&lt;0$ 单调减（要求连续可导）。</li>
+<li>极值步骤：①求定义域与 $f&#x27;(x)$；②求驻点 $f&#x27;(x)=0$ 及不可导点；③用一阶导符号变化或二阶导判定。</li>
+<li>第二充分条件：驻点 $x_0$ 处 $f&#x27;&#x27;(x_0)&gt;0$ 极小，$f&#x27;&#x27;(x_0)&lt;0$ 极大。</li>
+<li>最值步骤：比较端点、驻点、不可导点处函数值，最大者为最大值，最小者为最小值。</li>
+</ul>
+<div class='gap'></div>
+<p><strong>易错点</strong></p>
+<ul>
+<li>驻点未必是极值点，须验证导数符号变化；极值局部、最值整体，不可混用。</li>
+</ul>
+<div class='gap'></div>
+<p><strong>例题</strong></p>
+<ul>
+<li>$f(x)=x^4-2x^2$：$x=0$ 极大值 $0$，$x=\pm1$ 极小值 $-1$。</li>
+</ul>
+<div class='gap'></div>
+<h3>考点21. 拐点及凹凸区间</h3>
+<div class='gap'></div>
+<p><strong>要点</strong></p>
+<ul>
+<li>凹凸性：$f&#x27;&#x27;(x)&gt;0$ 凹，$f&#x27;&#x27;(x)&lt;0$ 凸。</li>
+<li>拐点：曲线上凹凸性改变的点 $(x_0,f(x_0))$。</li>
+<li>必要条件：$f&#x27;&#x27;(x_0)=0$ 或不存在。</li>
+<li>充分条件：$x_0$ 左右 $f&#x27;&#x27;(x)$ 异号为拐点，同号不是。</li>
+</ul>
+<div class='gap'></div>
+<p><strong>易错点</strong></p>
+<ul>
+<li>拐点须写成 $(x_0,f(x_0))$，不能只写横坐标；$f&#x27;&#x27;(x_0)=0$ 不一定是拐点，须看两侧符号。</li>
+</ul>
+<div class='gap'></div>
+<p><strong>例题</strong></p>
+<ul>
+<li>$y=e^{x^2}$：$y&#x27;&#x27;=(2+4x^2)e^{x^2}&gt;0$，在 $(-\infty,+\infty)$ 内凹。</li>
+<li>$(1,3)$ 是 $y=ax^3+bx^2$ 的拐点，解得 $a=-\tfrac{3}{2},b=\tfrac{9}{2}$，凹区间 $(-\infty,1)$，凸区间 $(1,+\infty)$。</li>
+</ul>
+<div class='gap'></div>
+<h2>第四章 不定积分</h2>
+<div class='gap'></div>
+<h3>考点22. 原函数、不定积分的定义及性质</h3>
+<div class='gap'></div>
+<p><strong>要点</strong></p>
+<ul>
+<li>若 $F&#x27;(x)=f(x)$，则 $F(x)$ 是 $f(x)$ 的一个原函数；不定积分 $\int f(x)\,dx$ 表示全体原函数 $F(x)+C$。</li>
+<li>性质1：$\dfrac{d}{dx}\int f(x)\,dx=f(x)$，$\int f&#x27;(x)\,dx=f(x)+C$。</li>
+<li>性质2：$\int [f(x)\pm g(x)]\,dx=\int f(x)\,dx\pm\int g(x)\,dx$。</li>
+<li>性质3：$\int kf(x)\,dx=k\int f(x)\,dx$（$k$ 为常数）。</li>
+<li>基本公式：$\int x^k\,dx=\dfrac{x^{k+1}}{k+1}+C$；$\int \dfrac{1}{x}\,dx=\ln|x|+C$；$\int e^x\,dx=e^x+C$；$\int \sin x\,dx=-\cos x+C$；$\int \cos x\,dx=\sin x+C$；$\int \sec^2 x\,dx=\tan x+C$；$\int \csc^2 x\,dx=-\cot x+C$；$\int \dfrac{dx}{\sqrt{1-x^2}}=\arcsin x+C$；$\int \dfrac{dx}{1+x^2}=\arctan x+C$。</li>
+</ul>
+<div class='gap'></div>
+<p><strong>易错点</strong></p>
+<ul>
+<li>$\int \dfrac{1}{x}\,dx$ 须带绝对值 $\ln|x|+C$，不可漏绝对值。</li>
+<li>不定积分结果必加任意常数 $C$。</li>
+</ul>
+<div class='gap'></div>
+<h3>考点23. 第一换元法（凑微分法）</h3>
+<div class='gap'></div>
+<p><strong>要点</strong></p>
+<ul>
+<li>核心思想：在被积函数中配对 $\varphi(x)$ 与 $\varphi&#x27;(x)$，凑成 $f(\varphi(x))\varphi&#x27;(x)\,dx$，令 $u=\varphi(x)$ 积分。</li>
+<li>常用凑微分：$e^x\,dx=d(e^x)$，$\cos x\,dx=d(\sin x)$，$x\,dx=d(\tfrac{x^2}{2})$。</li>
+<li>例：$\int \sin 2x\,dx=-\tfrac{1}{2}\cos 2x+C$。</li>
+</ul>
+<div class='gap'></div>
+<h3>考点24. 第二换元法</h3>
+<div class='gap'></div>
+<p><strong>要点</strong></p>
+<ul>
+<li>含三角换元与根式换元，恒等式：$\cos^2 x=1-\sin^2 x$，$\sec^2 x=1+\tan^2 x$。</li>
+<li>含 $\sqrt{a^2-x^2}$ 令 $x=a\sin t$；含 $\sqrt{x^2-a^2}$ 令 $x=a\sec t$；含根式整体可令 $t$ 为根式直接代换。</li>
+<li>例：$\int \sqrt{4-x^2}\,dx=2\arcsin\dfrac{x}{2}+\dfrac{x}{2}\sqrt{4-x^2}+C$。</li>
+</ul>
+<div class='gap'></div>
+<h3>考点25. 分部积分法</h3>
+<div class='gap'></div>
+<p><strong>要点</strong></p>
+<ul>
+<li>公式：$\int u\,dv=uv-\int v\,du$（即 $\int u\,v&#x27;\,dx=uv-\int u&#x27;\,v\,dx$）。</li>
+<li>选 $u$ 优先序：反、对、幂、指、三（反三角函数→对数→幂→指数→三角）。</li>
+<li>循环型（如 $\int e^x\sin x\,dx$）设 $I$ 列方程回代求解。</li>
+</ul>
+<div class='gap'></div>
+<h2>第五章 定积分</h2>
+<div class='gap'></div>
+<h3>考点26. 定积分的定义</h3>
+<div class='gap'></div>
+<p><strong>要点</strong></p>
+<ul>
+<li>$\int_a^b f(x)\,dx$ 的值只与被积函数 $f$ 和积分区间 $[a,b]$ 有关，与积分变量字母无关。</li>
+<li>$\int_a^b k\,dx=k(b-a)$。</li>
+</ul>
+<div class='gap'></div>
+<h3>考点27. 定积分的几何意义</h3>
+<div class='gap'></div>
+<p><strong>要点</strong></p>
+<ul>
+<li>$f(x)\geqslant 0$：等于由 $y=f(x),x=a,x=b$ 与 $x$ 轴围成曲边梯形的面积。</li>
+<li>$f(x)\leqslant 0$：等于该面积的相反数。</li>
+<li>$f(x)$ 有正有负：等于 $x$ 轴上方面积减下方面积之差。</li>
+<li>例：$\int_a^b 1\,dx=b-a$（矩形面积）。</li>
+</ul>
+<div class='gap'></div>
+<h3>考点28. 定积分的性质</h3>
+<div class='gap'></div>
+<p><strong>要点</strong></p>
+<ul>
+<li>性质1（线性性）：$\int_a^b [f(x)\pm g(x)]\,dx=\int_a^b f(x)\,dx\pm\int_a^b g(x)\,dx$。</li>
+<li>性质2（常数因子）：$\int_a^b kf(x)\,dx=k\int_a^b f(x)\,dx$。</li>
+<li>性质3（区间可加性）：$\int_a^b f(x)\,dx=\int_a^c f(x)\,dx+\int_c^b f(x)\,dx$（$a,b,c$ 相对位置任意）。</li>
+<li>性质4（保号性）：若在 $[a,b]$ 上 $f(x)\geqslant 0$，则 $\int_a^b f(x)\,dx\geqslant 0$。</li>
+<li>推论1：$f(x)\leqslant g(x)\Rightarrow \int_a^b f(x)\,dx\leqslant\int_a^b g(x)\,dx$。</li>
+<li>推论2：$\left|\int_a^b f(x)\,dx\right|\leqslant\int_a^b |f(x)|\,dx$。</li>
+</ul>
+<div class='gap'></div>
+<h3>考点29. 变限积分</h3>
+<p><strong>要点</strong></p>
+<ul>
+<li>设 $f(x)$ 在 $[a,b]$ 连续，称 $\Phi(x)=\int_a^x f(t)\,dt$ 为变上限积分函数，则 $\Phi&#x27;(x)=f(x)$。</li>
+<li>一般地，$\dfrac{d}{dx}\int_a^{\varphi(x)} f(t)\,dt=f(\varphi(x))\,\varphi&#x27;(x)$。</li>
+<li>含变限积分的 “$0/0$” 型极限，常结合洛必达法则与变上限求导计算。</li>
+</ul>
+<p><strong>易错点</strong></p>
+<ul>
+<li>求导对象是上限 $x$，积分变量须用 $t$；上限为 $\varphi(x)$ 时勿漏乘 $\varphi&#x27;(x)$。</li>
+<li>例：求 $\displaystyle\lim_{x\to0}\frac{\int_0^x \cos t\,dt}{x}$，答案 $1$。</li>
+</ul>
+<div class='gap'></div>
+<h3>考点30. 定积分的计算</h3>
+<p><strong>要点</strong></p>
+<ul>
+<li>牛顿—莱布尼茨公式：$\displaystyle\int_a^b f(x)\,dx=F(b)-F(a)$（$F$ 为 $f$ 的原函数）。</li>
+<li>换元法：令 $x=\varphi(t)$，$\varphi(\alpha)=a,\ \varphi(\beta)=b$，则 $\int_a^b f(x)\,dx=\int_\alpha^\beta f(\varphi(t))\varphi&#x27;(t)\,dt$，换元必换限。</li>
+<li>分部积分法：$\displaystyle\int_a^b u\,dv=\bigl[u v\bigr]_a^b-\int_a^b v\,du$。</li>
+</ul>
+<p><strong>易错点</strong></p>
+<ul>
+<li>换元后忘记同步改变上下限；对称区间可先用奇偶性化简。</li>
+<li>例 1：计算 $\int_1^2 \ln x\,dx$，答案 $2\ln2-1$。</li>
+<li>例 2：求含根式定积分（换元 $t=\sqrt{x}$），答案 $2$。</li>
+</ul>
+<div class='gap'></div>
+<h3>考点31. 奇偶函数在对称区间上的定积分</h3>
+<p><strong>要点</strong></p>
+<ul>
+<li>设 $f(x)$ 在 $[-a,a]$ 连续：</li>
+</ul>
+<p>$$f\text{ 为奇函数}\Rightarrow\int_{-a}^{a} f(x)\,dx=0;\quad f\text{ 为偶函数}\Rightarrow\int_{-a}^{a} f(x)\,dx=2\int_{0}^{a} f(x)\,dx.$$</p>
+<p><strong>易错点</strong></p>
+<ul>
+<li>须判定被积函数整体的奇偶性（含 $|x|$、$e^{x^2}$ 等需逐项分析）。</li>
+<li>例：$\displaystyle\int_{-a}^{a} x^3|x|e^{x^2}\,dx$，答案 $0$（被积函数为奇函数）。</li>
+</ul>
+<div class='gap'></div>
+<h3>考点32. 广义积分</h3>
+<p><strong>要点</strong></p>
+<ul>
+<li>$\displaystyle\int_a^{+\infty} f(x)\,dx=\lim_{b\to+\infty}\int_a^b f(x)\,dx$；$\displaystyle\int_{-\infty}^{b} f(x)\,dx=\lim_{a\to-\infty}\int_a^b f(x)\,dx$。</li>
+<li>$\displaystyle\int_{-\infty}^{+\infty} f(x)\,dx=\int_{-\infty}^{c} f(x)\,dx+\int_{c}^{+\infty} f(x)\,dx$，两段都收敛才收敛。</li>
+</ul>
+<p><strong>易错点</strong></p>
+<ul>
+<li>取极限后须判断是否收敛；区间内有瑕点时按瑕积分处理。</li>
+<li>例：求 $\displaystyle\int_0^{+\infty} x e^{-x^2}\,dx$，答案 $\dfrac12$。</li>
+</ul>
+<div class='gap'></div>
+<h2>第六章 定积分的应用</h2>
+<div class='gap'></div>
+<h3>考点33. 定积分的应用</h3>
+<p><strong>要点</strong></p>
+<ul>
+<li>平面图形面积：$A=\int_a^b |f(x)|\,dx$（取绝对值，避免负面积）。</li>
+<li>绕 $x$ 轴旋转体体积：$V_x=\pi\int_a^b [f(x)]^2\,dx$。</li>
+<li>绕 $y$ 轴旋转体体积：$V_y=\pi\int_c^d [g(y)]^2\,dy$。</li>
+</ul>
+<p><strong>易错点</strong></p>
+<ul>
+<li>面积用上函数减下函数（或取绝对值）；体积公式中被积式须平方。</li>
+<li>例 1：由 $y^2=8x$ 与 $x^2=8y$ 所围平面图形的面积，答案 $\dfrac{64}{3}$。</li>
+<li>例 2：$x\in[0,\pi/4]$，$D$ 由 $y=\sin x$、$y=\cos x$ 及 $y$ 轴围成；(1) 面积；(2) 绕 $x$ 轴旋转体体积。答案：(1) $\sqrt2-1$；(2) $\dfrac{\pi}{2}$。</li>
+</ul>
+<div class='gap'></div>
+<h2>第七章 常微分方程</h2>
+<div class='gap'></div>
+<h3>考点34. 可分离变量方程</h3>
+<p><strong>要点</strong></p>
+<ul>
+<li>形如 $\dfrac{dy}{dx}=f(x)g(y)$，分离变量得 $\dfrac{dy}{g(y)}=f(x)\,dx$。</li>
+<li>两边积分：$\displaystyle\int\dfrac{dy}{g(y)}=\int f(x)\,dx+C$，即得通解。</li>
+</ul>
+<p><strong>易错点</strong></p>
+<ul>
+<li>分离后两边对各自变量积分；$g(y)=0$ 对应的常数解勿遗漏。</li>
+</ul>
+<div class='gap'></div>
+<h3>考点35. 齐次微分方程</h3>
+<p><strong>要点</strong></p>
+<ul>
+<li>形如 $\dfrac{dy}{dx}=f\!\left(\dfrac{y}{x}\right)$。</li>
+<li>令 $u=\dfrac{y}{x}$，即 $y=ux$，则 $\dfrac{dy}{dx}=u+x\dfrac{du}{dx}$。</li>
+<li>代入得 $x\dfrac{du}{dx}=f(u)-u$，即 $\dfrac{du}{f(u)-u}=\dfrac{dx}{x}$，积分后再以 $u=y/x$ 代回得通解。</li>
+</ul>
+<p><strong>易错点</strong></p>
+<ul>
+<li>换元后 $\dfrac{dy}{dx}=u+x\,u&#x27;$，勿漏 $u$ 项；最后须代回原变量。</li>
+</ul>
+<div class='gap'></div>
+<h3>考点36. 一阶线性方程</h3>
+<p><strong>要点</strong></p>
+<ul>
+<li>形如 $\dfrac{dy}{dx}+P(x)y=Q(x)$，通解为</li>
+</ul>
+<p>$$y=e^{-\int P(x)\,dx}\!\left(\int Q(x)\,e^{\int P(x)\,dx}\,dx+C\right).$$</p>
+<p><strong>易错点</strong></p>
+<ul>
+<li>须先化为标准形式（$y&#x27;$ 系数为 1）再套公式；积分常数只加一处。</li>
+<li>例：求 $xy&#x27;+y=x\cos x$ 的通解，答案 $y=\sin x+\dfrac{\cos x+C}{x}$。</li>
+</ul>
+<div class='gap'></div>
+<h3>考点37. 二阶常系数齐次微分方程</h3>
+<p><strong>要点</strong></p>
+<ul>
+<li>形如 $y&#x27;&#x27;+py&#x27;+qy=0$（$p,q$ 为常数），特征方程 $r^2+pr+q=0$。</li>
+<li>两不等实根 $r_1\ne r_2$：$y=C_1 e^{r_1 x}+C_2 e^{r_2 x}$。</li>
+<li>两相等实根 $r_1=r_2=r$：$y=(C_1+C_2 x)e^{rx}$。</li>
+<li>共轭复根 $r=\alpha\pm i\beta$：$y=e^{\alpha x}(C_1\cos\beta x+C_2\sin\beta x)$。</li>
+</ul>
+<p><strong>易错点</strong></p>
+<ul>
+<li>特征方程勿写错符号；复根情形须写成 $e^{\alpha x}(\cos\beta x,\sin\beta x)$ 形式。</li>
+<li>例：求 $y&#x27;&#x27;+2y&#x27;+5y=0$ 的通解，答案 $y=e^{-x}(C_1\cos 2x+C_2\sin 2x)$。</li>
+</ul>
+<div class='gap'></div>
+<h2>第八章 向量代数与空间解析几何</h2>
+<div class='gap'></div>
+<h3>考点38. 向量的线性运算</h3>
+<div class='gap'></div>
+<p><strong>要点</strong></p>
+<p>以 $\mathbb{R}^3$ 为例，设 $\mathbf{a}=\{a_x,a_y,a_z\}$，$\mathbf{b}=\{b_x,b_y,b_z\}$，即 $\mathbf{a}=a_x\mathbf{i}+a_y\mathbf{j}+a_z\mathbf{k}$，$\mathbf{b}=b_x\mathbf{i}+b_y\mathbf{j}+b_z\mathbf{k}$。</p>
+<div class='gap'></div>
+<ul>
+<li>加法：$\mathbf{a}+\mathbf{b}=\{a_x+b_x,\ a_y+b_y,\ a_z+b_z\}$</li>
+<li>减法：$\mathbf{a}-\mathbf{b}=\{a_x-b_x,\ a_y-b_y,\ a_z-b_z\}$</li>
+<li>数乘：$\lambda\mathbf{a}=\{\lambda a_x,\ \lambda a_y,\ \lambda a_z\}$（$\lambda$ 为常数）</li>
+</ul>
+<div class='gap'></div>
+<p><strong>记忆提示</strong> 线性运算 = 对应分量分别做同一运算；数乘只缩放不改方向（$\lambda&gt;0$ 同向，$\lambda&lt;0$ 反向）。</p>
+<div class='gap'></div>
+<h3>考点39. 向量的模、方向角、投影</h3>
+<div class='gap'></div>
+<p><strong>要点</strong></p>
+<ul>
+<li>模：$\mathbb{R}^2$ 中 $|\mathbf{a}|=\sqrt{a_x^2+a_y^2}$；$\mathbb{R}^3$ 中 $|\mathbf{a}|=\sqrt{a_x^2+a_y^2+a_z^2}$。</li>
+<li>方向角、方向余弦：设 $\mathbf{a}=\{a_x,a_y,a_z\}$ 与三坐标轴夹角为 $\alpha,\beta,\gamma$（$0\le\alpha,\beta,\gamma\le\pi$），称为方向角，其余弦</li>
+</ul>
+<p>  $$\cos\alpha=\frac{a_x}{|\mathbf{a}|},\quad \cos\beta=\frac{a_y}{|\mathbf{a}|},\quad \cos\gamma=\frac{a_z}{|\mathbf{a}|}$$</p>
+<p>  恒有 $\cos^2\alpha+\cos^2\beta+\cos^2\gamma=1$。与 $\mathbf{a}$ 同向的单位向量 $\mathbf{a}^0=\dfrac{\mathbf{a}}{|\mathbf{a}|}=\{\cos\alpha,\cos\beta,\cos\gamma\}$。</p>
+<ul>
+<li>投影：设 $\mathbf{a},\mathbf{b}$ 夹角为 $\theta$，则 $\mathbf{a}$ 在 $\mathbf{b}$ 上的投影 $\mathrm{Prj}_{\mathbf{b}}\mathbf{a}=|\mathbf{a}|\cos\theta$；$\mathbf{b}$ 在 $\mathbf{a}$ 上的投影 $\mathrm{Prj}_{\mathbf{a}}\mathbf{b}=|\mathbf{b}|\cos\theta$。</li>
+</ul>
+<div class='gap'></div>
+<p><strong>易错点</strong> 方向余弦平方和为 $1$（不是模的平方）；投影带符号（$\cos\theta$ 可为负）。</p>
+<div class='gap'></div>
+<h3>考点40. 向量的数量积（点积、内积）</h3>
+<div class='gap'></div>
+<p><strong>要点</strong></p>
+<p>$$\mathbf{a}\cdot\mathbf{b}=|\mathbf{a}||\mathbf{b}|\cos\theta=a_xb_x+a_yb_y+a_zb_z$$</p>
+<p>运算律：</p>
+<ul>
+<li>交换律：$\mathbf{a}\cdot\mathbf{b}=\mathbf{b}\cdot\mathbf{a}$</li>
+<li>分配律：$(\mathbf{a}+\mathbf{b})\cdot\mathbf{c}=\mathbf{a}\cdot\mathbf{c}+\mathbf{b}\cdot\mathbf{c}$</li>
+<li>结合律：$(\lambda\mathbf{a})\cdot\mathbf{b}=\mathbf{a}\cdot(\lambda\mathbf{b})=\lambda(\mathbf{a}\cdot\mathbf{b})$</li>
+</ul>
+<div class='gap'></div>
+<p><strong>记忆提示</strong> 点积结果是<strong>数</strong>；坐标式 = 对应分量相乘再相加。</p>
+<div class='gap'></div>
+<h3>考点41. 数量积的性质</h3>
+<div class='gap'></div>
+<p><strong>要点</strong></p>
+<ol>
+<li>$\mathbf{a}\cdot\mathbf{a}=|\mathbf{a}|^2$；</li>
+<li>两非零向量 $\mathbf{a}\perp\mathbf{b}$ $\Leftrightarrow$ $\mathbf{a}\cdot\mathbf{b}=0$；</li>
+<li>交换律：$\mathbf{a}\cdot\mathbf{b}=\mathbf{b}\cdot\mathbf{a}$；</li>
+<li>分配律：$(\mathbf{a}+\mathbf{b})\cdot\mathbf{c}=\mathbf{a}\cdot\mathbf{c}+\mathbf{b}\cdot\mathbf{c}$；</li>
+<li>$(\lambda\mathbf{a})\cdot\mathbf{c}=\lambda(\mathbf{a}\cdot\mathbf{c})$（$\lambda$ 为常数）。</li>
+</ol>
+<div class='gap'></div>
+<p><strong>易错点</strong> 垂直判定用点积为 $0$；求模用 $\mathbf{a}\cdot\mathbf{a}=|\mathbf{a}|^2$（注意开方）。</p>
+<div class='gap'></div>
+<h3>考点42. 向量的向量积</h3>
+<div class='gap'></div>
+<p><strong>要点</strong></p>
+<p>$$\mathbf{a}\times\mathbf{b}=\begin{vmatrix}\mathbf{i}&amp;\mathbf{j}&amp;\mathbf{k}\\ a_x&amp;a_y&amp;a_z\\ b_x&amp;b_y&amp;b_z\end{vmatrix}=(a_yb_z-a_zb_y)\mathbf{i}+(a_zb_x-a_xb_z)\mathbf{j}+(a_xb_y-a_yb_x)\mathbf{k}$$</p>
+<p>运算律：</p>
+<ul>
+<li>反交换律：$\mathbf{a}\times\mathbf{b}=-(\mathbf{b}\times\mathbf{a})$</li>
+<li>分配律：$\mathbf{a}\times(\mathbf{b}+\mathbf{c})=\mathbf{a}\times\mathbf{b}+\mathbf{a}\times\mathbf{c}$</li>
+<li>结合律：$(\lambda\mathbf{a})\times\mathbf{b}=\mathbf{a}\times(\lambda\mathbf{b})=\lambda(\mathbf{a}\times\mathbf{b})$</li>
+</ul>
+<div class='gap'></div>
+<p><strong>记忆提示</strong> 向量积结果是<strong>向量</strong>；几何意义 $|\mathbf{a}\times\mathbf{b}|=|\mathbf{a}||\mathbf{b}|\sin\theta$，方向由右手法则确定，垂直于 $\mathbf{a},\mathbf{b}$ 所在平面；$\mathbf{a}\parallel\mathbf{b}\Leftrightarrow\mathbf{a}\times\mathbf{b}=\mathbf{0}$。</p>
+<div class='gap'></div>
+<p><strong>易错点</strong> 反交换（交换变号）；展开 $\mathbf{j}$ 分量时整体带负号，易漏。</p>
+<div class='gap'></div>
+<h3>考点43. 平面方程</h3>
+<div class='gap'></div>
+<p><strong>要点</strong></p>
+<ul>
+<li>点法式（过点 $(x_0,y_0,z_0)$，法向量 $\mathbf{n}=\{A,B,C\}$）：$A(x-x_0)+B(y-y_0)+C(z-z_0)=0$</li>
+<li>一般式：$Ax+By+Cz+D=0$（法向量 $\mathbf{n}=\{A,B,C\}$）</li>
+<li>截距式：$\dfrac{x}{a}+\dfrac{y}{b}+\dfrac{z}{c}=1$（$a,b,c$ 为三轴截距）</li>
+<li>点 $P_0(x_0,y_0,z_0)$ 到平面 $Ax+By+Cz+D=0$ 的距离：</li>
+</ul>
+<p>  $$d=\frac{|Ax_0+By_0+Cz_0+D|}{\sqrt{A^2+B^2+C^2}}$$</p>
+<div class='gap'></div>
+<p><strong>例</strong> 设平面过原点及点 $(6,3,-2)$，且与平面 $4x-y+2z=0$ 垂直，求该平面方程。</p>
+<ul>
+<li>过原点 $\Rightarrow$ 设 $Ax+By+Cz=0$；过 $(6,3,-2)$ $\Rightarrow$ $6A+3B-2C=0$。</li>
+<li>与 $4x-y+2z=0$（法向量 $\{4,-1,2\}$）垂直 $\Rightarrow$ 法向量点积为 $0$：$4A-B+2C=0$。</li>
+<li>联立解得 $A:B:C=2:-10:-9$。</li>
+<li><strong>答</strong>：$2x-10y-9z=0$。</li>
+</ul>
+<div class='gap'></div>
+<p><strong>易错点</strong> 两平面垂直 $\Leftrightarrow$ 法向量点积为 $0$（不是法向量平行）；过原点时 $D=0$。</p>
+<div class='gap'></div>
+<h3>考点44. 空间直线方程</h3>
+<div class='gap'></div>
+<p><strong>要点</strong></p>
+<ul>
+<li>点向式（对称式，过点 $(x_0,y_0,z_0)$，方向向量 $\mathbf{s}=\{m,n,p\}$）：</li>
+</ul>
+<p>  $$\frac{x-x_0}{m}=\frac{y-y_0}{n}=\frac{z-z_0}{p}$$</p>
+<ul>
+<li>参数式：$x=x_0+mt,\ y=y_0+nt,\ z=z_0+pt$（$t$ 为参数）</li>
+</ul>
+<div class='gap'></div>
+<p><strong>例</strong> 求过点 $(3,2,-5)$ 且与两平面 $x-z=0$、$2x-y+z=0$ 的交线平行的直线方程。</p>
+<ul>
+<li>直线平行于两平面交线 $\Rightarrow$ 方向向量 $\mathbf{s}$ 与两平面法向量 $\mathbf{n}_1,\mathbf{n}_2$ 都垂直，取 $\mathbf{s}=\mathbf{n}_1\times\mathbf{n}_2$。</li>
+<li>$\mathbf{n}_1=\{1,0,-1\}$，$\mathbf{n}_2=\{2,-1,1\}$，$\mathbf{s}=\mathbf{n}_1\times\mathbf{n}_2=\{-1,-3,-1\}\propto\{1,3,1\}$。</li>
+<li><strong>答</strong>（对称式）：$\dfrac{x-3}{1}=\dfrac{y-2}{3}=\dfrac{z+5}{1}$。</li>
+</ul>
+<div class='gap'></div>
+<p><strong>记忆提示</strong> 两平面交线的方向向量 = 两法向量的向量积。</p>
+<div class='gap'></div>
+<h3>考点45. 直线与直线的关系</h3>
+<div class='gap'></div>
+<p><strong>要点</strong> 设两直线方向向量 $\mathbf{s}_1=\{m_1,n_1,p_1\}$，$\mathbf{s}_2=\{m_2,n_2,p_2\}$。</p>
+<ul>
+<li>垂直：$\mathbf{s}_1\perp\mathbf{s}_2$ $\Leftrightarrow$ $m_1m_2+n_1n_2+p_1p_2=0$</li>
+<li>平行：$\mathbf{s}_1\parallel\mathbf{s}_2$ $\Leftrightarrow$ $\dfrac{m_1}{m_2}=\dfrac{n_1}{n_2}=\dfrac{p_1}{p_2}$</li>
+<li>夹角 $\varphi$（方向向量夹角）：</li>
+</ul>
+<p>  $$\cos\varphi=\frac{m_1m_2+n_1n_2+p_1p_2}{\sqrt{m_1^2+n_1^2+p_1^2}\,\sqrt{m_2^2+n_2^2+p_2^2}}$$</p>
+<div class='gap'></div>
+<h3>考点46. 平面与平面的关系</h3>
+<div class='gap'></div>
+<p><strong>要点</strong> 设 $\pi_1:A_1x+B_1y+C_1z+D_1=0$，$\mathbf{n}_1=\{A_1,B_1,C_1\}$；$\pi_2:A_2x+B_2y+C_2z+D_2=0$，$\mathbf{n}_2=\{A_2,B_2,C_2\}$。</p>
+<ul>
+<li>垂直：$\mathbf{n}_1\perp\mathbf{n}_2$ $\Leftrightarrow$ $A_1A_2+B_1B_2+C_1C_2=0$</li>
+<li>平行：$\mathbf{n}_1\parallel\mathbf{n}_2$ $\Leftrightarrow$ $\dfrac{A_1}{A_2}=\dfrac{B_1}{B_2}=\dfrac{C_1}{C_2}$</li>
+<li>重合：在平行基础上再满足 $\dfrac{A_1}{A_2}=\dfrac{B_1}{B_2}=\dfrac{C_1}{C_2}=\dfrac{D_1}{D_2}$（可取一点代入验证）</li>
+<li>夹角 $\theta$ 余弦：</li>
+</ul>
+<p>  $$\cos\theta=\frac{|A_1A_2+B_1B_2+C_1C_2|}{\sqrt{A_1^2+B_1^2+C_1^2}\,\sqrt{A_2^2+B_2^2+C_2^2}}$$</p>
+<div class='gap'></div>
+<p><strong>易错点</strong> 平面夹角公式取绝对值（取锐角）；平行 $\neq$ 重合，需用 $D$ 判定。</p>
+<div class='gap'></div>
+<h3>考点47. 直线与平面的关系</h3>
+<div class='gap'></div>
+<p><strong>要点</strong> 设直线方向向量 $\mathbf{s}=\{m,n,p\}$，平面法向量 $\mathbf{n}=\{A,B,C\}$。</p>
+<ul>
+<li>直线与平面垂直：$\mathbf{s}\parallel\mathbf{n}$ $\Leftrightarrow$ $\dfrac{m}{A}=\dfrac{n}{B}=\dfrac{p}{C}$</li>
+<li>直线与平面平行：$\mathbf{s}\perp\mathbf{n}$ $\Leftrightarrow$ $Am+Bn+Cp=0$</li>
+</ul>
+<div class='gap'></div>
+<p><strong>记忆提示</strong> 线 $\perp$ 面 $\Leftrightarrow$ 方向向量 $\parallel$ 法向量；线 $\parallel$ 面 $\Leftrightarrow$ 方向向量 $\perp$ 法向量（点积为 $0$）。若直线上有一点在面上，则直线落在面内。</p>
+<div class='gap'></div>
+<h2>第九章 多元函数微分法及其应用</h2>
+<div class='gap'></div>
+<h3>考点48. 多元函数的定义域、解析式</h3>
+<div class='gap'></div>
+<p><strong>要点</strong></p>
+<ul>
+<li>$z=f(x,y)$ 的图形为空间曲面，定义域 $D$ 为该曲面在 $xOy$ 平面上的投影区域。</li>
+<li>求定义域：使解析式有意义，约束同一元（对数真数 $&gt;0$、分母 $\ne0$、偶次根号 $\ge0$），取交集。</li>
+<li>求解析式：变量代换法（令 $u=\varphi(x,y)$、$v=\psi(x,y)$ 凑 $f(u,v)$）或函数方程法。</li>
+</ul>
+<div class='gap'></div>
+<p><strong>易错点</strong></p>
+<ul>
+<li>多约束须同时满足；定义域是平面点集，勿写区间。</li>
+<li>换元后须还原为 $x,y$，未还原易错。</li>
+</ul>
+<div class='gap'></div>
+<h3>考点49. 多元函数的极限</h3>
+<div class='gap'></div>
+<p><strong>要点</strong></p>
+<ul>
+<li>$\displaystyle\lim_{(x,y)\to(x_0,y_0)}f(x,y)=A$：$(x,y)$ 以任意方式趋于 $(x_0,y_0)$ 时 $f$ 趋于同一常数。</li>
+<li>方法：转化为一元求极限，借 $\lim_{t\to0}(1+t)^{1/t}=e$；如 $\left(1+\dfrac{a}{x+y}\right)^{x+y}\to e^a$。</li>
+</ul>
+<div class='gap'></div>
+<p><strong>易错点</strong></p>
+<ul>
+<li>极限须任意路径趋同，仅沿某路径存在不代表整体存在。</li>
+<li>须先判存在性再求值，不可只取特殊路径代入。</li>
+</ul>
+<div class='gap'></div>
+<h3>考点50. 偏导数的求法、全微分</h3>
+<div class='gap'></div>
+<p><strong>要点</strong></p>
+<ul>
+<li>偏导定义：$f_x=\displaystyle\lim_{\Delta x\to0}\dfrac{f(x+\Delta x,y)-f(x,y)}{\Delta x}$，对某变量求导时其余变量当常数。</li>
+<li>高阶偏导：$z_{xx}=\dfrac{\partial^2z}{\partial x^2}$，$z_{xy}=\dfrac{\partial^2z}{\partial x\partial y}$，$z_{yx}=\dfrac{\partial^2z}{\partial y\partial x}$ 等。</li>
+<li>全微分：$dz=\dfrac{\partial z}{\partial x}dx+\dfrac{\partial z}{\partial y}dy$。</li>
+</ul>
+<div class='gap'></div>
+<p><strong>易错点</strong></p>
+<ul>
+<li>求某变量偏导时须把其余变量当常数，勿误用链式法则。</li>
+<li>$z_{xy}$ 与 $z_{yx}$ 仅在二阶偏导连续时相等，不可默认相等。</li>
+</ul>
+<div class='gap'></div>
+<h3>考点51. 复合函数的导数</h3>
+<div class='gap'></div>
+<p><strong>要点</strong></p>
+<ul>
+<li>链式法则（多中间变量）：$z=f(u,v)$，$u=u(x,y)$，$v=v(x,y)$，则 $\dfrac{\partial z}{\partial x}=\dfrac{\partial z}{\partial u}\dfrac{\partial u}{\partial x}+\dfrac{\partial z}{\partial v}\dfrac{\partial v}{\partial x}$，$\dfrac{\partial z}{\partial y}=\dfrac{\partial z}{\partial u}\dfrac{\partial u}{\partial y}+\dfrac{\partial z}{\partial v}\dfrac{\partial v}{\partial y}$。</li>
+<li>全导数：$z=f(u,v)$，$u=u(x)$，$v=v(x)$，则 $\dfrac{dz}{dx}=\dfrac{\partial f}{\partial u}\dfrac{du}{dx}+\dfrac{\partial f}{\partial v}\dfrac{dv}{dx}$。</li>
+</ul>
+<div class='gap'></div>
+<p><strong>易错点</strong></p>
+<ul>
+<li>漏乘中间变量偏导链；中间变量为一元时用全导 $d$ 而非偏导 $\partial$。</li>
+</ul>
+<div class='gap'></div>
+<h3>考点52. 隐函数的求导</h3>
+<div class='gap'></div>
+<p><strong>要点</strong></p>
+<ul>
+<li>一元：$F(x,y)=0$ 确定 $y=y(x)$，则 $\dfrac{dy}{dx}=-\dfrac{F_x&#x27;}{F_y&#x27;}$（$F_y&#x27;\ne0$）。</li>
+<li>二元：$F(x,y,z)=0$ 确定 $z=z(x,y)$，则 $\dfrac{\partial z}{\partial x}=-\dfrac{F_x&#x27;}{F_z&#x27;}$，$\dfrac{\partial z}{\partial y}=-\dfrac{F_y&#x27;}{F_z&#x27;}$（$F_z&#x27;\ne0$）。</li>
+</ul>
+<div class='gap'></div>
+<p><strong>易错点</strong></p>
+<ul>
+<li>公式负号易漏，分母为 $F_z&#x27;$ 或 $F_y&#x27;$，不可颠倒。</li>
+<li>求二阶偏导时 $z$ 仍为 $x,y$ 函数，须继续链式求导。</li>
+</ul>
+<div class='gap'></div>
+<h3>考点53. 二元函数的极值</h3>
+<div class='gap'></div>
+<p><strong>要点</strong></p>
+<ul>
+<li>必要条件：极值点必为驻点，即 $f_x=0$ 且 $f_y=0$。</li>
+<li>设 $A=f_{xx}$，$B=f_{xy}$，$C=f_{yy}$，判别式 $\Delta=AC-B^2$：</li>
+</ul>
+<p>  - ① $\Delta&gt;0$ 为极值点，$A&lt;0$ 极大，$A&gt;0$ 极小；</p>
+<p>  - ② $\Delta&lt;0$ 非极值点；③ $\Delta=0$ 不定，另行判别。</p>
+<div class='gap'></div>
+<p><strong>易错点</strong></p>
+<ul>
+<li>驻点未必是极值点（如 $\Delta&lt;0$）。</li>
+<li>判别式为 $AC-B^2$，符号勿反。</li>
+</ul>
+<div class='gap'></div>
+<h3>考点54. 方向导数的计算</h3>
+<div class='gap'></div>
+<p><strong>要点</strong></p>
+<ul>
+<li>二元（方向单位向量 $(\cos\alpha,\sin\alpha)$）：$\dfrac{\partial f}{\partial l}=\dfrac{\partial f}{\partial x}\cos\alpha+\dfrac{\partial f}{\partial y}\sin\alpha$。</li>
+<li>三元（方向单位向量 $(\cos\alpha,\cos\beta,\cos\gamma)$）：$\dfrac{\partial f}{\partial l}=\dfrac{\partial f}{\partial x}\cos\alpha+\dfrac{\partial f}{\partial y}\cos\beta+\dfrac{\partial f}{\partial z}\cos\gamma$。</li>
+<li>梯度 $\operatorname{grad}f=(f_x,f_y,f_z)$，方向导数即梯度与方向单位向量的点积。</li>
+<li>例：$f=xyz$，$\operatorname{grad}f(1,-1,2)=(yz,xz,xy)|_{(1,-1,2)}$。</li>
+</ul>
+<div class='gap'></div>
+<p><strong>易错点</strong></p>
+<ul>
+<li>方向向量须先单位化，否则结果偏差。</li>
+<li>梯度是向量、方向导数是标量，二者不可混用。</li>
+</ul>
+<div class='gap'></div>
+<h2>第十章 二重积分</h2>
+<div class='gap'></div>
+<h3>考点55. 二重积分的几何意义、性质</h3>
+<p><strong>要点</strong></p>
+<ul>
+<li>几何意义：$\iint_D f\,d\sigma$ 为数值；$f\ge0$ 时为以 $D$ 为底、$z=f$ 为顶的曲顶柱体体积，$f\le0$ 时取相反数。</li>
+<li>线性性：$\iint_D[kf\pm g]\,d\sigma=k\iint_D f\,d\sigma\pm\iint_D g\,d\sigma$。</li>
+<li>区域可加性：$D=D_1\cup D_2$（无公共内部）$\Rightarrow\iint_D f\,d\sigma=\iint_{D_1}f\,d\sigma+\iint_{D_2}f\,d\sigma$。</li>
+<li>保号/保序：$f\ge0\Rightarrow\iint_D f\,d\sigma\ge0$；$f\le g\Rightarrow\iint_D f\,d\sigma\le\iint_D g\,d\sigma$。</li>
+<li>估值定理：$m\sigma\le\iint_D f\,d\sigma\le M\sigma$（$m,M$ 为最值，$\sigma$ 为 $D$ 面积）。</li>
+<li>中值定理：$f$ 在闭区域 $D$ 连续，存在 $(\xi,\eta)\in D$ 使 $\iint_D f\,d\sigma=f(\xi,\eta)\,\sigma$。</li>
+<li>奇偶对称性：区域关于坐标轴对称时结合被积函数奇偶性可简化。</li>
+</ul>
+<div class='gap'></div>
+<p><strong>易错点</strong></p>
+<ul>
+<li>几何意义符号由被积函数正负决定，不能默认取正；中值定理要求闭区域连续。</li>
+</ul>
+<div class='gap'></div>
+<h3>考点56. 交换积分次序</h3>
+<p><strong>要点</strong></p>
+<ul>
+<li>方法：准确画出积分区域，按另一方向重新确定上下限。</li>
+<li>关键是把原二次积分还原为区域 $D$，再用另一种次序重新分割表示。</li>
+</ul>
+<div class='gap'></div>
+<p><strong>易错点</strong></p>
+<ul>
+<li>不能直接翻转上下限，必须重画区域边界；分段区域易漏。</li>
+</ul>
+<div class='gap'></div>
+<h3>考点57. 直角坐标系下的二重积分</h3>
+<p><strong>要点</strong></p>
+<ul>
+<li>面积元素 $d\sigma=dxdy$，$\iint_D f\,d\sigma=\iint_D f\,dxdy$。</li>
+<li>X 型（先 $y$ 后 $x$）：$a\le x\le b,\ \varphi_1(x)\le y\le\varphi_2(x)$，$\iint_D f\,dxdy=\int_a^b dx\int_{\varphi_1(x)}^{\varphi_2(x)} f\,dy$。</li>
+<li>Y 型（先 $x$ 后 $y$）：$c\le y\le d,\ \psi_1(y)\le x\le\psi_2(y)$，$\iint_D f\,dxdy=\int_c^d dy\int_{\psi_1(y)}^{\psi_2(y)} f\,dx$。</li>
+<li>极坐标：$x=r\cos\theta,\ y=r\sin\theta,\ d\sigma=r\,dr\,d\theta$，$\iint_D f\,d\sigma=\iint_{D&#x27;} f(r\cos\theta,r\sin\theta)\,r\,dr\,d\theta$。</li>
+<li>极点在区域外、边界上、内部三种情形分别定 $r,\theta$ 上下限。</li>
+</ul>
+<div class='gap'></div>
+<p><strong>易错点</strong></p>
+<ul>
+<li>极坐标勿漏面积元素中的 $r$；据区域形状选次序，避免一方向积不出。</li>
+</ul>
+<div class='gap'></div>
+<h2>第十一章 曲线积分与曲面积分</h2>
+<div class='gap'></div>
+<h3>考点58. 格林公式</h3>
+<p><strong>要点</strong></p>
+<ul>
+<li>格林公式：$$\oint_L P\,dx+Q\,dy=\iint_D\left(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}\right)dxdy$$</li>
+<li>$L$ 为正向闭曲线，$D$ 为所围区域，$P,Q$ 在 $D$ 上一阶连续偏导；用于把闭曲线第二类曲线积分转化为二重积分。</li>
+</ul>
+<div class='gap'></div>
+<p><strong>易错点</strong></p>
+<ul>
+<li>须为正向（逆时针）闭曲线；非闭曲线需补线后用。</li>
+</ul>
+<div class='gap'></div>
+<h2>第十二章 无穷级数</h2>
+<div class='gap'></div>
+<h3>考点59. 无穷级数的概念</h3>
+<p><strong>要点</strong></p>
+<ul>
+<li>收敛充要条件：部分和 $S_n=\sum_{k=1}^n u_k$ 极限存在且唯一，即 $\lim_{n\to\infty}S_n=S$。</li>
+<li>收敛必要条件：$\lim_{n\to\infty}u_n=0$（非充分）。</li>
+<li>线性性：$\sum(u_n\pm v_n)=\sum u_n\pm\sum v_n$，$\sum ku_n=k\sum u_n$。</li>
+<li>收敛 $+$ 发散 $=$ 发散；发散 $+$ 发散 $=$ 不确定。</li>
+</ul>
+<div class='gap'></div>
+<p><strong>易错点</strong></p>
+<ul>
+<li>$\lim u_n=0$ 不能推出收敛（如调和级数 $\sum 1/n$ 发散）。</li>
+</ul>
+<div class='gap'></div>
+<h3>考点60. 正项级数敛散性的判断</h3>
+<p><strong>要点</strong></p>
+<ul>
+<li>比较判别法：$u_n\le c v_n$，则 $\sum v_n$ 收敛 $\Rightarrow\sum u_n$ 收敛；$\sum u_n$ 发散 $\Rightarrow\sum v_n$ 发散。</li>
+<li>极限形式：$\lim u_n/v_n=l$。$0&lt;l&lt;+\infty$ 同敛散；$l=0$ 时 $v$ 收敛 $\Rightarrow u$ 收敛；$l=+\infty$ 时 $v$ 发散 $\Rightarrow u$ 发散。</li>
+<li>尺度：等比级数 $\sum q^n$ 当 $|q|&lt;1$ 收敛、$|q|\ge1$ 发散；p-级数 $\sum 1/n^p$ 当 $p&gt;1$ 收敛、$p\le1$ 发散。</li>
+<li>比值判别法：$\lim u_{n+1}/u_n=l$，$l&lt;1$ 收敛、$l&gt;1$ 发散、$l=1$ 不确定。</li>
+</ul>
+<div class='gap'></div>
+<p><strong>易错点</strong></p>
+<ul>
+<li>比值法 $l=1$ 失效，须换比较法另行讨论。</li>
+</ul>
+<div class='gap'></div>
+<h3>考点61. 任意项级数的理论与性质</h3>
+<p><strong>要点</strong></p>
+<ul>
+<li>绝对收敛：$\sum|u_n|$ 收敛 $\Rightarrow\sum u_n$ 收敛（绝对收敛必收敛）。</li>
+<li>条件收敛：$\sum u_n$ 收敛但 $\sum|u_n|$ 发散。</li>
+<li>莱布尼茨判别法：交错级数 $\sum(-1)^{n-1}u_n$，若 $\lim u_n=0$ 且 $\{u_n\}$ 单调减少，则收敛。</li>
+</ul>
+<div class='gap'></div>
+<p><strong>易错点</strong></p>
+<ul>
+<li>莱布尼茨需同时满足通项趋于 $0$ 与单调递减。</li>
+</ul>
+<div class='gap'></div>
+<h3>考点62. 幂级数的收敛半径、收敛区间和收敛域</h3>
+<p><strong>要点</strong></p>
+<ul>
+<li>收敛半径：$\rho=\lim_{n\to\infty}\left|\dfrac{a_{n+1}}{a_n}\right|$，$$R=\begin{cases}1/\rho,&amp;\rho\ne0\\+\infty,&amp;\rho=0\\0,&amp;\rho=+\infty\end{cases}$$</li>
+<li>收敛区间为 $(x_0-R,x_0+R)$。</li>
+<li>收敛域需讨论端点 $x=\pm R$ 收敛性，取四种区间之一。</li>
+<li>缺项级数（如缺偶次幂项）不能套公式，用比值审敛法讨论。</li>
+</ul>
+<div class='gap'></div>
+<p><strong>易错点</strong></p>
+<ul>
+<li>收敛区间不含端点，收敛域才需判端点。</li>
+</ul>
+<div class='gap'></div>
+<h3>考点63. 常见函数的麦克劳林级数（带皮亚诺余项）</h3>
+<p><strong>要点</strong></p>
+<ul>
+<li>$e^x=1+x+x^2/2!+\cdots+x^n/n!+o(x^n)$。</li>
+<li>$\sin x=x-x^3/3!+x^5/5!-\cdots+o(x^{2n+1})$。</li>
+<li>$\cos x=1-x^2/2!+x^4/4!-\cdots+o(x^{2n})$。</li>
+<li>$\ln(1+x)=x-x^2/2+x^3/3-\cdots+(-1)^{n-1}x^n/n+o(x^n)$。</li>
+<li>$(1+x)^\alpha=1+\alpha x+\alpha(\alpha-1)x^2/2!+\cdots+o(x^n)$。</li>
+</ul>
+<div class='gap'></div>
+<p><strong>易错点</strong></p>
+<ul>
+<li>各展开式余项阶数不同（$\sin$ 为 $o(x^{2n+1})$，$\cos$ 为 $o(x^{2n})$），勿混用。</li>
+</ul>
+<div class='gap'></div>
+</body>
+</html>

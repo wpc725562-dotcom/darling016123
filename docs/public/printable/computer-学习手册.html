@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>计算机 · 学习手册（零基础版）</title>
+<style>
+body { font-family: "Microsoft YaHei", "Noto Sans SC", sans-serif; max-width: 800px; margin: 40px auto; padding: 0 24px; font-size: 14px; line-height: 1.8; color: #222; }
+h1 { font-size: 22px; border-bottom: 2px solid #333; padding-bottom: 8px; }
+h2 { font-size: 18px; margin-top: 24px; }
+h3 { font-size: 16px; }
+table { margin: 12px 0; }
+th, td { text-align: left; vertical-align: top; }
+ul, ol { margin: 8px 0; padding-left: 26px; }
+li { margin: 2px 0; }
+blockquote { border-left: 3px solid #999; margin: 8px 0; padding: 4px 12px; color: #555; background: #f7f7f7; }
+code { background: #f0f0f0; padding: 1px 5px; border-radius: 3px; }
+pre { background: #f7f7f7; border: 1px solid #e0e0e0; border-radius: 4px; padding: 10px 12px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+hr { border: none; border-top: 1px solid #ddd; margin: 18px 0; }
+a { color: #1a4d8f; }
+.ctitle { background: #eef4fb; border-left: 3px solid #7aa7d9; margin: 10px 0; padding: 6px 12px; color: #24486f; }
+.gap { height: 8px; }
+@media print { body { margin: 0; padding: 0; max-width: none; } }
+</style>
+</head>
+<body>
+<div class='gap'></div>
+<h1>计算机 · 学习手册（零基础版）</h1>
+<div class='gap'></div>
+<blockquote><strong>怎么用</strong>：按考纲顺序一节一节推进。每节固定四步：</blockquote>
+<blockquote>1. <strong>学什么</strong> — 大白话告诉你这节解决什么问题</blockquote>
+<blockquote>2. <strong>核心语法/考点</strong> — 本节必须记的代码或概念</blockquote>
+<blockquote>3. <strong>笔记链接</strong> — 点开本库详细笔记（含星级分值）</blockquote>
+<blockquote>4. <strong>复习任务</strong> — 学完闭卷自测，做不出就回去重看</blockquote>
+<blockquote></blockquote>
+<blockquote><strong>配套</strong>：<a href="/posts/computer/教材目录基准">教材目录基准</a> · <a href="/posts/computer/notes/全书索引目录">全书索引目录</a> · <a href="/posts/computer/notes/高频错题汇总">高频错题汇总</a></blockquote>
+<blockquote><strong>原则</strong>：计算机 200 分 = C语言约 100 + 数据结构约 100，两半都要抓。</blockquote>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第一部分 C 语言（约 100 分）</h2>
+<div class='gap'></div>
+<h2>C1 计算机基础理论（前置总览）</h2>
+<div class='gap'></div>
+<p><strong>学什么</strong>：进制转换、数据单位、编译运行流程——打地基。</p>
+<div class='gap'></div>
+<p><strong>核心考点</strong>：</p>
+<ul>
+<li>进制转换：二进制转十进制↔十六进制（短除法/8421法）</li>
+<li>1 字节 = 8 位；KB/MB/GB 换算</li>
+<li>编译→链接→运行三步</li>
+</ul>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/computer/notes/0.0-计算机基础理论">0.0 计算机基础理论</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 把十进制 25 转成二进制和十六进制</li>
+<li>[ ] 说出&quot;编译错误&quot;和&quot;运行错误&quot;的区别</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>C2 C语言概述与基本概念</h2>
+<div class='gap'></div>
+<p><strong>学什么</strong>：标识符规则、注释、程序结构。识别非法标识符是高频小题。</p>
+<div class='gap'></div>
+<p><strong>核心考点</strong>：</p>
+<ul>
+<li>标识符：字母/下划线开头，只能含字母数字下划线，不能用关键字</li>
+<li>main 是程序入口；每条语句以 ; 结尾</li>
+</ul>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/computer/notes/1.1-C语言概述与基本概念">1.1 C语言概述与基本概念</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 判断 <code>2abc</code>、<code>_name</code>、<code>int</code>、<code>a-b</code> 哪些是合法标识符</li>
+<li>[ ] 说出 C 程序的执行入口</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>C3 数据的存储与运算 ⭐⭐</h2>
+<div class='gap'></div>
+<p><strong>学什么</strong>：整型/实型/字符型怎么存；运算符优先级——最容易失分。</p>
+<div class='gap'></div>
+<p><strong>核心考点</strong>：</p>
+<ul>
+<li>int 4 字节、float 4、double 8、char 1</li>
+<li>自增自减：i++ 先用后加，++i 先加后用</li>
+<li>整数除法：7/2=3（不是 3.5！）</li>
+<li>&amp;&amp; 和 || 短路求值</li>
+</ul>
+<div class='gap'></div>
+<p><strong>典型代码</strong>：</p>
+<pre><code>
+int a = 7;
+printf(&quot;%d&quot;, a/2);   // 输出 3（整数除法）
+int x = 3;
+printf(&quot;%d&quot;, (x++)+x);
+</code></pre>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/computer/notes/1.2-数据的存储与运算">1.2 数据的存储与运算</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 算 <code>int a=7; printf(&quot;%d&quot;, a/2)</code> 输出什么</li>
+<li>[ ] 判断 <code>int x=3; printf(&quot;%d&quot;, (x++)+x)</code> 的结果</li>
+<li>[ ] 说出 &amp;&amp; 的短路规则</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>C4 顺序程序设计</h2>
+<div class='gap'></div>
+<p><strong>学什么</strong>：printf/scanf 格式控制——输出格式题必考。</p>
+<div class='gap'></div>
+<p><strong>核心考点</strong>：</p>
+<ul>
+<li>%d 整型、%f 浮点、%c 字符、%s 字符串</li>
+<li>scanf(&quot;格式&quot;, &amp;变量) — 记得取地址符 &amp;</li>
+<li>printf 默认右对齐，%-5d 左对齐</li>
+</ul>
+<div class='gap'></div>
+<p><strong>典型代码</strong>：</p>
+<pre><code>
+int a, b;
+scanf(&quot;%d%d&quot;, &amp;a, &amp;b);   // 记得 &amp; 取地址
+printf(&quot;%.2f&quot;, 3.14159); // 保留 2 位小数
+</code></pre>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/computer/notes/1.3-顺序程序设计">1.3 顺序程序设计</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 写 scanf 读入两个整数并存到变量 a、b</li>
+<li>[ ] 说出 %.2f 的作用</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>C5 选择结构程序设计 ⭐⭐</h2>
+<div class='gap'></div>
+<p><strong>学什么</strong>：if/else、switch 分支逻辑。else 与最近的 if 配对。</p>
+<div class='gap'></div>
+<p><strong>核心考点</strong>：</p>
+<ul>
+<li>if(表达式) — 0 为假，非 0 为真</li>
+<li>switch 别忘了 break，否则&quot;贯穿&quot;</li>
+<li>条件运算符：a&gt;b?a:b</li>
+</ul>
+<div class='gap'></div>
+<p><strong>典型代码</strong>：</p>
+<pre><code>
+// 判断闰年
+int y; scanf(&quot;%d&quot;, &amp;y);
+if ((y%4==0 &amp;&amp; y%100!=0) || y%400==0)
+    printf(&quot;闰年&quot;);
+else
+    printf(&quot;平年&quot;);
+</code></pre>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/computer/notes/1.4-选择结构程序设计">1.4 选择结构程序设计</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 写出判断闰年的完整代码</li>
+<li>[ ] 说出 switch 中漏写 break 的后果</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>C6 循环结构程序设计 ⭐⭐⭐</h2>
+<div class='gap'></div>
+<p><strong>学什么</strong>：for/while/do-while 循环——编程题核心，必考。</p>
+<div class='gap'></div>
+<p><strong>核心考点</strong>：</p>
+<ul>
+<li>for(初值;条件;步长) 三步</li>
+<li>break 跳出循环，continue 跳过本次</li>
+<li>嵌套循环：外层走一次，内层走完一轮</li>
+</ul>
+<div class='gap'></div>
+<p><strong>典型代码</strong>：</p>
+<pre><code>
+// 求 1+2+...+100
+int sum = 0;
+for (int i = 1; i &lt;= 100; i++)
+    sum += i;
+printf(&quot;%d&quot;, sum);
+
+// 输出 1-100 中所有偶数
+for (int i = 1; i &lt;= 100; i++)
+    if (i % 2 == 0) printf(&quot;%d &quot;, i);
+</code></pre>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/computer/notes/1.5-循环结构程序设计">1.5 循环结构程序设计</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 写代码求 1+2+...+100</li>
+<li>[ ] 写代码输出 1-100 中所有偶数</li>
+<li>[ ] 说出 break 和 continue 的区别</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>C7 数组 ⭐⭐⭐⭐⭐</h2>
+<div class='gap'></div>
+<p><strong>学什么</strong>：数组 = 同类型数据的集合。字符串处理是必考大题。</p>
+<div class='gap'></div>
+<p><strong>核心考点</strong>：</p>
+<ul>
+<li>定义：int a[10] 下标 0-9</li>
+<li>strlen 长度（不含结束符），sizeof 占字节数</li>
+<li>字符串函数：strcpy/strcat/strcmp/strlen</li>
+<li>数组名是首地址，不能整体赋值</li>
+</ul>
+<div class='gap'></div>
+<p><strong>典型代码</strong>：</p>
+<pre><code>
+// 输入 10 个数求平均值
+int a[10], sum = 0;
+for (int i = 0; i &lt; 10; i++) {
+    scanf(&quot;%d&quot;, &amp;a[i]);
+    sum += a[i];
+}
+printf(&quot;%.2f&quot;, sum / 10.0);
+
+char s[] = &quot;abc&quot;;
+strlen(s);   // 3（不含结束符）
+sizeof(s);   // 4（含结束符）
+</code></pre>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/computer/notes/1.6-数组">1.6 数组</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 写代码：输入 10 个数求平均值</li>
+<li>[ ] 说出 strlen 和 sizeof 的区别</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>C8 函数 ⭐⭐⭐⭐⭐</h2>
+<div class='gap'></div>
+<p><strong>学什么</strong>：模块化编程。递归和参数传递是必考。</p>
+<div class='gap'></div>
+<p><strong>核心考点</strong>：</p>
+<ul>
+<li>定义/声明/调用三件套；形参实参</li>
+<li>值传递：函数内改形参不影响实参</li>
+<li>递归：必须有终止条件</li>
+<li>全局变量 vs 局部变量</li>
+</ul>
+<div class='gap'></div>
+<p><strong>典型代码</strong>：</p>
+<pre><code>
+// 递归求 n!
+int fact(int n) {
+    if (n &lt;= 1) return 1;
+    return n * fact(n - 1);
+}
+</code></pre>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/computer/notes/1.7-函数">1.7 函数</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 写递归函数求 n!</li>
+<li>[ ] 说出&quot;值传递&quot;为什么改不了实参</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>C9 指针 ⭐⭐⭐⭐⭐</h2>
+<div class='gap'></div>
+<p><strong>学什么</strong>：指针 = 存地址的变量。*p、p++ 的区分是头号考点。</p>
+<div class='gap'></div>
+<p><strong>核心考点</strong>：</p>
+<ul>
+<li>声明 int *p = &amp;a; — p 存 a 的地址，*p 取 a 的值</li>
+<li>(*p)++ 值加 1；p++ 地址加 1</li>
+<li>指针做函数参数才能改实参</li>
+<li>数组名 = 首元素地址</li>
+</ul>
+<div class='gap'></div>
+<p><strong>典型代码</strong>：</p>
+<pre><code>
+// 指针实现两数交换
+void swap(int *pa, int *pb) {
+    int t = *pa;
+    *pa = *pb;
+    *pb = t;
+}
+int a = 3, b = 5;
+swap(&amp;a, &amp;b);
+</code></pre>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/computer/notes/1.8-指针">1.8 指针</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 写 swap 用指针实现两数交换</li>
+<li>[ ] 说出 (*p)++ 和 p++ 的区别</li>
+<li>[ ] 为什么值传递交换不了两个数</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>C10 结构体与共用体 ⭐⭐</h2>
+<div class='gap'></div>
+<p><strong>学什么</strong>：自定义数据类型。union 共享空间是易错点。</p>
+<div class='gap'></div>
+<p><strong>核心考点</strong>：</p>
+<ul>
+<li>struct：成员各自占内存</li>
+<li>union：成员共享同一块内存（取最大的）</li>
+<li>typedef 起别名；枚举 enum</li>
+<li>结构体变量用 . 访问成员</li>
+</ul>
+<div class='gap'></div>
+<p><strong>典型代码</strong>：</p>
+<pre><code>
+struct Student {
+    char name[20];
+    int score;
+};
+struct Student s = {&quot;小明&quot;, 90};
+printf(&quot;%s %d&quot;, s.name, s.score);
+</code></pre>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/computer/notes/1.9-结构体与共用体">1.9 结构体与共用体</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 定义结构体存学生姓名+成绩并赋值</li>
+<li>[ ] 说出 struct 和 union 的内存区别</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>C11 文件操作</h2>
+<div class='gap'></div>
+<p><strong>学什么</strong>：文件的打开/关闭/读写。</p>
+<div class='gap'></div>
+<p><strong>核心考点</strong>：</p>
+<ul>
+<li>fopen(&quot;路径&quot;,&quot;r/w/a&quot;) 返回 FILE*，失败返回 NULL</li>
+<li>fclose 必须配对；fprintf/fscanf、fgetc/fputc</li>
+<li>路径中的 \ 要写成 \\（转义）</li>
+</ul>
+<div class='gap'></div>
+<p><strong>典型代码</strong>：</p>
+<pre><code>
+FILE *fp = fopen(&quot;test.txt&quot;, &quot;r&quot;);
+if (fp == NULL) { printf(&quot;打开失败&quot;); return; }
+int ch = fgetc(fp);
+fclose(fp);
+</code></pre>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/computer/notes/1.10-文件操作">1.10 文件操作</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 写代码：打开文件读一个字符并关闭</li>
+<li>[ ] 说出 fopen 失败时返回值</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>C12 程序运行环境与调试（2026 新增）</h2>
+<div class='gap'></div>
+<p><strong>学什么</strong>：IDE 调试、错误类型识别。</p>
+<div class='gap'></div>
+<p><strong>核心考点</strong>：编译错/链接错/运行错/逻辑错分类；断点、单步执行</p>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/computer/notes/1.11-程序运行环境与调试">1.11 程序运行环境与调试</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 给&quot;数组越界&quot;分类：编译错还是运行错</li>
+<li>[ ] 说出单步调试的作用</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第二部分 数据结构（约 100 分）</h2>
+<div class='gap'></div>
+<h2>D1 数据结构基本概念 ⭐⭐</h2>
+<div class='gap'></div>
+<p><strong>学什么</strong>：数据结构 = 逻辑结构 + 存储结构 + 运算。</p>
+<div class='gap'></div>
+<p><strong>核心考点</strong>：</p>
+<ul>
+<li>逻辑结构：线性/树形/图形/集合</li>
+<li>存储结构：顺序（连续空间）/链式（指针连接）</li>
+<li>时间复杂度：大 O 表示法</li>
+</ul>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/computer/notes/2.1-数据结构基本概念">2.1 数据结构基本概念</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 说出栈和队列分别属于哪种逻辑结构</li>
+<li>[ ] 判断 O(1)、O(n)、O(n^2) 谁更快</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>D2 线性表 ⭐⭐⭐⭐⭐</h2>
+<div class='gap'></div>
+<p><strong>学什么</strong>：顺序表 vs 链表——大题高频。</p>
+<div class='gap'></div>
+<p><strong>核心考点</strong>：</p>
+<ul>
+<li>顺序表：连续存储，随机存取 O(1)，插入删除 O(n)</li>
+<li>链表：动态存储，插入删除 O(1)，查找 O(n)</li>
+<li>单链表判空：head-&gt;next == NULL</li>
+<li>头插法/尾插法建表</li>
+</ul>
+<div class='gap'></div>
+<p><strong>典型代码</strong>：</p>
+<pre><code>
+// 单链表结点插入（在 p 后插入 s）
+s-&gt;next = p-&gt;next;
+p-&gt;next = s;
+</code></pre>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/computer/notes/2.2-线性表">2.2 线性表</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 说出顺序表和链表各自优缺点</li>
+<li>[ ] 写单链表插入结点的核心语句</li>
+<li>[ ] 说出单链表判空条件</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>D3 栈和队列 ⭐⭐⭐⭐⭐</h2>
+<div class='gap'></div>
+<p><strong>学什么</strong>：栈 LIFO 后进先出；队列 FIFO 先进先出。</p>
+<div class='gap'></div>
+<p><strong>核心考点</strong>：</p>
+<ul>
+<li>栈：栈顶操作，括号匹配、递归都用栈</li>
+<li>队列：队尾入队首出队</li>
+<li>循环队列判满：(rear+1)%max == front</li>
+<li>出栈序列判断题</li>
+</ul>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/computer/notes/2.3-栈和队列">2.3 栈和队列</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 判断入栈 1,2,3，能否得到出栈 3,1,2</li>
+<li>[ ] 说出循环队列判满公式</li>
+<li>[ ] 递归调用用什么结构支持</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>D4 串、数组和广义表 ⭐⭐⭐⭐</h2>
+<div class='gap'></div>
+<p><strong>学什么</strong>：字符串匹配 KMP、数组地址计算、广义表。</p>
+<div class='gap'></div>
+<p><strong>核心考点</strong>：</p>
+<ul>
+<li>子串个数：n(n+1)/2+1</li>
+<li>KMP 的 next 数组（求模式串的&quot;最长公共前后缀&quot;）</li>
+<li>数组存储地址：a[i][j] 的地址 = 基址 + i×列数 + j</li>
+<li>广义表深度 = 括号嵌套层数</li>
+</ul>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/computer/notes/2.4-串、数组和广义表">2.4 串、数组和广义表</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 求字符串 &quot;abc&quot; 的子串个数</li>
+<li>[ ] 二维数组 a[3][4] 中 a[2][1] 是第几个元素</li>
+<li>[ ] 求广义表 (a,(b,c),(d,(e))) 的深度</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>D5 树和二叉树 ⭐⭐⭐⭐</h2>
+<div class='gap'></div>
+<p><strong>学什么</strong>：二叉树遍历与性质——必考大题。</p>
+<div class='gap'></div>
+<p><strong>核心考点</strong>：</p>
+<ul>
+<li>二叉树性质：第 i 层最多 2^(i-1) 个；n 个结点完全二叉树深度 [log2 n]+1</li>
+<li>遍历：先序(根左右)/中序(左根右)/后序(左右根)/层序</li>
+<li>已知先序+中序还原二叉树（必考）</li>
+<li>哈夫曼树：权值小的在深层，WPL 最小</li>
+</ul>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/computer/notes/2.5-树和二叉树">2.5 树和二叉树</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 写出先序/中序/后序遍历口诀</li>
+<li>[ ] 已知先序 ABC 中序 BAC，还原二叉树</li>
+<li>[ ] 叶子结点数 = 度为2结点数 + 1</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>D6 图 ⭐⭐⭐⭐</h2>
+<div class='gap'></div>
+<p><strong>学什么</strong>：图的遍历和最小生成树——大题高频。</p>
+<div class='gap'></div>
+<p><strong>核心考点</strong>：</p>
+<ul>
+<li>存储：邻接矩阵（n×n）/ 邻接表</li>
+<li>DFS 深搜（栈/递归）、BFS 广搜（队列）</li>
+<li>最小生成树：Prim（加点）/ Kruskal（加边）</li>
+<li>出度入度、连通分量</li>
+</ul>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/computer/notes/2.6-图">2.6 图</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 说出 DFS 用什么数据结构，BFS 用什么</li>
+<li>[ ] 对 3 个顶点的完全图，邻接矩阵有几个元素</li>
+<li>[ ] 说出 Prim 和 Kruskal 的区别</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>D7 查找 ⭐⭐⭐⭐</h2>
+<div class='gap'></div>
+<p><strong>学什么</strong>：折半查找和哈希表——计算题必考。</p>
+<div class='gap'></div>
+<p><strong>核心考点</strong>：</p>
+<ul>
+<li>顺序查找 ASL=(n+1)/2</li>
+<li>折半查找：要求有序，ASL=log2(n+1)-1</li>
+<li>哈希：除留余数法 h(k)=k%m，冲突处理（线性探测/链地址）</li>
+<li>二叉排序树：左小右大，中序有序</li>
+</ul>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/computer/notes/2.7-查找">2.7 查找</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 对有序表 {1,3,5,7,9} 折半查找 5，比较几次</li>
+<li>[ ] 哈希表 h(k)=k%7，插入 14 和 21 的位置</li>
+<li>[ ] 说出折半查找的前提条件</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>D8 排序 ⭐⭐⭐⭐</h2>
+<div class='gap'></div>
+<p><strong>学什么</strong>：八大排序的复杂度与稳定性——必考。</p>
+<div class='gap'></div>
+<p><strong>核心考点</strong>：</p>
+<ul>
+<li>冒泡/简单选择/插入：O(n^2)；快排/归并/堆排：O(nlogn)</li>
+<li>稳定：冒泡、插入、归并、基数；不稳定：快排、选择、希尔、堆</li>
+<li>快排思想：挖坑填数、分治</li>
+<li>一趟排序后的状态题</li>
+</ul>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/computer/notes/2.8-排序">2.8 排序</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 默写排序复杂度表（时间/空间/稳定性）</li>
+<li>[ ] 对 {5,3,8,1} 冒泡排序第一趟结果</li>
+<li>[ ] 记住&quot;快选希堆&quot;不稳定</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>D9 算法基本概念与分析</h2>
+<div class='gap'></div>
+<p><strong>学什么</strong>：算法特性、复杂度分析。</p>
+<div class='gap'></div>
+<p><strong>核心考点</strong>：</p>
+<ul>
+<li>算法五特性：有穷性/确定性/可行性/输入/输出</li>
+<li>时间复杂度：看循环嵌套层数</li>
+</ul>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/computer/notes/2.9-算法基本概念与分析">2.9 算法基本概念与分析</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 说出算法的五个特性</li>
+<li>[ ] 双层 for 循环的时间复杂度是？</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>第三部分 专项训练（提分关键）</h2>
+<div class='gap'></div>
+<h2>S1 改错题专项 ⭐（2026 新题型）</h2>
+<div class='gap'></div>
+<p><strong>学什么</strong>：给一段有错的代码，找出并改正。</p>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/computer/notes/3.0-改错题专项训练">3.0 改错题专项训练</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 完成 15 道改错题中的前 5 道</li>
+<li>[ ] 归纳 5 类高频错误</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>S2 高频考点强化练习</h2>
+<div class='gap'></div>
+<p><strong>学什么</strong>：17 个高频考点综合练习，考前提分最快。</p>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/computer/notes/3.1-高频考点强化练习">3.1 高频考点强化练习</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 完成 17 个考点练习，标记错题</li>
+<li>[ ] 错题抄进错题记录模板</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>S3 编程题做题策略</h2>
+<div class='gap'></div>
+<p><strong>学什么</strong>：编程题三步法模板 + 六大题型库 + 真题推演。</p>
+<div class='gap'></div>
+<p><strong>笔记</strong>：<a href="/posts/computer/notes/3.3-编程题做题策略">3.3 编程题做题策略</a></p>
+<div class='gap'></div>
+<p><strong>复习任务</strong>：</p>
+<ul>
+<li>[ ] 默写三步法：读题→选型→写码</li>
+<li>[ ] 用真题练 1 道编程题</li>
+</ul>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<h2>学习计划建议</h2>
+<div class='gap'></div>
+<blockquote>零基础，每周 3-6 小时。C语言与数据结构并行推进。</blockquote>
+<div class='gap'></div>
+<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
+<tr><th>周期</th><th>内容</th><th>建议时间</th></tr>
+<tr><td>第1-2周</td><td>C语言 C1-C6（基础语法+循环）</td><td>10h</td></tr>
+<tr><td>第3-4周</td><td>C语言 C7-C12（数组/函数/指针/结构体）</td><td>10h</td></tr>
+<tr><td>第5周</td><td>数据结构 D1-D4（线性结构）</td><td>6h</td></tr>
+<tr><td>第6周</td><td>数据结构 D5-D6（树/图）</td><td>6h</td></tr>
+<tr><td>第7周</td><td>数据结构 D7-D9（查找/排序）</td><td>6h</td></tr>
+<tr><td>第8周</td><td>专项 S1-S3（改错/考点/编程题）</td><td>6h</td></tr>
+<tr><td>第9周起</td><td>刷真题 + 模拟卷（卷一→卷二→卷三）</td><td>每周2h+</td></tr>
+</table>
+<div class='gap'></div>
+<blockquote>每节学完，能勾掉复习任务里所有[ ]，才算过关。</blockquote>
+<div class='gap'></div>
+<hr>
+<div class='gap'></div>
+<blockquote>本手册是学习导航，详细笔记在&quot;笔记链接&quot;中。&lt;br&gt;</blockquote>
+<blockquote>星级与分值来源：<a href="/posts/computer/notes/">计算机笔记总览</a>。&lt;br&gt;</blockquote>
+<div class='gap'></div>
+<h2>推荐刷题节奏</h2>
+<div class='gap'></div>
+<ol>
+<li>闭卷限时做 2024 全卷摸底</li>
+<li>错题进「考点拆分」01–05 回炉</li>
+<li>回系统笔记 1.x / 2.x 补概念</li>
+<li>每周手撕 ≥2 道编程 + 1 道简答</li>
+</ol>
+<div class='gap'></div>
+</body>
+</html>
