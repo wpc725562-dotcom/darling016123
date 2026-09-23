@@ -163,6 +163,30 @@ export function scanText(text, registered = new Set()) {
         text: raw.trim().slice(0, 120),
       })
     }
+
+    // ④ 表格行内公式含**裸竖线** `|`
+    //    ★ 2026-09-23 实测：`| 🟡 跳跃间断点 | 左极限 ≠ 右极限 | $y = \frac{|x|}{x}$ |`
+    //      在**站点**与**可打印产物**里都被切成
+    //      `<td>$y = \frac{</td><td>x</td><td>}{x}$</td>` —— 公式截断、凭空多出两个单元格。
+    //      根因：表格行以 `|` 分列，公式里的绝对值/行列式竖线被当成了列分隔符。
+    //      修法：把裸 `|` 换成 `\vert`。实测 `\vert x\vert` 与 `|x|` 渲染**完全一致**
+    //      （同为 2.552ex），而 `\|` 是 LaTeX 的范数记号（3.557ex，语义不同）**不可用**。
+    //      注意 `\|` 本身是合法的（范数），所以只报**未被反斜杠转义**的裸竖线。
+    if (t.startsWith('|')) {
+      const MATH_RE = /\$\$([^$]+)\$\$|(?<!\$)\$(?!\$)([^$\n]+?)\$(?!\$)/g
+      for (const mm of raw.matchAll(MATH_RE)) {
+        const body = mm[1] !== undefined ? mm[1] : mm[2]
+        if (/(?<!\\)\|/.test(body)) {
+          issues.push({
+            line: ln,
+            rule: 'table-math-pipe',
+            detail:
+              '表格行内公式含裸竖线 `|`：会被当成列分隔符，公式被切碎并多出单元格。改用 `\\vert`（与 `|` 渲染一致；`\\|` 是范数记号，语义不同）',
+            text: raw.trim().slice(0, 120),
+          })
+        }
+      }
+    }
   }
 
   if (fence) {
@@ -235,6 +259,26 @@ if (process.argv.includes('--selftest')) {
       name: '未闭合围栏（真问题）',
       text: '正文\n```c\nint a = 1;\n',
       expect: 'unclosed-fence',
+    },
+    {
+      name: '表格行内公式含裸竖线（真问题）',
+      text: '| 🟡 跳跃间断点 | 左极限 ≠ 右极限 | $y = \\frac{|x|}{x}$ |\n',
+      expect: 'table-math-pipe',
+    },
+    {
+      name: '表格行内公式已用 \\vert（应放过）',
+      text: '| 🟡 跳跃间断点 | 左极限 ≠ 右极限 | $y = \\frac{\\vert x\\vert}{x}$ |\n',
+      expect: null,
+    },
+    {
+      name: '表格行内范数记号 \\|（应放过：那是合法的双竖线）',
+      text: '| 二重积分 | $\\|x\\|\\le 1$ | 8.4 |\n',
+      expect: null,
+    },
+    {
+      name: '非表格行的公式含裸竖线（应放过：不涉及分列）',
+      text: '这里 $|x|<1$ 不在表格里\n',
+      expect: null,
     },
   ]
   let allGood = true

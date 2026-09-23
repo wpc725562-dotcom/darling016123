@@ -14,15 +14,85 @@
   · 行尾 CRLF / 孤立 CR 归一为 LF
   对应的回归测试见 tests/test_md_to_printable.py。
 
-★ 已知未处理：数学公式（$...$ / $$...$$）原样输出 LaTeX 源码。
-  本转换器不引入 MathJax，且 scripts/html-to-pdf.mjs 用 Chrome headless 直接打印、
-  没有 --virtual-time-budget，即使挂上 CDN 也等不到异步渲染完成。
-  需要公式的场合请用站点页面（VitePress 的 markdown.math 已在构建期渲染）。
+★ 2026-09-23 第二轮：数学公式改为**构建期预渲染**（原来原样输出 LaTeX 源码）。
+  本转换器把公式抽成 HTML 注释占位符 `<!--MJX <d> <base64>-->`，
+  再由 scripts/printable-math.mjs 用 mathjax-full 渲染成内联 SVG 写回。
+  这样产物**离线自包含**（无 CDN、无运行时 JS），Chrome headless 直接打印即可出图。
+  ⚠️ 因此本脚本的输出**必须再过一遍 printable-math.mjs**，单独跑会留下注释占位符。
+  npm 脚本 `print:html` 已把两步串起来。
 """
-import re, sys, html, pathlib
+import re, sys, html, base64, pathlib
+
+# ─────────────────────── 公式识别 ───────────────────────
+
+# $$...$$ 在前（贪婪度更低的分支要先试），$...$ 在后。
+# 行内分支用 [^$\n] 限制不跨行；两侧加负向断言避免把 $$ 误当两个 $。
+_MATH_RE = re.compile(r"\$\$(.+?)\$\$|(?<!\$)\$(?!\$)([^$\n]+?)\$(?!\$)")
+
+# 散文/货币守卫（只用于**行内**分支）。三个条件**同时**成立才判为散文：
+#   ① 内容含空格
+#   ② 内容不含任何 LaTeX 记号（\ ^ _ = + - * / < > ( ) [ ] { } |）
+#   ③ 内容含 CJK 汉字 **或** 含 >=2 个字母的拉丁词
+#   ⇒ 不渲染，原样保留字面量。
+#
+# ★ 这条守卫不是过度设计，是实测踩出来的：英文阅读理解文里有**同一行两个货币 $**，
+#   例如 english/2024.md L37 `- **A.** $50. &emsp; B. $70.`，
+#   朴素配对会把 `50. &emsp; B. ` 当成公式渲染，**整段选项文字直接消失**。
+#
+# ★ 条件③的两个分支都必要，是踩了两轮才收敛的：
+#   · 只用「>=2 字母的拉丁词」→ 漏掉 `50. 和 B. `（只有单个字母 B）——
+#     真实语料里恰好是 `&emsp;` 才被抓住，属侥幸，测试用中文一测就露馅。
+#   · 只用「含 CJK」→ 漏掉纯英文的 ` 250,000 or more`。
+#   · 反过来若改成「含空格且无 LaTeX 记号就拒」，会把 `$a, b$`（合法的变量并列）
+#     误杀。加上条件③才既拦住散文又放过 `a, b`。
+#
+# 全量核验（97 个文件 / 3720 处行内匹配）：拒绝 5 处，人工确认全部是散文或货币；
+# `a, b` / `x \to 0` / `f(x) = x^2` / `\sin 3x` / `4` / `0,1` 等样本全部放过（误杀 0）。
+# 回归测试见 tests/test_md_to_printable.py 的 TestMathGuard。
+_LATEX_HINT = re.compile(r"[\\^_=+\-*/<>()\[\]{}|]")
+_CJK_CHAR = re.compile(r"[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff]")
+_LATIN_WORD = re.compile(r"[A-Za-z]{2,}")
+
+
+def _looks_like_prose(s):
+    """行内 `$...$` 的内容是否其实是散文/货币（而非公式）。"""
+    if " " not in s:
+        return False
+    if _LATEX_HINT.search(s):
+        return False
+    return bool(_CJK_CHAR.search(s) or _LATIN_WORD.search(s))
+
+
+def _math_marker(latex, display):
+    """把一段 LaTeX 变成 HTML 注释占位符，交给 printable-math.mjs 渲染。
+
+    ★ 用注释而不是自定义标签：注释在浏览器里不渲染，所以即使忘了跑第二步，
+      页面也只是少个公式，而不会把 base64 字面量印在纸上。
+      base64 字母表不含 `-`，因此不可能拼出 `-->` 提前闭合注释。
+    """
+    b64 = base64.b64encode(latex.encode("utf-8")).decode("ascii")
+    return "<!--MJX %d %s-->" % (1 if display else 0, b64)
+
+
+def _stash_math(text, math_spans):
+    """把 text 里的公式换成 \\x01N\\x01 占位符（就地改写 math_spans 并返回新串）。
+
+    ★ 必须在 html.escape() **之前**调用：否则 LaTeX 里的 `<` `>` `&`
+      会先被转义成 `&lt;` `&gt;` `&amp;`，MathJax 收到的是坏掉的源码。
+    ★ 必须在行内代码**取出之后**调用：`` `$x$` `` 里的 $ 是代码内容，不是公式。
+    """
+    def _sub(mo):
+        display = mo.group(1) is not None
+        latex = mo.group(1) if display else mo.group(2)
+        if not display and _looks_like_prose(latex):
+            return mo.group(0)          # 散文/货币：原样保留
+        math_spans.append((latex, display))
+        return "\x01%d\x01" % (len(math_spans) - 1)
+    return _MATH_RE.sub(_sub, text)
+
 
 def _inline(text):
-    r"""行内格式：转义 → 保护行内代码 → 链接 → 粗体 → 还原行内代码。
+    r"""行内格式：保护行内代码 → 提取公式 → 转义 → 链接 → 粗体 → 还原公式 → 还原代码。
 
     ★ 2026-09-23 新增：原实现只对**段落**做粗体/代码替换，标题、列表项、
     引用块与表格单元格一律走 `html.escape()` 直出，于是 markdown 语法字面量
@@ -33,18 +103,34 @@ def _inline(text):
     ★ 行内代码必须**先取出、后还原**：若先做粗体，`` `x**2` `` 里的幂运算符
     会被 `\*\*(.+?)\*\*` 当成粗体标记吃掉。实测 math/2023.md 出现
     `<code>limit((1+x<strong>2)</strong>(1/x**2), x, 0) == E</code>` 这种错乱。
+    公式同理：`` `$x$` `` 必须先被代码取出，否则会被当公式渲染掉。
+
+    ★ 顺序（每一步都有理由，别随手调换）：
+      1. 行内代码取出   —— 保护代码里的 $ 与 **
+      2. 公式取出       —— 必须在转义前，否则 LaTeX 的 < > & 被转义坏
+      3. html.escape    —— 此时串里只剩普通文本
+      4. 链接 / 粗体    —— 此时串里已无 $ 和反引号，不会互相干扰
+      5. 还原公式       —— 变成 <!--MJX ...--> 注释占位符
+      6. 还原行内代码
     """
-    t = html.escape(text)
-    spans = []
+    code_spans = []
+    math_spans = []
 
-    def _stash(mo):
-        spans.append(mo.group(1))
-        return "\x00%d\x00" % (len(spans) - 1)
+    def _stash_code(mo):
+        code_spans.append(html.escape(mo.group(1)))
+        return "\x00%d\x00" % (len(code_spans) - 1)
 
-    t = re.sub(r"`([^`]+?)`", _stash, t)
+    t = re.sub(r"`([^`]+?)`", _stash_code, text)
+    t = _stash_math(t, math_spans)
+    t = html.escape(t)
     t = re.sub(r"\[([^\]]*)\]\(([^)\s]+)\)", r'<a href="\2">\1</a>', t)
     t = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", t)
-    t = re.sub(r"\x00(\d+)\x00", lambda mo: "<code>%s</code>" % spans[int(mo.group(1))], t)
+    t = re.sub(
+        r"\x01(\d+)\x01",
+        lambda mo: _math_marker(*math_spans[int(mo.group(1))]),
+        t,
+    )
+    t = re.sub(r"\x00(\d+)\x00", lambda mo: "<code>%s</code>" % code_spans[int(mo.group(1))], t)
     return t
 
 
@@ -70,6 +156,14 @@ def md_to_html(md_text, title=""):
     in_table = False
     in_fence = False
     fence_quoted = False  # 代码块是否由引用块内的 ``` 开启（形如 `> ```c`）
+    # ★ 2026-09-23 新增：显示公式块状态。
+    #   本文档集里显示公式**主要是三行式**（`$$` 独占一行 / 内容 / `$$` 独占一行）：
+    #   实测 908 个 `$$` 里 308 个是「独占一行」的定界符 ⇒ 154 个三行式块，
+    #   另有 300 个单行式 `$$...$$`（由 _inline 里的 _MATH_RE 处理）。
+    #   三行式不能靠逐行正则，必须用状态机，且块内**不做任何 markdown 解析**
+    #   （LaTeX 里的 `_` `*` `#` 若被当成 markdown 会直接毁掉公式）。
+    in_display = False
+    display_buf = []
 
     def close_list():
         nonlocal list_kind
@@ -87,6 +181,15 @@ def md_to_html(md_text, title=""):
             else:
                 out.append(html.escape(re.sub(r"^>\s?", "", line) if fence_quoted else line))
             continue
+        # ── 显示公式块内部：原样累积，不解析 markdown ──
+        if in_display:
+            if s.strip() == "$$":
+                out.append(_math_marker("\n".join(display_buf), True))
+                in_display = False
+                display_buf = []
+            else:
+                display_buf.append(line)
+            continue
         # ★ 2026-09-23 修正：表格状态改为显式布尔量。
         #   原实现用 `out[-1].startswith("<table>")` 判断「是否已在表格内」，
         #   而真实开标签是 `<table border='1' cellpadding='6' ...>`（带属性），
@@ -102,6 +205,12 @@ def md_to_html(md_text, title=""):
             close_list()
             out.append("<pre><code>"); in_fence = True
             fence_quoted = not s.lstrip().startswith("```")
+            continue
+        # ── 显示公式块起始：独占一行的 `$$` ──
+        if s.strip() == "$$":
+            close_list()
+            in_display = True
+            display_buf = []
             continue
         # ── 水平线（--- / *** / ___）──
         #   原实现落到段落分支，产物里出现字面量 `<p>---</p>`（2529 处 / 55 个文件）。
@@ -181,6 +290,9 @@ def md_to_html(md_text, title=""):
     close_list()
     if in_table: out.append("</table>")
     if in_fence: out.append("</code></pre>")
+    # 未闭合的显示公式块（源码里漏了收尾的 $$）也要把已累积内容交出去，
+    # 否则公式会**静默消失** —— 这比留个占位符更糟。
+    if in_display: out.append(_math_marker("\n".join(display_buf), True))
     return "\n".join(out)
 
 def wrap_html(body, title):

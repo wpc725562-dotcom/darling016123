@@ -370,5 +370,238 @@ class TestLineEndings(unittest.TestCase):
         self.assertIn("code", html)
 
 
+# ─────────────────────── 公式（构建期预渲染）───────────────────────
+#
+# ★ 为什么公式要抽成占位符而不是直接输出 LaTeX：
+#   可打印产物是给人打印练习用的。原实现把 `$...$` 原样吐出，97 个文件里
+#   454 个显示公式 + 3720 个行内公式全是裸 LaTeX，打印出来没法看。
+#   现在第一步抽成 HTML 注释占位符 `<!--MJX <d> <base64>-->`，
+#   第二步 scripts/printable-math.mjs 用 MathJax 渲染成内联 SVG 写回。
+#   本类测的是**第一步**的契约（占位符格式、边界、守卫）。
+
+MARK = re.compile(r"<!--MJX ([01]) ([A-Za-z0-9+/=]*)-->")
+
+
+def markers(html):
+    """返回 [(display:int, latex:str)]"""
+    import base64
+    out = []
+    for m in MARK.finditer(html):
+        out.append((int(m.group(1)), base64.b64decode(m.group(2)).decode("utf-8")))
+    return out
+
+
+class TestMathDisplayBlock(unittest.TestCase):
+    """$$ 独占一行的三行式显示公式（本文档集里 154 个块）"""
+
+    def test_three_line_block(self):
+        html = md_to_printable.md_to_html("$$\n\\lim_{x\\to 0}\\frac{1}{x}\n$$")
+        ms = markers(html)
+        self.assertEqual(len(ms), 1)
+        self.assertEqual(ms[0][0], 1)          # display
+        self.assertEqual(ms[0][1], "\\lim_{x\\to 0}\\frac{1}{x}")
+
+    def test_multiline_content_joined_with_newline(self):
+        html = md_to_printable.md_to_html("$$\na \\\\\nb\n$$")
+        self.assertEqual(markers(html)[0][1], "a \\\\\nb")
+
+    def test_content_not_parsed_as_markdown(self):
+        """★ LaTeX 里的 _ * # 若被当 markdown 会直接毁掉公式"""
+        html = md_to_printable.md_to_html("$$\na_1 * b_2 \\# c\n$$")
+        latex = markers(html)[0][1]
+        self.assertEqual(latex, "a_1 * b_2 \\# c")
+        self.assertNotIn("<strong>", html)
+        self.assertNotIn("<em>", html)
+
+    def test_single_line_block(self):
+        html = md_to_printable.md_to_html("$$f'(x) = 2x + \\sin x$$")
+        ms = markers(html)
+        self.assertEqual(len(ms), 1)
+        self.assertEqual(ms[0], (1, "f'(x) = 2x + \\sin x"))
+
+    def test_unclosed_block_still_emitted(self):
+        """漏了收尾 $$ 时不能静默丢公式（与未闭合 ``` 行为一致：吞掉其后全部内容）"""
+        html = md_to_printable.md_to_html("$$\n\\alpha + \\beta")
+        ms = markers(html)
+        self.assertEqual(len(ms), 1)
+        self.assertEqual(ms[0][1], "\\alpha + \\beta")
+
+    def test_unclosed_block_swallows_rest_like_fence(self):
+        html = md_to_printable.md_to_html("$$\n\\alpha\n\n正文")
+        self.assertEqual([x[1] for x in markers(html)], ["\\alpha\n\n正文"])
+        self.assertNotIn("<p>正文</p>", html)
+
+    def test_display_block_closes_open_list(self):
+        html = md_to_printable.md_to_html("- a\n$$\nx\n$$\n- b")
+        self.assertEqual(html.count("<ul>"), 2)
+        self.assertEqual(html.count("</ul>"), 2)
+
+    def test_two_blocks_stay_separate(self):
+        html = md_to_printable.md_to_html("$$\na\n$$\n\n$$\nb\n$$")
+        self.assertEqual([x[1] for x in markers(html)], ["a", "b"])
+
+    def test_dollar_inside_fence_is_literal(self):
+        html = md_to_printable.md_to_html("```\n$$\n\\alpha\n$$\n```")
+        self.assertEqual(markers(html), [])
+        self.assertIn("\\alpha", html)
+
+
+class TestMathInline(unittest.TestCase):
+    """行内 $...$（本文档集里 3715 处）"""
+
+    def test_simple_inline(self):
+        html = md_to_printable.md_to_html("令 $x = 1$ 代入")
+        ms = markers(html)
+        self.assertEqual(ms, [(0, "x = 1")])
+
+    def test_latex_special_chars_survive_escaping(self):
+        """★ 公式必须在 html.escape() 之前取出，否则 < > & 会被转义坏"""
+        html = md_to_printable.md_to_html("当 $x < y$ 且 $a \\& b$ 时")
+        self.assertEqual([x[1] for x in markers(html)], ["x < y", "a \\& b"])
+
+    def test_bold_inside_math_not_eaten(self):
+        """$a ** b$ 里的星号不能被粗体正则吃掉"""
+        html = md_to_printable.md_to_html("$x**2$ 与 **粗体**")
+        self.assertEqual([x[1] for x in markers(html)], ["x**2"])
+        self.assertIn("<strong>粗体</strong>", html)
+
+    def test_four_dollar_signs_are_two_inline(self):
+        html = md_to_printable.md_to_html("$a$ 与 $b$")
+        self.assertEqual([x[1] for x in markers(html)], ["a", "b"])
+
+    def test_inline_in_table_cell_and_heading_and_quote(self):
+        html = md_to_printable.md_to_html(
+            "| 答案 | $\\dfrac12$ |\n|:--|:--|\n\n## 见 $x^2$\n\n> 由 $\\pi$ 得")
+        self.assertEqual([x[1] for x in markers(html)],
+                         ["\\dfrac12", "x^2", "\\pi"])
+
+    def test_inline_does_not_span_lines(self):
+        html = md_to_printable.md_to_html("价格 $100\n和 $200 元")
+        self.assertEqual(markers(html), [])
+
+
+class TestMathGuard(unittest.TestCase):
+    """★ 散文/货币守卫 —— 这条是实测踩出来的，不是过度设计。
+
+    英文阅读理解文里有**同一行两个货币 $**：
+        english/2024.md L37  `- **A.** $50. &emsp; B. $70.`
+    朴素配对会把 `50. &emsp; B. ` 当成公式渲染，**整段选项文字直接消失**。
+    全量核验：3720 处行内匹配里守卫拒绝 5 处，人工确认全是散文/货币（误杀 0）。
+    """
+
+    def test_currency_pair_not_treated_as_math(self):
+        html = md_to_printable.md_to_html("- **A.** $50. 和 B. $70.")
+        self.assertEqual(markers(html), [])
+        self.assertIn("$50.", html)          # 字面量必须原样保留
+        self.assertIn("$70.", html)
+
+    def test_currency_with_space_and_comma(self):
+        html = md_to_printable.md_to_html("An ad may cost $ 250,000 per minute.")
+        self.assertEqual(markers(html), [])
+        self.assertIn("250,000", html)
+
+    def test_english_prose_pair(self):
+        html = md_to_printable.md_to_html(
+            "there was $80 in the billfold, persuaded the thief to sit down and talk. He then counted $32.")
+        self.assertEqual(markers(html), [])
+        self.assertIn("billfold", html)
+        self.assertIn("$32", html)
+
+    def test_formula_with_spaces_is_still_math(self):
+        """误杀检查：带空格的**真公式**不能被守卫拦下"""
+        for src, latex in [
+            ("当 $x \\to 0$ 时", "x \\to 0"),
+            ("$f(x) = x^2$", "f(x) = x^2"),
+            ("$a \\cdot b$", "a \\cdot b"),
+            ("$\\sin 3x$", "\\sin 3x"),
+            ("$y = 2 \\ln x$", "y = 2 \\ln x"),
+            ("$S = \\pi r^2$", "S = \\pi r^2"),
+        ]:
+            with self.subTest(src=src):
+                self.assertEqual([x[1] for x in markers(md_to_printable.md_to_html(src))],
+                                 [latex])
+
+    def test_pure_number_formula_is_math(self):
+        """$4$ / $0,1$ 这类纯数字是**答案值**，是真公式，不能当货币拦掉"""
+        html = md_to_printable.md_to_html("答案 | $4$ | $0,1$")
+        self.assertEqual([x[1] for x in markers(html)], ["4", "0,1"])
+
+    def test_variable_list_is_math(self):
+        """★ 误杀检查：`$a, b$`（变量并列）必须放过。
+
+        守卫若简化成「含空格且无 LaTeX 记号就拒」，这处会被误杀 ——
+        实测 math/2024.md L477 就有 `$a, b$`。条件③（含 CJK 或含 >=2 字母拉丁词）
+        正是为了把它和 `50. 和 B. ` 区分开。
+        """
+        html = md_to_printable.md_to_html("设 $a, b$ 为常数")
+        self.assertEqual([x[1] for x in markers(html)], ["a, b"])
+
+    def test_cjk_prose_pair_rejected(self):
+        """中文散文配对（旧守卫因只有单个拉丁字母 B 而漏掉）"""
+        html = md_to_printable.md_to_html("- **A.** $50. 和 B. $70.")
+        self.assertEqual(markers(html), [])
+        self.assertIn("$50.", html)
+        self.assertIn("$70.", html)
+
+    def test_prose_guard_function_directly(self):
+        f = md_to_printable._looks_like_prose
+        self.assertTrue(f(" 250,000 or more"))
+        self.assertTrue(f("50. &emsp; B. "))
+        self.assertTrue(f("50. 和 B. "))
+        self.assertFalse(f("x \\to 0"))
+        self.assertFalse(f("a, b"))           # 无 CJK、无 >=2 字母词 ⇒ 是公式
+        self.assertFalse(f("\\alpha"))        # 无空格
+        self.assertFalse(f("x + y"))          # 有运算符 ⇒ 公式
+
+
+class TestMathCodeProtection(unittest.TestCase):
+    """行内代码里的 $ 是代码内容，不是公式"""
+
+    def test_dollar_in_inline_code(self):
+        html = md_to_printable.md_to_html("不合法：`$123`、`$ABC`")
+        self.assertEqual(markers(html), [])
+        self.assertIn("<code>$123</code>", html)
+        self.assertIn("<code>$ABC</code>", html)
+
+    def test_math_looking_code_not_rendered(self):
+        html = md_to_printable.md_to_html("写成 `$x^2$` 即可")
+        self.assertEqual(markers(html), [])
+        self.assertIn("<code>$x^2$</code>", html)
+
+    def test_lone_dollar_literal(self):
+        html = md_to_printable.md_to_html("解析：n=8，结果 37$。")
+        self.assertEqual(markers(html), [])
+        self.assertIn("37$", html)
+
+
+class TestMathMarkerFormat(unittest.TestCase):
+    """占位符格式契约（printable-math.mjs 按这个格式解析）"""
+
+    def test_marker_is_html_comment(self):
+        """★ 必须是注释：忘了跑第二步时注释不渲染，不会把 base64 印在纸上"""
+        html = md_to_printable.md_to_html("$x$")
+        self.assertEqual(html, "<p><!--MJX 0 eA==--></p>")
+        self.assertRegex(html, r"<!--MJX 0 [A-Za-z0-9+/=]+-->")
+
+    def test_marker_has_no_comment_terminator_risk(self):
+        """base64 字母表不含 -，所以拼不出提前闭合注释的 -->"""
+        import base64
+        for latex in ["a-b", "a--b", "-->", "\\frac{-1}{2}"]:
+            mk = md_to_printable._math_marker(latex, False)
+            body = mk[len("<!--MJX 0 "):-len("-->")]
+            self.assertNotIn("-", body)
+            self.assertEqual(base64.b64decode(body).decode("utf-8"), latex)
+
+    def test_display_flag_encoded(self):
+        self.assertTrue(md_to_printable._math_marker("x", True).startswith("<!--MJX 1 "))
+        self.assertTrue(md_to_printable._math_marker("x", False).startswith("<!--MJX 0 "))
+
+    def test_unicode_latex_roundtrip(self):
+        import base64
+        mk = md_to_printable._math_marker("\\text{当 } x \\to 0", False)
+        body = mk[len("<!--MJX 0 "):-len("-->")]
+        self.assertEqual(base64.b64decode(body).decode("utf-8"), "\\text{当 } x \\to 0")
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
