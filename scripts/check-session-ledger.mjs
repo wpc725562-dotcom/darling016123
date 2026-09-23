@@ -55,10 +55,34 @@ export function parseLastUpdated(markdown) {
   return m ? m[1] : null;
 }
 
-/** 取所有 #C数字 编号 */
+/** 取所有 #C数字 编号（**任何位置**，含正文交叉引用）。
+ *  用途：从「看板」这类散文里找出它提到了哪些错题编号。 */
 export function extractIds(text) {
   const ids = new Set();
   for (const m of text.matchAll(/#C(\d{1,4})\b/g)) ids.add(`C${String(Number(m[1]))}`);
+  return ids;
+}
+
+/**
+ * 取错题**定义行**里的编号 —— 只认标题行（`### 错题 #C001` / `### #C006 a`）。
+ *
+ * ★ 2026-09-23 修正：原实现用「全文任意位置」的 `#C\d{1,4}` 去查重复，于是
+ *   正文里的**交叉引用**也被当成编号声明 ⇒ 误报重复。
+ *   实测 `备考计划/错题本模板.md`（错题本本身完全正常）：
+ *     · #C007 在行 192 **定义**，行 219 / 220 **引用**
+ *     · #C001 / #C006 在行 317 被**引用**（「实际 #C001~#C006 均已销账」）
+ *   ⇒ 旧实现报「重复编号：#C7, #C1, #C6」，1/7 项常年红着。
+ *   本文件自检用例里「错题编号重复」用的是两个**标题行**
+ *   （`### #C006 a\n### #C006 b`），说明本意就是只认定义行。
+ *
+ * 返回**数组**（不去重）——查重复需要看见每个定义。
+ */
+export function extractDefinedIds(text) {
+  const ids = [];
+  for (const line of text.split(/\r?\n/)) {
+    if (!/^\s{0,3}#{1,6}\s/.test(line)) continue; // 只认 markdown 标题行
+    for (const m of line.matchAll(/#C(\d{1,4})\b/g)) ids.push(`C${Number(m[1])}`);
+  }
   return ids;
 }
 
@@ -155,10 +179,10 @@ function runChecks(env, opts) {
   add(`看板 last_updated 在 ${days} 天内`, boardAge !== null && boardAge <= days, boardDetail);
 
   // ---- 4. 错题本编号无重复
-  const mistakeIds = extractIds(mistakesRaw);
-  const dups = findDuplicates(
-    [...mistakesRaw.matchAll(/#C(\d{1,4})\b/g)].map((m) => `C${Number(m[1])}`)
-  );
+  //   只数**定义行**里的编号。正文交叉引用不算声明（详见 extractDefinedIds 注释）。
+  const definedIds = extractDefinedIds(mistakesRaw);
+  const mistakeIds = new Set(definedIds);
+  const dups = findDuplicates(definedIds);
   add(
     '错题本编号无重复',
     dups.size === 0,
@@ -166,6 +190,8 @@ function runChecks(env, opts) {
   );
 
   // ---- 5. 看板提到的错题编号，错题本里得有
+  //   boardIds 用「全文出现」—— 看板是散文，提到即算；
+  //   但「错题本里有没有」必须以**定义**为准，否则悬空引用会被放过。
   const boardIds = extractIds(boardRaw);
   const missing = [...boardIds].filter((id) => !mistakeIds.has(id));
   add(
@@ -261,6 +287,27 @@ function selftest() {
       env: { ...good, mistakesRaw: '### #C006 a\n### #C006 b\n' },
       expectFail: true,
       expectIn: '重复编号',
+    },
+    {
+      // ★ 2026-09-23：正文里的交叉引用不是编号声明，不能算重复。
+      //   旧实现扫全文 ⇒ 真实错题本（#C007 定义 1 次、正文引用 2 次）被误报重复。
+      name: '正文引用不算重复',
+      env: {
+        ...good,
+        mistakesRaw: '### 错题 #C006 a\n\n见 #C006 的复检记录；另 #C001~#C006 均已销账。\n',
+      },
+      expectFail: false,
+    },
+    {
+      // ★ 2026-09-23：看板提到的编号必须在错题本里**有定义**。
+      //   只在正文里被引用（悬空引用）不算有 —— 这条是收紧后的行为。
+      name: '悬空引用要报错',
+      env: {
+        ...good,
+        mistakesRaw: '### 错题 #C005 a\n\n另见 #C006 的复检记录。\n',
+      },
+      expectFail: true,
+      expectIn: '找不到',
     },
     {
       name: '看板提到但错题本没有',
