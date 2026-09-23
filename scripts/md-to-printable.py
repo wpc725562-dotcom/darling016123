@@ -58,10 +58,18 @@ def md_to_html(md_text, title=""):
             else:
                 out.append("<tr>" + "".join(f"<td>{html.escape(c)}</td>" for c in cells) + "</tr>")
             continue
-        # 空行
+        # 空行 → 一个间距块
+        #
+        # ★ 2026-09-23 修正：原实现「每遇到一个空行就 append 一个 gap」，
+        #   于是**空行的个数**泄漏成了输出语义 —— 源码里写 2 个连续空行，
+        #   打印版就叠 2 个 gap，间距是 1 个空行的两倍。
+        #   后果：只要对笔记做任何空白规范化（压连续空行），49 个可打印 HTML
+        #   与 48 个 PDF 就会跟着变，源码排版被下游产物反向绑架。
+        #   改为「连续空行只出一个 gap」，源码的空白风格与打印间距解耦。
         if not s.strip():
             if in_ol: out.append("</ol>"); in_ol = False
-            out.append("<div class='gap'></div>")
+            if not out or not out[-1].startswith("<div class='gap'>"):
+                out.append("<div class='gap'></div>")
             continue
         # 普通段落：处理粗体/行内代码
         if in_ol: out.append("</ol>"); in_ol = False

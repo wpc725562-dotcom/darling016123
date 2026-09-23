@@ -24,7 +24,7 @@ category: "english-note"
 **考场提醒：**
 1. 先把提示要点勾完，再套模板——漏一点就掉内容分  
 2. 少堆空话（`Taking all these factors...` 之类），把字数留给时间/地点/内容  
-3. 写完 30 秒检查：称呼、落款、时态、拼写、要点是否全  
+3. 写完 30 秒检查：称呼、落款、时态、拼写、要点是否全
 
 ---
 
@@ -99,7 +99,7 @@ Those who are interested in it are highly welcome to participate.(高级句型�
 **格式要点：**
 - 标题 `NOTICE` 居中大写  
 - 正文写清：活动名 / 时间 / 地点 / 内容 / 欢迎参加 / 联系方式  
-- 右下角：组织 + 日期  
+- 右下角：组织 + 日期
 
 ---
 

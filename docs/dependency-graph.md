@@ -3,7 +3,6 @@
 > 由扫描脚本自动生成 · 生成日期：2026-08-16
 > 用途：帮助 Agent 与开发者快速理解仓库模块结构与调用链路
 
-
 ## scripts/ · Python 脚本依赖
 
 ### `bili_fetch.py`
@@ -60,7 +59,6 @@
   - `vitepress@^1.6.3`
 
 ## 数据流 · Obsidian → 网站
-
 
 ```mermaid
 flowchart LR
