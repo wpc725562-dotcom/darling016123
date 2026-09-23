@@ -324,7 +324,7 @@ int main(void)
 <tr><th>优先级</th><th>运算符</th><th>名称</th><th>结果</th></tr>
 <tr><td>高</td><td><code>!</code></td><td>逻辑非</td><td>0 或 1</td></tr>
 <tr><td>中</td><td><code>&amp;&amp;</code></td><td>逻辑与</td><td>0 或 1</td></tr>
-<tr><td>低</td><td>`\</td><td>\</td><td>`</td><td>逻辑或</td><td>0 或 1</td></tr>
+<tr><td>低</td><td><code>||</code></td><td>逻辑或</td><td>0 或 1</td></tr>
 </table>
 <div class='gap'></div>
 <p><strong>算 <code>a&amp;&amp;b||c</code>：</strong> 先 <code>a&amp;&amp;b</code> = <code>4&amp;&amp;3</code> → 两边都非 0 → 得 <strong>1</strong>；再 <code>1||c</code> → 左边已经是 1 → 整个是 <strong>1（真）</strong>。</p>
@@ -333,7 +333,7 @@ int main(void)
 <div class='gap'></div>
 <table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
 <tr><th>表达式</th><th>行为</th></tr>
-<tr><td>`A \</td><td>\</td><td>B`</td><td>若 <code>A</code> 为真，<strong><code>B</code> 根本不去算</strong>（结果已注定为真）</td></tr>
+<tr><td><code>A || B</code></td><td>若 <code>A</code> 为真，<strong><code>B</code> 根本不去算</strong>（结果已注定为真）</td></tr>
 <tr><td><code>A &amp;&amp; B</code></td><td>若 <code>A</code> 为假，<strong><code>B</code> 根本不去算</strong>（结果已注定为假）</td></tr>
 </table>
 <div class='gap'></div>
@@ -1764,7 +1764,7 @@ int main(void)
 <table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
 <tr><th>考点</th><th>一句话</th></tr>
 <tr><td>标识符三条规矩</td><td>只用字母数字下划线／不能数字开头／不用关键字；<code>&amp;a</code> 是动作不是名字</td></tr>
-<tr><td>逻辑真假</td><td><strong>0 假非 0 真</strong>；`A\</td><td>\</td><td>B<code> 中 A 真则 B 不算，</code>A&amp;&amp;B` 中 A 假则 B 不算</td></tr>
+<tr><td>逻辑真假</td><td><strong>0 假非 0 真</strong>；<code>A||B</code> 中 A 真则 B 不算，<code>A&amp;&amp;B</code> 中 A 假则 B 不算</td></tr>
 <tr><td>顺序表 vs 链表</td><td>查得多选顺序表（<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="4.618ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2041 1000" xmlns:xlink="http://www.w3.org/1999/xlink"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D442" xlink:href="#MJX-TEX-I-1D442"></use></g><g data-mml-node="mo" transform="translate(763,0)"><use data-c="28" xlink:href="#MJX-TEX-N-28"></use></g><g data-mml-node="mn" transform="translate(1152,0)"><use data-c="31" xlink:href="#MJX-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(1652,0)"><use data-c="29" xlink:href="#MJX-TEX-N-29"></use></g></g></g></svg></mjx-container> 随机访问），改得多选链表</td></tr>
 <tr><td><code>scanf</code> 要不要 <code>&amp;</code></td><td><strong>数组名不加，其它都加</strong></td></tr>
 <tr><td><code>*(p++)</code> vs <code>(*p)++</code></td><td>一个动<strong>指针</strong>、一个动<strong>数据</strong></td></tr>

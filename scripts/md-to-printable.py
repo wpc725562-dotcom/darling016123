@@ -134,6 +134,48 @@ def _inline(text):
     return t
 
 
+def _js_substring(s, a, b):
+    """JS String.prototype.substring：a > b 时自动交换（Python 切片会返回空串）。"""
+    if a > b:
+        a, b = b, a
+    return s[a:b]
+
+
+def escaped_split(s):
+    """markdown-it `escapedSplit()` 的逐字移植 —— 表格切列的唯一正确语义。
+
+    ★ 为什么不能用 `s.strip("|").split("|")`：
+      markdown-it 的 table 块规则**只认 `\\|` 是转义竖线**，它既不认行内代码、也不认公式。
+      于是 `` | 考点 | `&&`、`||` 的结果 | `` 会被切成 3 格，而表头只有 2 列；
+      渲染时 `for (i=0; i<columnCount; i++)` **只取前 2 格** ⇒ 第 3 格内容**静默消失**。
+      实测（站点与产物都中招）：docs/posts/computer/2025.md L1104 丢 2 格、
+      模拟卷/卷三-拔高冲刺卷-答案.md L20 丢 8 格（含整段 `= 3 || 9 && -1 = 3 || 1 = 1` 推导）。
+
+    ★ 修法是给代码 span 里的 `|` 加反斜杠：escapedSplit 会**吃掉反斜杠**，
+      单元格内容于是变回 `` `||` `` ⇒ 行内解析后仍是 `<code>||</code>`，**渲染完全一致**。
+      这也是本函数「else 分支要 `substring(lastPos, pos - 1)`」的意义。
+
+    与 markdown-it 的一致性已用构建产物实测校对（3 处缺陷的列数 4 / 4 / 12 完全吻合）。
+    回归测试见 tests/test_md_to_printable.py 的 TestEscapedSplit。
+    """
+    out, cur, last, i = [], [], 0, 0
+    is_escaped = False
+    n = len(s)
+    while i < n:
+        c = s[i]
+        if c == "|":
+            if not is_escaped:
+                out.append("".join(cur) + s[last:i])
+                cur, last = [], i + 1
+            else:
+                cur.append(_js_substring(s, last, i - 1))
+                last = i
+        is_escaped = (c == "\\")
+        i += 1
+    out.append("".join(cur) + s[last:])
+    return out
+
+
 def md_to_html(md_text, title=""):
     """把常见 markdown 语法转成打印友好的 HTML（够用即可）"""
     # 行尾归一：CRLF / 孤立 CR → LF。
@@ -164,6 +206,7 @@ def md_to_html(md_text, title=""):
     #   （LaTeX 里的 `_` `*` `#` 若被当成 markdown 会直接毁掉公式）。
     in_display = False
     display_buf = []
+    table_cols = None   # 当前表格的表头列数（由首行确定，用于按 markdown-it 语义截断）
 
     def close_list():
         nonlocal list_kind
@@ -199,7 +242,7 @@ def md_to_html(md_text, title=""):
         #   改为显式状态 + 「离开表格即闭合」，与 .gap 的处理方式保持一致。
         is_table_row = s.startswith("|") and s.count("|") > 1
         if in_table and not is_table_row:
-            out.append("</table>"); in_table = False
+            out.append("</table>"); in_table = False; table_cols = None
         # ── 代码块起始（含引用块内的 `> ```c`）──
         if s.lstrip().startswith("```") or re.match(r"^>\s*```", s):
             close_list()
@@ -263,12 +306,40 @@ def md_to_html(md_text, title=""):
         # 表格行（首行作表头 <th>，其余为数据行 <td>）
         if is_table_row:
             close_list()
-            cells = [c.strip() for c in s.strip("|").split("|")]
+            # ★ 2026-09-23 修正：改用 escaped_split（markdown-it 语义），并按表头列数截断。
+            #   原实现是 `s.strip("|").split("|")` —— **裸 split**，于是：
+            #     · 行内代码 span 里的 `||`（如 `` `||` ``）会被当列分隔符 ⇒ 多切出若干格
+            #     · 而 markdown-it 的 table 规则渲染时 `for (i=0; i<columnCount; i++)`
+            #       **只取前 columnCount 格** ⇒ 超出的内容在**站点上被静默丢弃**
+            #       （实测 docs/posts/computer/2025.md L1104 丢 2 格、
+            #         模拟卷/卷三-拔高冲刺卷-答案.md L20 丢 8 格，含整段推导）
+            #   本流水线此前不截断，产物里是「多出几格」—— 与站点表现不同但同样错。
+            #   现在两边统一到 escaped_split + 截断，并**在发生截断时大声报错**：
+            #   截断即意味着有内容会消失，这绝不该静默通过。
+            cells = escaped_split(s)
+            if cells and cells[0] == "":
+                cells.pop(0)
+            if cells and cells[-1] == "":
+                cells.pop()
+            cells = [c.strip() for c in cells]
             if not in_table:
+                table_cols = len(cells)
                 out.append("<table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>")
                 out.append("<tr>" + "".join(f"<th>{_inline(c)}</th>" for c in cells) + "</tr>")
                 in_table = True
             else:
+                if table_cols is not None and len(cells) != table_cols:
+                    if len(cells) > table_cols:
+                        # ★ 只有**截断**才丢内容，必须大声报出来。
+                        #   补格（少于表头列数）不丢任何东西，markdown-it 也静默补空，
+                        #   所以那里不告警 —— 免得真信号被噪声淹没。
+                        sys.stderr.write(
+                            f"[md-to-printable] ⚠️ 表格列数超出：表头 {table_cols} 列，本行切出 {len(cells)} 列，"
+                            f"后 {len(cells) - table_cols} 格内容会被丢弃（markdown-it 也是这个行为）。"
+                            f"多半是行内代码 span 里的裸 `|`，改成 `\\|` 即可 → {s[:100]}\n")
+                        cells = cells[:table_cols]
+                    else:
+                        cells = cells + [""] * (table_cols - len(cells))
                 out.append("<tr>" + "".join(f"<td>{_inline(c)}</td>" for c in cells) + "</tr>")
             continue
         # 空行 → 一个间距块

@@ -87,6 +87,49 @@ function isExcluded(rel, patterns) {
 }
 
 /**
+ * markdown-it `escapedSplit()` 的逐字移植 —— 表格切列的唯一正确语义。
+ *
+ * ★ 为什么不能 `line.split('|')`：markdown-it 的 table 规则**只认 `\|` 是转义竖线**，
+ *   它既不认行内代码、也不认公式。于是 `` | 考点 | `&&`、`||` 的结果 | `` 会被切成 3 格，
+ *   而表头只有 2 列；渲染时 `for (i=0; i<columnCount; i++)` **只取前 2 格**
+ *   ⇒ 第 3 格内容**静默消失**（不是渲染成空，是不进 DOM）。
+ *   实测：docs/posts/computer/2025.md L1104 丢 2 格、
+ *        模拟卷/卷三-拔高冲刺卷-答案.md L20 丢 8 格（含整段 `= 3 || 9 && -1 = 3 || 1 = 1`）。
+ *   （列数 4 / 4 / 12 已与构建产物实测校对。）
+ */
+export function escapedSplit(line) {
+  const out = []
+  let cur = ''
+  let last = 0
+  let isEscaped = false
+  const jsSub = (s, a, b) => (a > b ? s.substring(b, a) : s.substring(a, b))
+  for (let i = 0; i < line.length; i++) {
+    const ch = line[i]
+    if (ch === '|') {
+      if (!isEscaped) {
+        out.push(cur + line.substring(last, i))
+        cur = ''
+        last = i + 1
+      } else {
+        cur += jsSub(line, last, i - 1)   // `\|`：吃掉反斜杠
+        last = i
+      }
+    }
+    isEscaped = ch === '\\'
+  }
+  out.push(cur + line.substring(last))
+  return out
+}
+
+/** 表格行的单元格数组（去掉首尾空壳，与 markdown-it 一致）。 */
+export function tableCells(line) {
+  const cells = escapedSplit(line)
+  if (cells.length && cells[0] === '') cells.shift()
+  if (cells.length && cells[cells.length - 1] === '') cells.pop()
+  return cells.map((c) => c.trim())
+}
+
+/**
  * 逐行扫描，返回问题列表。
  * 会跟踪围栏代码块状态：``` 之内一律跳过（VitePress 对围栏块做了保护）。
  */
@@ -96,6 +139,9 @@ export function scanText(text, registered = new Set()) {
   let fence = false
   let fenceMark = ''
   let fenceLine = 0
+  // 表格状态：表头列数 + 表头行号（用于报「本行与哪张表不符」）
+  let tableCols = null
+  let tableStart = 0
 
   for (let i = 0; i < lines.length; i++) {
     const raw = lines[i]
@@ -115,6 +161,42 @@ export function scanText(text, registered = new Set()) {
       continue
     }
     if (fence) continue
+
+    // ⑤ 表格行列数与表头不符
+    //    ★ 2026-09-23 实测：markdown-it 的 table 规则用 escapedSplit 切列（只认 `\|`），
+    //      渲染时 `for (i=0; i<columnCount; i++)` **只取表头那么多格**
+    //      ⇒ 多出来的格被**静默丢弃**，内容永久消失，且**不报错**。
+    //      真凶几乎总是「行内代码 span 里的裸 `|`」，例如 `` `&&`、`||` `` ——
+    //      实测 docs/posts/computer/2025.md L1104 丢 2 格、
+    //      模拟卷/卷三-拔高冲刺卷-答案.md L20 丢 8 格（含整段推导）。
+    //      修法：给代码 span 里的 `|` 加反斜杠 —— escapedSplit 会吃掉反斜杠，
+    //      单元格内容变回 `` `||` `` ⇒ 仍渲染成 `<code>||</code>`，**视觉完全一致**。
+    {
+      const isSep = (s) => /^\|?[\s:|-]+\|?$/.test(s) && (s.match(/\|/g) || []).length > 1
+      if (t.startsWith('|')) {
+        if (tableCols === null) {
+          if (!isSep(t)) {
+            tableCols = tableCells(raw).length
+            tableStart = ln
+          }
+        } else if (!isSep(t)) {
+          const n = tableCells(raw).length
+          if (n !== tableCols) {
+            issues.push({
+              line: ln,
+              rule: 'table-col-mismatch',
+              detail:
+                n > tableCols
+                  ? `表格行列数 ${n} > 表头 ${tableCols} 列（表起于 L${tableStart}）：超出的 ${n - tableCols} 格会被**静默丢弃**（markdown-it 只渲染到表头列数）。多半是行内代码 span 里的裸 \`|\`，改成 \`\\|\` 即可（渲染结果不变）`
+                  : `表格行列数 ${n} < 表头 ${tableCols} 列（表起于 L${tableStart}）：缺的格会渲染成空单元格`,
+              text: raw.trim().slice(0, 120),
+            })
+          }
+        }
+      } else {
+        tableCols = null
+      }
+    }
 
     // 行内数学 $...$ 与块级 $$...$$ 会被 KaTeX 在 markdown 阶段吃掉，
     // Vue 看不到里面的内容 —— 所以先摘掉再检查。
@@ -279,6 +361,31 @@ if (process.argv.includes('--selftest')) {
       name: '非表格行的公式含裸竖线（应放过：不涉及分列）',
       text: '这里 $|x|<1$ 不在表格里\n',
       expect: null,
+    },
+    {
+      name: '表格行内代码含裸竖线（真问题：格被静默丢弃）',
+      text: '| 考点 | 内容 |\n|:---|:---|\n| **逻辑运算** | `&&`、`||` 的结果不是原值 |\n',
+      expect: 'table-col-mismatch',
+    },
+    {
+      name: '表格行内代码已用 \\|（应放过：渲染结果不变）',
+      text: '| 考点 | 内容 |\n|:---|:---|\n| **逻辑运算** | `&&`、`\\|\\|` 的结果不是原值 |\n',
+      expect: null,
+    },
+    {
+      name: '正常表格（应放过）',
+      text: '| 考点 | 内容 |\n|:---|:---|\n| 逻辑运算 | 结果值只有 0 或 1 |\n',
+      expect: null,
+    },
+    {
+      name: '非表格行代码含 ||（应放过：不涉及分列）',
+      text: 'C 的逻辑或是 `a || b`\n',
+      expect: null,
+    },
+    {
+      name: '表格行少一格（真问题：渲染成空格）',
+      text: '| 考点 | 内容 | 备注 |\n|:---|:---|:---|\n| 逻辑运算 | 结果值 |\n',
+      expect: 'table-col-mismatch',
     },
   ]
   let allGood = true

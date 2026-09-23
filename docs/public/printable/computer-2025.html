@@ -543,9 +543,9 @@ tudio
 <table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
 <tr><th>选项</th><th>判读</th></tr>
 <tr><td>A</td><td><code>or</code> <strong>不是 C 运算符</strong>（那是 Python）</td></tr>
-<tr><td>B</td><td>`\</td><td>` 是<strong>按位或</strong>，不是逻辑或</td></tr>
+<tr><td>B</td><td><code>|</code> 是<strong>按位或</strong>，不是逻辑或</td></tr>
 <tr><td>C</td><td><code>&amp;&amp;</code> 是逻辑与，且 <code>a&lt;10</code> 写错了</td></tr>
-<tr><td>D</td><td>`\</td><td>\</td><td>` <strong>逻辑或</strong> ✓</td></tr>
+<tr><td>D</td><td><code>||</code> <strong>逻辑或</strong> ✓</td></tr>
 </table>
 <div class='gap'></div>
 <p>🔑 <strong>三个优先级</strong>（年年考，记住这一句就够）：</p>
@@ -1182,8 +1182,8 @@ while (条件) {
 <div class='gap'></div>
 <table border='1' cellpadding='6' style='border-collapse:collapse;width:100%'>
 <tr><th>考点</th><th>内容</th></tr>
-<tr><td><strong>逻辑运算的结果值</strong></td><td><code>&amp;&amp;</code>、`</td><td></td><td>` 的结果<strong>不是</strong>两边的原值，而是 <strong>1（真）或 0（假）</strong></td></tr>
-<tr><td><strong>括号优先级最高</strong></td><td>有括号先算括号，不要被 <code>&lt;</code> 与 <code>&amp;&amp;</code>/`</td><td></td><td>` 的优先级顺序干扰</td></tr>
+<tr><td><strong>逻辑运算的结果值</strong></td><td><code>&amp;&amp;</code>、<code>||</code> 的结果<strong>不是</strong>两边的原值，而是 <strong>1（真）或 0（假）</strong></td></tr>
+<tr><td><strong>括号优先级最高</strong></td><td>有括号先算括号，不要被 <code>&lt;</code> 与 <code>&amp;&amp;</code>/<code>||</code> 的优先级顺序干扰</td></tr>
 </table>
 <div class='gap'></div>
 <p>💡 <strong>顺便记住优先级链</strong>（本卷单选第 14 题也考了）：</p>

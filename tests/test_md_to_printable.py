@@ -603,5 +603,117 @@ class TestMathMarkerFormat(unittest.TestCase):
         self.assertEqual(base64.b64decode(body).decode("utf-8"), "\\text{当 } x \\to 0")
 
 
+class TestEscapedSplit(unittest.TestCase):
+    """表格切列必须与 markdown-it `escapedSplit()` 语义一致。
+
+    ★ 为什么专门测：原实现是 `s.strip("|").split("|")`（裸 split），
+      而 markdown-it 的 table 规则**只认 `\\|` 是转义竖线** —— 行内代码 span 里的
+      `||` 会被当列分隔符切碎，渲染时 `for (i=0; i<columnCount; i++)` 只取前 N 格，
+      **超出的内容静默消失**。实测站点与产物都中招：
+        · docs/posts/computer/2025.md L1104/L1105 各丢 2 格
+        · docs/posts/computer/模拟卷/卷三-拔高冲刺卷-答案.md L20 丢 8 格
+          （含整段 `= 3 || 9 && -1 = 3 || 1 = 1` 推导）
+    """
+
+    def split(self, line):
+        cells = md_to_printable.escaped_split(line)
+        if cells and cells[0] == "":
+            cells.pop(0)
+        if cells and cells[-1] == "":
+            cells.pop()
+        return [c.strip() for c in cells]
+
+    def test_plain_row(self):
+        self.assertEqual(self.split("| a | b | c |"), ["a", "b", "c"])
+
+    def test_no_outer_pipes(self):
+        self.assertEqual(self.split("a | b"), ["a", "b"])
+
+    def test_bare_pipe_inside_code_splits(self):
+        """裸 `|` 在代码 span 里**仍然会切** —— 这是 markdown-it 的真实行为，别"修"它。"""
+        self.assertEqual(self.split("| a | `&&`、`||` 的结果 |"),
+                         ["a", "`&&`、`", "", "` 的结果"])
+
+    def test_escaped_pipe_does_not_split(self):
+        """`\\|` 不切列 —— 这是唯一可用的修法。"""
+        self.assertEqual(self.split("| a | `&&`、`\\|\\|` 的结果 |"),
+                         ["a", "`&&`、`||` 的结果"])
+
+    def test_escaped_pipe_backslash_is_consumed(self):
+        """★ 关键：反斜杠必须被**吃掉**，否则渲染出来会多出 `\\`。"""
+        cells = self.split("| `\\|\\|` |")
+        self.assertEqual(cells, ["`||`"])
+        self.assertNotIn("\\", cells[0])
+
+    def test_full_row_from_real_defect(self):
+        """真实缺陷行：修复前后列数与内容对比。"""
+        bad = ("| **逻辑运算的结果值** | `&&`、`||` 的结果**不是**两边的原值，"
+               "而是 **1（真）或 0（假）** |")
+        good = bad.replace("`||`", "`\\|\\|`")
+        self.assertEqual(len(self.split(bad)), 4)      # 表头只有 2 列 ⇒ 后 2 格被丢弃
+        self.assertEqual(len(self.split(good)), 2)
+        self.assertEqual(self.split(good)[1],
+                         "`&&`、`||` 的结果**不是**两边的原值，而是 **1（真）或 0（假）**")
+
+    def test_multiple_escaped_pipes_in_one_cell(self):
+        line = ("| 3 | **B** | 1.2 优先级 | `+` 和 `-` 优先级高于 `\\|\\|` 和 `&&`，"
+                "等价于 `a \\|\\| (b + c) && (b - c)` = `3 \\|\\| 9 && -1` = `1`。 |")
+        cells = self.split(line)
+        self.assertEqual(len(cells), 4)
+        self.assertIn("`||`", cells[3])
+        self.assertIn("`a || (b + c) && (b - c)`", cells[3])
+        self.assertNotIn("\\", cells[3])
+
+    def test_js_substring_semantics(self):
+        """JS substring(a,b) 在 a>b 时交换参数；Python 切片返回空串 —— 必须对齐。"""
+        self.assertEqual(md_to_printable._js_substring("abcdef", 4, 2), "cd")
+        self.assertEqual(md_to_printable._js_substring("abcdef", 2, 4), "cd")
+
+    def test_adjacent_escaped_pipes(self):
+        self.assertEqual(self.split("| \\|\\| |"), ["||"])
+
+
+class TestTableColumnTruncation(unittest.TestCase):
+    """表格行多出列时：按表头列数截断（对齐 markdown-it），且**不静默**。"""
+
+    def test_row_padded_to_header_width(self):
+        md = "| a | b |\n|:--|:--|\n| 1 |\n"
+        html = md_to_printable.md_to_html(md)
+        self.assertEqual(html.count("<td>"), 2)
+
+    def test_extra_cells_truncated_and_warned(self):
+        md = ("| a | b |\n|:--|:--|\n| 1 | x `||` y |\n")
+        import io
+        import contextlib
+        err = io.StringIO()
+        with contextlib.redirect_stderr(err):
+            html = md_to_printable.md_to_html(md)
+        # 截断到表头列数
+        self.assertEqual(html.count("<td>"), 2)
+        # 且必须报出来（截断即丢内容，不能静默）
+        self.assertIn("表格列数超出", err.getvalue())
+
+    def test_padding_does_not_warn(self):
+        """少于表头列数只是补空，不丢内容 ⇒ 不该告警（免得真信号被噪声淹没）。"""
+        md = "| a | b |\n|:--|:--|\n| 1 |\n"
+        import io
+        import contextlib
+        err = io.StringIO()
+        with contextlib.redirect_stderr(err):
+            md_to_printable.md_to_html(md)
+        self.assertEqual(err.getvalue(), "")
+
+    def test_escaped_row_no_warning(self):
+        md = ("| a | b |\n|:--|:--|\n| 1 | x `\\|\\|` y |\n")
+        import io
+        import contextlib
+        err = io.StringIO()
+        with contextlib.redirect_stderr(err):
+            html = md_to_printable.md_to_html(md)
+        self.assertEqual(html.count("<td>"), 2)
+        self.assertNotIn("表格列数超出", err.getvalue())
+        self.assertIn("<code>||</code>", html)
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
