@@ -207,13 +207,83 @@ else
 fi
 
 # 8d. 工作流内不得再内联这些函数定义（否则又与库漂移）
-for fn in count_md pct_of read_expect rotate_reports; do
+for fn in count_md pct_of read_expect rotate_reports heading_jumps; do
   if grep -qE "^[[:space:]]*${fn}\(\)[[:space:]]*\{" "$WF_FILE"; then
     fail "工作流内联了 ${fn}()，会与 $LIB_FILE 漂移"
   else
     pass "工作流未内联 ${fn}()"
   fi
 done
+
+# 8e. read_expect 的兜底 default 必须与配置文件一致（2026-09-23 加）
+#   库注释写明「default 必须是当前有效值 —— 若兜底值是过期常量，读不到配置时
+#   又会退回荒谬百分比，等于把 bug 藏起来」。实测工作流里 cs 的兜底长期是 44，
+#   而配置早已校准为 51 —— 配置正常时兜底不生效，所以这类漂移**永远不会自己暴露**，
+#   只能靠扫描守住。
+if [[ -f "$EXPECT_FILE" ]] && command -v node >/dev/null 2>&1; then
+  drift=0
+  while read -r key def; do
+    [[ -z "$key" || -z "${def:-}" ]] && continue
+    cfg="$(read_expect "$EXPECT_FILE" "$key" "__none__")"
+    if [[ "$cfg" != "$def" ]]; then
+      fail "工作流 read_expect 兜底 $key=$def，配置为 $cfg（兜底值漂移）"
+      drift=1
+    fi
+  done < <(grep -oE 'read_expect "\$EXPECT_FILE" [a-z]+ [0-9]+' "$WF_FILE" \
+             | sed -E 's/.* ([a-z]+) ([0-9]+)$/\1 \2/')
+  if [[ $drift -eq 0 ]]; then pass "工作流 read_expect 兜底值与配置一致"; fi
+else
+  pass "跳过兜底一致性检查（无配置文件或无 node）"
+fi
+
+echo ""
+echo "===== 9. heading_jumps：标题跳级（必须跳过围栏代码块） ====="
+# 判例来源：docs/posts/题库/计算机真题刷题.md 的 ```bash 里写着「# 改了真题 md 之后…」、
+# ```markdown 里写着「### 1. 题干（ ）」。不跳围栏时前者被当成 H1、后者被当成 H3，
+# 凑出一个假跳级 —— 质量体检因此长期停在 ⚠️，真出问题时反而看不出来。
+FIX="$TMPDIR_T/fix"
+mkdir -p "$FIX"
+cat > "$FIX/real-jump.md" <<'EOF'
+# 试卷
+## Part II 阅读理解
+#### Passage 1
+EOF
+cat > "$FIX/fenced.md" <<'EOF'
+# 试卷
+## 五、维护方式
+```bash
+# 改了真题 md 之后重新生成题库（在仓库根目录执行）
+```
+```markdown
+### 1. 题干（ ）
+```
+## 六、下一节
+EOF
+cat > "$FIX/clean.md" <<'EOF'
+# 试卷
+## Part I 词汇语法
+### 第 1 题
+## Part II 阅读理解
+### Passage 1
+#### 第 36 题
+### Passage 2
+#### 第 41 题
+## Part III 完形填空
+### 第 56 题
+EOF
+check_eq "$(heading_jumps "$FIX/real-jump.md" | wc -l | tr -d ' ')" "1" \
+  "真跳级 ##→#### 检出 1 处"
+check_eq "$(heading_jumps "$FIX/real-jump.md")" \
+  "$FIX/real-jump.md: 标题跳级 '##' → '#### Passage 1'" \
+  "告警文案含路径 / 前级井号 / 原行"
+check_eq "$(heading_jumps "$FIX/fenced.md" | wc -l | tr -d ' ')" "0" \
+  "围栏代码块内的 # 与 ### 不算标题（不误报）"
+check_eq "$(heading_jumps "$FIX/clean.md" | wc -l | tr -d ' ')" "0" \
+  "Part > Passage > 题 三级结构无跳级"
+# 真实仓库全量扫描必须为 0：只要有一处，质量体检就会一直报 ⚠️
+real_jumps="$(for f in $(find docs/posts/ -name '*.md'); do heading_jumps "$f"; done \
+  | wc -l | tr -d ' ')"
+check_eq "$real_jumps" "0" "真实仓库 docs/posts/ 全量扫描无标题跳级"
 
 echo ""
 echo "===== 清理 ====="

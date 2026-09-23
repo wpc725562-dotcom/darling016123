@@ -203,27 +203,33 @@ jobs:
           REPORT_FILE="knowledge/quality-report.md"
           ISSUES=0
           
+          # 共用函数从库里 source，**不要在这里内联副本**（同 coverage 步骤的理由）：
+          # 内联副本会与 scripts/test-patrol-logic.sh 漂移，测试对着旧副本报「通过」
+          # 而实际工作流已坏 —— 假信心测试。
+          # shellcheck source=scripts/lib/patrol-lib.sh
+          source scripts/lib/patrol-lib.sh
+          
           echo "# 知识库质量体检报告" > "$REPORT_FILE"
           echo "- 检查时间: $(date '+%Y-%m-%d %H:%M')" >> "$REPORT_FILE"
           echo "" >> "$REPORT_FILE"
           
           # 检查标题跳级
+          #   实现见 patrol-lib.sh 的 heading_jumps()，与测试同源。
+          #   它会跳过围栏代码块 —— 代码块里的 `# 注释` / `### 示例` 不是标题。
+          #   不跳围栏时 docs/posts/题库/计算机真题刷题.md 会稳定误报一处跳级：
+          #   ```bash 里的「# 改了真题 md 之后…」被当成 H1、```markdown 里的
+          #   「### 1. 题干（ ）」被当成 H3，凑出一个假跳级。（2026-09-23 修）
           echo "## 标题层级检查" >> "$REPORT_FILE"
           for file in $(find docs/posts/ -name "*.md"); do
-            prev_level=0
-            while IFS= read -r line; do
-              if [[ $line =~ ^(#+)\ (.*) ]]; then
-                level=${#BASH_REMATCH[1]}
-                if [[ $prev_level -gt 0 && $((level - prev_level)) -gt 1 ]]; then
-                  echo "- ⚠️ $file: 标题跳级 '#$(printf '#%.0s' $(seq 1 $prev_level))' → '$line'" >> "$REPORT_FILE"
-                  # 注意：不要写 ((VAR++))。在 GitHub Actions 默认的 `bash -e` 下，
-                  # ((VAR++)) 当 VAR 从 0 变 1 时返回退出码 1，会导致整个 step 静默中断，
-                  # 后续检查全部不执行、报告只留第一条。必须用 VAR=$((VAR + 1))。（2026-09-17 修）
-                  ISSUES=$((ISSUES + 1))
-                fi
-                prev_level=$level
-              fi
-            done < "$file"
+            # 用进程替换而非管道：管道会让 while 跑在子 shell 里，ISSUES 加不上去
+            while IFS= read -r warn; do
+              [[ -z "$warn" ]] && continue
+              echo "- ⚠️ $warn" >> "$REPORT_FILE"
+              # 注意：不要写 ((VAR++))。在 GitHub Actions 默认的 `bash -e` 下，
+              # ((VAR++)) 当 VAR 从 0 变 1 时返回退出码 1，会导致整个 step 静默中断，
+              # 后续检查全部不执行、报告只留第一条。必须用 VAR=$((VAR + 1))。（2026-09-17 修）
+              ISSUES=$((ISSUES + 1))
+            done < <(heading_jumps "$file")
           done
           
           # 检查文件编码
@@ -339,9 +345,12 @@ jobs:
 
           # 期望值外置到配置文件，避免硬编码失真：原先 math_expected=36 而实际
           # 已有 70 篇，算出来 194%、cs 220%，数字荒谬却长期无人发现。
+          # ★ 兜底 default 必须是**当前有效值**：读不到配置时会退回它，
+          #   若写的是过期常量，等于把 bug 藏起来。cs 的 44 于 2026-09-23 随
+          #   coverage-expectations.json 重新校准为 51（本地新增 7 篇计算机笔记）。
           EXPECT_FILE="scripts/coverage-expectations.json"
           math_expected="$(read_expect "$EXPECT_FILE" math 70)"
-          cs_expected="$(read_expect "$EXPECT_FILE" cs 44)"
+          cs_expected="$(read_expect "$EXPECT_FILE" cs 51)"
           po_expected="$(read_expect "$EXPECT_FILE" po 20)"
           echo "📐 期望值: math=$math_expected cs=$cs_expected po=$po_expected"
 

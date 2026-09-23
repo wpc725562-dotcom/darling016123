@@ -69,6 +69,43 @@ read_expect() {
   if [[ -n "$v" && "$v" != "null" ]]; then echo "$v"; else echo "$default"; fi
 }
 
+# heading_jumps <file>
+#   扫描单个 markdown 文件的标题层级跳级（如 ## → ####，中间缺 ###），
+#   每处跳级输出一行告警（不含行首的 "- ⚠️ "，由调用方拼）。
+#   无跳级则无输出。
+#
+#   ★ 必须跳过围栏代码块（``` / ~~~）：代码块里的 `# 注释`、`### 示例` 不是标题。
+#     判例（2026-09-23）：docs/posts/题库/计算机真题刷题.md 的 ```markdown 示例里
+#     写着「### 1. 题干（ ）」，前面的 ```bash 里又有「# 改了真题 md 之后…」——
+#     不跳围栏时，后者被当成 H1、前者被当成 H3，于是稳定误报一处「跳级」。
+#     这个假阳性会让质量体检长期停在 ⚠️，真出问题时反而看不出来。
+#
+#   为什么抽到库里：原来内联在 workflow 的 run: 块中，测试只能抄副本断言
+#   「某段代码字符串存在」——那测的是实现细节，不是行为。抽出来后测试可以
+#   直接喂构造的样本、断言真实的跳级条数（见 scripts/test-patrol-logic.sh 第 9 节）。
+heading_jumps() {
+  local file="$1"
+  local prev_level=0 infence=0 line level
+  # 用变量承载正则：在 [[ =~ ]] 里若把反引号直接写进未加引号的 pattern，
+  # 会被 shell 当命令替换执行。赋给变量后再引用则只作正则，安全。
+  local fence_re='^[[:space:]]*(```|~~~)'
+  while IFS= read -r line; do
+    if [[ $line =~ $fence_re ]]; then
+      if [[ $infence -eq 0 ]]; then infence=1; else infence=0; fi
+      continue
+    fi
+    [[ $infence -eq 1 ]] && continue
+    if [[ $line =~ ^(#+)\ (.*) ]]; then
+      level=${#BASH_REMATCH[1]}
+      if [[ $prev_level -gt 0 && $((level - prev_level)) -gt 1 ]]; then
+        printf "%s: 标题跳级 '%s' → '%s'\n" "$file" \
+          "$(printf '#%.0s' $(seq 1 $prev_level))" "$line"
+      fi
+      prev_level=$level
+    fi
+  done < "$file"
+}
+
 # rotate_reports <keep> <glob-prefix>
 #   报告轮转：按文件名排序，只保留最新 N 份，返回将被删除的路径列表（每行一个）。
 #   只**计算**不删除，便于调用方打印日志、也便于测试干跑。
