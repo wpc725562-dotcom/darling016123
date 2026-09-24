@@ -175,6 +175,7 @@ export default defineConfig({
               { text: '📊 分数段与难度断层', link: '/learn/ielts-score-bands' },
               { text: '✅ 核心知识点清单', link: '/learn/ielts-core-checklist' },
               { text: '🗺️ 执行手册', link: '/learn/ielts-video-route-plan' },
+              { text: '📝 雅思真题用法', link: '/learn/ielts-past-papers' },
             ],
           },
           {
@@ -290,6 +291,7 @@ export default defineConfig({
             { text: '📊 分数段与难度断层', link: '/learn/ielts-score-bands' },
             { text: '✅ 核心知识点清单', link: '/learn/ielts-core-checklist' },
             { text: '🗺️ 执行手册', link: '/learn/ielts-video-route-plan' },
+            { text: '📝 雅思真题用法', link: '/learn/ielts-past-papers' },
           ],
         },
         {

@@ -19,6 +19,7 @@ layout: doc
 - [**雅思零基础起步**](./ielts-zero-baseline) — 考什么 / 怎么算分 / 2026 机考化 / 花多少钱 / 第一步做什么
 - [雅思分数段与难度断层](./ielts-score-bands) — 5.0→8.0 各档要求什么，三个断层在哪
 - [雅思核心知识点清单](./ielts-core-checklist) — 听说读写 + 词汇 + 语法的勾选式自测
+- [**雅思真题怎么找、怎么用**](./ielts-past-papers) — 剑桥真题集是什么 / 三档来源与版权 / 三遍刷法
 
 :::
 
@@ -32,8 +33,9 @@ layout: doc
 | 各级别 / 各分数段到底要求什么 | [JLPT 真题用法](./japanese-jlpt-past-papers) | [雅思分数段与难度断层](./ielts-score-bands) |
 | 逐条自测缺口 | [核心知识点清单](./japanese-core-checklist) | [雅思核心知识点清单](./ielts-core-checklist) |
 | 精确到看第几集的执行表 | [🗺️ 0→N1 执行手册](./japanese-video-route-plan) | [雅思执行手册](./ielts-video-route-plan) |
+| **真题从哪来、怎么刷** | [JLPT 真题用法](./japanese-jlpt-past-papers) | [雅思真题用法](./ielts-past-papers) |
+| 真题视频在哪（B站实测） | [B站历年真题调研](./bili-past-papers) | [B站历年真题调研](./bili-past-papers) |
 | B站课程怎么选（含字幕实测） | [日语 0 基础 → N1](./bili-japanese-n1-videos) | [英语雅思](./bili-ielts-videos) |
-| 真题怎么用 | [JLPT 真题用法](./japanese-jlpt-past-papers) | [真题视频调研](./bili-past-papers) |
 | 教材体系 | [标日同步手册](./standard-japanese/) | ⚠️ 暂无（雅思以**剑桥真题**为主线，不绑单一教材） |
 
 ---
@@ -143,6 +145,9 @@ layout: doc
 > **两条硬提醒**（详见[分数段页](./ielts-score-bands)）：
 > 1. **写作是四项里最慢的** —— Task 2 分值双倍，且没有标准答案可对照，**不要留到最后两个月**。
 > 2. **总分够 ≠ 达标** —— 常见要求是「总分 6.5 + 单项不低于 6.0」，**先补最弱那项**。
+
+> 📝 **真题从哪买、哪些剑号值得做、怎么刷** → [雅思真题 · 怎么找、怎么用](./ielts-past-papers)
+> （**剑桥真题集每本 4 套；剑 1–3 太老可跳过；官方免费样题是碎片、不是完整套题**）
 
 ---
 
