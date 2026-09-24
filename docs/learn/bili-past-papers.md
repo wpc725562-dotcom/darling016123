@@ -7,7 +7,7 @@ description: 用 B站搜索 + 分P实测 找「历年真题」类视频：JLPT �
 
 > **调研日期**：2026-09-22 · **关键词**：`JLPT N1 真题` / `日语N2真题` / `日语 历年真题` / `剑桥雅思真题` / `雅思真题`（各取搜索第 1 页 20 条）
 > **方法**：搜索走 `x/web-interface/search/type`（需设备指纹）；**规模与覆盖全部用 `x/player/pagelist` 实测**，不信标题。
-> 配套阅读：[JLPT 真题怎么用](./japanese-jlpt-past-papers) · [B站日语调研](./bili-japanese-n1-videos) · [B站雅思调研](./bili-ielts-videos)
+> 配套阅读：[JLPT 真题怎么用](./japanese-jlpt-past-papers) · [雅思真题怎么用](./ielts-past-papers) · [B站日语调研](./bili-japanese-n1-videos) · [B站雅思调研](./bili-ielts-videos)
 
 ::: warning 先读这段：为什么「真题」要单独做一页
 B站的真题类视频有两个特点，决定了不能只看标题：
@@ -132,10 +132,13 @@ B站的真题类视频有两个特点，决定了不能只看标题：
 | 你手上的页 | 它回答什么 | 本页补什么 |
 |:---|:---|:---|
 | [JLPT 真题 · 怎么找怎么用](./japanese-jlpt-past-papers) | 考什么、合格线、三遍刷法、错题本 | **「真题从哪来」的 B站这一档**（该页原本只列了官方 + 市售书） |
+| [雅思真题 · 怎么找怎么用](./ielts-past-papers) | 剑桥真题集是什么、三档来源与版权、三遍刷法 | 同上 —— 该页的**听力原卷**这一档由本页 §4.1 补 |
 | [B站日语 0→N1 调研](./bili-japanese-n1-videos) | 跟谁**学**（课程类） | 用哪条**刷题**（真题类） |
 | [B站雅思调研](./bili-ielts-videos) | 雅思听说读写**课程** | 剑桥**真题**的听力原卷与精讲 |
 
-**推荐顺序**：先按[执行手册](./japanese-video-route-plan)学到对应阶段 → 用[JLPT 真题用法](./japanese-jlpt-past-papers)的三遍法 → **听力原卷用本页 §2.1（树先生）**，**全卷讲解用 §2.2（周业繁）**。
+**推荐顺序（日语）**：先按[日语执行手册](./japanese-video-route-plan)学到对应阶段 → 用[JLPT 真题用法](./japanese-jlpt-past-papers)的三遍法 → **听力原卷用本页 §2.1（树先生）**，**全卷讲解用 §2.2（周业繁）**。
+
+**推荐顺序（雅思）**：先按[雅思执行手册](./ielts-video-route-plan)走到冲刺段 → 用[雅思真题用法](./ielts-past-papers)的三遍法 → **听力原卷用本页 §4.1**，**逐题精讲用 §4.2（雅思备考规划，剑 17–20）**。
 
 ---
 

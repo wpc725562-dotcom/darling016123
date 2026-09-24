@@ -192,4 +192,4 @@ description: 剑桥雅思官方真题集到底是什么（剑1–21、每本4套
 
 ---
 
-> **相关**：[雅思零基础起步](./ielts-zero-baseline) · [雅思分数段与难度断层](./ielts-score-bands) · [雅思核心知识点清单](./ielts-core-checklist) · [雅思执行手册](./ielts-video-route-plan) · [B站历年真题调研](./bili-past-papers)
+← [雅思零基础起步](./ielts-zero-baseline) · [雅思执行手册](./ielts-video-route-plan) · [B站历年真题调研](./bili-past-papers) · [回学习路线](./)

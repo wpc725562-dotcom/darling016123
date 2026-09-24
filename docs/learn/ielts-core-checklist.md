@@ -200,4 +200,4 @@ outline: deep
 
 ---
 
-← [雅思零基础起步](./ielts-zero-baseline) · [雅思分数段与难度断层](./ielts-score-bands) · [回学习路线](./)
+← [雅思零基础起步](./ielts-zero-baseline) · [雅思分数段与难度断层](./ielts-score-bands) · [雅思真题用法](./ielts-past-papers) · [回学习路线](./)
