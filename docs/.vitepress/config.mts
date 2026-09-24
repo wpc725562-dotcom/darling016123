@@ -1202,6 +1202,8 @@ export default defineConfig({
             //    2026-09-21 由 check-links.mjs 新增的 srcExclude 检查抓出。
             { text: '🧰 B站/抖音解析项目调研', link: '/guide/bili-mcp-projects' },
             { text: '🧾 仓库完整性审计（168 文件）', link: '/guide/仓库完整性审计-2026-09-21' },
+            { text: '🛡️ 数据删除风险（五维度）', link: '/guide/数据删除风险-2026-09-24' },
+            { text: '🔧 工作台优化评估', link: '/guide/工作台优化评估-2026-09-24' },
           ],
         },
         {
