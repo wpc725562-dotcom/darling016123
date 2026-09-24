@@ -29,6 +29,22 @@
 
 只有 `none` 可以写进结论。`unknown` 必须重跑。
 
+★★★ 但 `unknown` 里混着两种完全不同的东西（2026-09-24 实测）
+-----------------------------------------------------------
+`subtitle_url` 有三种形态，只有 A 满足 aid+cid 不变量：
+
+  A  `.../ai_subtitle/prod/{aid}{cid}{hash}`  → has（正常情况）
+  B  `.../ai_subtitle/prod/{32位hash}`        → 本脚本判 unknown，
+        但 `ai_status=2`、`lan=ai-zh`，**往往是它自己的真 AI 轨**，只是命名不合规。
+        实测：阿飞 P5 = 5198 字，内容与标题「日语的声调」一致；
+        且与同 aid 的 P8（3735 字）md5 不同 ⇒ 不是「同 aid 别的分P」的串轨。
+  C  `.../bfs/subtitle/{40位hash}.json`       → 本脚本判 unknown，
+        但 `ai_status=0`，**通常只有 1 条空句**（0 字 / 6 字 / 32 字）⇒ 占位空轨。
+
+⇒ 所以 `unknown` **不能当「无字幕」用**，也不能当「有字幕」用 ——
+   必须用 `bili_resolve_unknown.py` 取正文按字数定夺。
+   首轮全量普查 6 个未定里，实际有 2 个是真字幕、4 个是空壳轨。
+
 用法
 ----
   python scripts/bili_probe_parts.py --bv BV14T4y1Y78G --pages 169-184
