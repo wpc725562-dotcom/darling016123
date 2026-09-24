@@ -165,6 +165,27 @@ export default defineConfig({
         ],
       },
       {
+        text: '🇬🇧 雅思',
+        items: [
+          { text: '学习路线', link: '/learn/' },
+          {
+            text: '🎯 入门与工具',
+            items: [
+              { text: '雅思零基础起步', link: '/learn/ielts-zero-baseline' },
+              { text: '📊 分数段与难度断层', link: '/learn/ielts-score-bands' },
+              { text: '✅ 核心知识点清单', link: '/learn/ielts-core-checklist' },
+              { text: '🗺️ 执行手册', link: '/learn/ielts-video-route-plan' },
+            ],
+          },
+          {
+            text: '🎬 B站课程调研（含字幕实测）',
+            items: [
+              { text: '英语雅思：B站课程调研', link: '/learn/bili-ielts-videos' },
+            ],
+          },
+        ],
+      },
+      {
         text: '🎬 B站视频调研',
         items: [
           { text: '日语 0 基础 → N1', link: '/learn/bili-japanese-n1-videos' },
@@ -262,10 +283,20 @@ export default defineConfig({
           ],
         },
         {
+          text: '🇬🇧 雅思学习',
+          items: [
+            { text: '学习路线', link: '/learn/' },
+            { text: '🎯 雅思零基础起步', link: '/learn/ielts-zero-baseline' },
+            { text: '📊 分数段与难度断层', link: '/learn/ielts-score-bands' },
+            { text: '✅ 核心知识点清单', link: '/learn/ielts-core-checklist' },
+            { text: '🗺️ 执行手册', link: '/learn/ielts-video-route-plan' },
+          ],
+        },
+        {
           text: '🎬 B站视频调研',
           items: [
             { text: '日语 0 基础 → N1', link: '/learn/bili-japanese-n1-videos' },
-            { text: '英语雅思', link: '/learn/bili-ielts-videos' },
+            { text: '英语雅思（含字幕实测）', link: '/learn/bili-ielts-videos' },
             { text: '📚 历年真题调研', link: '/learn/bili-past-papers' },
           ],
         },
