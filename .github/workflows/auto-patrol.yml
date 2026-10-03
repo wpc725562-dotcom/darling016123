@@ -349,7 +349,7 @@ jobs:
           #   若写的是过期常量，等于把 bug 藏起来。cs 的 44 于 2026-09-23 随
           #   coverage-expectations.json 重新校准为 51（本地新增 7 篇计算机笔记）。
           EXPECT_FILE="scripts/coverage-expectations.json"
-          math_expected="$(read_expect "$EXPECT_FILE" math 70)"
+          math_expected="$(read_expect "$EXPECT_FILE" math 71)"
           cs_expected="$(read_expect "$EXPECT_FILE" cs 51)"
           po_expected="$(read_expect "$EXPECT_FILE" po 20)"
           echo "📐 期望值: math=$math_expected cs=$cs_expected po=$po_expected"
