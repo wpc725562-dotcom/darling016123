@@ -104,7 +104,7 @@ features:
 <!-- STATS:START -->
 | 区块 | 站内位置 | 规模 | 来源 |
 |:---|:---|:---|:---|
-| 高数章节笔记 | [/posts/math/notes/](/posts/math/notes/) | **69 篇**（第 9–11 章为部分收录） | `高等数学/` |
+| 高数章节笔记 | [/posts/math/notes/](/posts/math/notes/) | **70 篇**（第 9–11 章为部分收录） | `高等数学/` |
 | 计算机知识点 | [/posts/computer/notes/](/posts/computer/notes/) | **37 篇** | 本站原创 |
 | 政治系统笔记 | [/posts/politics/notes/](/posts/politics/notes/) | **19 个模块** | `政治理论/` |
 | 英语系统笔记 | [/posts/english/notes/](/posts/english/notes/) | **10 篇** | `编程技能/专升本英语/` |

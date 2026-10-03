@@ -43,7 +43,11 @@ export default defineConfig({
   ],
 
   markdown: {
-    math: true,
+    // ★ fontCache: 'local' —— VitePress 会把 options.math 原样透传给 markdown-it-mathjax3。
+    //   插件默认 fontCache:'none'（每个字形都重新内联），改成 'local' 实测输出 -10%。
+    //   ★ 别改成 'global'：插件对**每个公式都新建一个 document**，global 期望的
+    //     「整篇共享字体缓存」根本不存在 ⇒ 输出里只有 <use> 没有 <defs>，公式渲染不出来。
+    math: { svg: { fontCache: 'local' } },
     lineNumbers: true,
     theme: {
       light: 'github-light',
@@ -434,6 +438,7 @@ export default defineConfig({
             { text: "1.12 函数的连续性与间断点分类", link: "/posts/math/notes/1.12-函数的连续性与间断点分类" },
             { text: "1.13 函数的连续性", link: "/posts/math/notes/1.13-函数的连续性" },
             { text: "1.14 闭区间上连续函数的性质", link: "/posts/math/notes/1.14-闭区间上连续函数的性质" },
+            { text: "1.15 无穷小的比较", link: "/posts/math/notes/1.15-无穷小的比较" },
           ],
         },
         {
@@ -1186,10 +1191,18 @@ export default defineConfig({
             { text: '　└ C 语言基础', link: '/guide/knowledge-map/computer/c-language' },
             { text: '　└ C 语言进阶与工程', link: '/guide/knowledge-map/computer/c-advanced' },
             { text: '　└ 数据结构与真题题型', link: '/guide/knowledge-map/computer/data-structures' },
+            { text: '　└ 补充考点（跨课补遗）', link: '/guide/knowledge-map/computer/supplement' },
             { text: '📐 高数 · 极限导数微分学', link: '/guide/knowledge-map/math/limits-derivatives' },
             { text: '　└ 积分与微分方程', link: '/guide/knowledge-map/math/integrals' },
             { text: '　└ 多元·级数·线代·证明', link: '/guide/knowledge-map/math/advanced' },
-            { text: '🇬🇧 英语 · 语法与题型', link: '/guide/knowledge-map/english' },
+            { text: '　└ 补充考点（跨课补遗）', link: '/guide/knowledge-map/math/supplement' },
+            { text: '🇬🇧 英语 · 语法与题型', link: '/guide/knowledge-map/english/grammar' },
+            { text: '　└ 补充考点（跨课补遗）', link: '/guide/knowledge-map/english/supplement' },
+            { text: '🇬🇧 英语（高考）· 语法体系', link: '/guide/knowledge-map/english-gaokao/grammar' },
+            { text: '　└ 语法学习定位 ⭐', link: '/guide/knowledge-map/english-gaokao/grammar-guide' },
+            { text: '　└ 题型与解题方法', link: '/guide/knowledge-map/english-gaokao/reading' },
+            { text: '　└ 应用文写作', link: '/guide/knowledge-map/english-gaokao/writing' },
+            { text: '　└ 词汇与方法', link: '/guide/knowledge-map/english-gaokao/vocab-methods' },
           ],
         },
         {

@@ -115,7 +115,22 @@ zsb/
 
 # B站视频解析产物（音频 / 画面帧 / 逐字稿）—— 本地用，不推送
 # 见 scripts/bili_analyze.py。注意 *.jpg / *.m4s 不在上面的通用媒体规则里，必须单独挡。
-data/bili-analyze/
+#
+# ★ 例外（2026-10-03）：`_extract/_subject/` 与 `_extract/_replay/` 必须进版本控制。
+#   原因：① `_subject/*.md` 是知识地图的**源数据**，页面由它生成，不入库则无法审计；
+#        ② `_replay/_add-*.md` 是 merge_asr_into_map.py 的**唯一输入**，丢了无法重放。
+#           2026-09-26 那次覆盖事故（高考英语地图被冲成 16 章）能恢复，
+#           全靠碰巧有 .bak + 凭记忆重放（记忆还漏过一轮）—— 这个风险必须断掉。
+#   体积：_subject 4 份约 2.4 MB + _replay 约 2.4 MB，都是「小而不再生」的资产。
+#   详见 data/bili-analyze/_extract/_replay/README.md
+#
+#   注意 gitignore 语义：**被忽略目录内部的文件无法用 `!` 拉回来**，
+#   所以必须先不忽略 `data/bili-analyze/`，再逐层排除，只放行要留的两层。
+data/bili-analyze/*
+!data/bili-analyze/_extract/
+data/bili-analyze/_extract/*
+!data/bili-analyze/_extract/_subject/
+!data/bili-analyze/_extract/_replay/
 
 # 真题讲解抓取产物（字幕轨 / 画面帧 / 逐字稿 / 真题卡）—— 同上，本地用
 # 见 scripts/bili_zhenti.py。★ 只有重写后的 notes/*.md 会进 docs/，原始产物一律不进站。

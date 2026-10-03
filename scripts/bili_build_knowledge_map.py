@@ -24,7 +24,10 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.path.join(ROOT, "data", "bili-analyze", "_extract", "_subject")
 DST = os.path.join(ROOT, "docs", "guide", "knowledge-map")
 
-# 拆分方案：学科 -> [(输出文件, 页面标题, 章节区间(1-based, 闭区间), 一句话说明)]
+# 拆分方案：学科 -> [(输出文件, 页面标题, 区间, 一句话说明)]
+#   区间可以是 (lo, hi) 元组（hi 写 None 表示「到图末」，适合尾部只增不改的图），
+#   也可以是**主题名字符串**（如 "语法"）—— 由 resolve_ranges() 从章标题的
+#   `## <主题> · <章名>` 自动推导。章节会增删的图**必须用主题名**。
 PLAN = {
     "computer": [
         ("basics.md", "计算机基础与 Office",
@@ -35,6 +38,8 @@ PLAN = {
          (21, 27), "指针进阶与类型识别、结构体/位段/联合体/枚举、动态内存管理与程序内存区域、文件操作、编译链接与预处理、调试与常见错误、经典例题与项目实践"),
         ("data-structures.md", "数据结构与真题题型",
          (28, 39), "绪论与复杂度、线性表、栈与队列、串、树与二叉树、图、查找、排序、真题题型套路"),
+        ("supplement.md", "补充考点（跨课补遗）",
+         (40, None), "从 8 门课里补回的缺失章节：按来源课程与父章组织，含数制转换、进制、菜单与窗口约定、URL、调试与版本等"),
     ],
     "math": [
         ("limits-derivatives.md", "极限 · 导数 · 微分学应用",
@@ -43,14 +48,30 @@ PLAN = {
          (4, 6), "不定积分、定积分及其应用、常微分方程"),
         ("advanced.md", "多元微积分 · 级数 · 线代 · 证明",
          (7, 12), "向量代数与空间解析几何、多元函数微分学、二重积分、无穷级数、线性代数、证明专项"),
+        ("supplement.md", "补充考点（跨课补遗）",
+         (13, None), "从 8 门课里补回的缺失章节：按来源课程与父章组织，含函数判定与复合、极限计算方法、凑微分题型、换元法、特解设法等"),
     ],
     "english": [
-        ("english.md", "英语语法与题型",
+        ("grammar.md", "英语语法与题型",
          (1, 12), "句子主干、词法、谓语体系、时态、语态、情态、非谓语、虚拟语气、从句、特殊句式、题型专项"),
+        ("supplement.md", "补充考点（跨课补遗）",
+         (13, None), "从 3 门课里补回的缺失章节"),
+    ],
+    # 高考英语：UP主 FREE高考英语 的 16 个合集，与专升本英语不是同一份考纲，单独立图。
+    "english-gaokao": [
+        ("grammar.md", "语法体系",
+         "语法", "词法（名/代/冠/数/形副/介/连）、英语常识与词类总览、构词法、句法基础、动词（谓语判断/时态/语态/情态与虚拟）、非谓语动词、从句（名词性/定语/状语）、特殊句式、语法填空与完形填空的语法侧考点"),
+        ("reading.md", "题型与解题方法",
+         "题型", "长难句拆解、篇章结构、阅读五大题型（细节/推断/主旨/词义猜测/态度）、高频词汇与难词、七选五、完形填空、语法填空、书面表达、通用应试策略"),
+        ("writing.md", "应用文写作",
+         "写作", "书信类（申请/建议/感谢/道歉/邀请/投诉/咨询/求助/请求）、倡议书、计划类回信、通知类、演讲稿与发言稿、祝贺类、记叙与描写、推荐与介绍类、议论与观点类、图表作文、通用结构、段落展开、高分表达、主题素材、篇幅控制、常见扣分点"),
+        ("vocab-methods.md", "词汇与方法",
+         "词汇方法", "词汇分级与备考定位、构词法、高频核心词分类、逻辑连词与功能结构、介词与情态动词考点、近义词与形近词辨析、熟词僻义、固定搭配、写作词汇升级、词汇记忆方法、学习方法论与学习路径规划"),
     ],
 }
 
-SUBJECT_CN = {"computer": "计算机", "math": "高数", "english": "英语"}
+SUBJECT_CN = {"computer": "计算机", "math": "高数", "english": "英语",
+              "english-gaokao": "英语（高考）"}
 
 CH_RE = re.compile(r"^## ", re.M)
 
@@ -129,8 +150,111 @@ def split_chapters(text):
     return head, out
 
 
+def resolve_ranges(chapters):
+    """把 PLAN 里的区间说明解析成真正的 `(lo, hi)`（1-based 闭区间）。
+
+    ★ 为什么不再硬编码序号：高考英语那张图的章节数是会变的
+      （补内容 / 删空章都会动），而 `(1, 33)` 这种硬编码序号**一加章就错位**，
+      表现为「某个主题页里混进了别的主题的章节」，而且**不会报错**。
+      实测 2026-09-25 一天之内手改了三次区间。
+
+    ⇒ 改用**主题名**（章标题 `## <主题> · <章名>` 里 `·` 前面那截）自动推导：
+      该主题的所有章连续出现时，区间就是 `[首章序号, 末章序号]`。
+      这样加减章只要主题没变，区间自动跟着走。
+
+    返回 {(主题名): (lo, hi)}；主题名不存在时返回 None 由调用方报错。
+    """
+    rng, multi = {}, set()
+    cur, start = None, None
+    for i, (title, _) in enumerate(chapters, 1):
+        th = title.split("·", 1)[0].strip() if "·" in title else title
+        if th != cur:
+            if cur is not None:
+                if cur in rng:                 # 该主题出现第二段 —— 记下来，别静默吞掉
+                    multi.add(cur)
+                else:
+                    rng[cur] = (start, i - 1)
+            cur, start = th, i
+    if cur is not None:
+        if cur in rng:
+            multi.add(cur)
+        else:
+            rng[cur] = (start, len(chapters))
+    return rng, multi
+
+
 def count_points(block):
     return len(re.findall(r"^### ", block, re.M))
+
+
+# ── 出处链接化 ────────────────────────────────────────────────────────────────
+# 专升本 19 个 BV 与成品里的「课程简称」是**一一对应**的（不像高考英语那样
+# 一个简称聚合 8 个 BV），所以可以精确到分P 拼直达链接。
+# ★ 只在**生成的页面**上做，不改 `_subject/*.md` 源数据 —— 源里保留纯文本，
+#   这样换 UP主、换 BV 只要改这张表，不用重跑整条提炼链路。
+BV_OF = {
+    # 计算机
+    "鹏哥": "BV17a7K64ELH", "逊哥": "BV1tNpbekEht", "H学长": "BV1Ay4y137RA",
+    "升本啦": "BV1KU4y167ds", "强哥": "BV1Ye411Y7Ue", "张无忌": "BV1z84y1z7Vp",
+    "一灯": "BV1Z4w3znE6h", "强哥·数据结构": "BV1ajMo6TEBm",
+    # 高数
+    "陈哥": "BV1husGzwEtZ", "石头": "BV18CL26WEJ3", "杰哥": "BV1Up4y1Y76a",
+    "ok姐": "BV1vm421s7mv", "米哥": "BV1swAWerEzS", "学士帽": "BV1X4411J792",
+    "斌哥": "BV12DdNYzEvy", "帆哥": "BV1xxXZBKENv",
+    # 英语
+    "阿珂": "BV1brgBzNEbW", "乐贯中西": "BV1jT4y1f7YA", "易易": "BV1Do4y1h7om",
+}
+
+
+def _bv_url(bv, p):
+    return "https://www.bilibili.com/video/%s?p=%d" % (bv, p)
+
+
+def linkify_sources(text):
+    """把 `- **出处**：陈哥 P50, P51；杰哥 P28` 里的每个分P 变成直达链接。
+
+    支持的写法（实测这三种覆盖了 100% 的 1590 条）：
+        `H学长 P2`                  单课程
+        `H学长 P13–P16`             带区间（链到区间起点）
+        `H学长 P14；升本啦 P2`        多课程
+
+    ★ 认不出的简称**原样保留**，不猜、不报错 —— 宁可少链，不要链错。
+    """
+    def one(seg):
+        m = re.match(r"^([^\sP][^\s]*)\s+(.+)$", seg.strip())
+        if not m:
+            return seg
+        name, rest = m.group(1), m.group(2)
+        bv = BV_OF.get(name)
+        if not bv:
+            return seg
+        out = []
+        for i, part in enumerate(re.split(r",\s*", rest)):
+            # ★★ 分P 后面**可能带后缀**（画面来源的出处是 `一灯 P1（画面）`）。
+            #    第一版正则写死 `$` 结尾 ⇒ 带 `（画面）` 就匹配失败 ⇒ 走兜底
+            #    只 append 了 `part`（= `P1（画面）`），**把「一灯」丢了**，
+            #    页面上变成光秃秃的 `P1（画面）`。实测漏了 17 条。
+            #    ⇒ 正则容忍尾部内容，并把它原样接回去。
+            pm = re.match(r"^P(\d+)(?:\s*[–\-]\s*P?(\d+))?\s*(.*)$", part.strip())
+            if not pm:
+                # 认不出也要**保留简称**（宁可少链，不要丢信息）
+                out.append(part if i else ("%s %s" % (name, part)))
+                continue
+            tail = pm.group(3) or ""
+            p0 = int(pm.group(1))
+            label = ("%s P%s" % (name, pm.group(1))) if i == 0 else ("P%s" % pm.group(1))
+            if pm.group(2):
+                label += "–P%s" % pm.group(2)
+            out.append("[%s](%s)%s" % (label, _bv_url(bv, p0), tail))
+        return "、".join(out)
+
+    def rep(m):
+        segs = re.split(r"[；;]", m.group(1))
+        return "- **出处**：" + "；".join(one(s) for s in segs)
+
+    out, n = re.subn(r"^- \*\*出处\*\*：(.+)$", rep, text, flags=re.M)
+    n_linked = len(re.findall(r"https://www\.bilibili\.com/video/", out))
+    return out, n_linked
 
 
 def main():
@@ -147,12 +271,50 @@ def main():
         with io.open(src, encoding="utf-8") as fh:
             text = fh.read()
         head, chapters = split_chapters(text)
+        rng, multi = resolve_ranges(chapters)
+        if multi:
+            print("  ⚠️ 这些主题被拆成多段，只用第一段：%s" % sorted(multi))
         total_pts = sum(count_points(b) for _, b in chapters)
         print("=" * 74)
         print("%s（%s）：%d 章 / %d 知识点 / %d 字符"
               % (SUBJECT_CN[subj], subj, len(chapters), total_pts, len(text)))
         used = 0
-        for fname, title, (lo, hi), desc in pages:
+        _prev_hi = 0        # ★ 数字区间的连续性游标（见下方边界断言）
+        for fname, title, span, desc in pages:
+            if isinstance(span, str):              # 主题名 → 自动推导区间
+                if span not in rng:
+                    print("  ❌ 主题「%s」在图里找不到，跳过 %s" % (span, fname))
+                    continue
+                lo, hi = rng[span]
+            else:
+                lo, hi = span
+                # ★★ `(lo, None)` = 到图末。专升本那几张图的「补充」页天生
+                #    是「主线章节之后的全部」，写死 hi 一加章就漏（实测：
+                #    加了 4 章后 supplement 只覆盖到 69/73，页面少 4 章）。
+                if hi is None:
+                    hi = len(chapters)
+            # ★★★ 数字区间的边界断言 —— 2026-10-03 加。
+            #    `computer` 那 4 段的标题是 `一、计算机基础知识` 这种中文序号，
+            #    **不含 `·`**，所以 resolve_ranges 的主题名机制对它完全无效
+            #    （整条标题都会被当成主题名，切成 73 个碎片），
+            #    ⇒ 只能用数字区间，这不是偷懒，是唯一可行方式。
+            #    但数字区间的**真实风险**是「中段插章导致整体错位」：
+            #    在 computer.md 主线段中间插入一章，`(10,20)` 就会把原本的
+            #    第 9 章挤到 c-language 页、第 20 章被挤到 c-advanced 页，
+            #    而且**不报错**（页面照生成，只是内容串了）。
+            #    ⇒ 判据：区间的首章必须接上一段的末章 +1（连续无缝、不重不漏），
+            #      且**最后一段必须覆盖到图末**。任何错位都当场硬失败。
+            if not isinstance(span, str):
+                _exp_lo = _prev_hi + 1 if _prev_hi else 1
+                if lo != _exp_lo:
+                    raise SystemExit(
+                        "❌ %s 的数字区间与上一段不连续：本段 lo=%d，应为 %d。\n"
+                        "   通常是**在计算机/高数主线段中间插入了新章**，导致后续区间整体错位。\n"
+                        "   改法：重排 PLAN['%s'] 的全部数字区间（或把段落改成主题名，"
+                        "若该图章标题含 `·`）。\n"
+                        "   历史教训：漏改会让相邻页混进别的章节，且**不会报错**。"
+                        % (fname, lo, _exp_lo, subj))
+                _prev_hi = hi
             picked = chapters[lo - 1:hi]
             used += len(picked)
             body = "\n".join(b for _, b in picked)
@@ -180,10 +342,23 @@ def main():
             body, nfix = sanitize(body)
             if nfix:
                 print("     ⚠️ 转义 %d 处（裸 `<` + LaTeX 下标）" % nfix)
+            body, nlink = linkify_sources(body)
+            if nlink:
+                print("     🔗 出处链接化 %d 处" % nlink)
             with io.open(out, "w", encoding="utf-8", newline="\n") as fh:
                 fh.write(header + body.lstrip("\n") + "\n")
         if used != len(chapters):
-            print("  ⚠️ 章节覆盖不全：用了 %d / 共 %d" % (used, len(chapters)))
+            # ★★ 这个警告必须**硬失败**，不能只 print 一句就过。
+            #    实测踩过：合并进来的章用了**新主题名**（`应用文写作`，而地图里既有的
+            #    写作章主题是 `写作`）⇒ 地图里出现第 5 个主题连续段 ⇒ 生成器的
+            #    4 板块切分覆盖不到它 ⇒ **7 章 / 22 条静默地从页面上消失**。
+            #    当时只打了 ⚠️ 就继续写文件，页面数字对不上才发现。
+            #    ⇒ 章节没被完整消费 = 数据要丢，必须拦住。
+            raise SystemExit(
+                "❌ 章节覆盖不全：只用了 %d / 共 %d 章。\n"
+                "   通常是「新增章用了地图里没有的主题名」，导致主题连续段多出一段。\n"
+                "   检查 `_add-*.md` 里的 `## <主题> · ...`，主题名要与地图既有的对齐。"
+                % (used, len(chapters)))
     print("=" * 74)
     if args.dry_run:
         print("[dry-run] 未写文件。")
