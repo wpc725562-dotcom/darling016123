@@ -1,6 +1,13 @@
 ---
 title: "章节审计报告 · 1.11 程序运行环境与调试"
 description: "计算机程序设计笔记 · 1.11 程序运行环境与调试 · 章节审计记录（仅审计，不生成讲义正文）"
+category: "computer-note"
+difficulty: "intermediate"
+frequency: "medium"
+mastery: "review"
+tags:
+  - 章节审计报告
+  - 程序运行环境与调试
 ---
 
 # 章节审计报告 · 1.11 程序运行环境与调试

@@ -1,6 +1,14 @@
 ---
 title: "短文造句匹配（五选五）技巧"
 description: "公共英语 · 短文造句匹配（10分）高分技巧"
+category: "english-note"
+difficulty: "intermediate"
+frequency: "medium"
+mastery: "review"
+tags:
+  - 短文造句匹配
+  - 五选五
+  - 技巧
 ---
 
 # 短文造句匹配（五选五）技巧

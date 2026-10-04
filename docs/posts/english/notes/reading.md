@@ -2,6 +2,11 @@
 title: "阅读理解高分技巧"
 description: "公共英语 · 阅读理解高分技巧"
 category: "english-note"
+difficulty: "intermediate"
+frequency: "medium"
+mastery: "review"
+tags:
+  - 阅读理解高分技巧
 ---
 
 # 📖 阅读理解高分技巧

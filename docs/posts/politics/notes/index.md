@@ -1,6 +1,13 @@
 ---
 title: "政治理论 · 系统笔记"
 description: "按 2026 广东专升本政治大纲模块整理"
+category: "politics-note"
+difficulty: "intermediate"
+frequency: "medium"
+mastery: "review"
+tags:
+  - 政治理论
+  - 系统笔记
 ---
 
 # 政治理论 · 系统笔记

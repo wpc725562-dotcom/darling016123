@@ -1,14 +1,17 @@
 ---
-title: C语言 · 数组指针与二维数组传参的本质（鹏哥C语言 P117）
-date: 2026-08-24
-category: C语言
+title: "C语言 · 数组指针与二维数组传参的本质（鹏哥C语言 P117）"
+date: "2026-08-24"
+category: "C语言"
 tags:
   - C语言
   - 指针
   - 数组指针
   - 二维数组
   - 专升本考点
-description: 提取自 B 站鹏哥C语言 2026 完整课程 P117【指针】二维数组传参的本质，AI 字幕整理 + 考点提炼。
+description: "提取自 B 站鹏哥C语言 2026 完整课程 P117【指针】二维数组传参的本质，AI 字幕整理 + 考点提炼。"
+difficulty: "intermediate"
+frequency: "medium"
+mastery: "review"
 ---
 
 # 数组指针与二维数组传参的本质

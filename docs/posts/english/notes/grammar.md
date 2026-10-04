@@ -2,6 +2,11 @@
 title: "语法考点精讲"
 description: "公共英语 · 语法考点精讲"
 category: "english-note"
+difficulty: "intermediate"
+frequency: "medium"
+mastery: "review"
+tags:
+  - 语法考点精讲
 ---
 
 # 📐 语法考点精讲

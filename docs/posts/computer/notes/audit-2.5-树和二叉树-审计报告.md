@@ -1,6 +1,13 @@
 ---
 title: "章节审计报告 · 2.5 树和二叉树"
 description: "计算机程序设计笔记 · 2.5 树和二叉树 · 章节审计记录（仅审计，不生成讲义正文）"
+category: "computer-note"
+difficulty: "intermediate"
+frequency: "medium"
+mastery: "review"
+tags:
+  - 章节审计报告
+  - 树和二叉树
 ---
 
 # 章节审计报告 · 2.5 树和二叉树

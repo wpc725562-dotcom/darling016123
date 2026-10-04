@@ -1,6 +1,13 @@
 ---
 title: "高等数学 · 章节笔记"
 description: "从 Obsidian 同步的 8 章系统笔记（编号已统一）"
+category: "math-note"
+difficulty: "intermediate"
+frequency: "medium"
+mastery: "review"
+tags:
+  - 高等数学
+  - 章节笔记
 ---
 
 # 高等数学 · 章节笔记

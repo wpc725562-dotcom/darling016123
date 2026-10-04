@@ -2,6 +2,12 @@
 title: "主谓一致 · 真题专项"
 description: "公共英语 · 主谓一致 + 时态真题专项（13-27 题，含答案与解析）"
 category: "english-note"
+difficulty: "intermediate"
+frequency: "medium"
+mastery: "review"
+tags:
+  - 主谓一致
+  - 真题专项
 ---
 
 # 📝 主谓一致 · 真题专项

@@ -2,6 +2,11 @@
 title: "考试概述与题型分析"
 description: "公共英语 · 考试概述与题型分析"
 category: "english-note"
+difficulty: "intermediate"
+frequency: "medium"
+mastery: "review"
+tags:
+  - 考试概述与题型分析
 ---
 
 # 📋 专升本英语考试概述与题型分析

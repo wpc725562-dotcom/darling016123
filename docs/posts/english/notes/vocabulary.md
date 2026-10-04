@@ -2,6 +2,11 @@
 title: "高频词汇速记"
 description: "公共英语 · 高频词汇速记"
 category: "english-note"
+difficulty: "intermediate"
+frequency: "medium"
+mastery: "review"
+tags:
+  - 高频词汇速记
 ---
 
 # 📝 高频词汇速记

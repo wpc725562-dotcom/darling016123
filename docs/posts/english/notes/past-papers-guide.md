@@ -2,6 +2,11 @@
 title: "历年真题分类与讲解"
 description: "公共英语 · 历年真题分类与讲解"
 category: "english-note"
+difficulty: "intermediate"
+frequency: "medium"
+mastery: "review"
+tags:
+  - 历年真题分类与讲解
 ---
 
 # 📑 历年真题分类与讲解

@@ -2,6 +2,11 @@
 title: "考试大纲与题型补强"
 description: "公共英语 · 考试大纲与题型补强"
 category: "english-note"
+difficulty: "intermediate"
+frequency: "medium"
+mastery: "review"
+tags:
+  - 考试大纲与题型补强
 ---
 
 # 公共英语 · 考试大纲与题型补强

@@ -2,6 +2,11 @@
 title: "考纲一览"
 description: "计算机程序设计 · 考纲一览"
 category: "computer-note"
+difficulty: "intermediate"
+frequency: "medium"
+mastery: "review"
+tags:
+  - 考纲一览
 ---
 
 # 计算机 · 考试大纲与试卷结构

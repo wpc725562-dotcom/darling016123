@@ -1,6 +1,12 @@
 ---
 title: "完形填空高分技巧"
 description: "公共英语 · 完形填空（30分）高分技巧"
+category: "english-note"
+difficulty: "intermediate"
+frequency: "medium"
+mastery: "review"
+tags:
+  - 完形填空高分技巧
 ---
 
 # 完形填空高分技巧（30 分大题）

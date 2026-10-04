@@ -1,6 +1,13 @@
 ---
 title: "英语 · 学习笔记"
 description: "公共英语系统笔记导航"
+category: "english-note"
+difficulty: "intermediate"
+frequency: "medium"
+mastery: "review"
+tags:
+  - 英语
+  - 学习笔记
 ---
 
 # 📚 专升本英语知识库

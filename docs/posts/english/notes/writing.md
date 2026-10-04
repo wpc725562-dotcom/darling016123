@@ -2,6 +2,11 @@
 title: "作文模板与高分句型"
 description: "公共英语 · 作文模板与高分句型"
 category: "english-note"
+difficulty: "intermediate"
+frequency: "medium"
+mastery: "review"
+tags:
+  - 作文模板与高分句型
 ---
 
 # ✍️ 作文模板与高分句型

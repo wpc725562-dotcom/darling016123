@@ -2,6 +2,12 @@
 title: "计算机 · 知识点笔记"
 description: "C 语言 1.1–1.11 + 数据结构 2.1–2.9 + 专项 3.0–3.6"
 category: "computer-note"
+difficulty: "intermediate"
+frequency: "medium"
+mastery: "review"
+tags:
+  - 计算机
+  - 知识点笔记
 ---
 
 # 计算机 · 知识点笔记

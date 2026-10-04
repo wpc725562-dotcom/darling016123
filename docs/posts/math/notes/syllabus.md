@@ -1,6 +1,13 @@
 ---
 title: "高等数学 · 考试大纲与考情"
 description: "广东专升本高数官方考纲（12 章）+ 同济八版教材目录 + 24 年真题实测，三层分开标注"
+category: "math-note"
+difficulty: "intermediate"
+frequency: "medium"
+mastery: "review"
+tags:
+  - 高等数学
+  - 考试大纲与考情
 ---
 
 # 高等数学 · 考试大纲与考情
