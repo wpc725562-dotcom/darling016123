@@ -39,11 +39,12 @@ function processInbox() {
     }
 
     // 只把学习轨迹写到 学习日志.jsonl
-    // inbox 事件当前两种 type：
-    //   - progress: { keys, patch } —— 今日勾选 / 番茄钟累计
-    //   - mastery:  { kp, ok, src } —— 知识点判分
+    // inbox 事件当前三种 type：
+    //   - progress:    { keys, patch } —— 今日勾选 / 番茄钟累计
+    //   - mastery:     { kp, ok, src } —— 知识点判分
+    //   - word_master: { origin, total, mastered, due_now, pct } —— 背词上报
     //   错题目前没有 POST 入站（走 mistake-stats 反向计算）
-    if (ev.type === 'progress' || ev.type === 'mastery') {
+    if (ev.type === 'progress' || ev.type === 'mastery' || ev.type === 'word_master') {
       const entry = {
         ts: ev.ts,
         type: ev.type,
