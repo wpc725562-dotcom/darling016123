@@ -2,6 +2,8 @@
 title: "章节审计报告 · 编程题做题策略专项文档"
 description: "计算机程序设计笔记 · 编程题做题策略专项文档 · 章节审计记录（仅审计，不生成讲义正文）"
 category: "computer-note"
+chapter: "第三章 程序设计与算法 · 编程题专项"
+chapter_id: "3"
 difficulty: "intermediate"
 frequency: "medium"
 mastery: "review"

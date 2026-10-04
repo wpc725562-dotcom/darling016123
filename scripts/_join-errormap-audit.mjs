@@ -61,9 +61,13 @@ for (const f of auditFiles) {
   const perYear = totalMatch ? parseFloat(totalMatch[2]) : 0;
   const totalScore = totalMatch ? parseInt(totalMatch[3]) : 0;
 
-  // 提取 chapter_id
-  const chapMatch = titleMatch ? titleMatch[1].match(/(\d+\.\d+)/) : null;
-  const chapterId = chapMatch ? chapMatch[1] : null;
+  // 提取 chapter_id：先看 fm，再回退到 title
+  const chapFmMatch = fm.match(/^chapter_id:\s*["']?([\d.]+?)["']?\s*$/m);
+  let chapterId = chapFmMatch ? chapFmMatch[1] : null;
+  if (!chapterId) {
+    const chapMatch = titleMatch ? titleMatch[1].match(/(\d+\.\d+)/) : null;
+    chapterId = chapMatch ? chapMatch[1] : null;
+  }
 
   audits.push({
     file: f,
