@@ -77,6 +77,27 @@ for (const f of auditFiles) {
   });
 }
 
+// ---------- 智能 join: 父子章节匹配 ----------
+// errormap chapter_id='1' 应匹配 audit chapter_id='1.10' / '1.11' 等所有 1.x
+function matchAudit(cat, audit) {
+  if (!cat.chapter_id || !audit.chapterId) return false;
+  if (cat.chapter_id === audit.chapterId) return true;
+  // audit 是 cat 的子章节（1.10 是 1 的子）
+  if (audit.chapterId.startsWith(cat.chapter_id + '.')) return true;
+  // cat 是 audit 的父章节（已在前一条覆盖）
+  // 学科不匹配直接否
+  if (cat.subject && audit.subject && cat.subject !== audit.subject) return false;
+  return false;
+}
+
+// 把 audit 按 chapterId 分组（保留原章节），但 join 时用父子匹配
+const auditByChapter = {};
+for (const a of audits) {
+  if (!a.chapterId) continue;
+  if (!auditByChapter[a.chapterId]) auditByChapter[a.chapterId] = [];
+  auditByChapter[a.chapterId].push(a);
+}
+
 // ---------- 生成报告 ----------
 const lines = [];
 lines.push('# 易错点地图 × 章节审计 联合报告');
@@ -95,12 +116,16 @@ const sorted = [...allChapterIds].sort();
 
 for (const cid of sorted) {
   const cats = emByChapter[cid] || [];
-  const audit = audits.find(a => a.chapterId === cid);
+  // 用父子匹配找关联 audit
+  const matchedAudits = audits.filter(a => cats.some(c => matchAudit(c, a)));
   const catNames = cats.map(c => `${c.id}(${c.items.length})`).join('+') || '-';
-  const realQuestions = audit ? `${audit.totalQuestions}题/${audit.totalScore}分` : '-';
-  const covered = (cats.length > 0 ? '✓' : '✗') + (audit ? '✓' : '✗');
-  const gap = !audit ? '**无审计**' : (cats.length === 0 ? '**易错点未映射**' : '-');
-  lines.push(`| ${cid || '?'} | ${catNames} | ${realQuestions} | ${audit ? audit.totalQuestions : '-'} | ${gap} |`);
+  const realQuestions = matchedAudits.length > 0
+    ? `${matchedAudits.reduce((s, a) => s + a.totalQuestions, 0)}题/${matchedAudits.reduce((s, a) => s + a.totalScore, 0)}分`
+    : '-';
+  const totalQuestions = matchedAudits.length > 0 ? matchedAudits.reduce((s, a) => s + a.totalQuestions, 0) : '-';
+  const covered = (cats.length > 0 ? '✓' : '✗') + (matchedAudits.length > 0 ? '✓' : '✗');
+  const gap = matchedAudits.length === 0 ? (cats.length === 0 ? '' : '**易错点无对应真题**') : '-';
+  lines.push(`| ${cid || '?'} | ${catNames} | ${realQuestions} | ${totalQuestions} | ${gap} |`);
 }
 
 lines.push('');
@@ -115,12 +140,15 @@ for (const cat of em.cats) {
   lines.push(`- 章节：${cat.chapter || '?'}（chapter_id=${cat.chapter_id || '?'}）`);
   lines.push(`- 学科：${cat.subject || '?'}`);
   lines.push(`- 易错点数：${cat.items.length}`);
-  // 关联审计（如果 chapter_id 匹配）
-  const matched = cat.chapter_id ? audits.filter(a => a.chapterId === cat.chapter_id) : [];
+  // 用父子匹配找关联 audit
+  const matched = cat.chapter_id ? audits.filter(a => matchAudit(cat, a)) : [];
   if (matched.length > 0) {
-    lines.push(`- 关联审计：${matched.map(m => m.title).join('、')}`);
+    lines.push(`- 关联审计（${matched.length} 篇）：${matched.map(m => m.title).join('、')}`);
+    const totalQ = matched.reduce((s, m) => s + m.totalQuestions, 0);
+    const totalF = matched.reduce((s, m) => s + m.totalScore, 0);
+    lines.push(`  - 合计：${totalQ}题 / ${totalF}分（4年）`);
     for (const m of matched) {
-      lines.push(`  - ${m.totalQuestions}题 / ${m.totalScore}分（4年合计）`);
+      lines.push(`    - ${m.title}：${m.totalQuestions}题 / ${m.totalScore}分`);
     }
   } else {
     lines.push(`- 关联审计：**未匹配**（该 cat 在审计章节中无对应）`);
@@ -133,7 +161,7 @@ lines.push('');
 const gaps = [];
 for (const cat of em.cats) {
   if (!cat.chapter_id) gaps.push(`- 易错点 cat ${cat.id} (${cat.name}) 未映射 chapter_id`);
-  else if (!audits.find(a => a.chapterId === cat.chapter_id)) {
+  else if (!audits.find(a => matchAudit(cat, a))) {
     gaps.push(`- 易错点 cat ${cat.id} (${cat.name}) 映射到 chapter_id=${cat.chapter_id}, 但该章节无 audit 报告`);
   }
 }
@@ -158,5 +186,9 @@ writeFileSync(OUTPUT, lines.join('\n'), 'utf8');
 console.log(`已生成：${OUTPUT}`);
 console.log(`- 易错点 cat: ${em.cats.length}`);
 console.log(`- audit 文件: ${audits.length}`);
-console.log(`- join 上的 chapter: ${sorted.filter(s => emByChapter[s] && audits.find(a => a.chapterId === s)).length} 个`);
+let joinCount = 0;
+for (const c of em.cats) {
+  if (audits.some(a => matchAudit(c, a))) joinCount++;
+}
+console.log(`- join 上的 cat（父子匹配）: ${joinCount}/${em.cats.length}`);
 console.log(`- 缺口: ${gaps.length} 条`);
