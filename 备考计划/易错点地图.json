@@ -533,8 +533,8 @@
           ]
         }
       ],
-      "chapter": "第一章 C语言基础 · 1.4 选择结构",
-      "chapter_id": "1.4",
+      "chapter": "第一章 C语言基础 · 分支（if/switch）",
+      "chapter_id": "1",
       "subject": "computer"
     },
     {
@@ -711,8 +711,8 @@
           ]
         }
       ],
-      "chapter": "第一章 C语言基础 · 1.5 循环结构",
-      "chapter_id": "1.5",
+      "chapter": "第一章 C语言基础 · 循环",
+      "chapter_id": "1",
       "subject": "computer"
     },
     {
@@ -762,8 +762,8 @@
           "hot": 3
         }
       ],
-      "chapter": "第一章 C语言基础 · 1.7 数组",
-      "chapter_id": "1.7",
+      "chapter": "第一章 C语言基础 · 数组",
+      "chapter_id": "1",
       "subject": "computer"
     },
     {
