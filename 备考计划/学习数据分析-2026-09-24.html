@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>学习数据分析 · 2026-09-24</title>
+<style>
+:root{
+  --bg:#f6f7f9; --panel:#fff; --ink:#1a1d21; --dim:#5b6470; --line:#e3e6ea;
+  --c-c:#3b82f6; --c-cs:#8b5cf6; --c-math:#10b981; --c-en:#f59e0b; --c-tool:#94a3b8;
+  --c-pol:#ef4444; --c-ds:#64748b;
+  --ok:#10b981; --warn:#f59e0b; --bad:#ef4444;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#0f1216; --panel:#171b21; --ink:#e8eaed; --dim:#9aa3ae; --line:#262b33;
+         --c-c:#60a5fa; --c-cs:#a78bfa; --c-math:#34d399; --c-en:#fbbf24; --c-tool:#64748b; }
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font:14px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+.wrap{max-width:1180px;margin:0 auto;padding:28px 20px 60px}
+h1{font-size:24px;margin:0 0 4px;letter-spacing:-.3px}
+.sub{color:var(--dim);font-size:13px;margin-bottom:24px}
+h2{font-size:16px;margin:32px 0 12px;padding-left:10px;border-left:3px solid var(--c-c)}
+h3{font-size:14px;margin:20px 0 8px;color:var(--dim);font-weight:600}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.grid{display:grid;gap:12px}
+.g5{grid-template-columns:repeat(5,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.g2{grid-template-columns:1fr 1fr}
+@media(max-width:900px){.g5,.g4{grid-template-columns:repeat(2,1fr)}.g2{grid-template-columns:1fr}}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.kpi .v{font-size:26px;font-weight:700;letter-spacing:-.5px;line-height:1.2}
+.kpi .l{font-size:12px;color:var(--dim);margin-top:2px}
+.kpi .n{font-size:11px;color:var(--dim);margin-top:6px;padding-top:6px;border-top:1px dashed var(--line)}
+.kpi.ok .v{color:var(--ok)} .kpi.bad .v{color:var(--bad)} .kpi.warn .v{color:var(--warn)}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line)}
+th{color:var(--dim);font-weight:600;font-size:12px}
+td.num{text-align:right;font-variant-numeric:tabular-nums}
+.tag{display:inline-block;font-size:11px;padding:1px 7px;border-radius:20px;border:1px solid var(--line);color:var(--dim)}
+.tag.bad{border-color:var(--bad);color:var(--bad)} .tag.warn{border-color:var(--warn);color:var(--warn)}
+.tag.ok{border-color:var(--ok);color:var(--ok)}
+.bar{height:22px;border-radius:5px;display:inline-block;vertical-align:middle;min-width:2px}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:12px;color:var(--dim);margin:10px 0 0}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+.note{font-size:12.5px;color:var(--dim);margin-top:8px}
+.alert{border-left:3px solid var(--bad);padding:10px 14px;background:color-mix(in srgb,var(--bad) 7%,transparent);border-radius:0 8px 8px 0;margin:10px 0}
+.alert.warn{border-color:var(--warn);background:color-mix(in srgb,var(--warn) 8%,transparent)}
+.alert.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 8%,transparent)}
+.alert b{display:block;margin-bottom:3px}
+code{background:color-mix(in srgb,var(--ink) 7%,transparent);padding:1px 5px;border-radius:4px;font-size:12.5px}
+.days{display:grid;grid-template-columns:repeat(18,1fr);gap:4px;margin-top:6px}
+.day{aspect-ratio:1;border-radius:5px;display:flex;align-items:center;justify-content:center;
+  font-size:10px;color:#fff;font-weight:600}
+.d0{background:color-mix(in srgb,var(--ink) 8%,transparent);color:var(--dim)}
+svg text{font-size:11px;fill:var(--dim)}
+svg .val{font-weight:700;fill:var(--ink)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>学习数据分析报告</h1>
+<div class="sub">数据窗口 <b>2026-09-07 → 2026-09-24</b>（18 天）· 数据源：<code>学习日志.jsonl</code> 69 条 + Anki <code>collection.anki2</code> 快照 + 看板进度条 · 生成于 2026-09-24 04:30</div>
+
+<!-- ══════ KPI ══════ -->
+<div class="grid g5">
+  <div class="kpi"><div class="v">69</div><div class="l">日志条数</div><div class="n">8 个科目</div></div>
+  <div class="kpi"><div class="v">14 / 18</div><div class="l">出勤天数</div><div class="n">78%</div></div>
+  <div class="kpi ok"><div class="v">55.6%</div><div class="l">推进日密度</div><div class="n">10 天 · 目标 50% ✅</div></div>
+  <div class="kpi bad"><div class="v">697</div><div class="l">Anki 待复习</div><div class="n">09-22 是 465 · <b>在涨</b></div></div>
+  <div class="kpi warn"><div class="v">41.9%</div><div class="l">「困难」按钮占比</div><div class="n">2590 次 · 目标 &lt;20%</div></div>
+</div>
+
+<!-- ══════ 1. 每日活动 ══════ -->
+<h2>1 · 每日活动与断档（18 天）</h2>
+<div class="card">
+  <div id="chartDaily"></div>
+  <div class="legend">
+    <span><i style="background:var(--c-c)"></i>C语言</span>
+    <span><i style="background:var(--c-cs)"></i>计算机基础</span>
+    <span><i style="background:var(--c-math)"></i>高数</span>
+    <span><i style="background:var(--c-en)"></i>英语</span>
+    <span><i style="background:var(--c-tool)"></i>工具</span>
+    <span><i style="background:var(--c-pol)"></i>综合</span>
+    <span style="color:var(--bad)">◆ = 推进日（有新内容）</span>
+  </div>
+  <div class="note">柱高 = 当天日志条数；<b>◆ 标记的 10 天</b>是真正推进了新内容的天。</div>
+</div>
+
+<h3>断档日历（红 = 无推进）</h3>
+<div class="card">
+  <div class="days" id="cal"></div>
+  <div class="note">8 天无推进，其中 <b>09-16 → 09-18 连续 3 天</b>（🔴 最长断档）。</div>
+</div>
+
+<!-- ══════ 2. 投入 vs 分值 ══════ -->
+<h2>2 · 投入占比 vs 分值占比（核心失衡）</h2>
+<div class="card">
+  <div id="chartWeight"></div>
+  <div class="note">判据：<b>偏离 &gt; 15pp 就要动手</b>（项目既有纪律）。</div>
+  <div class="alert"><b>🔴 计算机类超配 +25.2pp</b>投入 65.2%，但只值 40%。而它的基础已经打完（C语言覆盖率 68%、1.4 完结、1.5 只剩最后一块）。</div>
+  <div class="alert"><b>🔴 工具 + 综合占 13.0%，换 0 分</b>这两类不计入任何分值。</div>
+  <div class="alert warn"><b>🟡 政治 0%（值 20%）· 数据结构 0%（值 20%）</b>合计 40% 的分值目前零投入 —— 政治按计划 12 月启动，数据结构等二轮。</div>
+</div>
+
+<!-- ══════ 3. 各科状态 ══════ -->
+<h2>3 · 各科条数与断档</h2>
+<div class="card">
+  <table id="tblSubj"></table>
+</div>
+
+<!-- ══════ 4. Anki ══════ -->
+<h2>4 · Anki 体检（2309 张卡）</h2>
+
+<div class="grid g2">
+  <div class="card">
+    <h3 style="margin-top:0">4.1 按钮分布 —— 真凶在这</h3>
+    <div id="chartBtn"></div>
+    <div class="note"><b>「困难」的语义是「请把下次间隔压短」</b>，不是「我答错了」。
+      按得越多 → 卡片出现越频繁 → 制造「记不住」的错觉。</div>
+  </div>
+  <div class="card">
+    <h3 style="margin-top:0">4.2 失败次数分布 —— 记忆力没问题</h3>
+    <div id="chartLapse"></div>
+    <div class="note"><b>2162 张（93.6%）一次都没失败过；失败 5 次以上的卡 = 0 张。</b>
+      真的「记不住」会长出长尾 —— 这条尾巴不存在。</div>
+  </div>
+</div>
+
+<h3>4.3 到期量趋势 —— 在涨，不是在做完</h3>
+<div class="card">
+  <div id="chartDue"></div>
+  <div class="note">09-22 实测 465 → 09-23 实测 649 → <b>09-24 实测 697</b>。
+    原因：每日上限 200 卡住真实到期，<b>每天被拦下 400+ 张顺延</b>。
+    （09-24 已把上限改成 400 / 新卡 15）</div>
+</div>
+
+<!-- ══════ 5. 结论 ══════ -->
+<h2>5 · 推导出的规律 · 趋势 · 薄弱环节</h2>
+
+<div class="grid g2">
+  <div class="card">
+    <h3 style="margin-top:0">📈 规律（稳定成立的）</h3>
+    <table>
+      <tr><th>#</th><th>规律</th><th>证据</th></tr>
+      <tr><td>1</td><td><b>推进日密度 55.6%</b>，稳定高于目标 50%</td><td class="num">10 / 18 天</td></tr>
+      <tr><td>2</td><td><b>出勤 78%</b>，但不是每天都有推进</td><td class="num">14 有记录 / 10 推进</td></tr>
+      <tr><td>3</td><td><b>科目投入严重失衡</b>：计算机类占 2/3 时间</td><td class="num">65.2% vs 40%</td></tr>
+      <tr><td>4</td><td><b>「困难」按钮固定在 40% 上下</b>（09-12 是 33.2%）</td><td class="num">41.9%</td></tr>
+      <tr><td>5</td><td><b>记忆曲线健康</b>：无长尾失败卡</td><td class="num">93.6% 零失败</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-top:0">📉 趋势（在变的方向）</h3>
+    <table>
+      <tr><th>#</th><th>趋势</th><th>方向</th></tr>
+      <tr><td>1</td><td><b>Anki 到期量持续上涨</b> 465 → 649 → 697</td><td><span class="tag bad">恶化</span></td></tr>
+      <tr><td>2</td><td><b>「困难」占比</b> 33.2%（09-12）→ 41.9%（09-24）</td><td><span class="tag bad">恶化</span></td></tr>
+      <tr><td>3</td><td><b>09-19 起连续 6 天有推进</b>（09-19~09-24）</td><td><span class="tag ok">改善</span></td></tr>
+      <tr><td>4</td><td><b>计算机基础断档清零</b>（09-13 → 09-24）</td><td><span class="tag ok">改善</span></td></tr>
+      <tr><td>5</td><td><b>英语题型从「只做语法填空」扩到写作</b>，但阅读/完形仍为 0</td><td><span class="tag warn">部分</span></td></tr>
+    </table>
+  </div>
+</div>
+
+<h3>🔴 薄弱环节（按严重度排）</h3>
+<div class="card">
+  <table>
+    <tr><th>#</th><th>薄弱环节</th><th>数据</th><th>严重度</th></tr>
+    <tr><td>1</td><td><b>英语阅读 + 完形 = 60 分，一篇没做过</b></td><td class="num">0 篇 / 英语日志 8 条全是 Anki + 语法填空</td><td><span class="tag bad">最高</span></td></tr>
+    <tr><td>2</td><td><b>Anki 到期量在涨</b>（上限卡住 + Hard 压短间隔）</td><td class="num">697 张 · 每天被拦 400+</td><td><span class="tag bad">最高</span></td></tr>
+    <tr><td>3</td><td><b>政治 + 数据结构 = 40% 分值零投入</b></td><td class="num">各 0 条</td><td><span class="tag bad">高</span></td></tr>
+    <tr><td>4</td><td><b>高数、英语投入各欠配 8–10pp</b></td><td class="num">10.1% / 11.6% vs 20%</td><td><span class="tag warn">中</span></td></tr>
+    <tr><td>5</td><td><b>工具 + 综合占 13%，换 0 分</b></td><td class="num">9 条</td><td><span class="tag warn">中</span></td></tr>
+    <tr><td>6</td><td><b>断档 7 天，其中 09-16~09-18 连续 3 天</b></td><td class="num">7 / 18</td><td><span class="tag warn">中</span></td></tr>
+    <tr><td>7</td><td><b>「困难」按钮 41.9%</b>（12 天未改善）</td><td class="num">2590 / 6186 次</td><td><span class="tag warn">中</span></td></tr>
+  </table>
+</div>
+
+<div class="alert ok" style="margin-top:14px">
+  <b>✅ 一句话总结</b>
+  <b>你的问题不在「学得不够多」</b>（推进密度 55.6%、超目标）<b>也不在「记性差」</b>（93.6% 的卡零失败）。
+  问题在<b>「分量错配」</b>：<b>2/3 的时间给了值 40% 的科目，而值 60% 的英语阅读/完形和政治是零</b>。
+</div>
+
+<div class="note" style="margin-top:24px;padding-top:14px;border-top:1px solid var(--line)">
+  数据取证脚本：<code>tmp/study_analysis.py</code> · 原始 JSON：<code>tmp/study_data.json</code> ·
+  配套方案：<code>备考计划/每日学习任务与分量-整顿方案-2026-09-24.md</code>
+</div>
+
+</div>
+
+<script>
+const D = {
+ "dates": [
+  "2026-09-07",
+  "2026-09-08",
+  "2026-09-09",
+  "2026-09-10",
+  "2026-09-11",
+  "2026-09-12",
+  "2026-09-13",
+  "2026-09-14",
+  "2026-09-15",
+  "2026-09-16",
+  "2026-09-17",
+  "2026-09-18",
+  "2026-09-19",
+  "2026-09-20",
+  "2026-09-21",
+  "2026-09-22",
+  "2026-09-23",
+  "2026-09-24"
+ ],
+ "prog": [
+  "2026-09-09",
+  "2026-09-10",
+  "2026-09-13",
+  "2026-09-14",
+  "2026-09-15",
+  "2026-09-19",
+  "2026-09-20",
+  "2026-09-21",
+  "2026-09-23",
+  "2026-09-24"
+ ],
+ "perDay": {
+  "2026-09-07": 2,
+  "2026-09-08": 1,
+  "2026-09-09": 4,
+  "2026-09-10": 7,
+  "2026-09-12": 1,
+  "2026-09-13": 11,
+  "2026-09-14": 10,
+  "2026-09-15": 2,
+  "2026-09-19": 5,
+  "2026-09-20": 13,
+  "2026-09-21": 4,
+  "2026-09-22": 3,
+  "2026-09-23": 2,
+  "2026-09-24": 4
+ },
+ "matrix": {
+  "2026-09-07": {
+   "英语": 1,
+   "综合": 1
+  },
+  "2026-09-08": {
+   "综合": 1
+  },
+  "2026-09-09": {
+   "C语言": 1,
+   "高数": 2,
+   "英语": 1
+  },
+  "2026-09-10": {
+   "C语言": 4,
+   "高数": 2,
+   "工具": 1
+  },
+  "2026-09-12": {
+   "英语": 1
+  },
+  "2026-09-13": {
+   "C语言": 6,
+   "计算机": 4,
+   "工具": 1
+  },
+  "2026-09-14": {
+   "C语言": 9,
+   "工具": 1
+  },
+  "2026-09-15": {
+   "C语言": 2
+  },
+  "2026-09-19": {
+   "C语言": 3,
+   "高数": 1,
+   "英语": 1
+  },
+  "2026-09-20": {
+   "C语言": 12,
+   "工具": 1
+  },
+  "2026-09-21": {
+   "C语言": 1,
+   "高数": 1,
+   "英语": 1,
+   "综合": 1
+  },
+  "2026-09-22": {
+   "英语": 2,
+   "综合": 1
+  },
+  "2026-09-23": {
+   "C语言": 1,
+   "英语": 1
+  },
+  "2026-09-24": {
+   "C语言": 1,
+   "计算机": 1,
+   "高数": 1,
+   "工具": 1
+  }
+ },
+ "colors": {
+  "C语言": "var(--c-c)",
+  "计算机": "var(--c-cs)",
+  "高数": "var(--c-math)",
+  "英语": "var(--c-en)",
+  "工具": "var(--c-tool)",
+  "综合": "var(--c-pol)"
+ },
+ "order": [
+  "C语言",
+  "计算机",
+  "高数",
+  "英语",
+  "工具",
+  "综合"
+ ],
+ "weight": [
+  {
+   "name": "计算机类（200分）",
+   "invest": 65.2,
+   "score": 40
+  },
+  {
+   "name": "高数（100分）",
+   "invest": 10.1,
+   "score": 20
+  },
+  {
+   "name": "英语（100分）",
+   "invest": 11.6,
+   "score": 20
+  },
+  {
+   "name": "政治（100分）",
+   "invest": 0,
+   "score": 20
+  },
+  {
+   "name": "数据结构（100分）",
+   "invest": 0,
+   "score": 20
+  },
+  {
+   "name": "工具+综合（0分）",
+   "invest": 13.0,
+   "score": 0
+  }
+ ],
+ "subj": [
+  {
+   "s": "C语言",
+   "n": 40,
+   "last": "09-24",
+   "gap": 0
+  },
+  {
+   "s": "英语",
+   "n": 8,
+   "last": "09-23",
+   "gap": 1
+  },
+  {
+   "s": "高数",
+   "n": 7,
+   "last": "09-24",
+   "gap": 0
+  },
+  {
+   "s": "工具",
+   "n": 5,
+   "last": "09-24",
+   "gap": 0
+  },
+  {
+   "s": "计算机基础",
+   "n": 5,
+   "last": "09-24",
+   "gap": 0
+  },
+  {
+   "s": "综合",
+   "n": 4,
+   "last": "09-22",
+   "gap": 2
+  },
+  {
+   "s": "政治",
+   "n": 0,
+   "last": "—",
+   "gap": null
+  },
+  {
+   "s": "数据结构",
+   "n": 0,
+   "last": "—",
+   "gap": null
+  }
+ ],
+ "btn": [
+  {
+   "k": "Hard",
+   "v": 2590
+  },
+  {
+   "k": "Good",
+   "v": 1811
+  },
+  {
+   "k": "Easy",
+   "v": 1243
+  },
+  {
+   "k": "Again",
+   "v": 542
+  }
+ ],
+ "lapse": [
+  {
+   "k": "0 次",
+   "v": 2162
+  },
+  {
+   "k": "1 次",
+   "v": 118
+  },
+  {
+   "k": "2-4 次",
+   "v": 29
+  },
+  {
+   "k": "5-9 次",
+   "v": 0
+  },
+  {
+   "k": "10+ 次",
+   "v": 0
+  }
+ ],
+ "due": [
+  {
+   "d": "09-22",
+   "v": 465
+  },
+  {
+   "d": "09-23",
+   "v": 649
+  },
+  {
+   "d": "09-24",
+   "v": 697
+  }
+ ]
+};
+
+const el = s => document.querySelector(s);
+const fmt = n => n.toLocaleString('en-US');
+
+/* ── 图 1：每日活动堆叠柱 ── */
+(function(){
+  const W=1120,H=200,pad={l:34,r:10,t:14,b:34};
+  const iw=W-pad.l-pad.r, ih=H-pad.t-pad.b;
+  const max=Math.max(...D.dates.map(d=>D.perDay[d]||0),1);
+  const bw=iw/D.dates.length;
+  let s=`<svg viewBox="0 0 ${W} ${H}" width="100%" style="display:block">`;
+  // 网格
+  for(let g=0;g<=max;g++){const y=pad.t+ih-ih*g/max;
+    s+=`<line x1="${pad.l}" y1="${y}" x2="${W-pad.r}" y2="${y}" stroke="var(--line)" stroke-width="1"/>`;
+    s+=`<text x="${pad.l-8}" y="${y+4}" text-anchor="end">${g}</text>`;}
+  D.dates.forEach((d,i)=>{
+    const x=pad.l+i*bw, tot=D.perDay[d]||0;
+    let y=pad.t+ih;
+    D.order.forEach(k=>{
+      const v=(D.matrix[d]||{})[k]||0; if(!v) return;
+      const h=ih*v/max; y-=h;
+      s+=`<rect x="${x+bw*0.18}" y="${y}" width="${bw*0.64}" height="${h}" fill="${D.colors[k]}" rx="2"/>`;
+    });
+    const isP=D.prog.includes(d);
+    s+=`<text x="${x+bw/2}" y="${pad.t+ih+16}" text-anchor="middle" font-size="10">${d.slice(5)}</text>`;
+    if(isP) s+=`<text x="${x+bw/2}" y="${pad.t+ih+29}" text-anchor="middle" font-size="10" fill="var(--bad)">◆</text>`;
+  });
+  s+='</svg>';
+  el('#chartDaily').innerHTML=s;
+})();
+
+/* ── 断档日历 ── */
+(function(){
+  el('#cal').innerHTML = D.dates.map(d=>{
+    const p=D.prog.includes(d);
+    const v=(D.perDay[d]||0);
+    return `<div class="day ${p?'':'d0'}" style="${p?'background:var(--c-c)':''}" title="${d}${p?' 推进':' 无推进'}${v?' · '+v+' 条':''}">${d.slice(8)}</div>`;
+  }).join('');
+})();
+
+/* ── 图 2：投入 vs 分值 ── */
+(function(){
+  const W=1120, rowH=54, H=D.weight.length*rowH+30;
+  const pad={l:150,r:70,t:10,b:20};
+  const iw=W-pad.l-pad.r;
+  let s=`<svg viewBox="0 0 ${W} ${H}" width="100%" style="display:block">`;
+  D.weight.forEach((w,i)=>{
+    const y=pad.t+i*rowH;
+    const a=iw*(w.invest/70), b=iw*(w.score/70);
+    const dev=w.score===0?null:(w.invest-w.score);
+    const devTxt = dev===null?'—':(dev>0?'+':'')+dev.toFixed(1)+'pp';
+    const devColor = dev===null?'var(--dim)':(Math.abs(dev)>15?'var(--bad)':Math.abs(dev)>5?'var(--warn)':'var(--ok)');
+    s+=`<text x="${pad.l-10}" y="${y+18}" text-anchor="end" font-size="12" fill="var(--ink)">${w.name}</text>`;
+    s+=`<rect x="${pad.l}" y="${y+6}" width="${a}" height="13" fill="var(--c-c)" rx="3"/>`;
+    s+=`<text x="${pad.l+a+6}" y="${y+17}" font-size="11" fill="var(--c-c)">投入 ${w.invest}%</text>`;
+    s+=`<rect x="${pad.l}" y="${y+24}" width="${b}" height="13" fill="var(--c-math)" rx="3"/>`;
+    s+=`<text x="${pad.l+b+6}" y="${y+35}" font-size="11" fill="var(--c-math)">分值 ${w.score}%</text>`;
+    s+=`<text x="${W-pad.r+4}" y="${y+26}" font-size="12" font-weight="700" fill="${devColor}">${devTxt}</text>`;
+  });
+  s+=`<line x1="${pad.l}" y1="${pad.t}" x2="${pad.l}" y2="${H-pad.b}" stroke="var(--line)"/>`;
+  s+='</svg>';
+  el('#chartWeight').innerHTML=s;
+})();
+
+/* ── 表：各科 ── */
+(function(){
+  el('#tblSubj').innerHTML =
+    '<tr><th>科目</th><th style="text-align:right">条数</th><th>最近</th><th>断档</th><th>状态</th></tr>' +
+    D.subj.map(x=>{
+      const st = x.n===0 ? '<span class="tag bad">零投入</span>'
+        : x.gap>3 ? '<span class="tag bad">需补</span>'
+        : x.gap>0 ? '<span class="tag warn">轻微</span>' : '<span class="tag ok">正常</span>';
+      return `<tr><td>${x.s}</td><td class="num">${x.n}</td><td>${x.last}</td>
+        <td>${x.gap===null?'—':x.gap+' 天'}</td><td>${st}</td></tr>`;
+    }).join('');
+})();
+
+/* ── 图 4.1：按钮 ── */
+(function(){
+  const total=D.btn.reduce((a,b)=>a+b.v,0);
+  const max=Math.max(...D.btn.map(b=>b.v));
+  const COL={Hard:'var(--bad)',Good:'var(--ok)',Easy:'var(--c-c)',Again:'var(--warn)'};
+  el('#chartBtn').innerHTML = D.btn.map(b=>{
+    const pct=(100*b.v/total).toFixed(1);
+    return `<div style="margin:9px 0">
+      <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:3px">
+        <span><b>${b.k}</b></span><span class="num">${fmt(b.v)} 次 · <b>${pct}%</b></span></div>
+      <div style="background:color-mix(in srgb,var(--ink) 8%,transparent);border-radius:5px;height:10px">
+        <div style="width:${100*b.v/max}%;height:100%;background:${COL[b.k]};border-radius:5px"></div></div>
+    </div>`;
+  }).join('') + `<div class="note" style="margin-top:12px">合计 ${fmt(total)} 次复习</div>`;
+})();
+
+/* ── 图 4.2：失败分布 ── */
+(function(){
+  const total=D.lapse.reduce((a,b)=>a+b.v,0);
+  const max=Math.max(...D.lapse.map(b=>b.v));
+  el('#chartLapse').innerHTML = D.lapse.map((b,i)=>{
+    const pct=(100*b.v/total).toFixed(1);
+    const col = i<=1?'var(--ok)': i===2?'var(--warn)':'var(--bad)';
+    return `<div style="margin:9px 0">
+      <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:3px">
+        <span><b>${b.k}</b></span><span class="num">${fmt(b.v)} 张 · <b>${pct}%</b></span></div>
+      <div style="background:color-mix(in srgb,var(--ink) 8%,transparent);border-radius:5px;height:10px">
+        <div style="width:${max?100*b.v/max:0}%;height:100%;background:${col};border-radius:5px"></div></div>
+    </div>`;
+  }).join('') + `<div class="note" style="margin-top:12px">合计 ${fmt(total)} 张卡</div>`;
+})();
+
+/* ── 图 4.3：到期趋势 ── */
+(function(){
+  const W=1120,H=190,pad={l:50,r:20,t:20,b:34};
+  const iw=W-pad.l-pad.r, ih=H-pad.t-pad.b;
+  const max=800;
+  const bw=iw/D.due.length;
+  let s=`<svg viewBox="0 0 ${W} ${H}" width="100%" style="display:block">`;
+  for(let g=0;g<=max;g+=200){const y=pad.t+ih-ih*g/max;
+    s+=`<line x1="${pad.l}" y1="${y}" x2="${W-pad.r}" y2="${y}" stroke="var(--line)"/>`;
+    s+=`<text x="${pad.l-8}" y="${y+4}" text-anchor="end">${g}</text>`;}
+  // 上限线 200
+  const y200=pad.t+ih-ih*200/max;
+  s+=`<line x1="${pad.l}" y1="${y200}" x2="${W-pad.r}" y2="${y200}" stroke="var(--warn)" stroke-dasharray="5 4"/>`;
+  s+=`<text x="${W-pad.r-4}" y="${y200-5}" text-anchor="end" fill="var(--warn)" font-size="11">旧上限 200</text>`;
+  const y400=pad.t+ih-ih*400/max;
+  s+=`<line x1="${pad.l}" y1="${y400}" x2="${W-pad.r}" y2="${y400}" stroke="var(--ok)" stroke-dasharray="5 4"/>`;
+  s+=`<text x="${W-pad.r-4}" y="${y400-5}" text-anchor="end" fill="var(--ok)" font-size="11">新上限 400</text>`;
+  D.due.forEach((d,i)=>{
+    const x=pad.l+i*bw+bw*0.25, h=ih*d.v/max;
+    s+=`<rect x="${x}" y="${pad.t+ih-h}" width="${bw*0.5}" height="${h}" fill="var(--bad)" rx="4"/>`;
+    s+=`<text x="${x+bw*0.25}" y="${pad.t+ih-h-7}" text-anchor="middle" class="val" font-size="13">${d.v}</text>`;
+    s+=`<text x="${x+bw*0.25}" y="${pad.t+ih+18}" text-anchor="middle">${d.d}</text>`;
+  });
+  s+='</svg>';
+  el('#chartDue').innerHTML=s;
+})();
+</script>
+</body>
+</html>

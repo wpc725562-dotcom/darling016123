@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>专升本 · 已学知识点思维导图（含说明）· 2026-10-02</title>
+<style>
+  :root{
+    --bg:#0d1117; --panel:#161b22; --panel2:#1c2128; --border:#30363d;
+    --text:#e6edf3; --muted:#8b949e; --dim:#6e7681;
+    --math:#58a6ff; --c:#3fb950; --cs:#d29922; --en:#bc8cff;
+    --ok:#3fb950; --mid:#d29922; --todo:#6e7681;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--bg); color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif;
+    font-size:14px; line-height:1.6; padding:24px;
+  }
+  header{max-width:1180px;margin:0 auto 20px}
+  h1{font-size:22px;font-weight:600;margin-bottom:6px}
+  .sub{color:var(--muted);font-size:13px}
+  .stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+  .stat{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:10px 14px;min-width:130px}
+  .stat .n{font-size:20px;font-weight:600}
+  .stat .l{color:var(--muted);font-size:12px}
+  .bar{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 20px;max-width:1180px}
+  button{
+    background:var(--panel);color:var(--text);border:1px solid var(--border);
+    border-radius:6px;padding:6px 12px;cursor:pointer;font-size:13px;
+    font-family:inherit;transition:.15s;
+  }
+  button:hover{background:var(--panel2);border-color:#484f58}
+  button.on{background:rgba(31,111,235,.15);border-color:#1f6feb;color:#79c0ff}
+  .tree{max-width:1180px;margin:0 auto}
+  .subj{
+    background:var(--panel);border:1px solid var(--border);border-left:4px solid var(--c);
+    border-radius:8px;margin-bottom:12px;overflow:hidden;
+  }
+  .subj.math{border-left-color:var(--math)}
+  .subj.c{border-left-color:var(--c)}
+  .subj.cs{border-left-color:var(--cs)}
+  .subj.en{border-left-color:var(--en)}
+  .subj>.head{padding:12px 16px;cursor:pointer;display:flex;align-items:center;gap:10px;user-select:none;transition:.15s}
+  .subj>.head:hover{background:var(--panel2)}
+  .arrow{color:var(--muted);transition:transform .2s;display:inline-block;font-size:11px}
+  .subj.open .arrow{transform:rotate(90deg)}
+  .subj .title{font-weight:600;font-size:15px}
+  .subj .tag{margin-left:auto;color:var(--muted);font-size:12px}
+  .body{display:none;padding:4px 16px 14px;border-top:1px solid var(--border)}
+  .subj.open .body{display:block}
+  .chapter{margin:10px 0}
+  .chapter>.ch{
+    font-weight:600;padding:6px 10px;background:var(--panel2);border-radius:6px;
+    cursor:pointer;display:flex;align-items:center;gap:8px;user-select:none;
+  }
+  .chapter>.ch:hover{background:#22272e}
+  .chapter .items{display:none;margin:6px 0 0 18px}
+  .chapter.open .items{display:block}
+  .item{padding:6px 10px;margin:4px 0;border-left:2px solid var(--border);border-radius:0 4px 4px 0;color:#c9d1d9;font-size:13px}
+  .item:hover{background:var(--panel2)}
+  .item.ok{border-left-color:var(--ok)}
+  .item.mid{border-left-color:var(--mid)}
+  .item.todo{border-left-color:var(--todo);color:var(--muted)}
+  .item .t{font-weight:500}
+  .item .desc{color:var(--muted);font-size:12px;margin-top:3px;line-height:1.55}
+  .item .desc b{color:#c9d1d9;font-weight:500}
+  .badge{font-size:11px;padding:1px 6px;border-radius:10px;margin-left:6px;vertical-align:middle;white-space:nowrap}
+  .b-ok{background:rgba(63,185,80,.15);color:var(--ok)}
+  .b-mid{background:rgba(210,153,34,.15);color:var(--mid)}
+  .b-todo{background:rgba(110,118,129,.15);color:var(--todo)}
+  code{background:var(--panel2);padding:1px 5px;border-radius:3px;font-size:12px;color:#79c0ff}
+  .note{color:var(--muted);font-size:12px;margin-top:4px}
+  .m{color:#79c0ff;font-family:"Cambria Math",Georgia,serif;white-space:nowrap}
+  footer{max-width:1180px;margin:24px auto 0;color:var(--muted);font-size:12px;text-align:center}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🗺️ 专升本 · 已学知识点思维导图（含简要说明）</h1>
+  <div class="sub">2026-10-02 生成 · 数据源：4 张状态卡 + 学习日志 + 笔记站 · <span style="color:var(--mid)">⚠️ 已两天没学（09-30 → 10-02）</span></div>
+  <div class="stats">
+    <div class="stat"><div class="n" style="color:var(--math)">18<span style="font-size:13px;color:var(--muted)">/63</span></div><div class="l">高数节数</div></div>
+    <div class="stat"><div class="n" style="color:var(--c)">7<span style="font-size:13px;color:var(--muted)">/11</span></div><div class="l">C语言章数</div></div>
+    <div class="stat"><div class="n" style="color:var(--cs)">2<span style="font-size:13px;color:var(--muted)">/5</span></div><div class="l">计算机基础块</div></div>
+    <div class="stat"><div class="n" style="color:var(--en)">5<span style="font-size:13px;color:var(--muted)">篇</span></div><div class="l">英语真题</div></div>
+  </div>
+</header>
+
+<div class="bar">
+  <button onclick="allOpen()">全部展开</button>
+  <button onclick="allClose()">全部收起</button>
+  <button id="btnOK" onclick="toggleFilter('ok')">只看已过关</button>
+  <button id="btnTodo" onclick="toggleFilter('todo')">只看待完成</button>
+</div>
+
+<div class="tree" id="tree">
+
+  <!-- ═══════ 高等数学 ═══════ -->
+  <div class="subj math open">
+    <div class="head" onclick="tog(this)">
+      <span class="arrow">▶</span>
+      <span class="title">📐 高等数学</span>
+      <span class="tag">18 / 63 节 · 29%</span>
+    </div>
+    <div class="body">
+
+      <div class="chapter open">
+        <div class="ch" onclick="togCh(this)">
+          <span class="arrow">▶</span> 第一章 函数、极限与连续 <span class="badge b-ok">15/15 完结</span>
+          <span class="note" style="margin-left:auto">⚠️ 自测仅 37/100</span>
+        </div>
+        <div class="items">
+          <div class="item ok"><span class="t">1.1 函数的概念</span>
+            <div class="desc">一个 <span class="m">x</span> 对应唯一 <span class="m">y</span> · 分段函数 · 四大特性（有界/单调/奇偶/周期）· 反函数 · 复合函数 · 基本初等函数。<b>考点</b>：求定义域。</div>
+          </div>
+          <div class="item ok"><span class="t">1.2 数列的极限</span>
+            <div class="desc">数列 <span class="m">x_n</span> 无限接近某个数 <span class="m">A</span>。<b>直观</b>：庄子「日取半棰」（<span class="m">1/2, 1/4, 1/8… → 0</span>）· 刘徽割圆术。<b>关键</b>：「任取 <span class="m">ε>0</span>」是严谨定义的核心。</div>
+          </div>
+          <div class="item ok"><span class="t">1.3 函数的极限</span>
+            <div class="desc">两种情形：<span class="m">x→a</span>（趋近一个点）· <span class="m">x→∞</span>（趋向无穷）。<b>易错</b>：趋向哪决定结果 —— 同一个 <span class="m">1/x</span>，<span class="m">x→∞</span> 时 →0，<span class="m">x→0</span> 时爆掉。</div>
+          </div>
+          <div class="item ok"><span class="t">1.4 无穷小与无穷大</span>
+            <div class="desc">无穷小 = 极限为 0 的量；无穷大 = 绝对值无限增大。<b>关系</b>：无穷小的倒数是无穷大（反之亦然）。<b>六个易混式子</b>要分清。</div>
+          </div>
+          <div class="item ok"><span class="t">1.5 极限运算法则</span>
+            <div class="desc">和差积商的极限 = 极限的和差积商。<b>前提</b>：各自极限都存在，且分母极限 ≠ 0。</div>
+          </div>
+          <div class="item ok"><span class="t">1.6 两个重要极限</span>
+            <div class="desc">① <span class="m">lim(x→0) sin x / x = 1</span>　② <span class="m">lim(x→∞) (1+1/x)^x = e</span>。<b>工具</b>：用夹逼准则证明。</div>
+          </div>
+          <div class="item ok"><span class="t">1.7 左右极限与极限存在判定</span> <span class="badge b-ok">09-19 销账</span>
+            <div class="desc"><b>判据</b>：左极限 = 右极限 ⇒ 极限存在。<b>⚠️ 关键</b>：「有没有断点」不是判据，「左右方向是否一致」才是。</div>
+          </div>
+          <div class="item ok"><span class="t">1.8 抓大头</span> <span class="badge b-mid">⚠️ 09-30 复检忘了</span>
+            <div class="desc"><span class="m">x→∞</span> 时，多项式分式只看<b>最高次项</b> ⇒ 系数比。例：<span class="m">(3x²+2x)/(x²-1) → 3</span>。</div>
+          </div>
+          <div class="item ok"><span class="t">1.9 初等函数的连续性</span>
+            <div class="desc">初等函数在<b>其定义区间内</b>处处连续 ⇒ 求极限可直接代入。</div>
+          </div>
+          <div class="item ok"><span class="t">1.10 极限计算三法决策树</span>
+            <div class="desc"><b>三步决策</b>：① 先代入（能算就直接算）② 遇 <span class="m">0/0</span> 就约分/有理化 ③ <span class="m">x→∞</span> 用抓大头。</div>
+          </div>
+          <div class="item ok"><span class="t">1.11 极限求值零基础·抓大头</span>
+            <div class="desc">抓大头的零基础版讲义（同一考点的入门材料）。</div>
+          </div>
+          <div class="item ok"><span class="t">1.12 函数的连续性与间断点分类</span>
+            <div class="desc"><b>两大类四种</b>：第一类（可去 / 跳跃）· 第二类（无穷 / 振荡）。<b>方法</b>：分开求左右极限。</div>
+          </div>
+          <div class="item ok"><span class="t">1.13 函数的连续性</span>
+            <div class="desc"><b>判据</b>：<span class="m">lim(x→a) f(x) = f(a)</span>（极限值 = 函数值）。</div>
+          </div>
+          <div class="item ok"><span class="t">1.14 闭区间上连续函数的性质</span>
+            <div class="desc"><b>三条</b>：有界性 · 最值定理 · 介值定理（含零点定理）。</div>
+          </div>
+          <div class="item ok"><span class="t">1.15 无穷小的比较</span>
+            <div class="desc"><b>四档</b>：高阶 / 低阶 / 同阶 / <b>等价</b>（<span class="m">α~β</span> 当 <span class="m">lim β/α = 1</span>）。<b>用途</b>：等价无穷小替换。</div>
+          </div>
+          <div class="item mid"><span class="t">🔴 欠账 B：抓大头</span>
+            <div class="desc">09-30 复检时忘了。题：<span class="m">lim(x→∞) (3x²+2x)/(x²-1) = 3</span>。<b>待清</b>。</div>
+          </div>
+          <div class="item mid"><span class="t">🔴 欠账 C：等价无穷小</span>
+            <div class="desc">09-30 复检时忘了。题：<span class="m">lim(x→0) sin3x/x = 3</span> · <span class="m">lim(x→0) (1-cos x)/x² = 1/2</span>。<b>待清</b>。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter open">
+        <div class="ch" onclick="togCh(this)">
+          <span class="arrow">▶</span> 第二章 一元函数微分学 <span class="badge b-mid">3/11 节</span>
+        </div>
+        <div class="items">
+          <div class="item ok"><span class="t">2.1 导数的定义</span> <span class="badge b-ok">概念已讲</span>
+            <div class="desc">从「平均速度」到「瞬时速度」（<span class="m">Δt→0</span>）。<b>求导三步</b>：求增量 → 算比值 → 取极限。</div>
+          </div>
+          <div class="item ok"><span class="t">2.2 单侧导数 + 可导与连续</span> <span class="badge b-ok">概念已讲</span>
+            <div class="desc"><b>三种等价形式</b>（含 <span class="m">h</span> 版）· <b>平移法</b>（把第一章「极限 ⟺ 左右极限」平移到导数）· <b>滑雪类比</b>（能停住 ≠ 能平稳滑过）。<b>关键</b>：可导 ⇒ 连续，反之不成立。</div>
+          </div>
+          <div class="item ok"><span class="t">2.3 基本导数公式 + 四则运算</span> <span class="badge b-ok">已测第一层 7/7</span>
+            <div class="desc"><b>14 个公式分三组</b>（按广东真题重排）· <b>规律记忆法</b>「带扣的有负号」。<b>已掌握</b>：常数 · <span class="m">x^μ</span> · <span class="m">e^x</span> · <span class="m">ln x</span> · <span class="m">sin</span> · <span class="m">cos</span>。<b>未掌握</b>：<span class="m">tan</span> / <span class="m">cot</span> / <span class="m">arcsin</span> / <span class="m">arccos</span>。</div>
+          </div>
+          <div class="item todo"><span class="t">2.4 复合函数求导（链式法则）</span> <span class="badge b-todo">⬜ 下一节</span>
+            <div class="desc"><b>核心</b>：外层导数 × 内层导数（<b>剥洋葱</b>）。<span class="m">y = f[g(x)] ⇒ y' = f'[g(x)]·g'(x)</span>。<b>最常犯的坑</b>：漏掉内层导数。</div>
+          </div>
+          <div class="item todo"><span class="t">2.5 隐函数求导</span> <span class="badge b-todo">🔴 真题 16 次（最高）</span>
+            <div class="desc">方程 <span class="m">F(x,y)=0</span> 两边对 <span class="m">x</span> 求导，把 <span class="m">y</span> 当 <span class="m">x</span> 的函数（注意链式法则）。</div>
+          </div>
+          <div class="item todo"><span class="t">2.6 参数方程求导</span> <span class="badge b-todo">🔴 真题 9 次</span>
+            <div class="desc"><span class="m">dy/dx = (dy/dt) / (dx/dt)</span>。</div>
+          </div>
+          <div class="item todo"><span class="t">2.7 高阶导数</span>
+            <div class="desc"><span class="m">y''</span> = 对 <span class="m">y'</span> 再求一次导。</div>
+          </div>
+          <div class="item todo"><span class="t">2.8 微分</span>
+            <div class="desc"><span class="m">dy = f'(x)dx</span>（导数的另一种写法）。</div>
+          </div>
+          <div class="item todo"><span class="t">2.9 中值定理</span>
+            <div class="desc">罗尔 / 拉格朗日 / 柯西中值定理。</div>
+          </div>
+          <div class="item todo"><span class="t">2.10 洛必达法则</span> <span class="badge b-todo">🔴 真题 8 次</span>
+            <div class="desc"><span class="m">0/0</span> 或 <span class="m">∞/∞</span> 型 ⇒ 分子分母分别求导再取极限。</div>
+          </div>
+          <div class="item todo"><span class="t">2.11-2.15 单调性 / 极值 / 最值 / 凹凸 / 渐近线</span> <span class="badge b-todo">🔴 渐近线 12 次</span>
+            <div class="desc">用导数判断函数形状。<b>渐近线三类</b>：水平 / 垂直 / 斜。</div>
+          </div>
+          <div class="item todo"><span class="t">2.16 曲率</span>
+            <div class="desc"><span class="m">K = |y''| / (1+y'²)^(3/2)</span>。</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════ C语言 ═══════ -->
+  <div class="subj c open">
+    <div class="head" onclick="tog(this)">
+      <span class="arrow">▶</span>
+      <span class="title">💻 C语言程序设计</span>
+      <span class="tag">7 / 11 章 · 64%</span>
+    </div>
+    <div class="body">
+
+      <div class="chapter">
+        <div class="ch" onclick="togCh(this)"><span class="arrow">▶</span> 1.1 程序设计与 C语言基本概念 <span class="badge b-ok">✅</span></div>
+        <div class="items">
+          <div class="item ok"><span class="t">程序结构与编译链接</span>
+            <div class="desc">C 程序：<b>编写 → 编译 → 链接 → 运行</b>。<code>#include</code> 是预处理指令，<code>main</code> 是程序入口。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="ch" onclick="togCh(this)"><span class="arrow">▶</span> 1.2 数据的存储与运算 <span class="badge b-ok">✅</span></div>
+        <div class="items">
+          <div class="item ok"><span class="t">数据类型 · 运算符 · 表达式</span>
+            <div class="desc"><code>int</code>（整数）· <code>char</code>（字符）· <code>float</code>（小数）。<b>易错</b>：整数除法 <code>5/2 = 2</code>（不是 2.5）· 运算符优先级。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="ch" onclick="togCh(this)"><span class="arrow">▶</span> 1.3 顺序程序设计 <span class="badge b-ok">✅</span></div>
+        <div class="items">
+          <div class="item ok"><span class="t">变量与赋值 · 格式化输入输出</span>
+            <div class="desc"><code>printf</code>（输出）· <code>scanf</code>（输入）。<b>易错</b>：<code>scanf</code> 要给<b>地址</b>（<code>&amp;a</code>）。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter open">
+        <div class="ch" onclick="togCh(this)"><span class="arrow">▶</span> 1.4 选择结构程序设计 <span class="badge b-ok">6 课全完结</span></div>
+        <div class="items">
+          <div class="item ok"><span class="t">1.4-① 条件的真假</span>
+            <div class="desc"><b>门卫只认 0</b>：0 = 假，非 0 = 真。</div>
+          </div>
+          <div class="item ok"><span class="t">1.4-② <code>if-else</code> 两条路</span>
+            <div class="desc"><b>易错</b>：<code>=</code> 是「塞」（赋值）· <code>==</code> 是「问」（判断）。</div>
+          </div>
+          <div class="item ok"><span class="t">1.4-③ <code>else if</code> 阶梯</span>
+            <div class="desc"><b>关键</b>：门槛从大到小排（否则后面的分支永远进不去）。</div>
+          </div>
+          <div class="item ok"><span class="t">1.4-④ 嵌套 <code>if</code></span>
+            <div class="desc"><b>规则</b>：<code>else</code> 配<b>最近的未配对</b> <code>if</code>。</div>
+          </div>
+          <div class="item ok"><span class="t">1.4-⑤ 逻辑运算符</span>
+            <div class="desc"><code>&amp;&amp;</code>（与）· <code>||</code>（或）· <code>!</code>（非）。<b>关键</b>：表达式<b>有值</b>（真 = 1，假 = 0）。</div>
+          </div>
+          <div class="item ok"><span class="t">1.4-⑥ <code>switch</code> 多分支</span>
+            <div class="desc"><b>电梯直达</b>：直接跳到匹配的 <code>case</code>。<b>穿透</b>：不写 <code>break</code> 会继续往下执行。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter open">
+        <div class="ch" onclick="togCh(this)"><span class="arrow">▶</span> 1.5 循环结构程序设计 <span class="badge b-ok">6 课全完结</span></div>
+        <div class="items">
+          <div class="item ok"><span class="t">1.5-① <code>while</code> / <code>do-while</code></span>
+            <div class="desc"><b>区别</b>：<code>while</code> 先判断后执行 · <code>do-while</code> 先执行后判断（<b>至少执行一次</b>）。</div>
+          </div>
+          <div class="item ok"><span class="t">1.5-② <code>for</code> 三件套</span>
+            <div class="desc"><code>for(初始化; 条件; 更新)</code>。<b>陷阱</b>：末尾多写分号 ⇒ 循环体变空。</div>
+          </div>
+          <div class="item ok"><span class="t">1.5-③ <code>break</code> / <code>continue</code></span> <span class="badge b-ok">三考才过</span>
+            <div class="desc"><code>break</code> = 跳出整个循环 · <code>continue</code> = 跳过本次，进入下一次。</div>
+          </div>
+          <div class="item ok"><span class="t">1.5-④ 循环的两个「最后是几」</span>
+            <div class="desc">① 循环体执行了几次 ② 循环变量最终值是多少（<b>易错</b>：差一）。</div>
+          </div>
+          <div class="item ok"><span class="t">1.5-⑤ 嵌套循环</span> <span class="badge b-ok">跨日复检全对</span>
+            <div class="desc">外层跑一次，内层跑一圈。<b>变式</b>：内层上限跟着外层变。</div>
+          </div>
+          <div class="item ok"><span class="t">1.5-⑥ 综合举例</span>
+            <div class="desc">用 <code>break</code> 提前退出循环（课本 5.5.1 + 例 5.6）。</div>
+          </div>
+          <div class="item mid"><span class="t">⚠️ 缺 3 节</span>
+            <div class="desc">5.6 几种循环的比较 · 5.8.1 <code>while</code> vs <code>do-while</code> 比较 · 5.8.2。日志实查<b>从未讲过</b>。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter open">
+        <div class="ch" onclick="togCh(this)"><span class="arrow">▶</span> 1.6 用数组处理批量数据 <span class="badge b-ok">6 课全完结</span></div>
+        <div class="items">
+          <div class="item ok"><span class="t">1.6-① 为什么用数组</span>
+            <div class="desc"><b>数组 = 一排格子</b>（连续存放）· <b>下标从 0 开始</b> · 方括号前有类型名 = 定义，没有 = 引用。</div>
+          </div>
+          <div class="item ok"><span class="t">1.6-② 一维数组初始化</span>
+            <div class="desc">写不满就补 0 · <b>清零写 <code>= {0}</code></b> · ⚠️ 不给初值是<b>随机值</b>。</div>
+          </div>
+          <div class="item ok"><span class="t">1.6-③ 一维数组程序举例</span>
+            <div class="desc">数组 + 循环 + 查找 + <code>break</code>（<b>2023 真题应用题同类</b>）。</div>
+          </div>
+          <div class="item ok"><span class="t">1.6-④ 字符数组</span> <span class="badge b-ok">2023 有 10 分简答</span>
+            <div class="desc"><b><code>\0</code></b>（字符串结束标志）· <code>sizeof</code>（占多少字节）· <code>strlen</code>（多长，不算 <code>\0</code>）。</div>
+          </div>
+          <div class="item ok"><span class="t">1.6-⑤ 二维数组</span> <span class="badge b-ok">2024 有 10 分应用题</span>
+            <div class="desc">行 × 列。<b>易错</b>：二维数组的初始化和遍历（双重循环）。</div>
+          </div>
+          <div class="item ok"><span class="t">1.6-⑥ 提高部分 + 收口</span>
+            <div class="desc">第 6 章收口，含 6.5 提高部分。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter open">
+        <div class="ch" onclick="togCh(this)"><span class="arrow">▶</span> 1.7 用函数实现模块化程序设计 <span class="badge b-ok">4 课全完结</span></div>
+        <div class="items">
+          <div class="item ok"><span class="t">1.7-① 定义 / 声明 / 调用 / 形参实参</span>
+            <div class="desc"><b>定义</b>（写函数体）· <b>声明</b>（只写长什么样）· <b>形参</b>（占位）· <b>实参</b>（实际值）。<b>值传递 = 复印</b>（改不了原件）。</div>
+          </div>
+          <div class="item ok"><span class="t">1.7-② <code>return</code> 规则 + 3 种调用 + 嵌套</span>
+            <div class="desc"><b>return</b>：只能返回一个值 · 类型要匹配 · <code>void</code> 不返回。<b>3 种调用</b>：语句 / 表达式 / 函数参数。<b>嵌套</b>：<code>max(max(a,b), c)</code> 先算里面。</div>
+          </div>
+          <div class="item ok"><span class="t">1.7-③ 作用域 + <code>static</code></span>
+            <div class="desc"><b>作用域</b> = 变量「活」的范围。<b>局部</b>（出了 <code>}</code> 就没了）· <b>全局</b>（整个文件）· <b>同名屏蔽</b>（就近原则）· <b><code>static</code> = 静止的</b>（值记住上次）。</div>
+          </div>
+          <div class="item ok"><span class="t">1.7-④ 递归</span> <span class="badge b-ok">关口题 4/5</span>
+            <div class="desc"><b>两要素</b>：递归出口 + 递归表达式。<b>「递→归」</b>：先一路问到底，再一路算回来（<b>排队报数</b>）。<b>⚠️</b> 没出口 ⇒ 栈溢出。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter open">
+        <div class="ch" onclick="togCh(this)"><span class="arrow">▶</span> 1.8 地址与指针 <span class="badge b-mid">3/7 课 · 剩 4 课</span></div>
+        <div class="items">
+          <div class="item ok"><span class="t">1.8-① 指针是什么 / 定义 / 合法非法</span> <span class="badge b-ok">3/3 过关</span>
+            <div class="desc"><b>指针 = 地址</b>（门牌号）· <b>指针变量 = 存地址的纸条</b>。<code>&amp;a</code>（取地址）· <code>*p</code>（解引用）。<b>判据</b>：左边要「编号」就给 <code>&amp;变量</code>；左边要「整数」就给整数。</div>
+          </div>
+          <div class="item ok"><span class="t">1.8-② 指针运算 + 数组名</span> <span class="badge b-ok">过关</span>
+            <div class="desc"><b><code>p+1</code> 跨「一个元素」</b>（不是 1 字节）· <b>数组名 <code>a</code> = <code>&amp;a[0]</code></b>（首元素地址）· <code>*(p+i)</code> = <code>a[i]</code> · <b><code>*p++</code></b> 先取值再挪。</div>
+          </div>
+          <div class="item mid"><span class="t">1.8-③ 指针作函数参数</span> <span class="badge b-mid">已讲待出题</span>
+            <div class="desc"><b>swap 非指针不可</b>（值传递交换不了）。<b>陷阱（例 8.4）</b>：改「指针形参的值」改不了实参（改纸条 ≠ 改柜里东西）。</div>
+          </div>
+          <div class="item todo"><span class="t">1.8-④ 字符串指针</span>
+            <div class="desc">字符指针（<code>char *p</code>）vs 字符数组（<code>char a[]</code>）的区别。</div>
+          </div>
+          <div class="item todo"><span class="t">1.8-⑤ 数组作参数 + 多维数组指针</span>
+            <div class="desc">一维数组传参本质 · 二维数组传参（<b>2024 真题有链表插入</b>）。</div>
+          </div>
+          <div class="item todo"><span class="t">1.8-⑥ 函数指针 / 多重指针</span>
+            <div class="desc">返回指针的函数 · 指针数组 · 指向指针的指针（<b>低频</b>）。</div>
+          </div>
+          <div class="item todo"><span class="t">1.8-⑦ 收口 + 关口题 + 真题实战</span>
+            <div class="desc">第 8 章收口（<b>4 年 8 题 · 约 15 分</b>）。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chapter">
+        <div class="ch" onclick="togCh(this)"><span class="arrow">▶</span> 1.9-1.11 未开 <span class="badge b-todo">⬜</span></div>
+        <div class="items">
+          <div class="item todo"><span class="t">1.9 结构体与共用体</span> <span class="badge b-todo">真题 3 题</span>
+            <div class="desc"><code>struct</code>（把不同类型打包）· <code>union</code>（共用内存）· <code>typedef</code>（起别名）。<b>数据结构的前置</b>。</div>
+          </div>
+          <div class="item todo"><span class="t">1.10 文件操作</span> <span class="badge b-todo">🔴 真题 6 题 / 15 分</span>
+            <div class="desc"><code>fopen</code> / <code>fclose</code> / <code>fread</code> / <code>fwrite</code> / <code>fscanf</code> / <code>fprintf</code>。</div>
+          </div>
+          <div class="item todo"><span class="t">1.11 程序运行环境与调试</span> <span class="badge b-todo">2026 新增</span>
+            <div class="desc">编译错误 / 链接错误 / 运行错误的区别（<b>2026 新增考点</b>）。</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════ 计算机基础 ═══════ -->
+  <div class="subj cs open">
+    <div class="head" onclick="tog(this)">
+      <span class="arrow">▶</span>
+      <span class="title">🖥️ 计算机基础理论</span>
+      <span class="tag">2 / 5 块 · 40%</span>
+    </div>
+    <div class="body">
+      <div class="chapter open">
+        <div class="ch" onclick="togCh(this)"><span class="arrow">▶</span> ① 计算机系统组成 <span class="badge b-mid">🔴 进行中</span></div>
+        <div class="items">
+          <div class="item mid"><span class="t">硬件五大件</span> <span class="badge b-mid">4/5 · 待闭卷默写</span>
+            <div class="desc"><b>运算器 · 控制器 · 存储器 · 输入设备 · 输出设备</b>（运算器 + 控制器 = CPU）。</div>
+          </div>
+          <div class="item todo"><span class="t">CPU / 内存 / 外存的区别</span>
+            <div class="desc">CPU 运算 · 内存（快、断电丢失）· 外存（慢、持久）。</div>
+          </div>
+          <div class="item todo"><span class="t">软件分类</span>
+            <div class="desc">系统软件（OS）· 应用软件。</div>
+          </div>
+        </div>
+      </div>
+      <div class="chapter open">
+        <div class="ch" onclick="togCh(this)"><span class="arrow">▶</span> ② 数据在计算机中的表示 <span class="badge b-ok">🟢 进制已通</span></div>
+        <div class="items">
+          <div class="item ok"><span class="t">字节与位</span>
+            <div class="desc"><b>1 B = 8 bit</b>（1 字节 = 8 位）。<b>画面</b>：把一个大箱子拆成 8 个小格。</div>
+          </div>
+          <div class="item ok"><span class="t">1 字节能表示 256 种 / 最大 255</span>
+            <div class="desc">8 位 ⇒ <span class="m">2^8 = 256</span> 种组合 ⇒ 从 0 到 <b>255</b>。</div>
+          </div>
+          <div class="item ok"><span class="t">进制转换</span> <span class="badge b-ok">09-24 全通</span>
+            <div class="desc"><b>转出去</b>：除几取余（十→二：除 2 取余）· <b>转回来</b>：乘几次方（二→十：乘 2 的幂）。<b>「几进制」里的那个数就是底数</b>。</div>
+          </div>
+          <div class="item ok"><span class="t">为什么用二进制</span>
+            <div class="desc"><b>物理原理</b>：电子元件只有两个<b>稳定状态</b>（通 / 断），所以用 0/1 最可靠。</div>
+          </div>
+          <div class="item mid"><span class="t">单位换算（×8 vs ×1024）</span> <span class="badge b-mid">待复检</span>
+            <div class="desc"><b>两条路</b>：换单位（字节 ↔ 位）= <b>×8</b>（同一层换个说法）· 上台阶（B→KB→MB）= <b>×1024</b>（跨一层）。<b>⚠️ 易混</b>：<code>5 KB = 5×1024 字节</code>（不是 40）。</div>
+          </div>
+          <div class="item todo"><span class="t">编码（ASCII · 原码/反码/补码）</span>
+            <div class="desc">ASCII（字符 ↔ 数字）· 原码 / 反码 / 补码（负数怎么存）。</div>
+          </div>
+        </div>
+      </div>
+      <div class="chapter">
+        <div class="ch" onclick="togCh(this)"><span class="arrow">▶</span> ③④⑤ 未开 <span class="badge b-todo">⬜</span></div>
+        <div class="items">
+          <div class="item todo"><span class="t">③ 程序从编写到运行</span> <span class="badge b-todo">2026 新增</span>
+            <div class="desc">编译 → 链接 → 运行 · <b>三类错误的区别</b>。</div>
+          </div>
+          <div class="item todo"><span class="t">④ 计算机网络基础</span>
+            <div class="desc">网络分类 · IP / 域名 · 常见协议。</div>
+          </div>
+          <div class="item todo"><span class="t">⑤ 数据结构基础概念</span>
+            <div class="desc">逻辑结构 / 存储结构 / 算法特性（<b>桥接到 C语言的 2.1</b>）。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════ 英语 ═══════ -->
+  <div class="subj en open">
+    <div class="head" onclick="tog(this)">
+      <span class="arrow">▶</span>
+      <span class="title">🔤 英语</span>
+      <span class="tag">细水长流 · 每天 15min</span>
+    </div>
+    <div class="body">
+      <div class="chapter open">
+        <div class="ch" onclick="togCh(this)"><span class="arrow">▶</span> 词汇（Anki）<span class="badge b-ok">2230 张</span></div>
+        <div class="items">
+          <div class="item ok"><span class="t">专升本英语高频词 2230 张</span>
+            <div class="desc">09-07 导入。<b>全部加助记</b>（2230/2230 · 100%）—— 每张卡含「助记 + 真题 + 形态」三块。</div>
+          </div>
+          <div class="item ok"><span class="t">真题词库</span>
+            <div class="desc"><b>7087 词 · 94973 词次</b>（从历年真题统计）。</div>
+          </div>
+        </div>
+      </div>
+      <div class="chapter open">
+        <div class="ch" onclick="togCh(this)"><span class="arrow">▶</span> 阅读理解 <span class="badge b-ok">3 篇</span></div>
+        <div class="items">
+          <div class="item ok"><span class="t">2022 Passage A（五国新年习俗）4/5</span>
+            <div class="desc">🎉 <b>阅读破零</b>（09-24）。</div>
+          </div>
+          <div class="item ok"><span class="t">2024 Passage A（五农场介绍）3/5</span>
+            <div class="desc">09-25 做的。</div>
+          </div>
+          <div class="item ok"><span class="t">2023 Passage A（社区体育设施）5/5</span> <span class="badge b-ok">🎉 全对</span>
+            <div class="desc">09-28 · <b>进步明显</b>（上次 3/5）。<b>唯一问题</b>：第 3 题的「依据句」找错了 ⇒ <b>答案对 ≠ 依据对</b>。</div>
+          </div>
+          <div class="item mid"><span class="t">🔑 阅读硬判据</span>
+            <div class="desc"><b>每题必须把答案在原文里的原句抄出来</b>。抄不出 = 这题不算做完。</div>
+          </div>
+        </div>
+      </div>
+      <div class="chapter open">
+        <div class="ch" onclick="togCh(this)"><span class="arrow">▶</span> 完形填空 <span class="badge b-ok">2 篇</span></div>
+        <div class="items">
+          <div class="item ok"><span class="t">2024（Lisa 环游世界）13/15</span>
+            <div class="desc">⭐ <b>首次做完形</b>（09-25）。</div>
+          </div>
+          <div class="item ok"><span class="t">2023（大学新生）10/15</span>
+            <div class="desc">09-28 · <b>首次用「方法论」而非语感</b>。</div>
+          </div>
+          <div class="item mid"><span class="t">🔑 陶然老师方法论</span>
+            <div class="desc">① <b>完形只考 4 类词</b>（动词 / 名词 / 形容词副词 / 连词介词）② 看选项判断填什么 + 和文章里<b>已知信息的对应</b> ③ <b>跳过翻译层面</b>，看每个空对应的具体词。</div>
+          </div>
+        </div>
+      </div>
+      <div class="chapter open">
+        <div class="ch" onclick="togCh(this)"><span class="arrow">▶</span> 语法填空 <span class="badge b-mid">3 篇</span></div>
+        <div class="items">
+          <div class="item mid"><span class="t">2014 全国 I 卷（凯霍加河污染）</span>
+            <div class="desc">09-19 做 + 自建 21 张卡。</div>
+          </div>
+          <div class="item mid"><span class="t">2015 全国 I 卷重测 7/10</span>
+            <div class="desc">09-21 · 干净基线。<b>方法</b>：分句找谓语。</div>
+          </div>
+          <div class="item mid"><span class="t">2015 全国 II 卷（土坯房）5/10</span>
+            <div class="desc">09-23 · <b>弱项</b>（5-7/10）。</div>
+          </div>
+        </div>
+      </div>
+      <div class="chapter">
+        <div class="ch" onclick="togCh(this)"><span class="arrow">▶</span> 写作 <span class="badge b-mid">模板已备</span></div>
+        <div class="items">
+          <div class="item mid"><span class="t">模板优化</span>
+            <div class="desc">考频从 8 年补到 <b>12 年</b> · 4 套模板压成「<b>1 骨架 + 5 来意句</b>」· 写作词建卡 48 张。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  02 生成 · 2026-10-02 · 点击标题展开/收起 · 数据源：4 张状态卡 + 学习日志 + 笔记站
+</footer>
+
+<script>
+function tog(el){ el.parentElement.classList.toggle('open'); }
+function togCh(el){ el.parentElement.classList.toggle('open'); }
+function allOpen(){
+  document.querySelectorAll('.subj').forEach(s=>s.classList.add('open'));
+  document.querySelectorAll('.chapter').forEach(c=>c.classList.add('open'));
+  document.querySelectorAll('.item').forEach(it=>it.style.display='');
+}
+function allClose(){
+  document.querySelectorAll('.subj').forEach(s=>s.classList.remove('open'));
+  document.querySelectorAll('.chapter').forEach(c=>c.classList.remove('open'));
+}
+let filter=null;
+function toggleFilter(kind){
+  const bOK=document.getElementById('btnOK'), bT=document.getElementById('btnTodo');
+  if(filter===kind){
+    filter=null; bOK.classList.remove('on'); bT.classList.remove('on');
+    document.querySelectorAll('.item').forEach(it=>it.style.display='');
+    return;
+  }
+  filter=kind;
+  bOK.classList.toggle('on', kind==='ok');
+  bT.classList.toggle('on', kind==='todo');
+  allOpen();
+  document.querySelectorAll('.item').forEach(it=>{
+    let show;
+    if(kind==='ok') show = it.classList.contains('ok');
+    else show = it.classList.contains('todo') || it.classList.contains('mid');
+    it.style.display = show ? '' : 'none';
+  });
+}
+window.addEventListener('DOMContentLoaded',()=>{
+  document.querySelectorAll('.subj').forEach(s=>s.classList.add('open'));
+});
+</script>
+
+</body>
+</html>
