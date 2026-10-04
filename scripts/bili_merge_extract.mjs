@@ -369,7 +369,21 @@ const W = (s = '') => lines.push(s);
 const snap = snapshotState();
 const running = snap.staleMs < 5 * 60 * 1000;
 
-W('# 考点库 · 跨视频合并 · 2026-09-19');
+/* ★ 2026-09-25 修：报告标题与「重跑命令」里的日期原先**写死 '2026-09-19'**。
+   后果有两层，都是静默的：
+     ① 09-25 重跑会产出「标题 09-19 / 快照时间 09-25」的自相矛盾文件；
+     ② 命令提示里的文件名也指回旧文件 —— 照着抄会把新报告**覆盖进旧名字**里，
+        旧的 09-19 快照就此丢失，且文件名与内容不再对应。
+   现在从快照时间现算（`snap.latest` = `_extract` 里最新的写入时刻），
+   所以「文件名 / 标题 / 快照时间」三者永远一致。`_extract` 为空时退回当天。 */
+const stamp = (() => {
+  const d = new Date(snap.latest || Date.now());
+  const p = (n) => String(n).padStart(2, '0');
+  return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`;
+})();
+const MD_NAME = `备考计划/考点库-跨视频合并-${stamp}.md`;
+
+W(`# 考点库 · 跨视频合并 · ${stamp}`);
 W('');
 W('> 由 `scripts/bili_merge_extract.mjs` 从 `data/bili-analyze/_extract/*.md` 自动汇总生成。');
 W('> 数据源是 B 站课程字幕经 AI 结构化后的知识点卡片，**不是官方考纲**。');
@@ -383,7 +397,7 @@ if (running) {
   W('>');
   W('> **所以下面的数字会继续涨。** 等提取跑完，重跑一次本脚本即可刷新：');
   W('> ```bash');
-  W('> node scripts/bili_merge_extract.mjs --md 备考计划/考点库-跨视频合并-2026-09-19.md --json data/bili-analyze/_extract/_merged.json --coverage data/bili-analyze/_extract/_coverage.json');
+  W(`> node scripts/bili_merge_extract.mjs --md ${MD_NAME} --json data/bili-analyze/_extract/_merged.json --coverage data/bili-analyze/_extract/_coverage.json`);
   W('> ```');
   W('>');
   W('> ⚠️ **三个 flag 必须一起给**。`--json`（全量，供搜索）与 `--coverage`（精简，供门户面板）');
@@ -396,7 +410,17 @@ W('');
 W('| 项 | 值 |');
 W('|:---|---:|');
 W(`| **快照时间** | ${new Date().toLocaleString('zh-CN')} |`);
-W(`| 已提取视频 | **${snap.doneBv.size} / ${snap.verifiedBv.length}**${running ? '（⚠️ 仍在跑）' : '（已完成）'} |`);
+/* ★ 2026-09-25 修：这一行原先只有两态 —— `running ? 仍在跑 : 已完成`。
+   于是「没在写」被当成「写完了」：09-25 实测 doneBv=115 / verifiedBv=135，
+   却因为提取任务不在最近 5 分钟里写盘，被标成「（已完成）」—— 一个假信号。
+   ⚠️ 但也**不能**简单改成「还差 20 支」：实测那 20 支里 **18 支属 CATALOG 的
+   `高考英语-不考` 组**（广东专升本不考听力/口语，本来就不提取），另 2 支未登记进 CATALOG。
+   所以差额**不是自动判定的待办**。这里只报事实 + 指向 §十二，由人去分类。 */
+const pendingN = snap.verifiedBv.length - snap.doneBv.size;
+const doneTag = running ? '（⚠️ 仍在跑）'
+  : pendingN > 0 ? `（⚠️ 差额 ${pendingN} 支待分类，见 §十二）`
+  : '（已完成）';
+W(`| 已提取视频 | **${snap.doneBv.size} / ${snap.verifiedBv.length}**${doneTag} |`);
 if (snap.rejectedBv.length) {
   W(`| 校验拒收 | ${snap.rejectedBv.length} 支（**离题，非待办**）—— 见文末 |`);
 }
@@ -639,9 +663,52 @@ if (snap.rejectedBv.length) {
   W('`freshness.knownBv` 因此只数「至少有一段 ok:true」的视频。');
   W('');
 }
+/* ── 差额清单：报事实，**不下「待办」结论** ──
+   `verifiedBv` 是「至少有一段 ok:true」的**宽松**集合，不等于「该提取的集合」：
+   09-25 实测差额 20 支里 **18 支属 CATALOG 的 `高考英语-不考` 组**（广东专升本不考听力/口语，
+   提取步骤正确地跳过了它们），另 2 支未登记进 CATALOG（`--bv` 永远命中不到）。
+   所以这里只列出来 + 说明两类原因，**不写成待办** ——
+   写成待办就会造出一个不存在的缺口，正是 §十一 注释警告过的同一个坑。 */
+const pendingBv = snap.verifiedBv.filter((b) => !snap.doneBv.has(b)).slice().sort();
+if (pendingBv.length) {
+  let titleDb = {};
+  try {
+    titleDb = JSON.parse(fs.readFileSync(path.join(ANALYZE_DIR, '_part_titles_all.json'), 'utf8'));
+  } catch { /* 缓存缺失不影响本节，标题留空 */ }
+  W('## 十二、已校验但无产出的视频（**差额，不是自动待办**）');
+  W('');
+  W(`共 **${pendingBv.length} 支**。它们至少有一段 \`ok:true\`（因此进了 \`verifiedBv\` 这个宽松集合），`);
+  W('但没有对应的 `_extract/<BV>_NN.md`。');
+  W('');
+  W('> ⚠️ **别直接当待办跑。** 差额至少有两类原因，得人工分一次：');
+  W('>');
+  W('> 1. **属「不考」组** —— 实测 18/20 支是 CATALOG 里 `高考英语-不考` 的**口语**内容');
+  W('>    （广东专升本不考听力/口语），提取步骤**正确地跳过了**它们；');
+  W('> 2. **未登记进 CATALOG** —— 那么 `bili_fetch_subs.py --bv` 的过滤器永远命中不到，要先登记。');
+  W('>');
+  W('> 一律算成待办就会造出一个**不存在的缺口** —— 这正是 §十一 注释里警告过的同一个坑。');
+  W('');
+  W('| BV | 视频名 |');
+  W('|:---|:---|');
+  for (const bv of pendingBv) {
+    const r = titleDb[bv];
+    const t = r && r.title ? r.title.replace(/\|/g, '\\|').slice(0, 56) : '(标题缓存里没有)';
+    W(`| \`${bv}\` | ${t} |`);
+  }
+  W('');
+}
 W('---');
 W('');
-W(`_生成时间：${new Date().toISOString().slice(0, 19).replace('T', ' ')}_`);
+/* ★ 2026-09-25 修：页脚原先用 `toISOString()` —— 那是 **UTC**；而头部「快照时间」用的是
+   `toLocaleString('zh-CN')`（本地）。在 CST(UTC+8) 下两者会**差一天**：
+   标题写 09-25、页脚写 09-24，同一份报告自相矛盾。统一走本地时间并标出时区。 */
+const tzH = -new Date().getTimezoneOffset() / 60;
+const fmtLocal = (d) => {
+  const p = (n) => String(n).padStart(2, '0');
+  return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())} `
+       + `${p(d.getHours())}:${p(d.getMinutes())}:${p(d.getSeconds())}`;
+};
+W(`_生成时间：${fmtLocal(new Date())}（本地时间，UTC${tzH >= 0 ? '+' : ''}${tzH}）_`);
 
 const out = lines.join('\n');
 

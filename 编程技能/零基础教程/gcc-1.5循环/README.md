@@ -4,7 +4,7 @@
 
 ## 怎么跑
 
-**⚠️ 关键坑**：`gcc.exe` 在 `D:\w64devkit\w64devkit\bin\`，但**它不在默认 PATH 里**。直接调 `gcc` 会报：
+**⚠️ 关键坑**：`gcc.exe` 在 `D:\Apps\w64devkit\w64devkit\bin\`，但**它不在默认 PATH 里**。直接调 `gcc` 会报：
 
 ```
 gcc.exe: fatal error: cannot execute 'as': CreateProcess: No such file or directory
@@ -15,7 +15,7 @@ gcc.exe: fatal error: cannot execute 'as': CreateProcess: No such file or direct
 **必须先把它加进 PATH**：
 
 ```bash
-export PATH="/d/w64devkit/w64devkit/bin:$PATH"
+export PATH="/d/Apps/w64devkit/w64devkit/bin:$PATH"
 gcc break1.c -o break1.exe && ./break1.exe
 ```
 

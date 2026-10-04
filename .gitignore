@@ -1,5 +1,7 @@
 # Obsidian workspace / local state (device-specific)
 .obsidian/workspace.json
+# 2026-10-04：教材 PDF 下载缓存（30MB），不入库
+_downloads/
 .obsidian/workspace-mobile.json
 .obsidian/workspaces.json
 .obsidian/cache

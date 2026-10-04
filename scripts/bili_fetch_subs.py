@@ -49,10 +49,55 @@ CATALOG = {
     '计算机': ['BV1Ye411Y7Ue', 'BV1Ay4y137RA', 'BV1KU4y167ds', 'BV1tNpbekEht',
              'BV1z84y1z7Vp', 'BV1ajMo6TEBm', 'BV17a7K64ELH', 'BV1Z4w3znE6h'],
     '高数': ['BV1Up4y1Y76a', 'BV1husGzwEtZ', 'BV1swAWerEzS', 'BV1X4411J792',
-           'BV1vm421s7mv', 'BV12DdNYzEvy', 'BV1xxXZBKENv'],
+           'BV1vm421s7mv', 'BV12DdNYzEvy', 'BV1xxXZBKENv',
+           # ★ 2026-09-25 新增：之了专升本《2027年广东专升本高等数学零基础全套课程》
+           #   106 分P / 53:44:20 / 稿件 pubdate 2026-05-20，已完结，非付费稿件
+           #   （rights.pay=0、is_upower_exclusive=None）。
+           #   ⚠️ `--bv` 只在本 CATALOG 内做过滤，不在清单里的 BV 会被**静默跳过** ——
+           #   这正是「明明给了 BV 却什么都没下」的原因，必须登记在这里。
+           'BV18CL26WEJ3'],
     '政治': ['BV1PRM26hEbk', 'BV1TDj36dEdc', 'BV176gY6nEb3', 'BV1xzBCBFExz',
            'BV1gh9MBkEEC'],
     '英语': ['BV1rg411h7Z1', 'BV1brgBzNEbW', 'BV1Do4y1h7om', 'BV1jT4y1f7YA'],
+    # ★ 2026-09-24 新增：B站「FREE高考英语」(mid 2742391) 全频道。
+    #   普查产出见 out/free-up.json（合集结构）+ out/free-census.json（分P/时长）。
+    #   合计 116 个 BV / 1072 个分P / 623 小时。
+    #   分成两组：广东专升本英语不考听力/续写/口语，那 105 小时单独成组，
+    #   方便 --only 高考英语 跳过，需要时再补 --only 高考英语-不考。
+    '高考英语': [
+        'BV1MWhJ67EkY', 'BV1rBe66MEZU', 'BV1FXec6xEJT', 'BV1dnY76tEEq',
+        'BV1xgbM6zE5i', 'BV192t663Esq', 'BV1Phtd6qE4h', 'BV1gRtJ6LE6P',
+        'BV1F2hG6EEUq', 'BV1oFth6DE28', 'BV1rRGG6TEqE', 'BV17HTi6JErn',
+        'BV12dGnzUEFN', 'BV1MY4y1P7Jj', 'BV1rXuzzXEsm', 'BV1vb421H71y',
+        'BV1UM4m127xY', 'BV1S4421U7wT', 'BV1ni421h7Vm', 'BV1aU411U7SG',
+        'BV1H4421S7Tg', 'BV1Yr421M76r', 'BV1waU3YaE5X', 'BV1TKeE6DEr4',
+        'BV1zc411y7p9', 'BV14g4y1Q753', 'BV1vWgezcE7M', 'BV1He4y1r7fc',
+        'BV1y3xweeEnJ', 'BV1nxun6JECX', 'BV138411V7uR', 'BV1pMm2BnE3u',
+        'BV1SUqpBBE7d', 'BV1z4BKBkEjG', 'BV1dWgezcEYS', 'BV1xj411R75q',
+        'BV1w14y117wg', 'BV1Mz4y157dP', 'BV1aG41117RC', 'BV17M411D7kh',
+        'BV1ru4y1j7Z1', 'BV1eC4y1R7Bp', 'BV1jyKQ6dEDs', 'BV1FFM36HEJM',
+        'BV13wrLBaE2t', 'BV1EyMVzuExP', 'BV1RAMFzfEoJ', 'BV1yVNzzyEsK',
+        'BV1KmwJe8E7a', 'BV1DJ4m1M7Zj', 'BV1US411P7Fi', 'BV1Bb421n7re',
+        'BV1WV411R7UU', 'BV1cQ4y1L7Hq', 'BV1wQ4y1L7iD', 'BV1CN4y1H78q',
+        'BV1Bg4y1S7rg', 'BV1Zc411x7eZ', 'BV1eW4y1A7aK', 'BV1ne411v7Fe',
+        'BV1W1RABDEKv', 'BV1DK411v7do', 'BV1F94y1M7cr', 'BV1Ka4y117hH',
+        'BV177Vz63EHv', 'BV1k3Mh6yEJD', 'BV13B4y1B7un', 'BV1QvtC6LE8e',
+        'BV1LQbE6HEFF', 'BV1VTbx6vEhm', 'BV1BqYE6iEz3', 'BV1b5Yt6VEHT',
+        'BV1ujY86SExR', 'BV17QYV6DEV3', 'BV1BZY76AEme', 'BV15bY96fE8g',
+        'BV1S6Y96nEJC', 'BV1vNYr6dEuN', 'BV1zoY66wEx4', 'BV1xaY16REU4',
+        'BV14bY16dESb', 'BV1iheE6eEm9', 'BV1nHeE66ErW', 'BV1pshi6DEps',
+        'BV17BhB6SEex', 'BV1N8hk6rE3p', 'BV1mnh766Eq3', 'BV17r8F6gE2u',
+        'BV1544y1L74x', 'BV1Uq4y1B7F8', 'BV1X64y1e71c', 'BV1tP4y1p7zd',
+        'BV16q4y1M7jZ', 'BV13M4y1V7nx', 'BV1744y1C7wh', 'BV1JM4y1M7ju',
+        'BV1Wh411h7q3'
+    ],
+    '高考英语-不考': [
+        'BV1V84y1v7PU', 'BV1T27V6cEtV', 'BV1eSu6zCEJT', 'BV1H1gt6kELg',
+        'BV1aogZ61ECz', 'BV1sB316PEQv', 'BV1tg8j6vEJD', 'BV1TY876zEUU',
+        'BV18EuMz1Ejp', 'BV13iGNz7ExF', 'BV1dtGNzQEKo', 'BV1ufGPzkEyQ',
+        'BV1MwGNz6EMf', 'BV1GXGPz2EMU', 'BV1r1Ggz1Eem', 'BV14vGgzpEK4',
+        'BV1LZGgzqEbT', 'BV1zuGgzgEux', 'BV1fuGgzgEeq'
+    ],
 }
 
 # ★ E1（2026-09-20）：原来是相对路径 `Path('data/bili-analyze')`。
@@ -60,6 +105,59 @@ CATALOG = {
 #   相对路径下它会往一个**新建的空目录**里下载 1526 个分P，然后报告「全部成功」。
 #   锚定到脚本位置：产出永远落在仓库的 data/bili-analyze/。
 ROOT = pathlib.Path(__file__).resolve().parent.parent / 'data' / 'bili-analyze'
+
+# ★ 2026-09-24：元数据写回缓存。
+#   原来本脚本在收集阶段调 `ba.get_meta(bv)`（每个 BV 一次），但**不写**
+#   `_part_titles_all.json`；而 `bili_build_units.py` 的 `get_titles()` 只认那个
+#   缓存，读不到就**再调一次** get_meta。于是同一批元数据被付了两遍。
+#   实测（2026-09-24，97 个 BV）：元数据单次中位 869 ms ⇒ 白花 84 s，
+#   而当时整个抓取段（元数据+下载+切片+过滤）合计才 364 s —— **46% 是重复劳动**。
+#   详见 docs/guide/bili-subtitle-pipeline-perf.md §八。
+TITLE_CACHE = ROOT / '_part_titles_all.json'
+
+
+def _load_title_cache() -> dict:
+    try:
+        return json.loads(TITLE_CACHE.read_text(encoding='utf-8'))
+    except Exception:
+        return {}
+
+
+def _save_title_cache(db: dict) -> None:
+    """写回缓存。
+
+    ★ 刻意吞掉异常：这是**非承重**步骤。缓存写失败不该让一个已经跑了几十分钟的
+      下载任务整体失败（同 skill 里「cleanup must never fail the job」那条）。
+    """
+    try:
+        TITLE_CACHE.parent.mkdir(parents=True, exist_ok=True)
+        TITLE_CACHE.write_text(json.dumps(db, ensure_ascii=False, indent=1),
+                               encoding='utf-8', newline='\n')
+    except Exception as e:
+        print('  (warn) 标题缓存写回失败，不影响本次下载：%s' % e)
+
+
+def _cache_entry(m: dict) -> dict:
+    """与 `bili_build_units.get_titles()` 的读法保持一致（title/owner/pages）。"""
+    return {
+        'title': m['title'],
+        'owner': m.get('owner', ''),
+        'pages': [{'p': p['page'], 'part': p['part'], 'dur': p['duration']}
+                  for p in m['pages']],
+    }
+
+
+# ★ 2026-09-24：元数据也要重试。
+#   事故：抓「FREE高考英语」时 `BV1MY4y1P7Jj`（零基础训练，20 个分P / 43.8 小时）
+#   的 get_meta 撞上一次瞬时 SSL 错误
+#   （`SSL: UNEXPECTED_EOF_WHILE_READING`），收集循环 `continue` 掉了整支视频 ——
+#   **20 个分P 一个没下，目录都没建，而且日志里只有一行，混在 97 行里看不出来。**
+#   重跑时单独调 get_meta 是成功的（code 0 / 20 分P），确认是瞬时故障。
+#
+#   教训与探轨那边完全同构：**一个 BV 的元数据失败 = 整支视频被静默丢弃**，
+#   代价远大于一次重试。宁可慢 1.6 秒，不可丢 43.8 小时。
+META_RETRIES = 3
+_META_FAILED: list[str] = []
 
 _LOCK = threading.Lock()
 _HIT = 0      # 新下载成功
@@ -351,17 +449,32 @@ def main():
     #   这里先数出「会被覆盖且已校验」的分P 数量，>0 且没给 --yes 就拒绝执行。
     #   不写成交互式提问：这个脚本常在无人值守的长任务里跑，input() 会把它挂住。
     risk_overwrite = 0
+    # ★ 2026-09-24：本阶段已经取过元数据，顺手写回缓存，供 build_units 复用。
+    _title_db = _load_title_cache()
     for subject, bvs in CATALOG.items():
         if a.only and a.only != subject:
             continue
         for bv in bvs:
             if a.bv and bv not in [x.strip() for x in a.bv.split(',')]:
                 continue
-            try:
-                m = ba.get_meta(bv)
-            except Exception as e:
-                print('%s 取元数据失败：%s' % (bv, e))
+            m = None
+            last_err = None
+            for attempt in range(META_RETRIES):
+                try:
+                    m = ba.get_meta(bv)
+                    break
+                except Exception as e:
+                    last_err = e
+                    if attempt + 1 < META_RETRIES:
+                        time.sleep(0.8 + attempt * 0.8)
+            if m is None:
+                # ★ 不要静默丢弃：见 META_RETRIES 的注释（丢一支 = 丢几十个分P）
+                _META_FAILED.append('%s（重试 %d 次仍失败）：%s'
+                                    % (bv, META_RETRIES, last_err))
+                print('[%s] %-14s ✗ 取元数据失败（重试 %d 次）：%s'
+                      % (subject, bv, META_RETRIES, last_err))
                 continue
+            _title_db[bv] = _cache_entry(m)     # ★ 见 TITLE_CACHE 注释
             outdir = ROOT / bv
             outdir.mkdir(parents=True, exist_ok=True)
             # 读已校验记录：{p: bool}
@@ -424,6 +537,11 @@ def main():
                 extra += '，recovered 保护 %d P' % n_rc
             print('[%s] %-14s 共 %3d P，待下载 %3d  P%s  %s'
                   % (subject, bv, len(m['pages']), n_new, extra, m['title'][:32]))
+
+    # ★ 2026-09-24：收集阶段结束，把本阶段取得的元数据一次性写回缓存。
+    #   放在这里而不是每个 BV 后立即写：97 次重写整个 JSON 是纯 I/O 浪费，
+    #   而这一阶段总耗时只有百来秒，中途崩了重跑代价可接受。
+    _save_title_cache(_title_db)
 
     # ★ 2026-09-21：`--dry-run` —— 任务收集完成后立刻短路，只打印计划、不发请求。
     #   刻意放在 D5 护栏**之前**：预览不具破坏性，不该被护栏拦下；但真要覆盖
@@ -523,6 +641,14 @@ def main():
     if _FAIL_LIST:
         print('失败的分P（重跑本脚本会自动重试）：%d 个' % len(_FAIL_LIST))
         print('  ' + ', '.join(_FAIL_LIST[:10]) + (' …' if len(_FAIL_LIST) > 10 else ''))
+    if _META_FAILED:
+        print()
+        print('⚠️ 整支视频被跳过：%d 个 BV（元数据重试 %d 次仍失败）'
+              % (len(_META_FAILED), META_RETRIES))
+        for line in _META_FAILED:
+            print('  ' + line)
+        print('  这些 BV 的**所有分P**都没进任务队列，不计入上面的任何数字。'
+              '重跑本脚本会自动补。')
     if _SUSPECT_LIST:
         print()
         print('⚠️ 未通过 aid+cid 校验的分P：%d 个 —— 内容可能不是这个视频的，'
