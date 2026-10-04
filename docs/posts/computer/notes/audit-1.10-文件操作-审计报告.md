@@ -8,6 +8,8 @@ mastery: "review"
 tags:
   - 章节审计报告
   - 文件操作
+chapter: "第一章 C语言基础 · 1.10 文件操作"
+chapter_id: "1.10"
 ---
 
 # 章节审计报告 · 1.10 文件操作

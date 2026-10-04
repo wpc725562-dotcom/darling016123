@@ -8,6 +8,8 @@ mastery: "review"
 tags:
   - 章节审计报告
   - 线性表
+chapter: "第二章 数据结构 · 2.2 线性表"
+chapter_id: "2.2"
 ---
 
 # 章节审计报告 · 2.2 线性表

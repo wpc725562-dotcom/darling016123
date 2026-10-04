@@ -7,6 +7,8 @@ frequency: "medium"
 mastery: "review"
 tags:
   - 章节审计报告
+chapter: "第二章 数据结构 · 2.6 图"
+chapter_id: "2.6"
 ---
 
 # 章节审计报告 · 2.6 图

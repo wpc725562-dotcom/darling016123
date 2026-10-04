@@ -8,6 +8,8 @@ mastery: "review"
 tags:
   - 章节审计报告
   - 指针
+chapter: "第一章 C语言基础 · 1.8 指针"
+chapter_id: "1.8"
 ---
 
 # 章节审计报告 · 1.8 指针

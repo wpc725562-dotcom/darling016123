@@ -8,6 +8,8 @@ mastery: "review"
 tags:
   - 章节审计报告
   - 排序
+chapter: "第二章 数据结构 · 2.8 排序"
+chapter_id: "2.8"
 ---
 
 # 章节审计报告 · 2.8 排序
