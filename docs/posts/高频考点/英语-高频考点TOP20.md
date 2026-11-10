@@ -2,6 +2,8 @@
 title: "公共英语 · 高频考点 TOP20"
 description: "高频考点统计 · 公共英语 · 高频考点 TOP20"
 category: "高频考点-english"
+tags:
+  - 高频考点
 ---
 
 # 公共英语 · 高频考点 TOP20（已归档）

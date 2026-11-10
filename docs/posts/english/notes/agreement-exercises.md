@@ -6,8 +6,7 @@ difficulty: "intermediate"
 frequency: "medium"
 mastery: "review"
 tags:
-  - 主谓一致
-  - 真题专项
+  - 公共英语
 ---
 
 # 📝 主谓一致 · 真题专项
@@ -70,7 +69,7 @@ A. rain　B. will rain　C. rained　D. rains
 
 | 题 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24 | 25 | 26 | 27 |
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
-| 答案 | **B** | **C** | **C** | **A** | **C** | **A** | **D** | **D** | **A** | **B** | **C** | **A** | **A** | **D** | **D** |
+| 答案 | B | C | C | A | C | A | D | D | A | B | C | A | A | D | D |
 
 ---
 
@@ -129,14 +128,14 @@ A. rain　B. will rain　C. rained　D. rains
 
 | 规则 | 例句 |
 |:---|:---|
-| `the number of` → 单数 | The number of students **is** 100. |
-| `a number of` → 复数 | A number of students **are** here. |
+| `the number of` → 单数 | The number of students is 100. |
+| `a number of` → 复数 | A number of students are here. |
 | `one of...who` / `the only one of...who` | 前者复 / 后者单 |
 | 不可数名词（furniture/glasses 等） | 谓语单数 |
-| `a pair of` → 单数 | A pair of shoes **is**... |
+| `a pair of` → 单数 | A pair of shoes is... |
 | `not only A but also B` → 就近 | 看 B |
-| 主语从句 → 单数 | What he said **is** true |
-| 主将从现 | If it **rains**, we will... |
+| 主语从句 → 单数 | What he said is true |
+| 主将从现 | If it rains, we will... |
 
 ---
 [← 回语法笔记](../notes/grammar) · [英语总览](/posts/english/)

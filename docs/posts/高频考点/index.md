@@ -2,6 +2,8 @@
 title: "高频考点 TOP20"
 description: "四科高频考点统计 · 考频榜单 · 复习指引"
 category: "高频考点"
+tags:
+  - 高频考点
 ---
 
 # 📊 四科高频考点 TOP20

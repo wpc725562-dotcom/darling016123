@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>政治 · 思维导图</title>
+<style>
+  :root {
+    --bg: #140f14; --panel: rgba(36,26,32,.9); --text: #f2e8ec; --dim: #a89aa2;
+    --pink: #f8b4c4; --pink-dim: #c98a9a;
+    --grid: rgba(248,180,196,.12); --line: rgba(248,180,196,.16);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; height: 100vh; overflow: hidden;
+    background: var(--bg); color: var(--text);
+    font: 14px/1.6 -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif;
+  }
+  body::before {
+    content: ''; position: fixed; inset: 0; z-index: -2;
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+  body::after {
+    content: ''; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    background:
+      radial-gradient(ellipse 900px 500px at 15% 0%, rgba(248,180,196,.10), transparent 62%),
+      radial-gradient(ellipse 700px 420px at 85% 100%, rgba(201,138,154,.08), transparent 60%);
+  }
+  #petals { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+
+  .head {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 20;
+    background: rgba(20,15,20,.86); backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+    padding: 14px 24px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  }
+  .head h1 { font-size: 17px; font-weight: 600; margin: 0; color: #fff; }
+  .head h1 em { font-style: normal; color: var(--pink); }
+  .head .meta { font-size: 12px; color: var(--dim); }
+  .sp { flex: 1; }
+  .btn {
+    padding: 6px 14px; font-size: 12.5px; border-radius: 16px; cursor: pointer;
+    border: 1px solid var(--line); background: rgba(255,255,255,.04); color: var(--dim);
+    transition: all .18s; user-select: none;
+  }
+  .btn:hover { border-color: var(--pink-dim); color: var(--text); }
+  .btn.on { background: rgba(248,180,196,.16); border-color: var(--pink); color: #ffd9e2; }
+
+  #stage {
+    position: fixed; inset: 56px 0 0 0; overflow: hidden; cursor: grab;
+  }
+  #stage.drag { cursor: grabbing; }
+  svg { display: block; width: 100%; height: 100%; }
+
+  .node rect { rx: 7; ry: 7; transition: fill .15s, stroke .15s; }
+  .node text { font-size: 12.5px; dominant-baseline: middle; pointer-events: none; }
+  .node { cursor: pointer; }
+  .node.root rect { fill: rgba(248,180,196,.22); stroke: var(--pink); stroke-width: 1.6; }
+  .node.root text { fill: #fff; font-size: 15px; font-weight: 600; }
+  .node.book rect { fill: rgba(248,180,196,.14); stroke: var(--pink-dim); stroke-width: 1.3; }
+  .node.book text { fill: #ffd9e2; font-size: 14px; font-weight: 600; }
+  .node.chap rect { fill: rgba(255,255,255,.055); stroke: rgba(248,180,196,.28); }
+  .node.chap text { fill: var(--text); }
+  .node.chap:hover rect { fill: rgba(248,180,196,.16); stroke: var(--pink); }
+  .node.point rect { fill: rgba(255,255,255,.03); stroke: rgba(248,180,196,.14); }
+  .node.point text { fill: var(--dim); font-size: 11.5px; }
+  .node.point:hover rect { fill: rgba(248,180,196,.12); stroke: var(--pink-dim); }
+  .node.point.hot rect { stroke: rgba(248,180,196,.42); }
+  .node.point.hot text { fill: #e8c9d2; }
+
+  .link { fill: none; stroke: rgba(248,180,196,.24); stroke-width: 1.2; }
+  .link.hot { stroke: rgba(248,180,196,.4); }
+
+  .badge { font-size: 10.5px; fill: var(--pink-dim); }
+  .toggle { fill: var(--pink); font-size: 11px; }
+
+  .tip {
+    position: fixed; left: 50%; bottom: 18px; transform: translateX(-50%);
+    background: rgba(36,26,32,.94); border: 1px solid var(--line);
+    border-radius: 18px; padding: 7px 16px; font-size: 12px; color: var(--dim);
+    z-index: 20; backdrop-filter: blur(10px); white-space: nowrap;
+  }
+  .tip b { color: var(--pink); font-weight: 500; }
+  .legend {
+    position: fixed; right: 20px; bottom: 18px; z-index: 20;
+    background: rgba(36,26,32,.9); border: 1px solid var(--line);
+    border-radius: 12px; padding: 10px 14px; font-size: 11.5px; color: var(--dim);
+    backdrop-filter: blur(10px); line-height: 1.9;
+  }
+  .legend i {
+    display: inline-block; width: 9px; height: 9px; border-radius: 2px;
+    margin-right: 6px; vertical-align: 0; font-style: normal;
+  }
+</style>
+</head>
+<body>
+<canvas id="petals"></canvas>
+
+<div class="head">
+  <h1>政治 · <em>思维导图</em></h1>
+  <div class="meta">249 考点 ｜ 27 章 ｜ 2 本教材</div>
+  <div class="sp"></div>
+  <div class="btn" id="btnExpand">全部展开</div>
+  <div class="btn" id="btnCollapse">全部折叠</div>
+  <div class="btn on" id="btnHot">只看 4 星以上</div>
+  <div class="btn" id="btnReset">复位</div>
+</div>
+
+<div id="stage">
+  <svg id="svg"><g id="viewport"></g></svg>
+</div>
+
+<div class="tip">拖拽平移 ｜ 滚轮缩放 ｜ 点<b>章节</b>展开或收起考点</div>
+<div class="legend">
+  <div><i style="background:rgba(248,180,196,.22);border:1px solid #f8b4c4"></i>中心</div>
+  <div><i style="background:rgba(248,180,196,.14);border:1px solid #c98a9a"></i>教材</div>
+  <div><i style="background:rgba(255,255,255,.055);border:1px solid rgba(248,180,196,.28)"></i>章节</div>
+  <div><i style="background:rgba(255,255,255,.03);border:1px solid rgba(248,180,196,.14)"></i>考点</div>
+</div>
+
+<script>
+const TREE = {"name": "政治理论", "kind": "root", "children": [{"name": "毛中特", "kind": "book", "count": 72, "children": [{"name": "导论　马克思主义中国化时代化的历史进程与理论成果", "kind": "chap", "count": 5, "children": [{"name": "马克思主义中国化时代化的提出", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "马克思主义中国化时代化的内涵", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "马克思主义中国化时代化的历史进程", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "马克思主义中国化时代化理论成果及其关系", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "学习本课程的要求和方法", "kind": "point", "freq": "★☆☆☆☆", "types": "简答（低频）"}]}, {"name": "第一章　毛泽东思想及其历史地位", "kind": "chap", "count": 7, "children": [{"name": "毛泽东思想形成发展的历史条件", "kind": "point", "freq": "★★★☆☆", "types": "单选、多选、简答"}, {"name": "毛泽东思想形成发展的过程", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答"}, {"name": "毛泽东思想的主要内容", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "毛泽东思想活的灵魂", "kind": "point", "freq": "★★★★★", "types": "单选、多选、辨析、简答、论述、材料"}, {"name": "马克思主义中国化时代化的第一个重大理论成果", "kind": "point", "freq": "★★★☆☆", "types": "单选、简答"}, {"name": "中国革命和建设的科学指南", "kind": "point", "freq": "★★★☆☆", "types": "单选、多选、简答"}, {"name": "中国共产党和中国人民宝贵的精神财富", "kind": "point", "freq": "★★★★☆", "types": "单选、辨析、简答、材料"}]}, {"name": "第二章　新民主主义革命理论", "kind": "chap", "count": 7, "children": [{"name": "近代中国国情和中国革命的时代特征", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、材料"}, {"name": "新民主主义革命理论的实践基础", "kind": "point", "freq": "★★★☆☆", "types": "单选、多选、简答"}, {"name": "新民主主义革命的总路线", "kind": "point", "freq": "★★★★★", "types": "单选、多选、辨析、简答、论述、材料"}, {"name": "新民主主义的基本纲领", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "新民主主义革命的道路", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述、材料"}, {"name": "新民主主义革命的三大法宝", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "新民主主义革命理论的意义", "kind": "point", "freq": "★★★☆☆", "types": "单选、多选、简答"}]}, {"name": "第三章　社会主义改造理论", "kind": "chap", "count": 6, "children": [{"name": "新民主主义社会是一个过渡性的社会", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、辨析、简答"}, {"name": "党在过渡时期的总路线及其依据", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "适合中国特点的社会主义改造道路", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述、材料"}, {"name": "社会主义改造的历史经验", "kind": "point", "freq": "★★★★☆", "types": "多选、简答、论述"}, {"name": "社会主义基本制度的确立及其理论根据", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "确立社会主义基本制度的重大意义", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答、材料"}]}, {"name": "第四章　社会主义建设道路初步探索的理论成果", "kind": "chap", "count": 6, "children": [{"name": "调动一切积极因素为社会主义事业服务", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "正确认识和处理社会主义社会矛盾的思想", "kind": "point", "freq": "★★★★★", "types": "单选、多选、辨析、简答、论述、材料"}, {"name": "走中国工业化道路的思想", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "初步探索的其他理论成果", "kind": "point", "freq": "★★★★☆", "types": "单选、多选"}, {"name": "初步探索的意义", "kind": "point", "freq": "★★★☆☆", "types": "多选、简答"}, {"name": "初步探索的经验教训", "kind": "point", "freq": "★★★★☆", "types": "多选、简答、论述"}]}, {"name": "第五章　中国特色社会主义理论体系的形成发展", "kind": "chap", "count": 7, "children": [{"name": "中国特色社会主义理论体系形成发展的国际背景", "kind": "point", "freq": "★★★☆☆", "types": "单选、多选、简答"}, {"name": "中国特色社会主义理论体系形成发展的历史条件", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "中国特色社会主义理论体系形成发展的实践基础", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答、材料"}, {"name": "中国特色社会主义理论体系的形成", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答"}, {"name": "中国特色社会主义理论体系的跨世纪发展", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "中国特色社会主义理论体系在新世纪新阶段的新发展", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "中国特色社会主义理论体系在新时代的新篇章", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}]}, {"name": "第六章　邓小平理论", "kind": "chap", "count": 11, "children": [{"name": "邓小平理论首要的基本的理论问题", "kind": "point", "freq": "★★★★★", "types": "单选、多选、辨析、简答、论述"}, {"name": "邓小平理论的精髓", "kind": "point", "freq": "★★★★★", "types": "单选、多选、辨析、简答"}, {"name": "社会主义初级阶段理论和党的基本路线", "kind": "point", "freq": "★★★★★", "types": "单选、多选、辨析、简答、论述"}, {"name": "社会主义根本任务和发展战略理论", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "社会主义改革开放和社会主义市场经济理论", "kind": "point", "freq": "★★★★★", "types": "单选、多选、辨析、简答、论述"}, {"name": "\"两手抓，两手都要硬\"", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、辨析、简答"}, {"name": "\"一国两制\"与祖国统一", "kind": "point", "freq": "★★★★★", "types": "单选、多选、辨析、简答、论述"}, {"name": "中国特色社会主义外交和国际战略", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "马克思列宁主义、毛泽东思想的继承和发展", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "中国特色社会主义理论体系的开篇之作", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答"}, {"name": "改革开放和社会主义现代化建设的科学指南", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}]}, {"name": "第七章　\"三个代表\"重要思想", "kind": "chap", "count": 11, "children": [{"name": "始终代表中国先进生产力的发展要求", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答"}, {"name": "始终代表中国先进文化的前进方向", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答"}, {"name": "始终代表中国最广大人民的根本利益", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "发展是党执政兴国的第一要务", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答"}, {"name": "建立社会主义市场经济体制", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答"}, {"name": "全面建设小康社会", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "建设社会主义政治文明", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "实施\"引进来\"和\"走出去\"相结合的对外开放战略", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "推进党的建设新的伟大工程", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "中国特色社会主义理论体系的丰富发展", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "加强和改进党的建设、推进中国特色社会主义事业的", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答、论述"}]}, {"name": "第八章　科学发展观", "kind": "chap", "count": 12, "children": [{"name": "推动经济社会发展是科学发展观的第一要义", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答"}, {"name": "以人为本是科学发展观的核心立场", "kind": "point", "freq": "★★★★★", "types": "单选、多选、辨析、简答、论述"}, {"name": "全面协调可持续是科学发展观的基本要求", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答"}, {"name": "统筹兼顾是科学发展观的根本方法", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答"}, {"name": "加快转变经济发展方式", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答"}, {"name": "发展社会主义民主政治", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "推进社会主义文化强国建设", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "构建社会主义和谐社会", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "推进生态文明建设", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "全面提高党的建设科学化水平", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "中国特色社会主义理论体系在新世纪新阶段的接续发展", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答"}, {"name": "全面建设小康社会、加快推进社会主义现代化的根本指针", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}]}]}, {"name": "习概", "kind": "book", "count": 177, "children": [{"name": "第00章　导论", "kind": "chap", "count": 6, "children": [{"name": "习近平新时代中国特色社会主义思想创立的时代背景", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答"}, {"name": "习近平新时代中国特色社会主义思想是“两个结合”的重大成果", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "习近平新时代中国特色社会主义思想是完整的科学体系", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "习近平新时代中国特色社会主义思想的历史地位", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "深刻领悟“两个确立”的决定性意义", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "学好用好习近平新时代中国特色社会主义思想", "kind": "point", "freq": "★★★☆☆", "types": "单选、多选、简答"}]}, {"name": "第01章　新时代坚持和发展中国特色社会主义", "kind": "chap", "count": 9, "children": [{"name": "中国特色社会主义是历史和人民的选择", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "中国特色社会主义是社会主义而不是其他什么主义", "kind": "point", "freq": "★★★★★", "types": "单选、多选、辨析、简答"}, {"name": "坚定道路自信、理论自信、制度自信、文化自信", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "中国特色社会主义新时代是我国发展新的历史方位", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "社会主要矛盾变化是关系全局的历史性变化", "kind": "point", "freq": "★★★★★", "types": "单选、多选、辨析、简答"}, {"name": "新时代伟大变革及其里程碑意义", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "全面贯彻党的基本理论、基本路线、基本方略", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "统筹推进“五位一体”总体布局和协调推进“四个全面”战略布局", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "推动中国特色社会主义不断开拓前进", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答、论述"}]}, {"name": "第2章　以中国式现代化全面推进中华民族伟大复兴", "kind": "chap", "count": 10, "children": [{"name": "实现中华民族伟大复兴的中国梦", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答"}, {"name": "在中华大地上全面建成小康社会", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、材料"}, {"name": "全面建成社会主义现代化强国", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答"}, {"name": "中国式现代化是党领导人民长期探索和实践的重大成果", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "中国式现代化的中国特色", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "中国式现代化的本质要求", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "中国式现代化创造了人类文明新形态", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答、论述"}, {"name": "推进中国式现代化需要牢牢把握的重大原则", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "推进中国式现代化需要正确处理的重大关系", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "推进中国式现代化必须坚持团结奋斗", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}]}, {"name": "第3章　坚持党的全面领导", "kind": "chap", "count": 9, "children": [{"name": "中国最大的国情就是中国共产党的领导", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答"}, {"name": "中国共产党领导是中国特色社会主义制度的最大优势", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答"}, {"name": "加强党的全面领导为新时代党和国家事业发展提供了坚强保证", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "中国共产党是最高政治领导力量", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答"}, {"name": "党的领导是全面的、系统的、整体的", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "维护党中央权威和集中统一领导", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "党的领导制度是我国的根本领导制度", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答"}, {"name": "健全党中央对重大工作的领导体制", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "健全党的全面领导制度", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}]}, {"name": "第4章　坚持以人民为中心", "kind": "chap", "count": 9, "children": [{"name": "人民是历史的创造者，是真正的英雄", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答"}, {"name": "打江山、守江山，守的是人民的心", "kind": "point", "freq": "★★★★★", "types": "单选、多选、辨析、简答"}, {"name": "人民立场是中国共产党的根本政治立场", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答"}, {"name": "人民对美好生活的向往就是党的奋斗目标", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、材料"}, {"name": "依靠人民创造历史伟业", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "人民是党的工作的最高裁决者和最终评判者", "kind": "point", "freq": "★★★★★", "types": "单选、多选、辨析、材料"}, {"name": "坚持和贯彻党的群众路线", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、材料"}, {"name": "把为人民造福的事情真正办好办实", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "推动全体人民共同富裕取得更为明显的实质性进展", "kind": "point", "freq": "★★★★★", "types": "单选、多选、辨析、论述"}]}, {"name": "第5章　全面深化改革开放", "kind": "chap", "count": 9, "children": [{"name": "改革开放是我们前进的重要法宝", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答"}, {"name": "新时代全面深化改革开放是一场深刻革命", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "坚持全面深化改革开放的正确方向", "kind": "point", "freq": "★★★★★", "types": "单选、多选、辨析、简答"}, {"name": "坚持全面深化改革总目标", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "推进国家治理体系和治理能力现代化", "kind": "point", "freq": "★★★★★", "types": "单选、多选、辨析、简答"}, {"name": "全面深化改革开放要坚持正确方法论", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、材料"}, {"name": "改革开放永无止境", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、辨析、简答"}, {"name": "坚定不移把全面深化改革引向深入", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答、材料"}, {"name": "坚定不移扩大高水平对外开放", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、材料"}]}, {"name": "第六章　推动高质量发展", "kind": "chap", "count": 13, "children": [{"name": "我国进入新发展阶段", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答"}, {"name": "贯彻新发展理念是关系我国发展全局的一场深刻变革", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "以新发展理念引领高质量发展", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、材料"}, {"name": "坚持和完善社会主义基本经济制度是实现高质量发展的保障", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "坚持\"两个毫不动摇\"", "kind": "point", "freq": "★★★★★", "types": "单选、多选、辨析、简答"}, {"name": "坚持按劳分配为主体、多种分配方式并存", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "构建高水平社会主义市场经济体制", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答"}, {"name": "把握未来发展主动权的战略部署", "kind": "point", "freq": "★★★★★", "types": "单选、多选、辨析、简答"}, {"name": "以国内大循环为主体、国内国际双循环相互促进", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "大力推动构建新发展格局", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "建设现代化产业体系", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答"}, {"name": "全面推进乡村振兴", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、材料"}, {"name": "促进区域协调发展", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}]}, {"name": "第七章　社会主义现代化建设的教育、科技、人才战略", "kind": "chap", "count": 12, "children": [{"name": "坚持教育发展、科技创新、人才培养一体推进", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "深入实施科教兴国战略、人才强国战略、创新驱动发展战略", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答"}, {"name": "坚持教育优先发展、科技自立自强、人才引领驱动", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答"}, {"name": "教育是民族振兴、社会进步的基石", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答"}, {"name": "落实立德树人根本任务", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、材料"}, {"name": "办好人民满意的教育", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "科技强则国家强", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "打赢关键核心技术攻坚战", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、材料"}, {"name": "增强自主创新能力", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答"}, {"name": "培养人才是国家和民族长远发展大计", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "培养造就大批德才兼备的高素质人才", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答"}, {"name": "把各方面优秀人才集聚到党和国家事业中来", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}]}, {"name": "第8章　发展全过程人民民主", "kind": "chap", "count": 12, "children": [{"name": "人民民主是社会主义的生命", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答"}, {"name": "中国特色社会主义政治制度行得通、有生命力、有效率", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答"}, {"name": "坚定不移走中国特色社会主义政治发展道路", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、材料"}, {"name": "全过程人民民主是社会主义民主政治的伟大创造", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答"}, {"name": "全过程人民民主是全链条、全方位、全覆盖的民主", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答"}, {"name": "全过程人民民主是最广泛、最真实、最管用的民主", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "加强人民当家作主制度保障", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答"}, {"name": "全面发展协商民主", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、材料"}, {"name": "积极发展基层民主", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "统一战线是凝聚人心、汇聚力量的强大法宝", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答"}, {"name": "铸牢中华民族共同体意识", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答"}, {"name": "加强和促进海内外中华儿女大团结", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}]}, {"name": "第9章　全面依法治国", "kind": "chap", "count": 9, "children": [{"name": "全面依法治国是国家治理的一场深刻革命", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "全面依法治国的唯一正确道路", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "统筹处理全面依法治国的重大关系", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答"}, {"name": "全面推进依法治国的总抓手", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答"}, {"name": "坚持依宪治国、依宪执政", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答"}, {"name": "更好推进中国特色社会主义法治体系建设", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答"}, {"name": "法治中国建设的总体目标", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "法治中国建设的工作布局", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答"}, {"name": "建设更高水平的法治中国", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}]}, {"name": "第10章　建设社会主义文化强国", "kind": "chap", "count": 12, "children": [{"name": "文化繁荣兴盛是实现中华民族伟大复兴的必然要求", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、材料"}, {"name": "坚定中国特色社会主义文化自信", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "坚持中国特色社会主义文化发展道路", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答"}, {"name": "坚持马克思主义在意识形态领域指导地位的根本制度", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "大力加强马克思主义理论建设", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "积极塑造主流舆论新格局", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "广泛践行社会主义核心价值观", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、材料"}, {"name": "弘扬以伟大建党精神为源头的中国共产党人精神谱系", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "提高全社会文明程度", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "传承发展中华优秀传统文化", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "繁荣发展文化事业和文化产业", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "不断提升国家文化软实力和中华文化影响力", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答、论述"}]}, {"name": "第11章　以保障和改善民生为重点加强社会建设", "kind": "chap", "count": 10, "children": [{"name": "民生是人民幸福之基", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "人民获得感幸福感安全感更加充实、更有保障、更可持续", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答、材料"}, {"name": "坚持在发展中增进民生福祉", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "完善分配制度", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "实施就业优先战略", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "健全社会保障体系", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "推进健康中国建设", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "加强和创新社会治理", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "完善社会治理体系", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "加强城乡社区治理", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}]}, {"name": "第12章　建设社会主义生态文明", "kind": "chap", "count": 9, "children": [{"name": "生态兴则文明兴", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "绿水青山就是金山银山", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "把生态文明建设摆在全局工作的突出位置", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "加快形成绿色生产方式和生活方式", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "坚持山水林田湖草沙一体化保护和系统治理", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "用最严格制度最严密法治保护生态环境", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "保护人类共同家园", "kind": "point", "freq": "★★★☆☆", "types": "单选、多选、简答"}, {"name": "共建清洁美丽世界", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "积极推动全球可持续发展", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}]}, {"name": "第13章　维护和塑造国家安全", "kind": "chap", "count": 9, "children": [{"name": "国家安全是民族复兴的根基", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "总体国家安全观是新时代国家安全工作的基本遵循", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "新时代国家安全得到全面加强", "kind": "point", "freq": "★★★☆☆", "types": "单选、多选、简答"}, {"name": "统筹发展和安全", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "把维护政治安全放在首要位置", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答"}, {"name": "维护重点领域国家安全", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "推进国家安全体系和能力现代化", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "建设更高水平的平安中国", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "提高防范化解重大风险能力", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}]}, {"name": "第14章　建设巩固国防和强大人民军队", "kind": "chap", "count": 9, "children": [{"name": "国防和军队建设是捍卫国家主权、安全、发展利益的坚强后盾", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、材料"}, {"name": "新时代人民军队使命任务", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答"}, {"name": "建设强大军队是接续奋斗的伟大事业", "kind": "point", "freq": "★★★☆☆", "types": "单选、简答"}, {"name": "强军目标的科学内涵", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "全面推进国防和军队现代化的战略安排", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答"}, {"name": "坚持党对人民军队的绝对领导", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "坚持政治建军、改革强军、科技强军、人才强军、依法治军", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "全面加强练兵备战", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "巩固提高一体化国家战略体系和能力", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}]}, {"name": "第15章　坚持\"一国两制\"和推进祖国完全统一", "kind": "chap", "count": 9, "children": [{"name": "\"一国两制\"是中国特色社会主义的伟大创举", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "准确把握\"一国两制\"的科学内涵", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "坚持和完善\"一国两制\"制度体系", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "香港、澳门保持长期稳定发展良好态势", "kind": "point", "freq": "★★★☆☆", "types": "单选、多选、简答"}, {"name": "推动香港进入由乱到治走向由治及兴的新阶段", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "支持香港、澳门融入国家发展大局", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "实现祖国完全统一是中华民族伟大复兴的必然要求", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "坚持贯彻新时代党解决台湾问题的总体方略", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "牢牢把握两岸关系主导权和主动权", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}]}, {"name": "第16章　中国特色大国外交和推动构建人类命运共同体", "kind": "chap", "count": 11, "children": [{"name": "当今世界正经历百年未有之大变局", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、材料"}, {"name": "中国必须有自己特色的大国外交", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、材料"}, {"name": "我国国际影响力、感召力、塑造力显著提升", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "坚持走和平发展道路", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、材料"}, {"name": "推动构建新型国际关系", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "坚决维护国家主权、安全、发展利益", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、材料"}, {"name": "坚持外交为民", "kind": "point", "freq": "★★★☆☆", "types": "单选、多选、简答"}, {"name": "构建人类命运共同体是世界各国人民前途所在", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述、材料"}, {"name": "推动构建人类命运共同体的价值基础和重要依托", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、材料"}, {"name": "积极参与全球治理体系改革和建设", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答、材料"}, {"name": "高质量共建\"一带一路\"", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述、材料"}]}, {"name": "第17章　全面从严治党", "kind": "chap", "count": 10, "children": [{"name": "打铁必须自身硬", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "坚定不移全面从严治党", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述"}, {"name": "全面从严治党取得历史性开创性成就", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "把党的政治建设摆在首位", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、论述、材料"}, {"name": "思想建设是党的基础性建设", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "贯彻新时代党的组织路线", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "以严的基调强化正风肃纪", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "把制度建设贯穿到党的各项建设之中", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}, {"name": "腐败是党长期执政面临的最大威胁", "kind": "point", "freq": "★★★★★", "types": "单选、多选、简答、材料"}, {"name": "坚持标本兼治开展反腐败斗争", "kind": "point", "freq": "★★★★☆", "types": "单选、多选、简答"}]}]}]};
+
+/* ---------- 樱花粒子 ---------- */
+(function petals() {
+  const cv = document.getElementById('petals');
+  const ctx = cv.getContext('2d');
+  let W, H, ps = [];
+  const N = 30;
+  function resize() {
+    W = cv.width = innerWidth * devicePixelRatio;
+    H = cv.height = innerHeight * devicePixelRatio;
+    cv.style.width = innerWidth + 'px';
+    cv.style.height = innerHeight + 'px';
+  }
+  function mk(init) {
+    return {
+      x: Math.random() * W, y: init ? Math.random() * H : -30 * devicePixelRatio,
+      r: (4 + Math.random() * 6) * devicePixelRatio,
+      vy: (.35 + Math.random() * .7) * devicePixelRatio,
+      vx: (Math.random() - .5) * .55 * devicePixelRatio,
+      a: Math.random() * Math.PI * 2, va: (Math.random() - .5) * .022,
+      o: .22 + Math.random() * .45, sw: .6 + Math.random() * 1.2
+    };
+  }
+  resize(); for (let i = 0; i < N; i++) ps.push(mk(true));
+  addEventListener('resize', resize);
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    for (const p of ps) {
+      p.y += p.vy; p.x += p.vx + Math.sin(p.y * .006) * p.sw * .3; p.a += p.va;
+      if (p.y > H + 40) Object.assign(p, mk(false));
+      if (p.x < -40) p.x = W + 30;
+      if (p.x > W + 40) p.x = -30;
+      ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.a); ctx.globalAlpha = p.o;
+      ctx.beginPath(); ctx.moveTo(0, 0);
+      ctx.bezierCurveTo(p.r*.7, -p.r*.5, p.r*1.05, p.r*.45, 0, p.r);
+      ctx.bezierCurveTo(-p.r*1.05, p.r*.45, -p.r*.7, -p.r*.5, 0, 0);
+      const g = ctx.createLinearGradient(-p.r, -p.r, p.r, p.r);
+      g.addColorStop(0, 'rgba(255,214,226,.95)');
+      g.addColorStop(1, 'rgba(248,180,196,.7)');
+      ctx.fillStyle = g; ctx.fill(); ctx.restore();
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ---------- 树布局与渲染 ---------- */
+const svg = document.getElementById('svg');
+const vp = document.getElementById('viewport');
+const stage = document.getElementById('stage');
+
+const NODE_H = 26, GAP_Y = 7, LEVEL_X = [0, 210, 470, 760];
+let hotOnly = true;
+const collapsed = new Set();   // 折叠的章节 id
+let uid = 0;
+
+function assignId(n, parentId) {
+  n.id = parentId ? parentId + '/' + (++uid) : 'root';
+  (n.children || []).forEach(c => assignId(c, n.id));
+}
+assignId(TREE, '');
+
+// 默认全部折叠到章节级：初始只显示 根 → 2 教材 → 27 章 = 30 个节点
+(function foldAll(n) {
+  if (n.kind === 'chap') collapsed.add(n.id);
+  (n.children || []).forEach(foldAll);
+})(TREE);
+
+function hot(f) { return ((f || '').match(/★/g) || []).length >= 4; }
+
+// 构建可见节点树（考虑折叠与筛选）
+function build(n, depth) {
+  const node = { ...n, depth, kids: [] };
+  let kids = n.children || [];
+  // 先按考频筛选，再判断章节是否真空
+  if (n.kind === 'chap' && hotOnly) kids = kids.filter(k => hot(k.freq));
+  const trulyEmpty = n.kind === 'chap' && hotOnly && kids.length === 0;
+  // 再应用折叠（折叠不代表空）
+  if (n.kind === 'chap' && collapsed.has(n.id)) kids = [];
+  node.kids = kids.map(k => build(k, depth + 1));
+  if (trulyEmpty) node.empty = true;
+  return node;
+}
+
+function layout(root) {
+  let y = 0;
+  const nodes = [], links = [];
+  function walk(n) {
+    if (!n.kids.length) {
+      n.y = y; y += NODE_H + GAP_Y;
+    } else {
+      n.kids.forEach(walk);
+      n.y = (n.kids[0].y + n.kids[n.kids.length - 1].y) / 2;
+    }
+    n.x = LEVEL_X[n.depth] || (LEVEL_X[3] + (n.depth - 3) * 240);
+    nodes.push(n);
+    n.kids.forEach(k => links.push({ s: n, t: k }));
+  }
+  walk(root);
+  return { nodes, links, height: y };
+}
+
+function textWidth(s) {
+  // 粗略估宽：中文 1em，英文 0.55em
+  let w = 0;
+  for (const ch of s) w += /[\u4e00-\u9fa5]/.test(ch) ? 13 : 7;
+  return w;
+}
+
+function render() {
+  vp.innerHTML = '';
+  const root = build(TREE, 0);
+  const { nodes, links, height } = layout(root);
+
+  // 连线
+  for (const l of links) {
+    const x1 = l.s.x + (l.s.w || 100), y1 = l.s.y + NODE_H / 2;
+    const x2 = l.t.x, y2 = l.t.y + NODE_H / 2;
+    const mx = (x1 + x2) / 2;
+    const p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    p.setAttribute('d', `M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`);
+    p.setAttribute('class', 'link' + (l.t.kind === 'point' && hot(l.t.freq) ? ' hot' : ''));
+    vp.appendChild(p);
+  }
+
+  // 节点
+  for (const n of nodes) {
+    if (n.empty) continue;
+    const label = n.kind === 'point' ? n.name : n.name;
+    const w = Math.max(70, Math.min(n.depth === 3 ? 300 : 320, textWidth(label) + (n.kind === 'chap' ? 58 : 30)));
+    n.w = w;
+
+    const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    g.setAttribute('class', 'node ' + n.kind + (n.kind === 'point' && hot(n.freq) ? ' hot' : ''));
+    g.setAttribute('transform', `translate(${n.x},${n.y})`);
+
+    const r = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+    r.setAttribute('width', w);
+    r.setAttribute('height', NODE_H);
+    g.appendChild(r);
+
+    const t = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    t.setAttribute('x', 11);
+    t.setAttribute('y', NODE_H / 2 + 1);
+    t.textContent = label.length > 30 && n.depth === 3 ? label.slice(0, 29) + '…' : label;
+    g.appendChild(t);
+
+    // 章节：右侧显示篇数 + 折叠标记
+    if (n.kind === 'chap') {
+      const b = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      b.setAttribute('x', w - 11);
+      b.setAttribute('y', NODE_H / 2 + 1);
+      b.setAttribute('text-anchor', 'end');
+      b.setAttribute('class', 'badge');
+      b.textContent = n.kids.length ? n.kids.length : n.count;
+      g.appendChild(b);
+
+      const tg = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      tg.setAttribute('x', w + 6);
+      tg.setAttribute('y', NODE_H / 2 + 1);
+      tg.setAttribute('class', 'toggle');
+      tg.textContent = collapsed.has(n.id) ? '▸' : '▾';
+      g.appendChild(tg);
+    }
+    if (n.kind === 'book') {
+      const b = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      b.setAttribute('x', w - 11);
+      b.setAttribute('y', NODE_H / 2 + 1);
+      b.setAttribute('text-anchor', 'end');
+      b.setAttribute('class', 'badge');
+      b.textContent = n.count;
+      g.appendChild(b);
+    }
+
+    if (n.kind === 'chap') {
+      g.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (collapsed.has(n.id)) collapsed.delete(n.id); else collapsed.add(n.id);
+        render();
+      });
+    }
+    vp.appendChild(g);
+  }
+
+  // 复位视图（首次渲染时）
+  if (!inited) { reset(); inited = true; }
+}
+
+/* ---------- 平移缩放 ---------- */
+let scale = 1, tx = 0, ty = 0, inited = false;
+function apply() {
+  vp.setAttribute('transform', `translate(${tx},${ty}) scale(${scale})`);
+}
+function reset() {
+  const h = document.querySelector('.head').offsetHeight;
+  const availH = innerHeight - h;
+  const box = vp.getBBox();
+  scale = Math.min(1, Math.min((innerWidth - 120) / box.width, (availH - 100) / box.height));
+  scale = Math.max(0.35, scale);
+  tx = 60 - box.x * scale;
+  ty = (availH - box.height * scale) / 2 - box.y * scale;
+  apply();
+}
+
+let dragging = false, sx = 0, sy = 0;
+stage.addEventListener('mousedown', e => {
+  if (e.target.closest('.node')) return;
+  dragging = true; sx = e.clientX - tx; sy = e.clientY - ty;
+  stage.classList.add('drag');
+});
+addEventListener('mousemove', e => {
+  if (!dragging) return;
+  tx = e.clientX - sx; ty = e.clientY - sy; apply();
+});
+addEventListener('mouseup', () => { dragging = false; stage.classList.remove('drag'); });
+stage.addEventListener('wheel', e => {
+  e.preventDefault();
+  const k = e.deltaY > 0 ? 0.92 : 1.08;
+  const nx = Math.max(0.2, Math.min(2.5, scale * k));
+  const r = nx / scale;
+  tx = e.clientX - (e.clientX - tx) * r;
+  ty = e.clientY - (e.clientY - ty) * r;
+  scale = nx; apply();
+}, { passive: false });
+
+/* ---------- 按钮 ---------- */
+document.getElementById('btnExpand').addEventListener('click', () => {
+  collapsed.clear(); render();
+});
+document.getElementById('btnCollapse').addEventListener('click', () => {
+  (function all(n) { if (n.kind === 'chap') collapsed.add(n.id); (n.children || []).forEach(all); })(TREE);
+  render();
+});
+document.getElementById('btnHot').addEventListener('click', (e) => {
+  hotOnly = !hotOnly;
+  e.target.classList.toggle('on', hotOnly);
+  render();
+});
+document.getElementById('btnReset').addEventListener('click', reset);
+
+render();
+addEventListener('resize', () => { render(); });
+</script>
+</body>
+</html>

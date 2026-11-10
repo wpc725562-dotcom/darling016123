@@ -2,6 +2,8 @@
 title: "高等数学 · 高频考点 TOP20"
 description: "高频考点统计 · 高等数学 · 高频考点 TOP20"
 category: "高频考点-math"
+tags:
+  - 高频考点
 ---
 
 # 高等数学 · 高频考点 TOP20（已归档）

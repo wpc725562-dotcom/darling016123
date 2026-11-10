@@ -2,7 +2,7 @@
 
 > 从 3 门课里补回的缺失章节
 
-> 本页 4 章 / 12 条知识点。来源与可信度说明见[知识地图总览](/guide/knowledge-map/)。
+> 本页 27 章 / 339 条知识点。来源与可信度说明见[知识地图总览](/guide/knowledge-map/)。
 
 ## 补充（易易）· 一、语法填空考点
 
@@ -84,4 +84,2035 @@
 - **关键概念**：`What does she look like`、`交际用语`
 - **相互关系**：与地图已有的交际用语（被请求帮忙、应答感谢）同属「按功能匹配」一类。
 - **出处**：[乐贯中西 P2](https://www.bilibili.com/video/BV1jT4y1f7YA?p=2)（画面）
+
+
+## 补充（娜娜）· 第2讲 名词
+
+### 名词课的定位：产出型语法 + 四个判断问题
+- **要点**：娜娜把名词课定为「**产出型语法**」——不只要认得，**真题里必须自己写得对**。这一讲只解决语法填空的四个判断：① 该不该加 `-s`（可数 / 不可数）② 复数与所有格怎么写 ③ 能不能作定语修饰名词 ④ 词性转换（别的词性变名词）。
+- **关键概念**：`产出型语法`、`名词的数`、`词性转换`
+- **相互关系**：是「语法填空两类题型（给提示词 / 不给提示词）」中**给提示词**一侧的处理框架。
+- **出处**：[娜娜 P2](https://www.bilibili.com/video/BV1QKbZ6xEea?p=2)
+
+### 广东 5 年语法填空名词只考两个点
+- **要点**：娜娜实测——新题型 5 年里名词**只考两点**：① **名词的数**（单复数）② **词性转换变名词**。**所有格、名词作定语近 5 年未直接设空**，故只标「了解即可」（阅读/写作里认得即可）。真题例：2023 `... spend more than a few ___ (night) thinking about family back home` → **`nights`**（信号词 `a few` ⇒ 可数名词复数，两步即可锁定）。
+- **关键概念**：`名词的数`、`词性转换`、`a few`
+- **相互关系**：与地图已有的「名词：单数变复数」（易易）同一考点；本条补的是**考频实测**与**两步判据**。
+- **出处**：[娜娜 P2](https://www.bilibili.com/video/BV1QKbZ6xEea?p=2)
+
+### 专有名词判据：能不能大家一起用
+- **要点**：区分专有 / 普通名词的唯一判据是「**能不能大家一起用**」——不能共用（`China`、`Mary`、`Monday`、`English`、`the United Nations`）即专有；能共用（`cup`）即普通。**先分这一步是为了界定后面的加 `-s` / 变复数规则能不能套用**。专有名词三条规则：① 首字母必须大写 ② 一般**不加 `a/an`** ③ **不变复数**。少数固定搭配带 `the`：`the Great Wall`、`the United States`、`the United Kingdom`、`the United Nations`；表「某氏一家」时加 `the` **并变复数**（`the Smiths` = 史密斯一家）。
+- **关键概念**：`专有名词`、`普通名词`、`the Smiths`
+- **相互关系**：是「名词变复数」的**前置判断**——专有名词直接排除在复数规则之外。
+- **出处**：[娜娜 P2](https://www.bilibili.com/video/BV1QKbZ6xEea?p=2)
+
+### 可数 / 不可数的判据：不看中文能不能数
+- **要点**：**绝不能按「中文能不能一个个数」判断**（中文什么都能数）；英文按「**能不能被分成一个个可数的单位**」。不可数三大类：**集合概念**（`furniture` 家具、`equipment` 设备）· **物质概念**（`water`、`paper`、`software`）· **抽象概念**（`information`、`advice`、`knowledge`、`assistance`）。不可数名词**不能加 `-s`、不能配 `a/an`**。真题例：`The university library offered little ___ (assist) with its outdated ___ (soft) and scarce engineering ___ (tool)` → `assistance`（抽象）· `software`（物质）· **`tools`**（可数 ⇒ 复数）。
+- **关键概念**：`可数名词`、`不可数名词`、`集合名词`、`物质名词`、`抽象名词`
+- **相互关系**：是「名词的数」的判据，也是「不定冠词只用在可数名词单数前」的前提。
+- **出处**：[娜娜 P2](https://www.bilibili.com/video/BV1QKbZ6xEea?p=2)
+
+### 一词两性：experience 与 time
+- **要点**：同一词可数性随义项变——`experience`：**经历可数**（`new experiences`）、**经验不可数**；`time`：**次数可数**（`three times`）、**时间不可数**。判可数性要**结合语境**（「这些主题咖啡馆给顾客带来新的**经历**」⇒ 可数）。
+- **关键概念**：`experience`、`time`、`一词两性`
+- **相互关系**：是「可数 / 不可数判据」的例外类，须单独记。
+- **出处**：[娜娜 P2](https://www.bilibili.com/video/BV1QKbZ6xEea?p=2)
+
+### 不可数的量化表达：单位词 + of，变复数只变单位词
+- **要点**：不可数名词表达「一则 / 一杯 / 一张」用 `单位词 + of`；**变复数只变单位词**，后面的不可数名词**永远原形**。口诀：「**不可数怎么数，单位词加 `of` 来补；要变复数只变单位词**」。`a piece of` 最万能（`a piece of information / equipment / advice / news / paper`）；其他：`a cup of`、`a slice of`、`a loaf of`、`a drop of`、`a bowl of`、`a spoonful of`、`a bag of`、`a pair of`。真题例：`two pieces of advice`。
+- **关键概念**：`单位词 + of`、`a piece of`、`two pieces of advice`
+- **相互关系**：与「不可数名词」配套；`a pair of` 同时用于成对名词（`trousers` / `glasses` / `scissors`）。
+- **出处**：[娜娜 P2](https://www.bilibili.com/video/BV1QKbZ6xEea?p=2)
+
+### 复数规则变化两个口诀：蛇吃叉子 / 英雄爱吃土豆和西红柿
+- **要点**：① 一般直接加 `-s`。② **`s` / `sh` / `ch` / `x` 结尾加 `-es`** —— 口诀「**蛇吃叉子**」（`s`、`sh` 是「蛇」，`ch` 是「吃」，`x` 是「叉」；`class→classes`、`box→boxes`、`watch→watches`）。③ **辅音字母 + y ⇒ 变 y 为 i 再加 `-es`**（`activity→activities`）；**元音字母 + y ⇒ 直接加 `-s`**（`day→days`、`boy→boys`）。④ **o 结尾**：多数加 `-s`，**只有三个加 `-es`** —— `hero` / `tomato` / `potato`，口诀「**英雄爱吃土豆和西红柿**」。⑤ **f / fe ⇒ 变 v 加 `-es`**，但 `roof`、`belief` **不变**（直接加 `-s`）。
+- **关键概念**：`蛇吃叉子`、`英雄爱吃土豆和西红柿`、`辅音 + y`
+- **相互关系**：与地图已有的「名词：单数变复数」（易易）同一考点；本条补**两个口诀**与 `roof` / `belief` 两个例外。
+- **出处**：[娜娜 P2](https://www.bilibili.com/video/BV1QKbZ6xEea?p=2)
+
+### 不规则复数与特殊复数
+- **要点**：① **元音变化**：`man→men`、`woman→women`、`foot→feet`、`tooth→teeth`、`goose→geese`、`mouse→mice`。② **词尾特殊**：`child→children`、`ox→oxen`、`person→people`（整体换词）。③ **单复数同形**：`sheep`、`deer`、`fish`、`means`、`species`、`Chinese`。④ **外来词**（了解即可）：`basis→bases`、`medium→media`、`phenomenon→phenomena`、`datum→data`、`crisis`、`analysis`、`criterion`。⑤ **合成名词**：一般只变主体名词（`passers-by`）；`man` / `woman` 修饰时**两部分都变**（`men doctors`、`women teachers`）。⚠️ `people` 本身是复数，`peoples` = **民族**；`fishes` = **不同种类的鱼**。
+- **关键概念**：`children`、`people`、`单复数同形`、`men doctors`
+- **相互关系**：是「复数规则变化」的对照面，整表须背；与「形单义复」互为补充。
+- **出处**：[娜娜 P2](https://www.bilibili.com/video/BV1QKbZ6xEea?p=2)
+
+### 形单义复 vs 形复义单（谓语看意义）
+- **要点**：**形单义复**——长得单数、意思是复数，谓语**用复数**：`the police`、`people`、`cattle`（`The police are looking into it.`）。**形复义单**——带 `-s` 但意思是单数，谓语**用单数**：`news`（`The news is exciting.`）、学科 `physics` / `maths` / `economics`。
+- **关键概念**：`形单义复`、`形复义单`、`the police`、`news`
+- **相互关系**：是主谓一致的前置知识点；与「集合名词单复数看语义」同族。
+- **出处**：[娜娜 P2](https://www.bilibili.com/video/BV1QKbZ6xEea?p=2)
+
+### 成对名词只有复数形式
+- **要点**：`trousers`、`glasses`（**眼镜**，不是「杯子」）、`scissors`、`shoes`、`clothes`、`goods` **本身只有复数形式**，要计数只能用 `a pair of`；**谓语由 `pair` 决定**（`a pair of scissors is` / `two pairs of scissors are`）。
+- **关键概念**：`a pair of`、`trousers`、`glasses`
+- **相互关系**：与「不可数量化表达」共用 `单位词 + of` 结构，但这里的单位词**必需**。
+- **出处**：[娜娜 P2](https://www.bilibili.com/video/BV1QKbZ6xEea?p=2)
+
+### 集合名词：整体用单数，强调成员用复数
+- **要点**：`family`、`team`、`class`、`group`、`government`、`audience`、`public`、`staff`、`committee` 都是集合名词——作**整体**时谓语用单数（`My family is large.`），强调**内部每个成员**时谓语用复数（`My family are all music lovers.`）。须看语境语义定单复数。
+- **关键概念**：`集合名词`、`My family is / are`
+- **相互关系**：与「形单义复 / 形复义单」同为「**谓语看意义**」的一类。
+- **出处**：[娜娜 P2](https://www.bilibili.com/video/BV1QKbZ6xEea?p=2)
+
+### 复数信号词三张表
+- **要点**：① **只接可数名词复数**：`many`、`several`、`a few`、`few`、`a number of`、`a couple of`、`a variety of`、`various`、`different`、`dozens of`、`both`、`these`、`those`、数词（`two` / `three`…）。② **只接不可数名词**：`much`、`little`、`a little`、`a great deal of`、`a large amount of`、`a bit of`。③ **可数不可数通用**：`some`、`any`（此时须回头靠词的分类判断）。⚠️ `some` **不是**「只接可数」。
+- **关键概念**：`a few`、`much`、`a number of`、`a great deal of`
+- **相互关系**：是「判断可数 / 不可数」的**第二条路**——分不清词类时靠信号词兜底。
+- **出处**：[娜娜 P2](https://www.bilibili.com/video/BV1QKbZ6xEea?p=2)
+
+### 词性转换变名词：三个信号 + 位置
+- **要点**：空里需要名词而括号给的是动词 / 形容词时，先看信号：① 空前有 `the` / `a` / `an` / 物主代词 ② 空前有形容词 ③ 空后有 `of`；再确认该空在句中作**主语或宾语** —— 满足即可变名词。⚠️ **不能「见到动词 / 形容词就变」**：若该空缺的是**谓语**就填原词性，缺的是**修饰语**就填形容词 / 副词。⚠️ 部分名词与动词**同形**（`increase`、`change`、`research`），不要硬加后缀。
+- **关键概念**：`词性转换`、`同根词`、`increase`
+- **相互关系**：与地图已有的「词性转换与同根词」（易易）同一考点；本条补**信号清单**与**反例护栏**。
+- **出处**：[娜娜 P2](https://www.bilibili.com/video/BV1QKbZ6xEea?p=2)
+
+### 变名词后缀表 + 口诀
+- **要点**：`-tion / -sion`（**动词**变名词，最高频：`explain→explanation`、`decide→decision`）· `-ment`（动词：`develop→development`、`agree→agreement`）· `-ness`（形容词：`happy→happiness`、`ill→illness`）· `-ence / -ance`（形容词：`silent→silence`、`important→importance`）· `-ity / -ty`（形容词：`able→ability`、`safe→safety`）· `-er / -or / -ist`（**人**：`teach→teacher`、`act→actor`、`art→artist`）· `-th`（程度 / 状态：`grow→growth`、`strong→strength`）。口诀：「**动词加 `ment`，形容词加 `ness`，人用 `er/or/ist`**；看到空前有 `the` 或形容词，多半要变名词」。⚠️ 拼写有微调（`happy→happiness` 变 y 为 i；`explain→explanation` **丢 i**）。
+- **关键概念**：`-tion`、`-ment`、`-ness`、`happiness`、`explanation`
+- **相互关系**：是「词性转换」的落地工具表；与地图已有「词性转换与同根词」互补（那条讲思路，这条给清单）。
+- **出处**：[娜娜 P2](https://www.bilibili.com/video/BV1QKbZ6xEea?p=2)
+
+### 名词所有格（了解即可）
+- **要点**：四种写法：① 单数物主 `'s`（`the woman's handbag`）② 复数**已以 `s` 结尾** ⇒ **只加 `'`**（`the teachers' office`）③ 复数**不以 `s` 结尾** ⇒ **仍加 `'s`**（`children's`、`people's`、`women's`）④ **无生命 / 抽象事物用 `of`**（`the title of the passage`、`the door of the car`；`the A of B` = **B 的 A**）。**共同拥有 vs 各自拥有**：只在**最后一人**加 `'s` = 共同拥有（`Tom and Jack's room`，一个房间）；**每人都加** `'s` = 各自拥有（`Tom's and Jack's rooms`，两个房间）——据此定谓语单复数。省略式：`at the doctor's`（诊所）/ `at my uncle's`（家）/ `the barber's`（理发店）。口诀：「有生命用 `'s`，无生命用 `of`；共同拥有只在最后一人加，各自拥有则人人都加」。
+- **关键概念**：`所有格`、`children's`、`共同拥有`
+- **相互关系**：与「定冠词 the 用于 of 短语特指」互相印证（`the title of the passage` 两边都用到）。
+- **出处**：[娜娜 P2](https://www.bilibili.com/video/BV1QKbZ6xEea?p=2)
+
+### 名词作定语：前不变后变（了解即可）
+- **要点**：名词修饰名词时，**前置名词不变复数，只变后面的核心名词** —— 口诀「**前不变后变**」。前置名词说明后面名词的**用途 / 类别 / 材料 / 对象**：`coffee cup`（用途）、`history book`（类别）、`gold ring`（材料）、`dog trainer`（对象）。⚠️ 少数固定表达**本身把复数变在前面**，须整记：`sports meeting`、`clothes shop`、`clothes cleaning service`。
+- **关键概念**：`前不变后变`、`dog trainer`、`sports meeting`
+- **相互关系**：与「名词所有格」并列，同属近 5 年语法填空**未直接设空**的「了解即可」项。
+- **出处**：[娜娜 P2](https://www.bilibili.com/video/BV1QKbZ6xEea?p=2)
+
+
+## 补充（娜娜）· 第3讲 冠词与数词
+
+### 冠词就是名词前面的小帽子
+- **要点**：娜娜的统一记法——冠词 = **名词前的小帽子**：`a/an` = 随便一顶（泛指某一个）；`the` = 就要这一顶（双方都知道 / 特指）；**零冠词 = 不戴帽**。冠词是**虚词**（本身无实义，只说明名词是泛指、特指还是无需限定）。
+- **关键概念**：`冠词`、`不定冠词`、`定冠词`、`零冠词`
+- **相互关系**：与地图已有的「冠词 a/an/the」（乐贯中西 + 易易）同一考点；本条给**统一记忆框架**。
+- **出处**：[娜娜 P3](https://www.bilibili.com/video/BV1QKbZ6xEea?p=3)
+
+### 广东 5 年语法填空冠词几乎每套都设空，数词零设空
+- **要点**：娜娜实测——冠词在新题型 5 年里**几乎每一套都有设空**（本讲重点）；**数词 5 套零设空**，只在阅读 / 完形里出现，故只学基本规则。真题例：2025 #36 `responded to ___ call about an accident` → **`a`**（首次提到的泛指）。
+- **关键概念**：`冠词`、`数词`
+- **相互关系**：定本讲重心为「不定冠词 / 定冠词 / 零冠词」三条。
+- **出处**：[娜娜 P3](https://www.bilibili.com/video/BV1QKbZ6xEea?p=3)
+
+### 不定冠词只用在可数名词单数前；a/an 看音素不看字母
+- **要点**：`a/an` 表示「某一个 / 每一个」，**只可用在可数名词单数前**（复数与不可数都不能用）。选 `a` 还是 `an` **看读音（音素），不看字母**：辅音音素前 `a`、元音音素前 `an`。口诀「**a/an 看耳朵，不看长相**」。⚠️ 高频反例：`a university`、`a European`（`u` / `eu` 发**辅音音素**）；`an hour`、`an honest man`、`an umbrella`（`h` 不发音 / 元音音素开头）。
+- **关键概念**：`a university`、`an hour`、`an honest`
+- **相互关系**：与地图已有的「冠词 a/an/the」（乐贯中西：`a/an` 看读音）一致；本条补 `university` / `European` 这两个高频反例。
+- **出处**：[娜娜 P3](https://www.bilibili.com/video/BV1QKbZ6xEea?p=3)
+
+### 不定冠词三用法：泛指 · 每一 · 固定搭配
+- **要点**：① **泛指**第一次提到、非特指（`a useful method`）。② **每一**：`five days a week`、`60 km an hour`（常见于频率 / 价格 / 速度）。③ **固定搭配里不可省**：`have a rest`、`make a difference`、`have an effect on`。⚠️ 固定搭配类属**送分题**——背到即得分。
+- **关键概念**：`a week`、`make a difference`、`have an effect on`
+- **相互关系**：与「冠词真题设空」直接挂钩——固定搭配是语法填空最常见的冠词设空形态之一。
+- **出处**：[娜娜 P3](https://www.bilibili.com/video/BV1QKbZ6xEea?p=3)
+
+### 定冠词 the 五用法
+- **要点**：① **上文提过、再次出现**（`I bought a book. The book is useful.`）② **`of` 短语特指**（`the title of the passage`、`the door of the car`）③ **世界上 / 语境中独一无二**（`the sun`、`the moon`、`the earth`、`the internet`、`the environment`）④ **序数词与最高级前**（`the first`、`the most beautiful`）⑤ **乐器前**（`play the piano`、`play the violin`）。一句话规则：**双方都知道、特指的那个**。
+- **关键概念**：`the sun`、`the most beautiful`、`play the piano`
+- **相互关系**：第 ⑤ 条与「零冠词（球类 / 棋类不加）」构成一组**必考对比**。
+- **出处**：[娜娜 P3](https://www.bilibili.com/video/BV1QKbZ6xEea?p=3)
+
+### 球类棋类不戴帽，乐器戴得帽
+- **要点**：**球类、棋类前用零冠词**（`play basketball`、`play football`、`play chess`）；**乐器前用 `the`**（`play the piano`、`play the guitar`）。娜娜强调这是考试**最喜欢拿来做混淆项**的一组（真题：`John is fond of playing basketball and Jack is keen on playing the piano.`）。
+- **关键概念**：`play basketball`、`play the piano`、`球棋不戴帽`
+- **相互关系**：是「定冠词 the」与「零冠词」的交叉考点，单独记成一句口诀。
+- **出处**：[娜娜 P3](https://www.bilibili.com/video/BV1QKbZ6xEea?p=3)
+
+### 零冠词五类
+- **要点**：① **运动、三餐、学科、语言**（`play football`、`have breakfast`、`study history`、`learn English`）② **泛指的复数或不可数名词**（`Students need practice.`）③ **泛指的专有 / 物质 / 抽象名词**（`China`、`water`、`knowledge`）④ **名词前已有其他限定词**（`my book`、`this book`、`some books` —— 口诀「**有发卡就不戴帽**」，限定词**不可叠加**）⑤ **`by` + 交通工具**（`by bus`、`by train`、`by bike`）。口诀：「泛指复数、专有名词、三餐学科语言、`by` 车、已戴发卡的，**通通不戴帽**」。
+- **关键概念**：`零冠词`、`by bus`、`my first visit`
+- **相互关系**：第 ④ 条是**改错题高频**（`This is my first visit` 不能加 `the`）；第 ⑤ 条与 `take a bus` 对照（`by` 后不加、`take` 后要加）。
+- **出处**：[娜娜 P3](https://www.bilibili.com/video/BV1QKbZ6xEea?p=3)
+
+### 泛指复数 vs 特指 the + 复数
+- **要点**：`students`（零冠词）泛指「学生这一群体」；`the students` 则是**语境里特指某一群学生**。零冠词的前提是**泛指 / 非特指**，不能因为「见过 `the students`」就否定规则。
+- **关键概念**：`students` vs `the students`
+- **相互关系**：是零冠词第 ② 条的护栏，避免把「带 `the` 的例句」误当反例。
+- **出处**：[娜娜 P3](https://www.bilibili.com/video/BV1QKbZ6xEea?p=3)
+
+### 基数词变序数词的口诀
+- **要点**：口诀「**123 特殊记，8、9、12 要小心，整十 Y 变 IE，其余基数词后加 th**」。① `one→first`、`two→second`、`three→third` **无规律**，必背。② `five→fifth`、`twelve→twelfth`（`ve` 变 `f` 加 `th`）。③ `eight→eighth`（**只加 `h`**，不双写）。④ `nine→ninth`（去 `e` 加 `th`；但基数词 `19` / `90` **不去 `e`**）。⑤ 整十 `twenty→twentieth`（`y` 变 `ie` 加 `th`）。
+- **关键概念**：`first / second / third`、`ninth`、`twentieth`
+- **相互关系**：序数词是「定冠词 `the` + 序数词」的前置知识。
+- **出处**：[娜娜 P3](https://www.bilibili.com/video/BV1QKbZ6xEea?p=3)
+
+### 确数与概数：有数字不加 s，没数字才加 s
+- **要点**：**确数**（具体数字 + `hundred` / `thousand` / `million` + 名词）：`three hundred students`，**`hundred` 不加 `-s`**。**概数**（成百上千、成千上万）：`hundreds of`、`thousands of`、`millions of`、`billions of`，**必须加 `-s`**。一句话判据：「**有数字就不加，没数字就加**」。
+- **关键概念**：`three hundred students`、`hundreds of`
+- **相互关系**：语法填空 / 改错高频（`two hundreds` ✗、`hundred of` ✗）。
+- **出处**：[娜娜 P3](https://www.bilibili.com/video/BV1QKbZ6xEea?p=3)
+
+### 倍数表达：twice as much as 与 than 两种结构
+- **要点**：倍数用 `twice`（两倍，**没有 `two times` 这种说法**）、`three times` 等。结构一：`倍数 + as + 原级 + as`（`twice as much as`，中间用**原级**）；结构二：`倍数 + 比较级 + than`（`twice larger than`）。⚠️ `as...as` 与 `than` **不能同时出现**（`twice as larger than` ✗）。⚠️ `as...as` 中间可塞一长串修饰（`twice as much money on traveling today as they did ten years ago`），做题时要确认**第二个 `as` 有没有出现**，没出现要补。
+- **关键概念**：`twice as much as`、`three times`、`twice larger than`
+- **相互关系**：与地图已有的「比较级的用法与触发关键词」（`as...as` 用原级）互相印证。
+- **出处**：[娜娜 P3](https://www.bilibili.com/video/BV1QKbZ6xEea?p=3)
+
+### 分数与百分数
+- **要点**：**分子用基数词，分母用序数词**；**分子大于 1 时，分母的序数词要加 `-s`**（`two thirds` = 2/3、`one third` = 1/3、`two fifths` = 2/5）。百分数：数字 + `percent`（`fifty percent` = 50%）。日期用序数词（5 月 1 日 = `May 1st`）；年龄用基数词。
+- **关键概念**：`two thirds`、`one third`、`percent`
+- **相互关系**：与「基数词变序数词」配套（分母用序数词）。
+- **出处**：[娜娜 P3](https://www.bilibili.com/video/BV1QKbZ6xEea?p=3)
+
+
+## 补充（娜娜）· 第4讲 代词
+
+### 代词题的入口：先看有没有提示词
+- **要点**：广东语法填空里代词**有时给提示词、有时不给**（娜娜称「比较多变」）。有提示词 ⇒ 按代词表格选形式；**无提示词** ⇒ 基本只有两类：`it`（形式主语 / 形式宾语）与 `that` / `those`（比较替代），外加固定搭配。
+- **关键概念**：`提示词`、`it`、`that / those`
+- **相互关系**：是「语法填空两类题型」在代词上的体现；与地图已有的「代词：人称代词表格」（易易：「代词多变」）一致。
+- **出处**：[娜娜 P4](https://www.bilibili.com/video/BV1QKbZ6xEea?p=4)
+
+### 人称代词：动前主格，动 / 介后宾格
+- **要点**：人称代词用主格还是宾格，看它在句中的位置 —— **动词前用主格，动词 / 介词后用宾格**。四字口诀「**前主后宾**」。⚠️ **别漏「介词后」**：只盯动词会漏掉 `to` / `for` / `with` 后面的宾格。真题例：2026 年 `When a poem feels finished to ___, she often adds visual elements` → **`her`**（介词 `to` 后用宾格）。
+- **关键概念**：`主格`、`宾格`、`前主后宾`、`her`
+- **相互关系**：是代词表格（主格 / 宾格 / 形容词性物主 / 名词性物主 / 反身）的核心用法之一。
+- **出处**：[娜娜 P4](https://www.bilibili.com/video/BV1QKbZ6xEea?p=4)
+
+### 物主代词：看名字 + 看长短
+- **要点**：两步判断 —— **看空后有没有名词**：有名 ⇒ 形容词性物主（`my` / `your` / `his`）；**无名** ⇒ 名词性物主（`mine` / `yours` / `hers`）；再看**长短**（`my` 短、`mine` 长）。⚠️ `its`（无撇号，物主）≠ `it's`（= it is）；`my → mine` 别忘变。真题例：`Your opinion ___ sounds ridiculous to me.` → **`like hers`**（名词性物主 = her opinion）。
+- **关键概念**：`形容词性物主代词`、`名词性物主代词`、`hers`、`its` vs `it's`
+- **相互关系**：与「人称代词格」并列，同属代词表格的五种形式。
+- **出处**：[娜娜 P4](https://www.bilibili.com/video/BV1QKbZ6xEea?p=4)
+
+### 反身代词：主宾同一人才有 self
+- **要点**：反身代词三种用法：① **动作回到自己身上**（主宾同一人）② **强调「亲自」**（同位语）③ **固定搭配**。判据（两问）：**先问「主语和宾语是不是同一个人」** —— 是 ⇒ `myself` / `yourself` / `himself`…；**否 ⇒ 普通宾格**（老师对我 = `me`）。记忆法：「**自己对自己做动作才有 `self`**」。真题例：2024 #45 `remind ___ of all those people` → **`myself`**；2025 #45 `feel really proud of ___` → **`myself`**。
+- **关键概念**：`反身代词`、`myself`、`主宾同一人`
+- **相互关系**：与地图已有的「反身代词」（黄金汇编 3 用法 + 搭配清单）互补——本条给**最锐判据**。
+- **出处**：[娜娜 P4](https://www.bilibili.com/video/BV1QKbZ6xEea?p=4)
+
+### it 五种用法
+- **要点**：① **指代**（代前面提到的事物）② **形式主语**（`It is + adj + to do`）③ **形式宾语**（`make / find it + adj + to do`）④ **强调句**（判据：**划掉 `it is ... that` 后仍是完整句**）⑤ **虚位主语**（天气 / 时间 / 距离：`It's raining.`）。真题例：2023 #43 `how important ___ is to have good people` → **`it`**（形式主语）；2022 #45 `give ___ a try` → **`it`**（固定搭配）。
+- **关键概念**：`形式主语`、`形式宾语`、`强调句`
+- **相互关系**：与地图已有的「`it` 的非人称用法」（精编讲义：强调句 / 形式主语 / 形式宾语 / 天气距离时间）一致；本条补**强调句的可操作判据**。
+- **出处**：[娜娜 P4](https://www.bilibili.com/video/BV1QKbZ6xEea?p=4)
+
+### 指示代词与替代词：one / it / that
+- **要点**：`one` / `ones` = **同类不同个**；`it` = **同类同一个**；`that` / `those` = 用于**比较结构里的替代**（`The climate here is better than that in Shanghai.`）。⚠️ **比较结构里必须用 `that` / `those`，不能用 `it`**。
+- **关键概念**：`one`、`it`、`that / those`、`替代词`
+- **相互关系**：与「`it` 五种用法」区分——`it` 指同一个，`that` 用于比较替代。
+- **出处**：[娜娜 P4](https://www.bilibili.com/video/BV1QKbZ6xEea?p=4)
+
+### 不定代词：another / the other 与 others / the others
+- **要点**：`another` = 三者以上中的「另一个」；`the other` = 两者中的「另一个」（**看范围**）；`others` = 泛指「另一些」；`the others` = 特指「其余全部」。必背两个结构：`one ... the other`（两者）· `some ... others`（泛指）。属**了解即可**（近 5 年语法填空未直接设空）。
+- **关键概念**：`another`、`the other`、`others`、`one ... the other`
+- **相互关系**：与「指示代词与替代词」同属代词表格之外的补充类。
+- **出处**：[娜娜 P4](https://www.bilibili.com/video/BV1QKbZ6xEea?p=4)
+
+### 代词固定搭配属「积累项」不是规则
+- **要点**：`give it a try` 这类**不是规则，是积累** —— 娜娜明说「这条靠背，看一个记一个」。复习时不要试图用规则推导。
+- **关键概念**：`give it a try`
+- **相互关系**：解释了 2022 #45（`give ___ a try`）为什么属「固定搭配」类而非形式主语类。
+- **出处**：[娜娜 P4](https://www.bilibili.com/video/BV1QKbZ6xEea?p=4)
+
+
+## 补充（娜娜）· 第5讲 形容词与副词
+
+### 形副课定位：混合型语法 + 广东只考两点
+- **要点**：娜娜把形容词与副词定为「**混合型语法**」（要会用 + 要会认）。本讲解决三件事：① 判断这个词**修饰谁** ② 据此在形容词 / 副词之间**选形式** ③ 需不需要**变比较级**。广东 5 年语法填空里最常考两点：**词性转换（形↔副）** 与 **比较级**。真题例：`the excitement ___ (gradual) set in and homesickness followed` → **`gradually`**（后面接动词短语、无名词 ⇒ 用副词修饰动词）。
+- **关键概念**：`混合型语法`、`词性转换`、`比较级`
+- **相互关系**：与「语法填空两类题型（给提示词）」的处理框架一致。
+- **出处**：[娜娜 P5](https://www.bilibili.com/video/BV1QKbZ6xEea?p=5)
+
+### 形容词 = 贴标签；副词 = 加滤镜
+- **要点**：形容词像给名词**贴标签**（「什么样的烧烤」——美味的 / 难吃的 / 烤焦的）；副词像给动作**加滤镜**（「怎么听课」——认真地 / 敷衍地 / 心不在焉地）。抓两个词：形容词 = **怎样的**，副词 = **怎么做**。⇒ 形容词与名词的搭配**不固定**，换标签就换意思。
+- **关键概念**：`形容词`、`副词`、`贴标签`、`加滤镜`
+- **相互关系**：与地图已有的「副词总论与分类」（阿珂）同考点；本条给**判别口诀**。
+- **出处**：[娜娜 P5](https://www.bilibili.com/video/BV1QKbZ6xEea?p=5)
+
+### 位置口诀：形容词「名前系后」，副词「围绕动词 + 形副句前」
+- **要点**：形容词只出现在两处 —— **名词前**（作定语）与**系动词后**（作表语），口诀「**名前系后**」。副词：修饰动词时**围绕动词前后（可前可后）**；修饰形容词 / 副词 / 整句时**放前面**（整句副词常以逗号隔开）。做题信号：**空格前是逗号 + 前面已是一个完整句子** ⇒ 必填副词（`Luckily, we found the answer.`）。
+- **关键概念**：`名前系后`、`围绕动词`、`Luckily`
+- **相互关系**：是「填形容词还是副词」这个二选一的**唯一判据**。
+- **出处**：[娜娜 P5](https://www.bilibili.com/video/BV1QKbZ6xEea?p=5)
+
+### 系动词三类
+- **要点**：系动词 = ① **感官类**（`feel`、`look`、`sound`、`taste`、`smell`）② **be 动词**（`is/am/are/was/were`）③ **变化类**（`become`、`get`）。系动词后接**形容词作表语**（`She felt nervous.` / `I am happy.` / `The soup smells good.`）。
+- **关键概念**：`系动词`、`感官动词`、`主系表`
+- **相互关系**：与地图已有的「主系表结构」（阿珂）同一考点；本条补**系动词三类清单**。
+- **出处**：[娜娜 P5](https://www.bilibili.com/video/BV1QKbZ6xEea?p=5)
+
+### ⚠️ 系动词后不一定是表语：先看后面有没有宾语
+- **要点**：`Her audience is ___ (usual) her true friends and family members.` 这题**不能填形容词** —— 后面 `her true friends and family members` 是**宾语**，说明这不是主系表而是主谓宾，`is` 这里要配**频度副词** `usually`。判据：**主系表后面不会带宾语**；带宾语就不是主系表结构（`often`、`always`、`seldom` 同属频度副词）。
+- **关键概念**：`主系表`、`频度副词`、`usually`
+- **相互关系**：是「形容词名前系后」的**反例护栏** —— 本条专治「见 be 就填形容词」。
+- **出处**：[娜娜 P5](https://www.bilibili.com/video/BV1QKbZ6xEea?p=5)
+
+### 形容词变副词的五条规则
+- **要点**：① 一般直接加 `-ly`（`quick→quickly`、`careful→carefully`）② **辅音字母 + y ⇒ 变 y 为 i 加 `-ly`**（`happy→happily`、`heavy→heavily`）③ **`-le` 结尾 ⇒ 去 e 加 `-y`**（`possible→possibly`、`simple→simply`）④ **`-ue` 结尾 ⇒ 去 e 加 `-ly`**（`true→truly`）⑤ **形副同形**：`fast`、`hard`、`late`、`early` 本身既是形容词又是副词（靠位置判断）。
+- **关键概念**：`-ly`、`happily`、`possibly`、`truly`、`形副同形`
+- **相互关系**：与地图已有的「副词的构成」（阿珂：形容词 + `-ly`、y 变 i）互补 —— 本条补 `-le` / `-ue` 与形副同形两类。
+- **出处**：[娜娜 P5](https://www.bilibili.com/video/BV1QKbZ6xEea?p=5)
+
+### 比较级 / 最高级规则变化 + 双音节词的归属
+- **要点**：**短词**（大部分单音节 + 部分双音节）加 `-er/-est`；**长词**（部分双音节 + 大部分三音节以上）加 `more/most`。单音节内三条例外：**重读闭音节双写末辅音**（`big→bigger`、`hot→hotter`）· **辅音 + y 变 y 为 i**（`easy→easier`）· 一般直接加。**双音节词怎么判**：以 `-ow` / `-er` / `-on` / 辅音 + y 结尾 ⇒ **优先 `-er/-est`**（`narrow→narrower`、`clever→cleverer`）；以 `-ful` / `-ous` / `-ive` / `-ing` / `-ern` 等**后缀型**结尾 ⇒ **用 `more/most`**（`more careful`、`more famous`、`more modern`）。
+- **关键概念**：`-er/-est`、`more/most`、`narrow`、`more careful`
+- **相互关系**：与地图已有的「比较级与最高级的构成」（阿珂）同一考点；本条补**双音节词的判别法**（阿珂那条未展开）。
+- **出处**：[娜娜 P5](https://www.bilibili.com/video/BV1QKbZ6xEea?p=5)
+
+### 不规则变化口诀：一好一坏、一多一少、一老一远
+- **要点**：`good/well→better→best`（好）· `bad/badly/ill→worse→worst`（坏）· `many/much→more→most`（多）· `little→less→least`（少）· `old→older/elder→oldest/eldest`（老；`elder` 多表**家庭长幼**）· `far→farther/further→farthest/furthest`（远）。口诀「**一好一坏、一多一少、一老一远**」。
+- **关键概念**：`better`、`worse`、`elder`、`further`
+- **相互关系**：与地图已有的「特殊形式的比较级与最高级」（阿珂）互补 —— 本条给**口诀**与 `elder` 的用法限制。
+- **出处**：[娜娜 P5](https://www.bilibili.com/video/BV1QKbZ6xEea?p=5)
+
+### 修饰比较级用 much / even / a little / far，不能用 very
+- **要点**：修饰比较级只能用 `much`、`even`、`a little`、`far`；**`very` 只能修饰原级**（记 `very good` 即可 —— `good` 是原级，所以 `very` 只配原级）。⚠️ `most` 是构成最高级的，**不能修饰比较级**；`many` 只接可数名词复数，也不进这个位置。
+- **关键概念**：`much larger`、`very good`
+- **相互关系**：是「比较级」的配套考点；与「定冠词 the 是最高级信号」互为判据。
+- **出处**：[娜娜 P5](https://www.bilibili.com/video/BV1QKbZ6xEea?p=5)
+
+### 七种比较结构
+- **要点**：① `比较级 + than`（A 比 B 更……）② `as + 原级 + as`（和……一样）③ `not so/as + 原级 + as`（不如）④ `比较级 + and + 比较级`（越来越……；长词用 `more and more + 原级`）⑤ `the + 比较级, the + 比较级`（越……越……；**两个 `the` 都不能省**）⑥ `the + 最高级 + 范围（in / of / among）` ⑦ `one of the + 最高级 + **复数名词**`（最……之一）。⚠️ 比较结构里的替代用 `that` / `those`（承接代词那一讲）。
+- **关键概念**：`than`、`as...as`、`the more...the more`、`one of`
+- **相互关系**：与地图已有的「比较级的用法与触发关键词」「最高级的用法与 the」（阿珂 + 乐贯中西）互补 —— 本条补 ③④⑤⑦ 四种。
+- **出处**：[娜娜 P5](https://www.bilibili.com/video/BV1QKbZ6xEea?p=5)
+
+### 五组高频易混词
+- **要点**：① **`-ed` 与 `-ing` 形容词**：`-ed` 形容**人**的感受（`I am interested.`）、`-ing` 形容**事物**的特征（`The story is interesting.`）② **`hard` / `hardly`**：`hard` = 努力地 / 坚硬地，`hardly` = **几乎不**（否定意味）；`work hard` 常成对出现 ③ **`late` / `lately`**：`late` = 晚 / 迟，`lately` = **最近** ④ **`-ly` 结尾却是形容词**：`friendly`、`lovely`、`lively`、`lonely`（不要乱加 / 乱删 `-ly`）⑤ **`so` / `such`**：`so` 后加**形容词**（`so useful`），`such` 后加**名词短语**（`such a useful book`）—— 看长短记（`so` 两个字母配短词，`such` 四个字母配长短语）。
+- **关键概念**：`interested / interesting`、`hardly`、`lately`、`friendly`、`such a`
+- **相互关系**：与地图已有的「-ing 与 -ed 形容词」（阿珂）同一考点；本条补 `hard/hardly`、`late/lately`、`-ly 形容词`、`so/such` 四组。
+- **出处**：[娜娜 P5](https://www.bilibili.com/video/BV1QKbZ6xEea?p=5)
+
+### adj + enough + to do
+- **要点**：`形容词 + enough + to do` = 足够……去做某事（`He was clever enough to solve the problem.` / `He is old enough to go to school.`）。⚠️ `enough` 放在**形容词之后**，前面一般有 be 动词。
+- **关键概念**：`enough to do`、`old enough to`
+- **相互关系**：属「形容词 + 不定式」的固定结构，与「系动词后接形容词」配套使用。
+- **出处**：[娜娜 P5](https://www.bilibili.com/video/BV1QKbZ6xEea?p=5)
+
+
+## 补充（娜娜）· 第6讲 介词
+
+### 介词 = 关系指引牌
+- **要点**：娜娜的记法 —— 介词是句子里**关系的指引牌**，告诉你「什么时候 / 在哪里 / 往哪个方向 / 用什么方式 / 因为什么」。介词放在**名词、代词或动名词前**（`in August` 表时间、`laugh at me` 表方向、`by singing` 表方式）。
+- **关键概念**：`介词`、`关系指引`
+- **相互关系**：与地图已有的「介词」（易易：介词都带含义、靠背诵）一致；本条给**统一记忆框架**。
+- **出处**：[娜娜 P6](https://www.bilibili.com/video/BV1QKbZ6xEea?p=6)
+
+### 广东 5 年语法填空介词每套都考，只考两面
+- **要点**：娜娜实测 —— 介词在 5 套语法填空里**都有考**，只集中在两方面：① **固定搭配**（`succeed in`）② **介词后接什么形式**。真题例：2024 `The local charity center succeeded ___ organizing a community event` → **`in`**（`succeed in doing`）。⚠️ **无提示词**的空，就按「**冠词 → 代词 → 连词 → 介词**」四选一想。
+- **关键概念**：`succeed in`、`固定搭配`
+- **相互关系**：与「语法填空两类题型（不给提示词）」的处理流程一致（易易的考点框架里 `介词` 也是带星必考项）。
+- **出处**：[娜娜 P6](https://www.bilibili.com/video/BV1QKbZ6xEea?p=6)
+
+### 介词后只接名词 / 代词宾格 / 动名词
+- **要点**：介词后**只有三种**：名词（`in August`、`after class`）· 代词**宾格**（`with him`、`between you and me`，**不能说 `between you and I`**）· **动名词**（`without saying`、`by singing`）。口诀「**介词后名宾 doing 三选一**」。⚠️ 给动词就**必须变 `-ing`**，用原形绝对扣分。⚠️ `and` 并列时靠**前后结构一致**倒推（`after making some new friends and ___ (spend) good time with them` → `spending`）。
+- **关键概念**：`动名词`、`宾格`、`介词后名宾 doing`
+- **相互关系**：与「人称代词动 / 介后用宾格」（娜娜 P4）互相印证 —— 同一条规则在代词侧的表述。
+- **出处**：[娜娜 P6](https://www.bilibili.com/video/BV1QKbZ6xEea?p=6)
+
+### to 是介词还是不定式符号（高频陷阱）
+- **要点**：`to` 有时是**不定式符号**（后接动词原形），有时是**介词**（后接 `-ing`）。必须整记这些 **`to` 作介词**的短语：`look forward to`、`be used to`、`get used to`、`contribute to`、`devote to`。真题例：`We are looking forward to ___ (meet) you next week` → **`meeting`**。
+- **关键概念**：`look forward to doing`、`be used to doing`
+- **相互关系**：是「介词后接动名词」的**唯一例外陷阱**，须单列成清单背。
+- **出处**：[娜娜 P6](https://www.bilibili.com/video/BV1QKbZ6xEea?p=6)
+
+### 时间介词 at / on / in 三分法
+- **要点**：按**范围由小到大**：`at` + **时间点**（`at nine o'clock`、`at noon`、`at night`）· `on` + **具体某一天**（`on Monday`、`on May 1st`、`on Monday morning`）· `in` + **较长时段**（`in 2020`、`in spring`、`in May`、`in the morning/afternoon/evening`）。⚠️ 区分 `on Monday morning`（特指周一那天早上）vs `in the morning`（泛指早上）；`at night` 与 `in the evening` 不同。
+- **关键概念**：`at noon`、`on Monday morning`、`in the morning`
+- **相互关系**：与地图已有的「介词」（易易）同考点；本条给**范围递进判据**（越往后越模糊、越大）。
+- **出处**：[娜娜 P6](https://www.bilibili.com/video/BV1QKbZ6xEea?p=6)
+
+### 常考时间介词：since / for / by / during
+- **要点**：**`since` + 时间点**（与现在完成时连用，`since 2020`）· **`for` + 时间段**（与现在完成时连用，`for five years`）—— **点用 `since`、段用 `for`** · **`by` + 时间点** = 不迟于……之前（`by Friday`）· **`during` + 时间段** = 在……期间 · `until` / `not until`（直到……才 / 直到……为止）。
+- **关键概念**：`since 2020`、`for five years`、`by Friday`
+- **相互关系**：`since` / `for` 是「现在完成时」的配套信号词；与地图已有的「时态」章节呼应。
+- **出处**：[娜娜 P6](https://www.bilibili.com/video/BV1QKbZ6xEea?p=6)
+
+### 地点介词 at / on / in（同一套三分法）
+- **要点**：`at` + **具体点位 / 小地点**（`at the gate`、`at the bus stop`、`at the conference room`）· `on` + **与物体表面接触**（`on the wall`、`on the table`）· `in` + **大地方 / 内部**（`in the room`、`in China`）。
+- **关键概念**：`at the gate`、`on the wall`、`in China`
+- **相互关系**：与「时间介词 at / on / in」同构 —— **点 / 面 / 内部**三分，一起记。
+- **出处**：[娜娜 P6](https://www.bilibili.com/video/BV1QKbZ6xEea?p=6)
+
+### 四组易混方位介词
+- **要点**：① **`over`**（正上方、不接触）vs **`above`**（只是更高，不一定正上方；数值更高也可）—— 反义 `under`（正下方）/ `below`（更低）② **`through`**（**从内部穿过**：`through the forest`、`through the window`、`through the people`）vs **`across`**（**从表面横穿**：`across the street`）vs **`past`**（**从旁边绕过**）③ **`between`**（**两者之间**）vs **`among`**（**三者及以上之间**）④ **`beside`**（在旁边）vs **`besides`**（此外）。
+- **关键概念**：`over / above`、`through / across / past`、`between / among`、`beside / besides`
+- **相互关系**：与地图已有的「介词」（易易）互补 —— 易易只说「靠背诵」，本条给**可判别的区分**。
+- **出处**：[娜娜 P6](https://www.bilibili.com/video/BV1QKbZ6xEea?p=6)
+
+### 固定搭配四类
+- **要点**：① **动词 + 介词**：`succeed in`、`depend on`、`deal with`、`contribute to`、`talk about`、`account for` ② **形容词 + 介词**：`be interested in`、`be proud of`、`be different from`、`be sensitive to`、`be good at` ③ **名词 + 介词**：`the reason for`、`an answer to`、`an effect on`、`a solution to` ④ **短语动词**：`turn on`、`run into`（偶遇）、`give up`、`break out`。真题例：`He is able to polish her poetry anytime and anywhere ___ the help of her cell phone` → `with`（`with the help of`）。
+- **关键概念**：`succeed in`、`be proud of`、`an answer to`、`with the help of`
+- **相互关系**：与地图已有的「动词短语与固定搭配辨析」（乐贯中西）互补 —— 那条按**语义**辨析，本条按**结构**分类。
+- **出处**：[娜娜 P6](https://www.bilibili.com/video/BV1QKbZ6xEea?p=6)
+
+### of 表所属，to 表对应（the answer to 不是 the answer of）
+- **要点**：`of` 表**所属关系**（`the door of this room` —— 门属于这个房间）；`to` 表**指向 / 对应关系**（`the answer to this question`、`the solution to the problem` —— 答案是**匹配**这个问题的，不是「属于」问题）。⚠️ 别拿「无生命用 `of`」硬套，要先看是**所属**还是**对应**。
+- **关键概念**：`the answer to`、`the solution to`、`所属 vs 对应`
+- **相互关系**：是「名词所有格：无生命用 of」（娜娜 P2）的**重要例外护栏**。
+- **出处**：[娜娜 P6](https://www.bilibili.com/video/BV1QKbZ6xEea?p=6)
+
+### 八大高频介词用法速查表
+- **要点**：**`with`**：① 与人（`play with your friends`）② 伴随 / 有（`with a smile`、`a girl with long hair`）③ 工具（`write with a pen`）④ 凭借（`with the help of`）。**`by`**：① 方式（`by singing`）② 交通工具（`by bus`）③ 被动（`by + 过去分词`）④ 截止时间（`by Friday`）⑤ 自己（`by oneself`）。**`in`**：① 时间 / 空间 ② 语言（`in English`）③ 穿戴（`the man in red`）④ 状态（`in danger`）。**`on`**：① 时间 / 表面 ② 关于（`a book on history`）③ 媒介（`on TV`）。**`at`**：① 时间 / 地点 ② 朝向（`laugh at me`）③ 在某方面（`be good at`）。**`for`**：① 为了（`make it for me`）② 时间段 ③ 支持（`fight for` ↔ `against`）④ 原因。**`to`**：① 朝向（方向）② 对比 / 对于（`be similar to`）③ 不定式。**`about`**：① 关于（`talk about`）② 大约（`about two hundred`）。
+- **关键概念**：`with`、`by`、`in`、`on`、`at`、`for`、`to`、`about`
+- **相互关系**：是「固定搭配四类」的**底层规律表** —— 娜娜说这页讲义里没有，要学生课上亲手抄下来。
+- **出处**：[娜娜 P6](https://www.bilibili.com/video/BV1QKbZ6xEea?p=6)
+
+### because of / due to / thanks to 后接短语，because 后接句子
+- **要点**：`because of`、`due to`、`thanks to` 都表原因，**后面只接名词短语**；**`because` 后面接句子**。判据：看后面是**短语还是句子**（`because of the heavy rain` vs `because it rained heavily`）。真题例：`The meeting was put off ___ the bad weather` → `because of`。
+- **关键概念**：`because of`、`due to`、`thanks to`
+- **相互关系**：是「连词 vs 介词」的分界考点，与地图已有的「状语从句」（连词）呼应。
+- **出处**：[娜娜 P6](https://www.bilibili.com/video/BV1QKbZ6xEea?p=6)
+
+### discuss 是及物动词，不加 about
+- **要点**：`discuss` 是**及物动词**，后面直接跟宾语，**不加介词**：`We discussed the plan.`（✗ `discuss about the plan`）。⚠️ 别被「讨论的是**关于**这个方案」的中文语感带偏。
+- **关键概念**：`discuss`、`及物动词`
+- **相互关系**：属「动词 + 介词」固定搭配的**反向陷阱**（该不加的加了）。
+- **出处**：[娜娜 P6](https://www.bilibili.com/video/BV1QKbZ6xEea?p=6)
+
+
+## 补充（娜娜）· 第7讲 连词
+
+### 连词的两个作用：胶水 + 路标
+- **要点**：连词干两件事 —— ① **胶水**：把单词 / 短语 / 从句 / 句子连起来 ② **路标**：说明前后是什么逻辑关系（并列 / 转折 / 因果 / 条件 / 让步）。所以做题只有一步：**先判前后逻辑关系，再选对应连词**，不需要语感。
+- **关键概念**：`连词`、`胶水`、`路标`
+- **相互关系**：与地图已有的「语法填空无提示词空的四类候选」（冠词 / 介词 / 代词 / 连词）配套 —— 本条给连词的**总作用框架**。
+- **出处**：[娜娜 P7](https://www.bilibili.com/video/BV1QKbZ6xEea?p=7)
+
+### 连词题的固定入口：先把前后两句各译一遍
+- **要点**：26 年真题 `She is not in a hurry to complete the poem right away, ___ she can always revisit unfinished pieces later.` —— 前句是**结果**（不着急），后句是**原因**（随时能改）⇒ 填 `because`。判据：**先判断「前因后果」还是「前果后因」**，再选连词；因果顺序调换时连词要跟着换（`so` ↔ `for`）。
+- **关键概念**：`because`、`前果后因`、`so` / `for`
+- **相互关系**：与「因果类并列连词 so / for」互为判据 —— 真题里考的就是这个。
+- **出处**：[娜娜 P7](https://www.bilibili.com/video/BV1QKbZ6xEea?p=7)
+
+### 语义层面五类并列连词
+- **要点**：① **并列 / 顺承** `and`（和 / 并且 / 然后）② **转折** `but` / `yet`（但是 / 然而）③ **选择** `or`（或者；**祈使句中 = 否则**）④ **因果** `so`（接结果）/ `for`（表原因）⑤ **对比** `while`（然而，前后两类情况对比：`Some like reading, while others prefer sports.`）。
+- **关键概念**：`and`、`but`、`or`、`so`、`for`、`while`
+- **相互关系**：与地图已有的「并列连词」条目同考点；本条补**语义五类清单**与 `for` 表原因、`while` 表对比两个用法。
+- **出处**：[娜娜 P7](https://www.bilibili.com/video/BV1QKbZ6xEea?p=7)
+
+### ⚠️ 语法层面真正的并列连词只有 5 个
+- **要点**：语法上真正从属于并列连词的只有 **`and` / `but` / `or` / `so` / `for`**；判据是**只能插在两个句子中间**，不能挪到句首。`while` 是**从属连词**（可把后半句提前：`While others prefer sports, some like reading.` 仍成立）⇒ 做题二选一：背下这 5 个，或试「**能不能提到句首**」。
+- **关键概念**：`并列连词`、`从属连词`、`while`
+- **相互关系**：是「语义五类」的**收窄护栏** —— 语义上算并列的 `while`，语法上不属于并列连词。
+- **出处**：[娜娜 P7](https://www.bilibili.com/video/BV1QKbZ6xEea?p=7)
+
+### or 在祈使句里 = 否则，且必须「不顺承」
+- **要点**：`Work hard, or you will fall behind.` = 认真干，**否则**你就会被别人甩在后面。⚠️ **判据**：填 `or` 表否则时，后句结果必须与前面动作**不顺承**。反例：`Work hard, ___ you will make progress.` 后句（取得进步）是顺承结果 ⇒ 只能填 `and`，**不能填 `or`**。
+- **关键概念**：`祈使句`、`or = 否则`、`顺承`
+- **相互关系**：与「并列 / 顺承类 and」互为反面判据 —— 本条专治「见祈使句就填 or」。
+- **出处**：[娜娜 P7](https://www.bilibili.com/video/BV1QKbZ6xEea?p=7)
+
+### 成对关联连词四组 + 就近原则
+- **要点**：① `both...and`（两者都；谓语用**复数**：`Both Tom and Jack like English.`）② `not only...but also`（不仅…而且）③ `either...or`（要么…要么）④ `neither...nor`（既不…也不）。②③④ 的谓语数一律按**就近原则**：`Not only the students but also the teacher was moved.` —— 靠近谓语的是 `the teacher`（单数）⇒ 用 `was`；若把 `the students` 放后面就变 `were`。
+- **关键概念**：`both...and`、`not only...but also`、`either...or`、`neither...nor`、`就近原则`
+- **相互关系**：与地图已有的「主谓一致」条目互补 —— 本条给**关联连词导致的就近一致**。
+- **出处**：[娜娜 P7](https://www.bilibili.com/video/BV1QKbZ6xEea?p=7)
+
+### ⚠️ 两对不能连用：although + but、because + so
+- **要点**：中文习惯说「虽然…但是」「因为…所以」，**英文只能留一个** —— 有 `although` 就没 `but`，有 `because` 就没 `so`。原因：`but` / `so` 连的是两个完整句，`although` / `because` 连的是从句，功能重叠不能共存。
+- **关键概念**：`although...but`、`because...so`
+- **相互关系**：与「让步状语从句」及「因果并列」两条配套，是本讲的**高频失分点**。
+- **出处**：[娜娜 P7](https://www.bilibili.com/video/BV1QKbZ6xEea?p=7)
+
+### 状语从句四类常考连词
+- **要点**：① **时间** `when` / `while`（同时；也表对比）/ `after` / `before` / `as soon as` / `until` ② **条件** `if` / `unless`（= `if not`，本身含否定）/ `once`（一旦）③ **原因** `because` / `since` / `as` ④ **让步** `although` / `though` / `even though` / `even if`。状语的作用就是说明动作发生的**时间 / 地点 / 条件 / 原因 / 让步 / 结果 / 目的**。
+- **关键概念**：`时间状语从句`、`条件状语从句`、`原因状语从句`、`让步状语从句`
+- **相互关系**：与地图已有的「状语从句分类」互补 —— 本条给**考试常考四类 + 连词清单**。
+- **出处**：[娜娜 P7](https://www.bilibili.com/video/BV1QKbZ6xEea?p=7)
+
+### 让步 = 先退一步承认事实，再给相反结果
+- **要点**：`Although he was tired, he kept working.` —— `although` 引导的那半句是**先退一步承认的事实**（他很累），主句给**与该事实相反的结果**（仍然继续工作）。「让步」= 我让一下你、退一步，先认了再说但是。
+- **关键概念**：`让步`、`退一步`、`although`
+- **相互关系**：解释了上一条「although 不能与 but 连用」的成因 —— 两者都是转折，只是一个连从句、一个连句子。
+- **出处**：[娜娜 P7](https://www.bilibili.com/video/BV1QKbZ6xEea?p=7)
+
+### 主将从现（时间 / 条件状语从句）+ 它的失效条件
+- **要点**：时间与条件状语从句符合「**主句将来时，从句用一般现在时**」：`We will start as soon as he arrives.` / `If it rains tomorrow, we will stay at home.`（`will start` / `will stay` 是将来，`arrives` / `rains` 是一般现在）。⚠️ **只适用于站在当下视角的假设**；若全句是**过去视角**就不再遵守 —— 22 年真题 `I realized that ___ I wanted to take part in such a big race, I had to be willing to try.`，`realized` 已是过去，此空填 **`if`** 表条件，与主将从现无关。
+- **关键概念**：`主将从现`、`一般现在时表将来`
+- **相互关系**：是「时间 / 条件状语从句」的**时态配套规则 + 边界**（地图原无此边界说明）。
+- **出处**：[娜娜 P7](https://www.bilibili.com/video/BV1QKbZ6xEea?p=7)
+
+### 名词性从句三步走
+- **要点**：① **从句成分完整** ⇒ `that`（不做成分、不翻译，只当胶水；`I believe that he is right.`）② **缺主语或宾语** ⇒ `what`（`What I need is more practice.`）；**缺其他状语** ⇒ 按缺什么选什么：`when`（时间）/ `where`（地点）/ `why`（原因）③ **表「是否」** ⇒ `whether` 或 `if`；**在介词后只能用 `whether`**（`We talk about whether we should leave.`）。
+- **关键概念**：`名词性从句`、`that`、`what`、`whether`
+- **相互关系**：与地图已有的「名词性从句连接词」同一考点；本条补**三步判别流程**与「介词后只能 whether」。
+- **出处**：[娜娜 P7](https://www.bilibili.com/video/BV1QKbZ6xEea?p=7)
+
+### 定语从句两步走：先行词 → 从句缺什么
+- **要点**：① **看先行词**（被修饰的人或物）：人 ⇒ `who`；物 ⇒ `which` / `that`（限制性两者都可，**非限制性定语从句有逗号隔开，只能用 `which`**）② **看从句缺什么**：缺主语 / 宾语 ⇒ 用**关系代词**（`who` / `which` / `that`）；缺其他状语 ⇒ 用 `when`（时间）/ `where`（地点）/ `why`（原因），如 `This is the place where I was born.`。
+- **关键概念**：`先行词`、`关系代词`、`非限制性定语从句`、`where`
+- **相互关系**：与地图已有的「定语从句关系词选择」同考点；本条给**两步流程**并明确「逗号 = 非限制性 = 只能 which」。
+- **出处**：[娜娜 P7](https://www.bilibili.com/video/BV1QKbZ6xEea?p=7)
+
+### 名词性从句 vs 定语从句：两条区分判据
+- **要点**：① **看它在大句里做不做成分**：名词性从句要充当主语 / 宾语 / 表语；定语从句只**修饰先行词**、不做成分 ② **看有没有先行词**：只有定语从句有先行词（前面必有一个被修饰的人或物）。两步任一即可分类，再套各自的流程。
+- **关键概念**：`名词性从句`、`定语从句`、`先行词`
+- **相互关系**：是上两条的**收口判据** —— 这两类从句第二步极像，必须先分类再套流程，否则必混。
+- **出处**：[娜娜 P7](https://www.bilibili.com/video/BV1QKbZ6xEea?p=7)
+
+### 结果与目的三结构：so...that / such...that / so that
+- **要点**：① `so + 形容词 / 副词 + that`（**结果**：`The box is so heavy that I can't carry it.`）② `such + a/an + 形容词 + 名词 + that`（**结果**，核心词是**名词**，可数单数要带冠词，不可数不带：`It is such an interesting book that I read it twice.`）③ `so that` **连写**（**目的** = 为了 / 以便：`Speak louder so that everyone can hear you.`）。**判据：看 `that` 前面 —— 形容词用 `so`，名词用 `such`；`so` 与 `that` 没被拆开就表目的。**
+- **关键概念**：`so...that`、`such...that`、`so that`
+- **相互关系**：与地图已有的「so / such 易混词」条互补 —— 本条补 `that` 从句结构并区分**结果 vs 目的**。
+- **出处**：[娜娜 P7](https://www.bilibili.com/video/BV1QKbZ6xEea?p=7)
+
+### 逻辑路标六类（五选五 / 阅读理解用）
+- **要点**：① **顺序 / 列举** `first` / `second` / `finally` / `to begin with` ② **补充**（同方向再加一条）`besides` / `in addition` / `moreover` / `what's more` ③ **转折**（方向相反）`however` / `but` / `even though` / `on the other hand` ④ **因果** `therefore` / `thus` / `as a result` / `so` ⑤ **举例 / 类比** `e.g.` / `for instance` / `similarly` / `likewise`。五选五里靠这些词判断空格前后是**同方向**还是**反方向**。
+- **关键概念**：`逻辑路标`、`五选五`、`同方向 / 反方向`
+- **相互关系**：是「连词」在**篇章层面**的延伸 —— 前面讲句内，这条讲句间。
+- **出处**：[娜娜 P7](https://www.bilibili.com/video/BV1QKbZ6xEea?p=7)
+
+### ⚠️ however / therefore / besides 是连接副词，不是连词
+- **要点**：它们**不能用逗号直接连接两个完整句**，必须写成「**句号或分号** + 连接副词 + **逗号** + 下一句」：`It was hard. However, we finished it.` 对比连词写法 `It was late, so we went home.`（逗号 + 连词即可）。**做题信号：前一句以句号 / 分号收尾，空格后又带逗号 ⇒ 优先考虑连接副词**（however / therefore / besides 之类）。
+- **关键概念**：`连接副词`、`however`、`therefore`、`besides`
+- **相互关系**：是「逻辑路标」的结构护栏 —— 上一条讲意思，本条讲**标点形式**，两条配套使用。
+- **出处**：[娜娜 P7](https://www.bilibili.com/video/BV1QKbZ6xEea?p=7)
+
+
+## 补充（娜娜）· 第8讲 谓语与非谓语
+
+### 谓语 vs 非谓语：一句话只有一个「司机」
+- **要点**：谓语 = 句子的核心，**必须体现时态 / 语态（必要时带情态动词）**；非谓语 = 其余动词，改用 `to do` / `doing` / `done` 三种形式，在句中作定语 / 状语 / 宾语 / 补语。比喻：一句话像一辆车，**只有一个司机（谓语）**，其他会开车的人只能坐副驾驶（非谓语），作用只是**补充说明**。
+- **关键概念**：`谓语`、`非谓语`、`to do`、`doing`、`done`
+- **相互关系**：与地图已有的「谓语与非谓语总论」同考点；本条给**车的比喻**与三种非谓语形式的总览。
+- **出处**：[娜娜 P8](https://www.bilibili.com/video/BV1QKbZ6xEea?p=8)
+
+### 动词是语法填空第一大考点（占比实测）
+- **要点**：娜娜口径 —— **5 套语法填空 / 50 个空里，15 个考动词形式**（谓语 7 + 非谓语 8），占 **30%**，约每三空就有一个。⇒ 本讲每条规则都要**能默写**。
+- **关键概念**：`动词题`、`占比 30%`
+- **相互关系**：是「语法填空题型分布」的**实测依据**，决定复习优先级。
+- **出处**：[娜娜 P8](https://www.bilibili.com/video/BV1QKbZ6xEea?p=8)
+
+### 做题总纲三步（动词题通用）
+- **要点**：① **先找整句有没有谓语**（从上一个句号到下一个句号算一个整句）② 若**没有**谓语 ⇒ 括号里的动词**就是谓语** ⇒ 定**时态 / 语态 / 情态** ③ 若**已有**谓语 ⇒ 再看**有无连词**：有**并列连词**（and / but / or / so / for）⇒ 可以再来一个谓语；有**从属连词**（when / because / every time…）⇒ 那个动词是**从句的谓语**，主句仍缺谓语；**没有连词** ⇒ 只能作**非谓语**，在 `to do` / `doing` / `done` 中三选一。
+- **关键概念**：`找谓语`、`有无连词`、`并列连词`、`从属连词`
+- **相互关系**：是「谓语与非谓语」这一讲的**总入口**；与「并列连词只有 5 个」直接配套。
+- **出处**：[娜娜 P8](https://www.bilibili.com/video/BV1QKbZ6xEea?p=8)
+
+### 谓语动词的三个特征
+- **要点**：① **体现时态**（靠时间标志词判断：`yesterday` ⇒ 过去式）② **体现语态**（主动 / 被动，被动结构 `be done`；**`by somebody / something` 是被动信号词**）③ **情态动词 + 动词原形**，两者**合起来才算一个谓语**，不能拆开看。
+- **关键概念**：`时态`、`语态`、`be done`、`情态动词 + 原形`
+- **相互关系**：是「找谓语」的**识别标准** —— 不确定某个动词是不是谓语时，拿这三条去套。
+- **出处**：[娜娜 P8](https://www.bilibili.com/video/BV1QKbZ6xEea?p=8)
+
+### 多个动词怎么断：有无连词
+- **要点**：① 有**并列连词** ⇒ 前后**都是谓语**（`He came home and cooked dinner.`）② 有**从属连词** ⇒ 括号词是**从句谓语**，不算多谓语，主句谓语仍要自己找（`Every time she feels like creating a poem, she quickly opened the app.` —— `feels` 是 `every time` 从句的谓语，空里要填的是主句的 `opened`）③ **无连词** ⇒ 第二个动词只能变非谓语（`He came home, feeling tired.`）。
+- **关键概念**：`多动词`、`从句谓语`、`非谓语化`
+- **相互关系**：是「做题总纲三步」里第 ③ 步的展开，动词题的**核心断点**。
+- **出处**：[娜娜 P8](https://www.bilibili.com/video/BV1QKbZ6xEea?p=8)
+
+### ⚠️ 两个谓语之间只用逗号 = 错
+- **要点**：没有连词时用逗号隔开两个动词，**后一个必须改成非谓语**（`The students entered the classroom, talking loudly.`），或者补上连词变成并列谓语。这是句子改错题里最常见的一处。
+- **关键概念**：`逗号`、`非谓语化`、`改错`
+- **相互关系**：是「多个动词怎么断」的**反例护栏** —— 本条专治「逗号连着两个谓语」。
+- **出处**：[娜娜 P8](https://www.bilibili.com/video/BV1QKbZ6xEea?p=8)
+
+### to do 的四种用法
+- **要点**：① **目的状语**（为了做某事；`in order to` 可加强调：`He works hard to pass the exam.`）② **后置定语**：跟在**名词后**表用途（`a place to live in` / `a pen to write with`），也可跟**抽象名词**（`your chance to speak`）与**不定代词**（`something / anything / nothing to eat`）③ **特定动词后的固定搭配**（`want / decide / hope / plan / be determined to do`）④ **疑问词 + to do** 整体作宾语（`how to use` / `what to eat` / `when to go` / `where to go`）。
+- **关键概念**：`to do`、`目的状语`、`后置定语`、`疑问词 + to do`
+- **相互关系**：与地图已有的「非谓语 to do」条目互补 —— 本条给**四类用法的判别清单**。
+- **出处**：[娜娜 P8](https://www.bilibili.com/video/BV1QKbZ6xEea?p=8)
+
+### doing 的四种用法
+- **要点**：① **介词后**（`by doing` / `after making friends`）② **特定动词后**（`enjoy / finish / avoid / mind / practice / regret doing`）③ **固定结构**（`be worth doing` / `succeed in doing` / `have trouble (in) doing` —— 本质仍是「介词后」）④ 作**定语 / 状语**，表**主动或正在**（`The boy standing here is my brother.`）。
+- **关键概念**：`doing`、`enjoy doing`、`have trouble doing`、`主动 / 正在`
+- **相互关系**：与「介词后必须用 doing」配套；本条补**特定动词清单**与「主动 / 正在」这一层。
+- **出处**：[娜娜 P8](https://www.bilibili.com/video/BV1QKbZ6xEea?p=8)
+
+### done 的三种用法
+- **要点**：① 作**定语**（表被动或完成，位置前后皆可：`a broken window` / `a photo shared by the department`）② 作**状语**（表被动：`Given more time, we could do better.`）③ `get / have + 宾语 + done`（**让某物被处理**：`I had my bike repaired.`）。口诀：**主动 / 正在用 `doing`，被动 / 完成用 `done`。**
+- **关键概念**：`done`、`被动 / 完成`、`have sth done`
+- **相互关系**：与「doing 的第四种用法」互为对照 —— 两条一起记才不会混。
+- **出处**：[娜娜 P8](https://www.bilibili.com/video/BV1QKbZ6xEea?p=8)
+
+### ⚠️ when + doing 的省略结构
+- **要点**：从句主语与主句主语**一致**、且从句**有 be 动词**时，可把「主语 + be」一起省略：`When (she is) performing, she always turns off the lights.` ⇒ `When performing, ...`。**做题信号：`when` + 横线 + 后面直接跟主语 ⇒ 填 `doing`**（`When speaking in public, he always takes a deep breath first.`）。
+- **关键概念**：`when doing`、`省略主语和 be`
+- **相互关系**：与地图已有的「时间状语从句」配套 —— 地图原无此**省略结构**。
+- **出处**：[娜娜 P8](https://www.bilibili.com/video/BV1QKbZ6xEea?p=8)
+
+### 宾补里的动词形式：只看主动还是被动
+- **要点**：宾语与宾补构成**主谓关系**（不影响整句的主谓），只判**主动 / 被动**：主动用 `do` 或 `doing`，被动用 `done`。三类结构：① **感官动词** `see / hear / watch / notice` + 宾语 + `do`（看到**全过程**）/ `doing`（只看到**一部分**、正在进行）② **使役动词** `make / let / have` + 宾语 + **do 原形（不带 to）**，`help sb do` 同型 ③ `get / have` + **物** + `done`（`I got my hair cut.`）。
+- **关键概念**：`宾补`、`感官动词`、`使役动词`、`do 与 doing 的区别`
+- **相互关系**：与地图已有的「宾语补足语」条目互补 —— 本条补**动词作宾补**的三种结构与判别。
+- **出处**：[娜娜 P8](https://www.bilibili.com/video/BV1QKbZ6xEea?p=8)
+
+### since 句型：主句现在完成 + 从句一般过去
+- **要点**：`Things have changed a lot since she joined the club last year.` —— **`since` 一出现 ⇒ 主句用现在完成时，`since` 从句用一般过去时**，是固定结构，不必另找时间标志词。
+- **关键概念**：`since`、`现在完成时`、`一般过去时`
+- **相互关系**：与地图已有的「现在完成时 + since」同考点；本条给**两个空同时套用的模板**。
+- **出处**：[娜娜 P8](https://www.bilibili.com/video/BV1QKbZ6xEea?p=8)
+
+### find it + adj + to do（形式宾语）
+- **要点**：`I found it difficult to finish the task alone.` —— `it` 是**形式宾语**，真正的宾语是后面的 `to do`。同类动词还有 `make` / `think` / `consider`。
+- **关键概念**：`形式宾语`、`it`、`find it adj to do`
+- **相互关系**：与地图已有的「it 的五种用法」同考点 —— 本条补**形式宾语**这一种的具体结构。
+- **出处**：[娜娜 P8](https://www.bilibili.com/video/BV1QKbZ6xEea?p=8)
+
+
+## 补充（娜娜）· 第9讲 时态（一）
+
+### 时态 = 时间 × 状态（16 个里专升本只考 8 个）
+- **要点**：时态是**动词身上的时间标签**，只跟**谓语动词**挂钩。**时间**四档（过去 / 现在 / 将来 / 过去将来）× **状态**四档（一般 / 进行 / 完成 / 完成进行）= 语法上的 16 个时态；专升本只集中考 **8 个**，第 9 讲学 4 个基础（一般现在 / 一般过去 / 一般将来 / 现在进行），第 10 讲学进阶的 4 个。
+- **关键概念**：`时态`、`时间 × 状态`、`16 个时态`
+- **相互关系**：与地图已有的「时态总览」同考点；本条给**两讲的分工**与「只考 8 个」的口径。
+- **出处**：[娜娜 P9](https://www.bilibili.com/video/BV1QKbZ6xEea?p=9)
+
+### 定时态三步：时间词 → 语境 → 看主语
+- **要点**：① **先找时间标志词**（`yesterday` → 过去 / `tomorrow` → 将来 / `now`、`look` → 进行 / `every day`、`usually` → 一般现在）② **没有时间词就看语境** —— 上下篇章整体是过去叙事就跟过去时，是描述习惯 / 事实就跟一般现在时，**跟上下文对齐** ③ **时态定完后看主语**：一般现在时里三单主语要加 `s`；其他时态里主语的单复数影响 **be 动词**（`I am` / `they are`）。
+- **关键概念**：`时间标志词`、`语境对齐`、`看主语`
+- **相互关系**：是整讲四个时态共用的**做题总流程**。
+- **出处**：[娜娜 P9](https://www.bilibili.com/video/BV1QKbZ6xEea?p=9)
+
+### 本讲四时态的考频（5 年实测）
+- **要点**：**一般过去时考过 3 次（最高频，本讲重点）** · 一般现在时考过 1 次（26 年 `opens`）· 一般将来时 **0 次**（但写作的邀请信 / 通知必须用）· 现在进行时 **0 次**（了解即可）。⇒ 主次分明：过去时背熟，进行时只需认得结构。
+- **关键概念**：`一般过去时`、`考频`
+- **相互关系**：是「动词是语法填空第一大考点」的**下钻数据**，直接决定复习权重。
+- **出处**：[娜娜 P9](https://www.bilibili.com/video/BV1QKbZ6xEea?p=9)
+
+### 一般现在时的三种用法
+- **要点**：① **经常性 / 习惯性动作**（常与 `usually` / `often` / `seldom` / `every day` 连用）② **客观事实 / 普遍真理**（`The earth goes around the sun.` —— 不随时间改变）③ **时间 / 条件状语从句中用一般现在时表将来**（即「主将从现」：`They will hold the party if they complete the project on time.`）。
+- **关键概念**：`一般现在时`、`习惯性动作`、`普遍真理`、`主将从现`
+- **相互关系**：与地图已有的「一般现在时用法」同考点；本条把**主将从现**并进三种用法里，与连词那讲呼应。
+- **出处**：[娜娜 P9](https://www.bilibili.com/video/BV1QKbZ6xEea?p=9)
+
+### 三单变化三规则：口诀「蛇吃叉子哦」
+- **要点**：① 一般直接加 `s`（`works` / `reads`）② 以 **s / x / ch / sh / o** 结尾加 `es` —— 口诀在名词复数的「蛇吃叉子」上**多一个 o**，记成「**蛇吃叉子哦**」③ **辅音字母 + y** 结尾 ⇒ 变 y 为 i 加 `es`（`study→studies`、`carry→carries`）。
+- **关键概念**：`三单`、`蛇吃叉子哦`、`studies`
+- **相互关系**：与地图已有的「名词复数：蛇吃叉子」口诀同源 —— 本条是它在**动词三单**上的迁移。
+- **出处**：[娜娜 P9](https://www.bilibili.com/video/BV1QKbZ6xEea?p=9)
+
+### 一般过去时：只陈述事实，不表影响
+- **要点**：表示**动作发生在过去、现在已经结束**，并且**只陈述这个事实**，不表示它带来的结果或影响（这正是与**现在完成时**的分界，第 10 讲展开）。时间标志词：`yesterday` / `just now`（⚠️ 是「刚才」，**不是**现在进行时）/ `then`（表「那时 / 当时」= 过去；表「之后」= 将来）/ `at that moment` / `last` 系列 / `... ago` / 其他明确过去时间。
+- **关键概念**：`一般过去时`、`just now`、`then`、`ago`
+- **相互关系**：与地图已有的「一般过去时」条目互补 —— 本条补**「只陈述事实」这条分界**与三个易误判标志词。
+- **出处**：[娜娜 P9](https://www.bilibili.com/video/BV1QKbZ6xEea?p=9)
+
+### ⚠️ 借了助动词，动词必须还原为原形
+- **要点**：句子变否定 / 疑问时：**先看有没有 be 动词** —— 有就在 be 上动手脚；**没有就借助动词**（`do / does / did`）。助动词已经把时态变了，后面的实义动词**必须还原为原形**：`They didn't finish the work yesterday.`（不是 `didn't finished`）。这是最高频的失分点。
+- **关键概念**：`助动词`、`didn't`、`还原原形`
+- **相互关系**：是「一般过去时」的配套规则；与地图已有的「否定句与疑问句」同考点。
+- **出处**：[娜娜 P9](https://www.bilibili.com/video/BV1QKbZ6xEea?p=9)
+
+### 过去式规则变化四条 + 不规则四类
+- **要点**：**规则四条**：① 一般 + `ed` ② **不发音的 e 结尾**只 + `d`（`move→moved`）③ **辅音 + y** 变 y 为 i 加 `ed`（`study→studied`）④ **重读闭音节**双写末尾辅音加 `ed`（`stop→stopped`）。**不规则四类**：① **全变**（`see→saw` / `go→went` / `take→took` / `come→came` / `do→did`）② **变元音**（`give→gave` / `write→wrote` / `drive→drove` / `begin→began`）③ **原形与过去式同形**（靠上下文判断到底是现在还是过去）④ **be 动词**（`am / is→was`，`are→were`）。
+- **关键概念**：`-ed`、`重读闭音节双写`、`不规则动词表`
+- **相互关系**：与地图已有的「动词过去式变化」同考点；本条补**不规则四类分类**便于成批记忆。
+- **出处**：[娜娜 P9](https://www.bilibili.com/video/BV1QKbZ6xEea?p=9)
+
+### 一般将来时两结构：will do vs be going to do
+- **要点**：① **`will do`** —— 表**临时决定**或**主观预测**（`It will be sunny tomorrow.` 无迹象，纯猜测）② **`be going to do`** —— 表**已有的计划 / 打算**，或**根据眼前迹象判断**（`Look at the dark clouds. It is going to rain.`）。普通表将来时两者可换，有上述语境提示时才必须区分。本讲时态在真题语法填空里 0 次设空，**主要服务写作**（邀请信 / 通知：`The party will be held...` / `We will be delighted if you can join us.`）。
+- **关键概念**：`will do`、`be going to do`、`临时决定`、`有迹象判断`
+- **相互关系**：与地图已有的「一般将来时」条目互补 —— 本条补**两者的区分判据**。
+- **出处**：[娜娜 P9](https://www.bilibili.com/video/BV1QKbZ6xEea?p=9)
+
+### 现在进行时的三种用法
+- **要点**：① **此刻正在发生**（与 `look` / `listen` / `now` / `right now` 连用；`Be quiet!` 这类祈使句也能提示）② **现阶段正在进行**（`She is preparing for the exam these days.`）③ **已安排好的近期行程**（只限 `go` / `come` / `leave` / `arrive` 这类「来来去去」的动词：`I'm coming soon.` / `I'm leaving for Guangzhou tomorrow.` —— 形式是进行时，意思是将来）。
+- **关键概念**：`现在进行时`、`these days`、`I'm coming`
+- **相互关系**：与地图已有的「现在进行时」同考点；本条补**第三类「进行时表将来」**及其动词限制。
+- **出处**：[娜娜 P9](https://www.bilibili.com/video/BV1QKbZ6xEea?p=9)
+
+### doing 变化四规则：含 ie → y 这一条
+- **要点**：① 一般直接 + `ing` ② **不发音的 e 结尾去 e** 加 `ing`（`make→making` / `write→writing`）③ **重读闭音节**双写末尾辅音加 `ing`（`run→running` / `sit→sitting`）④ **以 `ie` 结尾 ⇒ 把 ie 变 y 加 `ing`**（`lie→lying` / `die→dying`）。⚠️ **注意差异**：变 ing **没有**「辅音 + y」这条规则，`study` 直接 → `studying`。
+- **关键概念**：`-ing`、`ie→y`、`studying`
+- **相互关系**：与「三单 / 过去式变化」三条对照记 —— 三者的**差异点**（有无辅音 + y、有无 ie→y）正是考点。
+- **出处**：[娜娜 P9](https://www.bilibili.com/video/BV1QKbZ6xEea?p=9)
+
+### 真题最爱考：句内无时间词，靠篇章语境定过去时
+- **要点**：23 / 24 / 25 三套真题的过去时题都是同一形态 —— **要填的那个句子里找不到任何时间标志词**，但整篇是**过去叙事**，必须按语境填过去式（`I then joined a group of runners...` / `He saw an opportunity...` / `...hurried to the scene after receiving the call.`）。⇒ 做题时**不只看本句，要扫前后文**。
+- **关键概念**：`语境定时态`、`过去叙事`
+- **相互关系**：是「定时态三步」第 ② 步的**真题实证** —— 本条说明为什么必须读上下文。
+- **出处**：[娜娜 P9](https://www.bilibili.com/video/BV1QKbZ6xEea?p=9)
+
+### 写句子：先主干后状语，状语「先时间后地点、各自从小到大」
+- **要点**：中文长句先抓**主干（主语 + 谓语）**，把时态语态定在主谓上（`讲座将于 3 月 15 日下午三点在图书馆报告厅举行` ⇒ `The lecture will be held` —— 将来时 + 被动），再把状语**按「先时间后地点」**、**各自从小到大**依次补上：时间 `at three p.m.`（点）→ `on March 15th`（具体某天）；地点 `in the lecture hall`（小）→ `of the library`（大，用所有格）。
+- **关键概念**：`抓主干`、`先时间后地点`、`从小到大`、`will be held`
+- **相互关系**：与地图已有的「汉译英：状语顺序」条目互补 —— 本条给**可照抄的操作顺序**。
+- **出处**：[娜娜 P9](https://www.bilibili.com/video/BV1QKbZ6xEea?p=9)
+
+
+## 补充（娜娜）· 第10讲 时态（二）
+
+### 进阶四时态在时间轴上的位置
+- **要点**：把第 9 讲的四个一起画在同一条时间轴上（现在为参照点，向前是将来、向后是过去）：**现在完成时** = 动作在过去发生，**结果影响到现在 / 持续到现在**，参照点是**现在**；**过去完成时** = 动作在「过去的过去」完成，参照点是**过去某一时间点**；**过去进行时** = 在过去某一刻 / 某一阶段**持续进行**；**现在完成进行时** = 从过去某点**一直持续到现在**、强调过程。
+- **关键概念**：`时间轴`、`参照时间点`、`现在完成时`、`过去完成时`、`过去进行时`、`现在完成进行时`
+- **相互关系**：与地图已有的「时态总览」同考点；本条给**四个进阶时态在时间轴上的落位**（第 9 讲那四个的延续）。
+- **出处**：[娜娜 P10](https://www.bilibili.com/video/BV1QKbZ6xEea?p=10)
+
+### 名字里带「现在」⇒ 参照点就是现在
+- **要点**：四个时态里，**现在完成时**与**现在完成进行时**是**跟「现在」挂钩**的 —— 名字里都有「现在」，说话时**以当下的现在为参照点往回看**（持续了多久 / 造成什么影响）。另两个（过去完成 / 过去进行）的参照点是**过去某一时间点**。记住这条就能一眼分出参照点。
+- **关键概念**：`现在完成时`、`现在完成进行时`、`参照点 = 现在`
+- **相互关系**：是「进阶四时态在时间轴上的位置」的**速记判据**。
+- **出处**：[娜娜 P10](https://www.bilibili.com/video/BV1QKbZ6xEea?p=10)
+
+### 四个进阶时态的结构
+- **要点**：**现在完成时** `have / has + done`（三单用 `has`）· **过去完成时** `had + done`（把现在完成时的 have/has 变过去）· **过去进行时** `was / were + doing`（把现在进行时的 be 变过去）· **现在完成进行时** `have / has + been + doing`（现在完成 + 进行，两者结合）。⇒ 动词的 `-ing` / `-ed` 变化规则**全在第 9 讲**，本讲只记结构。
+- **关键概念**：`have done`、`had done`、`was doing`、`has been doing`
+- **相互关系**：与第 9 讲的「doing / 过去式变化四规则」配套 —— 本讲不再重复变化规则。
+- **出处**：[娜娜 P10](https://www.bilibili.com/video/BV1QKbZ6xEea?p=10)
+
+### 现在完成时的三种用法
+- **要点**：① **过去发生的动作，结果影响到现在** —— **不强调什么时候做的**，所以**不加具体过去时间点**（`I have lost my key.` ⇒ 现在进不了门）② **从过去持续到现在**，常与 `for`（时间段）/ `since`（时间点）连用（`She has lived here for five years.`）③ **表示经历** —— 截止到现在为止有没有过这种体验，常与 `ever` / `never` / `before` 连用（`Have you ever visited Guangzhou?`）。
+- **关键概念**：`现在完成时`、`结果影响现在`、`持续到现在`、`表示经历`
+- **相互关系**：与地图已有的「现在完成时用法」同考点；本条补**三种用法的标志词分工**。
+- **出处**：[娜娜 P10](https://www.bilibili.com/video/BV1QKbZ6xEea?p=10)
+
+### 🔴 明确过去时间词不能与现在完成时连用
+- **要点**：`yesterday` / `last week` / `three years ago` 这类**明确过去时间点**只能配**一般过去时**，**不能与现在完成时连用** —— 因为现在完成时的**视线落在当下**（强调对现在的影响），不是聚焦过去的某一点。⚠️ **但 `since + 时间点` 可以**（`since 2020`）：`since` 表「自…以来」，是**一段跨度**而不是一个点。
+- **关键概念**：`明确过去时间词`、`since 表跨度`、`视线落在当下`
+- **相互关系**：是「现在完成时」的**头号易错点**；与第 9 讲「一般过去时只陈述事实」互为对照判据。
+- **出处**：[娜娜 P10](https://www.bilibili.com/video/BV1QKbZ6xEea?p=10)
+
+### 过去完成时的三种用法
+- **要点**：① **两个过去动作分先后** —— 先发生的用 `had done`，后发生的用**一般过去时**（`When I arrived, the meeting had begun.`）② **`by + 过去时间点`**（`by then` / `by that time` / `by the end of last month`）表示「到那时为止已经做完」（`By the end of last month, we had finished the task.`）③ **间接引语里更早的动作**（`She said she had seen the film before.` —— 其实也是两个动作分先后）。
+- **关键概念**：`过去完成时`、`过去的过去`、`by + 过去时间`、`间接引语`
+- **相互关系**：与「现在完成时」对照记 —— 只是把参照时间线**往前推一格**，含义与用法完全一样。
+- **出处**：[娜娜 P10](https://www.bilibili.com/video/BV1QKbZ6xEea?p=10)
+
+### 过去进行时：when 配短动作，while 配延续动作
+- **要点**：过去进行时表**过去某一刻 / 某一阶段正在进行的动作**，结构 `was / were + doing`。三个入口：① 直接给过去时间点（`at eight last night` / `at that time` / `at that moment`）② **`when` + 短暂动作**，主句用过去进行时**作背景**（`I was reading when the light went out.`）③ **`while` + 延续性动作**，两边常都是进行时（`While she was cooking, her son was doing homework.`）。
+- **关键概念**：`过去进行时`、`when 加短动作`、`while 加延续动作`
+- **相互关系**：与地图已有的「when 与 while 的区别」同考点；本条把它落到**过去进行时的两个入口**上。
+- **出处**：[娜娜 P10](https://www.bilibili.com/video/BV1QKbZ6xEea?p=10)
+
+### 短动作 vs 延续动作怎么分
+- **要点**：**短暂动作** = 一瞬间就完成（`进来` —— 脚一迈进去就完成；`起床` —— 一睁眼一翻身就起来）⇒ 配 **`when`**；**延续动作** = 需要花一段时间才完成（`做饭` / `做作业` / `读书` / `等车`）⇒ 配 **`while`**。口诀「**短配 when、长配 while**」。
+- **关键概念**：`短暂性动作`、`延续性动作`、`when` / `while`
+- **相互关系**：是上一条的**词义判据** —— 判断不了动作长短就选不出 when / while。
+- **出处**：[娜娜 P10](https://www.bilibili.com/video/BV1QKbZ6xEea?p=10)
+
+### 现在完成进行时：强调「过程一直在进行」
+- **要点**：结构 `have / has + been + doing`，表示**从过去某点一直持续到现在、且一直在进行**，常与 `for` / `since` 或**完整时间段**（`all day` / `the whole morning` / `all afternoon`）连用。⚠️ **与现在完成时的区别**：现在完成时强调**结果**（`She has studied in the library since this morning.` = 只说她学了），现在完成进行时强调**过程**（`has been studying` = 强调她一直在学没停过）。
+- **关键概念**：`现在完成进行时`、`has been doing`、`强调过程 vs 强调结果`
+- **相互关系**：与「现在完成时」成对记忆 —— 两者常同题互为干扰项，**只差侧重点**。
+- **出处**：[娜娜 P10](https://www.bilibili.com/video/BV1QKbZ6xEea?p=10)
+
+### 本讲四时态考频 + 超纲题的推断法
+- **要点**：5 年语法填空里 **现在完成时考过 1 次、过去进行时考过 1 次**；**过去完成时、现在完成进行时 0 设空**（了解即可，阅读能看懂就行）。⚠️ 但**超纲题可推断**：`They had been waiting for the bus for twenty minutes when it began to rain.` 是**过去完成进行时** —— 把现在完成进行时的参照点从「现在」往前推一格（`have been` → `had been`）即可得出，**靠时间轴位置就能推，不必背过**。
+- **关键概念**：`考频`、`过去完成进行时`、`靠时间轴推断`
+- **相互关系**：是「动词是语法填空第一大考点」的下钻数据；本条给出**遇到没学过的时态怎么办**。
+- **出处**：[娜娜 P10](https://www.bilibili.com/video/BV1QKbZ6xEea?p=10)
+
+### 做题口诀：时间标志词 + 动作与时间点的关系
+- **要点**：八个时态一起考时，两步走 —— ① **圈时间标志词**（`yesterday` → 过去时；`already` / `so far` / `recently` → 现在完成；`by the end of...` → 过去完成；`at that moment` / `when` / `while` → 过去进行）② **判断动作与时间点的关系**（先后 / 完成 / 持续）。例：`I finished my homework yesterday.`（过去时）vs `I have finished my homework, so I can go out now.`（现在完成时 —— 因为「so I can」把视线拉到现在）。
+- **关键概念**：`圈时间词`、`动作与时间点的关系`
+- **相互关系**：把第 9 讲「定时态三步」与本讲的**进阶时态**合并成一套口诀。
+- **出处**：[娜娜 P10](https://www.bilibili.com/video/BV1QKbZ6xEea?p=10)
+
+### ⚠️ 改错：yesterday 与 have done 不能并存
+- **要点**：`I have finished my homework yesterday.` 错 —— **明确过去时间词与现在完成时二者取其一**：要么去掉 `have` 保留 `yesterday`，要么去掉 `yesterday` 保留 `have finished`。同理 `When I arrived at the station, the train has left.` ⇒ 改成 `had left`（两个过去动作分先后）。
+- **关键概念**：`改错`、`yesterday + have done`
+- **相互关系**：是「明确过去时间词不能与现在完成时连用」的**改错形态**。
+- **出处**：[娜娜 P10](https://www.bilibili.com/video/BV1QKbZ6xEea?p=10)
+
+
+## 补充（娜娜）· 第11讲 被动语态
+
+### 被动语态 = 谓语的一种形式，表主语是「承受者」
+- **要点**：被动语态是**谓语动词**的一种变化形式，用来表示**主语是这个动作的承受者**；基本结构 **`be + done`**，且 `be` 要**随主语与时态变化**。判断第一步永远是：**主语跟这个动作之间是「发出」还是「承受」**。⚠️ 语法填空 **5 年 0 设空**，本讲主要服务**阅读（看懂）+ 写作（用对）**；24 年 `named` / 25 年 `shared` 是**非谓语表被动含义**，**不是被动语态**。
+- **关键概念**：`被动语态`、`be + done`、`承受者`、`被动含义`
+- **相互关系**：与地图已有的「语态」条目同考点；本条给**「语态 ≠ 含义」这条边界**。
+- **出处**：[娜娜 P11](https://www.bilibili.com/video/BV1QKbZ6xEea?p=11)
+
+### 🔴 判主被动不能看中文有没有「被」字
+- **要点**：唯一判据是**主语能不能自己主动发出这个动作**。反例：中文「这本书出版于 2020 年」**没有**「被」，但英文必须写 `The book was published in 2020.`（书没能力自己出版）。同类：`规则可以重新考虑` ⇒ `The rule could be reconsidered.`。**按中文语感判断是错的**，因为后面还有「主动形式表被动」这一类。
+- **关键概念**：`判据 = 主语与动作的关系`、`中文语感不可靠`
+- **相互关系**：是「被动语态」的**头号易错点**，与「主动形式表被动」互为护栏。
+- **出处**：[娜娜 P11](https://www.bilibili.com/video/BV1QKbZ6xEea?p=11)
+
+### 什么时候用被动语态：三种场合
+- **要点**：① **不知道是谁做的 / 谁做的都不重要** —— 只想描述「发生了某事」，常见于**事故与变化**（`The window was broken during the storm.`）② **想强调承受者** —— 把承受者拎到句首突出（`The new bridge was built in 2024.`）③ **想更客观、委婉** —— 对事不对人（`You made a mistake.` 带指责 ⇒ `A mistake was made.` 只说有错）。⚠️ `by + 施动者`**可省略**；只有想强调「是谁做的」时才保留。
+- **关键概念**：`不知道谁做`、`强调承受者`、`对事不对人`、`by 可省`
+- **相互关系**：与地图已有的「被动语态的使用场合」同考点；本条给**三种场合 + 「对事不对人」这条中文对应**。
+- **出处**：[娜娜 P11](https://www.bilibili.com/video/BV1QKbZ6xEea?p=11)
+
+### 被动语态 vs 被动含义：划掉结构试一下
+- **要点**：句子里出现多个 `done` 形态时，**把 `be done` / `get done` 划掉**再看：句子**垮掉 / 少成分** ⇒ 它是**被动语态**（谓语）；句子**依然完整、还有别的谓语** ⇒ 划掉的那个只是**非谓语，表被动含义**（做定语或状语）。例：`The photo was shared by them.`（划掉即垮 ⇒ 语态）vs `A photo shared by them gained attention.`（划掉后 `A photo gained attention.` 仍完整 ⇒ 含义）。**语态只有谓语动词才配叫。**
+- **关键概念**：`被动语态`、`被动含义`、`划掉法`
+- **相互关系**：是「谓语 vs 非谓语」在语态维度的**判别操作**，与第 8 讲「找谓语」呼应。
+- **出处**：[娜娜 P11](https://www.bilibili.com/video/BV1QKbZ6xEea?p=11)
+
+### get + -ed 形容词 = 系表结构，不是被动语态
+- **要点**：`get lost` / `get married` / `get dressed` 这类 `get + -ed 形容词` 表**状态**，属**系表结构**。判别：**能否加 `by` 施动者** —— 能加 ⇒ 被动语态；不能加 ⇒ 系表结构（且**可被 `very` 修饰**）。例：`She got married last year.` 不能说「她被谁结婚了」⇒ 系表结构。⚠️ 两个 `get` 词性不同：被动里的 `get` 是**实义动词**（「遭受、被…」），系表里的 `get` 是**系动词**（表变化、表状态）。
+- **关键概念**：`get done`、`系表结构`、`get married`、`能否加 by`
+- **相互关系**：与地图已有的「系动词三类」配套 —— 本条补 **get 这个易混系动词**。
+- **出处**：[娜娜 P11](https://www.bilibili.com/video/BV1QKbZ6xEea?p=11)
+
+### be done：be 管主语和时态，done 永不变
+- **要点**：`be done` 里两部分分工明确 —— **`be` 负责体现主语与时态**（`you` → `are`；三单 → `is`；过去 → `was / were`），**`done` 永远不变**。五种常见时态的被动：一般现在 `am/is/are done` · 一般过去 `was/were done` · 一般将来 `will be done` · 现在完成 `have/has been done` · 情态动词 `+ be done`。⇒ **变被动时只动 `be`，不要动 `done`。**
+- **关键概念**：`be 管主语与时态`、`will be done`、`has been done`
+- **相互关系**：与地图已有的「各时态的被动结构」同考点；本条给**「只变 be」这条操作口诀**。
+- **出处**：[娜娜 P11](https://www.bilibili.com/video/BV1QKbZ6xEea?p=11)
+
+### ⚠️ 情态动词后必须用 be 原形
+- **要点**：情态动词 + `be done` 时，`be` **必须用原形**，不能变成 `is / are / am / was`：`must be done` / `could be done`（不是 `must is done`）。**不能漏、也不能变**。
+- **关键概念**：`情态动词 + be done`、`be 原形`
+- **相互关系**：是「be done」的配套易错点；与第 8 讲「情态动词 + 动词原形」同一条规则。
+- **出处**：[娜娜 P11](https://www.bilibili.com/video/BV1QKbZ6xEea?p=11)
+
+### ⚠️ 短语动词变被动，介词不能丢
+- **要点**：`hand in` → `be handed in`（`in` 不能丢）· `take care of` → `be taken good care of`（`of` 不能丢）· `look after` → `be looked after`。**原本带介词 / 副词的谓语动词，变被动后要原模原样保留**。改错题高频：`The little boy was taken good care by his grandparents.` ⇒ 补 `of`。
+- **关键概念**：`短语动词`、`be handed in`、`be taken care of`
+- **相互关系**：与地图已有的「短语动词」条目互补 —— 本条专讲**变被动时的保留**。
+- **出处**：[娜娜 P11](https://www.bilibili.com/video/BV1QKbZ6xEea?p=11)
+
+### get done 的三种面貌（其中一种不是被动）
+- **要点**：① **真被动** —— 能加 `by`，语气比 `be done` **更口语化**，多用于**不好的遭遇**（`He got fired by his boss.` / `The window got broken.`）；写作仍优先用 `be done` ② **系表结构** —— `get + -ed 形容词`，表状态 ③ **使役结构 `get something done`**（= 让某事被做完）—— **不是被动语态**！`I got my phone repaired.` 主语 `I` 是**主动发出动作的人**，被处理的是**宾语** `my phone`；而真被动 `My phone was repaired.` 的承受者才是主语。
+- **关键概念**：`get done`、`get sth done`、`使役结构`、`宾语承受`
+- **相互关系**：与第 8 讲「get / have + 宾语 + done」同考点；本条给**三者的判别口径**。
+- **出处**：[娜娜 P11](https://www.bilibili.com/video/BV1QKbZ6xEea?p=11)
+
+### 主动变被动三步：找宾语 → 提前 → 变 be done
+- **要点**：① 在主动句里**找出宾语** ② 把宾语**提到主语位置** ③ 谓语**变成 `be done`**，`be` 跟着**新主语 + 原时态**变化。分句型：**主谓宾** —— 宾语提前，`by + 原主语` 可省可留（`The teacher praised Tom.` → `Tom was praised (by the teacher).`）· **主谓双宾** —— 一般保留**间接宾语（人）**作主语更自然（`She gave me a book.` → `I was given a book.`）· **主谓宾 + 宾补** —— 宾语提前、**补足语保留**（`They made him captain.` → `He was made captain.`）· **谓语带介词 / 副词** —— 原样保留。
+- **关键概念**：`找宾语提前面`、`双宾语保留人`、`宾补保留`
+- **相互关系**：与地图已有的「主动变被动」同考点；本条给**分句型的操作清单**（写作可直接套）。
+- **出处**：[娜娜 P11](https://www.bilibili.com/video/BV1QKbZ6xEea?p=11)
+
+### 主动形式表被动（一）：sell / read / wash / write / lock
+- **要点**：这类动词用**主动形式**表达**被动意义**，常译成「很好卖 / 很好读 / 很好洗 / 很好写 / 很难锁」：`This kind of book sells well.` · `The door doesn't lock easily.` · `The pen writes smoothly.` 主语其实是**被**卖 / 读 / 锁的，但句子是主动形式。
+- **关键概念**：`sell well`、`主动形式表被动`
+- **相互关系**：是「不能靠中文有没有被字判断」的**成因之一**。
+- **出处**：[娜娜 P11](https://www.bilibili.com/video/BV1QKbZ6xEea?p=11)
+
+### 主动形式表被动（二）：所有不及物动词都没有被动语态
+- **要点**：**及物动词** = 后面能加宾语（主谓宾）；**不及物动词** = 不能加宾语（主谓）。**没有宾语就没有被动** ⇒ **所有不及物动词都没有被动语态**：`happen` / `take place` / `belong to` / `cost` 等。改错高频：`The accident was happened...` ⇒ 去掉 `was`。
+- **关键概念**：`及物动词`、`不及物动词`、`happen 无被动`
+- **相互关系**：与地图已有的「及物与不及物动词」同考点；本条给**「无宾语 ⇒ 无被动」这条推理**。
+- **出处**：[娜娜 P11](https://www.bilibili.com/video/BV1QKbZ6xEea?p=11)
+
+### 主动形式表被动（三）：need / want / require / be worth + doing
+- **要点**：这几个词后面接 **`doing`**，用主动形式表被动含义，**`doing` 等同于 `to be done`**：`The bike needs repairing.` = `The bike needs to be repaired.` · `The room wants cleaning.` = `wants to be cleaned.`（此处 `want` 译作「需要」）· `be worth doing`。
+- **关键概念**：`need doing`、`want cleaning`、`= to be done`
+- **相互关系**：与第 8 讲「doing 固定结构（be worth doing）」互补 —— 本条补**need / want / require** 三个。
+- **出处**：[娜娜 P11](https://www.bilibili.com/video/BV1QKbZ6xEea?p=11)
+
+### 写作可直接套的两个被动句式
+- **要点**：① **活动类**：`The activity will be held at (时间) in (地点).` —— 讲座 / 聚会 / 运动会 / 会议都套这个（活动没法自己举办 ⇒ 用被动，语气也更正式）② **主讲类**：`A lecture on tea culture will be given by Professor Chen.`（强调由谁主讲 ⇒ **保留 `by`**）。时间地点状语顺序照第 9 讲：**先时间后地点、各自从小到大**。
+- **关键概念**：`will be held`、`will be given by`
+- **相互关系**：与第 9 讲「写句子：先主干后状语」配套 —— 本条给**写作里被动句的两个模板**。
+- **出处**：[娜娜 P11](https://www.bilibili.com/video/BV1QKbZ6xEea?p=11)
+
+
+## 补充（娜娜）· 第12讲 情态动词和虚拟语气
+
+### 情态动词 = 给动作加的一层「语气滤镜」
+- **要点**：情态动词放在**实义动词原形之前**，表示说话人的**情绪与态度**（能力 / 许可 / 义务 / 推测 / 意愿 / 请求…）。中文可拆成「**情**绪 + 态**度**」。同一句 `You go.` 加上不同情态词，态度全变：`You can go.`（有能力 / 许可）· `You must go.`（必须）· `You may go.`（我许可你走）。⇒ 情态动词是**在客观事实之外再加的一层主观态度**。
+- **关键概念**：`情态动词`、`情绪与态度`、`语气滤镜`
+- **相互关系**：与地图已有的「情态动词」条目同考点；本条给「**情 = 情绪 + 态 = 态度**」这个拆字记忆。
+- **出处**：[娜娜 P12](https://www.bilibili.com/video/BV1QKbZ6xEea?p=12)
+
+### 情态动词两大铁律 + 谓语是「情态 + 实义」的整体
+- **要点**：① **后面永远接动词原形**（`can do` / `must be` / `can have done`），不管什么条件都只接原形 ② **永远不随主语变三单** —— 主语是单数、复数、一群人，情态动词**都不加 s**。⇒ 画谓语时**「情态动词 + 实义动词」必须一起圈**，只圈一个都不算完整谓语（两者合起来才构成完整谓语）。
+- **关键概念**：`+动词原形`、`无三单`、`完整谓语`
+- **相互关系**：与第 8 讲「谓语三特征」呼应 —— 情态是谓语动词的第三个特征（时态 / 语态 / 情态）。
+- **出处**：[娜娜 P12](https://www.bilibili.com/video/BV1QKbZ6xEea?p=12)
+
+### 六组常用情态动词总览（按「态度」选词）
+- **要点**：选情态动词**先定态度、再选词**：① **能力 / 许可** → `can / could` ② **许可 / 推测** → `may / might` ③ **必须** → `must / have to` ④ **义务 / 建议** → `should / ought to` ⑤ **意愿 / 请求** → `will / would` ⑥ **需要 / 有必要** → `need`。⇒ 其中三组是「原形 + 过去式」（`can/could` · `may/might` · `will/would`），**过去式形式 = 语气更委婉**。
+- **关键概念**：`六组情态动词`、`先定态度再选词`
+- **相互关系**：是「情态动词」条目的**总纲**，下面逐组展开。
+- **出处**：[娜娜 P12](https://www.bilibili.com/video/BV1QKbZ6xEea?p=12)
+
+### 第一、二组 —— can/could 与 may/might
+- **要点**：**`can / could`** 表**能力**（能）或**许可**（可以）：`Could you open the window?`（你能不能开窗）。**`may / might`** 同样可表许可（可以），但**更常见的是表推测**（也许 / 可能）：`Some of the ideas may stay unfinished.`（有些想法可能还没完成）。⇒ 两组都是「原形 + 过去式」，**过去式（`could` / `might`）语气更弱、更委婉**。
+- **关键概念**：`can/could`、`may/might`、`过去式更委婉`
+- **相互关系**：与地图已有的「can 与 could」「may 与 might」条目同考点；本条强调**「过去式 = 更委婉」这条统一规律**。
+- **出处**：[娜娜 P12](https://www.bilibili.com/video/BV1QKbZ6xEea?p=12)
+
+### 第三组 —— must / have to：主观 vs 客观
+- **要点**：两者都译「必须」，但 **`must` 强调主观**（我自己想这么做，`I must work hard.`）· **`have to` 强调客观**（被客观条件逼得不得不做，`You have to go.` —— 奶茶店要打烊了）。⇒ 🔴 **`have to` 有人称与时态变化**：三单 `has to` · 过去 `had to`；而 `must` 永远不变。
+- **关键概念**：`must 主观`、`have to 客观`、`has to / had to`
+- **相互关系**：与地图已有的「must 与 have to」同考点；本条给**「主观 / 客观」这条判据 + have to 的变位**。
+- **出处**：[娜娜 P12](https://www.bilibili.com/video/BV1QKbZ6xEea?p=12)
+
+### 第四、五组 —— should/ought to（义务建议）与 will/would（意愿请求）
+- **要点**：**`should / ought to`** 表**义务或建议**（应该）：`You should check your answer again.`（建议）。**`will / would`** 表**意愿 / 请求 / 习惯**（你愿不愿意 / 要不要）：`Would you like some tea?` · `Would you please tell me the way to the library?`（委婉请求）。⇒ `should` 也可表**较弱推测**，但推测一般优先用 `may / might`；**过去式（`would`）更委婉**。
+- **关键概念**：`should/ought to`、`will/would`、`委婉请求`
+- **相互关系**：与地图已有的「should」条目互补 —— 本条把 `should / will` 两组并列，统一到**「过去式更委婉」**。
+- **出处**：[娜娜 P12](https://www.bilibili.com/video/BV1QKbZ6xEea?p=12)
+
+### 🔴 第六组 —— need 的双身份
+- **要点**：`need` 有两种词性：**作情态动词** → 后接**动词原形**（`need do`），且**多用于否定与疑问**（`You needn't worry.`）· **作实义动词** → 后接 **`to do`**（`She needs to finish the form.`），多用于肯定句。⇒ **看后面接原形还是 `to do`**，就知道它是哪种词性。
+- **关键概念**：`need + 原形`、`need to do`、`否定疑问用情态`
+- **相互关系**：与第 8 讲「need 的两种用法」同考点；本条给**「接原形 / 接 to do」这条判别操作**。
+- **出处**：[娜娜 P12](https://www.bilibili.com/video/BV1QKbZ6xEea?p=12)
+
+### 🔴 must 的否定是 needn't（不是 mustn't）
+- **要点**：`must` 表**必须**时，其否定是 **`needn't`（不必）**，不是 `mustn't`：`You needn't worry about the result.`（你不必担心）· `You must finish the form before you hand it in.`（你必须交之前填完）。**`mustn't` 表「禁止」**，与「必须」不构成肯定 / 否定对应。⚠️ 但 **`must` 表推测时**，其否定要换成 **`can't`**（不可能）—— 两套否定要分开记。
+- **关键概念**：`must → needn't`、`mustn't 表禁止`、`推测否定用 can't`
+- **相互关系**：是「第三组 must」的**头号易错点**，与「表推测五种结构」互为护栏。
+- **出处**：[娜娜 P12](https://www.bilibili.com/video/BV1QKbZ6xEea?p=12)
+
+### 情态动词表推测：只推现在与过去
+- **要点**：表推测（猜事情发没发生）**只针对两个时间**：**现在**与**过去**。**将来不推测** —— 将来直接用将来时表达即可。
+- **关键概念**：`表推测`、`只推现在与过去`
+- **相互关系**：是「表推测五种结构」的**时间框架**。
+- **出处**：[娜娜 P12](https://www.bilibili.com/video/BV1QKbZ6xEea?p=12)
+
+### 表推测五种结构总表
+- **要点**：① **现在肯定**（一定）→ `must do` / `must be`（`She must be at home. The lights are on.`）② **现在否定**（不可能）→ `can't do` / `can't be`（`She can't be in Paris. I saw her just now.`）③ **过去肯定**（过去一定做过）→ `must have done`（`The road is wet. It must have rained last night.`）④ **过去否定**（过去不可能做过）→ `can't have done`（`He can't have finished it so quickly.`）⑤ **过去本该做而没做 / 本不该做却做了** → `should (not) have done`（带责备或遗憾）。⇒ **`must` / `can't` 管「现在」，加 `have done` 管「过去」；否定一律用强否定。**
+- **关键概念**：`must do`、`can't do`、`must have done`、`can't have done`、`should have done`
+- **相互关系**：是「情态动词」条目的**第二块**，与「只推现在与过去」配套。
+- **出处**：[娜娜 P12](https://www.bilibili.com/video/BV1QKbZ6xEea?p=12)
+
+### 🔴 为什么用 have done，不用过去时
+- **要点**：**过去时是「过去的实锤」**（真的发生过）；**表推测是事后回过头去猜**（我没看见它发没发生）。为把「猜测」与「实锤」区分开，才用 `have done`。而且 `have done` 恰好含**两层时间**：动作在**过去** + 参照点在**现在**（我此刻看见黑眼圈 ⇒ 猜你昨晚熬夜了）。⇒ **又区分得开、又刚好匹配两层时间**，所以用 `have done`。
+- **关键概念**：`过去的实锤`、`事后回看`、`have done 两层时间`
+- **相互关系**：是「表推测五种结构」的**成因解释**，与第 9 讲「一般过去时只陈述事实」互为对照。
+- **出处**：[娜娜 P12](https://www.bilibili.com/video/BV1QKbZ6xEea?p=12)
+
+### 情态动词写作模板（三个万能句）
+- **要点**：① **邀请信**：`It would be a great honor if you could join us.`（用形式主语 `it` 更正式，不用 `We would be very honored.`）② **建议 / 回信**：`You could take the subway to the West Lake, which is very convenient.`（`could` 更委婉 + 非限制性定语从句）③ **投诉信**：`I would appreciate it if you could give me a refund.`（`it` 作**形式宾语**，真正宾语是后面的从句）。⇒ 写作一律用**更委婉的过去式形式**（`could` / `would`）。
+- **关键概念**：`It would be a great honor`、`I would appreciate it if...`、`it 作形式宾语`
+- **相互关系**：与第 9 讲「写句子：先主干后状语」配套 —— 本条给**情态动词的写作模板**。
+- **出处**：[娜娜 P12](https://www.bilibili.com/video/BV1QKbZ6xEea?p=12)
+
+### 虚拟语气 = 平行宇宙；判据是「与事实相同还是相反」
+- **要点**：虚拟语气用**特殊的动词形式**表示**假设 / 愿望 / 建议 / 与事实相反**的情况，像「平行宇宙」—— 同样的人、同样的时间点，但发生的事不一样。⇒ **判据**：这句话说的是**事实如此**，还是**与事实相反**？与事实相反 ⇒ 虚拟语气。⚠️ **不能靠中文翻译判断**，要看与事实的关系。
+- **关键概念**：`虚拟语气`、`平行宇宙`、`与事实相反`
+- **相互关系**：与地图已有的「虚拟语气」条目同考点；本条给**「平行宇宙」这个直观模型 + 判据**。
+- **出处**：[娜娜 P12](https://www.bilibili.com/video/BV1QKbZ6xEea?p=12)
+
+### 虚拟语气总纲：时间错位 + 主句情态固定用过去式
+- **要点**：虚拟语气之所以和情态动词一起学，是因为**虚拟常借情态动词的结构**（`should do` / `could have done`）。总纲两条：① **时间错位** —— 从句动词**往回退一格**（现在退到过去，过去退到过去完成，将来退到过去）；② **主句的情态动词固定用过去式形式**（`would / could / might / should`），**三个时间只变后面 `do` 的形式，前面情态词不变**。⇒ 把 if 虚拟条件句的从句 / 主句捋清楚，后面各类虚拟都是「**退一格**」的同一套。
+- **关键概念**：`时间错位`、`退一格`、`主句情态固定过去式`
+- **相互关系**：是全部四类虚拟的**总纲**，与「if 虚拟条件句」三态配套。
+- **出处**：[娜娜 P12](https://www.bilibili.com/video/BV1QKbZ6xEea?p=12)
+
+### if 虚拟条件句（一）· 与现在相反
+- **要点**：从句 `if + 主语 + did / were`，主句 `would / could / might + do`。例：`If I were you, I would take the chance.`（假如我是你，我就会抓住这个机会）。⇒ **`If I were you` 是固定高频句**，见到「假如我是你」直接选 `were`。**从句退一格（现在 → 过去）**，主句动作还没完成 ⇒ 用原形 `do`。
+- **关键概念**：`if + did/were`、`would do`、`If I were you`
+- **相互关系**：是「时间错位」总纲的**第一种时间**。
+- **出处**：[娜娜 P12](https://www.bilibili.com/video/BV1QKbZ6xEea?p=12)
+
+### if 虚拟条件句（二）· 与过去相反
+- **要点**：从句 `if + 主语 + had done`（过去完成），主句 `would / could / might + have done`（现在完成）。例：`If I had eaten less yesterday, I wouldn't have had a stomachache.`（如果我昨天少吃点，就不会肚子痛）。⇒ **动作在过去发生且已结束**（吃了、痛了都成事实），所以主句配 `have done`；从句是**过去的过去** ⇒ `had done`。
+- **关键概念**：`if + had done`、`would have done`、`过去的过去`
+- **相互关系**：是「时间错位」总纲的**第二种时间**；与「与现在相反」只差动后面的 `do` 形式。
+- **出处**：[娜娜 P12](https://www.bilibili.com/video/BV1QKbZ6xEea?p=12)
+
+### if 虚拟条件句（三）· 与将来相反
+- **要点**：从句三选一 —— **`if + were to do`**（最正式，古英语沿用）· **`if + should do`**（万一 / 碰巧）· **`if + did`**（语气最弱）；主句仍是 `would / could / might + do`。例：`If it should rain tomorrow, we would stay at home.`（万一明天下雨，我们就待在家）。⇒ **对将来的虚拟 = 发生概率极低**；若概率大，就用**一般将来时**了。
+- **关键概念**：`were to do`、`should do 表万一`、`did`
+- **相互关系**：是「时间错位」总纲的**第三种时间**；与「主将从现」互为区分。
+- **出处**：[娜娜 P12](https://www.bilibili.com/video/BV1QKbZ6xEea?p=12)
+
+### 🔴 虚拟条件句 vs 普通条件句（主将从现）
+- **要点**：**普通条件句**（主将从现）假设的情况**客观上有可能发生**（天气预报说明天要下雨）；**虚拟条件句**假设的情况**发生概率极低、基本不可能实现**（明天我肯定还得上班）。⇒ 两者必须区分开，所以虚拟句**不能用 `will`**，要用 `would / could / might / should`。
+- **关键概念**：`主将从现`、`概率极低`、`不用 will`
+- **相互关系**：是「if 虚拟条件句」的**头号易错点**；与第 7 讲「主将从现失效条件」呼应。
+- **出处**：[娜娜 P12](https://www.bilibili.com/video/BV1QKbZ6xEea?p=12)
+
+### 愿望类虚拟（wish / if only）：与 if 从句变化形式一致
+- **要点**：引导词 `wish` 或 `if only`（一组），表示**心里想要、但现实得不到 / 做不到**。三种时间 —— 对**现在**：`did / were`（`I wish I were taller.`）· 对**过去**（遗憾）：`had done`（`I wish I had run the marathon years ago.`）· 对**将来**：`would / could do`。⇒ **变化形式与 if 虚拟条件句的从句完全一致**，都是「退一格」。
+- **关键概念**：`wish / if only`、`did · had done · would do`
+- **相互关系**：与「if 虚拟条件句」共用一套变化；22 年真题 `I wish I had run...` 即此类。
+- **出处**：[娜娜 P12](https://www.bilibili.com/video/BV1QKbZ6xEea?p=12)
+
+### 愿望类虚拟（would rather）：将来用过去式
+- **要点**：`would rather` 也引导愿望类虚拟，但**有一处不同**：对**现在 / 将来**用**过去式**（不是 `would do`），对**过去**用 `had done`。例：`I would rather you stayed here.`（我宁愿你留下）· `I would rather you had told me the truth.`。⇒ 其后是**从句，`that` 可省略**（`I would rather (that) you stayed here.`）。
+- **关键概念**：`would rather`、`将来用过去式`、`that 可省`
+- **相互关系**：与「wish / if only」并列 —— **只差「对将来」这一格**（wish 用 `would do`，would rather 用过去式）。
+- **出处**：[娜娜 P12](https://www.bilibili.com/video/BV1QKbZ6xEea?p=12)
+
+### 建议要求类虚拟：三类触发词 + that (should) do
+- **要点**：触发词分三类 —— ① **建议类动词** `suggest / advise / recommend / propose` ② **要求命令类动词** `demand / require / request / order / insist` ③ **必要重要类形容词** `it is necessary / important / essential that...`。统一结构 **`that + (should) do`**，`should` 一般省略 ⇒ 呈现为**动词原形**；被动则 `be done`。例：`The teacher suggested that we (should) review the notes.` · `They required that the report (should) be finished today.`
+- **关键概念**：`suggest/demand`、`that (should) do`、`be done`
+- **相互关系**：是虚拟语气的**第三类**，与「if 类 / 愿望类」是**另一套体系**。
+- **出处**：[娜娜 P12](https://www.bilibili.com/video/BV1QKbZ6xEea?p=12)
+
+### 🔴 为什么建议要求类不倒退时间
+- **要点**：if 类 / 愿望类虚拟描述的**与「已经存在的事实」相反**，所以要用**倒退时态**来体现反差；而建议要求类描述的**「还不是现实、还没发生」**（我建议你早点背单词 ⇒ 你还没做到），**没有「已存在的事实」可对照**，所以**不遵循倒退规则**，统一用**动词原形**。
+- **关键概念**：`与已存在事实相反`、`还不是现实`、`不倒退`
+- **相互关系**：是「建议要求类」的**成因解释**，也是区分两套虚拟体系的**核心判据**。
+- **出处**：[娜娜 P12](https://www.bilibili.com/video/BV1QKbZ6xEea?p=12)
+
+### 建议要求类的三种词性：动词 / 名词 / 形容词
+- **要点**：同一套虚拟可由**三种词性**引出 —— **动词**：`I suggest that...` · **名词**：`It is my suggestion that...` · **形容词**：`It is advisable that...` / `It is necessary that...`。三者后面**统一接 `that + (should) do`**；若有被动，正常改 `be done`（情态动词虽省略，后面永远用 `be` 原形）。⇒ 判断这类虚拟**看意思（是不是建议 / 要求 / 必要重要）**，不只看词性。
+- **关键概念**：`动词/名词/形容词三种形式`、`It is my suggestion that`
+- **相互关系**：是「建议要求类」的**句式扩展**。
+- **出处**：[娜娜 P12](https://www.bilibili.com/video/BV1QKbZ6xEea?p=12)
+
+### 🔴 insist / suggest 的双义陷阱
+- **要点**：`insist` 若表**「坚持认为某事实」**，用**正常时态**（`He insisted that he left yesterday.` —— 过去时，不用原形）· `suggest` 若表**「暗示 / 表明」**，也用**正常时态**（`His pale face suggests that he is ill.` —— 一般现在时）。⇒ **只有表「要求 / 建议」时才用虚拟（原形）**，表「陈述事实 / 暗示」时用正常时态。
+- **关键概念**：`insist 坚持认为`、`suggest 暗示/表明`、`双义`
+- **相互关系**：是「建议要求类」的**头号陷阱**，与「不倒退时间」互为护栏。
+- **出处**：[娜娜 P12](https://www.bilibili.com/video/BV1QKbZ6xEea?p=12)
+
+### 含蓄虚拟：without / but for · otherwise / or
+- **要点**：**没有 if 从句**的虚拟（条件被隐含）—— `without` / `but for`（如果没有）· `otherwise` / `or`（否则）。⇒ **动词形式与 if 虚拟条件句的「主句」一致**，常配 `would have done`。例：`Without your help, I would have failed.` · `I missed the bus, or I would have arrived earlier.` ⇒ 判断动作**跟现在相反还是跟过去相反**，再选 `would do` 或 `would have done`（说话时动作多已发生 ⇒ 常用 `would have done`）。
+- **关键概念**：`without / but for`、`otherwise / or`、`与 if 主句一致`
+- **相互关系**：是虚拟语气的**第四类**；与「愿望类跟从句一致」形成对照（**含蓄类跟主句一致**）。
+- **出处**：[娜娜 P12](https://www.bilibili.com/video/BV1QKbZ6xEea?p=12)
+
+### It is (high) time that + 过去式
+- **要点**：`It is (high) time that...` 表示「**早该做某事了**」，暗含「现在有点晚了」⇒ 用虚拟。**从句动词用过去式**（所有动词都一样）：`It is high time that the school made a decision.`（`that` 可省）。⇒ 严格说它是**独立的特殊虚拟**，常与含蓄虚拟放在一起记。
+- **关键概念**：`It is high time that`、`从句用过去式`
+- **相互关系**：是含蓄虚拟的**邻接条目**，与「would have done」常同题出现。
+- **出处**：[娜娜 P12](https://www.bilibili.com/video/BV1QKbZ6xEea?p=12)
+
+### 虚拟语气写作模板
+- **要点**：① **邀请**：`It would be a great honor if you could attend our graduation party.`（`attend` 比 `come` 正式）② **回信建议**：`You could book online first, which could be much more convenient.`（`could` + 非限制性定语从句，`much more convenient` 修饰）。⇒ 情态动词 + 虚拟语气**常在同一句里连用**（`would` / `could`），写作优先用**委婉的过去式形式**。
+- **关键概念**：`if you could attend`、`which could be much more convenient`
+- **相互关系**：与「情态动词写作模板」呼应 —— 本条是**虚拟 + 情态合体**的写作模板。
+- **出处**：[娜娜 P12](https://www.bilibili.com/video/BV1QKbZ6xEea?p=12)
+
+
+## 补充（娜娜）· 第13讲 主谓一致
+
+### 主谓一致 = 谓语在「数」与「意义」上与主语一致
+- **要点**：主谓一致指**谓语动词在数或意义上与主语保持一致** —— 主语是单数概念，谓语用单数形式；主语是复数概念，谓语用复数形式。它**不单独设空**，而是**藏在谓语题里**（语法填空的谓语空占比很大）。两个设点方向：① 挖**主语**（后面谓语是三单 ⇒ 主语单数；谓语是原形 ⇒ 主语复数）② 挖**谓语**（据主语的单复数或意义定谓语形式）。
+- **关键概念**：`主谓一致`、`数的匹配`、`意义的匹配`
+- **相互关系**：与地图已有的「主谓一致」条目同考点；本条给**「不单独设空、藏在谓语题里」这条考情定位**。
+- **出处**：[娜娜 P13](https://www.bilibili.com/video/BV1QKbZ6xEea?p=13)
+
+### 找真正的主语：三类干扰成分 + 做题五步
+- **要点**：主语常被三类成分掩盖 —— ① **介词短语** ② **插入语** ③ **定语从句 / 后置定语**。见到就把它们**划掉**，剩下的才是真正的主语。**做题五步**：① 定位空格（谓语空）② 往前找主语 ③ 若主语带修饰 ⇒ 划掉三类干扰 ④ 据主语的**数或意义**定单复数 ⑤ 再补上**时态 / 语态 / 情态**。例：`The cat behind piles of colorful toys ___ (hide) under the sofa.` ⇒ 划掉 `behind piles of colorful toys`，主语 `the cat` 单数 ⇒ `hides`。
+- **关键概念**：`三类干扰`、`划掉修饰`、`做题五步`
+- **相互关系**：是「主谓一致」的**总操作流程**，下面三类逐一展开。
+- **出处**：[娜娜 P13](https://www.bilibili.com/video/BV1QKbZ6xEea?p=13)
+
+### a of b 结构：谓语看 A，不看 B
+- **要点**：`a of b` 译作「**b 的 a**」（`the window of the car` = 车的窗户），**中心词是 A**，B 只是限定 / 修饰。⇒ **谓语动词跟 A 一致**。例：`The result of the test shows...`（主语 `result` 单数 ⇒ `shows`）· `The list of questions are...` ✗ ⇒ 改 `is`（看 `list`，不看 `questions`）。
+- **关键概念**：`a of b`、`看 A 不看 B`、`中心词`
+- **相互关系**：与第 2 讲「名词所有格」呼应 —— 本条把它落到**主谓一致**上。
+- **出处**：[娜娜 P13](https://www.bilibili.com/video/BV1QKbZ6xEea?p=13)
+
+### 插入成分：看前面的主语，插入成分可前置
+- **要点**：`with` / `together with` / `as well as` / `along with` 引导的是**插入成分**（不是连词 `and`），**不改变主语的数** ⇒ 谓语看**前面真正的主语**。⚠️ 插入成分**可以放到前面**：`Together with her two friends, Nana is coming.` ⇒ 与插入成分**紧连在一起的那块是修饰**，**单独跳出来的那个才是主语**。例：`The manager together with two assistants ___ preparing the report.` ⇒ `is`。
+- **关键概念**：`插入成分`、`with / together with / as well as`、`插入成分可前置`
+- **相互关系**：是「三类干扰」的第二种；与 `and`（真并列，双数）互为区分。
+- **出处**：[娜娜 P13](https://www.bilibili.com/video/BV1QKbZ6xEea?p=13)
+
+### 后置定语 / 定语从句：谓语看中心名词
+- **要点**：后置定语（介词短语、分词、不定式）与定语从句都只是**修饰名词**，**从句里的名词不是主句主语** ⇒ 谓语看**被修饰的中心名词**。例：`The students who sit near the window is quiet.` —— `window` 在从句里，**不是主语**；主语是 `students`。`The information you give me ___ very useful.` ⇒ 划掉从句 `you give me`，主语 `information`（不可数）⇒ `is`。
+- **关键概念**：`后置定语`、`定语从句`、`中心名词`
+- **相互关系**：是「三类干扰」的第三种；与第 7 讲「定语从句」呼应。
+- **出处**：[娜娜 P13](https://www.bilibili.com/video/BV1QKbZ6xEea?p=13)
+
+### 单复数一致的两条基础：be 动词 vs 实义动词
+- **要点**：**实义动词** —— 复数 = **原形**，单数 = **三单**（加 s）⇒ 看到**原形**就是复数主语，看到**三单**就是单数主语。**be 动词** —— 复数 = `are`，单数 = `is`（第一人称 `am`）。⇒ 两类变化规律不同，别混。**动名词 / 不定式 / 从句作主语**一律按**单数**处理（它们把一件事当作一个整体）。例：`Doing exercises every day ___ (help) stay healthy.` ⇒ `helps`。
+- **关键概念**：`实义动词：原形=复数`、`be：is/are`、`动名词/不定式/从句作主语用单数`
+- **相互关系**：是「主谓一致」的**最基础两条**，下面五类常考在此之上。
+- **出处**：[娜娜 P13](https://www.bilibili.com/video/BV1QKbZ6xEea?p=13)
+
+### 五类常考主谓一致结构
+- **要点**：① **`one of + 复数名词`**（其中之一）⇒ **单数**（看 `one`）；`each of + 复数名词`（每一个）⇒ **单数** ② **`the number of + 复数名词`**（……的数目，抽象整体）⇒ **单数**（邪修法：`the` 特指「那一个数字」）③ **`a number of + 复数名词`** = `many`（许多）⇒ **复数** ④ **动名词 / 不定式 / 从句作主语** ⇒ **单数** ⑤ **数量词 + of + 复数名词**（`many of` / `some of` / `several of` / `most of` / `plenty of` / `a lot of` / `a great number of`）⇒ **复数**（重点在后面被修饰的复数名词上）。⇒ **表示「一」的用单数，表示「多」的用复数。**
+- **关键概念**：`one of`、`the number of` vs `a number of`、`数量词 + of`
+- **相互关系**：是「主谓一致」的**考试重点五类**；`the / a number of` 与第 3 讲「冠词」呼应。
+- **出处**：[娜娜 P13](https://www.bilibili.com/video/BV1QKbZ6xEea?p=13)
+
+### 形式与意义不一致（看意义定单复数）
+- **要点**：① **形复义单**（带 s 但是单数）—— `news` / 学科名（`maths` / `physics`）⇒ 谓语**单数** ② **只有复数形式** —— 成双成对的东西 `trousers` / `glasses` / `scissors` + `the police`（全体警察）⇒ 谓语**复数** ③ **不可数名词** ⇒ 谓语**单数** ④ **集体名词**（`team` / `family`）⇒ **看意义**：强调**整体**用单数（`The team is winning.`），强调**一个个成员**用复数（`The team are arguing with each other.`）。
+- **关键概念**：`形复义单`、`the police`、`集体名词看意义`
+- **相互关系**：与第 2 讲「名词」同名考点，本条**只复习不展开**（讲义已详述）。
+- **出处**：[娜娜 P13](https://www.bilibili.com/video/BV1QKbZ6xEea?p=13)
+
+### 就近原则四兄弟
+- **要点**：谓语看**离它最近的那个主语** —— 四种结构：① **`there be`**（`There is a book and two pens on the desk.` —— 看最近的 `a book`）② **`either...or`**（`Either you or he is right.`）③ **`neither...nor`**（`Neither the teacher nor the students are late.`）④ **`not only...but also`**（`Not only the students but also the teacher is...`）。⇒ 来历是**口语习惯**（说太多容易忘前面，就顺着最近的名词匹配）。
+- **关键概念**：`就近原则`、`there be`、`either...or`、`neither...nor`、`not only...but also`
+- **相互关系**：是「主谓一致」的**特殊规则**；与「就远原则」互为对照。
+- **出处**：[娜娜 P13](https://www.bilibili.com/video/BV1QKbZ6xEea?p=13)
+
+### 就远原则（看前面真正的主语）
+- **要点**：谓语**只看前面真正的主语**，后面连接的名词只是附带 ⇒ 符合的结构：`with` / `together with` / `as well as` / `along with` / `besides` / `except` / `rather than`。例：`The teacher along with her students ___ (visit) the museum tomorrow.` ⇒ 看 `the teacher` ⇒ `is going to visit` / `will visit`（**还要配时态**，`tomorrow` ⇒ 将来时）。
+- **关键概念**：`就远原则`、`along with`、`rather than`
+- **相互关系**：与「插入成分」「就近原则」配套 —— **不符合四兄弟、又划得掉修饰的，就是就远原则**。
+- **出处**：[娜娜 P13](https://www.bilibili.com/video/BV1QKbZ6xEea?p=13)
+
+### 顺带：besides（包含在内）vs except（排除在外）
+- **要点**：两者都译「除……之外」，但 **`besides` 的被除对象「包含在内」**（`Besides English, I also learn German.` —— 英语也学了）· **`except` 的被除对象「排除在外」**（`I like all subjects except math.` —— 数学没算在内）。
+- **关键概念**：`besides 包含在内`、`except 排除在外`
+- **相互关系**：是「就远原则」条目里顺带补的一对易混词。
+- **出处**：[娜娜 P13](https://www.bilibili.com/video/BV1QKbZ6xEea?p=13)
+
+
+## 补充（娜娜）· 第14讲 句子成分
+
+### 句子成分总览 + 拆句三步
+- **要点**：一个句子像「**主角团**」，不同词 / 短语 / 从句承担不同功能 ⇒ 形成不同成分：**主 / 谓 / 宾 / 表 / 定 / 状 / 补 / 同**。**拆句三步**：① **抓主干**（主谓宾 或 主系表）② **搂修饰**（定语修饰名词、状语修饰动作或整句，用括号括起来）③ **看补充**（补语 / 同位语，放到对应位置翻译）。⇒ 先译主干，再把修饰摆回它该在的位置。
+- **关键概念**：`句子成分`、`主角团`、`拆句三步`
+- **相互关系**：是第 14 讲的**总纲**，也是「长难句拆解」的操作底座。
+- **出处**：[娜娜 P14](https://www.bilibili.com/video/BV1QKbZ6xEea?p=14)
+
+### 主语：句子的核心讨论对象，不一定在句首
+- **要点**：主语 = 句子**想要讨论的那个人 / 事 / 地方**（「谁」的问题）。**可以是**名词、代词、动名词、不定式、从句（**不看词性，看它在逻辑上是不是中心**）。⚠️ **不一定在句首**：`Under the tree sits a girl.`（主语 `a girl`，在谓语后）· `There be` 结构同理。⇒ 判断主语**看逻辑中心，不只看位置**。
+- **关键概念**：`主语`、`逻辑中心`、`不一定在句首`
+- **相互关系**：与「拆句三步」配套 —— 抓主干先抓主语。
+- **出处**：[娜娜 P14](https://www.bilibili.com/video/BV1QKbZ6xEea?p=14)
+
+### 谓语：必须带时态 / 语态 / 情态；助动词与否定词也是谓语的一部分
+- **要点**：谓语用来**述说主语做什么 / 怎么样**，必然是**动词**，且**带时态**（有时带语态、情态）。⇒ 🔴 **助动词、否定词、情态动词都是谓语的一部分**：画谓语时 `don't take` / `can enjoy` 要**整块圈**，只圈一个动词是错的。谓语还须与主语**数、意义一致**（即上一讲的「哥俩好」）。
+- **关键概念**：`谓语`、`带时态`、`助动词/否定词属于谓语`
+- **相互关系**：与第 8 讲「谓语三特征」呼应；与第 13 讲「主谓一致」互为「哥俩好」。
+- **出处**：[娜娜 P14](https://www.bilibili.com/video/BV1QKbZ6xEea?p=14)
+
+### 宾语四种：直接 / 双宾 / 介词宾语 / 宾语从句
+- **要点**：宾语 = **动作作用的对象**，跟在**及物动词或介词**后。四种：① **直接宾语**（动作直接作用的对象，`砍空气`）② **双宾语**（`间接宾语 + 直接宾语`，**人物 / 人事**：`The teacher gave us advice.` —— `us` 间接、`advice` 直接）③ **介词宾语**（介词后的名词 / 代词 / 动名词，`looked at the old buildings` —— `the old buildings`；⚠️ **介词宾语 ≠ 介词短语**，代词用**宾格**）④ **宾语从句**（整个句子作宾语）。
+- **关键概念**：`直接宾语`、`双宾语`、`介词宾语`、`宾语从句`
+- **相互关系**：与地图已有的「宾语」条目同考点；本条给**四种宾语的判别与「介词宾语 ≠ 介词短语」这条边界**。
+- **出处**：[娜娜 P14](https://www.bilibili.com/video/BV1QKbZ6xEea?p=14)
+
+### 表语：跟在系动词后说明主语，五种形式
+- **要点**：表语 = **跟在系动词后**，说明主语的**状态 / 身份 / 内容**（主系表与主谓宾是**两套系统**，主系表**不带动作**）。五种：**形容词**（状态）· **名词**（身份 / 类别）· **介词短语**（位置）· **不定式 / 动名词**（内容 / 计划）· **从句**。⇒ **重点不是记这五种，而是记系动词** —— **只要跟在系动词后面，不管什么形式，都是表语**。
+- **关键概念**：`表语`、`主系表`、`跟在系动词后即表语`
+- **相互关系**：与地图已有的「表语」条目同考点；本条给**「记系动词 > 记表语形式」这条简化**。
+- **出处**：[娜娜 P14](https://www.bilibili.com/video/BV1QKbZ6xEea?p=14)
+
+### 系动词口诀：五感四变化三保持 + be + seem
+- **要点**：**五感** —— `look` / `sound` / `smell` / `taste` / `feel`（后多接**形容词**）· **四变化** —— `become`（侧重**结果**）· `get`（侧重**过程**，短）· `turn`（侧重**颜色**）· `grow`（侧重**逐渐变化**，长）· **三保持** —— `stay` / `keep` / `remain` · **`be`** 动词（所有形式都是系动词）· **`seem`**（似乎）。⇒ 口诀「**五感四变化，三保持一 be 一 seem**」。
+- **关键概念**：`五感`、`四变化`、`三保持`、`be`、`seem`
+- **相互关系**：与第 5 讲「系动词三类」互补 —— 本条给**更完整的口诀 + 四变化的侧重区别**。
+- **出处**：[娜娜 P14](https://www.bilibili.com/video/BV1QKbZ6xEea?p=14)
+
+### 定语五类：修饰名词、缩小范围
+- **要点**：定语 = **限定 / 缩小名词范围**（「哪一个 / 什么样的」），主要修饰**主语或宾语里的名词**。五类：① **前置形容词** ② **名词作定语**（说明类别 / 用途，`bus stop`；变复数**只变后面**）③ **介词短语后置**（`the title of the passage`）④ **分词 / 不定式后置**（`the boy sitting near the window` —— `doing` 主动、`done` 被动、`to do` 将来 / 用途）⑤ **定语从句**（修饰先行词，`who` / `which` / `that` 或关系副词）。⇒ **五类全在前面几讲学过，本讲只做汇总。**
+- **关键概念**：`定语`、`五类定语`、`缩小范围`
+- **相互关系**：与第 2 / 5 / 7 / 8 讲的定语条目汇总对应。
+- **出处**：[娜娜 P14](https://www.bilibili.com/video/BV1QKbZ6xEea?p=14)
+
+### 状语六类：修饰动作或整句，靠意义判断
+- **要点**：状语 = 描述动作发生的**附加情况**（时间 / 地点 / 方式 / 原因 / 目的 / 让步条件），**结构不固定**（可由介词短语、副词、不定式、从句充当）⇒ **不靠记结构，靠意义判断**：主干拎完后，剩下的、又不去修饰名词的、描述动作附加情况的，就是状语。⚠️ 与连词讲贯通：`although` 不能与 `but` 连用、`because` 不能与 `so` 连用。
+- **关键概念**：`状语`、`六类状语`、`靠意义判断`
+- **相互关系**：与第 6 讲「介词」、第 7 讲「连词」一起记（娜娜明确要求「跟介词、连词两讲一起去记」）。
+- **出处**：[娜娜 P14](https://www.bilibili.com/video/BV1QKbZ6xEea?p=14)
+
+### 补语：宾补六类，主补来自宾补变被动
+- **要点**：补语 = 把**主语或宾语**补充说明完整，分**主补 / 宾补**（宾补更常见）。**宾补六类**：① **形容词**（说明宾语状态）② **带 to 不定式**（`ask sb to do`）③ **省 to 不定式**（`make / let / have sb do`，`help` 带不带 to 都行）④ **分词**（`doing` 主动 / `done` 被动）⑤ **名词**（`We call him monitor.`）⑥ **介词短语**（`We find everything in good order.`）。⇒ 🔴 **主补来自宾补变被动**：`We found him honest.` → `He was found honest.`（`honest` 由宾补变主补）。
+- **关键概念**：`宾补`、`主补`、`宾补变被动成主补`
+- **相互关系**：与第 8 讲「宾补动词形式」同考点；本条补**名词 / 介词短语两类宾补 + 主补的来源**。
+- **出处**：[娜娜 P14](https://www.bilibili.com/video/BV1QKbZ6xEea?p=14)
+
+### 同位语：与前面名词地位平等、重复解释
+- **要点**：同位语 = 用**更详细的信息重复解释**前面的名词，**两者地位平等**（不是修饰、不是补充，只是「换个说法再说一遍」）。两种：**名词短语**（`the energetic teacher Nana, a lover of English`）· **同位语从句**（`that` 从句说明前面抽象名词的具体内容）。⇒ 判断靠**地位平不平等**：平等 ⇒ 同位语；不平等 ⇒ 定语 / 状语。
+- **关键概念**：`同位语`、`地位平等`、`同位语从句`
+- **相互关系**：与「定语 / 状语」形成对照判据（**平等 vs 修饰**）。
+- **出处**：[娜娜 P14](https://www.bilibili.com/video/BV1QKbZ6xEea?p=14)
+
+### 🔴 表语 vs 定语：结构一样，区别在「说明谁」
+- **要点**：表语与定语**可用完全相同的结构**（形容词 / 名词 / 介词短语 / 不定式或分词 / 从句），极易混。**判据**：**表语跟在系动词后，只说明主语**；**定语修饰名词，那个名词可以是主语也可以是宾语**。⇒ 定语**范围更大**，表语**范围更小**。
+- **关键概念**：`表语 vs 定语`、`跟在系动词后`、`修饰名词`
+- **相互关系**：是第 14 讲的**头号易混点**，与「系动词口诀」配套使用。
+- **出处**：[娜娜 P14](https://www.bilibili.com/video/BV1QKbZ6xEea?p=14)
+
+
+## 补充（娜娜）· 第15讲 五大基本句型
+
+### 五大基本句型总览 + 缩写认读
+- **要点**：英语简单句最核心的五种主干结构：**SV**（主谓）· **SVO**（主谓宾）· **SVP**（主系表）· **SVOO**（主谓双宾）· **SVOC**（主谓宾宾补）。缩写：`S`=subject 主语 · `V`=verb 动词 · `O`=object 宾语 · `P`=predicative 表语 · `C`=complement 补语 · `IO`=间接宾语 · `DO`=直接宾语。⇒ **比喻「搭乐高」**：**主语是共用地基**，表语 / 间接宾语 / 宾补是**各句型专属板块**。**定语、状语、同位语不算句型成分**（去掉后句子仍完整）。
+- **关键概念**：`五大句型`、`SV/SVO/SVP/SVOO/SVOC`、`搭乐高`
+- **相互关系**：是第 15 讲的**总纲**，也是第 14 讲「句子成分」的直接应用。
+- **出处**：[娜娜 P15](https://www.bilibili.com/video/BV1QKbZ6xEea?p=15)
+
+### 判句型三步：找谓语 → 看动词性质 → 看宾语
+- **要点**：① **找谓语动词**（带时态 / 语态 / 情态的那部分）② **看动词性质** —— **不及物** ⇒ SV；**系动词** ⇒ SVP；**及物** ⇒ 往下看 ③ **看宾语** —— 宾语需补充说明 ⇒ SVOC（宾补）；宾语是**人物 / 人事** ⇒ SVOO（双宾）；否则 ⇒ SVO。⇒ **先定动词，句型基本就定了。**
+- **关键概念**：`判句型三步`、`看动词性质`、`看宾语`
+- **相互关系**：与第 13 讲「做题五步」并列 —— 一个是主谓一致流程，一个是句型判定流程。
+- **出处**：[娜娜 P15](https://www.bilibili.com/video/BV1QKbZ6xEea?p=15)
+
+### SV 主谓：不及物动词直接成句（三种形态）
+- **要点**：**不及物动词**后面**不带宾语**，主谓即可成句：`The baby cried.` · `The meeting ended.` · 某事发生了（`happen`）。三种常见形态：① **不及物直接成句** ② **+ 介词短语**（`at five`，是**时间状语**）③ **+ 副词**（`study hard` / `He runs fast.`，是**方式状语**）。⇒ ⚠️ **别把动词后的介词短语 / 副词当宾语** —— 判断宾语看「是不是动作作用的对象」。
+- **关键概念**：`SV`、`不及物动词`、`介词短语是状语不是宾语`
+- **相互关系**：与第 11 讲「及物与不及物动词」呼应；与「状语 vs 补语」互为护栏。
+- **出处**：[娜娜 P15](https://www.bilibili.com/video/BV1QKbZ6xEea?p=15)
+
+### SVO 主谓宾：宾语的三种形式 + to do / doing 搭配
+- **要点**：及物动词后必须带**宾语**。**三种形式**（讲的是「用什么词充当」）：**名词** · **代词**（人称代词用**宾格**）· **从句**（在动词后 ⇒ 宾语从句）。⚠️ 另可接 **`to do` / `doing`**（与固定搭配挂钩）：**`to do`** —— `want / hope / decide / plan / refuse / expect / agree / offer / pretend / promise`；**`doing`** —— `enjoy / practice / finish / mind / suggest / avoid / consider / keep / miss / risk`。例：`The students finished their homework.`（SVO，`finish` 也可接 `finish doing`，**两者不冲突**）。
+- **关键概念**：`SVO`、`宾语三形式`、`to do / doing 搭配`
+- **相互关系**：与第 8 讲「非谓语固定搭配」互补；与第 14 讲「宾语四种（种类）」区分（**这里是形式**）。
+- **出处**：[娜娜 P15](https://www.bilibili.com/video/BV1QKbZ6xEea?p=15)
+
+### SVP 主系表 + 区分系动词与实义动词三法
+- **要点**：**系动词出现 ⇒ 必是主系表**，后面无论形容词 / 名词 / 从句都是表语。🔴 **同一个动词可能既是系动词又是实义动词**（`The soup tastes good.` 系动词 vs `He tasted the soup.` 实义动词），**三法区分**：① 后面**是否接形容词**（系动词一般接形容词）② **能否换成 `be`**（能换 ⇒ 系动词；`The flowers smell sweet.` → `are sweet` ✓；`He tasted the soup` → `He is the soup` ✗）③ **能否用副词修饰**（系动词不能用副词修饰：`He looks happy.` ✓ / `He looks happily.` ✗）。
+- **关键概念**：`SVP`、`系动词 vs 实义动词`、`换成 be 法`、`副词修饰法`
+- **相互关系**：与第 14 讲「系动词口诀」配套 —— 本条给**三法判别**。
+- **出处**：[娜娜 P15](https://www.bilibili.com/video/BV1QKbZ6xEea?p=15)
+
+### SVOO 双宾语：人物 / 人事，改写成 to 或 for
+- **要点**：动词后接**两个宾语**且是**人物 / 人事** ⇒ SVOO，一般**人在前、物在后**（`give sb sth`）。**两种改写**：① **改 `to`** —— 表**传递方向**（`give / offer / send / show / tell / bring`：`Give the book to me.`）② **改 `for`** —— 表**为了某人去做 / 替某人做**（`buy / make / cook / get`：`She bought a notebook for her brother.`）。⇒ **翻一下意思有没有「为了」，有就用 `for`，没有只是传递就用 `to`。**
+- **关键概念**：`SVOO`、`人物/人事`、`to 表方向`、`for 表为了`
+- **相互关系**：与第 14 讲「双宾语」同考点；本条给**改写的底层逻辑（方向 vs 目的）**。
+- **出处**：[娜娜 P15](https://www.bilibili.com/video/BV1QKbZ6xEea?p=15)
+
+### 🔴 explain 不能接双宾语
+- **要点**：`explain` **没有双宾语结构**，只有固定搭配 **`explain sth to sb`**。改错高频：`He explained us the reason.` ✗ ⇒ `He explained the reason to us.` ⇒ 这类**只能靠单独记**。
+- **关键概念**：`explain sth to sb`、`无双宾语`
+- **相互关系**：是「SVOO」的**头号陷阱**（不是所有「给某人某物」都能用双宾语）。
+- **出处**：[娜娜 P15](https://www.bilibili.com/video/BV1QKbZ6xEea?p=15)
+
+### SVOC 主谓宾宾补：四类宾补
+- **要点**：句子出现**补足语** ⇒ SVOC。宾补四类：**形容词** · **两种不定式**（带 `to` 的 `ask sb to do` / 不带 `to` 的 `make sb do`）· **分词**（`doing` / `done`）· **名词**。例：`The news made everyone excited.`（SVOC，`excited` 说明 `everyone`）· `Their feedback helps customers choose hotels.`（`choose` 无时态 ⇒ 宾补，不是谓语）。
+- **关键概念**：`SVOC`、`四类宾补`、`无时态动词是宾补`
+- **相互关系**：与第 14 讲「宾补六类」配套 —— 句型层面只看「有没有补足语」。
+- **出处**：[娜娜 P15](https://www.bilibili.com/video/BV1QKbZ6xEea?p=15)
+
+### 状语 vs 补语的区别 + 基本句型写作模板
+- **要点**：**状语**修饰**动作**（怎么做 / 何时 / 何地）；**补语**（宾补）只说明**宾语**（变成什么样），**主补**说明主语，**与动作无关**。⇒ 主干写完后，判断后面那块是「说明宾语」还是「说明动作」，才能定句型。**写作模板**（用基本句型写句子）：`I'm writing to invite you to our graduation party.`（SVO + `to do` 表目的）· `This activity will be very meaningful.`（SVP）· `I will send you the detailed arrangement.`（SVOO，人物）。
+- **关键概念**：`状语 vs 补语`、`基本句型写作`
+- **相互关系**：与「判句型三步」配套 —— 状语不参与句型判断，补语参与。
+- **出处**：[娜娜 P15](https://www.bilibili.com/video/BV1QKbZ6xEea?p=15)
+
+
+## 补充（娜娜）· 第16讲 名词性从句
+
+### 名词性从句 = 把一个句子当名词用（可做主 / 宾 / 表）
+- **要点**：名词性从句就是**在主句里充当名词成分的从句**。名词能做的成分它都能做 —— **主语、宾语、表语**（另有同位语）。所以它的分类**不靠意思靠位置**：谓语动词前 = 主语从句，动词后 = 宾语从句，系动词后 = 表语从句。它与**定语从句**（修饰名词）、**状语从句**（修饰整句）并列为三大从句。
+- **关键概念**：`名词性从句`、`主/宾/表从句`、`三大从句`
+- **相互关系**：与地图「句子成分」呼应（名词能做的成分它都能做）；是后面「位置判类」与「四步判据」的总纲。
+- **出处**：[娜娜 P16](https://www.bilibili.com/video/BV1QKbZ6xEea?p=16)
+
+### 🔴 名词性从句四步判据：从句缺什么就补什么
+- **要点**：判连词**只看从句缺什么成分**：① **成分完整** ⇒ `that`（**不做成分、不翻译**，只起连接作用，后面接一个**既定事实**）② **缺主 / 宾** ⇒ 指物 `what`、指人 `who`（或 `whoever`）、**有明确范围**用 `which` ③ **主宾齐全但缺状语** ⇒ 地点 `where` / 时间 `when` / 原因 `why` / 方式 `how` ④ **有「是否」含义** ⇒ `whether` / `if`。
+- **关键概念**：`四步判据`、`that 不做成分`、`what 缺主宾`、`连接副词`
+- **相互关系**：是名词性从句的**总判断法**，下面各条分别展开；与第 17 讲定语从句的「看从句缺什么」是同一套思路。
+- **出处**：[娜娜 P16](https://www.bilibili.com/video/BV1QKbZ6xEea?p=16)
+
+### 🔴 `that` 与 `what` 的区别：一个不做成分，一个必须做成分
+- **要点**：`that` 在从句里**不充当任何成分**，只连接、不翻译，从句本身**结构完整**；`what` 在从句里**必须充当主语或宾语**，可译作「……的东西 / 的事」。判据：把连词**去掉**看从句还完整不完整 —— 完整 ⇒ `that`；缺主 / 宾 ⇒ `what`。例：`___ he said is true.` ⇒ 从句 `he said` 缺宾语 ⇒ **what**；`___ he is honest is true.` ⇒ 从句完整 ⇒ **that**。
+- **关键概念**：`that 不做成分`、`what 做成分`、`去连词验完整`
+- **相互关系**：是「四步判据」①②的分水岭，也是名词性从句**最高频的设空点**。
+- **出处**：[娜娜 P16](https://www.bilibili.com/video/BV1QKbZ6xEea?p=16)
+
+### 🔴 名词性从句必须用陈述句语序
+- **要点**：名词性从句的语序是**陈述句语序**（主语在前、谓语在后），**绝不能用疑问句语序** —— 哪怕从句本身是「疑问」的意思。`The problem is what can we do next.` ✗ ⇒ `The problem is what we can do next.` ✓；`I don't know where is he.` ✗ ⇒ `where he is` ✓。
+- **关键概念**：`陈述语序`、`主在前谓在后`、`疑问意思也不用疑问语序`
+- **相互关系**：是名词性从句的**头号易错点**，与地图「句子成分」「疑问句」两处呼应。
+- **出处**：[娜娜 P16](https://www.bilibili.com/video/BV1QKbZ6xEea?p=16)
+
+### 三类从句靠位置判 + 形式主语 / 形式宾语 `it`
+- **要点**：位置定类 —— 谓语**动词前** = 主语从句 · **动词后** = 宾语从句 · **系动词后** = 表语从句。当**主语从句太长**时，用形式主语 `it` 占位、把从句后置：`it is + 形容词 / 名词 / 过去分词 + that 从句`。宾语从句同理用**形式宾语 `it`**：`find / make / think + it + 形容词 + to do / that 从句`。
+- **关键概念**：`位置判类`、`形式主语 it`、`形式宾语 it`
+- **相互关系**：是「名词性从句」的**结构骨架**；`it` 只是占位，**真主语 / 真宾语还是后面那个从句**。
+- **出处**：[娜娜 P16](https://www.bilibili.com/video/BV1QKbZ6xEea?p=16)
+
+### `whether` vs `if`：拿不准就填 `whether`
+- **要点**：**动词后的宾语从句**里 `whether` 与 `if` **两者皆可**；但有**三种情况只能用 `whether`** —— ① **句首**（主语从句）② **介词后** ③ 与 **`or not`** 连用。⇒ 娜娜的建议：**拿不准就填 `whether`**，因为它几乎处处可用。
+- **关键概念**：`whether / if 皆可`、`句首/介词后/or not 只能用 whether`
+- **相互关系**：是「四步判据」④（有「是否」含义）的落地规则；与地图「连词」一处呼应。
+- **出处**：[娜娜 P16](https://www.bilibili.com/video/BV1QKbZ6xEea?p=16)
+
+### 🔴 介词后不能直接加 `that` 从句，要补过渡名词 `the fact`
+- **要点**：介词后面**不能直接跟 `that` 从句**（`that` 从句不做成分、也不带名词性）。要加必须补一个**过渡名词**，最常用 `the fact`：`We talk about whether we should leave.` ✓ vs `We talk about the fact that we should leave.` ✓；`We talk about that we should leave.` ✗。
+- **关键概念**：`介词后不能直接加 that`、`the fact` 过渡
+- **相互关系**：与上一条「介词后只能用 whether」互为对照 —— **介词后要么用 wh- 类，要么补 `the fact` 再用 that**。
+- **出处**：[娜娜 P16](https://www.bilibili.com/video/BV1QKbZ6xEea?p=16)
+
+### `who` vs `whoever`、`what` vs `whatever`
+- **要点**：`who` 表示**有明确指明是谁**；`whoever` = `anyone who` / `the person who`，**不关心具体是谁**，译作「无论是谁」。同理 `what` = 具体某物 / 某事，`whatever` = `anything that`，译作「无论什么」。⇒ 见 `-ever` 就是**加了一层「不论」的让步含义**。
+- **关键概念**：`who / whoever`、`what / whatever`、`-ever 加让步义`
+- **相互关系**：是「四步判据」②（缺主 / 宾）的细分；与第 18 讲让步状语从句的 `no matter how` 是同一种「不论」思路。
+- **出处**：[娜娜 P16](https://www.bilibili.com/video/BV1QKbZ6xEea?p=16)
+
+### 🔴 形式主语 `it` 的识别：谓语前缺主语时先想 `it`
+- **要点**：`it is + 形容词 / 名词 / 过去分词 + that 从句` 是固定结构，如 `It is widely agreed that dry farming is valuable.`（被广泛认同……）。真题里出现**谓语动词前缺主语**的变形句要能识破：`___ are you forget how important it is to have good people...` —— 前面缺主语、后面已有 `how` 从句 ⇒ 填 **`it`**（`How are you forget...` 类感叹 / 疑问变形）。
+- **关键概念**：`形式主语 it`、`it is + adj + that`、`缺主语先想 it`
+- **相互关系**：是「位置判类」里 `it` 占位的实战应用；与地图「代词 it」呼应。
+- **出处**：[娜娜 P16](https://www.bilibili.com/video/BV1QKbZ6xEea?p=16)
+
+### 形式宾语 `it`：`find / make / think + it + 形容词 + to do / that 从句`
+- **要点**：当宾语是**不定式或从句**、后面又跟着形容词 / 名词补足语时，用形式宾语 `it` 占位：`I find it hard to finish it on time.` / `We think it important that everyone joins.`。`it` 无实义，**真正的宾语是后面的 to do / that 从句**。
+- **关键概念**：`形式宾语 it`、`find / make / think + it + adj`
+- **相互关系**：与「形式主语 it」是一对镜像结构，同为 `it` 的占位用法。
+- **出处**：[娜娜 P16](https://www.bilibili.com/video/BV1QKbZ6xEea?p=16)
+
+
+## 补充（娜娜）· 第17讲 定语从句
+
+### 定语从句三步走：① 找先行词 ② 看从句缺什么成分 ③ 选关系词
+- **要点**：定语从句的**唯一操作流程** —— 第一步**圈出先行词**（被修饰的那个名词）；第二步**把关系词从从句里「抿掉」**，再看从句**缺什么成分**（缺主语 / 宾语 / 状语）；第三步**据先行词与所缺成分选关系词**。这是全讲的骨架，后面所有规则都挂在它下面。
+- **关键概念**：`三步走`、`先行词`、`从句缺什么成分`、`选关系词`
+- **相互关系**：与第 16 讲名词性从句的「看从句缺什么」是**同一套判据**；也是本讲「关系代词 / 关系副词」两分法的入口。
+- **出处**：[娜娜 P17](https://www.bilibili.com/video/BV1QKbZ6xEea?p=17)
+
+### 🔴 先行词 ≠ 离关系词最近的那个名词
+- **要点**：前面出现多个名词时，**不能**直接拿离关系词最近的那个当先行词。做法：**先把关系词还原进从句**（补回它指代的成分），**再靠逻辑判断**到底指前面的 A、B 还是 C。例：`I saw a cat under the desk which likes eating snacks.` —— 先行词是 **`cat`** 不是 `desk`（是猫爱吃零食，不是桌子）。
+- **关键概念**：`先行词 ≠ 最近名词`、`还原进从句`、`靠逻辑定`
+- **相互关系**：是「三步走」第一步的**头号陷阱**；本讲真题多次设在此处（如 `right area` 而非 `zoo`）。
+- **出处**：[娜娜 P17](https://www.bilibili.com/video/BV1QKbZ6xEea?p=17)
+
+### 🔴 别看到地点 / 时间名词就填 `where` —— 先看从句缺不缺成分
+- **要点**：`where` 只在**从句主宾齐全、只缺地点状语**时才用。判据是**从句动词及物与否**：`This is the city I visited last summer.` ⇒ `visited` **及物** ⇒ 缺**宾语** ⇒ 填 **`which / that`**；`This is the city I lived last summer.` ⇒ `live` **不及物** ⇒ 结构完整、只缺地点状语 ⇒ 填 **`where`**。
+- **关键概念**：`及物缺宾语`、`不及物缺状语`、`visited ⇒ which` vs `lived ⇒ where`
+- **相互关系**：是「三步走」第二步的落地；与地图「及物/不及物动词」直接联动。
+- **出处**：[娜娜 P17](https://www.bilibili.com/video/BV1QKbZ6xEea?p=17)
+
+### 关系词两大类：关系代词（做主 / 宾）· 关系副词（只缺状语）
+- **要点**：**关系代词** —— `who` / `whom` / `which` / `that` / `whose`，**只在从句中做主语或宾语**；**关系副词** —— `when` / `where` / `why`，**从句不缺主宾、只缺状语**时才用。⇒ 先看从句**缺不缺主 / 宾**，缺就选关系代词，不缺（结构完整）才轮到关系副词。
+- **关键概念**：`关系代词`、`关系副词`、`先判主宾再判状语`
+- **相互关系**：是「三步走」第三步的**总分类**；本讲所有具体关系词都归在这两类下。
+- **出处**：[娜娜 P17](https://www.bilibili.com/video/BV1QKbZ6xEea?p=17)
+
+### 关系代词的细分：`who` / `whom` / `which` / `that` / `whose`
+- **要点**：`who` 指人、**可主可宾**；`whom` 指人、**只能做宾语**；`which` 指物 / 事、做主或宾；`that` **可指人可指物**、做主或宾，但**不能用于非限制性定语从句**；`whose` 表「……的」（见下条）。
+- **关键概念**：`who 可主可宾`、`whom 只做宾`、`which 指物`、`that 人/物皆可`
+- **相互关系**：是「关系代词」这一类内部的**逐个分工**；与第 16 讲 `that / what` 的区别互为补充。
+- **出处**：[娜娜 P17](https://www.bilibili.com/video/BV1QKbZ6xEea?p=17)
+
+### 🔴 限制性 vs 非限制性定语从句：判据是「有没有逗号」
+- **要点**：**限制性**定语从句**没有逗号**，去掉从句后**句意不完整 / 变了**；**非限制性**定语从句**有逗号**，去掉后**主句意思照样成立**（从句只是补充说明）。两条硬规则：① **非限制性绝不能用 `that`**（指物用 `which`、指人用 `who`）② **`which` 在非限制性里可以指代前面整件事**。真题：`The real superhero of that night was ___(drop) his turncoat over the little boy.` —— 逗号 ⇒ 非限制性 ⇒ 不能用 that ⇒ 填 **`who`**。
+- **关键概念**：`逗号判据`、`非限制性不能用 that`、`which 指代整件事`
+- **相互关系**：是定语从句**第二大设空点**；与地图「标点 / 逗号」一处呼应，也是改错题的高频区。
+- **出处**：[娜娜 P17](https://www.bilibili.com/video/BV1QKbZ6xEea?p=17)
+
+### 🔴 只能用 `that` 的情况：被特殊词修饰，或先行词既指人又指物
+- **要点**：**两种情形只能用 `that`** —— ① 先行词被**最高级 / 序数词 / `all` / `every` / `no` / `some` / `any` / `only`** 修饰（哪怕选项里有 `which` 也不能选）② 先行词**既指人又指物**。例：`This is the most useful tool I have ever used.` ⇒ 被**最高级**修饰 ⇒ 只能 `that`；`This is the only problem we need to solve today.` ⇒ 被 `only` 修饰 ⇒ 只能 `that`。
+- **关键概念**：`最高级/序数词`、`all/every/no/some/any/only`、`既人又物`
+- **相互关系**：是「关系代词」的**限制条件**，与「非限制性不能用 that」正好互补（一个只能 that，一个不能 that）。
+- **出处**：[娜娜 P17](https://www.bilibili.com/video/BV1QKbZ6xEea?p=17)
+
+### 🔴 `whose` = 所属关系，后面**一定跟名词**
+- **要点**：`whose` 表「……的」，在从句里**充当定语**、修饰后面的名词，所以**关系词后面紧跟着的一定是名词**。⇒ **做题信号**：空格后面**不是动词而是名词**，就直接填 `whose`（**人和物都能用**）。例：`The boy ___ father is a doctor studies very hard.` ⇒ `father` 是名词 ⇒ `whose`；`I found a book ___ cover was stained with ink.` ⇒ `cover` 是名词 ⇒ `whose`。
+- **关键概念**：`whose = 所属`、`后接名词`、`人/物皆可`
+- **相互关系**：是**最快的一条做题信号**；与「三步走」第二步（看从句缺什么）配合 —— 缺的是「所属」这一定语。
+- **出处**：[娜娜 P17](https://www.bilibili.com/video/BV1QKbZ6xEea?p=17)
+
+### 关系副词只有三个 `where` / `when` / `why` —— **没有 `how`**
+- **要点**：定语从句的关系副词**只有三个**：`where`（地点）、`when`（时间）、`why`（原因）。**`how` 不是关系副词，不能引导定语从句**（`how` 是名词性从句的连接副词）⇒ 做笔记时把这两处**分开记**。`why` 的先行词**只能是 `reason`** —— 看到 `the reason` 就直接填 `why`。
+- **关键概念**：`只有 where/when/why`、`how 不是关系副词`、`reason ⇒ why`
+- **相互关系**：与第 16 讲名词性从句的连接副词**划清界限**（那边有 `how`，这边没有）；是关系副词的**封闭清单**。
+- **出处**：[娜娜 P17](https://www.bilibili.com/video/BV1QKbZ6xEea?p=17)
+
+### 关系副词判据：从句成分完整 + 先行词指时间 / 地点 / reason
+- **要点**：判关系副词只需两步 —— ① 从句**主谓宾齐全、结构完整**（不缺主也不缺宾）② 圈出的**先行词指地点 / 时间 / reason**。指地点 ⇒ `where`、指时间 ⇒ `when`、是 `reason` ⇒ `why`。例：`Our city has vast areas of farmland, ___ its owners grow crops or seasonal fruit.` ⇒ 从句 `its owners grow crops...` 完整、`farmland` 指地点 ⇒ **`where`**。
+- **关键概念**：`成分完整`、`先行词指地点/时间/reason`、`where / when / why`
+- **相互关系**：是「关系副词」的**判断流程**；与「别看到地点名词就填 where」互为提醒 —— **前提是成分完整**。
+- **出处**：[娜娜 P17](https://www.bilibili.com/video/BV1QKbZ6xEea?p=17)
+
+### 🔴 小陷阱对照：`Its owners grow...` ⇒ `where` vs `owners grow...` ⇒ `whose`
+- **要点**：两个意思几乎一样的句子，填的词完全不同。`..., ___ its owners grow crops...` ⇒ 从句已有 **`its`** 表达所属、**主谓宾完整** ⇒ 缺的是**地点状语** ⇒ **`where`**；`..., ___ owners grow crops...` ⇒ `owners` 前**没有 `its`**、只是个光名词 ⇒ 要补出**所属关系** ⇒ **`whose`**。⇒ 区别的钥匙就是**那个名词前面有没有限定词**。
+- **关键概念**：`its 有无`、`whose 补所属`、`where 补状语`
+- **相互关系**：是本讲**最阴的对照题**，把「whose 后接名词」与「成分完整用关系副词」两条规则撞在一起考。
+- **出处**：[娜娜 P17](https://www.bilibili.com/video/BV1QKbZ6xEea?p=17)
+
+### 介词 + `which` / `whom`（了解即可）：只在关系词做介词宾语时
+- **要点**：当**关系词做介词宾语**时，可以把介词**提前**到关系词前面，构成 `介词 + which`（指物）/ `介词 + whom`（指人）。前提条件三条：① **关系词必须做介词宾语** ② **介词后面不能用 `that`** ③ **不能省略关系词**。例：`This is the room which I live in.` = `This is the room in which I live.`；`This is the teacher whom I learned a lot from.` = `... from whom I learned a lot.`。考试一般**不设题**，能看懂即可。
+- **关键概念**：`介词提前`、`in which / from whom`、`介词后不用 that`
+- **相互关系**：是「关系代词」的**补充用法**，也是改错题「`which I studied` ⇒ `where` / `in which`」的解法来源。
+- **出处**：[娜娜 P17](https://www.bilibili.com/video/BV1QKbZ6xEea?p=17)
+
+### 考情：23 / 24 / 25 三年真题的定语从句**全是「关系词在从句中做主语」**
+- **要点**：娜娜点名 —— 近三年（23 / 24 / 25）定语从句的真题，**考的全是「关系词在从句中充当主语」**这一种。⇒ 判断法：**关系词后面直接就是谓语动词**，那它就是在做主语；再据先行词指人 / 指物、限制性 / 非限制性，定 `who` / `which` / `that`。
+- **关键概念**：`关系词做主语`、`后直接接谓语`、`三年真题同型`
+- **相互关系**：是「三步走」第三步的**考情优先级**；与地图「真题」标注呼应。
+- **出处**：[娜娜 P17](https://www.bilibili.com/video/BV1QKbZ6xEea?p=17)
+
+### 定语从句改错四型（本讲改错题归纳）
+- **要点**：① **非限制性用了 `that`** ⇒ 改成 `which`（指物）/ `who`（指人）② **先行词指人却用了 `which`** ⇒ 改成 `who` / `that`（`The man which helped us...` ⇒ `who`）③ **从句缺地点状语却用了 `which`** ⇒ 改成 `where` 或 `介词 + which`（`the school which I studied...` ⇒ `where` / `in which`）④ **关系词后是名词却用了 `that`** ⇒ 改成 `whose`（`The bike that price is too high...` ⇒ `whose`）。
+- **关键概念**：`非限制性 that`、`指人用 which`、`缺状语用 which`、`名词前用 that`
+- **相互关系**：是本讲全部规则的**反向应用**（改错 = 拿规则去验错），与地图「改错」题型呼应。
+- **出处**：[娜娜 P17](https://www.bilibili.com/video/BV1QKbZ6xEea?p=17)
+
+
+## 补充（娜娜）· 第18讲 状语从句
+
+### 状语从句 = 从属连词引导的句子，在主句中充当状语
+- **要点**：状语从句由**从属连词**（如 `because`）引导，**整个句子在主句中充当状语**，用来交代主句动作发生的**时间、条件、原因、目的、结果、让步、比较**。简单说就是**给主句贴一张说明卡**，补充信息。它与名词性从句、定语从句并列为**从句篇的最后一块**。
+- **关键概念**：`从属连词`、`充当状语`、`贴说明卡`
+- **相互关系**：与地图「句子成分 · 状语」直接对接（状语从句就是「状语」的句子形态）；是三大从句的收尾。
+- **出处**：[娜娜 P18](https://www.bilibili.com/video/BV1QKbZ6xEea?p=18)
+
+### 状语从句七分类：时间 / 条件 / 原因 / 让步 / 目的 / 结果 / 比较
+- **要点**：按逻辑分**七类**：**时间、条件、原因、让步、目的、结果、比较**。它的难点**不在难，而在多而散** —— 不像名词性从句、定语从句那样「几步走」就能套，这里每一类都要单独认连词。
+- **关键概念**：`七分类`、`多而散`、`逐类记连词`
+- **相互关系**：是状语从句的**总目录**；下面七条分别展开。
+- **出处**：[娜娜 P18](https://www.bilibili.com/video/BV1QKbZ6xEea?p=18)
+
+### 读长难句三步走：圈连词 → 判类型 → 看时态搭配
+- **要点**：篇章里遇到状语从句，**三步走**：① **圈出从属连词**（跟连词在一起的那个动词就是从句）② **判断属于哪一类**（时间 / 条件 / 让步……）③ **看时态与搭配**（有没有要遵循主将从现、有没有不能共现的词），再把它翻译到合适的位置。
+- **关键概念**：`圈连词`、`判类型`、`看时态搭配`
+- **相互关系**：是「阅读解析」方向的操作流程；与下一条「语法填空倒推」正好互为逆过程。
+- **出处**：[娜娜 P18](https://www.bilibili.com/video/BV1QKbZ6xEea?p=18)
+
+### 语法填空倒推四步：翻译前后句 → 判逻辑 → 贴标签 → 选连词
+- **要点**：要填**连词空**时，按**倒推**走：① **把前后两个句子翻译出来**（所以背单词很有必要）② **判断两句之间的逻辑关系**（时间 / 因果 / 条件 / 让步……）③ **贴标签**（归到七类里的哪一类）④ 在该类的连词里**挑一个填进去**。⇒ 全流程里**最核心的是第 ② 步：判逻辑**。
+- **关键概念**：`倒推`、`翻译前后句`、`判逻辑贴标签`
+- **相互关系**：是状语从句**设题的主战场**（本讲明确说「以这个为主」）；与「读长难句三步走」互逆。
+- **出处**：[娜娜 P18](https://www.bilibili.com/video/BV1QKbZ6xEea?p=18)
+
+### 🔴 主将从现**不是万能**：只有「将来未发生」才用
+- **要点**：`主将从现` 里的「将」就是**将来时** —— 只有整个句子在**描述将来要发生、尚未发生**的动作时，从句才用**现在时**表将来。**两种例外**：① 从句动作**已经发生** ⇒ 正常用**过去时** ② 句子表达**客观规律 / 习惯性重复** ⇒ **主句从句都用一般现在时**（如 `When spring comes, flowers bloom.`）。⇒ **不要看到时间 / 条件状语从句就硬套主将从现**。
+- **关键概念**：`主将从现前提`、`已发生用过去时`、`客观规律用一般现在时`
+- **相互关系**：是时间 / 条件状语从句的**共同规则**，也是改错题「从句用 `will` ⇒ 去掉」的依据。
+- **出处**：[娜娜 P18](https://www.bilibili.com/video/BV1QKbZ6xEea?p=18)
+
+### 时间状语从句连词清单：`when` / `while` / `before` / `after` / `until` / `not until` / `as soon as` / `since`
+- **要点**：`when` 当……时，**可接短动作也可接长动作**（多用短动作，在长动作背景中「咔嚓」插入）；`while` 在……期间，**接持续性动作**，另有**表对比**用法；`before` / `after` 在……之前 / 之后；`until` **直到……为止**（动作到该时间点**才停**）/ `not until` **直到……才**（动作到该时间点**才开始**）；`as soon as` 一……就（**遵循主将从现**，因为两个动作都未发生）；`since` 自从，**引出时间起点**，**主句常用现在完成时、从句用过去式**（**不适用主将从现**）。
+- **关键概念**：`when 短动作`、`while 持续性/对比`、`until vs not until`、`as soon as 主将从现`、`since 完成时`
+- **相互关系**：是「七分类」第一类的**完整连词表**；与地图「时态」一章（`since` 是完成时标志词）呼应。
+- **出处**：[娜娜 P18](https://www.bilibili.com/video/BV1QKbZ6xEea?p=18)
+
+### 时间状语从句的「时间点」常常是**一个动作**，不是时间名词
+- **要点**：时间状语从句的时间节点**不一定**是 `Monday` / `noon` 这类明显时间词，**常常给出的是一个动作** —— 如 `until I come back`（直到我回来）、`while people are waiting`（在人们等待期间）。⇒ 要能识别「**这个动作发生 / 结束时**」就是一个时间节点，别因为看到的是动词就认不出时间状语从句。
+- **关键概念**：`动作=时间节点`、`until I come back`、`while people are waiting`
+- **相互关系**：是时间状语从句的**隐蔽设点**；与「翻译前后句判逻辑」配合使用。
+- **出处**：[娜娜 P18](https://www.bilibili.com/video/BV1QKbZ6xEea?p=18)
+
+### 条件状语从句连词：`if` / `unless` / `as long as` / `once` / `in case`
+- **要点**：`if` 如果（**最常考**）；`unless` 除非（**= if not**，含否定意义）；`as long as` 只要（满足条件即可，如 `As long as you love me, we could be homeless.`）；`once` 一旦（如 `Once you start, you should not give up.`）；`in case` 以防 / 万一（如 `Take an umbrella in case it rains.`）。**常考 `if` / `unless` / `as long as`**，`once` / `in case` 能看懂即可。描述将来未发生动作时同样**遵循主将从现**。
+- **关键概念**：`if`、`unless = if not`、`as long as 只要`、`once / in case`
+- **相互关系**：是「七分类」第二类的**连词表**；`unless` 与 `if` 是**否定与肯定**的一对。
+- **出处**：[娜娜 P18](https://www.bilibili.com/video/BV1QKbZ6xEea?p=18)
+
+### 🔴 `because` 用于**已存在 / 确定的事实**，不是「只要有因果就能填」
+- **要点**：`because` 的用法核心是 —— 它引导**已经存在、已经确定的事实**（用一般现在时也可以是既存事实，如「我现在就是不着急」）。⇒ 反例：`___ you finish your homework, you can watch the movie.` —— 作业**还没完成**、看电影也**还没发生**，**不是既存事实**，所以**不能填 `because`**（虽然「完成作业→看电影」看着像因果），应填 **`if`**（条件）。而 `He missed the bus ___ he got up late.` ⇒ 两件都是**已发生的过去事实** ⇒ **`because`**。
+- **关键概念**：`because = 既存事实`、`未发生不能用 because`、`条件用 if`
+- **相互关系**：是条件 / 原因两类状语从句的**分界判据**，也是本讲最容易被误选的题（真题 26 年 `because` 题即此考点）。
+- **出处**：[娜娜 P18](https://www.bilibili.com/video/BV1QKbZ6xEea?p=18)
+
+### 🔴 `because` 与 `so` 不能同时出现
+- **要点**：英文里**因果关联词只留一个** —— 用了 `because` 就不能再用 `so`，反之亦然。改错：`Because the road was busy, so we arrived late.` ⇒ **删掉 `so`**（或删掉 `because`）。⇒ 与中文「因为……所以……」成对出现不同，**写作文时绝对不能同时出现**。
+- **关键概念**：`because + so 不能共现`、`改错删一个`
+- **相互关系**：与下一条 `although / but` 是**同一类错误**，一起记。
+- **出处**：[娜娜 P18](https://www.bilibili.com/video/BV1QKbZ6xEea?p=18)
+
+### 让步状语从句：先退一步承认事实，再给出**相反的结果**
+- **要点**：让步 = **退一步承认从句里的事实**，然后主句给出一个**与之相反的结果**（如「虽然很累，但他还在继续走」）。**连词按三组记**：① 与 `though` 相关 —— `though` / `although` / `even though`（`even though` **接事实**、**语气最强**）② 与 `if` 相关 —— `even if`（**接假设**、事情**不一定发生**）③ 与 `however` 相关 —— `while`（表对比，然而）、`however` / `no matter how`（无论多么）。⚠️ `even though` 接事实 vs `even if` 接假设，是本组**唯一易混点**。
+- **关键概念**：`退一步+相反结果`、`even though 事实`、`even if 假设`、`while 对比`
+- **相互关系**：是「七分类」第三类；与地图「转折」逻辑呼应。
+- **出处**：[娜娜 P18](https://www.bilibili.com/video/BV1QKbZ6xEea?p=18)
+
+### 🔴 `although` 与 `but` 不能同时出现
+- **要点**：和 `because / so` 一样，**让步关联词也只留一个** —— 用了 `although` / `though` 就**不能再用 `but`**。改错：`Although the work was hard, but they finished it on time.` ⇒ **删掉 `but`**。**作文里绝对禁止出现**。
+- **关键概念**：`although + but 不能共现`、`改错删 but`
+- **相互关系**：与 `because / so` 并列，是**改错题的两大常客**。
+- **出处**：[娜娜 P18](https://www.bilibili.com/video/BV1QKbZ6xEea?p=18)
+
+### `however` / `no matter how`：后接形容词 / 副词，需**前置**
+- **要点**：`however` = `no matter how`，译作「无论多么……」，**后面接形容词或副词**，且这个形容词 / 副词要**提到主语前面**（语序颠倒）：`However difficult the test is, keep calm.` = `No matter how difficult the test is, ...`。也可以是副词：`However much it costs, I will buy it.` = `No matter how much it costs, ...`。
+- **关键概念**：`however = no matter how`、`后接形容词/副词`、`需前置`
+- **相互关系**：是让步状语从句里**唯一有语序要求**的一条；与第 16 讲 `whoever / whatever` 的「不论」义同源。
+- **出处**：[娜娜 P18](https://www.bilibili.com/video/BV1QKbZ6xEea?p=18)
+
+### 原因状语从句：`because` / `since` / `as` / `now that`，语气**由强到弱**
+- **要点**：`because` 接**直接、真正的原因**，**语气最强**（也最正式）；`since` 接**已知的、显而易见的**原因（**双方都知道**，多放**句首**）；`as` 接**附带、次要的原因**，**语气最弱**（顺带说一嘴）；`now that` 了解即可（篇章里见到知道后面跟的是原因）。⇒ **三者语气：`because` > `since` > `as`**。
+- **关键概念**：`because 最强`、`since 已知`、`as 最弱`、`语气递减`
+- **相互关系**：是「七分类」第四类；与上面 `because` 用法条一起构成原因从句的完整考点。
+- **出处**：[娜娜 P18](https://www.bilibili.com/video/BV1QKbZ6xEea?p=18)
+
+### 目的状语从句：`so that` / `in order that` + 从句（配 `can` / `could` / `may`）
+- **要点**：目的 = **做这个动作，是为了……**。连词 `so that` / `in order that` **后面接一个完整句子**，句中常用 `can` / `could` / `may`（**与前句时态搭配**：前句过去时用 `could`，现在时用 `can` / `may`）。例：`He spoke slowly so that everyone could understand.`（`spoke` 过去 ⇒ `could`）。
+- **关键概念**：`so that / in order that`、`后接从句`、`can/could/may 呼应时态`
+- **相互关系**：是「七分类」第五类；与下一条**结果状语从句的 `so...that`** 是必须分清的一对。
+- **出处**：[娜娜 P18](https://www.bilibili.com/video/BV1QKbZ6xEea?p=18)
+
+### 目的短语：`to do` / `in order to` / `so as to` —— **不带从句**
+- **要点**：目的还有**短语形式**：`to do` / `in order to do` / `so as to do`，**后面跟的是短语**（动词不定式），**不是从句**。⇒ 与 `so that` / `in order that` 的**唯一区别**：**带从句 vs 带短语**。
+- **关键概念**：`to do`、`in order to`、`so as to`、`短语 vs 从句`
+- **相互关系**：是「目的状语」的**第二种形式**，与上一条构成目的表达的完整体系。
+- **出处**：[娜娜 P18](https://www.bilibili.com/video/BV1QKbZ6xEea?p=18)
+
+### 结果状语从句：`so + 形容词/副词 + that`（**断开**）· `such + 名词短语 + that`
+- **要点**：结果 = **前面呈现的状态，导致了后面的结果**。两种结构：① `so + 形容词 / 副词 + that ...` ② `such + 名词短语 + that ...`（名词短语前可带形容词，但**重心在名词**）。例：`The box was so heavy that I could not lift it.` / `It was such a helpful app that many students downloaded it.`
+- **关键概念**：`so + adj/adv + that`、`such + 名词短语 + that`、`that 后才是结果`
+- **相互关系**：是「七分类」第六类；与地图「形容词 / 副词」一章的 `so / such` 呼应。
+- **出处**：[娜娜 P18](https://www.bilibili.com/video/BV1QKbZ6xEea?p=18)
+
+### 🔴 目的 `so that` **连写** vs 结果 `so...that` **断开** —— 区分关键
+- **要点**：**目的**的 `so that` 是**连在一起**的；**结果**的 `so ... that` **中间断开**，断开处**填形容词或副词**（`such ... that` 则填名词短语）。⇒ 做题时**先看 `so` 和 `that` 之间有没有东西**：有 ⇒ 结果状语从句；没有（`so that` 紧挨着）⇒ 目的状语从句。
+- **关键概念**：`so that 连写=目的`、`so...that 断开=结果`、`看中间有没有词`
+- **相互关系**：是把「目的」与「结果」**一刀切开**的判据，本讲明确要求做区分。
+- **出处**：[娜娜 P18](https://www.bilibili.com/video/BV1QKbZ6xEea?p=18)
+
+### 比较状语从句（了解即可）：`as...as` / `not so(as)...as` / 比较级 + `than` / 倍数 + `as...as` / `the more...the more`
+- **要点**：比较状语从句本质上就是**比较级那一套结构**：`as + 原级 + as`（同级）、`not so / as + 原级 + as`（不如）、`比较级 + than`、`倍数 + as + 原级 + as`（几倍）、`the + 比较级, the + 比较级`（越……越……）。⚠️ 因为**从句中与主句重复的部分被省略**（`He runs faster than I (run).` ⇒ `than I`），所以**认不出它是从句**，容易被当成单纯的比较级。**考试不设题**，了解即可。
+- **关键概念**：`as...as`、`倍数 + as...as`、`the more...the more`、`省略重复部分`
+- **相互关系**：与地图「形容词 / 副词 · 比较级」一章**同源**；本条只是点明「它其实是比较状语从句」。
+- **出处**：[娜娜 P18](https://www.bilibili.com/video/BV1QKbZ6xEea?p=18)
+
+### 状语从句改错四型（本讲改错题归纳）
+- **要点**：① **`because` 与 `so` 共现** ⇒ 删一个 ② **`although` 与 `but` 共现** ⇒ 删 `but` ③ **主将从现误用**（时间 / 条件状语从句的从句里用了 `will`）⇒ 从句改一般现在时、并注意**主谓一致**（`when he will arrive` ⇒ `when he arrives`；`if she will come` ⇒ `if she comes`）④ **双重比较级**（`more cleaner`）⇒ 去掉 `more`。
+- **关键概念**：`because/so`、`although/but`、`从句用 will`、`more + 比较级`
+- **相互关系**：是本讲全部规则的**反向应用**；与地图「改错」题型呼应。
+- **出处**：[娜娜 P18](https://www.bilibili.com/video/BV1QKbZ6xEea?p=18)
+
+
+## 补充（真题）· 2022 广东专升本英语真题（阳哥英语）
+
+### 广东卷「列表型阅读」第三次印证：2022 是「五国新年习俗」并列
+- **要点**：2022 真题第一篇仍是**列表型** —— 把西班牙 / 丹麦 / 希腊 / 爱尔兰 / 德国**五国新年习俗**并列。⇒ 三年连续印证，**「广东第一篇阅读 = 分类列表型」可以当规律背**。
+- **关键概念**：`列表型阅读`、`三年印证`、`广东第一篇固定题型`
+- **相互关系**：与 2023 / 2024 两条构成**三年证据链**；这是地图此前**完全没有**的真题规律。
+- **出处**：[阳哥 P3（2022）](https://www.bilibili.com/video/BV1cxrzY9Ea5?p=3)
+
+### 🔴 列表型阅读的杀手锏：**各段相同的词 = 共同点**
+- **要点**：2022 真题问「五国习俗的**共同目的**」，做法是**去找每个段落都出现的同一批词** —— 结果五段反复出现 `bring good luck` / `lucky year` / `wish will come true`，共同点即「**带来好运**」。⇒ 找「**跨段重复词**」比逐段翻译快得多。
+- **关键概念**：`跨段重复词`、`共同点题`、`bring good luck`
+- **相互关系**：是列表型阅读的**高级技巧**（前两年只需逐条定位）；与地图「阅读：题型分类」的「主旨题」相关。
+- **出处**：[阳哥 P3（2022）](https://www.bilibili.com/video/BV1cxrzY9Ea5?p=3)
+
+### 🔴 文章残缺也能做题 —— 定位法对「不全的源」照样有效
+- **要点**：2022 真题的源**本身不全**（阳哥说「找了好几年，阅读题有一点点不全」），但**定位法 + 抓关键词仍然够用**：如找丹麦 → 直接跳到 `Denmark` 那段；找希腊 → 直接跳到 `Greece` 段。⇒ 定位法的价值**不依赖通读全文**。
+- **关键概念**：`定位法不依赖通读`、`残缺源也能做`、`跳段`
+- **相互关系**：是对「三步定位法」**鲁棒性**的实证，也是 2022 真题能入地图的原因。
+- **出处**：[阳哥 P3（2022）](https://www.bilibili.com/video/BV1cxrzY9Ea5?p=3)
+
+### 🔴 同义替换（2022 真题两例）：`smash plates → break things` · `plenty of food → sufficient food`
+- **要点**：① 题干 `break things`（打破东西）⇄ 原文丹麦习俗 `smash unused plates and glasses`（`smash` = 砸）；② 题干 `sufficient food`（充足食物）⇄ 原文德国 `a pig is a sign of plenty of food`（`plenty of` = 大量）。⇒ 这两处都是**动词 / 形容词层面的同义替换**。
+- **关键概念**：`smash = break`、`plenty of = sufficient`、`动词/形容词级替换`
+- **相互关系**：与 2024 / 2023 的同义替换条构成**三年序列**。
+- **出处**：[阳哥 P3（2022）](https://www.bilibili.com/video/BV1cxrzY9Ea5?p=3)
+
+### 🔴 `tough` 的三义（2022 真题命中）
+- **要点**：`tough` **① 困难的**（`a tough childhood`）② **难搞的 / 不好打交道的**（`a tough guy`，指人，略偏贬义）③ **坚韧的 / 吃苦耐劳的**（`He is not tough enough for a career in sales.`）。2022 真题用的是「**硬的**」（`need tough teeth` —— 需要硬牙齿去咬蛋糕里的硬币）。⇒ 一词多义，靠**上下文**定。
+- **关键概念**：`tough 三义`、`硬的 / 困难的 / 坚韧的`
+- **相互关系**：与 2024 条「熟词僻义」同源；本条更强调**同词多义靠语境**。
+- **出处**：[阳哥 P3（2022）](https://www.bilibili.com/video/BV1cxrzY9Ea5?p=3)
+
+### 🔴 `lead` 的两副面孔：名词「铅」vs 动词两搭配
+- **要点**：`lead` 作**名词** = **铅**（金属，2022 真题 `melted lead` 熔铅 —— 阳哥说这是**专升本多年首次出现**这个义项）；作**动词**有两个必须分清的搭配：**`lead sb to do sth`**（带领某人做某事，后接**动词原形**）vs **`lead to doing / sth`**（导致，后接**名词或动名词**）。
+- **关键概念**：`lead = 铅（名词）`、`lead sb to do`、`lead to doing`
+- **相互关系**：与 `lack` / `charge` 同属「一个词两副面孔」；`lead to` 是**写作高频**（表结果）。
+- **出处**：[阳哥 P3（2022）](https://www.bilibili.com/video/BV1cxrzY9Ea5?p=3)
+
+### 🔴 模糊数字 vs 具体数字：`hundreds of` 带 `s`，`500` 不带
+- **要点**：**模糊数字**（数以百计 / 千计 / 百万计）必须带 `s` 且加 `of`：`hundreds of` / `thousands of` / `millions of`；**具体数字**不带 `s`：`five hundred people`（**不能**写 `five hundreds`）。阳哥点名：**「广东的语法填空经常考」**。
+- **关键概念**：`hundreds of 带 s`、`具体数字不带 s`、`广东语法填空常考`
+- **相互关系**：与地图「补充（娜娜）· 第3讲 冠词与数词」的「有数字不加 s」**完全一致**；本条是**真题侧印证**。
+- **出处**：[阳哥 P3（2022）](https://www.bilibili.com/video/BV1cxrzY9Ea5?p=3)
+
+### 🔴 `endangered` vs `dangerous` —— 方向相反，2022 真题命中
+- **要点**：**`endangered`** = **濒危的**（**它自己**处于危险，数量少）；**`dangerous`** = **危险的**（**让别人**陷入危险，不好接近）。⇒ `a tiger is dangerous`（老虎危险）≠ `a tiger is endangered`（老虎濒危）。**方向是反的**。
+- **关键概念**：`endangered 自己危险`、`dangerous 让别人危险`、`方向相反`
+- **相互关系**：与 `affect / effect` 同属「长得像、方向反」的易混对。
+- **出处**：[阳哥 P3（2022）](https://www.bilibili.com/video/BV1cxrzY9Ea5?p=3)
+
+### 🔴 `certain` 的两义：**某个** vs **确定的**
+- **要点**：`certain` **① 某个**（`in a certain place`，不特指）；**② 确定的**（`It is certain that...` 确定……）。2022 真题用「某个地点」义。⇒ 与 `some` 的「某个」义接近。
+- **关键概念**：`certain = 某个 / 确定的`、`in a certain place`
+- **相互关系**：与地图「补充（娜娜）· 第3讲 冠词与数词」的「确数 / 概数」部分呼应（`certain` 表不确定量）。
+- **出处**：[阳哥 P3（2022）](https://www.bilibili.com/video/BV1cxrzY9Ea5?p=3)
+
+### 🔴 `species` 单复同形 —— 那个 `s` 不是复数
+- **要点**：`species`（物种）**单复数同形**，**末尾的 `s` 必须保留**，它不是复数标记。2022 真题 `rare species`（稀有物种）即此用法。
+- **关键概念**：`species 单复同形`、`s 不是复数`、`rare species`
+- **相互关系**：与地图「补充（娜娜）· 第2讲 名词」的「形单义复 / 形复义单」呼应；本条是**真题实证**。
+- **出处**：[阳哥 P3（2022）](https://www.bilibili.com/video/BV1cxrzY9Ea5?p=3)
+
+### 🔴 2022 语法填空真题考点（逐空还原）
+- **要点**：本套设空：① **`regret doing` vs `regret to do`**（`regret doing` 后悔**做过**的事；`regret to do` 遗憾**要做**的事 —— 2022 真题填 `not doing`，因为「没做运动」**已经发生**）② **`what` 引导表语从句**（`...what I wanted to do`）③ **同位语从句 `that`**（解释前面的抽象名词 `mind`）④ **主谓双宾 `give sb sth` / 形式宾语 `it`**（`give it a try`，`it` 指代前文 `marathon`）⑤ **`wish` + `had done`**（对**过去**的虚拟：`I wish I had run years ago`）⑥ **可数名词不能裸奔**（`a coach`，元音音素前用 **`an`**）⑦ **非谓语过去分词作定语**（`newly published books`）⑧ **谓语过去式**（`joined a group of runners`）⑨ **频度副词**（`regularly`）⑩ **`if` 引导条件状语从句**（`If I wanted to take part in such a race, I had to be willing to try.`）。
+- **关键概念**：`regret doing / to do`、`what 表语从句`、`同位语从句 that`、`形式宾语 it`、`wish + had done`
+- **相互关系**：与 2023 / 2024 两条构成**三年真题考点对照**；其中 `regret doing vs to do` 与地图「补充（娜娜）」的非谓语部分呼应，`wish + had done` 与「虚拟语气」章呼应。
+- **出处**：[阳哥 P3（2022）](https://www.bilibili.com/video/BV1cxrzY9Ea5?p=3)
+
+### 🔴 `regret doing` vs `regret to do` —— 2022 真题第 36 空
+- **要点**：**`regret doing`** = 后悔**已经做过**的事；**`regret to do`** = 遗憾**即将要做**的事（动作**还没发生**）。2022 真题 `I regret not doing exercise for a long time.` ⇒ 「没做运动」**是过去的事实** ⇒ 填 **`not doing`**。⇒ 判据：**看这个动作发生了没有**。
+- **关键概念**：`regret doing 已发生`、`regret to do 未发生`、`看动作发生没`
+- **相互关系**：与 `remember / forget / stop / try` 同属「**接 doing 与 to do 意思不同**」家族；地图「补充（娜娜）· 第8讲」有同类清单。
+- **出处**：[阳哥 P3（2022）](https://www.bilibili.com/video/BV1cxrzY9Ea5?p=3)
+
+### 🔴 `wish` + `had done`：对**过去**的虚拟（2022 真题）
+- **要点**：`wish` 后接从句，**与事实相反**时用虚拟语气：**对现在**用一般过去时；**对过去**用 **`had done`**。2022 真题 `I wish I had run years ago.` ⇒ 「多年以前没跑」是过去事实 ⇒ **`had done`**（填 `had run`）。
+- **关键概念**：`wish + had done`、`对过去的虚拟`、`与事实相反`
+- **相互关系**：与地图「虚拟语气」章、以及「补充（娜娜）· 第12讲 情态动词和虚拟语气」的「愿望类」呼应（娜娜讲的是 `wish` 与 `if` 从句同形）；本条是**真题实证**。
+- **出处**：[阳哥 P3（2022）](https://www.bilibili.com/video/BV1cxrzY9Ea5?p=3)
+
+### 🔴 广东语法填空 = 完形 + 语法的混合题型（全国少有）
+- **要点**：阳哥两次点名：**广东是全国为数不多考「这种题型」的省份** —— 它既要求**读懂文章**（有篇章语境），又要求**把语法选对**。⇒ 复习时不能只练纯语法，**必须带着语篇做**。
+- **关键概念**：`广东特色题型`、`篇章 + 语法`、`不能只练纯语法`
+- **相互关系**：与地图「试卷结构与命题特征」呼应；也解释了为什么广东地图的「题型专项」很重要。
+- **出处**：[阳哥 P3（2022）](https://www.bilibili.com/video/BV1cxrzY9Ea5?p=3)
+
+### 2022 真题高频搭配表
+- **要点**：本套出现且可迁移的搭配：`come up with`（提出）· `keep track of`（跟踪）· `at the very beginning`（最开始）· `except for`（除了……之外）· `in most cases`（在大多数情况下）· `be able to do`（能够）· `come true`（实现，**不及物**）· `be influenced by`（被影响）· `consider A as B`（把 A 当作 B）· `a flock of`（一群）· `be excited about`（对……兴奋）· `be / get used to doing`（习惯于，**to 是介词**）· `make up one's mind`（下决心）· `be willing to do`（乐意）· `take part in`（参加）· `be glad`（高兴）· `as well as`（也）· `in fact`（事实上）· `what if`（要是……怎么办）。
+- **关键概念**：`真题高频搭配（2022）`、`come up with`、`get used to doing`、`make up one's mind`
+- **相互关系**：三张真题搭配表（2022 / 2023 / 2024）合成**语料池**；`take part in` 三年都出现 ⇒ **最高频**。
+- **出处**：[阳哥 P3（2022）](https://www.bilibili.com/video/BV1cxrzY9Ea5?p=3)
+
+### 阅读方法论：题干**划重点信息** → 回文定位（2022 开篇即讲）
+- **要点**：阳哥每套真题开篇都强调同一步：**先根据题干划出重点信息**（人名 / 地名 / 数字 / 专有名词），**再回原文定位**。⇒ 这是三年真题的**统一操作入口**，也是地图「阅读：三步定位法」的**真人版**。
+- **关键概念**：`划题干重点`、`回文定位`、`统一入口`
+- **相互关系**：与 2023 条「定位词优先选专有名词」、2024 条「双读法」构成**完整定位方法论**。
+- **出处**：[阳哥 P3（2022）](https://www.bilibili.com/video/BV1cxrzY9Ea5?p=3)
+
+
+## 补充（真题）· 2023 广东专升本英语真题（阳哥英语）
+
+### 广东卷「列表型阅读」第二次印证 + 定位词优先选专有名词
+- **要点**：2023 真题第一篇仍是**列表型**（Power Station Gym / Leisure Center / Wonder Ladies Club / Joe's Running Club / Papa and Mama Health Fitness 五个并列机构）。题干定位词**优先选专有名词**（`Power Station Gym`、`Joe's Running Club`），因为它们**全文只出现一次、最好定位**。
+- **关键概念**：`列表型阅读`、`专有名词定位`、`唯一出现`
+- **相互关系**：与 2024 条「列表型阅读」是同一条规律的**第二年实证**；与地图「阅读：定位词的选取」直接对应。
+- **出处**：[阳哥 P2（2023）](https://www.bilibili.com/video/BV1cxrzY9Ea5?p=2)
+
+### 同义替换是「少量」而非「全部」—— 但出现时必须认得
+- **要点**：阳哥明说：列表型阅读**以原词复现为主**，**「有的时候也会出现一定程度上的同义替换」**。2023 真题实例：题干 `People over sixty` ⇄ 原文 `welcomes anyone above the age of sixty`（`over` = `above`）；题干问「谁建立的」⇄ 原文 `organized by Joe Smith, a professional running athlete`（`set up` = `organized`）。
+- **关键概念**：`原词复现为主`、`少量同义替换`、`over = above`、`set up = organize`
+- **相互关系**：与 2024 条「同义替换定位」互为补充 —— **不要因为「多数是复现」就放弃认同义替换**。
+- **出处**：[阳哥 P2（2023）](https://www.bilibili.com/video/BV1cxrzY9Ea5?p=2)
+
+### 🔴 易混词对（2023 真题命中）：`skillful` / `skilled` · `lecture` / `speech` · `male` / `female`
+- **要点**：① **`skillful`** 泛指「熟练的」，**`skilled`** 更专业（**经过训练**、有资历）；② **`speech`** 只用嘴说，**`lecture`** 是**带展示的讲座**（可能配图、请嘉宾），专升本考过这组区别；③ **`male` / `female`** 不只指人 —— 凡**能生育的雌性**（动物、昆虫）都能用 `female`，`male` 同理指各种雄性。⇒ 这三组都是「认识但会选错」的词。
+- **关键概念**：`skillful vs skilled`、`lecture vs speech`、`male/female 泛指雌雄`
+- **相互关系**：与 2024 条「熟词僻义」同属**词义精细度**考点，是真题批的固有价值。
+- **出处**：[阳哥 P2（2023）](https://www.bilibili.com/video/BV1cxrzY9Ea5?p=2)
+
+### 🔴 `charge` 的多义与 `free of charge`
+- **要点**：`charge` 一词多义、多词性：**动词** = 收费 / 指控 / 充电 / 负责；**名词** = 手续费 / 服务费。固定搭配 **`free of charge` = 免费**（2023 真题原文出现）。⇒ 记住搭配比记住单词义项更划算。
+- **关键概念**：`charge 多义`、`free of charge = 免费`、`搭配优先`
+- **相互关系**：与「熟词僻义」条同源；`free of charge` 是**可迁移的真题搭配**。
+- **出处**：[阳哥 P2（2023）](https://www.bilibili.com/video/BV1cxrzY9Ea5?p=2)
+
+### 🔴 `appeal to sb for sth`：广东语法填空与阅读都考的搭配
+- **要点**：`appeal` 作动词 = **吸引 / 呼吁**。搭配 **`appeal to sb for sth`** = 「因某事向某人呼吁」。阳哥点名：**广东的语法填空也要考这个搭配**。
+- **关键概念**：`appeal to sb for sth`、`appeal = 吸引 / 呼吁`
+- **相互关系**：是**动词 + 介词搭配**类的典型，与地图「介词」章的「动词 + 介词固定搭配」呼应。
+- **出处**：[阳哥 P2（2023）](https://www.bilibili.com/video/BV1cxrzY9Ea5?p=2)
+
+### 🔴 不可数名词清单（2023 真题集中出现）：`information` / `equipment` / `knowledge` / `advice` / `bread` / `underwear` / `scenery` / `furniture` 类
+- **要点**：2023 真题原文连续出现 `information`、`equipment`、`knowledge`、`advice`、`bread`、`underwear`、`scenery` 等**不可数名词** —— 它们**不加 s、不加 a/an**。⇒ 语法填空的「可数 / 不可数」判断是**有提示词空**的常见设点（易易框架里标星的 `*名词：单数-复数`）。
+- **关键概念**：`不可数名词`、`不加 s 不加 a/an`、`information / equipment / advice`
+- **相互关系**：与地图「补充（娜娜）· 第2讲 名词」的「不可数三分类（集合 / 物质 / 抽象）」**完全对应**；本条是真题侧的集中印证。
+- **出处**：[阳哥 P2（2023）](https://www.bilibili.com/video/BV1cxrzY9Ea5?p=2)
+
+### 🔴 `experience` 与 `ability` 的可数 / 不可数分界
+- **要点**：**`experience`** —— 指「**经历**」时**可数**（`a different reading experience`），指「**经验**」时**不可数**。**`ability`** —— **可数**（多种能力写 `abilities`，复数变 `-ies`）。⇒ 这两个词是语法填空「名词单复数」的常客。
+- **关键概念**：`experience 经历可数 / 经验不可数`、`ability 可数`、`abilities`
+- **相互关系**：与上一条「不可数清单」互补 —— 那两个是**永远不可数**，这两个是**看意思定**。
+- **出处**：[阳哥 P2（2023）](https://www.bilibili.com/video/BV1cxrzY9Ea5?p=2)
+
+### 🔴 `alternative` vs `alternate` —— 长得像，意思完全不同
+- **要点**：**`alternative`** 名词 = **替代品**、形容词 = 替代的；**`alternate`** 形容词 = **交替的**（`every alternate day` 每隔一天）。⇒ 2023 真题出现 `alternatives`（实验不同方案），不要与「交替」混。
+- **关键概念**：`alternative = 替代`、`alternate = 交替`、`every alternate day`
+- **相互关系**：与 `affect / effect`、`lack` 同属「形近 / 同源易混」家族。
+- **出处**：[阳哥 P2（2023）](https://www.bilibili.com/video/BV1cxrzY9Ea5?p=2)
+
+### 🔴 `surroundings` 作名词必须带 `s`
+- **要点**：`surroundings` 作**名词**（周围环境）时**必须带 `s`**，不能写 `surrounding`。2023 真题 `get close to nature surroundings`、完形 `exploring new surroundings` 都是名词带 `s` 的用法。
+- **关键概念**：`surroundings 必带 s`、`名词 vs 分词`
+- **相互关系**：与「不可数 / 可数」条同属**名词形态**考点；`surrounding` 单独用时是分词。
+- **出处**：[阳哥 P2（2023）](https://www.bilibili.com/video/BV1cxrzY9Ea5?p=2)
+
+### 完形填空：靠**上下文复现**定词（2023 真题）
+- **要点**：2023 完形（志愿者走森林的实验）—— 空格处填 `forest` / `a different forest`，依据是**后文复现**（`walk around the same forest`、`explore a different forest`）。⇒ **先往后读一句**，答案常在后文原样出现。
+- **关键概念**：`上下文复现`、`先往后读一句`、`forest`
+- **相互关系**：与 2024 条「同义呼应（study ↔ research）」是同一条方法的两种形态（**复现** vs **同义**）。
+- **出处**：[阳哥 P2（2023）](https://www.bilibili.com/video/BV1cxrzY9Ea5?p=2)
+
+### 完形填空：**抽象语境选抽象词**（2023 真题 `new world → way`）
+- **要点**：2023 完形最难的一空是 `find his ___ in the new world` —— 上下文全是抽象表述（`new world`），所以只能选**同样抽象**的 `way`，不能选 `friend` / `club` 这类**具体**名词。⇒ 判据：**空格的语义层级要与上下文对齐**。
+- **关键概念**：`抽象配抽象`、`语义层级对齐`、`new world → way`
+- **相互关系**：是完形填空里**最难也最容易被忽略**的一条；与「排除法」互补。
+- **出处**：[阳哥 P2（2023）](https://www.bilibili.com/video/BV1cxrzY9Ea5?p=2)
+
+### 选句填空：**段首句是段落总起**，先做确定的空
+- **要点**：2023 真题选句填空 —— 空格出现在**段首**，该句往往是**本段总起 / 总结**。实例：段首 `Everyday there are news and sports websites...` ⇒ 该段讲「信息到处都是」⇒ 填 `Information overload is everywhere in our life.`。⇒ **短时间判不出就先跳过**，用排除法**先把确定的空做掉**，剩下的自然收窄。
+- **关键概念**：`段首=总起`、`先做确定的空`、`排除法收窄`
+- **相互关系**：与 2024 条「选句填空三条铁律」互补（那边讲**怎么填**，这边讲**卡住怎么办**）。
+- **出处**：[阳哥 P2（2023）](https://www.bilibili.com/video/BV1cxrzY9Ea5?p=2)
+
+### 🔴 2023 语法填空真题考点（逐空还原）
+- **要点**：本套设空：① **`since` 引导时间状语从句 + 主句现在完成时**（`It has been several months since I arrived...`；且 `In such a short period of time` 再作完成时佐证）② **形式主语 `it`**（`...how important it is to have good people...` —— 空格处填 `it`，真主语是后面的不定式）③ **`make a difference`**（`difference` **可数**，必须加 `a`）④ **定语从句 `which / that` 指物**（`a place ___ was mine`）⑤ **不定式表目的**（`find a place to live in`）⑥ **现在分词作定语 / 形容词**（`exciting` 令人激动的，与 `excited` 相对）⑦ **副词修饰动词**（`homesickness gradually set in`）⑧ **名词 → 形容词**（`a powerful...`）⑨ **可数名词复数**（`more than a few nights`）⑩ **动名词并列**（`after making friends and spending time...`）。
+- **关键概念**：`since + 完成时`、`形式主语 it`、`make a difference`、`不定式表目的`、`excited vs exciting`
+- **相互关系**：与 2024 条「语法填空真题考点」构成**两年对照**；`since` 与 `so far` 同属时间标志词。
+- **出处**：[阳哥 P2（2023）](https://www.bilibili.com/video/BV1cxrzY9Ea5?p=2)
+
+### 🔴 `-ed` 与 `-ing` 形容词的分工：`-ed` 修饰人（感到），`-ing` 修饰物（令人）
+- **要点**：2023 语法填空明考 —— 「**人感到**激动」用 `excited`，「**令人**激动」用 `exciting`。判据：**看被修饰的是人还是物 / 事**。
+- **关键概念**：`-ed 人感到`、`-ing 令人`、`excited vs exciting`
+- **相互关系**：与地图「补充（娜娜）· 第5讲 形容词与副词」的分词形容词呼应；本条是**真题实证**。
+- **出处**：[阳哥 P2（2023）](https://www.bilibili.com/video/BV1cxrzY9Ea5?p=2)
+
+### 🔴 `spend time (in) doing sth` —— 广东考过的固定搭配
+- **要点**：`spend time (in) doing sth`（花时间做某事）—— **`in` 常被省略**，但**后面一定是 `doing`**。2023 真题原文即此结构，阳哥点名「**广东也是考过的**」。
+- **关键概念**：`spend time (in) doing`、`in 省略但 doing 不能变`
+- **相互关系**：与地图「补充（娜娜）· 第8讲 谓语与非谓语」的「非谓语固定搭配」呼应。
+- **出处**：[阳哥 P2（2023）](https://www.bilibili.com/video/BV1cxrzY9Ea5?p=2)
+
+### 2023 真题高频搭配表
+- **要点**：本套出现且可迁移的搭配：`meet one's needs`（满足某人需求，**五角星级**）· `take a walk`（散步）· `be impressed by`（被……留下深刻印象；主动式 `impress sb with sth`）· `make it possible for sb to do sth`（使某人做某事成为可能）· `get close to`（接近）· `be suited to` / `be suitable for`（适合）· `be matched to`（与……相配）· `be extended to`（延伸到）· `instead of` / `rather than`（而不是，两者同义）· `at fault`（有错，**追责义**）· `go through`（经历，≈ `experience`）· `be beneficial for`（对……有益）· `make sense`（有意义）· `take responsibility`（承担责任）· `seize an opportunity`（抓住机会）· `be equipped with`（配备有）· `free of charge`（免费）· `appeal to sb for sth`。
+- **关键概念**：`真题高频搭配（2023）`、`meet one's needs`、`be matched to`、`be beneficial for`
+- **相互关系**：与 2024 条「真题高频搭配表」合成**两年语料**；两张表**重合部分**（如 `be connected to`）即为高频。
+- **出处**：[阳哥 P2（2023）](https://www.bilibili.com/video/BV1cxrzY9Ea5?p=2)
+
+### 作文：广东**近若干年一直考书信**
+- **要点**：阳哥明确：**广东作文最近几年一直是写书信**，且总体难度不大。⇒ 备考重点 = **攒够书信模板**；有余力再练其他题材**以防出题变化**。
+- **关键概念**：`书信作文`、`模板`、`防变题`
+- **相互关系**：与地图「写作：邮件格式与基本要求」呼应（同一文体的两面）。
+- **出处**：[阳哥 P2（2023）](https://www.bilibili.com/video/BV1cxrzY9Ea5?p=2)
+
+
+## 补充（真题）· 2024 广东专升本英语真题（阳哥英语）
+
+### 广东卷第一篇阅读固定为「列表型」：列几个地方 / 条例，逐条找答案
+- **要点**：广东卷**第一篇阅读常年是「分类列表型」** —— 原文把 4 个地点（或 4 个条例）并列列出，每处各带若干特点，题干逐个问「某处能做什么 / 适合谁 / 谁建的 / 目标客户是谁」。这类题**答案几乎都是原词复现**，用定位法最好做，属**必拿满分**的题。2022 / 2023 / 2024 三年**连续印证**。
+- **关键概念**：`列表型阅读`、`逐条定位`、`原词复现`、`广东特色题型`
+- **相互关系**：是地图「阅读：三步定位法」的**广东落地版** —— 定位法在列表型阅读里效率最高。
+- **出处**：[阳哥 P1（2024）](https://www.bilibili.com/video/BV1cxrzY9Ea5?p=1)
+
+### 定位的核心：题干词不在原文时，找它的**上位词 / 同义替换**
+- **要点**：题干与原文不总是同一批词。2024 真题实例：题干问 `People who have a dog`，原文**根本没出现 `dog`**，只出现 `pet friendly`（宠物友好）—— 靠 **dog ⇒ pet** 的上位关系命中。⇒ 复习时要把「同义替换」当成阅读的**主考点**，而不是偶发技巧。
+- **关键概念**：`同义替换`、`上位词`、`dog ⇒ pet friendly`
+- **相互关系**：与地图「阅读：题型分类与解题（正确选项的核心特征是同义替换）」是同一条；本条给出**真题实证**。
+- **出处**：[阳哥 P1（2024）](https://www.bilibili.com/video/BV1cxrzY9Ea5?p=1)
+
+### 主旨题靠「段落分工」反推：一段发现 → 二段影响 → 三段发起行动
+- **要点**：2024 真题第二篇（缺窗户的教室）主旨题，正确选项落在「有树的天花板让学生受益」。判法是**先给段落分工**：第 1 段**发现问题**（教室缺窗、学生受影响）→ 第 2 段**说明影响**（研究显示注意力变短）→ 第 3 段**发起行动**（发起 Green Classroom 公益项目）。⇒ 选项只要**只覆盖一段**（如「老师用天花板教课」「老师装饰教室」），就不是主旨。
+- **关键概念**：`段落分工`、`只覆盖一段的不是主旨`、`首段=总起`
+- **相互关系**：与地图「阅读：命题规律」的「每篇必考一道主旨题」互补 —— 本条给**主旨题的判法**。
+- **出处**：[阳哥 P1（2024）](https://www.bilibili.com/video/BV1cxrzY9Ea5?p=1)
+
+### 选句填空（七选五）三条铁律：先读完 5 个选项 · 首段首二句定主旨 · 填入后回读验证
+- **要点**：① 遇到**第一个空就先把 5 个选项全读完**，能选就直接填；② **第一段第一、二句必读** —— 它交代全文主旨（2024 真题首二句 `It is well established that eating vegetables is good for us...` 直接定「为什么有人爱、有人不爱吃蔬菜」）；③ **填进去之后必须回读一遍验证**。
+- **关键概念**：`先读完选项`、`首段首二句定主旨`、`回读验证`
+- **相互关系**：是地图「阅读：三步定位法」在选句填空上的**操作细则**。
+- **出处**：[阳哥 P1（2024）](https://www.bilibili.com/video/BV1cxrzY9Ea5?p=1)
+
+### 🔴 选句填空 / 完形填空的「新概念先排除」原则
+- **要点**：某选项若带来一个**上文从未出现过的具体概念**（2024 真题里的 `the videos`、`children`），**在上文提到它之前不能选**。做法是：**先划掉**，继续往下读，**等原文出现该词再回头验证**（2024 真题读到 `They asked 200 college students to watch videos of...` 时，`the videos` 才成立）。⇒ 这条把「凭感觉选」变成「有闸门地选」。
+- **关键概念**：`新概念先排除`、`等原文出现再回头`、`videos / children`
+- **相互关系**：是完形填空与选句填空**共用的排除法**，与地图「完形填空：判断依据与排除法」互补。
+- **出处**：[阳哥 P1（2024）](https://www.bilibili.com/video/BV1cxrzY9Ea5?p=1)
+
+### 完形填空：靠「同义词呼应」锁定 —— `the research` 暗示前文应有 `study`
+- **要点**：空格前后的**冠词与同义词**是硬线索。2024 真题：下文出现 **`the research`**（特指，说明前文提过「一个研究」）⇒ 空格处应填含 **`a new study`** 的选项（`study` 与 `research` 同义呼应）。⇒ 看到 `the + 名词` 就要想「它前面被提到过没有」。
+- **关键概念**：`同义呼应`、`the + 名词暗示前文`、`study ↔ research`
+- **相互关系**：是完形填空「语篇线索」的**具体抓手**，与地图「完形填空：打包做题与语篇线索」呼应。
+- **出处**：[阳哥 P1（2024）](https://www.bilibili.com/video/BV1cxrzY9Ea5?p=1)
+
+### 🔴 熟词僻义（2024 真题命中）：`book` / `launch` / `process` / `track` / `land` / `share` / `perform`
+- **要点**：2024 真题正文反复出现的**一词多义**：`book` 除「书」外作**及物动词=预订**；`launch` 除「发射」外=**发起**（launch a program）；`process` 名词=**过程**、动词=**加工**；`track` 除「铁轨」外=**追踪**；`land` =**农田 / 土地**；`share` 除「分享」外=**共同爱好**；`perform` 除「表演」外=**表现**（students perform better）。⇒ 专升本阅读失分**多在这些「认识的词、不认识的意思」**。
+- **关键概念**：`熟词僻义`、`book=预订`、`launch=发起`、`perform=表现`
+- **相互关系**：与地图「词法」的「一词多义」呼应；是真题批**最该进地图**的一类（不是生词，是熟词）。
+- **出处**：[阳哥 P1（2024）](https://www.bilibili.com/video/BV1cxrzY9Ea5?p=1)
+
+### 🔴 `affect`（动词）vs `effect`（名词）—— 专升本只考这一条分界
+- **要点**：`affect` 是**动词**，意为「影响」；`effect` 专升本**只需记名词**，意为「效果 / 影响」。⇒ 句子里缺谓语就用 `affect`，缺名词就用 `effect`。2024 真题 `...lack of windows affect children's mental health` 用的正是动词 `affect`。
+- **关键概念**：`affect 动词`、`effect 名词`、`缺谓语 vs 缺名词`
+- **相互关系**：是「词性转换」考点的**高频陷阱对**，与地图「补充（易易）· 语法填空考点」呼应。
+- **出处**：[阳哥 P1（2024）](https://www.bilibili.com/video/BV1cxrzY9Ea5?p=1)
+
+### 🔴 `lack` 的两副面孔：及物动词 `lack sth` vs 名词 `lack of sth`
+- **要点**：`lack` 作**及物动词**时**直接接名词**（`The village lacks water.`）；作**名词**时必须用 `lack of + 名词`（`suffer from lack of water`）。⇒ **`lack of` 里的 `lack` 是名词**，不是动词。2024 真题出现 `lack of windows`。
+- **关键概念**：`lack sth（动词）`、`lack of sth（名词）`、`suffer from lack of`
+- **相互关系**：与 `affect / effect` 同属「同源词两副面孔」，是语法填空**无提示词空**的常见考点。
+- **出处**：[阳哥 P1（2024）](https://www.bilibili.com/video/BV1cxrzY9Ea5?p=1)
+
+### 🔴 `so far` 必须与现在完成时搭配（2024 真题）
+- **要点**：`so far`（迄今为止）是**现在完成时的标志词** —— 见到它就往 `have / has done` 上想。2024 真题 `...so far, 10 schools...` 后接现在完成时。
+- **关键概念**：`so far → 现在完成时`、`时间标志词`
+- **相互关系**：与地图「时态」章的「时间标志词定时态」呼应（同类：`since` / `already` / `yet` / `recently`）。
+- **出处**：[阳哥 P1（2024）](https://www.bilibili.com/video/BV1cxrzY9Ea5?p=1)
+
+### 2024 真题高频搭配表（阅读 + 完形 + 语法填空）
+- **要点**：本套真题原文与题干里出现、且**可迁移**的搭配：`be seen as`（被看作）· `take part in`（参加，后接活动）· `make a reservation`（预约，≈ `book` / `reserve`）· `get an insight into`（洞察，略超纲）· `be connected to`（与……有联系）· `figure out`（弄清楚）· `carry out`（实施，偏正式）· `long for`（渴望，**熟词僻义**，`long` 是动词）· `make it`（成功做到）· `be determined to do`（下决心）· `succeed in doing`（在……成功，**`succeed` 不及物，必须加 `in`**）· `remind sb of sth` / `remind sb that...`（提醒）· `name A after B`（以 B 命名 A）· `make a difference`（起作用）· `end up doing`（以……告终）· `set out to do`（着手做）· `apply to`（适用于）· `regardless of`（不管）· `due to`（因为，≈ `because of`，**只接名词**）· `be responsible for`（对……负责）· `play a part`（起作用）。
+- **关键概念**：`真题高频搭配`、`succeed in doing`、`long for`、`remind sb of sth`
+- **相互关系**：是地图**首条「真题原文搭配」汇总**；与「题型专项」的语法侧互补。
+- **出处**：[阳哥 P1（2024）](https://www.bilibili.com/video/BV1cxrzY9Ea5?p=1)
+
+### 2024 语法填空真题考点（逐空还原）
+- **要点**：本套语法填空的**设空类型**：① **非限制性定语从句** `which`（指代前面整个名词）② **过去分词作后置定语**（`named after...`，被动）③ **形容词 → 副词**（`deep → deeply` 修饰动词 `connected`）④ **系动词后接形容词**（`feel tired`，不是 `tiring`）⑤ **反身代词**（`remind myself`，主语宾语同一人）⑥ **可数名词不能裸奔**（`member → members`，且当地社区是多人）⑦ **冠词 `an`**（`an annual charity event`，元音音素前）⑧ **`succeed in doing`** 补介词 `in`。
+- **关键概念**：`非限制性 which`、`过去分词作定语`、`形→副`、`系动词后形容词`、`反身代词`、`可数名词不裸奔`、`a/an`
+- **相互关系**：与地图「补充（易易）· 语法填空考点框架」的星号清单**逐条对得上**；本条是它的**真题实证（2024）**。
+- **出处**：[阳哥 P1（2024）](https://www.bilibili.com/video/BV1cxrzY9Ea5?p=1)
+
+### 阅读方法论：原文复现的「双读法」—— 读原文或读选项都行
+- **要点**：阳哥给的操作：列表型阅读不必先通读全文，**要么读原文该条、要么直接读选项**，两边对照找**原词复现**即可。⇒ 这条降低了列表型阅读的时间成本，也解释了为什么它「特别好拿分」。
+- **关键概念**：`双读法`、`选项 ⇄ 原文对照`、`原词复现`
+- **相互关系**：是「列表型阅读」的**操作细则**，与地图「阅读：三步定位法」呼应。
+- **出处**：[阳哥 P1（2024）](https://www.bilibili.com/video/BV1cxrzY9Ea5?p=1)
+
+
+## 补充（真题）· 2025 广东专升本英语真题（简言英语）
+
+### 🔴 广东第一篇阅读 = 「列表型」第四次印证，且给出**题型反推法**
+- **要点**：2025 第一篇仍是**列表型** —— 四个小标题职业（`pet psychologist` 宠物心理学家 / `dog trainer` 训狗师 / `plane painter` 飞机喷漆工 / `test sleeper` 睡眠测评师）+ 一个**引入段** + 一个**结尾段**，共出五题。⇒ 与 2022–2024 三年构成**四年证据链**。
+- **关键概念**：`列表型阅读`、`四年印证`、`四小标题+引入段+结尾段`
+- **相互关系**：延续 `_add-zhenti-yang.md` 的「广东第一篇 = 分类列表型」；本条把它从「现象」升为**结构公式**。
+- **出处**：[简言 P1（2025）](https://www.bilibili.com/video/BV11dHvz7Epz?p=1)
+
+### 🔴 题型反推法：**四个小标题各出一题，第一题必落剩下的那个**
+- **要点**：列表型的出题**统筹全文** —— 每个大段都要考你一个题，不会集中考一两段。2025 五题里：第 2 题考 `dog trainer`、第 3 题还考 `dog trainer`、第 4 题考 `plane painter`、第 5 题考 `test sleeper` ⇒ **第 1 题（`If a cat is depressed, who should its owner turn to?`）只能落 `pet psychologist`**。⇒ 即使 `psychologist` / `depressed` 都不认识，也能**靠「其余题已占掉三题」反推出答案**。
+- **关键概念**：`题型反推定位法`、`四题占三推剩下`、`考场蒙题也有据`
+- **相互关系**：这是**列表型阅读的杀手锏**，比「跨段重复词找共同点」（阳哥 2022）更靠前一步 —— 一条用在**做题前**，一条用在**做题中**。
+- **出处**：[简言 P1（2025）](https://www.bilibili.com/video/BV11dHvz7Epz?p=1)
+
+### 🔴 `charge` 的三义：**收费 / 掌管 / 充电**（2025 真题命中「收费」）
+- **要点**：`charge` ① **收费**（2025 真题 `Freelancers typically charge $50–100 an hour`）② **掌管 / 负责**（`in charge of`）③ **充电**（加 `r` 成 `charger` = 充电器）。⇒ 一词三义，靠语境定。
+- **关键概念**：`charge = 收费 / 掌管 / 充电`、`charger 充电器`
+- **相互关系**：与阳哥批的 `tough` / `lead` / `certain` 同属「**一词多义靠语境**」家族；本条是 2025 侧新增。
+- **出处**：[简言 P1（2025）](https://www.bilibili.com/video/BV11dHvz7Epz?p=1)
+
+### 🔴 同义替换（2025 真题）：`obey instructions` ⇄ `follow simple orders`
+- **要点**：题干 `To obey instructions`（听从指令）⇄ 原文 `teaching puppies to follow simple orders`。替换是**双重的**：`obey ⇄ follow`（遵循）+ `instructions ⇄ orders`（指令 / 命令）。⇒ **一道题同时换两个词**，只认识一个不够。
+- **关键概念**：`obey = follow`、`instruction = order`、`双重同义替换`
+- **相互关系**：与阳哥批 2022（`smash → break`）/ 2024 的同义替换条构成**真题替换序列**；本条升级为「**一处两换**」。
+- **出处**：[简言 P1（2025）](https://www.bilibili.com/video/BV11dHvz7Epz?p=1)
+
+### 🔴 原词复现定位：`polish` 直接命中「主要责任」
+- **要点**：第 4 题问飞机喷漆工的 `main responsibility`，原文 `specialize in **polishing** aircraft surfaces` ⇒ **`polish` 原词复现**，直接选它。⇒ 定位题里**「原词复现」是最省力的信号**，但要注意 `touch up`（修补 / 润色设计 logo）≠ `design`（设计）—— **不能选 design**，他只是修补别人的设计。
+- **关键概念**：`原词复现定位`、`polish 抛光`、`touch up 修补/润色 ≠ design`
+- **相互关系**：与地图「阅读：三步定位法」呼应；`touch up` 与娜娜「动词短语」章可挂靠。
+- **出处**：[简言 P1（2025）](https://www.bilibili.com/video/BV11dHvz7Epz?p=1)
+
+### 🔴 插入语 / 并列成分：**「看一个就行」**
+- **要点**：遇到**两个逗号夹一段**或**两个破折号夹一段**的插入语，`可以先不看`；遇到**并列成分**（如三份兼职 `tutoring / cafeteria shift / freelance graphic design`），`看一个就行`。⇒ 插入语与并列成分**不可能是句子主要成分**，略过不影响做题。
+- **关键概念**：`插入语略读`、`并列成分看一个`、`逗号/破折号夹心`
+- **相互关系**：与娜娜「第 14 讲 句子成分」的插入语部分呼应；本条给的是**考场操作口径**。
+- **出处**：[简言 P1（2025）](https://www.bilibili.com/video/BV11dHvz7Epz?p=1)
+
+### 🔴 `keep pace with` 与 `make every minute count`（2025 真题金句）
+- **要点**：`keep pace with` = **跟上（步伐）**（原文 `hand-copying notes from classmates to keep pace with them`）；`make every minute count` = **让每一分钟都有价值**（原文 `It wasn't about having more hours, but about making every minute count.`）。⇒ 后半句是**时间管理主题的标准金句**，写作可直接用。
+- **关键概念**：`keep pace with`、`make every minute count`、`count = 值得算数`
+- **相互关系**：与娜娜「第 6 讲 介词」的 `with` 搭配呼应；`make ... count` 是**写作高分句型**。
+- **出处**：[简言 P1（2025）](https://www.bilibili.com/video/BV11dHvz7Epz?p=1)
+
+### 🔴 2025 真题「拿奖之后」三词：`resilience` · `extend a job offer` · `out of poverty`
+- **要点**：① `resilience` = **韧性 / 适应力**（科技巨头 `impressed by his resilience`）；② `extend` 常见义「延长」，此处 = **提供 / 给出**（`extended a job offer` = 给了个 offer）；③ `out of poverty` = **脱贫**（`a sum that would lift his family out of poverty`）。⇒ 第 9 题选 `get a job offer`，**不能选 `achieve financial independence`** —— 原文只是「这份薪水**能让他家脱贫**」，**没说**他接没接受，说成事实就是**过度推断**。
+- **关键概念**：`resilience 韧性`、`extend = 提供`、`out of poverty 脱贫`、`不能过度推断`
+- **相互关系**：与 `charge` 同属「**熟词僻义 / 熟词新义**」；「不能过度推断」与阳哥批 2023 的「选项强度题」呼应。
+- **出处**：[简言 P1（2025）](https://www.bilibili.com/video/BV11dHvz7Epz?p=1)
+
+### 🔴 标题题落脚点判断：**看「成长的硕果」还是「成长的代价」**
+- **要点**：第 10 题标题题四选项：`cost of the growth`（成长的代价）/ `competition for dream jobs` / `the journey to a national award` / `balance between study and passion`。判法：全文他**拿到了国奖 + 好工作 + 高薪** ⇒ 落脚点是**硕果**不是**代价** ⇒ 选 `the journey to a national award`。⇒ 标题题**先看落脚点（褒贬方向）**，再看覆盖面。
+- **关键概念**：`标题题落脚点`、`硕果 vs 代价`、`覆盖面 + 褒贬方向`
+- **相互关系**：与阳哥批 2024 的「标题题以偏概全排除」呼应；本条补充**褒贬方向**这一维。
+- **出处**：[简言 P1（2025）](https://www.bilibili.com/video/BV11dHvz7Epz?p=1)
+
+### 🔴 广东 C 篇「散」的特征 + `universal` 词汇题
+- **要点**：2025 第三篇（幸福排名）**结构很散** —— 全文只是**罗列数据与调查**，没有严谨结构、没有明确结论（很像从国外报告 / 期刊截一段）。⇒ 处理方式：**具体定位即可，别硬找中心思想**；本篇建议**精读**。第 12 题是**词汇题**（`universal` 在第三段的意思）：词汇题**出题词必是超纲词**（`universe` 表「宇宙」，`universal` 在此 = **普世的**）⇒ 不认识就靠**上下文**：`It isn't a universal standard` 承接前文「借用经济标准衡量幸福」⇒ 意思是「**不是对所有情况都适用的标准**」。
+- **关键概念**：`散结构文章`、`只定位不找中心`、`词汇题必超纲`、`universal = 普世的`
+- **相互关系**：与地图「阅读：题型分类」的主旨题章**反向互补**（有主旨在的用主旨题法，没主旨在的用定位法）。
+- **出处**：[简言 P1（2025）](https://www.bilibili.com/video/BV11dHvz7Epz?p=1)
+
+### 🔴 `WEIRD` 概念 —— 幸福定义的「西方偏见」
+- **要点**：原文 `the concept of happiness ... may suffer from a western bias ... one common in societies that social scientists refer to as **WEIRD**`。`WEIRD` = **W**estern（西方的）+ **E**ducated（受过教育的）+ **I**ndustrialized（工业化的）+ **R**ich（富有的）+ **D**emocratic（民主的）。⇒ 这个概念**不必翻译**，**保留原文更好**；考点是「幸福定义带**文化偏见**」。
+- **关键概念**：`WEIRD 五要素`、`western bias`、`文化偏见`
+- **相互关系**：与娜娜「第 1 讲 词汇 / 文化背景」呼应；是**专有名词不译**原则的实例。
+- **出处**：[简言 P1（2025）](https://www.bilibili.com/video/BV11dHvz7Epz?p=1)
+
+### 🔴 「梯子问题」—— 0 到 10 阶测幸福（2025 真题原题法）
+- **要点**：幸福报告靠**一个单一问题**：`Please imagine a ladder with steps numbered from **zero at the bottom to ten at the top** ... Which step would you say you personally feel you stand at this time?` ⇒ 芬兰受访者平均 `just below the eighth`，美国受访者 `roughly one rung lower`（≈ 第七级，排第 23 位）。⇒ 这是**国际幸福指数的原始测法**，见到 `ladder / step / rung / score` 就指这个。
+- **关键概念**：`梯子问题`、`0–10 阶`、`just below the eighth`、`rung 梯级`
+- **相互关系**：与「第 14 题 main criticism」同属本篇；`rung` 是**易忽略的生词**（梯级）。
+- **出处**：[简言 P1（2025）](https://www.bilibili.com/video/BV11dHvz7Epz?p=1)
+
+### 🔴 `GDP = gross domestic product` 与 `measure` 的名词义
+- **要点**：① `GDP` 全称 **`gross domestic product`**（`gross` 总的 / 毛的 + `domestic` 国内的 + `product` 产品）② `measure` 此处**不是「测量」而是「指标」**（`beyond economic measures like GDP` = 超越像 GDP 这样的经济指标）。⇒ `measure` 的名词义「**措施 / 指标**」比动词义更常考。
+- **关键概念**：`GDP 全称`、`measure = 指标/措施（名词）`、`beyond 超越`
+- **相互关系**：与娜娜「第 2 讲 名词」的**一词多性**呼应；`measure` 是典型「**名动不同义**」。
+- **出处**：[简言 P1（2025）](https://www.bilibili.com/video/BV11dHvz7Epz?p=1)
+
+### 🔴 `critical` 双义 ⇒ **作者态度题慎选 `critical`**
+- **要点**：`critical` ① **批判的** ② **重要的 / 关键的**。第 15 题问**作者**对幸福排名的态度，正确答案是 `objective`（客观的）。⚠️ 陷阱：文中**别人**（宏观心理学家 K、人格与文化心理学家 MJ）态度都是**批判的**，容易顺手选 `critical`。**两条判据**：① 分清**作者态度 ≠ 文中他人态度**；② `critical` 有「重要的」义 —— 作者写了这篇文章就说明他认为这事**重要**，**不可能是「不重要的」**，所以选 `critical` 要**非常确定**才选。
+- **关键概念**：`critical 双义`、`作者态度 vs 他人态度`、`objective 客观`
+- **相互关系**：与阳哥批 2024 的「作者态度题」呼应；本条补上**双义词陷阱**这一层。
+- **出处**：[简言 P1（2025）](https://www.bilibili.com/video/BV11dHvz7Epz?p=1)
+
+### 🔴 五选五两招：**祈使句作段首** + **`also` 暗示前文有同类发现**
+- **要点**：① 段首空缺（第 20 题）⇒ 短**祈使句**最适合（`What you do shapes how you feel` 你做什么就塑造你的感受）；七选五还会给你**两个候选标题**挑一个，五选五没有。② `Research**ers also** found that...` 里的 `also` ⇒ **前面一定已出现同类研究发现**；配合 `even being away one night`（程度递进）与上文的 `a short escape`（短暂逃离）严丝合缝 ⇒ 第 16 题选它。③ `After collecting data from participants, Tim Bush analyzed it carefully` 承接「研究 → 分析数据 → 出结果」的**时序**。
+- **关键概念**：`祈使句作段首`、`also 暗示前文同类`、`时序链定位`
+- **相互关系**：与地图「五选五 / 七选五」章呼应；`also` / `even` 是**逻辑连接词定位法**的实例。
+- **出处**：[简言 P1（2025）](https://www.bilibili.com/video/BV11dHvz7Epz?p=1)
+
+### 🔴 完形：非谓语 `living` 的判断（逗号 + 无连词 ⇒ 非谓语；主动 ⇒ ING）
+- **要点**：`...leaving their house and returning here someday, **living** with them`。判据三步：① 一个句子**只能有一个谓语**；② 若又出现动词而**没有连词（and / but）连接**，则**只能是非谓语**；③ 看主被动 —— 小猫「**主动**离开房子」⇒ 用 **ING**。⇒ 第 33 题只能选 `living`（伴随状语）。
+- **关键概念**：`一主一谓`、`无连词则非谓语`、`主动用 ING`
+- **相互关系**：与娜娜「第 8 讲 谓语与非谓语」**完全一致**；本条是**真题侧实证**。
+- **出处**：[简言 P1（2025）](https://www.bilibili.com/video/BV11dHvz7Epz?p=1)
+
+### 🔴 完形 `run away` vs `take away` / `put away` / `give away`
+- **要点**：`take away` **拿走** / `put away` **收好** / `give away` **赠送** / `run away` **跑开**。2025 真题（小猫随夫妇南下旅行，旅途结束后要回主人家）⇒ 只能是 `run away`（跑开）。⇒ 四个 `away` 短语**只有 `run` 含「跑」** —— 生词也不用怕。
+- **关键概念**：`run away 跑开`、`take/put/give away 三兄弟`、`动词词根定意`
+- **相互关系**：与娜娜「动词短语」章呼应；本条强调**词根辨义**比死记更稳。
+- **出处**：[简言 P1（2025）](https://www.bilibili.com/video/BV11dHvz7Epz?p=1)
+
+### 🔴 语法填空第一铁律：**无提示词、光一条横线 ⇒ 只能填「介词 / 连词 / 冠词」**
+- **要点**：`...responded to **___** call about an accident.` 该空**没给提示词**（就一条横线）⇒ 候选只有三类：**介词 / 连词 / 冠词**。逐项排除：**连词**要连接相同成分（前后不可并列 ⇒ 排除）；**介词**（`to` 已经有了 ⇒ 排除）；只剩**冠词**，`call` 是辅音音素开头 ⇒ **`a call`**（可数名词**不能裸奔**）。
+- **关键概念**：`无提示词=介词/连词/冠词`、`可数名词不裸奔`、`a call`
+- **相互关系**：与娜娜「第 3 讲 冠词与数词」+ 阳哥 2022「可数名词不能裸奔」**三方印证**；本条给出**完整排除流程**。
+- **出处**：[简言 P1（2025）](https://www.bilibili.com/video/BV11dHvz7Epz?p=1)
+
+### 🔴 语法填空：**副词修饰整句** + **`was wearing` 过去进行（直接引语）**
+- **要点**：① `**___** (fortunate), the boy and his mother were unharmed.` ⇒ 空在**逗号之间 / 句首**、后面是一个**完整句子** ⇒ 必须填**副词** `Fortunately`，**修饰整个句子**（不是修饰某个人）。② `He **___** (wear) a Marvel coat that night.` 前面已有 `was`（助动词）⇒ 后面只能跟 `be done`（被动：衣服被穿，语义荒谬）或 `be doing`（**正在进行**）⇒ 因为这是消防员**转述当时的场景**（直接引语），所以填 **`wearing`**（过去进行时）。
+- **关键概念**：`副词修饰整句`、`be doing 过去进行`、`直接引语时态`
+- **相互关系**：与娜娜「第 9 / 10 讲 时态」+「第 5 讲 形容词与副词」呼应；本条把**空格位置 → 词性**的判法讲透。
+- **出处**：[简言 P1（2025）](https://www.bilibili.com/video/BV11dHvz7Epz?p=1)
+
+### 🔴 语法填空：**非限制性定语从句 `who`** + **`powerful` 词性转换**
+- **要点**：① `The real superhero of the night was Tim, **___** (who/which) ...` 从句**缺主语**、先行词 `Tim` **是人** ⇒ 用**关系代词 `who`**（非限制性定语从句）。判关系代词 / 关系副词：**看从句里缺不缺主语或宾语** —— 缺则用代词，不缺才用副词。② `this simple but **___** (power) action` —— `but` 连接**并列的形容词**修饰 `action` ⇒ `power`（名词）变形容词，加 **`-ful`** ⇒ **`powerful`**。
+- **关键概念**：`非限制性定语从句 who`、`缺主语用关系代词`、`power + ful = powerful`
+- **相互关系**：与娜娜「第 17 讲 定语从句」+「第 5 讲 形容词与副词」呼应；**「缺不缺主宾」是关系词选择的唯一判据**。
+- **出处**：[简言 P1（2025）](https://www.bilibili.com/video/BV11dHvz7Epz?p=1)
+
+### 🔴 语法填空：**独立主格结构** `with + 名词 + 非谓语`
+- **要点**：`**with** commenters **praising** the firefighters' compassion` —— 结构特征：① 前面**已有谓语**；② 后面又出现一个动词；③ 但它的**主语（`commenters`）与前面主句的主语不同**；④ 又**没加连接词 / 没另起一句** ⇒ 只能用**独立主格**：`with + 名词 + 非谓语`。
+- **关键概念**：`独立主格`、`with + 名词 + 非谓语`、`主语不同 + 无连词`
+- **相互关系**：与娜娜「第 8 讲 谓语与非谓语」呼应；这是**非谓语家族的第四种形态**（前三：定语 / 状语 / 宾语补足语）。
+- **出处**：[简言 P1（2025）](https://www.bilibili.com/video/BV11dHvz7Epz?p=1)
+
+### 🔴 2025 写作 = **「通知」+「道歉信」两种题型融合**（趋势预警）
+- **要点**：2025 作文是**给留学生的茶话会改期通知**，要求三点：**对改期表示歉意 / 说明改期原因 / 说明改期后的时间地点**。⇒ 这实际是**通知格式套了一封道歉信**。⚠️ 简言判断：**未来可能出现两种信件合写**（如「道歉信里套邀请信」：先道歉、再邀请）。⇒ 备考不能只学单一题材，要练**融合题**。
+- **关键概念**：`题型融合`、`通知 + 道歉信`、`道歉信套邀请信`
+- **相互关系**：与地图「写作：应用文」章呼应；本条给出**趋势判断**（比单个模板更有价值）。
+- **出处**：[简言 P1（2025）](https://www.bilibili.com/video/BV11dHvz7Epz?p=1)
+
+
+## 补充（真题）· 2025 广东专升本英语真题（小豚 · 分题型）
+
+### 🔴 应试策略：**先做有把握的题型，阅读往后放**
+- **要点**：小豚开篇即给**做题顺序策略** —— 阅读耗时长，若**一上来就做阅读**，读到后面**脑子发昏**，本来能得分的基础题反而丢分。⇒ 正确做法：**先做你有把握、正确率高的题型**（把阅读放后面，趁脑子清醒时做）。⇒ 这与「按卷面顺序做题」的直觉相反。
+- **关键概念**：`做题顺序策略`、`先易后难`、`阅读放后面`
+- **相互关系**：地图此前**只有知识、没有策略**；本条补上**考场时间管理**这一维（与「题型难度分级」配套）。
+- **出处**：[小豚 P1（2025·阅读1）](https://www.bilibili.com/video/BV1yEen6nEEY?p=1)
+
+### 🔴 2025 广东真题难度定位：**比模拟题还小一点**
+- **要点**：小豚对 2025 广东卷的整体判断：**「它不难，难度跟我们的模拟题相比稍微还要小一点」**。分题型结论：**完形填空 15 空 / 30 分 / 每个空难度都低**（错两个还有 26 分）；**选词填空 / 语法填空不给刁钻语法**；**阅读定位容易**。⇒ 广东卷的策略是**把基础题的分拿满**，而不是死磕难题。
+- **关键概念**：`2025 难度低于模拟题`、`完形 15 空 30 分`、`基础题拿满`
+- **相互关系**：与简言「C 篇超纲难」形成**难度分层**：A/B 篇送分、C 篇偏难、完形与填空都不难。
+- **出处**：[小豚 P1（2025·阅读1）](https://www.bilibili.com/video/BV1yEen6nEEY?p=1)
+
+### 🔴 细节题答案**停留在字面上**：`limited resources` ⇒ 选「缺资源」，不选「缺钱 / 学业压力」
+- **要点**：第 6 题问 Tim 进大学后的**第一个挑战**。文章写他**家里低收入、交不起学费**（根因是**没钱**），但原文用的词是 `limited resources`（**有限的资源**）⇒ 正确答案是 `shortage of resources`（**缺资源**）。⚠️ 排除 `academic pressure`（学业压力）/ `learning difficulty`（学习困难）/ `lack of guidance`（缺乏引导）—— 都**不是原文用词**。⇒ **细节题要抓原文用词，不要顺着自己的理解去引申**。
+- **关键概念**：`答案停留在字面`、`原文用词优先`、`不引申`
+- **相互关系**：与简言「第 9 题不能过度推断」是**同一原则的两面**（一个「不引申」、一个「不加强」）。
+- **出处**：[小豚 P2（2025·阅读2）](https://www.bilibili.com/video/BV1yEen6nEEY?p=2)
+
+### 🔴 `turn doubt into fuel` ⇒ `motivation`：`fuel` 的**抽象义「动力」**
+- **要点**：第 8 题问 `Faced with others' disapproval, Tim turned their doubt into **___**`。原文 `Tim turned their doubt into **fuel**` —— `fuel` 字面是「**燃油**」，此处是**抽象义「动力」** ⇒ 选 `motivation`。⚠️ 干扰项：`frustration`（沮丧）/ `competition`（竞争）/ `resentment`（怨恨）—— 都不符合他「意志坚定」的人设。⇒ 遇到 `fuel` 别只想到「加油」。
+- **关键概念**：`fuel = 动力（抽象）`、`turn A into B`、`人设一致性排除`
+- **相互关系**：与简言同篇但角度不同（简言讲 `resilience`）；`fuel` 与阳哥批「熟词僻义」同族。
+- **出处**：[小豚 P2（2025·阅读2）](https://www.bilibili.com/video/BV1yEen6nEEY?p=2)
+
+### 🔴 标题题排除法（小豚版）：**全文强调 `persistence` 而非 `passion`**
+- **要点**：第 10 题在 `C. the journey to a national award` 与 `D. balance between study and passion` 之间纠结。判据：① 全文**一直在说他怎么打工、怎么平衡学习与工作** ⇒ 要写也该是 `balance between study and **work**`，用 `passion`（激情）**偏题**；② 全文反复强调的是 **`persistence`（毅力）**，`passion` 这个词**根本没出现**。⇒ 选 **`C`**（「通往国奖的旅程」像**影子**一样，让人想看这是个什么样的旅程 ⇒ 自然过渡到全文）。
+- **关键概念**：`passion 偏题`、`persistence 才是主旨`、`影子式标题`
+- **相互关系**：与简言「落脚点判断」互补 —— 简言看**褒贬方向**，小豚看**关键词是否真的出现**。
+- **出处**：[小豚 P2（2025·阅读2）](https://www.bilibili.com/video/BV1yEen6nEEY?p=2)
+
+### 🔴 「赢奖让他怎样」：**原文没说他接没接受 ⇒ 不能选「实现经济独立」**
+- **要点**：第 9 题正确项 `get a job offer`（原文 `extended a job offer` 原词复现）。⚠️ 排除 `achieve financial independence`：原文只说这份薪水**「能」让他的家庭脱贫**，**并没有说他接没接受**这个 offer ⇒ 选 D 就等于**把「未定」当成了「事实」**。同理 `win a million-dollar bonus` 也错 —— 实际奖金是**5 万美元**（`$50,000`）。
+- **关键概念**：`未定不能当事实`、`数字要核对`、`job offer 原词复现`
+- **相互关系**：与简言同题（「不能过度推断」）**双源印证**；`bonus`（奖金）是本题唯一生词。
+- **出处**：[小豚 P2（2025·阅读2）](https://www.bilibili.com/video/BV1yEen6nEEY?p=2)
+
+### 🔴 「只读第一段」原则：**通读全文反而容易选错**
+- **要点**：第 11 题问「从**第一自然段**能知道什么」。小豚的讲法：**直接读第一段就选，不要通读全文** —— 因为选项 A（`a ladder is used to measure the happiness ranking`）**确实在文章里出现过**，但它在**第四段**；你若通读后再回头选，**极可能误选 A**。⇒ 明确限定段落的题，**限定范围 = 只看那一段**。
+- **关键概念**：`限定段落的题只看该段`、`通读反致错`、`范围纪律`
+- **相互关系**：与「三步定位法」呼应；这是**定位法的一个反直觉推论**（信息多反而干扰）。
+- **出处**：[小豚 P3（2025·阅读3）](https://www.bilibili.com/video/BV1yEen6nEEY?p=3)
+
+### 🔴 `universal` 词汇题：`applicable to all` **≠** `available to all`
+- **要点**：第 12 题（`universal` 在第三段的意思）两强干扰：`A. applicable to all`（**适用于**所有情况）vs `B. available to all`（**可获得**于所有人）。`available` 的前提是「**你得先得到**才谈得上可用」，与「普世 / 通用」有**语义偏差** ⇒ 选 **`A. applicable to all`**。⇒ `applicable`（适用的）与 `available`（可获得的）**不是同义词**。
+- **关键概念**：`applicable = 适用的`、`available = 可获得的`、`语义偏差排除`
+- **相互关系**：与简言同题（简言讲「超纲词」）互补；本条给出**两强干扰的辨析口径**。
+- **出处**：[小豚 P3（2025·阅读3）](https://www.bilibili.com/video/BV1yEen6nEEY?p=3)
+
+### 🔴 第 14 题 main criticism ⇒ **`fail to take account of cultural differences`**
+- **要点**：`What is the main criticism of the happiness rankings according to K?` 四项逐一排除：`A. rely too much on economic indicators` —— 全文**没说过度依赖**经济指标（只说过「**超越**经济指标」）；`B. exclude western countries from the top rankings` —— 文章**给西方国家排了名**（第 23 位）⇒ 没排除（`exclude` 反义 `include`）；`C. an outdated survey method` —— **没说**过时；⇒ 剩 **`D. fail to take account of cultural differences in defining happiness`**（定义幸福时**没考虑文化差异**），原文依据 `Culture can influence how people in different countries respond to surveys of happiness`。⇒ `fail to` = 「**没有**做」。
+- **关键概念**：`fail to = 没做`、`take account of 考虑`、`exclude 排除`
+- **相互关系**：与阳哥批「选项强度题」呼应；本条给出**逐项排除的完整流程**。
+- **出处**：[小豚 P3（2025·阅读3）](https://www.bilibili.com/video/BV1yEen6nEEY?p=3)
+
+### 🔴 作者态度题：**别把「文中他人态度」当成作者态度**
+- **要点**：第 15 题问**作者**对幸福排名的态度。全文作者只是**官方口吻陈述数据 + 分析影响因素**，全程**客观中立** ⇒ 选 **`objective`**。⚠️ 陷阱：文中 K 和 MJ 两位心理学家都是**批判的**，看到 `critical` 就容易选。**三项排除理由**：① `supportive` —— 若支持，语气该夸这个排名方式好；② `indifference`（冷漠）—— 若真不关心，就不会研究这些、也不会写这篇文章；③ `critical` —— 批判的一般「**先说好再说坏**」，文章**不是这个结构**（它像调查报告，信息零散地放在那里）。
+- **关键概念**：`作者 ≠ 文中他人`、`objective 客观`、`三项排除理由`
+- **相互关系**：与简言「`critical` 双义慎选」**双源印证**（简言从**词义**切，小豚从**结构**切）。
+- **出处**：[小豚 P3（2025·阅读3）](https://www.bilibili.com/video/BV1yEen6nEEY?p=3)
+
+### 🔴 五选五的「**第二重点**」判据：第 18 题选 E 不选 D
+- **要点**：第 18 题后面接 `Similarly, **non-social interactions** like **pet ownership** show the same benefits, parallel to social activities.` ⇒ 两个重点：**社交** + **宠物**。⚠️ 陷阱：选项 D（`When someone feels overwhelmed, he tends to withdraw from **social** interaction`）**只命中「社交」**；选项 E（`a notable finding was that people owning a pet, particularly a cat, could lower the risk of depression by 32%`）**命中「宠物 + 研究结果」** ⇒ 后文 `Similarly` 承接的正是**研究结论** ⇒ 选 **`E`**。⇒ 判空时**要找齐全部关键词**，别只看最显眼的那个。
+- **关键概念**：`第二重点判据`、`关键词要抓全`、`Similarly 承接研究结论`
+- **相互关系**：与简言「`also` 暗示 / 祈使句段首」互补；本条强调**关键词齐备性**。
+- **出处**：[小豚 P4（2025·选句填空）](https://www.bilibili.com/video/BV1yEen6nEEY?p=4)
+
+### 🔴 完形 `and` 并列 ⇒ **褒贬必须一致**
+- **要点**：第 25 题 `looking happy and **___**` 四个选项：`lazy`（懒）/ `healthy`（健康）/ `lonely`（孤独）/ `wealthy`（有钱）。因为用 **`and`** 连接 ⇒ **褒贬方向必须与 `happy` 一致** ⇒ 只能选**褒义的 `healthy`**（`lazy` / `lonely` 是消极词，直接排除）。⇒ 这是**并列结构的隐性约束**，比逐词翻译快。
+- **关键概念**：`and 并列褒贬一致`、`happy and healthy`、`消极词直接排除`
+- **相互关系**：与娜娜「第 7 讲 连词」呼应；`and` 的**语义一致性**在完形里是**高频秒杀点**。
+- **出处**：[小豚 P5（2025·完形）](https://www.bilibili.com/video/BV1yEen6nEEY?p=5)
+
+### 🔴 广东选词填空的**考点分布**：动词 / 非谓语最多，不给刁钻语法
+- **要点**：小豚给出的广东选词填空**考点画像**：**动词与谓语 / 非谓语动词考得最多**；其次是**形容词↔副词转换**、**介词与关系词 / 连词**、**冠词**。⇒ 结论：**「不会给你一些刁钻的语法」**。备考优先级：**先把谓语 / 非谓语（被动、主动、目的、将来）学扎实**；从句**只会考最简单的**，把书上老师强调的必考从句背了即可。
+- **关键概念**：`考点分布`、`谓语/非谓语优先`、`不给刁钻语法`
+- **相互关系**：与简言「无提示词 ⇒ 介词/连词/冠词」**互相补全**（简言给规则，小豚给**权重**）。
+- **出处**：[小豚 P6（2025·选词填空）](https://www.bilibili.com/video/BV1yEen6nEEY?p=6)
+
+### 🔴 作文判分经验：**不偏题 > 句子漂亮**（偏题最多 1–2 分）
+- **要点**：小豚反复强调：**偏题 = 没分**。原话口径：题不读清就写，**就算句子再漂亮，最多给几分（15 分可能给 5 分已算善良）**，偏太歪**基本 1–2 分**。反过来：**句子平平无奇但内容中规中矩、不跑题、层次分明、无大语法错误 ⇒ 一般有 7–8 分**。⇒ **备考重心**：读题 → 列要点 → 保证不漏点，而不是背华丽句。
+- **关键概念**：`不偏题优先`、`要点不漏`、`7–8 分判分线`
+- **相互关系**：与简言「题型融合趋势」互补（简言讲**考什么**，小豚讲**怎么给分**）。
+- **出处**：[小豚 P7（2025·作文）](https://www.bilibili.com/video/BV1yEen6nEEY?p=7)
+
+### 🔴 通知作文的四段骨架 + 必写「落款」
+- **要点**：2025 通知作文骨架：① 标题 **`Notice`**（**必须表明是通知**，不能只套信件格式 —— 「平时看到没有『关于××通知』的标题，你会点进去看吗？」）② 对象（`International Students`，`in` 小写）③ 正文四步：**道歉**（`We sincerely apologize for informing you that...`）→ **说明原因**（`The reason is that...`，理由建议编「学院要开学术会议 `academic conference`，同一天同一场地 `in the same spot / on that day` 冲突」）→ **具体时间地点**（**重点**，`has been rescheduled` / `The location remains the same`）→ **感谢理解**（`Thank you for your understanding`）④ **落款**：`Best regards` + **李华** + **身份**（`President of the Student Union`）+ **日期**。
+- **关键概念**：`Notice 标题`、`道歉→原因→时间地点→感谢`、`落款含身份`
+- **相互关系**：与简言「通知 + 道歉信融合」**双源印证**；本条给出**可复用骨架**。
+- **出处**：[小豚 P7（2025·作文）](https://www.bilibili.com/video/BV1yEen6nEEY?p=7)
+
+
+## 补充（真题）· 2026 广东专升本英语真题（简言英语）
+
+### 🔴 2026 第一篇仍是「主题咖啡馆」列表型，且给出**题与题之间的反推**
+- **要点**：2026 A 篇是**主题咖啡馆**（`theme cafés`）列表型。技巧：**第 3 题问「第二个咖啡馆」有什么特别 ⇒ 第 2 题（哪家能看城市景观）大概率选「第一个」** —— 这是**题与题之间的互推**（不是同一题内的排除）。⇒ 与 2025 的「四题占三推剩下」同源，但这里靠的是**题干里的序号暗示**。
+- **关键概念**：`题间反推`、`第三题问第二个 ⇒ 第二题选第一个`、`先立预想再验原文`
+- **相互关系**：与 2025 条「题型反推法」构成**同一方法的两代版本**；简言特别注明「这只是一个**猜测**，真正看文章才能定答案」。
+- **出处**：[简言 P1（2026）](https://www.bilibili.com/video/BV1Z7Nc67E8V?p=1)
+
+### 🔴 同义替换（2026 真题）：`cartoon` ⇄ `comic`（动画 ⇄ 漫画）
+- **要点**：第 5 题问鸟类咖啡馆特殊在哪，原文 `the whole environment looks like a **cartoon**`（像**动画世界**）⇒ 选项 `C` 用 `**comic**-like environment`（像**漫画**一样的环境）。`comic` 作形容词 = **喜剧的**，作名词 = **连环漫画**。⇒ 两词都是「**二次元 / 非真实世界**」的同类概念。
+- **关键概念**：`cartoon ⇄ comic`、`comic 名词=漫画 / 形容词=喜剧的`、`同类概念替换`
+- **相互关系**：与 2025（`obey ⇄ follow`）、阳哥批各年替换条构成**真题替换序列**；本条是**名词级替换**。
+- **出处**：[简言 P1（2026）](https://www.bilibili.com/video/BV1Z7Nc67E8V?p=1)
+
+### 🔴 词汇题靠**上下文**：`fell short` = `failed`
+- **要点**：第 8 题问第四段 `fell short` 的意思。原文 `When the zoo's methods **fell short**, they sought the help of Jim and Rico.` ⇒ 逻辑推断：**动物园自己搞不定**（`fell short`）才会去**求助专业人士**；能自己找到就不用找了 ⇒ `fell short` = **`failed`（失败了 / 没做到）**。⚠️ 干扰项 `was rejected`（被拒绝）/ `was followed`（被跟随）都不合逻辑。
+- **关键概念**：`fell short = failed`、`上下文逻辑推断`、`求助 ⇒ 自己没做成`
+- **相互关系**：与 2025 的 `universal`（超纲词靠上下文）**同一策略**；本条逻辑链更短、更典型。
+- **出处**：[简言 P1（2026）](https://www.bilibili.com/video/BV1Z7Nc67E8V?p=1)
+
+### 🔴 2026 第三篇（旱作农业）三大优势 + 两大挑战（原文结构完整）
+- **要点**：2026 C 篇结构**完整清晰**（不像 2025 C 篇那样散）。**三大优势**（原文有 `Additionally` / `Finally` 标记）：① **省水**（`requires less water`，推进可持续农业 `sustainable agriculture`）② **风味更浓、营养更多**（`more concentrated flavors and more nutrients` —— 因为**水分少 ⇒ 压力大 ⇒ 根系扎得更深 ⇒ 吸收更多营养**）③ **降低整体生产成本**（`lower the overall production cost` —— **省掉昂贵的灌溉设备** + 能耗更低）。**两大挑战**：① 必须能**读懂土壤信号**（`read soil signals`）② 必须**随天气变化调整技术**（`adapt their techniques to changing weather`）。
+- **关键概念**：`旱作农业 dry farming`、`三优势两挑战`、`水分少 ⇒ 根深 ⇒ 风味浓`
+- **相互关系**：与地图「阅读：说明文结构」章呼应；**「Additionally / Finally」是三大优势的信号词**，与 2025 的「时序链」同族。
+- **出处**：[简言 P1（2026）](https://www.bilibili.com/video/BV1Z7Nc67E8V?p=1)
+
+### 🔴 旱作农业词汇串：`industrialization` · `quantity` · `rainfall` · `adapt to` · `alternative`
+- **要点**：`industrialization`（工业化，`industry + ial + ization`）· `allow sb to do sth`（使某人能做某事）· `quantity`（数量，`a large quantity of crops`）· `lead to`（导致）· `significant`（显著的）· `rainfall`（降水量）· `rely on`（依靠）· `adapt to`（适应）· `technique`（技术）/ `practice`（实践）· `effectively`（有效地）· `constantly`（持续地）· `alternative`（**二者择一 / 备选方案**，此处指「替代性耕作方式」）· `advocate`（提倡）· `conservation`（保护 / 节约）。⇒ 本篇**生词密度偏高**，是 2026 卷的难点所在。
+- **关键概念**：`industrialization`、`quantity`、`adapt to`、`alternative 备选`、`conservation`
+- **相互关系**：与娜娜「第 2 讲 名词」「第 6 讲 介词」呼应；`alternative` 与阳哥批「`alternative` vs `alternate` 易混对」**同一词**。
+- **出处**：[简言 P1（2026）](https://www.bilibili.com/video/BV1Z7Nc67E8V?p=1)
+
+### 🔴 五选五「**标点定答案**」：小写开头只能挂逗号后面
+- **要点**：2026 五选五五选项里，**只有 D 开头是小写**（其余 A–E 全大写）。⇒ 逐个看空前的标点：第 16 / 17 / 18 空**前面是句号**、第 20 空**前面什么都没有**、**只有第 19 空前面是逗号** ⇒ **小写 D 只能挂第 19 空**。⇒ 这是**送分题**：**大小写 + 标点**就能直接定答案。
+- **关键概念**：`小写开头承接前句`、`逗号后不另起句`、`标点定答案`
+- **相互关系**：与 2025「祈使句作段首 / `also` 暗示」互补；本条是最省力的**形式线索**。
+- **出处**：[简言 P1（2026）](https://www.bilibili.com/video/BV1Z7Nc67E8V?p=1)
+
+### 🔴 五选五的**指代一致性**：`this old movie` 逼出第 16 空
+- **要点**：第一段末 `...we still feel relaxed. Watching **this old movie**, why is that?` —— `this old movie` **突然出现代词 + 指代对象未交代** ⇒ 前面**必须已提到「老电影」** ⇒ 第 16 空只能填 `Of all the movies, we will choose **the old one**`。⇒ 空后若出现**指代词**（`this / it / they`），空里必须**先出现被指代的名词**。
+- **关键概念**：`指代一致性`、`this 逼出前文`、`代词必有先行词`
+- **相互关系**：与 2025「`also` 暗示前文」同属**衔接信号定位法**；本条是**代词型**衔接。
+- **出处**：[简言 P1（2026）](https://www.bilibili.com/video/BV1Z7Nc67E8V?p=1)
+
+### 🔴 2026 完形（双胞胎姐妹看演唱会）：`beg` 的语境定位
+- **要点**：故事线：Alex 与 Alice 是五年级双胞胎，迷一个青少年乐队（`learn about` 了解到）；18 岁的姐姐 Amanda **去过现场**（`live` 现场的）⇒ 她们的父母定了**规则**（`rule`）—— 直到她们能自己去才能去；姐妹俩**恳求**（`beg`，不是 `command` 命令 / `ignore` 忽略 / `reward` 奖励 —— 五年级学生**不会赚钱，命令不了父母**）；父亲说规则**可以重新考虑**（`reconsider`），但**有几个条件**（`under some conditions`，不是威胁 / 控制 / 压力）：① **考到 A** ② **自己付得起票钱**（`pay for the ticket`）③ **找一个有责任感的成年人陪同**。⇒ 第 25 题选 `begged`、第 27 题选 `conditions`、第 28 题选 `pay`、第 30 题选 `adult`。
+- **关键概念**：`beg 恳求（语境定）`、`conditions 条件`、`有责任感的成年人`
+- **相互关系**：与「细节题抓原文用词」呼应；`command` 的排除理由是**身份合理性**（五年级学生无法命令父母）。
+- **出处**：[简言 P1（2026）](https://www.bilibili.com/video/BV1Z7Nc67E8V?p=1)
+
+### 🔴 完形 `deliver newspapers`（送报纸）—— `deliver` 与报纸的三选一
+- **要点**：第 34 题 `Alex could **___** newspapers` 四选：`buy`（买）/ `read`（读）/ `deliver`（**送**）/ `print`（印）。上下文是「**为了赚更多钱**」⇒ 买报纸（花钱）、读报纸（不赚钱）、印报纸（做不到）都不对 ⇒ **`deliver newspapers`（送报纸）才是赚钱的活**；对照 Alice 去 **`walk dogs`**（遛狗）。⇒ 用**目的（赚钱）反推动词**。
+- **关键概念**：`deliver = 投递/送`、`walk dogs 遛狗`、`用目的反推动词`
+- **相互关系**：与 `run away` 那条（词根辨义）呼应；本条用**语义目的**排除。
+- **出处**：[简言 P1（2026）](https://www.bilibili.com/video/BV1Z7Nc67E8V?p=1)
+
+### 🔴 2026 语法填空（诗人 Lily 用手机写诗）核心判法：**一空有动词 ⇒ 先想时态 / 语态 / 主谓一致**
+- **要点**：见到动词先问三件事：**时态 / 语态 / 主谓一致**。① `She quickly **___** (open) a note-taking app` —— 时间状语是「每当想写诗」⇒ 一般现在时，主语 `she` 三单 ⇒ **`opens`**。② `poems` 加 **`s`**（`she performs some of her **poems**` —— **不只是一首**）。③ `**___** (perform)`, she turns off the lights —— `when` 引导、后接谓语 ⇒ 用 **ING**（主动进行）⇒ **`performing`**。
+- **关键概念**：`动词三问`、`opens 三单`、`poems 加 s`、`performing`
+- **相互关系**：与娜娜「第 9 / 10 讲 时态」+「第 13 讲 主谓一致」呼应；本条是**语法填空的总入口**。
+- **出处**：[简言 P1（2026）](https://www.bilibili.com/video/BV1Z7Nc67E8V?p=1)
+
+### 🔴 2026 语法填空：**第二个动词只能是非谓语**（`to add` 表目的）
+- **要点**：`She uses design software **___** (add) pictures ... to expand her writing into visual art.` —— 句里**已有谓语 `uses`** ⇒ 第二个动词**只能是非谓语**；非谓语三选一：**`doing` 主动 / 进行**、**`done` 被动 / 完成**、**`to do` 目的 / 将来**。此处「使用软件」的**目的是「增加图片」** ⇒ 选 **`to add`**（表**目的**）。
+- **关键概念**：`已有谓语 ⇒ 第二个动词非谓语`、`to do 表目的`、`非谓语三选一`
+- **相互关系**：与 2025「逗号 + 无连词 ⇒ 非谓语」**同一铁律的第二个场景**（一个在状语、一个在目的）。
+- **出处**：[简言 P1（2026）](https://www.bilibili.com/video/BV1Z7Nc67E8V?p=1)
+
+### 🔴 2026 语法填空：`her`（介词后宾格）· `polish`（润色）· `with the help of`
+- **要点**：① `When a poem feels complete to **___** (she)` —— **介词 `to` 后面必须跟名词性成分**，`she` 的名词性形式是 **`her`**（宾格）。② `polish` 本义「擦亮」，此处 = **润色 / 修改**（`he can polish or revise these at any time`）。③ `**with the help of**` = 在……的帮助下（固定搭配，无难度）。④ `right away` = 立刻；`get lost` = 丢失 / 流失。
+- **关键概念**：`介词后宾格 her`、`polish 润色`、`with the help of`
+- **相互关系**：与娜娜「第 4 讲 代词」呼应；`polish` 与 2025 的 `polish`（抛光）**同一词、不同语境义**。
+- **出处**：[简言 P1（2026）](https://www.bilibili.com/video/BV1Z7Nc67E8V?p=1)
+
+### 🔴 2026 写作：**形式稳定、内容轮换**
+- **要点**：简言对 2026 作文**不做专门讲解**，理由：**「如果今年考过这个主题，明年肯定会换一个主题去考；形式是一样的，但内容肯定会有所变化。」** ⇒ 备考口径：**背的是「形式 / 模板 / 好句」，不是「今年的题目内容」**；范文放在参考答案里即可。
+- **关键概念**：`形式稳定内容轮换`、`背模板不背题目`、`作文不需长期备考`
+- **相互关系**：与 2025「两种题型融合」呼应 —— 形式在**变化中稳定**（可能加融合，但仍是应用文骨架）。
+- **出处**：[简言 P1（2026）](https://www.bilibili.com/video/BV1Z7Nc67E8V?p=1)
 

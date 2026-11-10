@@ -6,7 +6,7 @@ difficulty: "intermediate"
 frequency: "medium"
 mastery: "review"
 tags:
-  - 历年真题分类与讲解
+  - 公共英语
 ---
 
 # 📑 历年真题分类与讲解
@@ -20,10 +20,10 @@ tags:
 
 | 项目 | 说明 |
 |:---|:---|
-| 用途 | 按**年份**回顾题型结构，重点练**写作应用文**；阅读/完形用「题型策略」复盘 |
-| 写作要求 | **约 100 词**；格式 + 要点覆盖是得分关键 |
-| 答案性质 | 写作给**参考范文 + 得分点讲解**（非唯一标准答案）；客观题给**题型解法**模板 |
-| 资料边界 | 完整官方卷面（含全部阅读原文）以你手头的**正版真题册 / 院校公布材料**为准；本笔记侧重**可背结构 + 写作演练 + 年份对照**，方便日常默写 |
+| 用途 | 按年份回顾题型结构，重点练写作应用文；阅读/完形用「题型策略」复盘 |
+| 写作要求 | 约 100 词；格式 + 要点覆盖是得分关键 |
+| 答案性质 | 写作给参考范文 + 得分点讲解（非唯一标准答案）；客观题给题型解法模板 |
+| 资料边界 | 完整官方卷面（含全部阅读原文）以你手头的正版真题册 / 院校公布材料为准；本笔记侧重可背结构 + 写作演练 + 年份对照，方便日常默写 |
 
 **题型分值（近年常见结构，以当次大纲为准）：**
 
@@ -34,7 +34,7 @@ tags:
 | 完形填空 | 30 |
 | 语法填空 | 15 |
 | 写作 | 15 |
-| **合计** | **100** |
+| 合计 | 100 |
 
 **相关笔记：** [专升本英语考试概述与题型分析](/posts/english/notes/overview) · 作文模板与高分句型 · 高频词汇速记 · 英语知识库
 
@@ -60,7 +60,7 @@ tags:
 
 **参考范文（约 100 词）：**
 
-```
+```text
                     NOTICE
 
 May I have your attention, please? To enrich our campus life, our school is
@@ -98,7 +98,7 @@ any questions, please feel free to contact us at 1234567.
 
 **参考范文：**
 
-```
+```text
 Dear Peter,
 
 How is everything going? I am writing this letter to express my earnest hope
@@ -137,7 +137,7 @@ Li Hua
 
 **参考范文：**
 
-```
+```text
 Dear Mr. Smith,
 
 I am writing this letter to express my earnest hope to apply for the position
@@ -167,7 +167,7 @@ Li Hua
 #### A. 建议信方向  
 就「如何提高英语」或「校园生活某一问题」给同学/校长提建议。
 
-```
+```text
 Dear Mark,
 
 I am writing this letter to offer some suggestions on how to improve your English.
@@ -186,7 +186,7 @@ Li Hua
 #### B. 感谢信方向  
 感谢老师/朋友在学习或生活上的帮助。
 
-```
+```text
 Dear Mr. Smith,
 
 I am writing this letter to express my sincere thanks for your help during my
@@ -215,7 +215,7 @@ Li Hua
 #### A. 道歉信方向  
 因故不能赴约/迟交作业/弄丢物品，说明原因并提出补救。
 
-```
+```text
 Dear Peter,
 
 I am writing this letter to apologize for not being able to attend your
@@ -235,7 +235,7 @@ Li Hua
 
 #### B. 通知方向（运动会 / 演讲比赛）
 
-```
+```text
                     NOTICE
 
 To enrich our campus life, the Student Union is going to organize an English
@@ -263,7 +263,7 @@ at 1234567 for registration.
 
 **推荐信范文：**
 
-```
+```text
 Dear Mark,
 
 How is everything going? I am writing this letter to recommend a book called
@@ -293,7 +293,7 @@ Li Hua
 
 **邀请信精简版（约 100 词）：**
 
-```
+```text
 Dear Peter,
 
 I am writing to invite you to the Traditional Chinese Culture Week in our school.
@@ -412,7 +412,7 @@ Li Hua
 
 ## 五、刷题节奏建议
 
-```
+```text
 每周：
   - 1 套客观题（限时，按第二节复盘表填坑）
   - 2 篇写作默写（书信 1 + 通知 1，25 分钟内）

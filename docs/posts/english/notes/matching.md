@@ -1,14 +1,12 @@
 ---
 title: "短文造句匹配（五选五）技巧"
-description: "公共英语 · 短文造句匹配（10分）高分技巧"
+description: "公共英语 · 短文造句匹配（10 分）高分技巧"
 category: "english-note"
 difficulty: "intermediate"
 frequency: "medium"
 mastery: "review"
 tags:
-  - 短文造句匹配
-  - 五选五
-  - 技巧
+  - 公共英语
 ---
 
 # 短文造句匹配（五选五）技巧
@@ -106,7 +104,7 @@ flowchart TD
 
 原文：
 
-```
+```text
 (1)______. It affects how we think, feel, and act.
 
 One way to improve mental health is regular exercise. (2)______. It
@@ -135,11 +133,11 @@ G. Friends are important in our life.
 
 | 空 | 线索 | 答案 |
 |:---|:---|:---|
-| (1) 段首 | 下文 "It affects..."（it 指代前文的某个概念） | **A**（Mental health → it） |
-| (2) 段中 | 前文 "regular exercise"，选项 B 有 "running or swimming" 是具体例子 | **B**（For example 举例） |
-| (3) 段中 | 前文 "social connection"，选项 C 有 "spending time with others" 同义替换 | **C** |
-| (4) 段首 | 下文 "meditation" 是放松方式，选项 E 有 "relax" | **E** |
-| (5) 段尾 | 前文 "A healthy diet"，选项 D 有 "sugar" 相关；但更通顺的是看下一句 "A balanced diet" 与 D 的 "sugar" 关系 | **D**（干扰项 F 和 G 被排除） |
+| (1) 段首 | 下文 "It affects..."（it 指代前文的某个概念） | A（Mental health → it） |
+| (2) 段中 | 前文 "regular exercise"，选项 B 有 "running or swimming" 是具体例子 | B（For example 举例） |
+| (3) 段中 | 前文 "social connection"，选项 C 有 "spending time with others" 同义替换 | C |
+| (4) 段首 | 下文 "meditation" 是放松方式，选项 E 有 "relax" | E |
+| (5) 段尾 | 前文 "A healthy diet"，选项 D 有 "sugar" 相关；但更通顺的是看下一句 "A balanced diet" 与 D 的 "sugar" 关系 | D（干扰项 F 和 G 被排除） |
 
 ---
 

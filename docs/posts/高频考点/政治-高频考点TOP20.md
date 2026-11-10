@@ -2,6 +2,8 @@
 title: "政治理论 · 高频考点 TOP20"
 description: "高频考点统计 · 政治理论 · 高频考点 TOP20"
 category: "高频考点-politics"
+tags:
+  - 高频考点
 ---
 
 # 政治理论 · 高频考点 TOP20（已归档）

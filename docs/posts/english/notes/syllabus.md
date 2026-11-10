@@ -6,7 +6,7 @@ difficulty: "intermediate"
 frequency: "medium"
 mastery: "review"
 tags:
-  - 考试大纲与题型补强
+  - 公共英语
 ---
 
 # 公共英语 · 考试大纲与题型补强

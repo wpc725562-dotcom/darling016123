@@ -3,6 +3,8 @@ title: 日语动词与形容词分类及变形总览
 description: 系统讲解动1、动2、动3与形1、形2的判断方法、变形规律、易错例外和练习。
 outline: deep
 pageClass: conjugation-guide-page
+tags:
+  - 日语
 ---
 
 # 日语动词与形容词：分类判断和变形总览

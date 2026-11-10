@@ -2,9 +2,15 @@
 title: 日语跟课笔记 · 新标日 0→N1
 description: 阿飞老师 B站「新标日课程0到N1」（BV1Bp4y1D747）的听课笔记课程：入门篇、初级上、初级下、中级篇、复习总表。
 outline: deep
+tags:
+  - 日语
 ---
 
 # 日语跟课笔记 · 新标日 0→N1
+
+> 🔀 **同一本教材有三种读法，你现在看的是「跟课笔记」** —— 另两种：
+> [📚 深度笔记（逐条语法详解）](/course/japanese/deep/) · [📖 同步手册（每课 4 行浓缩）](/learn/standard-japanese/)。
+> 不知道该看哪个 → [三读法怎么选](/course/japanese/depth-switch)
 
 > 🎧 **课程**：[日语学习：新标日课程0到N1](https://www.bilibili.com/video/BV1Bp4y1D747)（`BV1Bp4y1D747`，共 **200 个分P**）
 > 📝 **本课程是什么**：这门 B站课的**听课笔记**——把老师的讲解顺序、强调的重点、易错提醒、记忆法整理成可以跟着学的章节。

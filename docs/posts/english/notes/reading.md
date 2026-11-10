@@ -6,7 +6,7 @@ difficulty: "intermediate"
 frequency: "medium"
 mastery: "review"
 tags:
-  - 阅读理解高分技巧
+  - 公共英语
 ---
 
 # 📖 阅读理解高分技巧
@@ -34,7 +34,7 @@ pie title 阅读理解六大题型占比
     "观点态度题 10%" : 10
 ```
 
-> 📌 细节题占 40%——**回原文定位 + 同义替换**是最核心的"一招鲜"。
+> 📌 细节题占 40%——**回原文定位 + 同义替换**是最核心的「一招鲜」。
 
 ---
 
@@ -66,7 +66,7 @@ pie title 阅读理解六大题型占比
 - ❌ 不要过度发挥（原文没说的不能选）
 - ❌ 不要选原文**直接陈述**的内容
 
-> **口诀：** 推断题选"可能但不肯定"的，不选"原文直接说的"
+> **口诀：** 推断题选"可能但不肯定"的，不选「原文直接说的」
 
 ```mermaid
 flowchart TD
@@ -107,11 +107,11 @@ flowchart TD
 
 | 线索类型 | 标志词 | 示例 |
 |:---|:---|:---|
-| 定义法 | is, means, refers to | A **habitat** is the natural home of an animal. |
-| 对比法 | but, however, while, unlike | Unlike his **generous** brother, he is very stingy. |
-| 因果法 | because, so, since, thus | He was so **exhausted** that he fell asleep immediately. |
-| 举例法 | such as, for example, like | **Carnivores**, such as lions and tigers, eat meat. |
-| 同义法 | or, that is, i. e. | The **adversary**, or opponent, was strong. |
+| 定义法 | is, means, refers to | A habitat is the natural home of an animal. |
+| 对比法 | but, however, while, unlike | Unlike his generous brother, he is very stingy. |
+| 因果法 | because, so, since, thus | He was so exhausted that he fell asleep immediately. |
+| 举例法 | such as, for example, like | Carnivores, such as lions and tigers, eat meat. |
+| 同义法 | or, that is, i. e. | The adversary, or opponent, was strong. |
 
 ### 5️⃣ 观点态度题（10%）
 
@@ -136,7 +136,7 @@ flowchart TD
 
 ### 三步拆解
 
-```
+```text
 Step 1: 找谓语动词 → 确定有几个句子
 Step 2: 找连词/关系词 → 分清主从句
 Step 3: 去修饰留主干 → 主谓宾即核心
@@ -147,14 +147,14 @@ Step 3: 去修饰留主干 → 主谓宾即核心
 > **原句：** The study, *which was conducted by researchers from Harvard University*, found that students who **regularly participated in physical exercise** performed better on exams.
 
 - **主干：** The study found that students performed better on exams.
-- **修饰1：** which was conducted by...（定语从句，修饰study）
-- **修饰2：** who regularly participated...（定语从句，修饰students）
+- **修饰 1：** which was conducted by...（定语从句，修饰 study）
+- **修饰 2：** who regularly participated...（定语从句，修饰 students）
 
 ---
 
 ## 四、时间分配策略
 
-```
+```text
 文章阅读量：4篇 × 300-400词 = 1200-1600词
 总用时：40分钟
 
@@ -182,11 +182,60 @@ Step 3: 去修饰留主干 → 主谓宾即核心
 
 ---
 
-## 速算口诀
+## 六、带做例题：一道细节题怎么拆
+
+> 用 [2024 真题 Passage A](/posts/english/2024) 的第 1 题。选它是因为 **4 个选项里 3 个是陷阱，而且三类错因各不相同**——把这一道拆透，等于同时练了偷换概念、偷换动词、张冠李戴。
+
+**原文（只留解题要用的那句）：**
+
+> **Organic EcoPark** — At this all-in-one family fun destination, buying an admission ticket will allow you to choose from a wide range of activities, such as playing on a bouncy castle, riding horses, feeding fish, picking vegetables and mushrooms, or taking part in a workshop. ($12/person, Tel: 5570221)
+
+**题干：** At Organic EcoPark, visitors can ______.
+
+A. build a castle 　 B. ride horses 　 C. plant vegetables 　 D. make drinks
+
+---
+
+### Step 1 · 圈题干的两个定位词
+
+题干里的信息只有两段有用：
+
+| 圈什么 | 作用 |
+|:---|:---|
+| Organic EcoPark | 定位到哪一段（本篇有 5 个景点，不圈就会串段） |
+| visitors can | 限定「游客能做的事」，不是「这个地方有什么」 |
+
+> ⚠️ 这一步最容易偷懒跳过。本篇 5 道题分别考 5 个景点，**不圈景点名 = 一定串段**。
+
+### Step 2 · 回原文，只读那一句
+
+定位到第一段，动词短语一口气列了 5 个：
+`playing on a bouncy castle` / `riding horses` / `feeding fish` / `picking vegetables and mushrooms` / `taking part in a workshop`
+
+### Step 3 · 逐项比对（不是「选最像的」，是「每个都验一遍」）
+
+| 选项 | 原文对应 | 判定 | 错因类型 |
+|:---|:---|:---:|:---|
+| B. ride horses | `riding horses` | ✅ 正确 | 原词复现，直接命中 |
+| A. build a castle | `playing on a bouncy castle` | ❌ | 偷换概念：bouncy castle 是「充气城堡」，是玩的东西；build a castle 是「建城堡」。词长得像，动作完全不同 |
+| C. plant vegetables | `picking vegetables` | ❌ | 偷换动词：picking 是「摘」，plant 是「种」。摘菜和种菜是两件事 |
+| D. make drinks | `how to use it to make drinks`（在 Go Green Farm 那段） | ❌ | 张冠李戴：这个动作属于第 2 个景点，不属于 Organic EcoPark |
+
+### Step 4 · 记住这题的「出题套路」
+
+1. **正确项几乎总是原文的原词或同义替换**，不需要推理。
+2. **干扰项最爱偷换动词**（picking→plant）和**偷换名词修饰语**（bouncy castle→castle）。看到「原文里出现过这个词」就选，必错——**要比整个短语，不是比单词**。
+3. **选项内容在本篇别处出现过 ⇒ 高度可疑**。D 项就是拿隔壁景点的内容来凑。
+
+> 📌 **一句话带走**：细节题的正确项在原文里「原样躺着」，干扰项则是「把原文的词拆开重拼」。**逐字比对短语，不要比对单词。**
+
+---
+
+## 七、速算口诀
 
 > **细节定位找替换，推断两选选弱的那一个**
 > **主旨看首段，猜词看上下文**
-> **态度题excited/surprised别乱选，客观中立最安全**
+> **态度题 excited/surprised 别乱选，客观中立最安全**
 > **长难句三步走：找谓、分清、留主干**
 
-[VOICE: 阅读理解占30分是试卷的大头，关键是学会定位和排除干扰项，细节题考最多，靠关键词回原文定位找同义替换就行！]
+[VOICE: 阅读理解占 30 分是试卷的大头，关键是学会定位和排除干扰项，细节题考最多，靠关键词回原文定位找同义替换就行！]
