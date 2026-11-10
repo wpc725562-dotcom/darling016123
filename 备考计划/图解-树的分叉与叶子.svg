@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 340" width="100%" role="img">
+<title>树的手指法：分叉与叶子数量关系</title>
+<desc>从一根树干开始，每分叉一次多一条枝，最后叶子数等于分叉数加一。橙色点为分叉点，绿色为叶子。</desc>
+<style>
+  text { font-family: -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif; }
+  .branch { stroke: #6b6b68; stroke-width: 1.5; fill: none; stroke-linecap: round; }
+  .leaf { fill: #1D9E75; }
+  .fork { fill: #D85A30; }
+  .lbl { fill: #2c2c2a; font-size: 13px; text-anchor: middle; }
+  .lbl-leaf { fill: #0F6E56; font-size: 13px; text-anchor: middle; }
+  .sum { fill: #2c2c2a; font-size: 14px; text-anchor: middle; }
+</style>
+<g class="branch">
+<path d="M105 230 L105 80"/>
+<path d="M260 230 L260 160"/>
+<path d="M260 160 L215 95"/>
+<path d="M260 160 L305 95"/>
+<path d="M415 230 L415 180"/>
+<path d="M415 180 L375 120"/>
+<path d="M415 180 L455 120"/>
+<path d="M375 120 L345 75"/>
+<path d="M375 120 L405 75"/>
+<path d="M570 230 L570 185"/>
+<path d="M570 185 L530 125"/>
+<path d="M570 185 L610 125"/>
+<path d="M530 125 L505 80"/>
+<path d="M530 125 L555 80"/>
+<path d="M610 125 L585 80"/>
+<path d="M610 125 L635 80"/>
+</g>
+<g class="leaf">
+<ellipse cx="105" cy="78" rx="6" ry="9"/>
+<ellipse cx="215" cy="93" rx="6" ry="9"/>
+<ellipse cx="305" cy="93" rx="6" ry="9"/>
+<ellipse cx="345" cy="73" rx="6" ry="9"/>
+<ellipse cx="405" cy="73" rx="6" ry="9"/>
+<ellipse cx="455" cy="118" rx="6" ry="9"/>
+<ellipse cx="505" cy="78" rx="6" ry="9"/>
+<ellipse cx="555" cy="78" rx="6" ry="9"/>
+<ellipse cx="585" cy="78" rx="6" ry="9"/>
+<ellipse cx="635" cy="78" rx="6" ry="9"/>
+</g>
+<g class="fork">
+<circle cx="260" cy="160" r="5"/>
+<circle cx="415" cy="180" r="5"/>
+<circle cx="375" cy="120" r="5"/>
+<circle cx="570" cy="185" r="5"/>
+<circle cx="530" cy="125" r="5"/>
+<circle cx="610" cy="125" r="5"/>
+</g>
+<g class="lbl">
+<text x="105" y="262">分叉 0</text>
+<text x="260" y="262">分叉 1</text>
+<text x="415" y="262">分叉 2</text>
+<text x="570" y="262">分叉 3</text>
+</g>
+<g class="lbl-leaf">
+<text x="105" y="286">叶子 1</text>
+<text x="260" y="286">叶子 2</text>
+<text x="415" y="286">叶子 3</text>
+<text x="570" y="286">叶子 4</text>
+</g>
+<text class="sum" x="340" y="322">起点 1 条枝 ＋ 每个橙色分叉多 1 条 ＝ 绿色叶子数</text>
+</svg>

@@ -48,6 +48,15 @@ check_eq "$(count_md docs/posts/nonexistent-dir/)" "MISSING" "缺失目录返回
 # 目录缺失时绝不能返回 0 —— 那会把「目录没了」伪装成「一个文件都没有」
 [[ "$(count_md docs/posts/nonexistent-dir/)" != "0" ]] \
   && pass "缺失目录未伪装成 0" || fail "缺失目录被伪装成 0"
+# 生成物（*.generated.md）不算笔记（2026-10-05 加）
+#   为什么用**构造样本**而不是断言实现字符串：测的是行为，不是「某段代码在不在」。
+#   背景：`docs/posts/math/notes/index.generated.md` 只存在于本机（未跟踪、CI 没有），
+#   不排除就会让第 5 节「配置 == 实测」**本机红 / CI 绿**，诱使人去改配置 ——
+#   而改配置反而会让 CI 变红。详见 patrol-lib.sh 的 count_md 注释。
+mkdir -p "$TMPDIR_T/gen"
+: > "$TMPDIR_T/gen/a.md"
+: > "$TMPDIR_T/gen/b.generated.md"
+check_eq "$(count_md "$TMPDIR_T/gen/")" "1" "生成物 *.generated.md 不计入笔记数"
 
 echo ""
 echo "===== 2. pct_of：百分比与超预期告警 ====="
@@ -234,6 +243,22 @@ if [[ -f "$EXPECT_FILE" ]] && command -v node >/dev/null 2>&1; then
   if [[ $drift -eq 0 ]]; then pass "工作流 read_expect 兜底值与配置一致"; fi
 else
   pass "跳过兜底一致性检查（无配置文件或无 node）"
+fi
+
+# 8f. 全站检查必须接进巡逻（2026-10-05 加）
+#   与 8a 同源的一类失效：检查器**存在**但**没人跑**。本仓库已有 11 个检查器，
+#   其中 8 个此前从未在 CI 里跑过 —— home:stats:check 因此烂了半个月没人发现。
+#   这里只断言「工作流真的调了 check:all」且「结果喂进了报告/Issue 判定」，
+#   不比对具体项数（项数会随 CHECKS 增减，写死会变成假描述）。
+if grep -q 'npm run check:all' "$WF_FILE"; then
+  pass "巡逻已接入 check:all（11 个检查器不再散装）"
+else
+  fail "巡逻未接入 check:all —— 新检查器会退化成「存在但没人跑」"
+fi
+if grep -q 'steps.static_checks.outputs.status' "$WF_FILE"; then
+  pass "check:all 结果已进入综合报告与 Issue 判定"
+else
+  fail "check:all 结果未接入报告（失败只留在日志里，等于没人看）"
 fi
 
 echo ""

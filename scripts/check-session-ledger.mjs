@@ -33,6 +33,17 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+/* 白名单从单一事实源来（2026-10-19）。
+   原来 VALID_KINDS / VALID_MASTERY / REQUIRED_FIELDS / EVENT_TYPES 在本文件和
+   check-study-log.mjs 里各写一份，两份顺序已经不同（内容还一致，但已在漂移边缘）。
+   加 research / summary 时必须改两处，改漏一处就让其中一个检查器一直红着。
+   用别名导入是为了不动下游 40 多处引用。 */
+import {
+  KINDS as VALID_KINDS,
+  MASTERY as VALID_MASTERY,
+  REQUIRED_FIELDS,
+  EVENT_TYPES,
+} from './lib/log-schema.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO = path.resolve(__dirname, '..');
@@ -43,11 +54,17 @@ const MISTAKES = path.join(REPO, '备考计划', '错题本模板.md');
 const CARDS_DIR = path.join(REPO, '备考计划', '开新话题');
 
 // 实际用到的 5 种（2026-09-17 从 38 条记录实查，不是猜的）。
-// ⚠️ 这几行**不要靠记忆改**：跑了发现新 kind 就加进来，并想想它该不该算学习量。
-//    lecture/quiz = 真学习量；anki = 复习；feedback = 反馈；tool = 改工具（**一律不算学习量**）
-const VALID_KINDS = ['lecture', 'quiz', 'anki', 'feedback', 'tool'];
-const VALID_MASTERY = ['passed', 'partial', 'failed', 'na'];
-const REQUIRED_FIELDS = ['date', 'subject', 'kind', 'title'];
+/* 白名单见 scripts/lib/log-schema.mjs。
+   ⚠️ 加新 kind 前先想：它算「学习量」吗？真学习量口径 = lecture + quiz。 */
+
+// ★ 2026-10-04：`学习日志.jsonl` 里住着**两种**记录，不是一种。
+//   ① 学习记录（本脚本校验的对象）：{date, subject, kind, title, score, mastery, weak, note}
+//   ② studio 遥测事件（`scripts/studio-receiver.mjs` 从 `_inbox/studio-events.jsonl` 沉淀）：
+//      {ts, type:'progress'|'mastery'|'word_master', ...}
+//   studio 侧读日志时已经用 `typeof e.date === 'string'` 把它们滤掉了，
+//   但本脚本原来对每一行都查 REQUIRED_FIELDS ⇒ 遥测事件天天被误报「缺字段」。
+//   实测 2026-10-04：4 条遥测事件（第 110–113 行）常年让本检查红着 ⇒ 检查器在喊狼来了。
+//   判据用 **type 白名单**，不用「缺 date」—— 「缺 date」会放过真正写坏的学习记录。
 
 // ---------------------------------------------------------------- 纯函数层
 // 校验逻辑写成纯函数，好让 --selftest 能直接喂坏数据进来。
@@ -89,9 +106,13 @@ export function extractDefinedIds(text) {
   return ids;
 }
 
-/** 解析 jsonl，返回 {records, errors} */
+/** 解析 jsonl，返回 {records, events, errors}
+ *  - records：学习记录（按 REQUIRED_FIELDS 校验）
+ *  - events ：studio 遥测事件（type ∈ EVENT_TYPES）—— **不校验课程字段**，单独收集供信息展示
+ */
 export function parseLedger(raw) {
   const records = [];
+  const events = [];
   const errors = [];
   const lines = raw.split(/\r?\n/);
   lines.forEach((line, i) => {
@@ -103,6 +124,21 @@ export function parseLedger(raw) {
       errors.push(`第 ${i + 1} 行不是合法 JSON：${e.message}`);
       return;
     }
+    // ★ 2026-10-04：遥测事件与学习记录共用同一个 jsonl。它们没有 date/subject/kind/title，
+    //   按课程条目校验会误报「缺字段」⇒ 先分流，再校验。
+    if (obj.type && EVENT_TYPES.includes(obj.type)) {
+      events.push(obj);
+      return;
+    }
+    // ★ 2026-10-19：有 type 但不在白名单 = 多半是新遥测类型（studio-receiver 加了，
+    //   log-schema 没跟上）。旧版会往下走，报 4 条「缺字段」—— 方向指错，人只会去补
+    //   date/subject，越补越乱。这里只报一条，并直接说该改哪个文件。
+    if (obj.type && !obj.date) {
+      errors.push(`第 ${i + 1} 行未知事件类型 \`${obj.type}\`（有 type 无 date，像遥测事件）` +
+        ` ⇒ 新遥测类型请加进 scripts/lib/log-schema.mjs 的 EVENT_TYPES；` +
+        `若是学习记录写错了，删掉 type 并补 date/subject/kind/title`);
+      return;
+    }
     for (const f of REQUIRED_FIELDS) {
       if (!obj[f]) errors.push(`第 ${i + 1} 行缺字段 \`${f}\``);
     }
@@ -110,14 +146,32 @@ export function parseLedger(raw) {
       errors.push(`第 ${i + 1} 行 date 格式不对（要 YYYY-MM-DD）：${obj.date}`);
     }
     if (obj.kind && !VALID_KINDS.includes(obj.kind)) {
-      errors.push(`第 ${i + 1} 行 kind 不认识：${obj.kind}（已知 ${VALID_KINDS.join(' / ')}；若是新类别请加进脚本的 VALID_KINDS）`);
+      // 提示里不要再写「加进脚本的 VALID_KINDS」—— 白名单 2026-10-19 起已移出本文件，
+      // 按旧提示去脚本里找会白找一轮。
+      errors.push(`第 ${i + 1} 行 kind 不认识：${obj.kind}（已知 ${VALID_KINDS.join(' / ')}；若是新类别请加进 scripts/lib/log-schema.mjs 的 KINDS）`);
     }
     if (obj.mastery && !VALID_MASTERY.includes(obj.mastery)) {
       errors.push(`第 ${i + 1} 行 mastery 不认识：${obj.mastery}（已知 ${VALID_MASTERY.join(' / ')}）`);
     }
     records.push(obj);
   });
-  return { records, errors };
+  return { records, events, errors };
+}
+
+/**
+ * 本地日期 YYYY-MM-DD。
+ *
+ * ⚠️ **不要**用 `new Date().toISOString().slice(0, 10)` —— 那是 **UTC** 日期。
+ *    本机是 GMT+8：本地 00:00–08:00 之间，UTC 还停在**前一天**，
+ *    于是「今天」被算成昨天，再与看板里写的**当天**日期一比就成了「**-1 天前**」。
+ *    实测（2026-10-05 07:0x）：看板 `last_updated = 2026-10-05`，却被打印成「-1 天前」。
+ *    后果不只是难看：新鲜度窗口判据是「age ≤ N 天」，差一天会让**恰好卡在边界**的
+ *    条目时红时绿 —— 本文件的 `boundaryHint` 正是为这种「随时翻红」写的。
+ *    （同一类坑在本仓库已出现过一次：`content-dates.mjs` 的 `localDate()`。）
+ */
+export function toLocalDate(d = new Date()) {
+  const p = (n) => String(n).padStart(2, '0');
+  return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`;
 }
 
 /** 天数差（today - date），按自然日 */
@@ -148,7 +202,7 @@ function runChecks(env, opts) {
   const add = (name, ok, detail) => results.push({ name, ok, detail });
 
   // ---- 1. 学习日志：能解析、字段齐、格式对
-  const { records, errors } = parseLedger(ledgerRaw);
+  const { records, events = [], errors } = parseLedger(ledgerRaw);
   add(
     '学习日志 JSON 合法且字段完整',
     errors.length === 0,
@@ -160,26 +214,29 @@ function runChecks(env, opts) {
   const boundaryHint = (age) =>
     age === days ? `　⚠️ 刚好卡在 ${days} 天边界，明天就会翻红，别当它是「新鲜」` : '';
 
-  // ---- 2. 学习日志：新鲜度
-  const dates = records.map((r) => r.date).filter(Boolean).sort();
-  const newest = dates[dates.length - 1] || null;
-  const ledgerAge = newest ? daysBetween(newest, today) : null;
-  const ledgerDetail = !newest
-    ? '一条都没有'
-    : ledgerAge === null
-      ? `最新一条 ${newest}（日期解析不出来，无法判断新鲜度）`
-      : `最新一条 ${newest}（${ledgerAge} 天前）${boundaryHint(ledgerAge)}`;
-  add(`学习日志在 ${days} 天内有新条目`, ledgerAge !== null && ledgerAge <= days, ledgerDetail);
+  // ---- 2/3. 新鲜度（`--no-freshness` 时整块跳过，理由见 main() 里的注释）
+  if (!opts.noFreshness) {
+    // ---- 2. 学习日志：新鲜度
+    const dates = records.map((r) => r.date).filter(Boolean).sort();
+    const newest = dates[dates.length - 1] || null;
+    const ledgerAge = newest ? daysBetween(newest, today) : null;
+    const ledgerDetail = !newest
+      ? '一条都没有'
+      : ledgerAge === null
+        ? `最新一条 ${newest}（日期解析不出来，无法判断新鲜度）`
+        : `最新一条 ${newest}（${ledgerAge} 天前）${boundaryHint(ledgerAge)}`;
+    add(`学习日志在 ${days} 天内有新条目`, ledgerAge !== null && ledgerAge <= days, ledgerDetail);
 
-  // ---- 3. 看板 last_updated 新鲜度
-  const boardDate = parseLastUpdated(boardRaw);
-  const boardAge = boardDate ? daysBetween(boardDate, today) : null;
-  const boardDetail = !boardDate
-    ? '看板里找不到 `**last_updated**: YYYY-MM-DD`'
-    : boardAge === null
-      ? `last_updated = ${boardDate}（日期解析不出来）`
-      : `last_updated = ${boardDate}（${boardAge} 天前）${boundaryHint(boardAge)}`;
-  add(`看板 last_updated 在 ${days} 天内`, boardAge !== null && boardAge <= days, boardDetail);
+    // ---- 3. 看板 last_updated 新鲜度
+    const boardDate = parseLastUpdated(boardRaw);
+    const boardAge = boardDate ? daysBetween(boardDate, today) : null;
+    const boardDetail = !boardDate
+      ? '看板里找不到 `**last_updated**: YYYY-MM-DD`'
+      : boardAge === null
+        ? `last_updated = ${boardDate}（日期解析不出来）`
+        : `last_updated = ${boardDate}（${boardAge} 天前）${boundaryHint(boardAge)}`;
+    add(`看板 last_updated 在 ${days} 天内`, boardAge !== null && boardAge <= days, boardDetail);
+  }
 
   // ---- 4. 错题本编号无重复
   //   只数**定义行**里的编号。正文交叉引用不算声明（详见 extractDefinedIds 注释）。
@@ -233,13 +290,22 @@ function runChecks(env, opts) {
     return Object.entries(c).sort((a, b) => b[1] - a[1]).map(([k, v]) => `${k}×${v}`).join(' · ');
   };
   const realStudy = records.filter((r) => r.kind === 'lecture' || r.kind === 'quiz').length;
+  const evTally = Object.entries(
+    events.reduce((c, e) => ((c[e.type] = (c[e.type] || 0) + 1), c), {})
+  )
+    .sort((a, b) => b[1] - a[1])
+    .map(([k, v]) => `${k}×${v}`)
+    .join(' · ');
   add(
     '分布快照（信息）',
     true,
     `共 ${records.length} 条 · 其中真学习量(lecture+quiz) ${realStudy} 条\n` +
       `kind: ${tally('kind')}\n` +
       `subject: ${tally('subject')}\n` +
-      `mastery: ${tally('mastery')}`
+      `mastery: ${tally('mastery')}` +
+      (events.length
+        ? `\n遥测事件（非学习记录，不参与校验与新鲜度）${events.length} 条：${evTally}`
+        : '')
   );
 
   return results;
@@ -325,6 +391,47 @@ function selftest() {
       expectIn: '不是合法 JSON',
     },
     {
+      // ★ 2026-10-04：studio 遥测事件（progress/mastery/word_master）与学习记录**共用同一份 jsonl**。
+      //   它们没有 date/subject/kind/title —— 不该被当成「缺字段的学习记录」。
+      //   旧行为：实测 4 条遥测事件让本检查天天红着 ⇒ 检查器在喊狼来了。
+      name: '遥测事件不算学习记录',
+      env: {
+        ...good,
+        ledgerRaw:
+          JSON.stringify({
+            date: '2026-09-17', subject: 'C语言', kind: 'quiz',
+            title: '测试', score: '1/1', mastery: 'passed', weak: '', note: '',
+          }) +
+          '\n' +
+          JSON.stringify({
+            ts: '2026-09-17T10:10:00Z', type: 'word_master',
+            origin: 'chrome-ext', total: 1200, mastered: 430, due_now: 15, pct: 35.8,
+          }),
+      },
+      expectFail: false,
+      expectWarnIn: '遥测事件',
+    },
+    {
+      // ★ 2026-10-19：有 type 但不在 EVENT_TYPES 白名单 —— 典型场景是 studio-receiver
+      //   加了新遥测类型、log-schema 没跟上。它**必须红**（数据没落对），
+      //   但报错方向必须是「未知事件类型，去改 EVENT_TYPES」，不是 4 条「缺字段」。
+      //   旧版就是报 4 条缺字段，人照着补 date/subject 会把一条遥测写成假学习记录。
+      name: '未知遥测类型',
+      env: {
+        ...good,
+        ledgerRaw:
+          JSON.stringify({
+            date: '2026-09-17', subject: 'C语言', kind: 'quiz',
+            title: '测试', score: '1/1', mastery: 'passed', weak: '', note: '',
+          }) +
+          '\n' +
+          JSON.stringify({ ts: '2026-09-17T10:10:00Z', type: 'streak', value: 3 }),
+      },
+      expectFail: true,
+      expectIn: '未知事件类型',
+      expectNotIn: '缺字段',
+    },
+    {
       // 「通过」≠「新鲜」：日志与看板都恰好 3 天前，判定仍算过，
       // 但必须带出边界提示，否则用户会以为明天还能过。
       name: '刚好卡窗口边界',
@@ -352,6 +459,9 @@ function selftest() {
     let ok;
     if (sc.expectFail) {
       ok = didFail && (!sc.expectIn || detail.includes(sc.expectIn));
+      // expectNotIn：断言「报错方向对」。只知道它会红不够 ——
+      // 报 4 条「缺字段」也会红，但那是在指错地方（2026-10-19 加）。
+      if (ok && sc.expectNotIn && detail.includes(sc.expectNotIn)) ok = false;
     } else {
       ok = !didFail && (!sc.expectWarnIn || allDetail.includes(sc.expectWarnIn));
     }
@@ -363,6 +473,26 @@ function selftest() {
       (didFail ? `\n     └─ ${detail.slice(0, 160)}` : sc.expectWarnIn ? `\n     └─ ${allDetail.slice(0, 160)}` : '')
     );
   }
+
+  // ---- 时区断言：`today` 必须是**本地**日期，不是 UTC 日期（2026-10-05 加）
+  //   为什么单独测它：上面所有 scenario 都把 `today` 当参数注入，
+  //   **测不到「today 是怎么算出来的」** —— 而 UTC 口径的 bug 恰好就在那里。
+  //   测法：用「本地分量」构造一个 Date。任何正确实现都会返回这些分量；
+  //   而 `toISOString().slice(0,10)`（UTC 口径）在非 UTC 时区会返回**另一个日期**
+  //   （本机 GMT+8 的早上：本地 07:00 = UTC 前一日 23:00 ⇒ 差一天，实测打印出「-1 天前」）。
+  {
+    const localMorning = new Date(2026, 9, 5, 7, 0, 0); // 本地 2026-10-05 07:00
+    const got = toLocalDate(localMorning);
+    const ok = got === '2026-10-05';
+    allGood = allGood && ok;
+    console.log(
+      `${ok ? '✅' : '❌'} ${'本地日期非 UTC'.padEnd(18, ' ')} 期望 2026-10-05` +
+        (ok
+          ? ''
+          : ` · 实际 '${got}'（UTC 口径会得到 '${localMorning.toISOString().slice(0, 10)}'）`)
+    );
+  }
+
   console.log(
     allGood
       ? '\n✅ 自检通过：这个检查器**有能力失败**，它的「全绿」才有意义。'
@@ -381,6 +511,14 @@ function main() {
   const daysIdx = argv.indexOf('--days');
   const days = daysIdx >= 0 ? Number(argv[daysIdx + 1]) : 3;
   const asJson = argv.includes('--json');
+  // `--no-freshness`：跳过第 2、3 项「新鲜度」，只留结构性检查。
+  //   为什么需要它：本检查器现在被收进 `npm run check:all`，而 check:all **也跑在 CI 里**
+  //   （auto-patrol 的 [P0] 全站静态检查）。「3 天没学习」是**学习节奏**问题、不是仓库缺陷；
+  //   若把它也算进 check:all，CI 会因为「这几天没学习」而变红、还会自动开「严重问题」Issue ——
+  //   那是**假警报**，会淹没真问题。
+  //   ⇒ 结构性的（日志字段 / 错题编号 / 开场卡）进 check:all；新鲜度留作**人工收工仪式**
+  //     （`npm run ledger:check`，不带本参数）。
+  const noFreshness = argv.includes('--no-freshness');
 
   const read = (p) => {
     try {
@@ -398,7 +536,7 @@ function main() {
     /* 目录不存在时留空，由检查项报出来 */
   }
 
-  const today = new Date().toISOString().slice(0, 10);
+  const today = toLocalDate();
   const results = runChecks(
     {
       today,
@@ -408,7 +546,7 @@ function main() {
       mistakesRaw: read(MISTAKES),
       cardFiles,
     },
-    { days }
+    { days, noFreshness }
   );
 
   const failed = results.filter((r) => !r.ok);

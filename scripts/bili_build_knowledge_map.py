@@ -73,6 +73,26 @@ PLAN = {
 SUBJECT_CN = {"computer": "计算机", "math": "高数", "english": "英语",
               "english-gaokao": "英语（高考）"}
 
+# ★ 口径警告（2026-10-04 加）
+#   地图里的某些章节来自**旧口径**的源 —— 内容本身没错（是那一年的真实情况），
+#   但**不能当现在的考纲用**。典型：英语地图「试卷结构与命题特征」一节来自
+#   2021 年真题课，讲的是「Part One vocabulary and structure · 30 分语法单选」；
+#   而 **2022 年题型改革已取消该题型**（改为语法填空 15 + 七选五 10）。
+#   为什么不直接改正文：那节是**那门课的真实内容**，删掉就丢了「当年考什么」的事实；
+#   正确做法是**分层标注**（同高数考纲的处理，见 笔记覆盖度评估 §6.4）。
+#   为什么写进生成器：之前只在页面里手加过警告，**重跑一次就没了**（静默回归）。
+#   键 = (学科, 页面文件名)，值 = 注入到页头的一段 markdown。
+STALE_NOTES = {
+    ("english", "grammar.md"): (
+        "> 🔴 **口径警告（2026-10-04 加）**：本页「试卷结构与命题特征」一节来自"
+        "**2021 年真题课**，讲的是**改革前**的结构"
+        "（`Part One vocabulary and structure` · 30 分语法单选）。\n"
+        "> **2022 年起该题型已取消**，改为「语法填空 15 分 + 七选五 10 分」。\n"
+        "> 现行口径见 [🎯 语法填空真题依据（2022–2025）]"
+        "(/posts/english/notes/语法填空真题依据-2022-2025)。\n"
+    ),
+}
+
 CH_RE = re.compile(r"^## ", re.M)
 
 # ★ VitePress/Vue 构建隐患：正文里裸的 `<` 会被 Vue 当标签起始。
@@ -338,6 +358,9 @@ def main():
                 "[知识地图总览](/guide/knowledge-map/)。\n\n"
                 % (SUBJECT_CN[subj], title, desc, len(picked), pts)
             )
+            _note = STALE_NOTES.get((subj, fname))
+            if _note:
+                header += _note + "\n"
             out = os.path.join(outdir, fname)
             body, nfix = sanitize(body)
             if nfix:

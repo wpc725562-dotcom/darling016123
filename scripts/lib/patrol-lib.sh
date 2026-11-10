@@ -24,10 +24,18 @@
 #   目录不存在时返回字面量 MISSING —— 绝不能返回 0：
 #   `find <不存在的目录> ... | wc -l` 会打印 0，而 find 的报错被管道吞掉，
 #   于是「目录缺失」被静默伪装成「一个文件都没有」，检查彻底失效。
+#
+#   ★ 内置排除 `*.generated.md`（2026-10-05 加）：这类文件是 sync 脚本产出的
+#     **陈旧副本**，已被 `srcExclude` 挡在站点之外，**不是笔记**。
+#     不排除的后果实测过：`docs/posts/math/notes/index.generated.md` 只存在于
+#     **本机**（未跟踪；CI 干净检出里没有），于是巡逻自检第 5 节
+#     「配置期望值 == 实测文件数」**本机红、CI 绿** —— 一个纯本地产物制造出
+#     一条查不出来的假告警，还会诱使人去改配置（而改配置反而会让 CI 变红）。
+#     ⇒ 放在**库**里而不是各个调用点：工作流与自检同源，改一处即可、不会漂移。
 count_md() {
   local d="$1"; shift
   if [[ ! -d "$d" ]]; then echo "MISSING"; return 0; fi
-  find "$d" -name "*.md" "$@" 2>/dev/null | wc -l | tr -d ' '
+  find "$d" -name "*.md" ! -name '*.generated.md' "$@" 2>/dev/null | wc -l | tr -d ' '
 }
 
 # pct_of <actual> <expected>

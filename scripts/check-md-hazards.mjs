@@ -14,6 +14,7 @@
 import { readdirSync, statSync, readFileSync, existsSync } from 'node:fs'
 import { join, dirname, resolve, extname } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { loadSrcExclude, isExcluded } from './src-exclude.mjs'
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const DOCS = join(ROOT, 'docs')
@@ -55,36 +56,12 @@ function walk(dir) {
 }
 
 /**
- * 读 config.mts 的 srcExclude，返回被排除的相对路径集合（相对 docs/，正斜杠）。
- * 这些文件**不参与构建** —— 里面的风险永远不会让构建失败，不该报成构建风险。
- * （2026-09-18 加：此前 bili-scraping.md 被 srcExclude 排除，却仍被报错，属假阳性。）
+ * ★ 2026-10-05：srcExclude 的解析逻辑**搬到了 `scripts/src-exclude.mjs`**（唯一一处规则来源）。
+ *   本文件原来的「抓所有引号内容」写法会把 `srcExclude` 块里**注释中的示例路径**
+ *   也当成规则（实测多出 4 条，其中 `index.md` 会把站点首页误判为「已排除」）。
+ *   现在统一用 `loadSrcExclude()`（先剥 `//` 注释再抽引号）。
+ *   主流程里调用它，见文件末尾 `const srcExclude = loadSrcExclude()`。
  */
-function loadSrcExclude() {
-  const cfg = join(DOCS, '.vitepress', 'config.mts')
-  if (!existsSync(cfg)) return new Set()
-  const text = readFileSync(cfg, 'utf-8')
-  const m = text.match(/srcExclude\s*:\s*\[([\s\S]*?)\]/)
-  if (!m) return new Set()
-  const out = new Set()
-  for (const hit of m[1].matchAll(/['"`]([^'"`]+)['"`]/g)) {
-    const v = hit[1].trim().replace(/^\.?\//, '')
-    if (v) out.add(v.replace(/\\/g, '/'))
-  }
-  return out
-}
-
-function isExcluded(rel, patterns) {
-  for (const p of patterns) {
-    if (p === rel) return true
-    // 极简 glob：只支持 **/ 与 *，够用且不必引依赖
-    if (p.includes('*')) {
-      const re = new RegExp('^' + p.replace(/[.+^${}()|[\]\\]/g, '\\$&')
-        .replace(/\*\*/g, '\u0000').replace(/\*/g, '[^/]*').replace(/\u0000/g, '.*') + '$')
-      if (re.test(rel)) return true
-    }
-  }
-  return false
-}
 
 /**
  * markdown-it `escapedSplit()` 的逐字移植 —— 表格切列的唯一正确语义。

@@ -148,7 +148,7 @@ const navMissing = orphans.filter((o) => o.kind === 'nav-missing')
 /* ---------- 7. 输出 ---------- */
 
 if (JSON_OUT) {
-  console.log(JSON.stringify({ checked: pages.length, total: allMd.length, navMissing, unreachable }, null, 2))
+  console.log(JSON.stringify({ checked: pages.length, total: allMd.length, navMissing, unreachable, sectionKeys, noTopEntry }, null, 2))
 } else {
   console.log(`纳入检查: ${pages.length} / 全部 md ${allMd.length}`)
   console.log(`已解析 srcExclude ${EXCLUDE_GLOBS.length} 条 · 导航链接 ${NAV_LINKS.size} 条\n`)
@@ -188,6 +188,53 @@ if (JSON_OUT) {
   }
 
   console.log('提示：加 sidebar 条目可消掉 🟡；🔴 应优先处理。')
+}
+
+/* ---------- 7.5 分区顶层可达性（2026-10-05 新增）---------- */
+/*
+ * ── 为什么需要这一段 ──────────────────────────────────────────────────
+ * 上面第 6 步把「config 里出现过 link」都算作「有导航入口」，其中**包含 sidebar 自己的 link**。
+ * 于是出现一个盲区：一个分区的页面全都写在 sidebar 里 ⇒ 检查器判 ✅，
+ * 但**顶部导航里根本没有这个分区的入口**，用户不先摸进该分区就永远看不到它。
+ *
+ * 实测判例（2026-10-05）：`/posts/resources/`（备考资料 9 页）在 sidebar 里齐备，
+ * check-nav-coverage 报「无导航入口: 0 ✅」—— 可它此前**真的没有任何顶层入口**，
+ * 只能从「题库 → 使用方式」里那一条链过去。
+ *
+ * 判据：**每个 sidebar 顶层键，至少要有一个 link 出现在 `nav:` 块里**（前缀匹配）。
+ */
+function sliceBalanced(src, from, open, close) {
+  let depth = 0, started = false
+  for (let j = from; j < src.length; j++) {
+    const c = src[j]
+    if (c === "'" || c === '"' || c === '`') {
+      const q = c; j++
+      while (j < src.length && src[j] !== q) { if (src[j] === '\\') j++; j++ }
+      continue
+    }
+    if (c === '/' && src[j + 1] === '/') { while (j < src.length && src[j] !== '\n') j++; continue }
+    if (c === open) { depth++; started = true }
+    else if (c === close) { depth--; if (started && depth === 0) return src.slice(from, j + 1) }
+  }
+  return null
+}
+
+const navBlockStart = cfg.indexOf('nav: [')
+const navBlock = navBlockStart >= 0 ? sliceBalanced(cfg, cfg.indexOf('[', navBlockStart), '[', ']') : null
+const navLinks = navBlock ? [...navBlock.matchAll(/["']?link["']?\s*:\s*['"]([^'"]+)['"]/g)].map((m) => m[1]) : []
+
+const sectionKeys = [...cfg.matchAll(/^      '(\/[^']*)': \[$/gm)].map((m) => m[1])
+const noTopEntry = sectionKeys.filter((k) => !navLinks.some((l) => l === k || l.startsWith(k)))
+
+if (!JSON_OUT) {
+  console.log(`分区顶层可达性：${sectionKeys.length} 个 sidebar 分区 · nav 叶子链接 ${navLinks.length} 条`)
+  if (noTopEntry.length) {
+    console.log(`🟠 sidebar 有、但顶部 nav 没有入口的分区: ${noTopEntry.length}`)
+    for (const k of noTopEntry) console.log(`    - ${k}  ← 只能从别的页面的正文链过去`)
+    console.log('  修法：在 nav 里补一个入口（放进「更多 ▾」这类分组即可）。\n')
+  } else {
+    console.log('🟠 每个 sidebar 分区都有 nav 顶层入口 ✅\n')
+  }
 }
 
 if (STRICT && unreachable.length) {

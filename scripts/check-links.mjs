@@ -22,6 +22,7 @@ import { readdirSync, statSync, readFileSync, writeFileSync, unlinkSync } from '
 import { join, dirname, resolve, extname, sep, relative } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { tmpdir } from 'node:os'
+import { loadSrcExclude, isExcluded } from './src-exclude.mjs'
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const DOCS = join(ROOT, 'docs')
@@ -66,11 +67,32 @@ function existsAny(paths) {
   return paths.some((p) => { try { return statSync(p).isFile() } catch { return false } })
 }
 
+function firstExisting(paths) {
+  return paths.find((p) => { try { return statSync(p).isFile() } catch { return false } }) || null
+}
+
+// ★ 2026-10-05 补：**正文链接的 srcExclude 盲区**。
+//   上面 ④ 从 2026-09-21 起就会检查「config 的 link: 指向被 srcExclude 排除的页」，
+//   但 ①②（正文 markdown 链接 / 图片）**一直没套 srcExclude** —— 同一类死链，
+//   写在 config 里会被报，写在正文里就放行。
+//   实测事故：`gen-tags.mjs` / `gen-updates.mjs` 生成的页面里链到了
+//   `posts/math/notes/index.generated` 与 10 份 `audit-*` 审计报告，
+//   VitePress 构建报 **31 处 dead link**，而本脚本打印「无死链」。
+//   ⇒ 生成器与检查器一起错，谁也没拦住。现在两侧都只认 `src-exclude.mjs`。
+const EXCLUDE_RES = loadSrcExclude()
+const relOf = (abs) => relative(DOCS, abs).split(sep).join('/')
+/** 目标文件存在、但被 srcExclude 排除 ⇒ 站点上没有这一页，点进去 404。 */
+const isDeadByExclude = (abs) => isExcluded(relOf(abs), EXCLUDE_RES)
+
 const files = walk(DOCS)
 const broken = []
 let totalLinks = 0
+let skippedExcludedSrc = 0
 
 for (const f of files) {
+  // 被 srcExclude 排除的源文件**不进构建**，VitePress 不会检查它的链接
+  // （模板文件里的占位链接就是典型）⇒ 跳过，与构建口径一致。
+  if (isExcluded(relOf(f), EXCLUDE_RES)) { skippedExcludedSrc++; continue }
   const content = readFileSync(f, 'utf-8')
   // ★ 先剔除行内代码 `...`，再匹配链接。
   //   为什么：文档里经常**举例说明**某个写法有问题，例如
@@ -89,7 +111,11 @@ for (const f of files) {
     totalLinks++
     const resolved = resolveLink(f, link)
     if (!resolved) continue
-    if (!existsAny(resolved)) broken.push({ file: f.slice(ROOT.length + 1), link })
+    const hit = firstExisting(resolved)
+    if (!hit) { broken.push({ file: f.slice(ROOT.length + 1), link }); continue }
+    if (isDeadByExclude(hit)) {
+      broken.push({ file: f.slice(ROOT.length + 1), link: `${link}  ← 目标被 srcExclude 排除（${relOf(hit)}），站点上不会有这一页` })
+    }
   }
   // 图片链接 ![](/xxx.png)
   const imgLinks = [...scannable.matchAll(/!\[[^\]]*\]\(([^)\s]+)\)/g)]
@@ -99,7 +125,11 @@ for (const f of files) {
     if (/^https?:/.test(link)) continue
     const resolved = resolveLink(f, link)
     if (!resolved) continue
-    if (!existsAny(resolved)) broken.push({ file: f.slice(ROOT.length + 1), link })
+    const hit = firstExisting(resolved)
+    if (!hit) { broken.push({ file: f.slice(ROOT.length + 1), link }); continue }
+    if (isDeadByExclude(hit)) {
+      broken.push({ file: f.slice(ROOT.length + 1), link: `${link}  ← 目标被 srcExclude 排除（${relOf(hit)}）` })
+    }
   }
 }
 

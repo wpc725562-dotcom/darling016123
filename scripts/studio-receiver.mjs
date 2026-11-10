@@ -6,6 +6,12 @@
 
 import {readFileSync, appendFileSync, existsSync, mkdirSync, renameSync, statSync} from 'node:fs';
 import {dirname, join} from 'node:path';
+// 遥测类型白名单从单一事实源来（2026-10-19）。
+// 原来这里第 47 行把 'progress'|'mastery'|'word_master' 硬写在 if 条件里，
+// log-schema.mjs 里另有一份、check-study-log.mjs 里还有一份 —— 三份。
+// 后果不对称：加了新类型而这里没改，事件会被**静默丢弃**（okCount++ 但 studyAppend 不动），
+// 看板上什么都看不出来。统一引这里之后，加类型只改 log-schema 一处。
+import { EVENT_TYPES } from './lib/log-schema.mjs';
 
 const ROOT = process.cwd();
 const INBOX = join(ROOT, '备考计划/_inbox/studio-events.jsonl');
@@ -44,7 +50,7 @@ function processInbox() {
     //   - mastery:     { kp, ok, src } —— 知识点判分
     //   - word_master: { origin, total, mastered, due_now, pct } —— 背词上报
     //   错题目前没有 POST 入站（走 mistake-stats 反向计算）
-    if (ev.type === 'progress' || ev.type === 'mastery' || ev.type === 'word_master') {
+    if (EVENT_TYPES.includes(ev.type)) {
       const entry = {
         ts: ev.ts,
         type: ev.type,
@@ -52,6 +58,11 @@ function processInbox() {
       };
       appendFileSync(STUDY_LOG, JSON.stringify(entry) + '\n');
       studyAppend++;
+    } else if (ev.type) {
+      // 旧版这里是 else 分支的静默丢弃：事件消失，日志不涨，看板无感。
+      // 至少喊一声，否则「加了新类型忘了登记」永远是无声故障。
+      console.warn('[studio-receiver] 未知事件类型，已跳过：' + ev.type +
+        ' ⇒ 要收它，把类型加进 scripts/lib/log-schema.mjs 的 EVENT_TYPES');
     }
     okCount++;
   }

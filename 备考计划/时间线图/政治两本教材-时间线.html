@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>政治两本教材 · 时间线（细致版）</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 0 0 80px;
+    background: #f5f5f7; color: #1a1a1a;
+    font: 14px/1.7 -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif;
+  }
+  .head {
+    background: #fff; border-bottom: 1px solid #e0e0e4;
+    padding: 20px 40px 16px; position: sticky; top: 0; z-index: 10;
+  }
+  .head h1 { font-size: 19px; font-weight: 600; margin: 0 0 6px; }
+  .head .meta { font-size: 12px; color: #888; line-height: 1.8; }
+  .head code { color: #666; background: #f0f0f2; padding: 1px 5px; border-radius: 3px; }
+  .nav {
+    background: #fff; border-bottom: 1px solid #e0e0e4;
+    padding: 10px 40px; display: flex; gap: 6px; flex-wrap: wrap;
+    position: sticky; top: 86px; z-index: 9;
+  }
+  .nav a {
+    font-size: 12.5px; color: #555; text-decoration: none;
+    padding: 5px 11px; border-radius: 14px; border: 1px solid #e0e0e4;
+    transition: all .15s;
+  }
+  .nav a:hover { background: #e8f5e9; border-color: #a5d6a7; color: #2e7d32; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+  section {
+    background: #fff; border: 1px solid #e0e0e4; border-radius: 10px;
+    margin: 26px 0; padding: 26px 30px 20px;
+  }
+  section > h2 {
+    font-size: 15.5px; font-weight: 600; margin: 0 0 6px;
+    color: #1a1a1a; display: flex; align-items: center; gap: 9px;
+  }
+  section > h2 .num {
+    background: #1a1a1a; color: #fff; font-size: 11.5px; font-weight: 600;
+    width: 22px; height: 22px; border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .scope {
+    font-size: 12.5px; color: #777; line-height: 1.85;
+    background: #fafafa; border-left: 2px solid #ddd;
+    padding: 9px 14px; margin: 10px 0 20px; border-radius: 0 4px 4px 0;
+  }
+  .scope b { color: #333; font-weight: 600; }
+  .diagram { display: flex; justify-content: center; overflow-x: auto; padding: 6px 0 14px; }
+  .mermaid { text-align: center; }
+  .legend {
+    display: flex; gap: 22px; flex-wrap: wrap;
+    font-size: 12px; color: #777; padding-top: 14px;
+    border-top: 1px solid #f0f0f2;
+  }
+  .legend i {
+    display: inline-block; width: 11px; height: 11px;
+    border-radius: 3px; margin-right: 6px; vertical-align: -1px;
+    border: 1.5px solid;
+  }
+  .l-core i { background: #e8f5e9; border-color: #4caf50; }
+  .l-ver i { background: #ede7f6; border-color: #7e57c2; }
+  .l-warn i { background: #fff8e1; border-color: #ffa726; }
+</style>
+</head>
+<body>
+
+<div class="head">
+  <h1>政治两本教材 · 时间线（细致版）</h1>
+  <div class="meta">
+    教材依据：毛中特（72 篇考点笔记）+ 习概（177 篇考点笔记）｜ 核实日期：2026-10-29<br>
+    来源：<code>D:\专升本总库\01-政治理论\04-蒸馏笔记\</code> ｜ 每条事件均可在对应笔记检索到原文
+  </div>
+</div>
+
+<div class="nav">
+  <a href="#m1">① 中国化的提出</a>
+  <a href="#m2">② 新民主主义革命</a>
+  <a href="#m3">③ 社会主义改造</a>
+  <a href="#m4">④ 建设道路探索</a>
+  <a href="#m5">⑤ 邓小平理论</a>
+  <a href="#m6">⑥ 三个代表与科学发展观</a>
+  <a href="#x1">⑦ 思想确立</a>
+  <a href="#x2">⑧ 总体布局</a>
+  <a href="#x3">⑨ 各领域战略</a>
+  <a href="#x4">⑩ 条件与保证</a>
+</div>
+
+<div class="wrap">
+
+<!-- 毛中特 -->
+<section id="m1">
+  <h2><span class="num">1</span>《毛中特》· 马克思主义中国化的提出与确立</h2>
+  <div class="scope">
+    <b>范围</b>：1921–1945 ｜ <b>依据</b>：教材导论 + 第 1 章<br>
+    <b>主线</b>：命题怎么提出 → 怎么成为全党指导思想。两个节点最容易混：<b>六届六中全会是"提出"，七大是"写入党章"</b>。
+  </div>
+  <div class="diagram">
+<pre class="mermaid">
+flowchart TD
+    A["1921 中国共产党成立<br/><i>马克思主义中国化的组织前提</i>"]:::core
+    B["1938 党的六届六中全会<br/>毛泽东《论新阶段》报告<br/>正式提出马克思主义中国化<br/><i>教材原文</i>"]:::core
+    C["1945 党的七大<br/>毛泽东思想写入党章<br/>确立为全党指导思想<br/><i>教材原文</i>"]:::core
+    D["易错<br/>六届六中全会＝提出命题<br/>七大＝写入党章"]:::warn
+
+    A --> B --> C
+    B -.-> D
+    classDef core fill:#e8f5e9,stroke:#4caf50,stroke-width:1.5px,color:#1a1a1a
+    classDef ver fill:#ede7f6,stroke:#7e57c2,stroke-width:1.5px,color:#1a1a1a
+    classDef warn fill:#fff8e1,stroke:#ffa726,stroke-width:1.5px,color:#1a1a1a
+</pre>
+  </div>
+  <div class="legend">
+    <span class="l-core"><i></i>教材原文</span>
+    <span class="l-ver"><i></i>已核实补充（非正文）</span>
+    <span class="l-warn"><i></i>易错提醒</span>
+  </div>
+</section>
+
+<section id="m2">
+  <h2><span class="num">2</span>《毛中特》· 新民主主义革命理论</h2>
+  <div class="scope">
+    <b>范围</b>：1927–1949 ｜ <b>依据</b>：教材第 2 章<br>
+    <b>主线</b>：从"走农村包围城市"到"建国"。注意 <b>1939 年首提"新民主主义"，1940 年《新民主主义论》才系统阐述</b>，两者不是同一件事。
+  </div>
+  <div class="diagram">
+<pre class="mermaid">
+flowchart TD
+    A["1927 大革命失败<br/>党的工作重心开始转向农村<br/><i>教材原文</i>"]:::core
+    B["1930 《反对本本主义》<br/>强调调查研究是一切工作的第一步<br/><i>教材原文</i>"]:::core
+    C["1939 《中国革命和中国共产党》<br/>第一次提出新民主主义<br/><i>教材原文</i>"]:::core
+    D["1940 《新民主主义论》<br/>阐述政治、经济、文化纲领<br/><i>教材原文</i>"]:::core
+    E["1948 《在晋绥干部会议上的讲话》<br/>完整概括总路线<br/><i>教材原文</i>"]:::core
+    F["1949 《论人民民主专政》<br/>建立中华人民共和国<br/><i>教材原文</i>"]:::core
+    W["易错<br/>1939 首提概念<br/>1940 才系统阐述"]:::warn
+
+    A --> B --> C --> D --> E --> F
+    C -.-> W
+    classDef core fill:#e8f5e9,stroke:#4caf50,stroke-width:1.5px,color:#1a1a1a
+    classDef ver fill:#ede7f6,stroke:#7e57c2,stroke-width:1.5px,color:#1a1a1a
+    classDef warn fill:#fff8e1,stroke:#ffa726,stroke-width:1.5px,color:#1a1a1a
+</pre>
+  </div>
+  <div class="legend">
+    <span class="l-core"><i></i>教材原文</span>
+    <span class="l-warn"><i></i>易错提醒</span>
+  </div>
+</section>
+
+<section id="m3">
+  <h2><span class="num">3</span>《毛中特》· 社会主义改造理论</h2>
+  <div class="scope">
+    <b>范围</b>：1953–1956 ｜ <b>依据</b>：教材第 3 章<br>
+    <b>主线</b>：总路线提出 → 宪法确认 → 三大改造完成。这三年是"社会主义制度确立"的关键窗口。
+  </div>
+  <div class="diagram">
+<pre class="mermaid">
+flowchart TD
+    A["1952 恢复国民经济完成<br/><i>教材原文</i>"]:::core
+    B["1953 正式提出过渡时期总路线<br/>一化三改<br/><i>教材原文</i>"]:::core
+    C["1954 一届全国人大<br/>第一部宪法<br/><i>教材原文</i>"]:::core
+    D["1956 三大改造基本完成<br/>社会主义制度确立<br/><i>教材原文</i>"]:::core
+    W["易错<br/>1954 年宪法是第一部<br/>不是 1956 年"]:::warn
+
+    A --> B --> C --> D
+    C -.-> W
+    classDef core fill:#e8f5e9,stroke:#4caf50,stroke-width:1.5px,color:#1a1a1a
+    classDef ver fill:#ede7f6,stroke:#7e57c2,stroke-width:1.5px,color:#1a1a1a
+    classDef warn fill:#fff8e1,stroke:#ffa726,stroke-width:1.5px,color:#1a1a1a
+</pre>
+  </div>
+  <div class="legend">
+    <span class="l-core"><i></i>教材原文</span>
+    <span class="l-warn"><i></i>易错提醒</span>
+  </div>
+</section>
+
+<section id="m4">
+  <h2><span class="num">4</span>《毛中特》· 社会主义建设道路初步探索</h2>
+  <div class="scope">
+    <b>范围</b>：1956–1957 ｜ <b>依据</b>：教材第 4 章<br>
+    <b>主线</b>：八大 → 正确处理人民内部矛盾。这一段常被跳过，但教材有专章，考客观题。
+  </div>
+  <div class="diagram">
+<pre class="mermaid">
+flowchart TD
+    A["1956.9 党的八大<br/>集中讨论执政党的建设<br/><i>教材原文</i>"]:::core
+    B["1957 《关于正确处理<br/>人民内部矛盾的问题》<br/><i>教材原文</i>"]:::core
+    W["易错<br/>八大是 1956 年<br/>不是 1957 年"]:::warn
+
+    A --> B
+    A -.-> W
+    classDef core fill:#e8f5e9,stroke:#4caf50,stroke-width:1.5px,color:#1a1a1a
+    classDef ver fill:#ede7f6,stroke:#7e57c2,stroke-width:1.5px,color:#1a1a1a
+    classDef warn fill:#fff8e1,stroke:#ffa726,stroke-width:1.5px,color:#1a1a1a
+</pre>
+  </div>
+  <div class="legend">
+    <span class="l-core"><i></i>教材原文</span>
+    <span class="l-warn"><i></i>易错提醒</span>
+  </div>
+</section>
+
+<section id="m5">
+  <h2><span class="num">5</span>《毛中特》· 邓小平理论</h2>
+  <div class="scope">
+    <b>范围</b>：1978–1992 ｜ <b>依据</b>：教材第 5 章<br>
+    <b>主线</b>：三中全会 → 十二大 → 十三大 → 南方谈话。这条链是毛中特里考得最密的一段。
+  </div>
+  <div class="diagram">
+<pre class="mermaid">
+flowchart TD
+    A["1978 十一届三中全会<br/>改革开放起点<br/><i>教材原文</i>"]:::core
+    B["1979.12 邓小平谈小康<br/>用小康阐释中国式现代化<br/><i>教材原文</i>"]:::core
+    C["1982 党的十二大<br/>提出建设有中国特色的社会主义<br/><i>教材原文</i>"]:::core
+    D["1987 党的十三大<br/>社会主义初级阶段理论<br/><i>教材原文</i>"]:::core
+    E["1992 南方谈话<br/>社会主义市场经济体制<br/><i>教材原文</i>"]:::core
+    W["易错<br/>1980.5 首提社会主义本质概念<br/>1992 南方谈话才系统阐述"]:::warn
+
+    A --> B --> C --> D --> E
+    B -.-> W
+    classDef core fill:#e8f5e9,stroke:#4caf50,stroke-width:1.5px,color:#1a1a1a
+    classDef ver fill:#ede7f6,stroke:#7e57c2,stroke-width:1.5px,color:#1a1a1a
+    classDef warn fill:#fff8e1,stroke:#ffa726,stroke-width:1.5px,color:#1a1a1a
+</pre>
+  </div>
+  <div class="legend">
+    <span class="l-core"><i></i>教材原文</span>
+    <span class="l-warn"><i></i>易错提醒</span>
+  </div>
+</section>
+
+<section id="m6">
+  <h2><span class="num">6</span>《毛中特》· 三个代表与科学发展观</h2>
+  <div class="scope">
+    <b>范围</b>：2000–2012 ｜ <b>依据</b>：教材第 6–7 章<br>
+    <b>主线</b>：两个理论都是"先提出、后写入党章、再确立为指导思想"三步走。
+  </div>
+  <div class="diagram">
+<pre class="mermaid">
+flowchart TD
+    A["2000 首次提出三个代表<br/><i>教材原文</i>"]:::core
+    B["2002 党的十六大<br/>三个代表写入党章<br/><i>教材原文</i>"]:::core
+    C["2003 首次提出科学发展观<br/><i>教材原文</i>"]:::core
+    D["2007 党的十七大<br/>科学发展观写入党章<br/><i>教材原文</i>"]:::core
+    E["2012 党的十八大<br/>科学发展观确立为指导思想<br/><i>教材原文</i>"]:::core
+    W["易错<br/>写入党章 ≠ 确立为指导思想<br/>十六大/十七大写入党章<br/>十八大才确立"]:::warn
+
+    A --> B --> C --> D --> E
+    D -.-> W
+    classDef core fill:#e8f5e9,stroke:#4caf50,stroke-width:1.5px,color:#1a1a1a
+    classDef ver fill:#ede7f6,stroke:#7e57c2,stroke-width:1.5px,color:#1a1a1a
+    classDef warn fill:#fff8e1,stroke:#ffa726,stroke-width:1.5px,color:#1a1a1a
+</pre>
+  </div>
+  <div class="legend">
+    <span class="l-core"><i></i>教材原文</span>
+    <span class="l-warn"><i></i>易错提醒</span>
+  </div>
+</section>
+
+<!-- 习概 -->
+<section id="x1">
+  <h2><span class="num">7</span>《习概》· 导论 · 思想确立全链</h2>
+  <div class="scope">
+    <b>范围</b>：2012–2022 ｜ <b>依据</b>：教材导论 + 第 1 章<br>
+    <b>主线</b>：十八大提出 → 十八届六中全会明确核心 → 十九大写入党章 → 十九届六中全会两个确立 → 二十大系统阐述。
+  </div>
+  <div class="diagram">
+<pre class="mermaid">
+flowchart TD
+    A["2012.11.15 十八届一中全会<br/>习近平任总书记<br/><i>核实·非正文</i>"]:::ver
+    B["党的十八大以来<br/>中国特色社会主义进入新时代<br/><i>教材原文</i>"]:::core
+    C["2016.10.24-27 十八届六中全会<br/>明确核心地位<br/><i>核实·非正文</i>"]:::ver
+    D["2017.10 党的十九大<br/>确立为必须长期坚持的指导思想<br/>并写入党章<br/><i>教材原文</i>"]:::core
+    E["2021.11.8-11 十九届六中全会<br/>两个确立<br/><i>核实日期·非正文</i>"]:::ver
+    F["2022.10.16-22 党的二十大<br/>系统阐述中国式现代化<br/><i>教材原文</i>"]:::core
+    W["易错<br/>十八届六中全会＝明确核心<br/>十九届六中全会＝两个确立"]:::warn
+
+    A --> B --> C --> D --> E --> F
+    C -.-> W
+    classDef core fill:#e8f5e9,stroke:#4caf50,stroke-width:1.5px,color:#1a1a1a
+    classDef ver fill:#ede7f6,stroke:#7e57c2,stroke-width:1.5px,color:#1a1a1a
+    classDef warn fill:#fff8e1,stroke:#ffa726,stroke-width:1.5px,color:#1a1a1a
+</pre>
+  </div>
+  <div class="legend">
+    <span class="l-core"><i></i>教材原文</span>
+    <span class="l-ver"><i></i>已核实补充（非正文）</span>
+    <span class="l-warn"><i></i>易错提醒</span>
+  </div>
+</section>
+
+<section id="x2">
+  <h2><span class="num">8</span>《习概》· 总体布局与战略布局</h2>
+  <div class="scope">
+    <b>范围</b>：2012–2018 ｜ <b>依据</b>：教材第 1–4 章<br>
+    <b>主线</b>：中国梦提出 → 强军目标 → 总体国家安全观 → 新发展理念 → 生态文明入宪。
+  </div>
+  <div class="diagram">
+<pre class="mermaid">
+flowchart TD
+    A["2012.11 参观《复兴之路》<br/>首次提出中国梦<br/><i>教材原文</i>"]:::core
+    B["2012.12 中央军委扩大会议<br/>提出强军目标<br/><i>教材原文</i>"]:::core
+    C["2014.04 中央国安委首次会议<br/>提出总体国家安全观<br/><i>教材原文</i>"]:::core
+    D["2015.09 提出新发展理念<br/><i>教材原文</i>"]:::core
+    E["2018.03 宪法修正案<br/>生态文明写入宪法<br/><i>教材原文</i>"]:::core
+
+    A --> B --> C --> D --> E
+    classDef core fill:#e8f5e9,stroke:#4caf50,stroke-width:1.5px,color:#1a1a1a
+    classDef ver fill:#ede7f6,stroke:#7e57c2,stroke-width:1.5px,color:#1a1a1a
+    classDef warn fill:#fff8e1,stroke:#ffa726,stroke-width:1.5px,color:#1a1a1a
+</pre>
+  </div>
+  <div class="legend">
+    <span class="l-core"><i></i>教材原文</span>
+  </div>
+</section>
+
+<section id="x3">
+  <h2><span class="num">9</span>《习概》· 各领域战略</h2>
+  <div class="scope">
+    <b>范围</b>：2013–2019 ｜ <b>依据</b>：教材第 5–10 章<br>
+    <b>主线</b>：三中全会（改革）→ 四中全会（法治）→ 十九大（乡村振兴）→ 全过程人民民主。
+  </div>
+  <div class="diagram">
+<pre class="mermaid">
+flowchart TD
+    A["2013.11 十八届三中全会<br/>全面深化改革<br/><i>教材原文</i>"]:::core
+    B["2014.10 十八届四中全会<br/>全面依法治国<br/><i>教材原文</i>"]:::core
+    C["2017.10 党的十九大<br/>提出乡村振兴战略<br/><i>教材原文</i>"]:::core
+    D["2019.11 上海虹桥街道<br/>提出全过程人民民主<br/><i>教材原文</i>"]:::core
+
+    A --> B --> C --> D
+    classDef core fill:#e8f5e9,stroke:#4caf50,stroke-width:1.5px,color:#1a1a1a
+    classDef ver fill:#ede7f6,stroke:#7e57c2,stroke-width:1.5px,color:#1a1a1a
+    classDef warn fill:#fff8e1,stroke:#ffa726,stroke-width:1.5px,color:#1a1a1a
+</pre>
+  </div>
+  <div class="legend">
+    <span class="l-core"><i></i>教材原文</span>
+  </div>
+</section>
+
+<section id="x4">
+  <h2><span class="num">10</span>《习概》· 条件与保证</h2>
+  <div class="scope">
+    <b>范围</b>：2012–2021 ｜ <b>依据</b>：教材第 11–17 章<br>
+    <b>主线</b>：小康目标 → 脱贫攻坚 → 全面建成小康社会。
+  </div>
+  <div class="diagram">
+<pre class="mermaid">
+flowchart TD
+    A["2012.11 党的十八大<br/>提出全面建成小康社会<br/><i>教材原文</i>"]:::core
+    B["2020 脱贫攻坚战<br/>取得全面胜利<br/><i>教材原文</i>"]:::core
+    C["2021 全面建成小康社会<br/>开启新征程<br/><i>教材原文</i>"]:::core
+
+    A --> B --> C
+    classDef core fill:#e8f5e9,stroke:#4caf50,stroke-width:1.5px,color:#1a1a1a
+    classDef ver fill:#ede7f6,stroke:#7e57c2,stroke-width:1.5px,color:#1a1a1a
+    classDef warn fill:#fff8e1,stroke:#ffa726,stroke-width:1.5px,color:#1a1a1a
+</pre>
+  </div>
+  <div class="legend">
+    <span class="l-core"><i></i>教材原文</span>
+  </div>
+</section>
+
+</div>
+
+<script>
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: 'base',
+    themeVariables: {
+      background: '#ffffff',
+      primaryColor: '#e8f5e9',
+      primaryTextColor: '#1a1a1a',
+      primaryBorderColor: '#4caf50',
+      lineColor: '#9e9e9e',
+      fontSize: '13.5px',
+      fontFamily: '-apple-system, "Segoe UI", "Microsoft YaHei", sans-serif'
+    },
+    flowchart: { curve: 'basis', nodeSpacing: 24, rankSpacing: 38, useMaxWidth: false, htmlLabels: true }
+  });
+</script>
+</body>
+</html>

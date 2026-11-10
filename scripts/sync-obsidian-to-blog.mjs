@@ -235,6 +235,39 @@ function slugNote(num, title) {
   return t ? `${num}-${t}` : String(num)
 }
 
+// ─────────── ★ 高数「源文件名 → 站上 slug」覆盖表（2026-10-04 加）───────────
+//
+// 为什么需要它
+//   源库 `高等数学/` 里还留着**旧的编号撞车**（第一章有两个 `1.1`、两个 `1.3`），
+//   而站上早在 2026-09-17 就把编号统一了（撞车的那 4 篇被改成 `1.7a` / `1.8a` /
+//   `1.13a` / `1.12a`…，其余第一章各篇统一加 `a` 后缀）。
+//   而 `slugNote()` 是**从源文件名推 slug** 的 ⇒ 一旦跑 sync：
+//     ① 会按旧编号生成 **4 篇重复笔记**（原名还在，于是同一篇内容出现两份）；
+//     ② 会把 `posts/math/notes/index.md` 重新生成成**一份裸清单**，
+//        丢掉手写的「⭐ 建议阅读顺序」表 + 编号说明 + 学法引导。
+//   这不是「可能」，是**必然**。所以这张表是「源 → 站」的桥。
+//
+// 覆盖范围：只有**第一章 7 篇**需要（其余 47 篇源编号 == 站编号，恒等）。
+// 映射怎么来的：**按标题自动匹配**（标题归一化去空格连字符后比对站上 slug 的标题部分），
+//   54 条源文件 **0 条歧义**、0 条匹配失败。复现脚本见
+//   `备考计划/笔记覆盖度评估-2026-09-17.md` §3.1。
+//
+// ⚠️ 只加不减：如果将来源库又改名，这里要同步加条目 —— 否则又会静默生成重复文件。
+const MATH_SLUG_OVERRIDE = {
+  '第一章 函数与极限/1.1 函数的概念': '1.1a-函数的概念',
+  '第一章 函数与极限/1.1 左右极限与极限存在判定': '1.7a-左右极限与极限存在判定',
+  '第一章 函数与极限/1.2 函数的连续性与间断点分类': '1.12a-函数的连续性与间断点分类',
+  '第一章 函数与极限/1.3 函数的连续性': '1.13a-函数的连续性',
+  '第一章 函数与极限/1.3 极限界限之“抓大头”法则': '1.8a-极限界限之“抓大头”法则',
+  '第一章 函数与极限/1.4 等价无穷小替换原理': '1.4a-等价无穷小替换原理',
+  '第一章 函数与极限/1.5 闭区间上连续函数的性质': '1.14a-闭区间上连续函数的性质',
+}
+
+// ★ 站上手写的 index.md 里出现这些标记 ⇒ 说明它被人改过，**不能覆盖**。
+//   判据取「脚本自己不会生成的字符串」：生成版只有标题 + 章节表 + 列表，
+//   没有 `::: tip` 提示块，也没有 ⭐。
+const MATH_INDEX_HANDWRITTEN_MARKERS = ['::: tip', '⭐', '教材目录基准']
+
 function chapterMetaFromPath(filePath) {
   // .../高等数学/第一章 函数与极限/1.1 函数的概念.md
   const rel = path.relative(path.join(ROOT, '高等数学'), filePath).replace(/\\/g, '/')
@@ -244,8 +277,9 @@ function chapterMetaFromPath(filePath) {
   const m = base.match(/^(\d+\.\d+)\s*(.*)$/)
   const num = m ? m[1] : base
   const title = m ? (m[2] ? `${m[1]} ${m[2]}` : m[1]) : base
-  const slug = slugNote(num, m ? m[2] : base)
-  return { chapter, num, title, slug, rel }
+  const relKey = rel.replace(/\.md$/, '')
+  const slug = MATH_SLUG_OVERRIDE[relKey] || slugNote(num, m ? m[2] : base)
+  return { chapter, num, title, slug, rel: relKey }
 }
 
 // ─────────── 同步：高数章节 ───────────
@@ -254,6 +288,11 @@ function syncMathNotes() {
   const files = listMd(srcRoot)
   if (!guardSource('高等数学章节笔记', srcRoot, files)) return { byChapter: new Map(), ordered: [] }
   const byChapter = new Map()
+  // ★ 护栏 1（2026-10-04 加）：**两篇源文件不许算出同一个 slug**。
+  //   判据用 slug 而不是源编号 —— 源库本来就留着旧重号（第一章两个 `1.1`、两个 `1.3`），
+  //   那是历史状态，靠 MATH_SLUG_OVERRIDE 绕开；真正的危害是「算出同一个 slug ⇒ 后写的覆盖先写的」。
+  //   历史事故：没有映射表时，两个 `1.1` 会各自生成一篇，站上同一节出现两份内容。
+  const slugSeen = new Map()
 
   for (const f of files) {
     const meta = chapterMetaFromPath(f)
@@ -262,6 +301,16 @@ function syncMathNotes() {
       stats.skipped++
       continue
     }
+    if (slugSeen.has(meta.slug)) {
+      throw new Error(
+        `❌ 高数 slug 撞车：两篇源文件会写到同一个站上文件 \`posts/math/notes/${meta.slug}.md\`\n` +
+        `   甲：${slugSeen.get(meta.slug)}\n   乙：${meta.rel}\n` +
+        `   后果：后写的**静默覆盖**先写的，站上少一篇、且不报错。\n` +
+        `   修法：在 scripts/sync-obsidian-to-blog.mjs 的 MATH_SLUG_OVERRIDE 里\n` +
+        `         给其中一篇补上「源相对路径 → 站上唯一 slug」的映射。`
+      )
+    }
+    slugSeen.set(meta.slug, meta.rel)
     const raw = read(f)
     const content = convertMd(raw, {
       title: meta.title,
@@ -316,7 +365,30 @@ ${ordered.map((c) => `| ${c} | ${byChapter.get(c)?.length || 0} |`).join('\n')}
     }
   }
   indexBody += `\n← [真题总览](/posts/math/) · [回首页](/)\n`
-  writeFile('posts/math/notes/index.md', indexBody)
+  // ★ 护栏 2（2026-10-04 加）：站上**手写的** index.md 不许覆盖。
+  //   生成版只有「标题 + 章节表 + 裸列表」；站上那份还多了
+  //   「⭐ 建议阅读顺序（14 行）」+「关于编号」提示块 +「学法引导」——
+  //   直接覆盖 = 静默丢掉这些手写内容。
+  //   ⇒ 判据：现有文件含**脚本不会生成的**手写标记，就不覆盖，
+  //      改写到 `index.generated.md` 供人工比对。
+  const mathIndexPath = path.join(ROOT, 'docs', 'posts', 'math', 'notes', 'index.md')
+  let existingIndex = ''
+  try { existingIndex = fs.readFileSync(mathIndexPath, 'utf8') } catch { /* 文件不存在则按新写 */ }
+  const indexIsHandwritten = MATH_INDEX_HANDWRITTEN_MARKERS.some((mk) => existingIndex.includes(mk))
+  if (indexIsHandwritten) {
+    // ⚠️ 产物**必须写在 docs/ 之外**：docs/ 里的一切都会被 VitePress 当页面构建。
+    //   （2026-10-04 踩过：备份目录建在 docs/ 里，一次构建多出 54 个页面 + 污染搜索索引。）
+    const altRel = 'math-index.generated.md'
+    const altAbs = path.join(ROOT, altRel)
+    fs.writeFileSync(altAbs, indexBody, 'utf8')
+    stats.skipped++
+    console.warn(
+      '  ⚠️ 高数 index.md 含**手写内容**（⭐ 阅读顺序表 / 提示块）—— **已跳过覆盖**。\n' +
+      `     生成版写到仓根 ${altRel}（**故意不放 docs/**，免得被当成站点页面），请人工比对后再决定是否合并。`
+    )
+  } else {
+    writeFile('posts/math/notes/index.md', indexBody)
+  }
 
   return { byChapter, ordered }
 }

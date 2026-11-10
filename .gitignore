@@ -40,6 +40,10 @@ docs/.vitepress/dist*/
 # ★ 2026-11-11：改版前的整份 docs 快照（docs.bak-YYYYMMDD-*）。是回滚用的本地副本，
 #   不是源，进库只会让每次 diff 都多出上千文件。
 docs.bak-*/
+# scripts/ 下的中间产物：蒸馏分片（_ds_p*.txt）、教材页抽取（_gs_p*.txt）。
+# 这些是跑一次就过期的原料，结论已写进 docs/，不该跟着脚本一起入库。
+scripts/_ds_*.txt
+scripts/_gs_p*.txt
 # ★ 2026-10-04 发现：根目录被误建了 .vitepress/dist-new（102MB / 340 文件）——
 #   `--outDir` 写错路径时的残留。加规则挡住，防它进版本库。
 /.vitepress/

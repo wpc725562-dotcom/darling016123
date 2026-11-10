@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>高数 · 第1步 左右极限与极限存在判定（零基础）</title>
+<!-- 离线自包含：KaTeX 用同目录 katex/，双击即开，不需联网、不需开门户。
+     配色与 D:\math-notes\index.html 同一套樱花风。 -->
+<link rel="stylesheet" href="katex/katex.min.css">
+<style>
+  :root {
+    --accent: #e4596f; --accent-2: #c8455e;
+    --pink: #f5b8c4; --pink-2: #d97a8c; --pink-bg: #fff4f6; --warm: #ffe9c9;
+    --ink: #2f2a33; --ink-2: #6b6472; --line: #f0dbe1;
+    --go: #1f8a70; --go-bg: #eafaf5;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 40px 20px 80px; color: var(--ink);
+    font-family: "Noto Sans SC", "Microsoft YaHei", sans-serif;
+    line-height: 1.85; background: #fffdfd;
+    background-image: linear-gradient(#fdf3f5 1px, transparent 1px),
+                      linear-gradient(90deg, #fdf3f5 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  main { max-width: 880px; margin: 0 auto; }
+  h1, h2, h3 { font-family: "Noto Serif SC", serif; letter-spacing: .5px; }
+  h1 { font-size: 30px; color: var(--accent-2); margin: 0 0 6px; }
+  h2 {
+    font-size: 22px; margin: 42px 0 14px; padding-left: 13px;
+    border-left: 5px solid var(--accent); color: var(--accent-2);
+  }
+  h3 { font-size: 17px; margin: 24px 0 8px; }
+  .sub { color: var(--ink-2); font-size: 14px; margin-bottom: 28px; }
+  .card {
+    background: #fff; border: 1px solid var(--line); border-radius: 18px;
+    padding: 18px 22px; margin: 14px 0; box-shadow: 0 2px 14px rgba(228,89,111,.06);
+  }
+  .say {
+    border-left: 3px solid var(--pink);
+    background: linear-gradient(90deg, var(--pink-bg), #fff);
+    padding: 10px 15px; border-radius: 0 12px 12px 0; margin: 10px 0;
+  }
+  .say b { color: var(--accent-2); }
+  .warn { border-left-color: #e0a13a; background: linear-gradient(90deg, var(--warm), #fff); }
+  .formula { font-size: 20px; text-align: center; padding: 12px 0 6px; overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 15px; background: #fff; }
+  th, td { border: 1px solid var(--line); padding: 8px 11px; text-align: left; vertical-align: middle; }
+  th { background: var(--pink-bg); font-weight: 600; }
+  td.c, th.c { text-align: center; }
+  code {
+    font-family: "Fira Code", Consolas, monospace; font-size: 14px;
+    background: #faf3f5; padding: 1px 6px; border-radius: 6px; color: var(--accent-2);
+  }
+  pre {
+    font-family: "Fira Code", Consolas, monospace; font-size: 14px;
+    background: #2a2330; color: #f3e8ec; padding: 14px 16px; border-radius: 14px;
+    overflow-x: auto; line-height: 1.6;
+  }
+  details {
+    background: #fff; border: 1px dashed var(--pink-2); border-radius: 12px;
+    padding: 10px 15px; margin: 10px 0;
+  }
+  summary { cursor: pointer; color: var(--accent-2); font-weight: 600; }
+  .q { background: #fff; border: 1px solid var(--line); border-left: 5px solid var(--accent);
+       border-radius: 14px; padding: 15px 20px; margin: 14px 0; }
+  .tag { display: inline-block; font-size: 12px; background: var(--pink-bg);
+         color: var(--accent-2); border: 1px solid var(--pink); border-radius: 999px;
+         padding: 1px 10px; margin-right: 6px; }
+  .foot { margin-top: 46px; color: var(--ink-2); font-size: 13px; text-align: center; }
+  html { scroll-behavior: smooth; }
+  .toc {
+    position: sticky; top: 0; z-index: 9;
+    display: flex; flex-wrap: wrap; gap: 6px; align-items: center;
+    padding: 9px 12px; margin: 0 0 20px;
+    background: rgba(255, 253, 253, .95); border: 1px solid var(--line);
+    border-radius: 14px; box-shadow: 0 2px 10px rgba(228, 89, 111, .05);
+  }
+  .toc > b { font-size: 13px; color: var(--ink-2); font-weight: 400; }
+  .toc a {
+    font-size: 13px; color: var(--accent-2); text-decoration: none;
+    padding: 3px 11px; border: 1px solid var(--pink); border-radius: 999px; background: #fff;
+  }
+  .toc a:hover, .toc a:focus { background: var(--pink-bg); border-color: var(--accent); }
+  h2 { scroll-margin-top: 62px; }
+
+  /* ===== 本页面专用：动手区 ===== */
+  .lab { border: 2px solid var(--go); border-radius: 18px; padding: 18px 22px; background: var(--go-bg); }
+  .lab h3 { margin-top: 0; color: var(--go); }
+  .btnrow { display: flex; flex-wrap: wrap; gap: 10px; margin: 12px 0 4px; }
+  button {
+    font: inherit; font-size: 15px; cursor: pointer;
+    border: 2px solid var(--go); background: #fff; color: var(--go);
+    padding: 7px 16px; border-radius: 999px; font-weight: 600;
+  }
+  button:hover { background: var(--go); color: #fff; }
+  button.ghost { border-color: var(--pink-2); color: var(--accent-2); }
+  button.ghost:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .hint { font-size: 13px; color: var(--ink-2); margin: 4px 0 0; }
+  #tbl { background: #fff; }
+  #tbl td.num { font-family: "Fira Code", Consolas, monospace; text-align: right; }
+  #tbl td.up { color: var(--go); font-weight: 700; }
+  #tbl td.down { color: #b8341f; font-weight: 700; }
+  #tbl td.pending { color: #b9b0bd; text-align: center; }
+  .gapline { font-size: 15px; margin: 8px 0 0; }
+</style>
+</head>
+<body>
+<main>
+
+<h1>高数 · 第 1 步：左右极限</h1>
+<p class="sub">零基础专用 · 离线可看 · 这一页只有一个新概念 · 生成于 2026-09-16</p>
+
+<nav class="toc" id="toc"><b>跳到：</b></nav>
+
+<div class="card say">
+  用法：本页<b>只有一个新概念</b>。看完 → 到第五节<b>亲手点按钮跑数字</b> → 把结果带回聊天窗交给教练。
+  答案是折叠的 —— <b>先自己想 30 秒再点开</b>，直接点开等于没练。
+</div>
+
+<div class="card warn say">
+  <b>这笔是旧账</b>：09-10 你过关的是 <span data-tex="\lim_{x \to \infty}"></span>（x 越走越大）。
+  今天考 <span data-tex="\lim_{x \to 2}"></span>（x 靠近一个<b>固定的数</b>）——
+  <b>同一类式子，两种走法，规则不能互相搬</b>。教练板上写死了：这笔不销，不开新考点。
+</div>
+
+<h2>一、先摆一个生活画面：两人过桥</h2>
+
+<div class="card">
+  <p>一座桥，<b>桥中间有一个洞</b>（那个洞就是 <span data-tex="x = 2"></span>，因为分母 <span data-tex="x - 2"></span> 在那一刻变成 0，式子算不出来）。</p>
+  <p>现在有两个人同时往洞里走：</p>
+  <table>
+    <tr><th class="c">谁</th><th>从哪边出发</th><th>走到哪了</th></tr>
+    <tr><td class="c">小明</td><td>桥的<b>左边</b>（比 2 小的那一侧）</td><td>1.9 → 1.99 → 1.999 → …</td></tr>
+    <tr><td class="c">小红</td><td>桥的<b>右边</b>（比 2 大的那一侧）</td><td>2.1 → 2.01 → 2.001 → …</td></tr>
+  </table>
+  <div class="say"><b>极限的规矩只有一条：</b>两个人<b>走到同一个地方</b>，才说这个极限<b>存在</b>；
+  一个往天上跑、一个往地下跑 —— <b>极限不存在</b>。</div>
+</div>
+
+<h2>二、两个新记号（今天只有这两个新符号）</h2>
+
+<div class="card">
+  <table>
+    <tr><th class="c">写法</th><th>读作</th><th>人话</th></tr>
+    <tr>
+      <td class="c" data-tex="x \to 2^{-}"></td>
+      <td>x 趋于 2 的<b>负侧</b></td>
+      <td>从小明那边靠过去：<b>一直比 2 小</b>，但越来越接近 2</td>
+    </tr>
+    <tr>
+      <td class="c" data-tex="x \to 2^{+}"></td>
+      <td>x 趋于 2 的<b>正侧</b></td>
+      <td>从小红那边靠过去：<b>一直比 2 大</b>，但越来越接近 2</td>
+    </tr>
+    <tr>
+      <td class="c" data-tex="\lim_{x \to 2} f(x)"></td>
+      <td>x 趋于 2 时的极限（<b>不分左右</b>）</td>
+      <td>要求<b>两人终点一样</b>，否则这道题的答案就是「不存在」</td>
+    </tr>
+  </table>
+  <div class="say"><b>那个小角标 <span data-tex="^{-}"></span> / <span data-tex="^{+}"></span> 就是今天唯一的新东西。</b>
+  减号＝左边来，加号＝右边来。记住这一句就够了。</div>
+</div>
+
+<h2>三、今天要算的式子</h2>
+
+<div class="card">
+  <div class="formula" data-tex="\lim_{x \to 2} \frac{1}{x - 2}" data-display="1"></div>
+  <div class="say"><b>人话：</b>x 越走越靠近 2（但永远不真等于 2），<span data-tex="\dfrac{1}{x-2}"></span> 这个数会怎么样？</div>
+  <table>
+    <tr><th>零件</th><th>它负责什么</th></tr>
+    <tr><td><span data-tex="x - 2"></span></td><td>算出「离 2 还差多远」。<b>越靠近 2，这个数就越小，趋近于 0</b></td></tr>
+    <tr><td><span data-tex="\dfrac{1}{x-2}"></span></td><td>1 除以一个<b>超级小的数</b> → 结果<b>超级大</b>（这就是"分母趋 0 会炸"）</td></tr>
+  </table>
+</div>
+
+<h2>四、先猜，别看答案</h2>
+
+<div class="card q">
+  <span class="tag">猜想</span>
+  <b>在跑数字之前，先自己在心里回答：</b>
+  <p>① 小明从左边靠近 2，<span data-tex="\dfrac{1}{x-2}"></span> 会变成<b>很大的正数</b>、<b>很大的负数</b>，还是<b>靠近 0</b>？</p>
+  <p>② 小红从右边靠近 2 呢？</p>
+  <p>③ 两人的终点一样吗？所以极限存不存在？</p>
+  <div class="say"><b>把你的猜想写下来（一行就够）</b>，再下去第五节用数字验它。<b>猜错非常重要</b> —— 猜错了你才知道自己脑子里的规则是错的。</div>
+</div>
+
+<div class="card warn say">
+  <b>⚠️ 一颗已知的雷（教练板上记着的）</b>：如果你心里冒出"<b>答案是 0</b>"，那是
+  <span data-tex="\lim_{x \to \infty}"></span> 的抓大头规则被搬过来了。
+  这题 x <b>不是在变大</b>，是在<b>靠近 2</b> —— 那条规则在这儿<b>完全用不上</b>。
+</div>
+
+<h2 id="lab">五、动手区：亲手把数字跑出来</h2>
+
+<div class="card lab">
+  <h3>先点下面两个按钮，表格会自己填</h3>
+  <div class="btnrow">
+    <button id="btnL">① 跑左边（小明：x = 1.9, 1.99, 1.999）</button>
+    <button id="btnR">② 跑右边（小红：x = 2.1, 2.01, 2.001）</button>
+    <button id="btnReset" class="ghost">清空重来</button>
+  </div>
+  <p class="hint">不用你算，也不用开 PowerShell —— 但<b>必须你自己点</b>，点完把表里的数字抄给教练。</p>
+
+  <table id="tbl">
+    <tr>
+      <th class="c">哪边</th><th class="c">x 的值</th><th class="c">x − 2（离 2 多远）</th>
+      <th class="c">1 ÷ (x − 2)</th>
+    </tr>
+    <tbody id="tbody">
+      <tr><td class="c pending" colspan="4">— 空的，去点上面两个按钮 —</td></tr>
+    </tbody>
+  </table>
+
+  <p class="gapline" id="verdict">跑完两排之后，看<b>最后一列</b>：左边在往哪跑？右边在往哪跑？</p>
+</div>
+
+<details>
+  <summary>🔽 我跑完了，点开看「标准结论」（先看上面自己跑的数字）</summary>
+  <div class="card">
+    <div class="formula" data-tex="\lim_{x \to 2^{-}} \frac{1}{x-2} = -\infty" data-display="1"></div>
+    <div class="say">左边来：<span data-tex="x-2"></span> 是<b>很小的负数</b>（比如 <span data-tex="-0.001"></span>）→ 1 除以它 = <b>超级大的负数</b>（<span data-tex="-1000"></span>）→ 一路往<b>负无穷</b>掉。</div>
+    <div class="formula" data-tex="\lim_{x \to 2^{+}} \frac{1}{x-2} = +\infty" data-display="1"></div>
+    <div class="say">右边来：<span data-tex="x-2"></span> 是<b>很小的正数</b>（<span data-tex="+0.001"></span>）→ 1 除以它 = <b>超级大的正数</b>（<span data-tex="+1000"></span>）→ 一路往<b>正无穷</b>冲。</div>
+    <div class="formula" data-tex="-\infty \;\neq\; +\infty \quad\Longrightarrow\quad \lim_{x \to 2} \frac{1}{x-2}\ \text{不存在}" data-display="1"></div>
+    <div class="say"><b>结论</b>：左、右极限<b>不相等</b> → 原极限<b>不存在</b>。<br>
+    注意 <span data-tex="-\infty"></span> 和 <span data-tex="+\infty"></span> 也<b>不相等</b> —— 而且 <span data-tex="\infty"></span> <b>不是一个数</b>，它只是"没有边"的记号，所以更不能写"等于无穷"当极限存在。</div>
+  </div>
+</details>
+
+<h2>六、判分标准（教练只认这个）</h2>
+
+<div class="card">
+  <table>
+    <tr><th>你交什么</th><th>教练怎么判</th></tr>
+    <tr><td>只写「不存在」三个字</td><td>❌ <b>重做</b>。没过程 = 按错题处理（09-10 起生效的硬判据）</td></tr>
+    <tr><td>写了「0」</td><td>❌ 抓到搬规则，回炉 1.11 讲义第四节</td></tr>
+    <tr><td>交了<b>表里的数字</b> + 左右各自的去向 + 「不相等所以不存在」</td><td>✅ 过关，这笔账当场销</td></tr>
+  </table>
+</div>
+
+<h2>七、同类题（过了第一题才做，一次只做一道）</h2>
+
+<div class="card q">
+  <span class="tag">练习 A</span><b>换数字</b>：
+  <div class="formula" data-tex="\lim_{x \to 0} \frac{1}{x}" data-display="1"></div>
+  <div class="say">这道你<b>以前见过</b>（旧题，答案在教练板上泄露过），所以这次<b>不考答案，只考理由</b>：左边往哪跑、右边往哪跑，各用一句话。</div>
+</div>
+
+<div class="card q">
+  <span class="tag">练习 B</span><b>换皮，同骨架</b>：
+  <div class="formula" data-tex="\lim_{x \to 0} \frac{1}{x^{2}}" data-display="1"></div>
+  <div class="say">⚠️ 这题<b>不是</b>练习 A 的答案 —— 先把 <span data-tex="x^2"></span> 想想：左边来（<span data-tex="-0.01"></span>）平方之后变成正还是负？右边来呢？<b>两条路会不会走到同一个地方？</b>（把 <span data-tex="-0.1,-0.01"></span> 也代进 <span data-tex="x^2"></span> 算一下再答）</div>
+  <details>
+    <summary>🔽 答案（先自己算完再点）</summary>
+    <div class="formula" data-tex="\lim_{x \to 0^{-}} \frac{1}{x^{2}} = +\infty, \qquad \lim_{x \to 0^{+}} \frac{1}{x^{2}} = +\infty" data-display="1"></div>
+    <div class="say">两边<b>都是</b>正无穷（因为负数一平方就变正，分母从哪边来都是<b>很小的正数</b>）→ 两边<b>一致</b>。这时课本写
+    <span data-tex="\lim\limits_{x \to 0}\dfrac{1}{x^{2}} = +\infty"></span>，并说它是「<b>极限为无穷大</b>」这一类 ——
+    <b>⚠️ 推算</b>：同济八版本地无全文，"无穷大算不算极限存在"各教材口径不同（严格说"不存在但记作 <span data-tex="+\infty"></span>"）。
+    <b>考点在专升本怎么判，等你把 B 题答完，我按仓库真题口径给你定</b>，别自己纠结这条。</div>
+  </details>
+</div>
+
+<div class="card q">
+  <span class="tag">练习 C</span><b>反向：两边一致的正常题</b>
+  <div class="formula" data-tex="\lim_{x \to 2} (x + 1)" data-display="1"></div>
+  <div class="say">这题没有分母，不会炸。左边来、右边来、直接塞 <span data-tex="x=2"></span>，三个答案各是多少？<b>它们一样吗？</b></div>
+  <details>
+    <summary>🔽 答案</summary>
+    <div class="say">都是 <b>3</b> → 两边一致、而且等于"直接把 2 塞进去"的结果。
+    <b>这就是第 2 步的入口</b>：能直接塞就塞（塞完不炸＝答案就是它），塞完炸了（分母变 0）才需要分左右 / 因式分解。</div>
+  </details>
+</div>
+
+<h2>八、这一页你只需要带走 3 句</h2>
+
+<div class="card">
+  <p>1️⃣ <b>靠近一个固定的数，有两条路</b>：从左边来 <span data-tex="x \to 2^{-}"></span>、从右边来 <span data-tex="x \to 2^{+}"></span>。</p>
+  <p>2️⃣ <b>分母趋近 0 → 式子会炸（冲向无穷）</b>，这时候<b>绝不能</b>用抓大头。</p>
+  <p>3️⃣ <b>左 = 右 → 极限存在；左 ≠ 右 → 极限不存在</b>。这是"极限存在判定"唯一的判据。</p>
+</div>
+
+<p class="foot">高数 · 第一章 函数与极限 · 第 1 步 / 共 6 步 ｜ 同系列：<a href="index.html">极限公式与人话对照</a>、<a href="https://darling016123.github.io/darling016123/posts/math/notes/1.11-%E6%9E%81%E9%99%90%E6%B1%82%E5%80%BC%E9%9B%B6%E5%9F%BA%E7%A1%80-%E6%8A%93%E5%A4%A7%E5%A4%B4.html">1.11 抓大头讲义</a></p>
+
+</main>
+
+<script src="katex/katex.min.js"></script>
+<script defer>
+/* ===== 动手区：真实计算，不是我写死的数字 ===== */
+(function () {
+  var LEFT  = [1.9, 1.99, 1.999];
+  var RIGHT = [2.1, 2.01, 2.001];
+  var rows = { L: [], R: [] };
+
+  function fmt(n) {
+    if (!isFinite(n)) return String(n);
+    var a = Math.abs(n);
+    if (a >= 1000) return n.toFixed(0);
+    if (a >= 10)   return n.toFixed(4).replace(/0+$/, '').replace(/\.$/, '');
+    return String(Number(n.toPrecision(6)));
+  }
+
+  function compute(list, side) {
+    rows[side] = list.map(function (x) {
+      var d = x - 2;
+      return { x: x, d: d, q: 1 / d };
+    });
+    render();
+  }
+
+  function render() {
+    var tb = document.getElementById('tbody');
+    var all = [];
+    rows.L.forEach(function (r) { all.push(['左边 2−', r, 'down']); });
+    rows.R.forEach(function (r) { all.push(['右边 2+', r, 'up']); });
+    if (!all.length) {
+      tb.innerHTML = '<tr><td class="c pending" colspan="4">— 空的，去点上面两个按钮 —</td></tr>';
+      document.getElementById('verdict').innerHTML =
+        '跑完两排之后，看<b>最后一列</b>：左边在往哪跑？右边在往哪跑？';
+      return;
+    }
+    tb.innerHTML = all.map(function (item) {
+      var side = item[0], r = item[1];
+      var arrow = r.q > 100 ? '→ 往上冲 ↗' : (r.q < -100 ? '→ 往下掉 ↘' : '');
+      return '<tr><td class="c">' + side + '</td>' +
+             '<td class="num">' + r.x + '</td>' +
+             '<td class="num">' + fmt(r.d) + '</td>' +
+             '<td class="num ' + (r.q > 0 ? 'up' : 'down') + '">' + fmt(r.q) + ' ' + arrow + '</td></tr>';
+    }).join('');
+
+    var both = rows.L.length && rows.R.length;
+    document.getElementById('verdict').innerHTML = both
+      ? '两边都跑完了 → <b>看最后一列的颜色</b>：一列红色往 <b>负</b> 掉、一列绿色往 <b>正</b> 冲，' +
+        '两人终点<b>不一样</b> → 所以这道题的极限<b>？</b>（这句你自己写给教练）'
+      : '只跑了一边 —— <b>两条路都要跑</b>，把另一个按钮也点了。';
+  }
+
+  document.getElementById('btnL').addEventListener('click', function () { compute(LEFT, 'L'); });
+  document.getElementById('btnR').addEventListener('click', function () { compute(RIGHT, 'R'); });
+  document.getElementById('btnReset').addEventListener('click', function () { rows = { L: [], R: [] }; render(); });
+})();
+</script>
+<script defer>
+/* 顶部粘性目录：抓所有 h2 */
+(function () {
+  var names = ['两人过桥', '两个新记号', '今天要算的式子', '先猜', '动手跑数字', '判分标准', '同类题', '带走3句'];
+  var toc = document.getElementById('toc');
+  document.querySelectorAll('h2').forEach(function (h, i) {
+    if (!h.id) h.id = 'sec' + i;
+    var a = document.createElement('a');
+    a.href = '#' + h.id;
+    a.textContent = (i + 1) + '. ' + (names[i] || h.textContent.slice(0, 8));
+    toc.appendChild(a);
+  });
+})();
+</script>
+<script defer>
+/* 双通道渲染（与 index.html 同一套策略）：KaTeX 排真数学；失败退回原文，绝不白屏。 */
+window.addEventListener('DOMContentLoaded', function () {
+  var nodes = document.querySelectorAll('[data-tex]');
+  if (typeof katex === 'undefined') {
+    nodes.forEach(function (el) { el.textContent = el.getAttribute('data-tex'); });
+    document.querySelector('.foot').innerHTML =
+      '⚠️ KaTeX 未能加载（同目录 katex/ 文件夹可能被删或移走），公式暂显示原文。';
+    return;
+  }
+  var bad = 0;
+  nodes.forEach(function (el) {
+    try {
+      katex.render(el.getAttribute('data-tex'), el, {
+        displayMode: el.hasAttribute('data-display'),
+        throwOnError: false
+      });
+    } catch (e) {
+      bad++;
+      el.textContent = el.getAttribute('data-tex');
+    }
+  });
+  console.log('KaTeX 渲染：共 ' + nodes.length + ' 处，失败 ' + bad + ' 处');
+});
+</script>
+</body>
+</html>

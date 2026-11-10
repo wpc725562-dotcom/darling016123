@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>数据结构 · 记忆恢复包 答案卡（题面 + 答案同处）</title>
+<style>
+:root{--ink:#1a1a1a;--muted:#6b6b6b;--line:#e2e0da;--bg:#fbfaf7;--card:#fff;--accent:#2f5d8a;--warn:#b4532a}
+*{box-sizing:border-box}
+body{margin:0;padding:28px 18px 60px;background:var(--bg);color:var(--ink);
+font:15px/1.75 -apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
+.wrap{max-width:840px;margin:0 auto}
+h1{font-size:20px;font-weight:600;margin:0 0 4px}
+.sub{color:var(--muted);font-size:13px;margin-bottom:20px}
+.how{background:#eef4fa;border:1px solid #cddff0;border-radius:8px;padding:12px 18px;
+font-size:13.5px;margin-bottom:24px;color:#24425f}
+h2{font-size:15px;font-weight:600;margin:26px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+.q{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin-bottom:12px}
+.qn{font-size:13px;font-weight:600;color:var(--accent);margin-bottom:6px}
+.qt{font-size:15px;font-weight:500;margin-bottom:10px;line-height:1.7}
+.tag{display:inline-block;font-size:11.5px;color:#8a8a8a;border:1px solid var(--line);
+border-radius:4px;padding:0 6px;margin-left:6px;vertical-align:1px;font-weight:400}
+.ans{padding:10px 14px;background:#f7f6f1;border-left:3px solid var(--accent);border-radius:6px;
+font-size:14px;line-height:1.85}
+.ans b{color:#1b3f60}
+.ans code{background:#eceae2;padding:1px 5px;border-radius:4px;font-size:13px}
+.warn{color:var(--warn);font-weight:600}
+.foot{margin-top:28px;font-size:13.5px;color:#3a3a3a;border-top:1px solid var(--line);padding-top:14px}
+table{border-collapse:collapse;width:100%;font-size:13.5px;margin:10px 0 0}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:center}
+th{background:#f2f0ea;font-weight:600}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>数据结构 · 记忆恢复包 —— 答案卡</h1>
+<div class="sub">2026-10-23 · 10 题 · <b>每题题面与答案放在同一块</b>，不用往上翻</div>
+
+<div class="how">
+<b>对照方式：</b>先看题面自己回想一遍，再看下面灰底答案。<br>
+<b>答错的题现在不要看第二遍</b>——记下题号，明天再答一次，那才叫复检。
+</div>
+
+<h2>一、线性表（2.2）· 6 题</h2>
+
+<div class="q">
+<div class="qn">1</div>
+<div class="qt">顺序表和链表，插入一个元素的时间复杂度各是多少？差在哪？</div>
+<div class="ans">
+顺序表 <b>O(n)</b> —— 插入点后面的元素全都要往后挪一位。<br>
+链表 <b>O(1)</b> —— 只改两个指针，不用搬家。<br>
+<b>差别就一句：要不要搬家。</b><br>
+<span class="warn">易错：</span>链表的 O(1) 有前提——<b>已经走到插入位置</b>。若题目是「按序号找第 k 个再插入」，找位置本身要 O(n)。
+</div>
+</div>
+
+<div class="q">
+<div class="qn">2<span class="tag">2024 单选 16</span></div>
+<div class="qt">单链表的结点由几部分组成？各存什么？</div>
+<div class="ans">
+两部分：<b>数据域</b>（存数据）+ <b>指针域</b>（存下一个结点的地址）。<br>
+口诀：<b>一个盒子装两样东西</b> —— 自己的东西 + 下一家的门牌号。
+</div>
+</div>
+
+<div class="q">
+<div class="qn">3</div>
+<div class="qt">头指针和头结点有什么区别？哪个必须有？</div>
+<div class="ans">
+<b>头指针</b>：指向第一个结点的指针。<b>必须有</b>，没有它整条链就找不着了。<br>
+<b>头结点</b>：在第一个数据结点<b>之前额外加</b>的一个结点，数据域通常不存东西。<b>可以没有</b>。<br>
+记忆：头指针是「手」，头结点是「门卫」。
+</div>
+</div>
+
+<div class="q">
+<div class="qn">4<span class="tag">2024 单选 17 · 三个易混</span></div>
+<div class="qt">带头结点的单链表，判空条件是什么？</div>
+<div class="ans">
+<code>head-&gt;next == NULL</code> ✅ 带头结点的单链表<br>
+三个必须分清：<br>
+· <code>head == NULL</code> → <b>不带头结点</b>的单链表<br>
+· <code>head-&gt;next == head</code> → <b>循环</b>链表<br>
+· <code>head-&gt;next == NULL</code> → <b>带头结点</b>的单链表 ✅
+</div>
+</div>
+
+<div class="q">
+<div class="qn">5<span class="tag">2024 单选 20 / 2021 单选 19</span></div>
+<div class="qt">在 p 所指结点之后插入 s 所指结点，两条语句的顺序是什么？能反过来吗？</div>
+<div class="ans">
+<code>s-&gt;next = p-&gt;next;</code> 然后 <code>p-&gt;next = s;</code><br>
+<b>不能反过来。</b>先执行 <code>p-&gt;next = s</code> 就把原来后面那一串的地址<b>覆盖掉了</b>，再也找不回来。<br>
+口诀：<b>先接后，再断前。</b>
+</div>
+</div>
+
+<div class="q">
+<div class="qn">6<span class="tag">2024 简答 10 分</span></div>
+<div class="qt">顺序表和链表各自的优缺点？</div>
+<div class="ans">
+<b>顺序表</b>：随机访问快（找第 k 个 O(1)）；但插入删除慢（O(n)）、要预先分配连续空间。<br>
+<b>链表</b>：插入删除快、不要求连续空间；但不能随机访问（找第 k 个要 O(n)）。<br>
+<b>一句话：顺序表快在「查」，链表快在「改」。</b><br>
+<span class="warn">答题格式：</span>优点 + 缺点 + 一句总结，三段写，别只写一半。
+</div>
+</div>
+
+<h2>二、图（概念层）· 4 题</h2>
+
+<div class="q">
+<div class="qn">7<span class="tag">2021 简答原题</span></div>
+<div class="qt">从「顶点对」的角度说，无向图和有向图的区别是什么？</div>
+<div class="ans">
+无向图的顶点对是<b>无序</b>的 —— (A,B) 和 (B,A) 是同一件事。<br>
+有向图的顶点对是<b>有序</b>的 —— &lt;A,B&gt; 和 &lt;B,A&gt; 是两回事。<br>
+判断图上是哪种：<b>看边有没有箭头。</b>
+</div>
+</div>
+
+<div class="q">
+<div class="qn">8<span class="tag">2022 判断</span></div>
+<div class="qt">有向图的邻接矩阵一定是对称矩阵吗？</div>
+<div class="ans">
+<b>错。</b><br>
+一定是<b>无向图</b>的邻接矩阵才对称（因为 (A,B) 和 (B,A) 是同一条边）。<br>
+有向图只有在「任意两点之间两个方向都有边」时才对称。
+</div>
+</div>
+
+<div class="q">
+<div class="qn">9<span class="tag">2022 选择</span></div>
+<div class="qt">有向图中，所有顶点的出度总和 ÷ 入度总和 = ？</div>
+<div class="ans">
+<b>1</b>（两者相等）。<br>
+理由：每一条有向边，给起点贡献 1 个出度、给终点贡献 1 个入度。<b>边数一样，总和就一样。</b>
+</div>
+</div>
+
+<div class="q">
+<div class="qn">10<span class="tag">2022 判断</span></div>
+<div class="qt">n 个顶点的无向连通图，其生成树有几条边？</div>
+<div class="ans">
+<b>n − 1 条</b>。<br>
+（原题说「n 条」，是错的 —— 这是当年那道判断题的陷阱。）<br>
+理解：生成树要连通且无环，n 个点连成一条不闭合的链，正好 n−1 条边。
+</div>
+</div>
+
+<div class="foot">
+<b>记下错的题号</b>，按三档决定下一步：
+<table>
+<tr><th>答对</th><th>下一步</th></tr>
+<tr><td>≥ 7 题</td><td>不重讲，直接进 2.1 基本概念 / 2.3 栈和队列</td></tr>
+<tr><td>4–6 题</td><td>重讲 2.2，只补错的那几块</td></tr>
+<tr><td>≤ 3 题</td><td>从 2.1 重开，2.2 当新课</td></tr>
+</table>
+<div style="margin-top:12px">答错的题<b>明天再答一次</b>才算复检。今天看第二遍只会留下「我刚才看过」的错觉。</div>
+</div>
+
+</div>
+</body>
+</html>

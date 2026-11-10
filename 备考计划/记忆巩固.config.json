@@ -1,0 +1,15 @@
+{
+  "_doc": "记忆巩固机制配置。规则依据：备考计划/记忆巩固机制.md §4。改这里请同步改文档。",
+  "reviewNodes": [1, 3, 7, 30],
+  "lecturesPerDaySoftCap": 4,
+  "lecturesPerDayAfterFailedReview": 2,
+  "cardBindingRequired": true,
+  "maxNewCardsPerDay": 20,
+  "minCardsPerConcept": 1,
+  "minCardsPerMistake": 1,
+  "queueClearFirst": true,
+  "crossDayRequired": true,
+  "weeklyReciteDay": "sunday",
+  "fatigueWindow": ["00:00", "06:00"],
+  "maxQueuePerDay": 5
+}

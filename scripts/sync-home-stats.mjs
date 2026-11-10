@@ -1,8 +1,10 @@
 #!/usr/bin/env node
 /**
- * 同步 docs/index.md「本站有什么」表格里的数字。
+ * 同步 docs/index.md 里**两处会自动过期**的内容：
+ *   ① 「本站有什么」表格里的数字（`<!-- STATS:START -->` / `<!-- STATS:END -->`）；
+ *   ② 顶部横幅的「内容更新至 X」（`<!-- DATE:START -->` / `<!-- DATE:END -->`）。
  *
- * ★ 为什么需要它：这张表原来是手写的，内容一长就过期。
+ * ★ 为什么需要它：这些东西原来是手写的，内容一长就过期。
  *   2026-09-20 审计实测三处全错：
  *     高数写「50+ 章节」→ 实际 69 篇
  *     计算机写「20 篇知识点」→ 实际 37 篇
@@ -10,20 +12,25 @@
  *   而且审计当天下午就有人在往计算机笔记里加文件 —— 手写数字**必然**漂移。
  *   所以这里不再「改对一次」，而是让它可重新生成。
  *
+ *   ★ 2026-10-05 加 ②：横幅的日期从 2026-09-21 起就没人动过，**落后了半个月**。
+ *     现在由 `content-dates.mjs` 按 git 提交时间自动算（与 `/updates/` 页同源）。
+ *     注意**首页自身被排除在日期计算之外**（`latestContentDateForHome`）——
+ *     否则「改一次横幅」就会把日期顶到今天，变成自指。
+ *
  * 用法：
- *   node scripts/sync-home-stats.mjs            # 重写表格
+ *   node scripts/sync-home-stats.mjs            # 重写两处
  *   node scripts/sync-home-stats.mjs --check    # 只校验；过期则退出码 1
  *
  * 设计约束：
- *   ① 只改 <!-- STATS:START --> 与 <!-- STATS:END --> 之间的内容，
- *      正文其余部分一个字节不动。
+ *   ① 只改标记之间的内容，正文其余部分一个字节不动；
  *   ② 「真题 / 同型演练」的区分**只依据文件自身的标签**（前 30 行里的
- *      「同型演练」），不猜、不按文件名推断。标签没有的年份就不声称。
+ *      「同型演练」），不猜、不按文件名推断。标签没有的年份就不声称；
  *   ③ 排除「黄金知识汇编」「备考指南」这类带年份但非试卷的文件。
  */
 import { readdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { join, dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { latestContentDateForHome } from './content-dates.mjs'
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const DOCS = join(ROOT, 'docs')
@@ -32,6 +39,8 @@ const CHECK = process.argv.includes('--check')
 
 const START = '<!-- STATS:START -->'
 const END = '<!-- STATS:END -->'
+const DATE_START = '<!-- DATE:START -->'
+const DATE_END = '<!-- DATE:END -->'
 
 // ── 笔记篇数：目录 → 需要排除的 meta / 审计产物 ────────────────────────
 const NOTE_DIRS = [
@@ -188,12 +197,6 @@ function buildBlock(EOL) {
 
 // ── 主流程 ────────────────────────────────────────────────────────────
 const src = readFileSync(INDEX, 'utf-8')
-const i = src.indexOf(START)
-const j = src.indexOf(END)
-if (i === -1 || j === -1) {
-  console.error(`❌ ${INDEX} 里找不到 ${START} / ${END} 标记，无法同步。`)
-  process.exit(2)
-}
 
 // ★ 跟随文件自身的行尾符。
 //   实测 2026-09-20：本仓库工作区全是 CRLF（`index.md` 143 个 CRLF、0 个纯 LF），
@@ -202,29 +205,53 @@ if (i === -1 || j === -1) {
 //   还会把行尾规范化搅乱。所以先探再拼。
 const EOL = src.includes('\r\n') ? '\r\n' : '\n'
 
-const before = src.slice(i, j + END.length)
-const after = buildBlock(EOL)
+/** 取一个标记区间的当前内容与期望内容。 */
+function region(name, startMark, endMark, expected) {
+  const i = src.indexOf(startMark)
+  const j = src.indexOf(endMark)
+  if (i === -1 || j === -1) {
+    console.error(`❌ ${INDEX} 里找不到 ${startMark} / ${endMark} 标记，无法同步「${name}」。`)
+    process.exit(2)
+  }
+  return { name, i, end: j + endMark.length, before: src.slice(i, j + endMark.length), after: expected }
+}
 
-if (before === after) {
-  console.log('✅ 首页统计已是最新，无需改动。')
+const regions = [
+  region('「本站有什么」表格', START, END, buildBlock(EOL)),
+  // ⚠️ `after` 必须**带上标记本身** —— 区间是从 START 到 END 的整段，
+  //    只回写日期会把两个标记吃掉，下一次运行就找不到区间了（实测踩过）。
+  region('横幅「内容更新至」', DATE_START, DATE_END, DATE_START + (latestContentDateForHome(ROOT) || '（未知）') + DATE_END),
+]
+
+const stale = regions.filter((r) => r.before !== r.after)
+
+if (!stale.length) {
+  console.log('✅ 首页统计与横幅日期均为最新，无需改动。')
   process.exit(0)
 }
 
 if (CHECK) {
-  console.log('❌ 首页统计已过期。当前表格与磁盘实况不一致：')
-  const a = before.split(EOL)
-  const b = after.split(EOL)
-  for (let k = 0; k < Math.max(a.length, b.length); k++) {
-    if (a[k] !== b[k]) {
-      console.log(`  第 ${k + 1} 行`)
-      console.log(`    现在: ${a[k] ?? '(无)'}`)
-      console.log(`    应为: ${b[k] ?? '(无)'}`)
+  console.log('❌ 首页有过期内容：')
+  for (const r of stale) {
+    console.log(`\n  【${r.name}】`)
+    const a = r.before.split(EOL)
+    const b = r.after.split(EOL)
+    for (let k = 0; k < Math.max(a.length, b.length); k++) {
+      if (a[k] !== b[k]) {
+        console.log(`    现在: ${a[k] ?? '(无)'}`)
+        console.log(`    应为: ${b[k] ?? '(无)'}`)
+      }
     }
   }
   console.log('\n跑 `npm run home:stats` 重新生成。')
   process.exit(1)
 }
 
-writeFileSync(INDEX, src.slice(0, i) + after + src.slice(j + END.length), 'utf-8')
-console.log('✅ 已同步 docs/index.md 的「本站有什么」表格：')
-console.log(after)
+// 从后往前替换，避免前面的改动让后面的下标失效。
+let out = src
+for (const r of [...stale].sort((a, b) => b.i - a.i)) {
+  out = out.slice(0, r.i) + r.after + out.slice(r.end)
+}
+writeFileSync(INDEX, out, 'utf-8')
+console.log('✅ 已同步 docs/index.md：')
+for (const r of stale) console.log(`  · ${r.name} → ${r.after.replace(/\r?\n/g, ' ').trim()}`)

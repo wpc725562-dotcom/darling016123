@@ -39,7 +39,17 @@
     "而本文件（按 auto-patrol 口径维护）仍是 70 ⇒ 巡逻自检 [P0] 项报",
     "「配置 math 期望值 == 实测文件数 —— 实际 '70'，期望 '71'」。",
     "⇒ 本文件的数值**必须按 auto-patrol 的排除规则维护**（见 _counted_paths）。",
-    "  若哪天要统一口径，应改 auto-patrol 也排除 `2025-真题回忆版.md`，而不是各改各的。"
+    "  若哪天要统一口径，应改 auto-patrol 也排除 `2025-真题回忆版.md`，而不是各改各的。",
+    "",
+    "【2026-10-05 复核：数值仍是 71，但多了一个「本机红 / CI 绿」的坑】",
+    "实测：本机 patrol 口径算出 **72**，而 CI 是 **71** —— 多出来的是",
+    "`docs/posts/math/notes/index.generated.md`（sync 脚本产出的陈旧副本，已被 srcExclude",
+    "挡在站点之外，且**只存在于本机**：未跟踪文件，CI 干净检出里根本没有）。",
+    "⚠️ 所以**绝对不能改这里的数值去迁就本机**：改成 72 会让 CI 反而变红。",
+    "正确修法是让 count_md **内置排除 `*.generated.md`**（见 patrol-lib.sh）——",
+    "本机与 CI 随即都回到 71，本文件无需改动。自检第 1 节已加行为断言守住这条。",
+    "另注：上面那条把差异归给 `2025-真题回忆版.md` 的说明**已经过时** ——",
+    "实测 home:stats 口径现在也计入该文件（两套口径当前都是 71）。"
   ],
   "math": 71,
   "cs": 51,
@@ -47,7 +57,7 @@
   "english": 10,
   "_measured_at": "2026-10-03",
   "_counted_paths": {
-    "math": "docs/posts/math/notes/*.md (排除 index.md / syllabus.md)",
+    "math": "docs/posts/math/notes/*.md (排除 index.md / syllabus.md；count_md 还内置排除 *.generated.md)",
     "cs": "docs/posts/computer/notes/*.md (排除 index.md / syllabus.md)",
     "po": "docs/posts/politics/notes/*.md (排除 index.md)",
     "english": "docs/posts/english/notes/*.md (仅排除 index.md，不排除 syllabus.md)"

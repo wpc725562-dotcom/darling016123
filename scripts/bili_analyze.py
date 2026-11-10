@@ -112,6 +112,62 @@ def api(url, timeout=30, cookie=None):
         return json.loads(r.read().decode("utf-8"))
 
 
+# ---------------------------------------------------------------- WBI 签名
+# ★ 2026-10-22 新增 —— 这是「249 个分P 全部报无字幕轨」的根因修复。
+#
+#   现象：`x/player/wbi/v2` 不带签名时，B站 仍返回 code=0、data 完整，
+#         但 `data.subtitle` 是**空对象**。连已知有字幕的 BV1husGzwEtZ P1
+#         也返回空 ⇒ 不是内容问题，是接口收紧了签名校验。
+#   对照：同一 cid 打 `x/player/v2`（非 wbi 版）仍返回 1 条轨。
+#   后果：`probe_subtitle` 把「接口降级」当成「真无轨」，静默返回 []，
+#         调用方据此得出「249 个分P 必须走 ASR」—— 一个完全错误的结论，
+#         而且代价是 249 段音频的 ASR 机时。
+#   修法：按公开的 WBI 算法签名（img_key + sub_key → 置换 → 前 32 位 mixin_key；
+#         query 按 key 排序 + wts → md5(query + mixin_key) = w_rid）。
+#   算法与 scripts/bili_test_wbi.py 一致（那个脚本 2026-09-20 已验过可用）。
+MIXIN_TAB = [46, 47, 18, 2, 53, 8, 23, 32, 15, 50, 10, 31, 58, 3, 45, 35, 27, 43,
+             5, 49, 33, 9, 42, 19, 29, 28, 14, 39, 12, 38, 41, 13, 37, 48, 7, 16,
+             24, 55, 40, 61, 26, 17, 0, 1, 60, 51, 30, 4, 22, 25, 54, 21, 56, 59,
+             6, 63, 57, 62, 11, 36, 20, 34, 44, 52]
+
+_WBI = {"mixin": None, "date": None}
+
+# ★ 2026-10-22：有多少个分P 是靠旧端点兜底拿到轨的。
+#   这个计数必须露出来 —— 它非 0 说明 wbi/v2 当时在降级，
+#   「无字幕」这个结论的可信度要打折。
+_FALLBACK_HITS = [0]
+
+
+def wbi_mixin_key(force=False):
+    """取 mixin_key，按天缓存（B站 每天轮换一次 img_key/sub_key）。"""
+    today = time.strftime("%Y-%m-%d")
+    if not force and _WBI["mixin"] and _WBI["date"] == today:
+        return _WBI["mixin"]
+    nav = api("https://api.bilibili.com/x/web-interface/nav")
+    wbi = (nav.get("data") or {}).get("wbi_img") or {}
+    img = (wbi.get("img_url") or "").rsplit("/", 1)[-1].split(".")[0]
+    sub = (wbi.get("sub_url") or "").rsplit("/", 1)[-1].split(".")[0]
+    if not img or not sub:
+        raise RuntimeError("拿不到 wbi_img（nav 返回里没有 img_url/sub_url）")
+    raw = img + sub
+    mixin = "".join(raw[i] for i in MIXIN_TAB)[:32]
+    _WBI["mixin"], _WBI["date"] = mixin, today
+    return mixin
+
+
+def wbi_query(params):
+    """把参数表签成 query 串（含 wts / w_rid）。"""
+    import hashlib, urllib.parse
+    p = dict(params)
+    p["wts"] = int(time.time())
+    items = sorted((k, "".join(c for c in str(v) if c not in "!'()*"))
+                   for k, v in p.items())
+    q = urllib.parse.urlencode(items)
+    p["w_rid"] = hashlib.md5((q + wbi_mixin_key()).encode()).hexdigest()
+    return urllib.parse.urlencode(sorted(p.items()))
+
+
+
 def _open_stream(url, headers, timeout, offset=None):
     h = dict(headers)
     if offset:
@@ -340,7 +396,10 @@ def probe_subtitle(cid, bvid, retries=None):
             #   于是「无字幕」被误判成「有字幕但串轨」，白白触发昂贵的 ASR。
             #
             #   aid+cid 不变量仍然保留 —— 它现在是安全网，不再是主要判据。
-            d = api(f"https://api.bilibili.com/x/player/wbi/v2?bvid={bvid}&cid={cid}")
+            #   ★ 2026-10-22：**必须签名**。不带 w_rid 的 wbi/v2 现在返回
+            #   code=0 但 `subtitle` 为空对象 —— 见文件上方 `wbi_mixin_key` 的注释。
+            d = api("https://api.bilibili.com/x/player/wbi/v2?"
+                    + wbi_query({"bvid": bvid, "cid": cid}))
             if d.get("code") != 0:
                 last = RuntimeError("api code=%s msg=%s"
                                     % (d.get("code"), d.get("message")))
@@ -351,6 +410,30 @@ def probe_subtitle(cid, bvid, retries=None):
             st = data.get("subtitle") or {}
             subs = st.get("subtitles") or []
             need = bool(data.get("need_login_subtitle"))
+
+            # ★ 2026-10-22 双端点兜底 —— 修「249 个分P 全部报无字幕轨」。
+            #   风控窗口内 `wbi/v2` 会把 `subtitle` 直接置成 null（code 仍为 0），
+            #   而同一 cid 打旧端点 `x/player/v2` 还能拿到正确轨。
+            #   ⚠️ 旧端点在「真无轨」时会**凭空编一条别家视频的轨**，所以这里
+            #   **只接受通过 aid+cid 不变量的轨**，不保留 unverified 兜底 ——
+            #   否则「无字幕」会被误判成「有字幕」，代价是一整段白跑的 ASR。
+            if not subs:
+                try:
+                    d2 = api("https://api.bilibili.com/x/player/v2"
+                             "?bvid=%s&cid=%s" % (bvid, cid))
+                except Exception:
+                    d2 = {}
+                d2d = d2.get("data") or {}
+                k2 = "%s%s" % (d2d.get("aid"), d2d.get("cid"))
+                s2 = ((d2d.get("subtitle") or {}).get("subtitles")) or []
+                hit2 = [s for s in s2
+                        if (s.get("subtitle_url") or s.get("subtitleUrl"))
+                        and k2 in (s.get("subtitle_url") or s.get("subtitleUrl") or "")]
+                if hit2:
+                    for s in hit2:
+                        s["_verified"] = True
+                    _FALLBACK_HITS[0] += 1
+                    return hit2, bool(d2d.get("need_login_subtitle"))
 
             if not subs:
                 last = RuntimeError("subtitles 为空（第 %d 次）" % (attempt + 1))
