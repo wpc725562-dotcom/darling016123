@@ -221,11 +221,30 @@ darling016123/
 ```bash
 npm install            # 安装依赖
 npm run docs:dev       # 本地预览（热更新）
+npm run verify         # ★★ 最高执行命令：巡逻自检 → 站点构建 → 全站检查（约 6 分钟）
 npm run docs:build     # 构建站点（约 177 秒）
+npm run check:all      # ★ 全站检查总入口（13 项，约 8 秒）—— 改完东西先跑这个
 npm run health:check   # 仓库健康检查（断链/BOM/索引/文件大小）
 python scripts/repo_stats.py   # 笔记数与真题页数统计
-bash scripts/test-patrol-logic.sh   # 巡逻脚本自检（改动 auto-patrol.yml 后必跑）
+npm run patrol:selftest   # 巡逻脚本自检（改动 auto-patrol.yml 后必跑）
 ```
+
+> ★★ **`npm run verify` 是最高执行命令** —— 它把三层验证按**正确顺序**串起来：
+> ① `test-patrol-logic.sh` 巡逻自检 → ② `docs:build` 站点构建 → ③ `check:all` 全站检查。
+> 顺序不是随便排的：**③ 里的 `search:check` 读的是 ② 产出的 `dist`**，
+> 先跑 ③ 再跑 ② 的话，③ 检查的是上一版构建、照样打 ✅（本库踩过的「假绿」）。
+> 想跳过构建用 `npm run verify -- --skip-build`（约 15 秒）；
+> 退出码 `0` 全过 · `1` 有阶段失败 · `2` 检查都过但 dist 过期（跳过了构建而源文件确实动过时最可能撞上）。
+
+> ★ **`npm run check:all` 是改完任何东西后的第一道关**：它一次跑完 13 个检查器
+> （config 真求值 / 标签白名单 / 标签索引最新 / updates 最新 / 首页统计最新 / 导航覆盖 /
+> 死链 / md 构建风险 / 仓库健康 / 看板表格 / **学习落账** / **学习日志结构** / **产物层搜索索引**），
+> 并且会**额外盯一件事**：`dist/` 是否比源文件旧 —— 产物层检查跑在过期构建上会给出**假绿**。
+> 退出码：`0` 全绿 · `1` 有检查失败 · `2` 检查都过但 `dist` 过期（先跑 `docs:build` 再来）。
+> 只想跑一部分：`npm run check:all -- --only=link:check,md:check`。
+> ⚠️ 其中 `ledger:check` 用的是 `--no-freshness`：**「3 天没学习」是学习节奏问题、不是仓库缺陷**，
+> 而 check:all 也跑在 CI 里，带上它会让 CI 因为「这几天没学习」变红并自动开 Issue。
+> 要查新鲜度用人工收工仪式：`npm run ledger:check`。
 
 > ⚠️ **不要运行 `npm run docs:sync`**（即 `scripts/sync-obsidian-to-blog.mjs`）。
 > 该脚本自身的注释即标注为「危险」：模板已落后于 `docs/` 里的人工精修内容，
@@ -238,12 +257,13 @@ bash scripts/test-patrol-logic.sh   # 巡逻脚本自检（改动 auto-patrol.ym
 ## 🚨 CI 质量门（自动巡逻）
 
 `.github/workflows/auto-patrol.yml` 每天凌晨 3:00 + 每次推送到 `main` 时自动巡检，
-共 13 个步骤：
+共 14 个步骤：
 
 | 级别 | 检查项 | 说明 |
 |:---|:---|:---|
 | P0 | 🧪 巡逻脚本自检 | 跑 `scripts/test-patrol-logic.sh`，脚本自身有问题立刻红灯 |
 | P0 | 🔨 站点构建 | `npm run docs:build` |
+| P0 | 🧾 全站静态检查 | `npm run check:all`（**13 个检查器一次跑完**，含产物层搜索索引；须在构建之后跑） |
 | P0 | 🔗 断链检查 | wiki 双链 + markdown 链接 |
 | P1 | 📋 质量体检 | 标题跳级 / BOM / 乱码字符 |
 | P1 | 📑 索引一致性 | Obsidian 侧 vs 站点侧文件数对照 |
@@ -264,6 +284,7 @@ bash scripts/test-patrol-logic.sh   # 本地跑巡逻脚本自检（功能测试
 |:---|:---|
 | `patrol-report-YYYYMMDD.md` | 每日综合报告，自动轮转只保留最近 30 份 |
 | `link-report.md` / `quality-report.md` / `index-report.md` | 机器生成，每次覆盖 |
+| `static-checks-report.txt` | `check:all` 的原始输出（失败时看这里，含每项失败原文） |
 | `coverage-report-auto.md` | 机器生成，每次覆盖 |
 | `coverage-report.md` | **人工复核版，不会被脚本覆写**，人工结论写这里 |
 
@@ -287,6 +308,9 @@ bash scripts/test-patrol-logic.sh   # 本地跑巡逻脚本自检（功能测试
 
 | 日期 | 更新内容 |
 |:---|:---|
+| **2026-10-05** | **补收两个「一直存在、却谁都没跑」的检查器**（`check:all` 11 → **13 项**）：`ledger:check`（学习落账：日志字段 / 错题编号 / 开场卡）与 `study-log:check`（学习日志结构与**科目名一致性**）—— 两者都不在 `check:all`、也不在任何 workflow，正是「检查器不跑等于不存在」。<br>① `ledger:check` 收进来时用 **`--no-freshness`**（新加的参数）：它的「3 天内有新条目」是**学习节奏**问题、不是仓库缺陷，而 `check:all` 也跑在 CI 里，带上它会让 CI 因「这几天没学习」变红并自动开 Issue（假警报）⇒ 结构性部分进 check:all，新鲜度留作人工收工仪式 `npm run ledger:check`。<br>② **修掉 `check-session-ledger.mjs` 的一个 UTC 日期 bug**：`today` 原用 `new Date().toISOString().slice(0,10)`（**UTC**），本机 GMT+8 在 00:00–08:00 之间 UTC 还停在前一天 ⇒ 实测把「看板 last_updated = 2026-10-05」打印成「**-1 天前**」，还会让卡在新鲜度边界的条目时红时绿。改用本地 `toLocalDate()`，并在 `--selftest` 加**时区断言**（用本地分量构造 Date；UTC 实现会得到另一个日期，实测 `2026-10-05` vs `2026-10-04` ⇒ 该断言有牙） |
+| **2026-10-05** | **新增最高执行命令 `npm run verify`**：把三层验证按**依赖顺序**串成一条 —— ① 巡逻自检 → ② 站点构建 → ③ 全站检查。顺序是有依赖的：`check:all` 里的 `search:check` 读的是构建产出的 `dist`，顺序颠倒就会检查上一版构建并照样打 ✅（本库踩过的假绿）。支持 `--skip-build`（约 15 秒）与 `--json`；退出码 `0` 全过 / `1` 有阶段失败 / `2` 检查都过但 dist 过期。另加 `npm run patrol:selftest` 单独入口。<br>**同一批修掉一个巡逻缺陷**：`count_md` 把 `*.generated.md` 这类 **sync 脚本产出的陈旧副本**当成了笔记 —— 而 `docs/posts/math/notes/index.generated.md` **只存在于本机**（未跟踪，CI 干净检出里没有），于是巡逻自检第 5 节「配置期望值 == 实测文件数」**本机红 / CI 绿**，还会诱使人去改配置（而改配置反而会让 CI 变红）。已改为在 `count_md` **内部**排除该模式（工作流与自检同源，改一处不漂移），并加行为断言守住；本机与 CI 都回到 **71** |
+| **2026-10-05** | **`check:all` 接进巡逻 CI**：巡逻此前每天在跑，却**只跑了 11 个检查器里的 3 个**，新加的 8 个（config / tags / tags:gen / updates:gen / home:stats / nav / search / kanban）**从未进过 CI** —— 「命令化还不够，没人跑的命令等于不存在」。① 在站点构建**之后**新增 `🧾 [P0] 全站静态检查（check:all）` 一步（`search:check` 必须读构建产物）；② 按 `check:all` 的**三档退出码**（0 全绿 / 1 有检查失败 / 2 检查都过但 dist 过期）分档映射为 `passed` / `failed` / `stale`，**不写成 `if npm run …`**（那样后两档会混成一个「失败」）；③ 结果三处落地：综合报告新增一行 + Issue **创建**条件 + Issue **关闭**条件（缺一处等于没接）；④ 巡逻**触发路径**由逐个列脚本收敛为 `scripts/**`（原先只列 4 个脚本，新检查器改了 CI 无反馈）；⑤ `test-patrol-logic.sh` 新增 **8f** 守住这条线。原始输出落盘 `knowledge/static-checks-report.txt` |
 | **2026-09-18** | **移除「本科通」桌面应用**：`bencetong/`（Electron + Vue 学习助手，v1.0.0）经评估为失败品，整体从仓库移除。同步清理 4 处文档引用 —— 本文件目录树与「Agent 开发项目」表、`docs/dependency-graph.md`（依赖图谱整节 + 外部依赖清单子节）、`docs/wiki-repo/README.md`（模块总览表 + 第 4 节，后续小节顺延重编号）、`freelance-starter-pack/portfolio-guide.md`（作品集「项目 1」） |
 | **2026-09-17** | **巡逻工作流全面审核修复（8 项）**：① 覆盖率脚本不再覆写人工复核版报告（拆出 `coverage-report-auto.md`）；② 覆盖率期望值从硬编码改为配置化，修正 `194%/220%/111%` 的荒谬数字为 `100%`；③ 报告轮转，`patrol-report-*.md` 只保留最近 30 份（原已堆积 30 份且无限增长）；④ Issue 去重，此前每天新建重复 Issue（已堆积 13 个未关闭）改为追加评论；⑤ 新增「全绿时自动关闭遗留 Issue」步骤；⑥ `rebase` 冲突后自动回滚，不再残留冲突标记；⑦ 报告「总检查项」不再写死为 4；⑧ 新增 `scripts/test-patrol-logic.sh` 巡逻脚本自检（功能测试 + 防回归扫描），并接入 CI 作为 P0 门禁 |
 | **2026-09-17** | **补审剩余两个工作流**：`deploy.yml` 的「通知 ai-learning-assistant 重建 RAG」是**死代码** —— `env` 定义在该 step 自己的 `env:` 里，而 step 级 `if` 在 env 生效前求值，条件恒为假，这步从未执行过；同时 `curl` 未加 `-f`，HTTP 4xx/5xx 也打印「✅ 已通知」（假成功）。已改为在 `run` 内判断并读真实状态码。另补 `scripts/lib/**` 到巡逻触发路径（改共用库原本不会触发自检），并新增「三套链接检查器 SKIP_WIKI 必须一致」的防回归扫描。`test.yml` 审核无问题 |

@@ -11,18 +11,36 @@ on:
       - 'knowledge/**'
       - 'package.json'
       - 'package-lock.json'
+      # ★ 2026-10-25：补上**学习数据**目录。
+      #   此前 paths 只有 docs/scripts/knowledge 这些「站点」目录，而
+      #   `check:all` 里有 4 个检查器查的是学习数据本身：
+      #     · study-log:check   → 备考计划/学习日志.jsonl
+      #     · ledger:check      → 同上 + 错题本 + 开场卡
+      #     · kanban:check      → 备考计划/学习进度看板.md
+      #   ⇒ 这 4 个检查器的输入**改了永不触发 CI**，等于报警器没接电。
+      #   实测 2026-10-25：study-log:check 已红 54 处、退出码 1，无人知晓。
+      #   教训与下面 2026-10-05 那条同构：**列举具体文件必然漏，按目录通配**。
+      - '备考计划/**'
+      # 错题本住在资料/电子书蒸馏/0X-*/错题本.txt，ledger:check 会查它。
+      # 只监控蒸馏层（txt/md 产物），不监控 资料/ 下的 PDF / 音视频（噪音太大）。
+      - '资料/电子书蒸馏/**'
       # 2026-09-17 补充：巡逻脚本自身的改动也必须触发巡逻，
       # 否则脚本写坏了没有任何 CI 反馈 —— 这正是此前
       # 「((VAR++)) 中断导致报告静默截断」潜伏多日没人发现的原因。
       - '.github/workflows/**'
-      - 'scripts/health-check.mjs'
-      - 'scripts/check-links.mjs'
-      # 巡逻脚本自检 + 覆盖率期望值配置的改动同样必须触发巡逻，
-      # 否则改了配置/测试却没有 CI 反馈（2026-09-17 补）
-      - 'scripts/test-patrol-logic.sh'
-      - 'scripts/coverage-expectations.json'
+      # 2026-10-05：原先逐个列具体脚本（health-check.mjs / check-links.mjs /
+      # test-patrol-logic.sh / coverage-expectations.json），但本仓库的检查器
+      # 已长到 11 个，逐个列举**必然漏**——本批新加的 config / tags / nav /
+      # search / kanban / check-all 等 8 个脚本就全都没被覆盖，改了它们 CI 无反馈。
+      # 与下面 scripts/lib/** 同一条理由，收敛成目录通配。
+      # （噪声可控：本 workflow 有 cancel-in-progress，连续推送只会跑最后一次。）
+      - 'scripts/**'
       # 共用库是巡逻逻辑的**实现本体**，改了它必须跑自检。
-      # 只写具体文件名会漏掉未来的新库文件，故用目录通配。（2026-09-17 补）
+      # 它已被上面的 scripts/** 覆盖，这里**仍然保留一行**是有意的：
+      #   ① 自检 `test-patrol-logic.sh` 的 8c+ 是按字面量 grep `scripts/lib/**` 的，
+      #      删掉这行会让那条守卫**靠注释里的字样侥幸通过**（假绿）；
+      #   ② 万一将来有人把 `scripts/**` 收窄（如改成 `scripts/*.mjs`），
+      #      这行仍能保住「改共用库必触发自检」。（2026-09-17 补，2026-10-05 复核）
       - 'scripts/lib/**'
 
   # 每天凌晨 3:00 全量检查
@@ -115,6 +133,66 @@ jobs:
             echo "status=failed" >> $GITHUB_OUTPUT
             echo "❌ 构建失败"
           fi
+
+      # ============================================================
+      # P0: 全站静态检查（check:all）
+      # ------------------------------------------------------------
+      # 为什么要有这一步：
+      #   scripts/ 下到 2026-10-05 已有 **11 个独立检查器**，但巡逻此前只跑其中
+      #   三套（bash 版断链 / 质量 / 索引）。新加的那批 —— config / tags /
+      #   tags:gen / updates:gen / home:stats / nav / search / kanban —— **从来没在
+      #   CI 里跑过**。代价已经真实出现过：home:stats:check 的逻辑一直是对的，
+      #   只是**没人跑**，于是首页两处篇数烂了半个月。
+      #   ⇒ 「检查器不跑等于不存在」。本步把它们收进**一条命令**，替掉「靠人记得逐个跑」。
+      #
+      # ★ 必须放在 build_check **之后**：check:all 里的 search:check 读的是
+      #   dist/assets/chunks/@localSearchIndexroot.*.js，没有 dist 就没得查
+      #   （check-all.mjs 会把它标成 ⏭️ 跳过，而不是假装通过）。
+      #
+      # ★ check:all 的退出码是三档，**不能用 `if npm run …`**（那样 1 和 2 分不开）：
+      #     0 = 全绿 · 1 = 有检查失败 · 2 = 检查都过但 dist 比源文件旧（产物层结论不可信）
+      #   CI 里构建刚跑完，dist 必然最新，所以正常只可能是 0 或 1；
+      #   真出现 2 反而是信号（说明构建没产出新鲜 dist），故不降级为通过。
+      # ============================================================
+      - name: '🧾 [P0] 全站静态检查（check:all）'
+        id: static_checks
+        continue-on-error: true
+        run: |
+          echo "🧾 开始全站静态检查（check:all）..."
+          REPORT_FILE="knowledge/static-checks-report.txt"
+
+          # 整段解析都在 set +e 下跑：计数行取不到时应退化为 0，而不是让 step 中途中断
+          # （此前 ((VAR++)) 事故就是「静默中断 + continue-on-error 吞掉」的组合）。
+          set +e
+          OUT="$(npm run check:all 2>&1)"
+          RC=$?
+          set -e
+
+          # 原始输出落盘 + 打到 CI 日志（失败时不用翻 artifact 就能看）
+          printf '%s\n' "$OUT" > "$REPORT_FILE"
+          printf '%s\n' "$OUT"
+
+          # 只从「摘要」行取数：该行形如 `✅ 通过 11 · ⏭️ 跳过 0 · ❌ 失败 0`。
+          # 注意用「通过 空格 数字」匹配 —— 各检查器自己的摘要写作「通过: 6」（带冒号），
+          # 不会误命中；tail -1 再兜一层，确保取到的是最后那行总摘要。
+          set +e
+          SUMMARY="$(printf '%s\n' "$OUT" | grep -E '通过 [0-9]+ .*跳过 [0-9]+' | tail -1)"
+          PASSED="$(printf '%s' "$SUMMARY" | sed -nE 's/.*通过 ([0-9]+).*/\1/p')"
+          SKIPPED="$(printf '%s' "$SUMMARY" | sed -nE 's/.*跳过 ([0-9]+).*/\1/p')"
+          FAILED_N="$(printf '%s' "$SUMMARY" | sed -nE 's/.*失败 ([0-9]+).*/\1/p')"
+          set -e
+          PASSED="${PASSED:-0}"; SKIPPED="${SKIPPED:-0}"; FAILED_N="${FAILED_N:-0}"
+
+          if [[ "$RC" -eq 0 ]]; then STATUS="passed"
+          elif [[ "$RC" -eq 2 ]]; then STATUS="stale"
+          else STATUS="failed"; fi
+
+          echo "📊 静态检查: 通过 $PASSED · 跳过 $SKIPPED · 失败 $FAILED_N（退出码 $RC → $STATUS）"
+
+          echo "status=$STATUS" >> $GITHUB_OUTPUT
+          echo "passed=$PASSED" >> $GITHUB_OUTPUT
+          echo "failed=$FAILED_N" >> $GITHUB_OUTPUT
+          echo "report_file=$REPORT_FILE" >> $GITHUB_OUTPUT
 
       # ============================================================
       # P0: 断链检查
@@ -433,6 +511,19 @@ jobs:
             else
               echo "| 🔨 站点构建 | ❌ 失败 | 请检查构建日志 |"
             fi
+
+            # 全站静态检查（check:all）—— 三态：passed / stale / failed。
+            # stale 是「检查都过但 dist 过期」，产物层结论不可信，单独一档而不是并进失败。
+            STATIC_STATUS="${{ steps.static_checks.outputs.status }}"
+            STATIC_PASSED="${{ steps.static_checks.outputs.passed }}"
+            STATIC_FAILED="${{ steps.static_checks.outputs.failed }}"
+            if [[ "$STATIC_STATUS" == "passed" ]]; then
+              echo "| 🧾 静态检查 | ✅ 通过 | $STATIC_PASSED 项全绿（config / tags / nav / links / md / health / search …） |"
+            elif [[ "$STATIC_STATUS" == "stale" ]]; then
+              echo "| 🧾 静态检查 | ⚠️ 警告 | 检查通过但 dist 过期，产物层结论不可信 |"
+            else
+              echo "| 🧾 静态检查 | ❌ 失败 | $STATIC_FAILED 项失败，见 static-checks-report.txt |"
+            fi
             
             # 断链检查
             LINK_STATUS="${{ steps.link_check.outputs.status }}"
@@ -482,6 +573,7 @@ jobs:
             echo "  - 断链报告: knowledge/link-report.md"
             echo "  - 质量报告: knowledge/quality-report.md"
             echo "  - 索引报告: knowledge/index-report.md"
+            echo "  - 静态检查原始输出: knowledge/static-checks-report.txt"
             echo "  - 覆盖报告（机器版）: knowledge/coverage-report-auto.md"
             echo "  - 覆盖报告（人工复核版）: knowledge/coverage-report.md"
             echo ""
@@ -526,7 +618,8 @@ jobs:
           # 防止脚本产物覆盖人工结论。脚本只写 coverage-report-auto.md。
           git add knowledge/patrol-report-*.md knowledge/link-report.md \
                   knowledge/quality-report.md knowledge/index-report.md \
-                  knowledge/coverage-report-auto.md 2>/dev/null || true
+                  knowledge/coverage-report-auto.md \
+                  knowledge/static-checks-report.txt 2>/dev/null || true
           # 记录被轮转删除的文件
           git add -u knowledge/ 2>/dev/null || true
 
@@ -567,12 +660,15 @@ jobs:
         if: >
           always() &&
           (steps.build_check.outputs.status == 'failed' ||
+           steps.static_checks.outputs.status == 'failed' ||
            steps.link_check.outputs.broken_count > '0') &&
           (github.event_name == 'schedule' || github.event_name == 'push' || inputs.create_issue == true)
         uses: actions/github-script@v7
         with:
           script: |
             const buildStatus = '${{ steps.build_check.outputs.status }}';
+            const staticStatus = '${{ steps.static_checks.outputs.status }}';
+            const staticFailed = '${{ steps.static_checks.outputs.failed }}' || '?';
             const brokenCount = parseInt('${{ steps.link_check.outputs.broken_count }}' || '0', 10) || 0;
 
             let issueBody = '## 🚨 自动巡逻发现严重问题\n\n';
@@ -582,6 +678,13 @@ jobs:
             if (buildStatus === 'failed') {
               issueBody += '### ❌ P0: 站点构建失败\n';
               issueBody += '请检查构建日志，修复构建错误。\n\n';
+            }
+
+            // 静态检查失败此前是**完全不可见**的：check:all 的 step 带 continue-on-error，
+            // 失败只体现在报告表格的一行里，没人看报告就等于没发生。
+            if (staticStatus === 'failed') {
+              issueBody += `### ❌ P0: 全站静态检查有 ${staticFailed} 项失败\n`;
+              issueBody += '详见 knowledge/static-checks-report.txt（含每项失败原文）。\n\n';
             }
 
             if (brokenCount > 0) {
@@ -635,6 +738,7 @@ jobs:
         if: >
           always() &&
           steps.build_check.outputs.status == 'passed' &&
+          steps.static_checks.outputs.status == 'passed' &&
           steps.link_check.outputs.status == 'passed' &&
           (github.event_name == 'schedule' || github.event_name == 'push')
         uses: actions/github-script@v7
@@ -655,7 +759,7 @@ jobs:
             for (const issue of open.data) {
               await github.rest.issues.createComment({
                 owner, repo, issue_number: issue.number,
-                body: '✅ 本次巡逻全部检查通过（构建 / 断链 / 质量 / 索引），自动关闭此 Issue。\n\n*由 Auto Patrol Workflow 自动关闭*'
+                body: '✅ 本次巡逻全部检查通过（构建 / 静态检查 / 断链 / 质量 / 索引），自动关闭此 Issue。\n\n*由 Auto Patrol Workflow 自动关闭*'
               });
               await github.rest.issues.update({
                 owner, repo, issue_number: issue.number, state: 'closed'
