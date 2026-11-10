@@ -83,7 +83,13 @@ if (shimActive) {
 //   `npm run docs:build`，不走这个脚本，所以两处都要有。
 //   这里**追加**而不是覆盖：NODE_OPTIONS 里可能还挂着沙箱 shim 的 --require。
 //   调用方已显式指定 --max-old-space-size 时不覆盖，尊重其选择。
-const HEAP_MB = 8192
+//
+// ★ 2026-11-11：8192 已不够。552 页 + mermaid 11 + 数学页单页 client chunk 6.2 MB
+//   （MathJax SVG 字体内联）+ 16.6 MB 的 @localSearchIndex，实测 8 GB 在
+//   "building client + server bundles" 阶段稳定 OOM（exit 134）。
+//   本机 16 GB 物理内存，12 GB 堆实测 354 s 通过；14 GB 会开始换页，别再加。
+//   根治办法是上 Pagefind 干掉 16.6 MB 的本地搜索索引，见 scripts/gen-search-pagefind.mjs。
+const HEAP_MB = 12288
 if (!/--max-old-space-size=/.test(String(env.NODE_OPTIONS || ''))) {
   env.NODE_OPTIONS = `${String(env.NODE_OPTIONS || '').trim()} --max-old-space-size=${HEAP_MB}`.trim()
   console.log(`[build-docs] 已补 --max-old-space-size=${HEAP_MB}（默认堆上限不足以打包 405 页）`)

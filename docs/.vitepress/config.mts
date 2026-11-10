@@ -1,9 +1,11 @@
 import { defineConfig } from 'vitepress'
+import markdownItMark from 'markdown-it-mark'
+import { withMermaid } from 'vitepress-plugin-mermaid'
 
 // GitHub Pages 项目站固定 base
 const base = process.env.VITEPRESS_BASE || '/darling016123/'
 
-export default defineConfig({
+export default withMermaid(defineConfig({
   title: '专升本笔记 · Sakiko 风',
   description: 'Obsidian 全库 + 历年真题详解 · 公共课 + 计算机',
   lang: 'zh-CN',
@@ -66,15 +68,29 @@ export default defineConfig({
   ],
 
   markdown: {
+    // ★ 2026-11-11：**必须开 breaks**。
+    //   这批笔记是从 Obsidian 迁过来的，Obsidian 的默认语义就是「单个回车 = 换行」。
+    //   VitePress 默认 breaks:false 会把单回车合并成空格，于是：
+    //   ① 引用块 `>` 里逐行写的推导被压成一整段（2.4、7.2 等 15 篇）；
+    //   ② 作者刻意分行写的并列要点全部连成一句。
+    //   开 breaks 是恢复原貌，不是改变排版。
+    breaks: true,
     // ★ fontCache: 'local' —— VitePress 会把 options.math 原样透传给 markdown-it-mathjax3。
     //   插件默认 fontCache:'none'（每个字形都重新内联），改成 'local' 实测输出 -10%。
     //   ★ 别改成 'global'：插件对**每个公式都新建一个 document**，global 期望的
     //     「整篇共享字体缓存」根本不存在 ⇒ 输出里只有 <use> 没有 <defs>，公式渲染不出来。
     math: { svg: { fontCache: 'local' } },
-    lineNumbers: true,
+    // ★ 2026-11-11：全局关行号。实测 55% 的代码块 ≤5 行、97% ≤20 行，
+    //   全局开等于给 900 多个块配无用行号，还挤占 690px 正文列（每行少 3-4 字符）。
+    //   需要行号的长代码，在 fence 上写 ```c:line-numbers 单独开启。
+    lineNumbers: false,
     theme: {
       light: 'github-light',
       dark: 'github-dark',
+    },
+    // ★ 2026-11-11：正文里有 53 处 `==高亮==`，此前没装插件，原样吐成 `==文字==`。
+    config: (md) => {
+      md.use(markdownItMark)
     },
   },
 
@@ -1630,4 +1646,4 @@ export default defineConfig({
     lightModeSwitchTitle: '切到浅色',
     darkModeSwitchTitle: '切到深色',
   },
-})
+}))

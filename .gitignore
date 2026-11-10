@@ -37,6 +37,14 @@ node_modules/
 docs/.vitepress/dist/
 # 绕沙箱批量删除保护时用的临时输出目录（distX / distY），构建完记得删
 docs/.vitepress/dist*/
+# ★ 2026-11-11：改版前的整份 docs 快照（docs.bak-YYYYMMDD-*）。是回滚用的本地副本，
+#   不是源，进库只会让每次 diff 都多出上千文件。
+docs.bak-*/
+# ★ 2026-10-04 发现：根目录被误建了 .vitepress/dist-new（102MB / 340 文件）——
+#   `--outDir` 写错路径时的残留。加规则挡住，防它进版本库。
+/.vitepress/
+# sync 脚本的「生成版索引」对比产物（手写 index 未被覆盖时落到仓根，不放 docs/ 免得被构建）
+math-index.generated.md
 # 构建被打断时残留的临时配置文件
 docs/.vitepress/config.mts.timestamp-*.mjs
 docs/.vitepress/cache/
@@ -65,8 +73,11 @@ package-lock.json.bak
 *.log
 .npm/
 
-# 巡逻自检脚本的临时目录（scripts/test-patrol-logic.sh）。
-# 本机沙箱会拦截批量删除，该目录可能残留，故必须忽略。
+# 脚本临时目录（`scripts/test-patrol-logic.sh` 的 .tmp-patrol-test、
+# `scripts/verify.mjs` 探针用的 .tmp-verify-probe 等）。
+# 本机沙箱会拦截批量删除，这些目录可能残留，故必须忽略。
+# 用通配而非逐个列举：只写具体目录名会漏掉后来新增的（同 auto-patrol 触发路径的教训）。
+.tmp-*/
 .tmp-patrol-test/
 
 # Large local study materials (keep on disk, don't push)
@@ -115,8 +126,7 @@ guangdong-zhuanshengben-resources/
 # Obsidian 误建的空库
 zsb/
 
-# B站视频解析产物（音频 / 画面帧 / 逐字稿）—— 本地用，不推送
-# 见 scripts/bili_analyze.py。注意 *.jpg / *.m4s 不在上面的通用媒体规则里，必须单独挡。
+# B站视频解析产物（音频 / 画面帧 / 逐字稿）—— 本地用，不推送# 见 scripts/bili_analyze.py。注意 *.jpg / *.m4s 不在上面的通用媒体规则里，必须单独挡。
 #
 # ★ 例外（2026-10-03）：`_extract/_subject/` 与 `_extract/_replay/` 必须进版本控制。
 #   原因：① `_subject/*.md` 是知识地图的**源数据**，页面由它生成，不入库则无法审计；
@@ -137,6 +147,10 @@ data/bili-analyze/_extract/*
 # 真题讲解抓取产物（字幕轨 / 画面帧 / 逐字稿 / 真题卡）—— 同上，本地用
 # 见 scripts/bili_zhenti.py。★ 只有重写后的 notes/*.md 会进 docs/，原始产物一律不进站。
 data/bili-zhenti/
+
+# 离线（网页版 AI）打包产物 —— 本地工作材料，含字幕原文，不推送
+# 见 scripts/offline-pack.py。产物是「提示词 + 字幕」，粘进网页 AI 用完即弃。
+data/offline-feed/
 
 # 真题考点抽取与章节归并的中间产物（topics.json / analysis.json / 日志）—— 本地用
 # 见 data/zhenti-extract/*.py。结论已写进 docs/posts/高频考点/真题考点总析.md，产物本身不进站。
