@@ -385,62 +385,340 @@ body {
   margin: 6px 0 16px;
 }
 
-/* 首页卡片 */
-.home-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 16px;
-  margin: 24px 0 40px;
-}
-.home-card {
-  display: block;
-  padding: 18px 18px 16px;
-  border-radius: 16px;
-  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 80%, transparent);
-  background: color-mix(in srgb, var(--sakura-light) 45%, var(--vp-c-bg));
-  text-decoration: none !important;
-  color: inherit !important;
-  box-shadow: var(--site-shadow-sm);
-  transition: transform .2s ease, box-shadow .2s ease;
-}
-.home-card:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--site-shadow-lg);
-}
-.home-card h3 {
-  margin: 0 0 8px;
-  font-size: 18px;
-  color: var(--accent-color);
-  border: 0;
-  padding: 0;
-}
-.home-card p {
-  margin: 0;
-  font-size: 14px;
-  color: var(--vp-c-text-2);
+/* ========== 首页 v3（2026-11-11 重排） ========== */
+/* layout:home 下 .home-content 是全宽，宽度改由 .vp-doc 控 */
+.home-content .vp-doc {
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 0 26px 170px;
 }
 
-/* 顶部 hero 简化 */
-.hero-sakura {
-  margin: 12px 0 8px;
-  padding: 28px 24px;
-  border-radius: 22px;
-  background: linear-gradient(135deg, rgba(228,89,111,.18), rgba(255,233,201,.35));
-  border: 1px solid color-mix(in srgb, var(--sakura-pink) 45%, transparent);
+/* ① 站点标题条 */
+.home-top {
+  display: flex;
+  align-items: flex-end;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding: 34px 0 26px;
+  border-bottom: 1px solid var(--vp-c-divider);
+  margin-bottom: 38px;
 }
-.dark .hero-sakura {
-  background: linear-gradient(135deg, rgba(201,138,152,.16), rgba(39,33,48,.9));
-}
-.hero-sakura h1 {
-  margin: 0 0 8px;
-  font-family: var(--vp-font-family-title);
-  font-size: 30px;
-  border: 0;
-  padding: 0;
-}
-.hero-sakura p {
+.vp-doc .ht-title {
   margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 27px;
+  font-weight: 700;
+  letter-spacing: .5px;
+  line-height: 1.35;
+  color: var(--vp-c-text-1);
+}
+.vp-doc .ht-tag {
+  margin: 7px 0 0;
+  font-size: 13.5px;
   color: var(--vp-c-text-2);
+}
+.ht-meta {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-bottom: 4px;
+}
+.ht-chip {
+  font-size: 12px;
+  color: var(--accent-color);
+  background: var(--vp-c-brand-soft);
+  border: 1px solid color-mix(in srgb, var(--accent-color) 28%, transparent);
+  border-radius: 999px;
+  padding: 4px 12px;
+  white-space: nowrap;
+}
+.ht-meta a {
+  font-size: 12.5px;
+  color: var(--vp-c-text-3);
+  text-decoration: none;
+  border-bottom: 1px dashed transparent;
+}
+.ht-meta a:hover {
+  color: var(--accent-color);
+  border-bottom-color: var(--vp-c-divider);
+}
+
+/* 段落标题：去掉 .vp-doc h2 的 border-top 与巨大 margin */
+.vp-doc h2.home-sec {
+  margin: 46px 0 16px;
+  padding: 0 0 0 12px;
+  border: 0;
+  border-left: 3px solid var(--accent-color);
+  font-family: var(--vp-font-family-base);
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: .3px;
+  line-height: 1.4;
+}
+.vp-doc h2.home-sec small {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--vp-c-text-3);
+  margin-left: 10px;
+  letter-spacing: 0;
+}
+.home-top + h2.home-sec { margin-top: 0; }
+.vp-doc h2.home-sec--minor { font-size: 15px; border-left-width: 2px; }
+
+/* ② 四科入口 */
+.subj-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.subj {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 20px 16px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--sakura-light) 40%, var(--vp-c-bg-soft));
+  transition: border-color .18s, transform .18s;
+}
+.subj:hover {
+  border-color: color-mix(in srgb, var(--sakura-pink) 55%, transparent);
+  transform: translateY(-2px);
+}
+.subj-head { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; }
+.subj-ico {
+  width: 38px;
+  height: 38px;
+  flex: none;
+  border-radius: 11px;
+  background: var(--vp-c-bg-alt);
+  border: 1px solid var(--vp-c-divider);
+  display: grid;
+  place-items: center;
+  font-size: 19px;
+  line-height: 1;
+}
+.subj-txt { flex: 1; min-width: 0; }
+.vp-doc .subj-txt h3 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: var(--vp-font-family-base);
+  font-size: 16.5px;
+  font-weight: 600;
+  letter-spacing: .2px;
+  line-height: 1.45;
+  color: var(--vp-c-text-1);
+}
+.vp-doc .subj-txt p {
+  margin: 3px 0 0;
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--vp-c-text-3);
+}
+.subj-score {
+  flex: none;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--accent-color);
+  background: var(--vp-c-brand-soft);
+  border-radius: 6px;
+  padding: 3px 9px;
+  white-space: nowrap;
+}
+.subj-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; }
+.subj-links a {
+  font-size: 13px;
+  line-height: 1.5;
+  text-decoration: none;
+  border-radius: 8px;
+  padding: 5px 12px;
+  white-space: nowrap;
+  transition: background .15s, color .15s, border-color .15s;
+}
+.subj-links a.sp {
+  background: var(--accent-color);
+  color: #fff;
+  font-weight: 500;
+}
+.subj-links a.sp:hover { background: var(--vp-c-brand-2); color: #fff; }
+.subj-links a.sg {
+  color: var(--vp-c-text-2);
+  border: 1px solid var(--vp-c-divider);
+}
+.subj-links a.sg:hover {
+  color: var(--vp-c-text-1);
+  border-color: var(--vp-c-text-3);
+  background: var(--vp-c-bg-alt);
+}
+
+/* ③ 四步流程 */
+.flow-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+.flow-step {
+  position: relative;
+  padding: 16px 16px 14px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--sakura-light) 32%, var(--vp-c-bg-soft));
+}
+.flow-step + .flow-step { margin-left: 26px; }
+.flow-step + .flow-step::before {
+  content: "";
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  width: 14px;
+  height: 1px;
+  background: color-mix(in srgb, var(--sakura-pink) 60%, transparent);
+}
+.flow-step + .flow-step::after {
+  content: "";
+  position: absolute;
+  left: -8px;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  border-right: 1px solid color-mix(in srgb, var(--sakura-pink) 70%, transparent);
+  border-top: 1px solid color-mix(in srgb, var(--sakura-pink) 70%, transparent);
+  transform: translateY(-50%) rotate(45deg);
+}
+.fs-n {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  margin-bottom: 9px;
+  border-radius: 8px;
+  background: var(--accent-color);
+  color: #fff;
+  font-size: 12.5px;
+  font-weight: 600;
+  line-height: 1;
+}
+.vp-doc .flow-step b {
+  display: block;
+  font-size: 14.5px;
+  font-weight: 600;
+  letter-spacing: .2px;
+  color: var(--vp-c-text-1);
+}
+.vp-doc .flow-step small {
+  display: block;
+  margin-top: 3px;
+  font-size: 12px;
+  line-height: 1.65;
+  color: var(--vp-c-text-3);
+}
+.vp-doc .flow-step a.fs-go {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 12.5px;
+  color: var(--accent-color);
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--accent-color) 30%, transparent);
+  padding-bottom: 1px;
+}
+.vp-doc .flow-step a.fs-go:hover { border-bottom-color: var(--accent-color); }
+
+/* ④ 工具入口 */
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 18px;
+}
+.vp-doc a.tool-card {
+  display: block;
+  padding: 16px 18px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--sakura-light) 28%, var(--vp-c-bg-soft));
+  text-decoration: none;
+  color: inherit;
+  transition: border-color .18s, transform .18s;
+}
+.vp-doc a.tool-card:hover {
+  border-color: color-mix(in srgb, var(--sakura-pink) 55%, transparent);
+  transform: translateY(-2px);
+}
+.tc-ico { display: block; font-size: 18px; line-height: 1; margin-bottom: 7px; }
+.vp-doc .tool-card b {
+  display: block;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--accent-color);
+}
+.vp-doc .tool-card small {
+  display: block;
+  margin-top: 4px;
+  font-size: 12.5px;
+  line-height: 1.65;
+  color: var(--vp-c-text-3);
+}
+
+/* ⑤ 规模表折叠 */
+.stats-fold {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 14px;
+  background: var(--vp-c-bg-alt);
+  overflow: hidden;
+}
+.stats-fold summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 14px 18px;
+  font-size: 13.5px;
+  color: var(--vp-c-text-2);
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.stats-fold summary::-webkit-details-marker { display: none; }
+.stats-fold summary::before {
+  content: "\25B8";
+  color: var(--sakura-deep);
+  font-size: 11px;
+  transition: transform .15s;
+  display: inline-block;
+}
+.stats-fold[open] summary::before { transform: rotate(90deg); }
+.stats-fold summary:hover { color: var(--vp-c-text-1); }
+.sf-cnt { color: var(--vp-c-text-3); font-size: 12px; }
+.stats-fold table {
+  margin: 4px 18px 16px;
+  width: calc(100% - 36px);
+  font-size: 12.5px;
+}
+
+/* ⑥ 资料边界 */
+.home-bound {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 26px;
+  padding: 14px 18px;
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--vp-c-text-2);
+  background: color-mix(in srgb, var(--sakura-light) 70%, var(--vp-c-bg-soft));
+  border: 1px solid var(--vp-c-divider);
+  border-left: 3px solid var(--sakura-deep);
+  border-radius: 0 12px 12px 0;
+}
+.home-bound .hb-ico { flex: none; font-size: 15px; line-height: 1.5; }
+.home-bound b { color: var(--vp-c-text-1); font-weight: 600; }
+.home-bound a { color: var(--accent-color); text-decoration: none; }
+.home-bound a:hover { text-decoration: underline; }
+
+@media (max-width: 860px) {
+  .subj-grid { grid-template-columns: 1fr; }
+  .flow-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .flow-step + .flow-step { margin-left: 0; }
+  .flow-step + .flow-step::before,
+  .flow-step + .flow-step::after { display: none; }
+  .tool-grid { grid-template-columns: 1fr; }
+  .ht-meta { margin-left: 0; }
 }
 
 /* Live2D 控件微调 */
@@ -485,4 +763,364 @@ body {
   .VPNavBarMenu { display: none !important; }
   .VPNavBarHamburger { display: flex !important; }
   .VPNavScreen { display: block !important; }
+}
+
+/* ========== 文章内页 v3（2026-11-11 细节重排） ========== */
+/*
+   目标：① 横幅在暗色下不再是一大块亮粉；② 标题只出现一次；
+        ③ 去掉 h2 上方那条突兀的横线；④ 表格/代码/列表收紧；
+        ⑤ 侧栏底部给看板娘让位。
+   影响面：全站所有 .vp-doc 页面（400+ 篇）。表格与代码块是计算机笔记的主力，
+   改动都限制在「字号 / 间距 / 边框 / 底色」，不动结构，不会让内容溢出。
+*/
+
+/* ---------- 1. 正文宽度 ---------- */
+.VPDoc .content-container {
+  max-width: 690px;
+}
+
+/* ---------- 2. 顶部横幅 ---------- */
+.doc-banner {
+  min-height: 172px;
+  margin: 0 0 28px;
+  padding: 52px 28px 26px;
+  border-radius: 18px;
+  border: 1px solid color-mix(in srgb, var(--sakura-pink) 34%, transparent);
+  background: linear-gradient(135deg, rgba(228, 89, 111, .14), rgba(255, 233, 201, .30));
+  box-shadow: var(--site-shadow-sm);
+  text-shadow: none;
+  color: var(--vp-c-text-1);
+}
+
+/* 暗色：换成「深底 + 一点樱粉」，不再是一整块亮粉 */
+.dark .doc-banner {
+  background:
+    linear-gradient(135deg,
+      color-mix(in srgb, var(--sakura-pink) 16%, var(--vp-c-bg-alt)),
+      color-mix(in srgb, var(--sakura-warm) 8%, var(--vp-c-bg-alt)));
+  border-color: color-mix(in srgb, var(--sakura-pink) 22%, transparent);
+  color: var(--vp-c-text-1);
+}
+
+.doc-banner .doc-title {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: inherit;
+}
+
+.doc-breadcrumb {
+  margin-bottom: 12px;
+  font-size: 12px;
+  color: var(--vp-c-text-3);
+}
+.doc-breadcrumb a {
+  color: var(--vp-c-text-2);
+}
+.doc-banner .doc-meta {
+  margin-top: 10px;
+  font-size: 12.5px;
+  color: var(--vp-c-text-2);
+  opacity: 1;
+}
+
+/* 横幅已经显示标题时，正文里那个重复的 h1 视觉隐藏（保留在 DOM 里，
+   本页目录的锚点仍能跳到正确位置）。没横幅的页面不受影响。 */
+.VPDoc:has(.doc-banner) .vp-doc > h1:first-of-type {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: normal;
+}
+
+/* ---------- 3. 标题层级 ---------- */
+.vp-doc h1,
+.vp-doc h2,
+.vp-doc h3,
+.vp-doc h4,
+.vp-doc h5,
+.vp-doc h6 {
+  font-family: var(--vp-font-family-base);
+  color: var(--vp-c-text-1);
+}
+
+/* h2：去掉上方的横线与巨大留白，改成左侧竖条 —— 与首页段落标题同一套语言 */
+.vp-doc h2 {
+  margin: 2em 0 14px;
+  padding: 0 0 0 12px;
+  border-top: 0;
+  border-left: 3px solid var(--accent-color);
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 1.45;
+  letter-spacing: .2px;
+}
+.vp-doc h2 .header-anchor {
+  top: 2px;
+}
+
+.vp-doc h3 {
+  margin: 1.8em 0 10px;
+  padding: 0;
+  border: 0;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: .15px;
+}
+
+.vp-doc h4 {
+  margin: 1.4em 0 8px;
+  font-size: 15.5px;
+  font-weight: 600;
+}
+
+/* ---------- 4. 段落与列表 ---------- */
+.vp-doc {
+  line-height: 1.8;
+  font-size: 15.5px;
+}
+
+.vp-doc > p,
+.vp-doc p {
+  margin: 0 0 .85em;
+}
+
+.vp-doc ul,
+.vp-doc ol {
+  margin: .4em 0 .9em;
+  padding-left: 1.35em;
+}
+
+.vp-doc li {
+  margin: .28em 0;
+  line-height: 1.75;
+}
+
+.vp-doc li > ul,
+.vp-doc li > ol {
+  margin: .25em 0;
+}
+
+.vp-doc li > p {
+  margin: .2em 0;
+}
+
+/* ---------- 5. 表格（计算机笔记的主力） ---------- */
+.vp-doc table {
+  display: table;
+  width: 100%;
+  max-width: 100%;
+  margin: 14px 0 22px;
+  font-size: 13.5px;
+  line-height: 1.65;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.vp-doc th,
+.vp-doc td {
+  padding: 7px 11px;
+  border: 0;
+  border-bottom: 1px solid var(--vp-c-divider);
+  border-right: 1px solid var(--vp-c-divider);
+  vertical-align: top;
+  text-align: left;
+}
+
+.vp-doc th:last-child,
+.vp-doc td:last-child {
+  border-right: 0;
+}
+
+.vp-doc tbody tr:last-child td,
+.vp-doc tr:last-child th {
+  border-bottom: 0;
+}
+
+.vp-doc th {
+  background: color-mix(in srgb, var(--sakura-light) 55%, var(--vp-c-bg-alt));
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--vp-c-text-1);
+  white-space: normal;
+}
+
+.vp-doc tbody tr:nth-child(even) td {
+  background: color-mix(in srgb, var(--sakura-light) 30%, transparent);
+}
+
+/* 表格里的行内代码不要再撑高行高 */
+.vp-doc td code,
+.vp-doc th code {
+  font-size: 12.5px;
+}
+
+/* ---------- 6. 代码块 ---------- */
+.vp-doc div[class*='language-'] {
+  margin: 16px 0 22px;
+  border-radius: 12px;
+  border: 1px solid var(--vp-c-divider);
+  box-shadow: none;
+}
+
+.vp-doc div[class*='language-'] pre {
+  padding: 14px 0;
+}
+
+.vp-doc pre,
+.vp-doc code {
+  font-family: var(--vp-font-family-mono);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.vp-doc div[class*='language-'] code {
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* 行内代码：降低对比，别抢正文 */
+.vp-doc :not(pre) > code {
+  font-size: .88em;
+  padding: 1.5px 5px;
+  border-radius: 5px;
+  background: color-mix(in srgb, var(--sakura-pink) 12%, var(--vp-c-bg-alt));
+  color: var(--vp-c-text-1);
+  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 70%, transparent);
+}
+
+/* 代码块右上角的语言标签别太抢眼 */
+.vp-doc div[class*='language-'] > span.lang {
+  font-size: 11px;
+  color: var(--vp-c-text-3);
+}
+
+/* ---------- 7. 引用块 / 答案块 ---------- */
+.vp-doc blockquote {
+  margin: 14px 0 20px;
+  padding: 12px 16px;
+  border-left: 3px solid var(--accent-color);
+  border-radius: 0 10px 10px 0;
+  background: color-mix(in srgb, var(--sakura-light) 55%, var(--vp-c-bg-soft));
+  font-size: 14.5px;
+  line-height: 1.8;
+  color: var(--vp-c-text-2);
+}
+
+.dark .vp-doc blockquote {
+  background: color-mix(in srgb, var(--sakura-pink) 8%, var(--vp-c-bg-soft));
+}
+
+.vp-doc blockquote > p {
+  margin: .3em 0;
+}
+
+/* ---------- 8. 图片：白底示意图在暗色下包一层「图版」边框 ---------- */
+.vp-doc img {
+  border-radius: 10px;
+  border: 1px solid var(--vp-c-divider);
+  background: #fff;
+  max-width: 100%;
+  height: auto;
+}
+
+.dark .vp-doc img {
+  border-color: color-mix(in srgb, var(--sakura-pink) 26%, transparent);
+}
+
+/* ---------- 9. 链接 ---------- */
+.vp-doc a {
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+/* ---------- 10. 侧栏：字号收紧 + 底部给看板娘让位 ---------- */
+.VPSidebarItem .text {
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.VPSidebar .nav {
+  padding-bottom: 230px;
+}
+
+/* ---------- 11. 窄屏 ---------- */
+@media (max-width: 768px) {
+  .doc-banner {
+    min-height: 148px;
+    padding: 44px 20px 22px;
+    border-radius: 14px;
+  }
+  .doc-banner .doc-title {
+    font-size: 21px;
+  }
+  .vp-doc {
+    font-size: 15px;
+  }
+  .vp-doc h2 {
+    font-size: 19px;
+  }
+  .vp-doc table {
+    font-size: 13px;
+  }
+  .VPSidebar .nav {
+    padding-bottom: 120px;
+  }
+}
+
+/* ========== v3.1 修正（2026-11-11 03:5x，首轮截图核对后补） ==========
+   ① 横幅背景写在 Layout.vue 的**内联 style** 里，普通 CSS 覆盖不了，
+      必须 !important；暗色下 --sakura-warm 仍是亮奶油色，所以内联渐变
+      在暗色里是「亮粉→奶油」，浅色标题直接看不见。
+   ② 正文那个重复的 h1 被 VitePress 包了一层 <div>，不是 .vp-doc 的直接子元素，
+      `> h1:first-of-type` 匹配不到，改成后代选择器。
+   ③ 看板娘在 1023px 门户宽度下压住左侧卡片，窄屏缩到 72%。
+*/
+.doc-banner {
+  background: linear-gradient(135deg,
+      rgba(228, 89, 111, .13),
+      rgba(255, 233, 201, .26)) !important;
+  color: var(--vp-c-text-1);
+}
+.dark .doc-banner {
+  background: linear-gradient(135deg,
+      color-mix(in srgb, var(--sakura-pink) 20%, var(--vp-c-bg-alt)),
+      color-mix(in srgb, var(--sakura-warm) 7%, var(--vp-c-bg-alt))) !important;
+  border-color: color-mix(in srgb, var(--sakura-pink) 24%, transparent) !important;
+}
+
+.doc-banner .doc-title { color: var(--vp-c-text-1); }
+.doc-banner .doc-breadcrumb,
+.doc-banner .doc-breadcrumb a,
+.doc-banner .doc-breadcrumb span { color: var(--vp-c-text-3); }
+.doc-banner .doc-meta,
+.doc-banner .doc-meta span { color: var(--vp-c-text-2); }
+
+/* 正文重复标题：VitePress 把 markdown 内容包了一层 div，h1 不是直接子元素 */
+.VPDoc:has(.doc-banner) .vp-doc h1:first-of-type {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0; border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* 窄屏看板娘缩小，别整块压住卡片 */
+@media (max-width: 1100px) {
+  #live2d-widget {
+    transform: scale(.72) !important;
+    transform-origin: left bottom !important;
+  }
 }

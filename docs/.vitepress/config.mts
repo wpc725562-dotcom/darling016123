@@ -10,7 +10,15 @@ export default defineConfig({
   base,
   cleanUrls: true,
   lastUpdated: true,
-  ignoreDeadLinks: false,
+  // 死链检查保持严格，只放行 public/ 下的静态 HTML —— 这些不是 markdown 页面，
+  // VitePress 的死链检查看不到它们，但构建后确实由 public/ 原样拷进 dist，链接有效。
+  // 目前只有 posts/resources/index.md 里的两个 /refs/*.html（政治考点 + 思维导图）。
+  ignoreDeadLinks: [/refs\/politics-(knowledge|mindmap)/],
+
+  // 站点地图（2026-10-05 加）：此前完全没有 sitemap，搜索引擎无法发现 400+ 页。
+  sitemap: {
+    hostname: 'https://wpc725562-dotcom.github.io/darling016123/',
+  },
 
   // ── 从公开站排除「非备考内容」────────────────────────────
   // 这些文件仍保留在仓库里（AI/开发者自用），只是不发布到站点。
@@ -26,6 +34,19 @@ export default defineConfig({
     'wiki-repo/**',                          // 仓库模块维基
     'posts/computer/notes/audit-*.md',       // 10 份章节审计报告（内部 QA 产物）
     '_templates/**',                         // 真题页模板规范（作者自用，不是备考内容）
+    // ★ 2026-10-04 加：**别把备份目录建在 docs/ 里** —— 它会被当成正常页面构建进站。
+    //   实测事故：我备份知识地图时建了 `docs/guide/knowledge-map.bak-20261004-2100/`，
+    //   一次构建多出 54 个页面 + 34 个 JS chunk，还把备份页塞进了本地搜索索引
+    //   （用户搜索会搜到「过期副本」）。`.gitignore` 的 `*.bak-*` 只挡 git，**挡不住构建**。
+    //   ⇒ 双保险：这里排除 + 约定「备份一律放 docs/ 之外」。
+    '**/*.bak-*/**',                         // 备份目录（含内部所有文件）
+    '**/*.bak-*',                            // 备份文件
+    '**/*.orig-*',                           // 前置搬运前的原件
+    // ★ 2026-10-05 加：sync 脚本产出的**陈旧副本**。实测 `index.md` 是它的严格超集
+    //   （69 条笔记链接 vs 54 条、84 处站内引用 vs 0），8 章标题完全一致。
+    //   它构建了但**无任何导航入口、也无任何正文引用** ⇒ 全站唯一的真不可达页。
+    //   不删（sync 脚本会重新生成），只从构建中排除。
+    'posts/math/notes/index.generated.md',
   ],
 
   head: [
@@ -40,6 +61,8 @@ export default defineConfig({
     ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
     ['link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }],
     ['link', { href: 'https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@600;700&display=swap', rel: 'stylesheet' }],
+    // ★ 2026-10-05 加：RSS 自动发现。内容由 `scripts/gen-updates.mjs` 生成到 public/feed.xml。
+    ['link', { rel: 'alternate', type: 'application/rss+xml', title: '专升本笔记 · 最近更新', href: `${base}feed.xml` }],
   ],
 
   markdown: {
@@ -73,63 +96,132 @@ export default defineConfig({
             footer: { selectText: '选择', navigateText: '切换', closeText: '关闭' },
           },
         },
+        // ★ 2026-10-05 加：把 frontmatter 的 `tags` 注入**被索引的正文**。
+        //   VitePress 本地搜索只索引正文，不索引 frontmatter ⇒ 标签原本搜不到。
+        //   这里对应 mkdocs-material tags 插件的第 4 层能力（「让标签可通过搜索被发现」）。
+        //   ⚠️ 官方明确提示：提供自定义 `_render` 后，`search: false` 需要**自己处理**
+        //      （否则 `search: false` 会静默失效）。
+        //   ★ 2026-10-05 修正①：第三个参数 `md` 是 `createMarkdownRenderer()` 的返回值，
+        //      即一个**普通 markdown-it 实例**，**没有 `renderAsync`** ——
+        //      写成 `await md.renderAsync(...)` 会在构建时抛
+        //      `md.renderAsync is not a function`（实测 vitepress 1.6.4）。
+        //      官方示例用的就是同步的 `md.render(src, env)`，且 VitePress 默认分支也是这么调的。
+        //   ★ 2026-10-05 修正②（**更隐蔽，差点当成做完了**）：
+        //      最初写的是 `return '# ' + tags.join(' ') + '\n' + html` ——
+        //      把标签当作 markdown 标题**拼到 HTML 最前面**。**这是无效的**：
+        //      VitePress 的 `splitPageIntoSections()` 里第一句就是 `result.shift()`，
+        //      **第一个标题之前的内容整块丢掉** ⇒ 拼了等于没拼（实测索引里查不到标签）。
+        //      ⇒ 正确做法：把标签当作**隐藏文本**塞进**第一个标题之后**，
+        //        它会并入该节的 `text`（`clearHtmlTags()` 去掉标签本身、保留文字）
+        //        ⇒ 标签可被搜索命中，且**不改变标题**（搜索结果里标题仍是页面原标题）。
+        //   ★ 顺序：`env.frontmatter` 由 `md.render()` 填充，所以必须**先 render 再读**。
+        _render(src, env, md) {
+          const html = md.render(src, env)
+          if (env.frontmatter?.search === false) return ''
+          const tags = env.frontmatter?.tags
+          if (!tags || !tags.length) return html
+          const tagText = [].concat(tags).join(' ')
+            .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+          const injected = `<span data-wb-tags hidden>${tagText}</span>`
+          // 挂在第一个标题之后（绝大多数页有 h1；4 个页只有 h2 起头，故匹配 h1–h6）
+          const m = html.match(/<\/h[1-6]>/)
+          if (!m) return html + injected
+          const at = m.index + m[0].length
+          return html.slice(0, at) + injected + html.slice(at)
+        },
+        miniSearch: {
+          searchOptions: {
+            // ★ 2026-10-05 加：**把「当前分区」的结果排在前面**。
+            //   404+ 页规模下，「搜『极限』出来一堆日语和雅思」是真实噪声。
+            //   为什么用 boost 而不是「只搜本科目」的硬过滤开关：
+            //     · boost 不需要替换 VitePress 内部搜索组件（零破坏风险）
+            //     · 硬过滤会让人**看不到跨科目的结果**——而「英语真题里的语法」这类
+            //       跨科需求是真实存在的；排序靠前比直接过滤更友好。
+            //   注：文档 ID 是**站点相对路径**（如 `/posts/math/notes/x.html#h`，不含 base）。
+            boostDocument(id) {
+              try {
+                const here = decodeURIComponent(location.pathname)
+                // 取当前页的前两层路径作为「分区」，如 /posts/math/
+                const m = here.match(/^\/([^/]+)\/([^/]+)\//)
+                if (!m) return 1
+                const section = `/${m[1]}/${m[2]}/`
+                return id.startsWith(section) ? 1.5 : 1
+              } catch {
+                return 1
+              }
+            },
+          },
+        },
       },
     },
     nav: [
       { text: '首页', link: '/' },
-      { text: '🗂 真题索引', link: '/posts/真题索引' },
+      // ── 维度一：按「科目」────────────────────────────────────────────
+      // 13 项 → 5 项导航重组（2026-10-05）。原来「科目 / 用途 / 方向」三种分类法
+      // 平铺在同一层，用户想「复习高数极限」却要先在三种维度里选一次。
       {
-        text: '高数',
+        text: '四科笔记',
         items: [
-          { text: '📖 学习手册 ⭐', link: '/posts/math/学习手册' },
-          { text: '📖 全程班笔记 ⭐', link: '/posts/math/全程班笔记/' },
-          { text: '章节笔记', link: '/posts/math/notes/' },
-          { text: '真题总览', link: '/posts/math/' },
-          { text: '2026 全卷', link: '/posts/math/2026' },
-          { text: '2024 全卷', link: '/posts/math/2024' },
+          {
+            text: '高等数学',
+            items: [
+              { text: '📖 学习手册 ⭐', link: '/posts/math/学习手册' },
+              { text: '📖 全程班笔记 ⭐', link: '/posts/math/全程班笔记/' },
+              { text: '章节笔记', link: '/posts/math/notes/' },
+              { text: '真题总览', link: '/posts/math/' },
+              { text: '2026 全卷', link: '/posts/math/2026' },
+              { text: '2024 全卷', link: '/posts/math/2024' },
+            ],
+          },
+          {
+            text: '计算机程序设计',
+            items: [
+              { text: '📖 学习手册 ⭐', link: '/posts/computer/学习手册' },
+              { text: '2027 备考指南 ⭐', link: '/posts/computer/2027-备考指南' },
+              { text: '📊 真题考频矩阵 ⭐', link: '/guide/真题考频矩阵' },
+              { text: '✍️ 专项题库', link: '/posts/computer/专项题库/' },
+              { text: '知识点', link: '/posts/computer/notes/' },
+              { text: '2024 全卷', link: '/posts/computer/2024' },
+              { text: '考点拆分', link: '/posts/computer/topics/' },
+              { text: '📊 真题考点分布', link: '/posts/computer/notes/真题考点分布' },
+              { text: '真题总览', link: '/posts/computer/' },
+            ],
+          },
+          {
+            text: '公共英语',
+            items: [
+              { text: '📖 学习手册 ⭐', link: '/posts/english/学习手册' },
+              { text: '学习笔记', link: '/posts/english/notes/' },
+              { text: '真题总览', link: '/posts/english/' },
+              { text: '2024', link: '/posts/english/2024' },
+              { text: '2023', link: '/posts/english/2023' },
+            ],
+          },
+          {
+            text: '政治理论',
+            items: [
+              { text: '📖 学习手册 ⭐', link: '/posts/politics/学习手册' },
+              { text: '系统笔记', link: '/posts/politics/notes/' },
+              { text: '真题总览', link: '/posts/politics/' },
+              { text: '大纲题型', link: '/posts/politics/notes/00-考试大纲与题型' },
+            ],
+          },
         ],
       },
+      // ── 维度二：按「用途」—— 原来散在 4 个顶层项里，现合并为 1 个 ────────
       {
-        text: '计算机',
+        text: '刷题',
         items: [
-          { text: '📖 学习手册 ⭐', link: '/posts/computer/学习手册' },
-          { text: '2027 备考指南 ⭐', link: '/posts/computer/2027-备考指南' },
-          { text: '📊 真题考频矩阵 ⭐', link: '/guide/真题考频矩阵' },
-          { text: '✍️ 专项题库', link: '/posts/computer/专项题库/' },
-          { text: '知识点', link: '/posts/computer/notes/' },
-          { text: '2024 全卷', link: '/posts/computer/2024' },
-          { text: '考点拆分', link: '/posts/computer/topics/' },
-          { text: '📊 真题考点分布', link: '/posts/computer/notes/真题考点分布' },
-          { text: '真题总览', link: '/posts/computer/' },
-        ],
-      },
-      {
-        text: '英语',
-        items: [
-          { text: '📖 学习手册 ⭐', link: '/posts/english/学习手册' },
-          { text: '学习笔记', link: '/posts/english/notes/' },
-          { text: '真题总览', link: '/posts/english/' },
-          { text: '2024', link: '/posts/english/2024' },
-          { text: '2023', link: '/posts/english/2023' },
-        ],
-      },
-      {
-        text: '政治',
-        items: [
-          { text: '📖 学习手册 ⭐', link: '/posts/politics/学习手册' },
-          { text: '系统笔记', link: '/posts/politics/notes/' },
-          { text: '真题总览', link: '/posts/politics/' },
-          { text: '大纲题型', link: '/posts/politics/notes/00-考试大纲与题型' },
+          { text: '🗂 历年真题总索引（四科 · 2008–2026）', link: '/posts/真题索引' },
+          { text: '📚 题库总入口', link: '/posts/题库/' },
+          { text: '🧪 模拟卷总览', link: '/posts/模拟卷/' },
+          { text: '📊 高频考点总览', link: '/posts/高频考点/' },
+          { text: '★ 真题考点总析（2018–2026）', link: '/posts/高频考点/真题考点总析' },
+          { text: '🏷️ 标签索引', link: '/tags/' },
         ],
       },
       { text: '🎯 0 基础', link: '/guide/零基础总入口' },
-      {
-        text: '📝 刷题',
-        items: [
-          { text: '📚 题库', link: '/posts/题库/' },
-          { text: '🧪 模拟卷', link: '/posts/模拟卷/' },
-        ],
-      },
+      // ── 维度三：按「方向」—— 日语 / 雅思 是两条独立主线，保持顶层 ────────
       {
         text: '🇯🇵 日语',
         items: [
@@ -145,25 +237,17 @@ export default defineConfig({
             ],
           },
           {
-            text: '📚 深度笔记 · 逐条语法详解（最详细）',
+            // ★ 2026-10-05：三条并行线合并为一个入口（详见 sidebar 处同段注释）
+            text: '📚 新标日课程 · 三种读法',
             items: [
-              { text: '总纲 · 七卷目录（0→N1 共 104 课）', link: '/course/japanese/deep/' },
-            ],
-          },
-          {
-            text: '🎧 跟课笔记 · 老师怎么讲、哪里容易错',
-            items: [
-              { text: '课程总纲 · 六卷（跟阿飞老师 0→N1）', link: '/course/japanese/' },
-            ],
-          },
-          {
-            text: '📖 同步手册 · 浓缩（每课 4 行）⚠️ 中高级语法点待修正',
-            items: [
-              { text: '三卷总目录', link: '/learn/standard-japanese/' },
-              { text: '词类与变形总览', link: '/learn/standard-japanese/conjugation-guide' },
-              { text: '第一卷 · 初级篇（1–48 课）· 已核对无误', link: '/learn/standard-japanese/elementary' },
-              { text: '第二卷 · 中级篇（1–32 课）⚠️ 语法点错位', link: '/learn/standard-japanese/intermediate' },
-              { text: '第三卷 · 高级篇（1–24 课）⚠️ 语法点错位', link: '/learn/standard-japanese/advanced' },
+              { text: '🔀 三读法怎么选（先看这个）', link: '/course/japanese/depth-switch' },
+              { text: '🎧 跟课笔记 · 老师怎么讲（六卷）', link: '/course/japanese/' },
+              { text: '📚 深度笔记 · 逐条语法详解（104 课）', link: '/course/japanese/deep/' },
+              { text: '📖 同步手册 · 每课 4 行浓缩（三卷）', link: '/learn/standard-japanese/' },
+              { text: '　└ 词类与变形总览', link: '/learn/standard-japanese/conjugation-guide' },
+              { text: '　└ 第一卷 · 初级篇（1–48 课）✅', link: '/learn/standard-japanese/elementary' },
+              { text: '　└ 第二卷 · 中级篇（1–32 课）⚠️ 语法点错位', link: '/learn/standard-japanese/intermediate' },
+              { text: '　└ 第三卷 · 高级篇（1–24 课）⚠️ 语法点错位', link: '/learn/standard-japanese/advanced' },
             ],
           },
         ],
@@ -190,41 +274,135 @@ export default defineConfig({
           },
         ],
       },
+      // ── 软考（2026-10-30 加）：目标资格是「软件设计师（中级）」──────────
+      //   为什么考这个而不是更贴网安的「信息安全工程师」：日本技人国的 IT 告示名单
+      //   （平成25年法务省告示第437号 第二条）里只有 7 个中国资格，软件设计师在内、
+      //   信息安全工程师不在。考了不能用于签证学历豁免，等于白考。
+      //   ⚠️ 这些页面是 public/ruankao/ 下的静态 HTML，不是 VitePress 路由。
+      //      那批 md 里有 ASCII 树形图代码块，过 Vue 编译器会报 "Duplicate attribute"，
+      //      报错行号还是渲染后的 HTML 行号、对不回源文件，所以改用脚本预渲染。
+      //      改内容要跑 `python build_ruankao_html.py` 重新生成。
       {
-        text: '🎬 B站视频调研',
+        text: '📝 软考',
         items: [
-          { text: '日语 0 基础 → N1', link: '/learn/bili-japanese-n1-videos' },
-          { text: '英语雅思', link: '/learn/bili-ielts-videos' },
-          { text: '📚 历年真题调研', link: '/learn/bili-past-papers' },
+          { text: '🏠 软考总库入口', link: '/ruankao/' },
+          { text: '🗺️ 路线图与阶段划分', link: '/ruankao/01-路线图与阶段划分' },
+          { text: '📊 知识域索引（12 域）', link: '/ruankao/02-知识域索引' },
+          {
+            text: '📚 知识域精讲',
+            items: [
+              { text: 'A 计算机组成与体系结构', link: '/ruankao/02-知识域/A-计算机组成与体系结构/' },
+              { text: 'B 操作系统', link: '/ruankao/02-知识域/B-操作系统/' },
+              { text: 'C 数据库系统', link: '/ruankao/02-知识域/C-数据库系统/' },
+              { text: 'D 计算机网络', link: '/ruankao/02-知识域/D-计算机网络/' },
+              { text: 'E 数据结构与算法', link: '/ruankao/02-知识域/E-数据结构与算法/' },
+              { text: 'F 程序设计语言', link: '/ruankao/02-知识域/F-程序设计语言/' },
+              { text: 'G 软件工程', link: '/ruankao/02-知识域/G-软件工程/' },
+              { text: 'H 面向对象', link: '/ruankao/02-知识域/H-面向对象/' },
+              { text: 'I 信息安全', link: '/ruankao/02-知识域/I-信息安全/' },
+              { text: 'J 知识产权与标准化', link: '/ruankao/02-知识域/J-知识产权与标准化/' },
+              { text: 'K 数学与工程应用', link: '/ruankao/02-知识域/K-数学与工程应用/' },
+              { text: 'L 专业英语', link: '/ruankao/02-知识域/L-专业英语/' },
+            ],
+          },
+          {
+            text: '🎯 提分专项',
+            items: [
+              { text: '⚙️ 核心精讲（9 类计算题）', link: '/ruankao/03-核心精讲/' },
+              { text: '📝 下午题专项（5 种题型）', link: '/ruankao/04-下午题专项/' },
+              { text: '⚠️ 易错点清单', link: '/ruankao/06-易错点/' },
+              { text: '📅 10 周复习计划', link: '/ruankao/07-复习计划/' },
+            ],
+          },
         ],
       },
+      // ── 杂项收进「更多」—— 原来 B站调研 / 指南 / 备考资料 各占一个顶层项 ──
       {
-        text: '📖 指南',
+        text: '更多',
         items: [
-          { text: '使用说明', link: '/guide/' },
-          { text: '🎯 四科备考总纲', link: '/guide/四科备考总纲' },
-          { text: '🗺️ 知识地图', link: '/guide/knowledge-map/' },
-          { text: '🎬 B站资源', link: '/guide/bili-resources' },
-          { text: '🎬 B站吸收规划', link: '/guide/bili-plan/' },
-          { text: '🎯 公办院校与录取', link: '/guide/公办院校与录取' },
-          { text: '💻 计算机专业报考', link: '/guide/计算机专业-报考指南' },
-          { text: '📊 投档与招生数据', link: '/guide/投档与招生数据' },
-          { text: '📈 2026 省控线', link: '/guide/省控线-录取分数线' },
-        ],
-      },
-      {
-        text: '📊 高频考点',
-        items: [
-          { text: '总览', link: '/posts/高频考点/' },
-          { text: '★ 真题考点总析（2018–2026）', link: '/posts/高频考点/真题考点总析' },
-          { text: '计算机 TOP20（已归档）', link: '/posts/高频考点/计算机-高频考点TOP20' },
-          { text: '政治 TOP20（已归档）', link: '/posts/高频考点/政治-高频考点TOP20' },
-          { text: '高数 TOP20（已归档）', link: '/posts/高频考点/高数-高频考点TOP20' },
-          { text: '英语 TOP20（已归档）', link: '/posts/高频考点/英语-高频考点TOP20' },
+          {
+            text: '🎬 B站视频调研',
+            items: [
+              { text: '日语 0 基础 → N1', link: '/learn/bili-japanese-n1-videos' },
+              { text: '英语雅思', link: '/learn/bili-ielts-videos' },
+              { text: '📚 历年真题调研', link: '/learn/bili-past-papers' },
+            ],
+          },
+          {
+            text: '📖 指南',
+            items: [
+              { text: '使用说明', link: '/guide/' },
+              { text: '🎯 四科备考总纲', link: '/guide/四科备考总纲' },
+              { text: '🗺️ 知识地图', link: '/guide/knowledge-map/' },
+              { text: '🎬 B站资源', link: '/guide/bili-resources' },
+              { text: '🎬 B站吸收规划', link: '/guide/bili-plan/' },
+              { text: '🎯 公办院校与录取', link: '/guide/公办院校与录取' },
+              { text: '💻 计算机专业报考', link: '/guide/计算机专业-报考指南' },
+              { text: '📊 投档与招生数据', link: '/guide/投档与招生数据' },
+              { text: '📈 2026 省控线', link: '/guide/省控线-录取分数线' },
+            ],
+          },
+          // ★ 2026-10-05 补：`/posts/resources/`（备考资料 8 页）此前**没有任何顶层导航入口**，
+          //   只能从「题库 → 使用方式」里那一条链过去。检查器查不出这类缺口
+          //   （它把 sidebar 里的 link 也算作「有导航入口」）。
+          { text: '📚 备考资料', link: '/posts/resources/' },
+          // ★ 2026-10-05 补：`/updates/`（最近更新归档）与 RSS。
+          //   单人维护 400+ 页时，「我上次改到哪了」这个自查入口给自己用比给读者用更值钱。
+          //   页面由 `scripts/gen-updates.mjs` 生成（按周分组 + 全站前 100 倒序）。
+          { text: '🕒 最近更新', link: '/updates/' },
         ],
       },
     ],
     sidebar: {
+      // 软考（2026-10-30）：这批页面原本是 public/ 下的静态 HTML，改成 md 路由后
+      // 才有资格进 sidebar。没有这个键的话，点进软考任何一页左侧都是空的。
+      '/ruankao/': [
+        {
+          text: '📝 软考 · 软件设计师',
+          items: [
+            { text: '总库入口', link: '/ruankao/' },
+            { text: '路线图与阶段划分', link: '/ruankao/01-路线图与阶段划分' },
+            { text: '知识域索引（12 域）', link: '/ruankao/02-知识域索引' },
+          ],
+        },
+        {
+          text: '📚 知识域精讲',
+          items: [
+            { text: 'A 计算机组成与体系结构', link: '/ruankao/02-知识域/A-计算机组成与体系结构/' },
+            { text: 'B 操作系统', link: '/ruankao/02-知识域/B-操作系统/' },
+            { text: 'C 数据库系统', link: '/ruankao/02-知识域/C-数据库系统/' },
+            { text: 'D 计算机网络', link: '/ruankao/02-知识域/D-计算机网络/' },
+            { text: 'E 数据结构与算法', link: '/ruankao/02-知识域/E-数据结构与算法/' },
+            { text: 'F 程序设计语言', link: '/ruankao/02-知识域/F-程序设计语言/' },
+            { text: 'G 软件工程', link: '/ruankao/02-知识域/G-软件工程/' },
+            { text: 'H 面向对象', link: '/ruankao/02-知识域/H-面向对象/' },
+            { text: 'I 信息安全', link: '/ruankao/02-知识域/I-信息安全/' },
+            { text: 'J 知识产权与标准化', link: '/ruankao/02-知识域/J-知识产权与标准化/' },
+            { text: 'K 数学与工程应用', link: '/ruankao/02-知识域/K-数学与工程应用/' },
+            { text: 'L 专业英语', link: '/ruankao/02-知识域/L-专业英语/' },
+          ],
+        },
+        {
+          text: '🎯 提分专项',
+          items: [
+            { text: '核心精讲（9 类计算题）', link: '/ruankao/03-核心精讲/' },
+            { text: '下午题专项 · 数据流图', link: '/ruankao/04-下午题专项/01-数据流图' },
+            { text: '下午题专项 · 数据库设计', link: '/ruankao/04-下午题专项/02-数据库设计' },
+            { text: '下午题专项 · UML 图', link: '/ruankao/04-下午题专项/03-UML图' },
+            { text: '下午题专项 · 算法设计', link: '/ruankao/04-下午题专项/04-算法设计' },
+            { text: '下午题专项 · 面向对象', link: '/ruankao/04-下午题专项/05-面向对象程序设计' },
+            { text: '练习与真题', link: '/ruankao/05-练习与真题/' },
+            { text: '易错点清单', link: '/ruankao/06-易错点/' },
+            { text: '10 周复习计划', link: '/ruankao/07-复习计划/' },
+          ],
+        },
+        {
+          text: '📖 教材蒸馏',
+          items: [
+            { text: '教材蒸馏总览', link: '/ruankao/09-教材蒸馏/' },
+          ],
+        },
+      ],
       '/course/': [
         {
           text: '🎧 日语跟课笔记（新标日 0→N1）',
@@ -266,25 +444,20 @@ export default defineConfig({
           ],
         },
         {
-          text: '📚 深度笔记 · 逐条语法详解（最详细）',
+          // ★ 2026-10-05：原来这里是**三个并列分组**（深度笔记 / 跟课笔记 / 同步手册），
+          //   三者覆盖的是同一本教材的同一批课次 ⇒ 读者不知道先看哪个。
+          //   现合并为**一个入口**，另加一页「三读法怎么选」做选择器（抄 tailwind starter
+          //   「同一内容的多部分用层级表达、不新造并列概念」）。
+          text: '📚 新标日课程 · 三种读法',
           items: [
-            { text: '总纲 · 七卷目录（0→N1 共 104 课）', link: '/course/japanese/deep/' },
-          ],
-        },
-        {
-          text: '🎧 跟课笔记 · 老师怎么讲、哪里容易错',
-          items: [
-            { text: '课程总纲 · 六卷（跟阿飞老师 0→N1）', link: '/course/japanese/' },
-          ],
-        },
-        {
-          text: '📖 同步手册 · 浓缩（每课 4 行）⚠️ 中高级语法点待修正',
-          items: [
-            { text: '三卷总目录', link: '/learn/standard-japanese/' },
-            { text: '词类与变形总览', link: '/learn/standard-japanese/conjugation-guide' },
-            { text: '第一卷：初级篇 · 已核对无误', link: '/learn/standard-japanese/elementary' },
-            { text: '第二卷：中级篇 ⚠️ 语法点错位', link: '/learn/standard-japanese/intermediate' },
-            { text: '第三卷：高级篇 ⚠️ 语法点错位', link: '/learn/standard-japanese/advanced' },
+            { text: '🔀 三读法怎么选（先看这个）', link: '/course/japanese/depth-switch' },
+            { text: '🎧 跟课笔记 · 老师怎么讲（六卷）', link: '/course/japanese/' },
+            { text: '📚 深度笔记 · 逐条语法详解（104 课）', link: '/course/japanese/deep/' },
+            { text: '📖 同步手册 · 每课 4 行浓缩（三卷）', link: '/learn/standard-japanese/' },
+            { text: '　└ 词类与变形总览', link: '/learn/standard-japanese/conjugation-guide' },
+            { text: '　└ 第一卷 · 初级篇（1–48 课）✅', link: '/learn/standard-japanese/elementary' },
+            { text: '　└ 第二卷 · 中级篇（1–32 课）⚠️ 语法点错位', link: '/learn/standard-japanese/intermediate' },
+            { text: '　└ 第三卷 · 高级篇（1–24 课）⚠️ 语法点错位', link: '/learn/standard-japanese/advanced' },
           ],
         },
         {
@@ -1051,6 +1224,7 @@ export default defineConfig({
             { text: "历年真题分类与讲解", link: '/posts/english/notes/past-papers-guide' },
             { text: "语法考点精讲", link: '/posts/english/notes/grammar' },
             { text: '📝 主谓一致 · 真题专项', link: '/posts/english/notes/agreement-exercises' },
+            { text: '🧩 语法填空真题依据（2022–2025 逐空标注）', link: '/posts/english/notes/语法填空真题依据-2022-2025' },
             { text: "阅读理解高分技巧", link: '/posts/english/notes/reading' },
             { text: "高频词汇速记", link: '/posts/english/notes/vocabulary' },
           ],
@@ -1240,6 +1414,64 @@ export default defineConfig({
       ],
       // 题库自成一段：这 7 页此前不属于任何 sidebar 键 ⇒ 打开后没有侧栏，只能在页内互相跳。
       // 加了这个键，6 个题库之间可以随时切换。
+      // ★ 2026-10-05 加：`/posts/真题索引` 此前**不匹配任何 sidebar key**
+      //   （既有 11 个键：/course/ · /learn/ · /posts/{math,computer,english,politics,题库,模拟卷,高频考点,resources}/ · /guide/），
+      //   但顶部 nav 第一项就直接指向它 ⇒ 点进去左侧栏空白，像死胡同。
+      //   VitePress 侧边栏按**最长前缀匹配**，补一个精确 key 即可。
+      // ★ 2026-10-05 加：标签索引页。内容由 `scripts/gen-tags.mjs` 生成；
+      //   这里只给它一个 sidebar 键，避免又出现「点进去左侧空白」的死胡同
+      //   （页面内的标签导航靠**右侧 outline**，不需要在 sidebar 里重复 39 个标签）。
+      '/tags/': [
+        {
+          text: '🏷️ 标签索引',
+          items: [
+            { text: '全部标签（按维度）', link: '/tags/' },
+          ],
+        },
+      ],
+      // ★ 2026-10-05 加：最近更新归档页。内容由 `scripts/gen-updates.mjs` 生成，
+      //   这里同样只给一个 sidebar 键（避免「点进去左侧空白」），
+      //   页面内按周跳转靠**右侧 outline**。
+      '/updates/': [
+        {
+          text: '🕒 最近更新',
+          items: [
+            { text: '按周查看全部改动', link: '/updates/' },
+          ],
+        },
+        {
+          text: '其它横向入口',
+          items: [
+            { text: '🏷️ 标签索引', link: '/tags/' },
+            { text: '🗂 真题总索引', link: '/posts/真题索引' },
+          ],
+        },
+      ],
+      '/posts/真题索引': [
+        {
+          text: '🗂 真题总索引',
+          items: [
+            { text: '历年真题总索引（四科 · 2008–2026）', link: '/posts/真题索引' },
+          ],
+        },
+        {
+          text: '四科真题总览',
+          items: [
+            { text: '高等数学', link: '/posts/math/' },
+            { text: '计算机程序设计', link: '/posts/computer/' },
+            { text: '公共英语', link: '/posts/english/' },
+            { text: '政治理论', link: '/posts/politics/' },
+          ],
+        },
+        {
+          text: '配套入口',
+          items: [
+            { text: '📚 题库总入口', link: '/posts/题库/' },
+            { text: '🧪 模拟卷总览', link: '/posts/模拟卷/' },
+            { text: '📊 高频考点总览', link: '/posts/高频考点/' },
+          ],
+        },
+      ],
       '/posts/题库/': [
         {
           text: '📚 题库总入口',
@@ -1344,6 +1576,7 @@ export default defineConfig({
           items: [
             { text: '总览', link: '/posts/高频考点/' },
             { text: '★ 真题考点总析（2018–2026）', link: '/posts/高频考点/真题考点总析' },
+            { text: '🔍 高数常见备考说法核查', link: '/posts/高频考点/高数-常见备考说法核查' },
             { text: '计算机 TOP20（已归档）', link: '/posts/高频考点/计算机-高频考点TOP20' },
             { text: '政治 TOP20（已归档）', link: '/posts/高频考点/政治-高频考点TOP20' },
             { text: '高数 TOP20（已归档）', link: '/posts/高频考点/高数-高频考点TOP20' },
@@ -1378,6 +1611,13 @@ export default defineConfig({
     footer: {
       message: '仅供个人学习 · 考生回忆版 · 非考试院原卷',
       copyright: '内容整理自公开回忆版与个人 Obsidian 笔记',
+    },
+    // ★ 2026-10-05 加：每页底部「在 GitHub 上编辑此页」。
+    //   目的不是给自己用，而是**让读者（同学）发现错字/错解时能直接报错**——
+    //   这是单人维护的站唯一可规模化的纠错通道。
+    editLink: {
+      pattern: 'https://github.com/wpc725562-dotcom/darling016123/edit/main/docs/:path',
+      text: '在 GitHub 上编辑此页',
     },
     docFooter: {
       prev: '上一篇',

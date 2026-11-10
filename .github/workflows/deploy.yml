@@ -52,7 +52,10 @@ jobs:
           #   本工作流 —— 所以 2026-09-17 之后的站点增长一直没被 CI 构建过，
           #   直到本次人工推送才暴露出来。
           #   ubuntu-latest runner 有 16 GB 内存，8 GB 堆安全。
-          NODE_OPTIONS: --max-old-space-size=8192
+          #   ★ 2026-11-11：站点已长到 552 页（docs/ 再 +150k 行），8 GB 在本地
+          #   实测于 8020 MB 处触顶（退出码 134），提到 12 GB 才过。runner 16 GB
+          #   内存，12 GB 堆仍留 4 GB 给 V8 之外的开销，安全。
+          NODE_OPTIONS: --max-old-space-size=12288
         run: npm run docs:build
 
       - name: Upload artifact
