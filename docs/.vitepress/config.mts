@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitepress'
 import markdownItMark from 'markdown-it-mark'
 import { withMermaid } from 'vitepress-plugin-mermaid'
+import { pagefindPlugin, chineseSearchOptimize } from 'vitepress-plugin-pagefind'
 
 // GitHub Pages 项目站固定 base
 const base = process.env.VITEPRESS_BASE || '/darling016123/'
@@ -101,75 +102,6 @@ export default withMermaid(defineConfig({
       level: [2, 3],
       label: '本页目录',
     },
-    search: {
-      provider: 'local',
-      options: {
-        translations: {
-          button: { buttonText: '搜索', buttonAriaLabel: '搜索' },
-          modal: {
-            noResultsText: '没有结果',
-            resetButtonTitle: '清空',
-            footer: { selectText: '选择', navigateText: '切换', closeText: '关闭' },
-          },
-        },
-        // ★ 2026-10-05 加：把 frontmatter 的 `tags` 注入**被索引的正文**。
-        //   VitePress 本地搜索只索引正文，不索引 frontmatter ⇒ 标签原本搜不到。
-        //   这里对应 mkdocs-material tags 插件的第 4 层能力（「让标签可通过搜索被发现」）。
-        //   ⚠️ 官方明确提示：提供自定义 `_render` 后，`search: false` 需要**自己处理**
-        //      （否则 `search: false` 会静默失效）。
-        //   ★ 2026-10-05 修正①：第三个参数 `md` 是 `createMarkdownRenderer()` 的返回值，
-        //      即一个**普通 markdown-it 实例**，**没有 `renderAsync`** ——
-        //      写成 `await md.renderAsync(...)` 会在构建时抛
-        //      `md.renderAsync is not a function`（实测 vitepress 1.6.4）。
-        //      官方示例用的就是同步的 `md.render(src, env)`，且 VitePress 默认分支也是这么调的。
-        //   ★ 2026-10-05 修正②（**更隐蔽，差点当成做完了**）：
-        //      最初写的是 `return '# ' + tags.join(' ') + '\n' + html` ——
-        //      把标签当作 markdown 标题**拼到 HTML 最前面**。**这是无效的**：
-        //      VitePress 的 `splitPageIntoSections()` 里第一句就是 `result.shift()`，
-        //      **第一个标题之前的内容整块丢掉** ⇒ 拼了等于没拼（实测索引里查不到标签）。
-        //      ⇒ 正确做法：把标签当作**隐藏文本**塞进**第一个标题之后**，
-        //        它会并入该节的 `text`（`clearHtmlTags()` 去掉标签本身、保留文字）
-        //        ⇒ 标签可被搜索命中，且**不改变标题**（搜索结果里标题仍是页面原标题）。
-        //   ★ 顺序：`env.frontmatter` 由 `md.render()` 填充，所以必须**先 render 再读**。
-        _render(src, env, md) {
-          const html = md.render(src, env)
-          if (env.frontmatter?.search === false) return ''
-          const tags = env.frontmatter?.tags
-          if (!tags || !tags.length) return html
-          const tagText = [].concat(tags).join(' ')
-            .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-          const injected = `<span data-wb-tags hidden>${tagText}</span>`
-          // 挂在第一个标题之后（绝大多数页有 h1；4 个页只有 h2 起头，故匹配 h1–h6）
-          const m = html.match(/<\/h[1-6]>/)
-          if (!m) return html + injected
-          const at = m.index + m[0].length
-          return html.slice(0, at) + injected + html.slice(at)
-        },
-        miniSearch: {
-          searchOptions: {
-            // ★ 2026-10-05 加：**把「当前分区」的结果排在前面**。
-            //   404+ 页规模下，「搜『极限』出来一堆日语和雅思」是真实噪声。
-            //   为什么用 boost 而不是「只搜本科目」的硬过滤开关：
-            //     · boost 不需要替换 VitePress 内部搜索组件（零破坏风险）
-            //     · 硬过滤会让人**看不到跨科目的结果**——而「英语真题里的语法」这类
-            //       跨科需求是真实存在的；排序靠前比直接过滤更友好。
-            //   注：文档 ID 是**站点相对路径**（如 `/posts/math/notes/x.html#h`，不含 base）。
-            boostDocument(id) {
-              try {
-                const here = decodeURIComponent(location.pathname)
-                // 取当前页的前两层路径作为「分区」，如 /posts/math/
-                const m = here.match(/^\/([^/]+)\/([^/]+)\//)
-                if (!m) return 1
-                const section = `/${m[1]}/${m[2]}/`
-                return id.startsWith(section) ? 1.5 : 1
-              } catch {
-                return 1
-              }
-            },
-          },
-        },
-      },
-    },
     nav: [
       { text: '首页', link: '/' },
       // ── 维度一：按「科目」────────────────────────────────────────────
@@ -218,6 +150,7 @@ export default withMermaid(defineConfig({
             items: [
               { text: '📖 学习手册 ⭐', link: '/posts/politics/学习手册' },
               { text: '系统笔记', link: '/posts/politics/notes/' },
+              { text: '✍️ 挖空练习', link: '/posts/politics/cloze/' },
               { text: '真题总览', link: '/posts/politics/' },
               { text: '大纲题型', link: '/posts/politics/notes/00-考试大纲与题型' },
             ],
@@ -1301,6 +1234,7 @@ export default withMermaid(defineConfig({
           items: [
             { text: '📖 学习手册（零基础版）', link: '/posts/politics/学习手册' },
             { text: '笔记总览', link: '/posts/politics/notes/' },
+            { text: '✍️ 挖空练习（三层）', link: '/posts/politics/cloze/' },
             { text: '教材目录基准 📗', link: '/posts/politics/教材目录基准' },
             { text: "00 考试大纲与题型", link: '/posts/politics/notes/00-考试大纲与题型' },
             { text: "01 马克思主义中国化时代化", link: '/posts/politics/notes/01-马克思主义中国化时代化' },
@@ -1645,5 +1579,40 @@ export default withMermaid(defineConfig({
     darkModeSwitchLabel: '主题',
     lightModeSwitchTitle: '切到浅色',
     darkModeSwitchTitle: '切到深色',
+  },
+
+  // ★ 2026-11-11：搜索换成 Pagefind，移除 VitePress 自带的 local search。
+  //
+  //   为什么要换：local search 把全站 552 页的正文打成**一个** 16.6 MB 的
+  //   `@localSearchIndexroot.js`，rollup 打包时要把它整块攥在内存里。
+  //   配合 mermaid 11 和数学页单页 6.2 MB 的 client chunk，8 GB 堆稳定 OOM。
+  //   换成 Pagefind 之后索引由构建末尾单独扫 dist 生成，走磁盘不进 rollup 内存。
+  //
+  //   代价（写清楚，别当没发生）：原来靠 `_render` 往正文里注入 frontmatter tags
+  //   的那套逻辑是 local search 专有的，没了。现在改成在 HTML 阶段注入，
+  //   见下面的 transformHtml。分区 boost 也没有了，Pagefind 默认按词频打分。
+  vite: {
+    plugins: [
+      pagefindPlugin({
+        customSearchQuery: chineseSearchOptimize,
+        btnPlaceholder: '搜索',
+        placeholder: '搜索文档',
+        emptyText: '没有结果',
+        heading: '共 {{searchResult}} 条结果',
+        excludeSelector: ['img', 'a.header-anchor'],
+      }),
+    ],
+  },
+
+  // Pagefind 索引的是构建后的 HTML，读不到 frontmatter。想让 tags 可被搜到，
+  // 只能在 HTML 里留一段隐藏文本。挂在内层容器末尾，不影响布局。
+  transformHtml(html, id, { pageData }) {
+    const tags = pageData?.frontmatter?.tags
+    if (!tags || !tags.length) return html
+    const text = [].concat(tags).join(' ')
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    const span = `<span data-wb-tags hidden>${text}</span>`
+    const at = html.lastIndexOf('</div>')
+    return at === -1 ? html + span : html.slice(0, at) + span + html.slice(at)
   },
 }))
