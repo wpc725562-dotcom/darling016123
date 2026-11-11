@@ -29,14 +29,21 @@ import { fileURLToPath } from 'node:url'
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const OFFICIAL = path.join(ROOT, 'data/english-answer-keys.json')
+const POLITICS = path.join(ROOT, 'data/politics-answer-keys.json')
 const FD_DIR = path.join(ROOT, '历年真题/公共英语')
 const TARGET_DIR = path.join(ROOT, 'docs/posts/english')
+const POLITICS_DIR = path.join(ROOT, 'docs/posts/politics')
 
 /* ────────────────────────── 官方答案库 ────────────────────────── */
 
 function loadOfficial() {
   if (!fs.existsSync(OFFICIAL)) return {}
   return JSON.parse(fs.readFileSync(OFFICIAL, 'utf8'))
+}
+
+function loadPolitics() {
+  if (!fs.existsSync(POLITICS)) return {}
+  return JSON.parse(fs.readFileSync(POLITICS, 'utf8'))
 }
 
 /* ────────────────────── 站内答案速查表解析 ────────────────────── */
@@ -53,7 +60,8 @@ function parseSiteAnswers(absPath) {
   const lines = fs.readFileSync(absPath, 'utf8').split(/\r?\n/)
   const put = (no, ans) => {
     if (!Number.isInteger(no) || no <= 0 || no > 200) return
-    if (!/^[A-E]$/.test(ans)) return
+    // 政治多选是 `ABC` / `ABCD` 这种多字母，英语是单字母，统一放行 1-5 位
+    if (!/^[A-E]{1,5}$/.test(ans)) return
     if (no in answers && answers[no] !== ans) answers[no] = `?${answers[no]}${ans}`
     else answers[no] = ans
   }
@@ -265,6 +273,34 @@ function main() {
     for (const d of rec.diffs) rows.push({ year, ...d, file: siteFile })
   }
 
+  // ── 政治理论 ──
+  // 站内政治页只做到 2018 起，所以 2012-2017 抽出来了但没有可比对象。
+  const politics = loadPolitics()
+  const polRecs = []
+  const polRows = []
+  for (const year of Object.keys(politics).sort()) {
+    const siteAbs = path.join(POLITICS_DIR, `${year}.md`)
+    const truth = politics[year].answers
+    const rec = { year, sourceCount: Object.keys(truth).length, siteCount: 0, compared: 0, diffs: [], verdict: 'no-site' }
+    if (!fs.existsSync(siteAbs)) {
+      rec.note = `站内无 ${year}.md`
+      polRecs.push(rec)
+      continue
+    }
+    const got = parseSiteAnswers(siteAbs)
+    rec.siteCount = Object.keys(got).length
+    const overlap = Object.keys(truth).map(Number).filter((n) => n in got)
+    rec.compared = overlap.length
+    for (const n of overlap) {
+      if (got[n] !== truth[n]) {
+        rec.diffs.push({ no: n, site: got[n], source: truth[n] })
+        polRows.push({ year, no: n, site: got[n], source: truth[n] })
+      }
+    }
+    rec.verdict = rec.compared === 0 ? 'no-overlap' : rec.diffs.length === 0 ? 'clean' : 'check'
+    polRecs.push(rec)
+  }
+
   // ForestDeer 只用来报告数据完整性问题，不参与判定
   const fdYears = fs
     .readdirSync(FD_DIR)
@@ -297,22 +333,24 @@ function main() {
   L.push('# 真题答案核对（v3 · 官方答案 PDF）')
   L.push('')
   L.push(`> 生成：${new Date().toISOString().slice(0, 19).replace('T', ' ')} · scripts/zhenti-answer-crosscheck.mjs`)
-  L.push('> 校验源：`docs/public/papers/english/*-answers.pdf`（官方答案页扫描件）')
-  L.push('> 抽取方式：`scripts/extract-answer-keys.py` 渲染 + OCR → `data/english-answer-keys.json`')
-  L.push('> 被校验：`docs/posts/english/YYYY-英语-刷题版.md` 的答案速查表')
+  L.push('> 校验源：`docs/public/papers/english/*-answers.pdf`、`docs/public/papers/politics/2012-2019-政治合集.pdf`（官方答案页扫描件）')
+  L.push('> 抽取方式：`scripts/extract-answer-keys.py`、`scripts/extract-politics-keys.py` 渲染 + OCR → `data/*-answer-keys.json`')
+  L.push('> 被校验：`docs/posts/english/YYYY-英语-刷题版.md`、`docs/posts/politics/YYYY.md` 的答案速查表')
   L.push('> **差异是线索，不是结论。** 改之前要回原卷确认。')
   L.push('')
 
-  if (rows.length === 0) {
+  const polCompared = polRecs.reduce((n, r) => n + r.compared, 0)
+  const polClean = polRecs.filter((r) => r.verdict === 'clean').length
+  if (rows.length === 0 && polRows.length === 0) {
     L.push(
-      `**结论：站内 ${recs.length} 个年份、${recs.reduce((n, r) => n + r.compared, 0)} 道选择题的答案与官方答案页逐题一致，没有需要改的。**`
+      `**结论：英语 ${recs.length} 个年份 ${recs.reduce((n, r) => n + r.compared, 0)} 题、政治 ${polClean} 个年份 ${polCompared} 题，答案与官方答案页逐题一致，没有需要改的。**`
     )
   } else {
-    L.push(`**结论：${rows.length} 题答案与官方答案页不一致，逐条列在第二节，需回原卷确认后再改。**`)
+    L.push(`**结论：英语 ${rows.length} 题、政治 ${polRows.length} 题与官方答案页不一致，逐条列出，需回原卷确认后再改。**`)
   }
   L.push('')
 
-  h2('逐年核对')
+  h2('英语 · 逐年核对')
   L.push('| 年份 | 官方答案 | 站内答案 | 实际比对 | 不一致 | 站内缺题 | 判定 |')
   L.push('|:--|--:|--:|--:|--:|:--|:--|')
   const verdictText = {
@@ -328,14 +366,34 @@ function main() {
     )
   }
   L.push('')
-  L.push(`**合计比对 ${totalCompared} 题，${cleanYears}/${recs.length} 个年份完全一致，共 ${rows.length} 题不一致。**`)
+  L.push(`**英语合计比对 ${totalCompared} 题，${cleanYears}/${recs.length} 个年份完全一致，共 ${rows.length} 题不一致。**`)
   L.push('')
 
   if (rows.length) {
-    h2('答案不一致（需人工确认）')
+    h2('英语 · 答案不一致（需人工确认）')
     L.push('| 年份 | 题号 | 站内 | 官方 | 文件 |')
     L.push('|:--|--:|:--:|:--:|:--|')
     for (const r of rows) L.push(`| ${r.year} | ${r.no} | **${r.site}** | ${r.source} | ${r.file} |`)
+    L.push('')
+  }
+
+  h2('政治 · 客观题核对')
+  L.push('站内政治页只做到 2018 起，所以 2012–2017 的官方答案抽出来了但没有可比对象。')
+  L.push('')
+  L.push('| 年份 | 官方答案 | 站内答案 | 实际比对 | 不一致 | 判定 |')
+  L.push('|:--|--:|--:|--:|--:|:--|')
+  for (const r of polRecs) {
+    L.push(
+      `| ${r.year} | ${r.sourceCount} | ${r.siteCount} | ${r.compared} | ${r.diffs.length} | ${verdictText[r.verdict] ?? r.verdict}${r.note ? `（${r.note}）` : ''} |`
+    )
+  }
+  L.push('')
+  L.push(`**政治合计比对 ${polCompared} 题，${polClean}/${polRecs.length} 个年份完全一致，共 ${polRows.length} 题不一致。**`)
+  L.push('')
+  if (polRows.length) {
+    L.push('| 年份 | 题号 | 站内 | 官方 |')
+    L.push('|:--|--:|:--:|:--:|')
+    for (const r of polRows) L.push(`| ${r.year} | ${r.no} | **${r.site}** | ${r.source} |`)
     L.push('')
   }
 
@@ -354,7 +412,15 @@ function main() {
   }
 
   h2('能力边界')
-  L.push('- **政治理论无法核对**：`Mayi政治-10年真题-ocr.md`、`2012-2019-政治历年真题合集-autotext.md` 的 `【答案】` 标记数为 0，只有题干没有答案。')
+  L.push(
+    '- **政治只能核到 2018–2019**：站内政治页从 2018 才有，2012–2017 的官方答案虽已抽出（`data/politics-answer-keys.json`），但没有可比对象。'
+  )
+  L.push(
+    '- **政治的年份归属靠结构推断，不是原文标注**：合集里 2019 卷的卷头被裁掉，答案页本身不写年份，所以按「答案组出现顺序 = 2012..2019」推定，再用 2018/2019 的逐题比对结果反证（若错位，正确率会掉到 25% 左右）。'
+  )
+  L.push(
+    '- **政治视频源抽不出答案**：`p2025-zhengzhi-binge` / `p2025-zhengzhi-zhanghuijia` / `politics2026-dense` 的 OCR 文本里没有任何「解析：X / 答案：X」行，不是题号格式问题，是视频本身只讲题不给答案文字。'
+  )
   L.push('- **2024-2026 无官方答案 PDF**：`docs/public/papers/english/` 只到 2023，这三年没有可比对的权威源。')
   L.push('- **只比答案字母**，不比题干。题干是否正确是另一件事。')
   L.push('- **2021 年答案由人工视觉转录**（见 `data/english-answer-keys-manual.json` 的说明）。')
