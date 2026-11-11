@@ -58,7 +58,9 @@
     "print:pdf": "node scripts/html-to-pdf.mjs",
     "fix:spacing": "node scripts/fix-english-spacing.mjs",
     "fix:spacing:dry": "node scripts/fix-english-spacing.mjs --dry-run",
-    "fix:urls": "node scripts/fix-url-damage.mjs"
+    "fix:urls": "node scripts/fix-url-damage.mjs",
+    "zhenti:keys": "python scripts/extract-answer-keys.py",
+    "zhenti:check": "node scripts/zhenti-answer-crosscheck.mjs"
   },
   "devDependencies": {
     "markdown-it-mathjax3": "^4.3.2",
